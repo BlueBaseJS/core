@@ -1,5 +1,13 @@
 # Summary
 
 * [Introduction](README.md)
-* [First Chapter](chapter1.md)
+* [Hooks](hooks.md)
+
+## API
+
+* [Callbacks](api/callbacks.md)
+
+## Customisation
+
+* [Plugins](customisation/plugins.md)
 
