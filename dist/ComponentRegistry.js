@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.copyHoCs = exports.replaceComponent = exports.getRawComponent = exports.populateComponentsApp = exports.getComponent = exports.hasComponent = exports.registerComponent = exports.ComponentsTable = exports.Components = undefined;
 
-var _reactApollo = require('react-apollo');
+var _redux = require('redux');
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
                                                                                                                                                                                                      * Based on vulcanjs.org
@@ -92,13 +92,13 @@ var getComponent = exports.getComponent = function getComponent(name) {
   var hocs = component.hocs.map(function (hoc) {
     return Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc;
   });
-  return _reactApollo.compose.apply(undefined, _toConsumableArray(hocs))(component.rawComponent);
+  return _redux.compose.apply(undefined, _toConsumableArray(hocs))(component.rawComponent);
 };
 
 /*
  * Populate the lookup table for components to be callable
  * â„¹ï¸ Called once on app startup
- **/
+ * */
 var populateComponentsApp = exports.populateComponentsApp = function populateComponentsApp() {
   // loop over each component in the list
   Object.keys(ComponentsTable).map(function (name) {
@@ -159,5 +159,5 @@ var replaceComponent = exports.replaceComponent = function replaceComponent(name
 };
 
 var copyHoCs = exports.copyHoCs = function copyHoCs(sourceComponent, targetComponent) {
-  return _reactApollo.compose.apply(undefined, _toConsumableArray(sourceComponent.hocs))(targetComponent);
+  return _redux.compose.apply(undefined, _toConsumableArray(sourceComponent.hocs))(targetComponent);
 };

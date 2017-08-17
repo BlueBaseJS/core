@@ -4,7 +4,7 @@
 
 import { DOM, createElement } from 'react';
 
-import { hasComponent, getComponent } from '../ComponentRegistry/ComponentRegistry';
+import { hasComponent, getComponent } from './ComponentRegistry';
 
 export default class JsonToReact {
 	parseSchema(schema) {

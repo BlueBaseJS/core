@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = SystemLayout;
 
-var _JsonSchemaToReact = require('bluerain-client-services/lib/JsonSchemaToReact');
+var _JsonSchemaToReact = require('../JsonSchemaToReact');
 
-var _Callbacks = require('bluerain-client-services/lib/Callbacks');
+// import { runCallbacks } from '../Callbacks';
 
 function SystemLayout() {
 	var schema = {

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { runCallbacks } from '../client-services/Callbacks/Callbacks';
+import { runCallbacks } from './Callbacks';
 
 const bluerainReducers = runCallbacks('bluerain.reducers.bluerain', {});
 

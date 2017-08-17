@@ -1,6 +1,7 @@
-
 export const PluginsTable = {}; // storage for infos about Plugins
 
+export const registerPlugins = (Plugins) => {
+};
 
 export const registerPlugin = (name, Plugin) => {
 	if (name === undefined || name === null) {

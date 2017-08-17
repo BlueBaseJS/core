@@ -1,5 +1,5 @@
-import Plugin from './Plugin';
-import { addCallback, runCallbacks } from '../Callbacks';
+import Plugin from '../../Plugin';
+import { addCallback, runCallbacks } from '../../Callbacks';
 
 class AddPlugin extends Plugin {
 	initialize() {

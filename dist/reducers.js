@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = require('redux');
 
-var _Callbacks = require('../client-services/Callbacks/Callbacks');
+var _Callbacks = require('./Callbacks');
 
 var bluerainReducers = (0, _Callbacks.runCallbacks)('bluerain.reducers.bluerain', {});
 

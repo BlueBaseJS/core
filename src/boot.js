@@ -1,21 +1,35 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import { routes } from './routes';
 
-const boot = function(options) {
+import { registerApps } from './AppRegistry';
+import { initializeConfig } from './ConfigRegistry';
+import { registerPlugins, initializePlugins } from './PluginRegistry';
+import Routes from './routes';
 
+export const boot = function(options) {
+
+	// Extract app, plugins and configs from options
 	const { apps, plugins, config } = options;
 
-	// Add the client app start up code to a function as window.webappStart.
-	// The webapp's full HTML will check and call it once the js-content
-	// DOM is created.
-	const finalRoutes = routes(apps);
+	// Initialize all configs
+	initializeConfig(config);
+
+	// Process option variables
+	registerApps(apps);
+	registerPlugins(plugins);
+
+	// Initialize plugins
+	initializePlugins();
+
+	//
 	return (
-  <BrowserRouter  >
-    <Route component={finalRoutes} />
+  <BrowserRouter>
+    <Routes apps={apps} config={config} />
   </BrowserRouter>
 	);
 
 };
 
-export default boot;
+export const bootOnServer = function(options) {
+	boot(options);
+};

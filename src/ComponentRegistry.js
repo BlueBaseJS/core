@@ -83,7 +83,7 @@ export const getComponent = (name) => {
 /*
  * Populate the lookup table for components to be callable
  * â„¹ï¸ Called once on app startup
- **/
+ * */
 export const populateComponentsApp = () => {
 	// loop over each component in the list
 	Object.keys(ComponentsTable).map((name) => {

@@ -1,5 +1,8 @@
 export const AppsTable = {}; // storage for infos about Apps
 
+export const registerApps = (apps) => {
+};
+
 export const registerApp = (name, App) => {
 	if (name === undefined || name === null) {
 		throw new Error(`name cannot be ${name}`);

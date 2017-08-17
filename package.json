@@ -1,11 +1,11 @@
 {
-  "name": "reactjs-basics",
-  "version": "1.0.0",
-  "description": "Some basic ReactJS",
+  "name": "bluerain-os",
+  "version": "0.1.0",
+  "description": "A browser based OS, made with React JS",
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
-    "build": "rm -rf lib && babel -D src --out-dir dist",
+    "build": "rm -rf dist && babel -D src --out-dir dist",
     "build:prod": "webpack -p && cp src/index.js dist/index.js",
     "lint": "./node_modules/.bin/eslint ./src/"
   },
@@ -15,6 +15,7 @@
   "author": "Abdul Rehman Talat <rehman.talat@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "lodash.camelcase": "^4.3.0",
     "lodash.reject": "^4.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
