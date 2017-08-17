@@ -1,8 +1,4 @@
-# Plugins
-
-Plugins are the best way to add or extend BlueRain functionalities \(apps and system\). For example, track visits using Google Analytics, etc.
-
-##  Installation
+# Installation
 
 First install the plugin as a npm package to your project:
 
@@ -27,6 +23,3 @@ const plugins = require('../bluerain/plugins');
 
 boot({ plugins });
 ```
-
-
-

@@ -14,10 +14,6 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 var _reactRouterDom = require('react-router-dom');
 
-var _SystemLayout = require('./layouts/SystemLayout1');
-
-var _SystemLayout2 = _interopRequireDefault(_SystemLayout);
-
 var _Callbacks = require('./Callbacks');
 
 var _ComponentRegistry = require('./ComponentRegistry');
@@ -48,7 +44,6 @@ var Routes = function Routes(props) {
 	// 	}
 	// }
 
-	console.log('checking routes 1', apps);
 	// console.log('mapping', appRoutes.map(a => a.routes));
 	// const appPrefix = config && config.apps.routePrefix && config.apps.routePrefix || '/app'; // path = /app
 
@@ -62,13 +57,10 @@ var Routes = function Routes(props) {
 	// 	]
 	// };
 
-	console.log('checking routes 2');
 	// runCallbacks('bluerain.routes', routes);
 
 	var renderApp = function renderApp(app, slug) {
 		var AppComponent = app.routes;
-		console.log('rendering app', app);
-		console.log('rendering app', AppComponent);
 		return _react2.default.createElement(AppComponent, null);
 	};
 
