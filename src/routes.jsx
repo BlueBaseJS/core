@@ -14,17 +14,18 @@ export const routes = (apps, config) => {
 			}
 	}
 
-	const routes = {
-		path: '/',
-		component: SystemLayout,
-		childRoutes: [
-			{
-				// Apps
-				path: config && config.apps.routePrefix && config.apps.routePrefix || '/app', // path = /app
-				childRoutes: appRoutes
-			}
-		]
-	}
+  const routes = appRoutes[0].default;
+  // const routes = {
+  // 	path: '/',
+  // 	component: SystemLayout,
+  // 	childRoutes: [
+  // 		{
+  // 			// Apps
+  // 			path: config && config.apps.routePrefix && config.apps.routePrefix || '/app', // path = /app
+  // 			childRoutes: appRoutes
+  // 		}
+  // 	]
+  // }
 
 	runCallbacks('bluerain.routes', routes);
 	
