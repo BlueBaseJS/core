@@ -1,17 +1,17 @@
 // import SystemLayout from './layouts/SystemLayout.jsx';
 import { runCallbacks } from './client-services/Callbacks/Callbacks';
 
-export const routes = (apps, config) => {
+const routes = (apps, config) => {
 
 	const appRoutes = [];
 	for (const key in apps) {
-			// skip loop if the property is from prototype
-			if (!apps.hasOwnProperty(key)) continue;
+// skip loop if the property is from prototype
+		if (!apps.hasOwnProperty(key)) continue;
 
-			const app = apps[key];
-			if (app.routes) {
-				appRoutes.push(app.routes());
-			}
+		const app = apps[key];
+		if (app.routes) {
+			appRoutes.push(app.routes());
+		}
 	}
 
 	const routes = {
@@ -24,9 +24,11 @@ export const routes = (apps, config) => {
 				childRoutes: appRoutes
 			}
 		]
-	}
+	};
 
 	runCallbacks('bluerain.routes', routes);
-	
+
 	return routes;
 };
+
+export default routes;

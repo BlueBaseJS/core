@@ -16,22 +16,22 @@ export const Callbacks = {};
  * @param {Function} callback - The callback function
  */
 export const addCallback = function(hook, callback) {
-  if (hook === undefined || hook === null) {
-    throw new Error(`hook cannot be ${hook}`);
-  }
-  if (!callback.name) {
-    throw new Error(
+	if (hook === undefined || hook === null) {
+		throw new Error(`hook cannot be ${hook}`);
+	}
+	if (!callback.name) {
+		throw new Error(
       `// Warning! You are adding an unnamed callback to ${hook}.
 	   Please use the function foo () {} syntax.`
     );
-  }
+	}
 
   // if callback array doesn't exist yet, initialize it
-  if (typeof Callbacks[hook] === 'undefined') {
-    Callbacks[hook] = [];
-  }
+	if (typeof Callbacks[hook] === 'undefined') {
+		Callbacks[hook] = [];
+	}
 
-  Callbacks[hook].push(callback);
+	Callbacks[hook].push(callback);
 };
 
 /*
@@ -40,26 +40,26 @@ export const addCallback = function(hook, callback) {
  * @param {string} functionName - The name of the function to remove
  */
 export const removeCallback = function(hookName, callbackName) {
-  if (hookName === undefined || hookName === null) {
-    throw new Error(`hook cannot be ${hookName}`);
-  }
-  if (callbackName === undefined || callbackName === null) {
-    throw new Error(`callback of ${hookName} cannot be ${callbackName}`);
-  }
-  if (!Callbacks.hasOwnProperty(hookName)) {
-    throw new Error(`${hookName}  is not added. First add hook to remove it.`);
-  }
-  const noOfCallbacks = Callbacks[hookName].length;
-  Callbacks[hookName] = reject(
+	if (hookName === undefined || hookName === null) {
+		throw new Error(`hook cannot be ${hookName}`);
+	}
+	if (callbackName === undefined || callbackName === null) {
+		throw new Error(`callback of ${hookName} cannot be ${callbackName}`);
+	}
+	if (!Callbacks.hasOwnProperty(hookName)) {
+		throw new Error(`${hookName}  is not added. First add hook to remove it.`);
+	}
+	const noOfCallbacks = Callbacks[hookName].length;
+	Callbacks[hookName] = reject(
     Callbacks[hookName],
     callback => callback.name === callbackName
   );
-  if (Callbacks[hookName].length === noOfCallbacks) {
-    throw new Error(
+	if (Callbacks[hookName].length === noOfCallbacks) {
+		throw new Error(
       `${hookName} has no callback named ${callbackName}.
 	   First add callback in ${hookName} to remove it`
     );
-  }
+	}
 };
 
 /*
@@ -72,54 +72,54 @@ export const removeCallback = function(hookName, callbackName) {
  */
 export const runCallbacks = function() {
   // the first argument is the name of the hook or an array of functions
-  const hook = arguments[0];
+	const hook = arguments[0];
   // the second argument is the item on which to iterate
-  const item = arguments[1];
+	const item = arguments[1];
   // successive arguments are passed to each iteration
-  const sliceNumber = 2;
-  const args = Array.prototype.slice.call(arguments).slice(sliceNumber);
-  if (hook === undefined || hook === null) {
-    throw new Error(`hook cannot be ${hook}`);
-  }
+	const sliceNumber = 2;
+	const args = Array.prototype.slice.call(arguments).slice(sliceNumber);
+	if (hook === undefined || hook === null) {
+		throw new Error(`hook cannot be ${hook}`);
+	}
 
   // Disabled this condition by design - (by ART)
   // if (!Callbacks.hasOwnProperty(hook)) {
   // 	throw new Error(`${hook}  is not added. First add hook to run it.`);
   // }
-  const callbacks = Array.isArray(hook) ? hook : Callbacks[hook];
+	const callbacks = Array.isArray(hook) ? hook : Callbacks[hook];
 
-  if (typeof callbacks !== 'undefined' && !!callbacks.length) {
+	if (typeof callbacks !== 'undefined' && !!callbacks.length) {
     // if the hook exists, and contains callbacks to run
-    return callbacks.reduce((accumulator, callback) => {
-      const newArguments = [accumulator].concat(args);
+		return callbacks.reduce((accumulator, callback) => {
+			const newArguments = [accumulator].concat(args);
 
-      try {
-        const result = callback.apply({}, newArguments);
+			try {
+				const result = callback.apply({}, newArguments);
 
-        if (typeof result === 'undefined') {
+				if (typeof result === 'undefined') {
           // if result of current iteration is undefined, don't pass it on
           // console.log(
           //   `// Warning: Sync callback [${callback.name}] in hook
           // [${hook}] didn't return a result!`
           // );
-          return accumulator;
-        }
-        return result;
-      } catch (error) {
+					return accumulator;
+				}
+				return result;
+			} catch (error) {
         // console.log(
         //   `// error at callback [${callback.name}] in hook [${hook}]`
         // );
         // console.log(error);
-        throw error;
+				throw error;
         // if (error.break || error.data && error.data.break) {
 
         // }
         // pass the unchanged accumulator to the next iteration of the loop
         // return accumulator;
-      }
-    }, item);
-  } // else, just return the item unchanged
-  return item;
+			}
+		}, item);
+	} // else, just return the item unchanged
+	return item;
 };
 
 /*

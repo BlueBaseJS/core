@@ -1,1 +1,1 @@
-export {AppsTable, getAppRoutes, registerApp, removeApp} from './AppRegistry';
+export { AppsTable, getAppRoutes, registerApp, removeApp } from './AppRegistry';

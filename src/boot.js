@@ -1,10 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import { routes } from './routes';
-import { Route, BrowserRouter} from 'react-router-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reducers from './reducers';
 
 const boot = function(options) {
 
@@ -15,13 +11,11 @@ const boot = function(options) {
 	// DOM is created.
 	const finalRoutes = routes(apps);
 	return (
-				<BrowserRouter  >
-					<Route  component={finalRoutes}/>
-			</BrowserRouter>
-
+  <BrowserRouter  >
+    <Route component={finalRoutes} />
+  </BrowserRouter>
 	);
 
 };
 
 export default boot;
-export { reducers, routes };
