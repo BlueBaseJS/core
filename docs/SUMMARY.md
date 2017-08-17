@@ -9,5 +9,10 @@
 
 ## Customisation
 
-* [Plugins](customisation/plugins.md)
+* [Plugins](customization/plugins/README.md)
+  * [Installation](customization/plugins/installation.md)
+  * [Configuration](customization/plugins/configuration.md)
+  * [Creating a Plugin](customization/plugins/creating-a-plugin.md)
+
+
 
