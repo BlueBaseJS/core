@@ -1,10 +1,8 @@
-import React from 'react';
-import camelCase from 'lodash.camelcase';
-
 import { Route } from 'react-router-dom';
 
 import { runCallbacks } from './Callbacks';
 import { registerComponent } from './ComponentRegistry';
+import { parseJsonSchema } from './JsonSchemaToReact';
 
 registerComponent('Route', Route);
 
@@ -12,51 +10,34 @@ const Routes = (props) => {
 
 	const { apps, config } = props;
 
-	// const appRoutes = [];
-	// for (const key in apps) {
-	// 	// skip loop if the property is from prototype
-	// 	if (!apps.hasOwnProperty(key)) continue;
+	const appPrefix = config && config.apps.routePrefix && config.apps.routePrefix || '/app'; // path = /app
 
-	// 	let appName = camelCase(`${key}App`);
-	// 	appName = appName.charAt(0).toUpperCase() + appName.slice(1);
-	// 	console.log(appName);
-	// 	const app = apps[key];
-	// 	if (app.routes) {
-	// 		appRoutes.push({
-	// 			name: appName,
-	// 			slug: key,
-	// 			routes: app.routes
-	// 		});
-	// 	}
-	// }
+	const appRoutes = [];
+	for (const key in apps) {
 
-	// console.log('mapping', appRoutes.map(a => a.routes));
-	// const appPrefix = config && config.apps.routePrefix && config.apps.routePrefix || '/app'; // path = /app
+		// skip loop if the property is from prototype
+		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
 
-	// const routes = {
-	// 	component: 'div',
-	// 	children: [
-	// 		{
-	// 			// Apps
-	// 			childRoutes: appRoutes
-	// 		}
-	// 	]
-	// };
+		const app = apps[key];
+		const component = app.routes;
+		if (app.routes) {
+			appRoutes.push({
+				component: 'Route',
+				props: {
+					path: `${appPrefix}/${key}`,
+					key,
+					component
+				}
+			});
+		}
+	}
 
-	// runCallbacks('bluerain.routes', routes);
-
-	const renderApp = (app, slug) => {
-		const AppComponent = app.routes;
-		return (<AppComponent />);
+	const routes = {
+		component: 'div', // TODO: Change this to View with ReactXP
+		children: appRoutes
 	};
 
-	return (
-  <div>
-    {
-			Object.keys(apps).map(key => renderApp(apps[key]))
-		}
-  </div>
-	);
+	return parseJsonSchema(runCallbacks('bluerain.routes', routes));
 };
 
 export default Routes;

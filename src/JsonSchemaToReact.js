@@ -58,7 +58,7 @@ export default class JsonToReact {
 
 	resolveComponentChildren(schema) {
 		return (schema.hasOwnProperty('children')) ?
-			this.parseSchema(schema.children) : [];
+			this.parseSchema(schema.children) : undefined;
 	}
 }
 

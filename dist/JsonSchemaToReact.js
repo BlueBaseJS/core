@@ -101,7 +101,7 @@ var JsonToReact = function () {
 	}, {
 		key: 'resolveComponentChildren',
 		value: function resolveComponentChildren(schema) {
-			return schema.hasOwnProperty('children') ? this.parseSchema(schema.children) : [];
+			return schema.hasOwnProperty('children') ? this.parseSchema(schema.children) : undefined;
 		}
 	}]);
 
