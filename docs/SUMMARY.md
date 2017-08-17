@@ -7,7 +7,10 @@
 
 * [Callbacks](api/callbacks.md)
 
-## Customisation
+## Customization
 
 * [Plugins](customisation/plugins.md)
+  * [Creating a Plugin](/creating-a-plugin.md)
+
+
 
