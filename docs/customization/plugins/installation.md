@@ -23,6 +23,3 @@ const plugins = require('../bluerain/plugins');
 
 boot({ plugins });
 ```
-
-
-
