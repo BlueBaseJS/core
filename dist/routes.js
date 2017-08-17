@@ -5,13 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.routes = undefined;
 
-var _SystemLayout = require('./layouts/SystemLayout.jsx');
-
-var _SystemLayout2 = _interopRequireDefault(_SystemLayout);
-
 var _Callbacks = require('./client-services/Callbacks/Callbacks');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = exports.routes = function routes(apps, config) {
 
@@ -25,21 +19,18 @@ var routes = exports.routes = function routes(apps, config) {
 			appRoutes.push(app.routes());
 		}
 	}
-	var routes = appRoutes[0];
 
-	// const routes = {
-	// 	path: '/',
-	// 	component: SystemLayout,
-	// 	childRoutes: [
-	// 		{
-	// 			// Apps
-	// 			path: config && config.apps.routePrefix && config.apps.routePrefix || '/app', // path = /app
-	// 			childRoutes: appRoutes
-	// 		}
-	// 	]
-	// }
+	var routes = {
+		path: '/',
+		component: SystemLayout,
+		childRoutes: [{
+			// Apps
+			path: config && config.apps.routePrefix && config.apps.routePrefix || '/app', // path = /app
+			childRoutes: appRoutes
+		}]
+	};
 
 	(0, _Callbacks.runCallbacks)('bluerain.routes', routes);
 
 	return routes;
-};
+}; // import SystemLayout from './layouts/SystemLayout.jsx';

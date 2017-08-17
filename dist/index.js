@@ -35,7 +35,6 @@ var boot = function boot(options) {
 	// DOM is created.
 
 	var finalRoutes = (0, _routes.routes)(apps);
-	console.log('linked');
 	return _react2.default.createElement(
 		_reactRouterDom.BrowserRouter,
 		null,
