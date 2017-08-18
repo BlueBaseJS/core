@@ -4,7 +4,7 @@
   "description": "A browser based OS, made with React JS",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build",
+    "start": " webpack-dev-server --content-base test/integration/web/src --config ./test/integration/web/webpack.config.js --inline --hot --history-api-fallback",
     "build": "rm -rf dist && babel -D src --out-dir dist",
     "build:prod": "webpack -p && cp src/index.js dist/index.js",
     "lint": "./node_modules/.bin/eslint ./src/"
