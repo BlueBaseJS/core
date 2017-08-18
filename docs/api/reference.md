@@ -5,10 +5,27 @@
 -   [App](#app)
     -   [getComponent](#getcomponent)
     -   [getPath](#getpath)
--   [reject](#reject)
+-   [AppsTable](#appstable)
+-   [registerApp](#registerapp)
+-   [registerApps](#registerapps)
+-   [removeApp](#removeapp)
+-   [BootOptions](#bootoptions)
+-   [boot](#boot)
+-   [bootOnServer](#bootonserver)
 -   [Callbacks](#callbacks)
--   [compose](#compose)
--   [createElement](#createelement)
+-   [addCallback](#addcallback)
+-   [removeCallback](#removecallback)
+-   [runCallbacks](#runcallbacks)
+-   [runCallbacksAsync](#runcallbacksasync)
+-   [registerComponent](#registercomponent)
+-   [hasComponent](#hascomponent)
+-   [getComponent](#getcomponent-1)
+-   [populateComponentsApp](#populatecomponentsapp)
+-   [getRawComponent](#getrawcomponent)
+-   [replaceComponent](#replacecomponent)
+-   [copyHoCs](#copyhocs)
+-   [Plugin](#plugin)
+    -   [initialize](#initialize)
 
 ## App
 
@@ -39,16 +56,197 @@ Get the App's URL
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-## reject
+## AppsTable
 
-Based on vulcanjs.org
+storage for infos about Apps
+
+Type: {}
+
+## registerApp
+
+Register an app in the system
+
+**Parameters**
+
+-   `app` **[App](#app)** 
+
+## registerApps
+
+Register multiple apps in the system
+
+**Parameters**
+
+-   `apps` **{}** 
+
+## removeApp
+
+Remove an app from the registry
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+## BootOptions
+
+Options object that `boot` and `bootOnServer` methods expect.
+
+Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>, config: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>}
+
+**Properties**
+
+-   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** 
+-   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+-   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>** 
+
+## boot
+
+Boots the OS and renders the main UI. Use it on the client side
+
+**Parameters**
+
+-   `options` **[BootOptions](#bootoptions)** 
+
+## bootOnServer
+
+Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
+
+**Parameters**
+
+-   `options` **[BootOptions](#bootoptions)** 
 
 ## Callbacks
 
-## compose
+Callback hooks provide an easy way to add extra steps to common operations.
 
-Based on vulcanjs.org
+Type: {}
 
-## createElement
+## addCallback
 
-Based on <https://github.com/TechniqueSoftware/react-json-schema>
+Add a callback function to a hook
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `callback` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The callback function
+
+## removeCallback
+
+Remove a callback from a hook
+
+**Parameters**
+
+-   `hookName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `callbackName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the function to remove
+
+## runCallbacks
+
+Successively run all of a hook's callbacks on an item
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
+-   `item` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Second argument: the post, comment, modifier, etc.
+     on which to run the callbacks
+-   `args` **Any** Other arguments will be passed to each successive iteration
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns the item after it's been through all the callbacks for this hook
+
+## runCallbacksAsync
+
+Successively run all of a hook's callbacks on an item
+in async mode (only works on server)
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
+-   `args` **Any** Other arguments will be passed to each successive iteration
+
+## registerComponent
+
+Register a Vulcan component with a name, a raw component than can be extended
+and one or more optional higher order components.
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
+-   `rawComponent`  
+-   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.Note: when a component is registered without higher order component, `hocs` will be
+    an empty array, and it's ok!
+    See <https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15>
+
+Returns **any** Structure of a component in the list:ComponentsTable.Foo = {
+   name: 'Foo',
+   hocs: [fn1, fn2],
+   rawComponent: React.Component,
+   call: () => compose(...hocs)(rawComponent),
+}
+
+## hasComponent
+
+Check if a component is registered with registerComponent(name, component, ...hocs).
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## getComponent
+
+Get a component registered with registerComponent(name, component, ...hocs).
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
+
+## populateComponentsApp
+
+Populate the lookup table for components to be callable.
+Called once on app startup
+
+## getRawComponent
+
+Get the **raw** (original) component registered with registerComponent
+without the possible HOCs wrapping it.
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
+
+## replaceComponent
+
+Replace a Vulcan component with the same name with a new component or
+an extension of the raw component and one or more optional higher order components.
+This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
+-   `newComponent`  
+-   `newHocs` **...any** 
+-   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.
+
+## copyHoCs
+
+[write docs]
+
+**Parameters**
+
+-   `sourceComponent` **any** 
+-   `targetComponent` **any** 
+
+## Plugin
+
+Base class of a plugin which is to be extended.
+
+**Parameters**
+
+-   `config` **{}** 
+
+**Properties**
+
+-   `config` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Plugin configurations
+
+### initialize
+
+To initialize Plagin i.e To add all the callbacks against the specific plugin

@@ -1,4 +1,5 @@
 /* @flow */
+
 import { type Element as ReactElement } from 'react';
 import kebabCase from 'lodash.kebabcase';
 

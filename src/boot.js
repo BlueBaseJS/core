@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -6,7 +8,22 @@ import { initializeConfig } from './ConfigRegistry';
 import { registerPlugins, initializePlugins } from './PluginRegistry';
 import Routes from './routes';
 
-export const boot = function(options) {
+import App from './App';
+import Plugin from './Plugin';
+
+/**
+ * Options object that `boot` and `bootOnServer` methods expect.
+ */
+type BootOptions = {
+	apps: Array<App>,
+	config: Object,
+	plugins: Array<Plugin>
+}
+
+/**
+ * Boots the OS and renders the main UI. Use it on the client side
+ */
+export const boot = function(options: BootOptions) {
 
 	// Extract app, plugins and configs from options
 	const { apps, plugins, config } = options;
@@ -30,6 +47,9 @@ export const boot = function(options) {
 
 };
 
-export const bootOnServer = function(options) {
+/**
+ * Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
+ */
+export const bootOnServer = function(options: BootOptions) {
 	boot(options);
 };

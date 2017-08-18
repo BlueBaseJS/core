@@ -1,11 +1,20 @@
-// base class of a plugin which is to be extended
+/* @flow */
+
+/**
+ * Base class of a plugin which is to be extended.
+ * @property {object}	config	Plugin configurations
+ */
 export default class Plugin {
 
-	constructor(config) {
+	config: {};
+
+	constructor(config: {}) {
 		this.config = config;
 	}
 
-    // To initialize Plagin i.e To add all the callbacks against the specific plugin
+    /**
+	 * To initialize Plagin i.e To add all the callbacks against the specific plugin
+	 */
 	initialize() {
 
 	}

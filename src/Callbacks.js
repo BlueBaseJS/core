@@ -1,21 +1,19 @@
-/**
- * Based on vulcanjs.org
- */
+/* @flow */
 
-/**
- * @summary Callback hooks provide an easy way to add extra steps to common operations.
- * @namespace Callbacks
- */
 import reject from 'lodash.reject';
 
-export const Callbacks = {};
+/**
+ * Callback hooks provide an easy way to add extra steps to common operations.
+ * @namespace Callbacks
+ */
+export const Callbacks: {} = {};
 
-/*
- * @summary Add a callback function to a hook
+/**
+ * Add a callback function to a hook
  * @param {String} hook - The name of the hook
  * @param {Function} callback - The callback function
  */
-export const addCallback = function(hook, callback) {
+export const addCallback = function(hook: string, callback: Function) {
 	if (hook === undefined || hook === null) {
 		throw new Error(`hook cannot be ${hook}`);
 	}
@@ -34,12 +32,12 @@ export const addCallback = function(hook, callback) {
 	Callbacks[hook].push(callback);
 };
 
-/*
- * @summary Remove a callback from a hook
- * @param {string} hook - The name of the hook
- * @param {string} functionName - The name of the function to remove
+/**
+ * Remove a callback from a hook
+ * @param {string} hookName - The name of the hook
+ * @param {string} callbackName - The name of the function to remove
  */
-export const removeCallback = function(hookName, callbackName) {
+export const removeCallback = function(hookName: string, callbackName: string) {
 	if (hookName === undefined || hookName === null) {
 		throw new Error(`hook cannot be ${hookName}`);
 	}
@@ -62,19 +60,19 @@ export const removeCallback = function(hookName, callbackName) {
 	}
 };
 
-/*
- * @summary Successively run all of a hook's callbacks on an item
+/**
+ * Successively run all of a hook's callbacks on an item
  * @param {String} hook - First argument: the name of the hook
  * @param {Object} item - Second argument: the post, comment, modifier, etc.
  *  on which to run the callbacks
  * @param {Any} args - Other arguments will be passed to each successive iteration
  * @returns {Object} Returns the item after it's been through all the callbacks for this hook
  */
-export const runCallbacks = function() {
+export const runCallbacks = function(hook: string, item: {}) {
   // the first argument is the name of the hook or an array of functions
-	const hook = arguments[0];
+	// const hook = arguments[0];
   // the second argument is the item on which to iterate
-	const item = arguments[1];
+	// const item = arguments[1];
   // successive arguments are passed to each iteration
 	const sliceNumber = 2;
 	const args = Array.prototype.slice.call(arguments).slice(sliceNumber);
@@ -122,8 +120,8 @@ export const runCallbacks = function() {
 	return item;
 };
 
-/*
- * @summary Successively run all of a hook's callbacks on an item
+/**
+ * Successively run all of a hook's callbacks on an item
  * in async mode (only works on server)
  * @param {String} hook - First argument: the name of the hook
  * @param {Any} args - Other arguments will be passed to each successive iteration

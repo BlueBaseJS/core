@@ -1,13 +1,11 @@
-/**
- * Based on vulcanjs.org
- */
+/* @flow */
 
 import { compose } from 'redux'; // note: at the moment, compose@react-apollo === compose@redux ; see https://github.com/apollostack/react-apollo/blob/master/src/index.ts#L4-L7
 
 export const Components = {}; // will be populated on startup (see vulcan:routing)
 export const ComponentsTable = {}; // storage for infos about components
 
-/*
+/**
  * Register a Vulcan component with a name, a raw component than can be extended
  * and one or more optional higher order components.
  *
@@ -45,7 +43,7 @@ export const registerComponent = (name, rawComponent, ...hocs) => {
 	};
 };
 
-/*
+/**
  * Check if a component is registered with registerComponent(name, component, ...hocs).
  *
  * @param {String} name The name of the component to get.
@@ -62,7 +60,7 @@ export const hasComponent = (name) => {
 	return true;
 };
 
-/*
+/**
  * Get a component registered with registerComponent(name, component, ...hocs).
  *
  * @param {String} name The name of the component to get.
@@ -80,10 +78,10 @@ export const getComponent = (name) => {
 	return compose(...hocs)(component.rawComponent);
 };
 
-/*
- * Populate the lookup table for components to be callable
- * â„¹ï¸ Called once on app startup
- * */
+/**
+ * Populate the lookup table for components to be callable.
+ * Called once on app startup
+ */
 export const populateComponentsApp = () => {
 	// loop over each component in the list
 	Object.keys(ComponentsTable).map((name) => {
@@ -95,7 +93,7 @@ export const populateComponentsApp = () => {
 	});
 };
 
-/*
+/**
  * Get the **raw** (original) component registered with registerComponent
  * without the possible HOCs wrapping it.
  *
@@ -104,7 +102,7 @@ export const populateComponentsApp = () => {
  */
 export const getRawComponent = name => ComponentsTable[name].rawComponent;
 
-/*
+/**
  * Replace a Vulcan component with the same name with a new component or
  * an extension of the raw component and one or more optional higher order components.
  * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
@@ -137,5 +135,10 @@ export const replaceComponent = (name, newComponent, ...newHocs) => {
 	return registerComponent(name, newComponent, ...newHocs, ...previousComponent.hocs);
 };
 
+/**
+ * [write docs]
+ * @param {*} sourceComponent 
+ * @param {*} targetComponent 
+ */
 export const copyHoCs = (sourceComponent, targetComponent) =>
 			compose(...sourceComponent.hocs)(targetComponent);

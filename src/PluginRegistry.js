@@ -1,3 +1,5 @@
+/* @flow */
+
 export const PluginsTable = {}; // storage for infos about Plugins
 
 export const registerPlugins = (Plugins) => {

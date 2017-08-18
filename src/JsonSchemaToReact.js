@@ -1,6 +1,4 @@
-/**
- * Based on https://github.com/TechniqueSoftware/react-json-schema
- */
+/* @flow */
 
 import { DOM, createElement } from 'react';
 

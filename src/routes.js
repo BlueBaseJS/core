@@ -1,3 +1,5 @@
+/* @flow */
+
 import { Route } from 'react-router-dom';
 
 import { runCallbacks } from './Callbacks';
