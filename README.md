@@ -1,3 +1,6 @@
 # BlueRain OS
 
+### Status 🎊
+[![npm version](https://badge.fury.io/js/bluerain-os.svg)](https://badge.fury.io/js/bluerain-os) [![Build Status](https://travis-ci.org/BlueEastCode/bluerain-os.svg?branch=master)](https://travis-ci.org/BlueEastCode/bluerain-os) [![bitHound Overall Score](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/score.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os) [![bitHound Dependencies](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/dependencies.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os/develop/dependencies/npm) [![bitHound Dev Dependencies](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/devDependencies.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os/develop/dependencies/npm) [![bitHound Code](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/code.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os) [![Known Vulnerabilities](https://snyk.io/test/npm/bluerain-os/badge.svg)](https://snyk.io/test/npm/bluerain-os)
+
 A work in progress.
