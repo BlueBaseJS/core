@@ -15,6 +15,7 @@
   "author": "Abdul Rehman Talat <rehman.talat@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "lodash.kebabcase": "^4.1.1",
     "lodash.reject": "^4.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

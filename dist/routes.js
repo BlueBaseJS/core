@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
 var _reactRouterDom = require('react-router-dom');
 
 var _Callbacks = require('./Callbacks');
@@ -15,8 +11,6 @@ var _Callbacks = require('./Callbacks');
 var _ComponentRegistry = require('./ComponentRegistry');
 
 var _JsonSchemaToReact = require('./JsonSchemaToReact');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _ComponentRegistry.registerComponent)('Route', _reactRouterDom.Route);
 
@@ -34,8 +28,9 @@ var Routes = function Routes(props) {
 		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
 
 		var app = apps[key];
-		var component = app.routes;
-		if (app.routes) {
+		var component = app.getComponent();
+		console.log('app', component);
+		if (component) {
 			appRoutes.push({
 				component: 'Route',
 				props: {
@@ -47,37 +42,11 @@ var Routes = function Routes(props) {
 		}
 	}
 
-	// const routes = {
-	// 	component: 'div', // Change this to View with ReactXP
-	// 	children: appRoutes
-	// 	// children: [{
-	// 	// 	component: 'Route',
-	// 	// 	props: {
-	// 	// 		path: '/app/hello-world',
-	// 	// 		key: 'xyz',
-	// 	// 		component: () => <div>hello what??</div>
-	// 	// 	}
-	// 	// }]
-	// };
-
 	var routes = {
-		component: 'div', // Change this to View with ReactXP
-		// props: {
-		// 	path: '/',
-		// 	component: () => <div>hello what??</div>
-		// }
+		component: 'div', // TODO: Change this to View with ReactXP
 		children: appRoutes
-		// children: [{
-		// 	component: 'Route',
-		// 	props: {
-		// 		path: '/app/hello-world',
-		// 		key: 'xyz',
-		// 		component: () => <div>hello what??</div>
-		// 	}
-		// }]
 	};
 
-	// return (<Route path="/" component={() => <div>hello what??</div>} />);
 	return (0, _JsonSchemaToReact.parseJsonSchema)((0, _Callbacks.runCallbacks)('bluerain.routes', routes));
 };
 

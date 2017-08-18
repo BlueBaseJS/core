@@ -19,8 +19,9 @@ const Routes = (props) => {
 		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
 
 		const app = apps[key];
-		const component = app.routes;
-		if (app.routes) {
+		const component = app.getComponent();
+
+		if (component) {
 			appRoutes.push({
 				component: 'Route',
 				props: {
