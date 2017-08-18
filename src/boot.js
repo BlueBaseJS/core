@@ -3,9 +3,9 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { registerApps } from './AppRegistry';
-import { initializeConfig } from './ConfigRegistry';
-import { registerPlugins, initializePlugins } from './PluginRegistry';
+import AppRegistry from './registries/AppRegistry';
+import ConfigRegistry from './registries/ConfigRegistry';
+import PluginRegistry from './registries/PluginRegistry';
 import Routes from './routes';
 
 import App from './models/App';
@@ -29,14 +29,14 @@ export const boot = function(options: BootOptions) {
 	const { apps, plugins, config } = options;
 
 	// Initialize all configs
-	initializeConfig(config);
+	ConfigRegistry.register(config);
 
 	// Process option variables
-	registerApps(apps);
-	registerPlugins(plugins);
+	AppRegistry.registerMany(apps);
+	PluginRegistry.registerMany(plugins);
 
 	// Initialize plugins
-	initializePlugins();
+	PluginRegistry.initializeAll();
 
 	//
 	return (

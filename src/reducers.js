@@ -1,11 +1,11 @@
 /* @flow */
 
 import { combineReducers } from 'redux';
-import { runCallbacks } from './Callbacks';
+import CallbackRegistry from './registries/CallbackRegistry';
 
-const bluerainReducers = runCallbacks('bluerain.reducers.bluerain', {});
+const bluerainReducers = CallbackRegistry.run('bluerain.reducers.bluerain', {});
 
-const reducers = runCallbacks('bluerain.reducers', {
+const reducers = CallbackRegistry.run('bluerain.reducers', {
 	bluerain: combineReducers(bluerainReducers)
 });
 

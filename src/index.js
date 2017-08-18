@@ -1,2 +1,2 @@
 export * from './boot';
-export * from './ComponentRegistry';
+// export * from './ComponentRegistry';

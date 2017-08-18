@@ -2,11 +2,11 @@
 
 import { Route } from 'react-router-dom';
 
-import { runCallbacks } from './Callbacks';
-import { registerComponent } from './ComponentRegistry';
-import { parseJsonSchema } from './JsonSchemaToReact';
+import CallbackRegistry from './registries/CallbackRegistry';
+import ComponentRegistry from './registries/ComponentRegistry';
+import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
-registerComponent('Route', Route);
+ComponentRegistry.register('Route', Route);
 
 const Routes = (props) => {
 
@@ -40,7 +40,7 @@ const Routes = (props) => {
 		children: appRoutes
 	};
 
-	return parseJsonSchema(runCallbacks('bluerain.routes', routes));
+	return parseJsonSchema(CallbackRegistry.run('bluerain.routes', routes));
 };
 
 export default Routes;
