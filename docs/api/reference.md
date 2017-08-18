@@ -31,12 +31,24 @@
     -   [registerMany](#registermany)
     -   [removeApp](#removeapp-1)
     -   [buildRoutes](#buildroutes)
+-   [CallbackRegistry](#callbackregistry)
+    -   [add](#add)
+    -   [remove](#remove)
+    -   [run](#run)
+    -   [runAsync](#runasync)
+-   [ComponentRegistry](#componentregistry)
+    -   [register](#register-1)
+    -   [has](#has)
+    -   [get](#get)
+    -   [getRawComponent](#getrawcomponent-1)
+    -   [replace](#replace)
+    -   [copyHoCs](#copyhocs-1)
 -   [ConfigRegistry](#configregistry)
     -   [set](#set)
-    -   [get](#get)
-    -   [register](#register-1)
--   [PluginRegistry](#pluginregistry)
+    -   [get](#get-1)
     -   [register](#register-2)
+-   [PluginRegistry](#pluginregistry)
+    -   [register](#register-3)
     -   [registerMany](#registermany-1)
     -   [removePlugin](#removeplugin)
     -   [initializeAll](#initializeall)
@@ -304,6 +316,138 @@ Remove an app from the registry
 ### buildRoutes
 
 Builds app routes to render all apps
+
+## CallbackRegistry
+
+All system callbacks are stored in this registry
+
+**Properties**
+
+-   `CallbacksTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all callbacks
+
+### add
+
+Add a callback function to a hook
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `callback` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The callback function
+
+### remove
+
+Remove a callback from a hook
+
+**Parameters**
+
+-   `hookName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `callbackName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the function to remove
+
+### run
+
+Successively run all of a hook's callbacks on an item
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
+-   `item` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Second argument: the post, comment, modifier, etc.
+     on which to run the callbacks
+-   `args` **Any** Other arguments will be passed to each successive iteration
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns the item after it's been through all the callbacks for this hook
+
+### runAsync
+
+Successively run all of a hook's callbacks on an item
+in async mode (only works on server)
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
+-   `args` **Any** Other arguments will be passed to each successive iteration
+
+## ComponentRegistry
+
+All system components are stored in this registry
+
+**Properties**
+
+-   `ComponentsTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all components
+
+### register
+
+Register a Vulcan component with a name, a raw component than can be extended
+and one or more optional higher order components.
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
+-   `rawComponent` **ReactElement&lt;any>** 
+-   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.Note: when a component is registered without higher order component, `hocs` will be
+    an empty array, and it's ok!
+    See <https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15>
+
+Returns **any** Structure of a component in the list:this.ComponentsTable.Foo = {
+   name: 'Foo',
+   hocs: [fn1, fn2],
+   rawComponent: React.Component,
+   call: () => compose(...hocs)(rawComponent),
+}
+
+### has
+
+Check if a component is registered with registerComponent(name, component, ...hocs).
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+### get
+
+Get a component registered with registerComponent(name, component, ...hocs).
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
+
+Returns **ReactElement&lt;any>** 
+
+### getRawComponent
+
+Get the **raw** (original) component registered with registerComponent
+without the possible HOCs wrapping it.
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
+
+Returns **ReactElement&lt;any>** 
+
+### replace
+
+Replace a Vulcan component with the same name with a new component or
+an extension of the raw component and one or more optional higher order components.
+This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
+-   `newComponent` **ReactElement&lt;any>** 
+-   `newHocs` **...[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)>** 
+-   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.
+
+### copyHoCs
+
+[write docs]
+
+**Parameters**
+
+-   `sourceComponent` **any** 
+-   `targetComponent` **any** 
+
+Returns **ReactElement&lt;any>** 
 
 ## ConfigRegistry
 
