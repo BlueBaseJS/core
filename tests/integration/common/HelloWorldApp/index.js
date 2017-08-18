@@ -20,7 +20,6 @@ const HelloApp = ({ match }) => (
 const apps = {
 	'hello-world': new App({
 		name: 'Hello World',
-		packageName: 'bluerain-app-hello-world',
 		component: HelloApp
 	})
 };
