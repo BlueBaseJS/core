@@ -3,23 +3,24 @@ import { type Element } from 'react';
 import kebabCase from 'lodash.kebabcase';
 
 type AppOptions = {
-	name: String,
+	name: string,
 	component: Element<any>,
-	slug?: String,
-	category?: String,
-	description?: String,
-	version?: String,
+	slug: string,
+	category: string,
+	description: string,
+	version: string,
+	appRoutePrefix: string,
 };
 
 export default class App {
 
-	name: String;
+	name: string;
 	component: Element<*>;
-	slug: String;
-	category: String;
-	description: String;
-	version: String;
-	appRoutePrefix: String = '/app';
+	slug: string;
+	category: string;
+	description: string;
+	version: string;
+	appRoutePrefix: string = '/app';
 
 	constructor(opts: AppOptions) {
 
@@ -47,11 +48,11 @@ export default class App {
 		this.appRoutePrefix = opts.appRoutePrefix;
 	}
 
-	getComponent() {
+	getComponent() : Element<any> {
 		return this.component;
 	}
 
-	getRootPath(appRoutePrefix) {
+	getRootPath(appRoutePrefix: string) : string {
 		return `${this.appRoutePrefix}/${this.slug}`;
 	}
 }
