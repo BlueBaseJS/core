@@ -30,8 +30,11 @@
   },
   "homepage": "https://github.com/BlueEastCode/bluerain-os#readme",
   "dependencies": {
+    "lodash.get": "^4.4.2",
     "lodash.kebabcase": "^4.1.1",
+    "lodash.merge": "^4.6.0",
     "lodash.reject": "^4.6.0",
+    "lodash.set": "^4.3.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

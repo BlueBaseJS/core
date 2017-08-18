@@ -2,9 +2,6 @@
 
 ### Table of Contents
 
--   [App](#app)
-    -   [getComponent](#getcomponent)
-    -   [getPath](#getpath)
 -   [AppsTable](#appstable)
 -   [registerApp](#registerapp)
 -   [registerApps](#registerapps)
@@ -19,42 +16,30 @@
 -   [runCallbacksAsync](#runcallbacksasync)
 -   [registerComponent](#registercomponent)
 -   [hasComponent](#hascomponent)
--   [getComponent](#getcomponent-1)
+-   [getComponent](#getcomponent)
 -   [populateComponentsApp](#populatecomponentsapp)
 -   [getRawComponent](#getrawcomponent)
 -   [replaceComponent](#replacecomponent)
 -   [copyHoCs](#copyhocs)
+-   [App](#app)
+    -   [getComponent](#getcomponent-1)
+    -   [getPath](#getpath)
 -   [Plugin](#plugin)
     -   [initialize](#initialize)
-
-## App
-
-A BlueRain App base class
-
-**Parameters**
-
--   `opts` **{name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), component: ReactElement&lt;any>, slug: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), category: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), description: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), version: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), appRoutePrefix: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)}** 
-
-**Properties**
-
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
--   `component` **ReactElement** The main component of the App
--   `slug` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App's slug, used in to build URL
--   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
--   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
--   `appRoutePrefix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path that will be prepended before slug to build URL.
-
-### getComponent
-
-Get the Apps main component.
-
-Returns **ReactElement&lt;any>** 
-
-### getPath
-
-Get the App's URL
-
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   [AppRegistry](#appregistry)
+    -   [register](#register)
+    -   [registerMany](#registermany)
+    -   [removeApp](#removeapp-1)
+    -   [buildRoutes](#buildroutes)
+-   [ConfigRegistry](#configregistry)
+    -   [set](#set)
+    -   [get](#get)
+    -   [register](#register-1)
+-   [PluginRegistry](#pluginregistry)
+    -   [register](#register-2)
+    -   [registerMany](#registermany-1)
+    -   [removePlugin](#removeplugin)
+    -   [initializeAll](#initializeall)
 
 ## AppsTable
 
@@ -235,18 +220,156 @@ This function keeps track of the previous HOCs and wrap the new HOCs around prev
 -   `sourceComponent` **any** 
 -   `targetComponent` **any** 
 
+## App
+
+A BlueRain App base class
+
+**Parameters**
+
+-   `opts` **{name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), component: ReactElement&lt;any>, slug: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), category: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), description: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), version: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), appRoutePrefix: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)}** 
+
+**Properties**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
+-   `component` **ReactElement** The main component of the App
+-   `slug` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App's slug, used in to build URL
+-   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
+-   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
+-   `appRoutePrefix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path that will be prepended before slug to build URL.
+
+### getComponent
+
+Get the Apps main component.
+
+Returns **ReactElement&lt;any>** 
+
+### getPath
+
+Get the App's URL
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
 ## Plugin
 
 Base class of a plugin which is to be extended.
 
 **Parameters**
 
--   `config` **{}** 
+-   `opts` **{name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), slug: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), config: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), category: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), description: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), version: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)}** 
 
 **Properties**
 
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
+-   `slug` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App's slug, used in to build URL
 -   `config` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Plugin configurations
+-   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
+-   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
 
 ### initialize
 
 To initialize Plagin i.e To add all the callbacks against the specific plugin
+
+## AppRegistry
+
+All system apps are stored in this registry
+
+**Properties**
+
+-   `AppsTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all apps
+
+### register
+
+Register an App
+
+**Parameters**
+
+-   `app` **[App](#app)** 
+
+### registerMany
+
+Register many apps at once
+
+**Parameters**
+
+-   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** 
+
+### removeApp
+
+Remove an app from the registry
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+### buildRoutes
+
+Builds app routes to render all apps
+
+## ConfigRegistry
+
+All system configs are stored in this registry
+
+**Properties**
+
+-   `ConfigsTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all configs
+
+### set
+
+Set a Config
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `value` **any** 
+
+### get
+
+Get a config value
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+### register
+
+Register many configs at once
+
+**Parameters**
+
+-   `configs` **{}** 
+
+## PluginRegistry
+
+All system plugins are stored in this registry
+
+**Properties**
+
+-   `PluginsTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all plugins
+
+### register
+
+Register a Plugin
+
+**Parameters**
+
+-   `plugin` **[Plugin](#plugin)** 
+
+### registerMany
+
+Register many plugins at once
+
+**Parameters**
+
+-   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>** 
+
+### removePlugin
+
+Remove a plugin from the registry
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+### initializeAll
+
+Initialize all plugins

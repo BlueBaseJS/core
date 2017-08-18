@@ -8,8 +8,8 @@ import { initializeConfig } from './ConfigRegistry';
 import { registerPlugins, initializePlugins } from './PluginRegistry';
 import Routes from './routes';
 
-import App from './App';
-import Plugin from './Plugin';
+import App from './models/App';
+import Plugin from './models/Plugin';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.

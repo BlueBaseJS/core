@@ -1,6 +1,6 @@
 /* @flow */
 
-import App from './App';
+import App from './models/App';
 
 /**
  * storage for infos about Apps
