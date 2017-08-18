@@ -1,8 +1,12 @@
 {
-  "name": "bluerain-os",
+  "name": "@blueeast/bluerain-os",
   "version": "0.1.0",
   "description": "A browser based OS, made with React JS",
   "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
   "scripts": {
     "start": "npm run build",
     "build": "rm -rf dist && babel -D src --out-dir dist",
@@ -14,6 +18,14 @@
   ],
   "author": "Abdul Rehman Talat <rehman.talat@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlueEastCode/bluerain-os.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BlueEastCode/bluerain-os/issues"
+  },
+  "homepage": "https://github.com/BlueEastCode/bluerain-os#readme",
   "dependencies": {
     "lodash.kebabcase": "^4.1.1",
     "lodash.reject": "^4.6.0",
