@@ -5,6 +5,7 @@
 
 ## API
 
+* [Reference](api/reference.md)
 * [Callbacks](api/callbacks.md)
 
 ## Customisation

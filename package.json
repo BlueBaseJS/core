@@ -12,7 +12,9 @@
     "build": "rm -rf dist && babel -D src --out-dir dist",
     "build:prod": "webpack -p && cp src/index.js dist/index.js",
     "lint": "./node_modules/.bin/eslint ./src/",
-    "flow": "flow"
+    "flow": "flow",
+    "docs": "./node_modules/.bin/documentation build src/** -f md -o docs/api/reference.md",
+    "docs:watch": "./node_modules/.bin/documentation build --watch src/** -f md -o docs/api/reference.md"
   },
   "keywords": [
     "reactjs"
@@ -51,6 +53,7 @@
     "babel-preset-stage-0": "6.16.0",
     "babel-preset-stage-2": "6.18.0",
     "babel-register": "6.18.0",
+    "documentation": "^5.2.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-blueeast": "^0.2.0",

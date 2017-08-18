@@ -1,28 +1,35 @@
 /* @flow */
-import { type Element } from 'react';
+import { type Element as ReactElement } from 'react';
 import kebabCase from 'lodash.kebabcase';
 
-type AppOptions = {
-	name: string,
-	component: Element<any>,
-	slug: string,
-	category: string,
-	description: string,
-	version: string,
-	appRoutePrefix: string,
-};
-
+/**
+ * A BlueRain App base class
+ * @property {String}	name	Name of the app
+ * @property {ReactElement}	component	The main component of the App
+ * @property {String}	slug	App's slug, used in to build URL
+ * @property {String}	category	Category the App belongs to
+ * @property {String}	version	App version
+ * @property {String}	appRoutePrefix	Path that will be prepended before slug to build URL.
+ */
 export default class App {
 
 	name: string;
-	component: Element<*>;
+	component: ReactElement<*>;
 	slug: string;
 	category: string;
 	description: string;
 	version: string;
 	appRoutePrefix: string = '/app';
 
-	constructor(opts: AppOptions) {
+	constructor(opts: {
+		name: string,
+		component: ReactElement<any>,
+		slug: string,
+		category: string,
+		description: string,
+		version: string,
+		appRoutePrefix: string,
+	}) {
 
 		opts = opts || {};
 
@@ -48,11 +55,17 @@ export default class App {
 		this.appRoutePrefix = opts.appRoutePrefix;
 	}
 
-	getComponent() : Element<any> {
+	/**
+	 * Get the Apps main component.
+	 */
+	getComponent() : ReactElement<any> {
 		return this.component;
 	}
 
-	getRootPath(appRoutePrefix: string) : string {
+	/**
+	 * Get the App's URL
+	 */
+	getPath() : string {
 		return `${this.appRoutePrefix}/${this.slug}`;
 	}
 }
