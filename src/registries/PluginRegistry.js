@@ -26,6 +26,12 @@ class PluginRegistry {
 	 */
 	registerMany(plugins: Array<Plugin>) {
 		const me = this;
+		plugins = plugins || [];
+
+		if (!Array.isArray(plugins)) {
+			throw new Error('plugins parameter must be an Array');
+		}
+
 		plugins.forEach((plugin) => {
 			me.register(plugin);
 		});

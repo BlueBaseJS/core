@@ -26,6 +26,12 @@ class AppRegistry {
 	 */
 	registerMany(apps: Array<App>) {
 		const me = this;
+		apps = apps || [];
+
+		if (!Array.isArray(apps)) {
+			throw new Error('apps parameter must be an Array');
+		}
+
 		apps.forEach((app) => {
 			me.register(app);
 		});
@@ -49,6 +55,13 @@ class AppRegistry {
 	 */
 	buildRoutes() {
 
+	}
+
+	/**
+	 * Get all apps
+	 */
+	getApps() : {} {
+		return this.AppsTable;
 	}
 }
 
