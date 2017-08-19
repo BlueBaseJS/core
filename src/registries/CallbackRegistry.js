@@ -32,7 +32,7 @@ class CallbackRegistry {
 		}
 
 		this.CallbacksTable[hook].push(callback);
-	};
+	}
 
 	/**
 	 * Remove a callback from a hook
@@ -48,7 +48,7 @@ class CallbackRegistry {
 			throw new Error(`callback of ${hookName} cannot be ${callbackName}`);
 		}
 
-		if (!this.CallbacksTable.hasOwnProperty(hookName)) {
+		if (!Object.prototype.hasOwnProperty.call(this.CallbacksTable, hookName)) {
 			throw new Error(`${hookName}  is not added. First add hook to remove it.`);
 		}
 
@@ -80,7 +80,7 @@ class CallbackRegistry {
 		// const item = arguments[1];
 		// successive arguments are passed to each iteration
 		const sliceNumber = 2;
-		const args = Array.prototype.slice.call(arguments).slice(sliceNumber);
+		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
 		if (hook === undefined || hook === null) {
 			throw new Error(`hook cannot be ${hook}`);
 		}

@@ -54,7 +54,7 @@ export default class JsonToReact {
 
 	createComponent(schema: ComponentSchema) : ReactElement<*> {
 		const { text, props } = schema;
-		if (schema.hasOwnProperty('component') && typeof schema.component !== 'string' && isValidElement(schema.component)) {
+		if (Object.prototype.hasOwnProperty.call(schema, 'component') && typeof schema.component !== 'string' && isValidElement(schema.component)) {
 			return schema.component;
 		}
 		const Component = JsonToReact.resolveComponent(schema);
@@ -63,12 +63,12 @@ export default class JsonToReact {
 	}
 
 	static resolveComponent(schema: ComponentSchema) : ElementType<*> | string {
-		if (schema.hasOwnProperty('component')) {
+		if (Object.prototype.hasOwnProperty.call(schema, 'component')) {
 			if (schema.component === Object(schema.component)) {
 				return schema.component;
 			} else if (ComponentRegistry.has(String(schema.component))) {
 				return ComponentRegistry.get(String(schema.component));
-			} else if (DOM.hasOwnProperty(schema.component)) {
+			} else if (Object.prototype.hasOwnProperty.call(DOM, schema.component)) {
 				return schema.component;
 			}
 		} else {
@@ -80,7 +80,7 @@ export default class JsonToReact {
 	}
 
 	resolveComponentChildren(schema: ComponentSchema) {
-		return (schema.hasOwnProperty('children')) ?
+		return (Object.prototype.hasOwnProperty.call(schema, 'children')) ?
 			this.parseSchema(schema.children) : undefined;
 	}
 }

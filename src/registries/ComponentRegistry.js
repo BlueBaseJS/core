@@ -108,7 +108,7 @@ class ComponentRegistry {
 	replace(name: string, newComponent: ReactElement<*>, ...newHocs: Array<Function>) {
 		if (name === undefined || name === null) {
 			throw new Error(`name cannot be ${name}`);
-		} else if (!this.ComponentsTable.hasOwnProperty(name)) {
+		} else if (!Object.prototype.hasOwnProperty.call(this.ComponentsTable, name)) {
 			throw new Error(`${name} is not registered. Component should be registered to be replaced`);
 		}
 		const previousComponent = this.ComponentsTable[name];
@@ -120,8 +120,8 @@ class ComponentRegistry {
 
 	/**
 	 * [write docs]
-	 * @param {*} sourceComponent 
-	 * @param {*} targetComponent 
+	 * @param {*} sourceComponent
+	 * @param {*} targetComponent
 	 */
 	static copyHoCs(sourceComponent: ReactElement<*>, targetComponent: ReactElement<*>) : ReactElement<*> {
 		return compose(...sourceComponent.hocs)(targetComponent);

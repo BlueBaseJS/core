@@ -4,8 +4,8 @@ import App from './App';
 
 /**
  * [Write docs]
- * @param {*} AppComponent 
- * @param {*} opts 
+ * @param {*} AppComponent
+ * @param {*} opts
  */
 const buildApp = (AppComponent: App, opts: Props) => {
 	opts = opts || {};
