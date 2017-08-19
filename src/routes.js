@@ -22,6 +22,7 @@ const Routes = () => {
 		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
 
 		const app = apps[key];
+		app.appRoutePrefix = appPrefix;
 
 		appRoutes.push({
 			component: 'Route',

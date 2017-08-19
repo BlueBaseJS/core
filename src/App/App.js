@@ -25,7 +25,7 @@ class App extends RX.Component<Props> {
 	 * Get the App's URL
 	 */
 	getPath() : string {
-		return `${this.props.appRoutePrefix}/${this.props.slug}`;
+		return `${this.constructor.appRoutePrefix}/${this.constructor.slug}`;
 	}
 }
 

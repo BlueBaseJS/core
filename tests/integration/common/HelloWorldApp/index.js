@@ -9,7 +9,6 @@ import  { App, buildApp } from '../../../../src/';
 class HelloWorldApp extends App {
 
 	render() {
-
 		const { match } = this.props;
 		return (
   <div>
