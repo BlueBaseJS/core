@@ -6,7 +6,10 @@
 ## API
 
 * [Reference](api/reference.md)
-* [Callbacks](api/callbacks.md)
+
+## Guides
+* [Callbacks](guides/callbacks.md)
+* [Components](guides/components.md)
 
 ## Customisation
 
