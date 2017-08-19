@@ -7,7 +7,7 @@ import {
 	type Element as ReactElement,
 	type ElementType,
 } from 'react';
-
+import set from 'lodash.set';
 import ComponentRegistry from '../registries/ComponentRegistry';
 
 type ComponentSchema = {
@@ -37,7 +37,11 @@ export default class JsonToReact {
 		const Components = [];
 		let index = 0;
 		for (const subSchema of subSchemas) {
-			subSchema.props.key = typeof subSchema.props.key !== 'undefined' ? subSchema.props.key : index;
+			if (typeof subSchema.props === 'undefined' ) {
+				set(subSchema, 'props.key', index);
+			} else {
+				subSchema.props.key = typeof subSchema.props.key !== 'undefined' ? subSchema.props.key : index;
+			}
 			const Component = this.parseSchema(subSchema);
 
 			if (isValidElement(Component)) {
@@ -50,6 +54,9 @@ export default class JsonToReact {
 
 	createComponent(schema: ComponentSchema) : ReactElement<*> {
 		const { text, props } = schema;
+		if (schema.hasOwnProperty('component') && typeof schema.component !== 'string' && isValidElement(schema.component)) {
+			return schema.component;
+		}
 		const Component = JsonToReact.resolveComponent(schema);
 		const Children = typeof text !== 'undefined' ? text : this.resolveComponentChildren(schema);
 		return createElement(Component, props, Children);
