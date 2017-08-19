@@ -25,16 +25,16 @@ describe('App registry tests', () => {
 	});
 	describe('remove app', () => {
 		it('should throw error b/c name is undefined', () => {
-			expect(() => AppRegistry.removeApp(undefined)).toThrow();
+			expect(() => AppRegistry.remove(undefined)).toThrow();
 		});
 		it('should throw error b/c name is null', () => {
-			expect(() => AppRegistry.removeApp(null)).toThrow();
+			expect(() => AppRegistry.remove(null)).toThrow();
 		});
 		it('should throw error b/c app is not registered.', () => {
-			expect(() => AppRegistry.removeApp('abc')).toThrow();
+			expect(() => AppRegistry.remove('abc')).toThrow();
 		});
 		it('should have Apps', () => {
-			AppRegistry.removeApp('hello-world');
+			AppRegistry.remove('hello-world');
 			expect(AppRegistry.AppsTable.hasOwnProperty('hello')).toEqual(false);
 		});
 	});

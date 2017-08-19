@@ -40,7 +40,7 @@ class AppRegistry {
 	/**
 	 * Remove an app from the registry
 	 */
-	removeApp(name: string) {
+	remove(name: string) {
 		if (name === undefined || name === null) {
 			throw new Error(`name cannot be ${name}`);
 		}
@@ -48,13 +48,6 @@ class AppRegistry {
 			throw new Error(`${name} is not registered.`);
 		}
 		delete this.AppsTable[name];
-	}
-
-	/**
-	 * Builds app routes to render all apps
-	 */
-	buildRoutes() {
-
 	}
 
 	/**
