@@ -30,12 +30,12 @@ class ConfigRegistry {
 	/**
 	 * Get a config value
 	 */
-	get(key: string) {
+	get(key: string) : any {
 		if (key === undefined || key === null) {
 			throw new Error('No config key provided');
 		}
 
-		get(this.ConfigsTable, key);
+		return get(this.ConfigsTable, key);
 	}
 
 	/**

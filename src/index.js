@@ -1,2 +1,3 @@
 export * from './boot';
-// export * from './ComponentRegistry';
+export App from './models/App';
+export Plugin from './models/Plugin';
