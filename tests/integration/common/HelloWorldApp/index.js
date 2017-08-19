@@ -4,7 +4,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import  { boot } from '../../../../src/boot';
 import { Home } from './components/Home';
 import { User } from './components/User';
-import  App from '../../../../src/App';
+import  { App } from '../../../../src/';
 
 const HelloApp = ({ match }) => (
   <div>
@@ -17,12 +17,9 @@ const HelloApp = ({ match }) => (
   </div>
   );
 
-const apps = {
-	'hello-world': new App({
-		name: 'Hello World',
-		component: HelloApp
-	})
-};
+const apps = [
+	new App({ name: 'Hello World', component: HelloApp })
+];
 
-const SystemApp = boot({ apps });
+const SystemApp = boot({ apps, config: { title: 'Hello OS!' } });
 export default SystemApp;

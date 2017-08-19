@@ -2,17 +2,18 @@
 
 import { Route } from 'react-router-dom';
 
+import AppRegistry from './registries/AppRegistry';
 import CallbackRegistry from './registries/CallbackRegistry';
 import ComponentRegistry from './registries/ComponentRegistry';
+import ConfigRegistry from './registries/ConfigRegistry';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 ComponentRegistry.register('Route', Route);
 
-const Routes = (props) => {
+const Routes = () => {
 
-	const { apps, config } = props;
-
-	const appPrefix = config && config.apps.routePrefix && config.apps.routePrefix || '/app'; // path = /app
+	const apps = AppRegistry.getApps();
+	const appPrefix = ConfigRegistry.get('appRoutePrefix') || '/app'; // path = /app
 
 	const appRoutes = [];
 	for (const key in apps) {

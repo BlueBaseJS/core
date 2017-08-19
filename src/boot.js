@@ -11,6 +11,8 @@ import Routes from './routes';
 import App from './models/App';
 import Plugin from './models/Plugin';
 
+import defaultConfigs from './config';
+
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
  */
@@ -29,6 +31,7 @@ export const boot = function(options: BootOptions) {
 	const { apps, plugins, config } = options;
 
 	// Initialize all configs
+	ConfigRegistry.register(defaultConfigs);
 	ConfigRegistry.register(config);
 
 	// Process option variables
@@ -41,7 +44,7 @@ export const boot = function(options: BootOptions) {
 	//
 	return (
   <BrowserRouter>
-    <Routes apps={apps} config={config} />
+    <Routes />
   </BrowserRouter>
 	);
 
