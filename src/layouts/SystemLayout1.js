@@ -1,4 +1,4 @@
-import { parseJsonSchema } from '../JsonSchemaToReact';
+import { parseJsonSchema } from '../utils/JsonSchemaToReact';
 // import { runCallbacks } from '../Callbacks';
 
 export default function SystemLayout() {

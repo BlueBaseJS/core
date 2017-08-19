@@ -1,16 +1,19 @@
+/* @flow */
+
 import { Route } from 'react-router-dom';
 
-import { runCallbacks } from './Callbacks';
-import { registerComponent } from './ComponentRegistry';
-import { parseJsonSchema } from './JsonSchemaToReact';
+import AppRegistry from './registries/AppRegistry';
+import CallbackRegistry from './registries/CallbackRegistry';
+import ComponentRegistry from './registries/ComponentRegistry';
+import ConfigRegistry from './registries/ConfigRegistry';
+import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
-registerComponent('Route', Route);
+ComponentRegistry.register('Route', Route);
 
-const Routes = (props) => {
+const Routes = () => {
 
-	const { apps, config } = props;
-
-	const appPrefix = config && config.apps.routePrefix && config.apps.routePrefix || '/app'; // path = /app
+	const apps = AppRegistry.getApps();
+	const appPrefix = ConfigRegistry.get('appRoutePrefix') || '/app'; // path = /app
 
 	const appRoutes = [];
 	for (const key in apps) {
@@ -19,18 +22,16 @@ const Routes = (props) => {
 		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
 
 		const app = apps[key];
-		const component = app.getComponent();
+		app.appRoutePrefix = appPrefix;
 
-		if (component) {
-			appRoutes.push({
-				component: 'Route',
-				props: {
-					path: `${appPrefix}/${key}`,
-					key,
-					component
-				}
-			});
-		}
+		appRoutes.push({
+			component: 'Route',
+			props: {
+				path: `${appPrefix}/${key}`,
+				key,
+				component: app
+			}
+		});
 	}
 
 	const routes = {
@@ -38,7 +39,7 @@ const Routes = (props) => {
 		children: appRoutes
 	};
 
-	return parseJsonSchema(runCallbacks('bluerain.routes', routes));
+	return parseJsonSchema(CallbackRegistry.run('bluerain.routes', routes));
 };
 
 export default Routes;
