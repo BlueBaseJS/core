@@ -3,6 +3,12 @@
 import { compose } from 'redux'; // note: at the moment, compose@react-apollo === compose@redux ; see https://github.com/apollostack/react-apollo/blob/master/src/index.ts#L4-L7
 import { type Element as ReactElement } from 'react';
 
+type ComponentItem = {
+	name: string,
+	rawComponent: ReactElement<*>,
+	hocs: Array<Function>
+};
+
 /**
  * All system components are stored in this registry
  * @property {Object} ComponentsTable Storage table of all components
@@ -123,7 +129,7 @@ class ComponentRegistry {
 	 * @param {*} sourceComponent
 	 * @param {*} targetComponent
 	 */
-	static copyHoCs(sourceComponent: ReactElement<*>, targetComponent: ReactElement<*>) : ReactElement<*> {
+	static copyHoCs(sourceComponent: ComponentItem, targetComponent: ReactElement<*>) : ReactElement<*> {
 		return compose(...sourceComponent.hocs)(targetComponent);
 	}
 
