@@ -8,7 +8,7 @@ import ConfigRegistry from './registries/ConfigRegistry';
 import PluginRegistry from './registries/PluginRegistry';
 import Routes from './routes';
 
-import App from './models/App';
+import App from './App/App';
 import Plugin from './models/Plugin';
 
 import defaultConfigs from './config';

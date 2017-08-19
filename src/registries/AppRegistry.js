@@ -1,6 +1,6 @@
 /* @flow */
 
-import App from '../models/App';
+import App from '../App/App';
 
 /**
  * All system apps are stored in this registry
