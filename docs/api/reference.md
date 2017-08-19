@@ -2,47 +2,31 @@
 
 ### Table of Contents
 
--   [AppsTable](#appstable)
--   [registerApp](#registerapp)
--   [registerApps](#registerapps)
--   [removeApp](#removeapp)
+-   [App](#app)
+    -   [getPath](#getpath)
+-   [buildApp](#buildapp)
 -   [BootOptions](#bootoptions)
 -   [boot](#boot)
 -   [bootOnServer](#bootonserver)
--   [Callbacks](#callbacks)
--   [addCallback](#addcallback)
--   [removeCallback](#removecallback)
--   [runCallbacks](#runcallbacks)
--   [runCallbacksAsync](#runcallbacksasync)
--   [registerComponent](#registercomponent)
--   [hasComponent](#hascomponent)
--   [getComponent](#getcomponent)
--   [populateComponentsApp](#populatecomponentsapp)
--   [getRawComponent](#getrawcomponent)
--   [replaceComponent](#replacecomponent)
--   [copyHoCs](#copyhocs)
--   [App](#app)
-    -   [getComponent](#getcomponent-1)
-    -   [getPath](#getpath)
 -   [Plugin](#plugin)
     -   [initialize](#initialize)
 -   [AppRegistry](#appregistry)
     -   [register](#register)
     -   [registerMany](#registermany)
-    -   [removeApp](#removeapp-1)
-    -   [buildRoutes](#buildroutes)
+    -   [remove](#remove)
+    -   [getApps](#getapps)
 -   [CallbackRegistry](#callbackregistry)
     -   [add](#add)
-    -   [remove](#remove)
+    -   [remove](#remove-1)
     -   [run](#run)
     -   [runAsync](#runasync)
 -   [ComponentRegistry](#componentregistry)
     -   [register](#register-1)
     -   [has](#has)
     -   [get](#get)
-    -   [getRawComponent](#getrawcomponent-1)
+    -   [getRawComponent](#getrawcomponent)
     -   [replace](#replace)
-    -   [copyHoCs](#copyhocs-1)
+    -   [copyHoCs](#copyhocs)
 -   [ConfigRegistry](#configregistry)
     -   [set](#set)
     -   [get](#get-1)
@@ -53,35 +37,34 @@
     -   [removePlugin](#removeplugin)
     -   [initializeAll](#initializeall)
 
-## AppsTable
+## App
 
-storage for infos about Apps
+**Extends RX.Component**
 
-Type: {}
+A BlueRain App base class
 
-## registerApp
+**Properties**
 
-Register an app in the system
+-   `appName` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
+-   `slug` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App's slug, used in to build URL
+-   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
+-   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
+-   `appRoutePrefix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path that will be prepended before slug to build URL.
 
-**Parameters**
+### getPath
 
--   `app` **[App](#app)** 
+Get the App's URL
 
-## registerApps
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-Register multiple apps in the system
+## buildApp
 
-**Parameters**
-
--   `apps` **{}** 
-
-## removeApp
-
-Remove an app from the registry
+[Write docs]
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `AppComponent` **any** 
+-   `opts` **any** 
 
 ## BootOptions
 
@@ -110,156 +93,6 @@ Boots the OS and renders the main UI. Use it on the server for Server Side Rende
 **Parameters**
 
 -   `options` **[BootOptions](#bootoptions)** 
-
-## Callbacks
-
-Callback hooks provide an easy way to add extra steps to common operations.
-
-Type: {}
-
-## addCallback
-
-Add a callback function to a hook
-
-**Parameters**
-
--   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
--   `callback` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The callback function
-
-## removeCallback
-
-Remove a callback from a hook
-
-**Parameters**
-
--   `hookName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
--   `callbackName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the function to remove
-
-## runCallbacks
-
-Successively run all of a hook's callbacks on an item
-
-**Parameters**
-
--   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
--   `item` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Second argument: the post, comment, modifier, etc.
-     on which to run the callbacks
--   `args` **Any** Other arguments will be passed to each successive iteration
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns the item after it's been through all the callbacks for this hook
-
-## runCallbacksAsync
-
-Successively run all of a hook's callbacks on an item
-in async mode (only works on server)
-
-**Parameters**
-
--   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
--   `args` **Any** Other arguments will be passed to each successive iteration
-
-## registerComponent
-
-Register a Vulcan component with a name, a raw component than can be extended
-and one or more optional higher order components.
-
-**Parameters**
-
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
--   `rawComponent`  
--   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.Note: when a component is registered without higher order component, `hocs` will be
-    an empty array, and it's ok!
-    See <https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15>
-
-Returns **any** Structure of a component in the list:ComponentsTable.Foo = {
-   name: 'Foo',
-   hocs: [fn1, fn2],
-   rawComponent: React.Component,
-   call: () => compose(...hocs)(rawComponent),
-}
-
-## hasComponent
-
-Check if a component is registered with registerComponent(name, component, ...hocs).
-
-**Parameters**
-
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
-
-Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
-## getComponent
-
-Get a component registered with registerComponent(name, component, ...hocs).
-
-**Parameters**
-
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
-
-## populateComponentsApp
-
-Populate the lookup table for components to be callable.
-Called once on app startup
-
-## getRawComponent
-
-Get the **raw** (original) component registered with registerComponent
-without the possible HOCs wrapping it.
-
-**Parameters**
-
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
-
-## replaceComponent
-
-Replace a Vulcan component with the same name with a new component or
-an extension of the raw component and one or more optional higher order components.
-This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
-
-**Parameters**
-
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
--   `newComponent`  
--   `newHocs` **...any** 
--   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.
-
-## copyHoCs
-
-[write docs]
-
-**Parameters**
-
--   `sourceComponent` **any** 
--   `targetComponent` **any** 
-
-## App
-
-A BlueRain App base class
-
-**Parameters**
-
--   `opts` **{name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), component: ReactElement&lt;any>, slug: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), category: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), description: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), version: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), appRoutePrefix: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)}** 
-
-**Properties**
-
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
--   `component` **ReactElement** The main component of the App
--   `slug` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App's slug, used in to build URL
--   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
--   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
--   `appRoutePrefix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path that will be prepended before slug to build URL.
-
-### getComponent
-
-Get the Apps main component.
-
-Returns **ReactElement&lt;any>** 
-
-### getPath
-
-Get the App's URL
-
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ## Plugin
 
@@ -305,7 +138,7 @@ Register many apps at once
 
 -   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** 
 
-### removeApp
+### remove
 
 Remove an app from the registry
 
@@ -313,9 +146,11 @@ Remove an app from the registry
 
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-### buildRoutes
+### getApps
 
-Builds app routes to render all apps
+Get all apps
+
+Returns **{}** 
 
 ## CallbackRegistry
 
@@ -473,6 +308,8 @@ Get a config value
 **Parameters**
 
 -   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **any** 
 
 ### register
 
