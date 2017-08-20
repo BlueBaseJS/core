@@ -1,7 +1,15 @@
 import React from 'react';
+import { Styles, View, Text, Button } from 'reactxp';
 
 import  { history } from '../../../../../src/router';
+import pageStyle from './pageStyles';
 
+const buttonStyles = Styles.createViewStyle({
+	padding: 5,
+	backgroundColor: '#007bff',
+	color: 'white',
+	marginTop: 10
+});
 
 export class About extends React.Component {
 	onNavigateHome() {
@@ -10,11 +18,11 @@ export class About extends React.Component {
 
 	render() {
 		return (
-  <div>
-    <h3>The About Page</h3>
+  <View style={pageStyle}>
+    <Text>The About Page</Text>
     {/* <p>User ID: {this.props.params.id}</p> */}
-    <button onClick={this.onNavigateHome} className="btn btn-primary">Go Home!</button>
-  </div>
+    <Button style={buttonStyles} onPress={this.onNavigateHome}>Click Me!</Button>
+  </View>
 		);
 	}
 }
