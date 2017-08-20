@@ -1,6 +1,5 @@
 import React from 'react';
-import AppRegistry from '../../src/registries/AppRegistry';
-import { App, buildApp } from '../../src/';
+import { AppRegistry, App, buildApp } from '../../src/';
 
 class HelloApp extends App {
 	render() {

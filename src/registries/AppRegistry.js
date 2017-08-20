@@ -1,6 +1,6 @@
 /* @flow */
 
-import { Styles, View } from 'reactxp';
+import { Styles } from 'reactxp';
 
 import {
 	App,
