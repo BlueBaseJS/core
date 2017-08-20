@@ -8,7 +8,8 @@ const buttonStyles = Styles.createViewStyle({
 	padding: 5,
 	backgroundColor: '#007bff',
 	color: 'white',
-	marginTop: 10
+	marginTop: 10,
+	borderRadius: 3
 });
 
 export class About extends React.Component {
