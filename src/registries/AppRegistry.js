@@ -94,7 +94,7 @@ class AppRegistry {
 			height: '100%',
 			display: 'flex',
 			cursor: 'default'
-		});
+		}, false);
 
 		return {
 			component: 'View',

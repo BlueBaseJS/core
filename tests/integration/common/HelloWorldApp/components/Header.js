@@ -2,9 +2,10 @@ import { Styles } from 'reactxp';
 import  { parseJsonSchema } from '../../../../../src/utils/JsonSchemaToReact';
 
 const headerStyle = Styles.createViewStyle({
-	backgroundColor: '#eee',
+	backgroundColor: 'rgba(240, 240, 240, 0.5)',
 	shadowOffset: { height: 1, width: 0 },
-	shadowRadius: 5
+	shadowRadius: 5,
+	shadowColor: 'rgba(0, 0, 0, 0.5)'
 });
 
 const titleStyle = Styles.createViewStyle({
