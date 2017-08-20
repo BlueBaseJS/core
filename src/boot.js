@@ -1,16 +1,22 @@
 /* @flow */
 
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
-import AppRegistry from './registries/AppRegistry';
-import ConfigRegistry from './registries/ConfigRegistry';
-import PluginRegistry from './registries/PluginRegistry';
+import {
+	// Models
+	App,
+	Plugin,
+
+	// Registries
+	AppRegistry,
+	ConfigRegistry,
+	PluginRegistry,
+
+	// Router
+	SystemRouter
+} from './index';
+
 import Routes from './routes';
-
-import App from './App/App';
-import Plugin from './models/Plugin';
-
 import defaultConfigs from './config';
 
 /**
@@ -43,9 +49,9 @@ export const boot = function(options: BootOptions) {
 
 	//
 	return (
-  <BrowserRouter>
+  <SystemRouter>
     <Routes />
-  </BrowserRouter>
+  </SystemRouter>
 	);
 
 };

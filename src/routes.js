@@ -1,11 +1,14 @@
 /* @flow */
 
-import { Route } from 'react-router-dom';
+import { Route } from './router';
 
-import AppRegistry from './registries/AppRegistry';
-import CallbackRegistry from './registries/CallbackRegistry';
-import ComponentRegistry from './registries/ComponentRegistry';
-import ConfigRegistry from './registries/ConfigRegistry';
+import {
+	AppRegistry,
+	CallbackRegistry,
+	ComponentRegistry,
+	ConfigRegistry,
+} from './index';
+
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 ComponentRegistry.register('Route', Route);
