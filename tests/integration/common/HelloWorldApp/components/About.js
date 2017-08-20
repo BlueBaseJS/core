@@ -1,9 +1,11 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+
+import  { history } from '../../../../../src/router';
+
 
 export class About extends React.Component {
 	onNavigateHome() {
-		browserHistory.push('/home');
+		history.push('/contact');
 	}
 
 	render() {

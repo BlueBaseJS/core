@@ -1,7 +1,7 @@
 import React from 'react';
 import { Styles, View, Text } from 'reactxp';
 
-import  { Route, Redirect, Switch, Link } from '../../../../src/router';
+import  { Route, Redirect, Switch } from '../../../../src/router';
 import  { App, buildApp } from '../../../../src/';
 
 import Header from './components/Header';
