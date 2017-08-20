@@ -1,4 +1,6 @@
-import { render } from 'react-dom';
-import SystemApp from '../../../common/HelloWorldApp';
+import  { boot } from '../../../../../src/boot';
 
-render(SystemApp, window.document.getElementById('app'));
+import apps from './apps';
+import config from './config';
+
+boot({ apps, config });

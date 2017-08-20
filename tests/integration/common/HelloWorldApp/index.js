@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import  { boot } from '../../../../src/boot';
+import  { App, buildApp } from '../../../../src/';
+
 import { Home } from './components/Home';
 import { User } from './components/User';
-import  { App, buildApp } from '../../../../src/';
 
 class HelloWorldApp extends App {
 
@@ -24,9 +24,4 @@ class HelloWorldApp extends App {
 	}
 }
 
-const apps = [
-	buildApp(HelloWorldApp, { appName: 'Hello World' })
-];
-
-const SystemApp = boot({ apps, config: { title: 'Hello OS!' } });
-export default SystemApp;
+export default buildApp(HelloWorldApp, { appName: 'Hello World' });

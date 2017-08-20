@@ -1,6 +1,7 @@
 /* @flow */
 
 import React from 'react';
+import RX from 'reactxp';
 
 import {
 	// Models
@@ -35,6 +36,7 @@ export const boot = function(options: BootOptions) {
 
 	// Extract app, plugins and configs from options
 	const { apps, plugins, config } = options;
+	const { debug = true, development = true } = config;
 
 	// Initialize all configs
 	ConfigRegistry.register(defaultConfigs);
@@ -48,12 +50,12 @@ export const boot = function(options: BootOptions) {
 	PluginRegistry.initializeAll();
 
 	//
-	return (
+	RX.App.initialize(debug, development);
+	RX.UserInterface.setMainView((
   <SystemRouter>
     <Routes />
   </SystemRouter>
-	);
-
+		));
 };
 
 /**
