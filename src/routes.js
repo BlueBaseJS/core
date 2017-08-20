@@ -6,7 +6,6 @@ import {
 	AppRegistry,
 	CallbackRegistry,
 	ComponentRegistry,
-	ConfigRegistry,
 } from './index';
 
 import { parseJsonSchema } from './utils/JsonSchemaToReact';

@@ -17,6 +17,8 @@ import {
 	SystemRouter
 } from './index';
 
+import { getProvider, createStore } from './redux';
+
 import preboot from './preboot';
 import Routes from './routes';
 import defaultConfigs from './config';
@@ -53,12 +55,18 @@ export const boot = function(options: BootOptions) {
 	// Initialize plugins
 	PluginRegistry.initializeAll();
 
+	// Redux
+	const store = createStore();
+	const ReduxProvider = getProvider();
+
 	// Init
 	RX.App.initialize(debug, development);
 	RX.UserInterface.setMainView((
-  <SystemRouter>
-    <Routes />
-  </SystemRouter>
+  <ReduxProvider store={store}>
+    <SystemRouter>
+      <Routes />
+    </SystemRouter>
+  </ReduxProvider>
 		));
 };
 
