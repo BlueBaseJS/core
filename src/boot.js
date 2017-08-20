@@ -17,6 +17,7 @@ import {
 	SystemRouter
 } from './index';
 
+import preboot from './preboot';
 import Routes from './routes';
 import defaultConfigs from './config';
 
@@ -38,6 +39,9 @@ export const boot = function(options: BootOptions) {
 	const { apps, plugins, config } = options;
 	const { debug = true, development = true } = config;
 
+	// pre-boot
+	preboot();
+
 	// Initialize all configs
 	ConfigRegistry.register(defaultConfigs);
 	ConfigRegistry.register(config);
@@ -49,7 +53,7 @@ export const boot = function(options: BootOptions) {
 	// Initialize plugins
 	PluginRegistry.initializeAll();
 
-	//
+	// Init
 	RX.App.initialize(debug, development);
 	RX.UserInterface.setMainView((
   <SystemRouter>

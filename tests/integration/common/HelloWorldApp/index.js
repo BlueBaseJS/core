@@ -1,25 +1,28 @@
 import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Styles, View, Text } from 'reactxp';
 
+import  { Route, Redirect, Switch, Link } from '../../../../src/router';
 import  { App, buildApp } from '../../../../src/';
 
-import { Home } from './components/Home';
-import { User } from './components/User';
+import Header from './components/Header';
+import Home from './components/Home';
+import { About } from './components/About';
+import Contact from './components/Contact';
 
 class HelloWorldApp extends App {
 
 	render() {
 		const { match } = this.props;
 		return (
-  <div>
-    {HelloWorldApp.appName}
+  <View>
+    <Header match={match} appName={this.constructor.appName} />
     <Switch>
       <Route exact path={`${match.url}`} component={Home} />
-      <Route path={`${match.url}/user`} component={User} />
-      <Route path={`${match.url}/home-single`} component={Home} />
+      <Route path={`${match.url}/about`} component={About} />
+      <Route path={`${match.url}/contact`} component={Contact} />
       <Redirect path="*" to={`${match.url}`} />
     </Switch>
-  </div>
+  </View>
 		);
 	}
 }

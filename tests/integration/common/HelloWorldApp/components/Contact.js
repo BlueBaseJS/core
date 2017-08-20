@@ -9,7 +9,7 @@ export default ({ match, appName }) => {
 		children: [
 			{
 				component: 'Text',
-				text: 'Welcome to the home page!'
+				text: 'Welcome to the contact page!'
 			}
 		]
 	};
