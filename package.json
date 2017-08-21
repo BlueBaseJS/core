@@ -8,7 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
+    "coverage": "codecov",
     "start": " webpack-dev-server --content-base tests/integration/web/hello-world/src --config ./tests/integration/web/hello-world/webpack.config.js --inline --hot --history-api-fallback",
     "demo:todo": " webpack-dev-server --content-base tests/integration/web/todo/src --config ./tests/integration/web/todo/webpack.config.js --inline --hot --history-api-fallback",
     "build": "rm -rf dist && babel -D src --out-dir dist",
@@ -81,6 +82,8 @@
   },
   "jest": {
     "testRegex": "\\.test\\.js$",
-    "rootDir": "./tests/unit/"
+    "rootDir": "./tests/unit/",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
