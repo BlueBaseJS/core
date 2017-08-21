@@ -1,5 +1,5 @@
 import { compose } from 'redux';
-import  { Plugin, CallbackRegistry } from '../../../../src/';
+import  { Plugin, CallbackRegistry } from '../../../../../src/';
 
 function addReduxDevTools(composed, enhancers) {
 	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

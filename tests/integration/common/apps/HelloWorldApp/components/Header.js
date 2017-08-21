@@ -1,5 +1,5 @@
 import { Styles } from 'reactxp';
-import  { parseJsonSchema } from '../../../../../src/utils/JsonSchemaToReact';
+import  { parseJsonSchema } from '../../../../../../src/utils/JsonSchemaToReact';
 
 const headerStyle = Styles.createViewStyle({
 	backgroundColor: 'rgba(240, 240, 240, 0.5)',

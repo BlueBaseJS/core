@@ -3,7 +3,7 @@ import React from 'react';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 
-import  { Plugin, CallbackRegistry } from '../../../../src/';
+import  { Plugin, CallbackRegistry } from '../../../../../src/';
 
 import defaultParams from './defaultParams';
 

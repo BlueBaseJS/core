@@ -1,5 +1,5 @@
 import React from 'react';
-import  { App, CallbackRegistry } from '../../../../../../src/';
+import  { App, CallbackRegistry } from '../../../../../src/';
 
 import ToDoContainer from './containers/App';
 import todoReducers, { initialState } from './reducers/todos';

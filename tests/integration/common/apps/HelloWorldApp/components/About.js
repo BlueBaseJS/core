@@ -1,7 +1,7 @@
 import React from 'react';
 import { Styles, View, Text, Button } from 'reactxp';
 
-import  { history } from '../../../../../src/router';
+import  { history } from '../../../../../../src/router';
 import pageStyle from './pageStyles';
 
 const buttonStyles = Styles.createViewStyle({
@@ -14,7 +14,7 @@ const buttonStyles = Styles.createViewStyle({
 
 export class About extends React.Component {
 	onNavigateHome() {
-		history.push('/contact');
+		history.push('/');
 	}
 
 	render() {

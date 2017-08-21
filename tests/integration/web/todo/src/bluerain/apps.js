@@ -1,4 +1,4 @@
-import TodoApp from '../app';
+import TodoApp from '../../../../common/apps/TodoMVCApp';
 
 const apps = [
 	TodoApp
