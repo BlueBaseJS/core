@@ -26,10 +26,10 @@ const createStore = () => {
 	middlewares = CallbackRegistry.run('bluerain.redux.middlewares', initialState);
 
 	let enhancers = [applyMiddleware(...middlewares)];
-	enhancers = CallbackRegistry.run('bluerain.redux.enhancers', enhancers);
+	enhancers = CallbackRegistry.run('bluerain.redux.enhancers', enhancers, ...middlewares);
 
 	let composed = compose(...enhancers);
-	composed = CallbackRegistry.run('bluerain.redux.composed', composed);
+	composed = CallbackRegistry.run('bluerain.redux.composed', composed, ...enhancers);
 
 	store = createReduxStore(reducers, initialState,  composed);
 

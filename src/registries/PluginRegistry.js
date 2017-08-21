@@ -1,5 +1,6 @@
 /* @flow */
 
+import kebabCase from 'lodash.kebabcase';
 import Plugin from '../models/Plugin';
 
 /**
@@ -33,6 +34,16 @@ class PluginRegistry {
 		}
 
 		plugins.forEach((plugin) => {
+			if (!plugin.pluginName) {
+				throw new Error('Plugin name not provided.');
+			}
+
+			if (!plugin.slug) {
+				plugin.slug = plugin.name;
+			}
+
+			plugin.slug = kebabCase(plugin.slug);
+
 			me.register(plugin);
 		});
 	}
@@ -54,10 +65,10 @@ class PluginRegistry {
 	 * Initialize all plugins
 	 */
 	initializeAll() {
+		const me = this;
+		Object.keys(me.PluginsTable).forEach((key) => {
 
-		Object.keys(this.PluginsTable).forEach(function(key) {
-
-			const plugin = this.PluginsTable[key];
+			const plugin = me.PluginsTable[key];
 			if (plugin.initialize) {
 				plugin.initialize();
 			}
