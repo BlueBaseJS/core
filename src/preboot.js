@@ -1,10 +1,18 @@
+import React from 'react';
 import RX from 'reactxp';
 
 import {
+	// Registries
 	CallbackRegistry,
-	ComponentRegistry
+	ComponentRegistry,
+
+	// Router
+	SystemRouter
 } from './index';
 
+import { getProvider, createStore } from './redux';
+
+import Routes from './routes';
 import { Link } from './router';
 
 export default () => {
@@ -27,6 +35,29 @@ export default () => {
 
 	/* Register Router Components */
 	ComponentRegistry.register('Link', Link);
+
+	/* Main System Component */
+	ComponentRegistry.register('BlueRainApp', () => (
+  <SystemRouter>
+    <Routes />
+  </SystemRouter>
+	));
+
+	const store = createStore();
+	const ReduxProvider = getProvider();
+
+	// withRedux HOC Method
+	const withRedux = App => props => (
+  <ReduxProvider store={store}>
+    <App {...props} />
+  </ReduxProvider>
+	);
+
+	// Add redux to main system app
+	CallbackRegistry.add('bluerain.system.app', function AddReduxToSystemApp(App) {
+		return withRedux(App);
+	});
+
 
 	//
 	CallbackRegistry.run('bluerain.preboot.end.sync');

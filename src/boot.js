@@ -10,17 +10,14 @@ import {
 
 	// Registries
 	AppRegistry,
+	CallbackRegistry,
+	ComponentRegistry,
 	ConfigRegistry,
 	PluginRegistry,
-
-	// Router
-	SystemRouter
 } from './index';
 
-import { getProvider, createStore } from './redux';
 
 import preboot from './preboot';
-import Routes from './routes';
 import defaultConfigs from './config';
 
 /**
@@ -41,6 +38,9 @@ export const boot = function(options: BootOptions) {
 	const { apps, plugins, config } = options;
 	const { debug = true, development = true } = config;
 
+	// Init
+	RX.App.initialize(debug, development);
+
 	// pre-boot
 	preboot();
 
@@ -55,19 +55,11 @@ export const boot = function(options: BootOptions) {
 	// Initialize plugins
 	PluginRegistry.initializeAll();
 
-	// Redux
-	const store = createStore();
-	const ReduxProvider = getProvider();
+	// Set View
+	let SystemApp = ComponentRegistry.get('BlueRainApp');
+	SystemApp = CallbackRegistry.run('bluerain.system.app', SystemApp);
 
-	// Init
-	RX.App.initialize(debug, development);
-	RX.UserInterface.setMainView((
-  <ReduxProvider store={store}>
-    <SystemRouter>
-      <Routes />
-    </SystemRouter>
-  </ReduxProvider>
-		));
+	RX.UserInterface.setMainView(( <SystemApp /> ));
 };
 
 /**
