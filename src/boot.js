@@ -25,9 +25,12 @@ import defaultConfigs from './config';
  * Options object that `boot` and `bootOnServer` methods expect.
  */
 type BootOptions = {
-	apps: Array<App>,
-	config: Object,
-	plugins: Array<Plugin>
+	apps?: Array<App>,
+	config?: Object,
+	plugins?: Array<Plugin>,
+	debug?: boolean,
+	development?: boolean,
+	ssrMode?: boolean
 }
 
 /**
