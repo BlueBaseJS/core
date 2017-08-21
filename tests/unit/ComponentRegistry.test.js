@@ -25,7 +25,7 @@ class Paragragh extends React.Component {
 		);
 	}
 }
-describe('Callbacks test specifications', () => {
+describe('Component Registry test specifications', () => {
 	describe('Add components', () => {
 		it('should add component to registry', () => {
 			ComponentRegistry.register('heading', Heading);
@@ -83,6 +83,20 @@ describe('Callbacks test specifications', () => {
 			expect(() => ComponentRegistry.replace(undefined, Paragragh)).toThrow(
         'name cannot be undefined'
       );
+		});
+	});
+	describe('has components', () => {
+		it('should throw error', () => {
+			expect(() => ComponentRegistry.has(undefined)).toThrow();
+		});
+		it('should throw error', () => {
+			expect(() => ComponentRegistry.has(null)).toThrow();
+		});
+	});
+	describe('raw components', () => {
+		it('should throw error', () => {
+			const component = ComponentRegistry.getRawComponent('heading');
+			expect(component.propTypes.paragraph).toBeDefined();
 		});
 	});
 });
