@@ -23,7 +23,7 @@ const createStore = () => {
 	const reducers = getReducers();
 
 	let middlewares = [];
-	middlewares = CallbackRegistry.run('bluerain.redux.middlewares', initialState);
+	middlewares = CallbackRegistry.run('bluerain.redux.middlewares', middlewares);
 
 	let enhancers = [applyMiddleware(...middlewares)];
 	enhancers = CallbackRegistry.run('bluerain.redux.enhancers', enhancers, ...middlewares);

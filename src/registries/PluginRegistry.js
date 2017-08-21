@@ -1,7 +1,9 @@
 /* @flow */
 
 import kebabCase from 'lodash.kebabcase';
+
 import Plugin from '../models/Plugin';
+import ConfigRegistry from './ConfigRegistry';
 
 /**
  * All system plugins are stored in this registry
@@ -70,7 +72,8 @@ class PluginRegistry {
 
 			const plugin = me.PluginsTable[key];
 			if (plugin.initialize) {
-				plugin.initialize();
+				const config = ConfigRegistry.get(`plugins.${plugin.slug}`);
+				plugin.initialize(config);
 			}
 
 		});
