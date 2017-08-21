@@ -1,11 +1,7 @@
 export * from './boot';
 
-// App
-export App from './App/App';
-export AppPropsType from './App/AppPropsType';
-export buildApp from './App/buildApp';
-
 // Models
+export App from './models/App';
 export Plugin from './models/Plugin';
 
 // Registries

@@ -1,15 +1,14 @@
 import React from 'react';
 import AppRegistry from '../../src/registries/AppRegistry';
-import App from '../../src/App/App';
-import buildApp from '../../src/App/buildApp';
+import App from '../../src/models/App';
 
 class HelloApp extends App {
+	static appName = 'Hello World';
 	render() {
 		return <div>hello world</div>;
 	}
 }
 
-const app = buildApp(HelloApp, { appName: 'Hello World' });
 describe('App registry tests', () => {
 	describe('register app', () => {
 		it('should throw error b/c name is undefined', () => {
@@ -20,7 +19,7 @@ describe('App registry tests', () => {
 		});
 
 		it('should have Apps', () => {
-			AppRegistry.register(app);
+			AppRegistry.register(HelloApp);
 			expect(AppRegistry.AppsTable.hasOwnProperty('hello-world')).toEqual(true);
 		});
 	});
@@ -50,7 +49,7 @@ describe('App registry tests', () => {
 			expect(AppRegistry.AppsTable).toEqual({});
 		});
 		it('should have hello world app', () => {
-			AppRegistry.registerMany([app]);
+			AppRegistry.registerMany([HelloApp]);
 			expect(AppRegistry.AppsTable.hasOwnProperty('hello-world')).toEqual(true);
 		});
 	});

@@ -1,5 +1,6 @@
 /* @flow */
 
+import get from 'lodash.get';
 import kebabCase from 'lodash.kebabcase';
 
 import Plugin from '../models/Plugin';
@@ -11,7 +12,7 @@ import ConfigRegistry from './ConfigRegistry';
  */
 class PluginRegistry {
 
-	PluginsTable: {} = {};
+	PluginsTable: { [string]: Plugin } = {};
 
 	/**
 	 * Register a Plugin
@@ -20,6 +21,16 @@ class PluginRegistry {
 		if (plugin === undefined || plugin === null) {
 			throw new Error('No plugin provided');
 		}
+
+		if (!plugin.pluginName) {
+			throw new Error('Plugin name not provided.');
+		}
+
+		if (!plugin.slug) {
+			plugin.slug = plugin.pluginName;
+		}
+
+		plugin.slug = kebabCase(plugin.slug);
 
 		this.PluginsTable[plugin.slug] = plugin;
 	}
@@ -35,25 +46,13 @@ class PluginRegistry {
 			throw new Error('plugins parameter must be an Array');
 		}
 
-		plugins.forEach((plugin) => {
-			if (!plugin.pluginName) {
-				throw new Error('Plugin name not provided.');
-			}
-
-			if (!plugin.slug) {
-				plugin.slug = plugin.name;
-			}
-
-			plugin.slug = kebabCase(plugin.slug);
-
-			me.register(plugin);
-		});
+		plugins.forEach((plugin: Plugin) => me.register(plugin));
 	}
 
 	/**
 	 * Remove a plugin from the registry
 	 */
-	removePlugin(name: string) {
+	remove(name: string) {
 		if (name === undefined || name === null) {
 			throw new Error(`name cannot be ${name}`);
 		}
@@ -61,6 +60,17 @@ class PluginRegistry {
 			throw new Error(`${name} is not registered.`);
 		}
 		delete this.PluginsTable[name];
+	}
+
+	/**
+	 * Get a plugin
+	 */
+	get(slug: string) : Plugin {
+		if (slug === undefined || slug === null) {
+			throw new Error('No plugin slug provided');
+		}
+
+		return get(this.PluginsTable, slug);
 	}
 
 	/**
@@ -73,6 +83,7 @@ class PluginRegistry {
 			const plugin = me.PluginsTable[key];
 			if (plugin.initialize) {
 				const config = ConfigRegistry.get(`plugins.${plugin.slug}`);
+				plugin.config = config;
 				plugin.initialize(config);
 			}
 
