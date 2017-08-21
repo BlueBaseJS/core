@@ -1,5 +1,6 @@
 /* @flow */
 
+import { Styles } from 'reactxp';
 import { Route } from './router';
 
 import {
@@ -13,7 +14,29 @@ import { parseJsonSchema } from './utils/JsonSchemaToReact';
 ComponentRegistry.register('Route', Route);
 
 const Routes = () => {
-	const routes = AppRegistry.getComponentSchema();
+
+	const style = Styles.createViewStyle({
+		width: '100%',
+		height: '100%',
+		display: 'flex',
+		cursor: 'default'
+	}, false);
+
+	const appRoutes = AppRegistry.getComponentSchema();
+
+	const routes = {
+		component: 'View',
+		props: { style },
+		children: [{
+			component: 'Route',
+			props: {
+				path: '/',
+				exact: true,
+				component: ComponentRegistry.get('IndexPage')
+			}
+		}, appRoutes]
+	};
+
 	return parseJsonSchema(CallbackRegistry.run('bluerain.routes', routes));
 };
 

@@ -1,15 +1,12 @@
 import { parseJsonSchema } from '../utils/JsonSchemaToReact';
-// import { runCallbacks } from '../Callbacks';
 
 export default function SystemLayout() {
 	const schema = {
-		component: 'div',
-		props: {
-			className: 'system-layout'
-		},
+		component: 'View',
+
 		children: [{
-			component: 'h2',
-			text: 'Hello World!',
+			component: 'Text',
+			text: 'BlueRain OS!',
 		}]
 	};
 

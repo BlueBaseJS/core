@@ -12,11 +12,13 @@ import {
 
 import { getProvider, createStore } from './redux';
 
+import IndexPage from './layouts/IndexPage';
 import Routes from './routes';
 import { Link } from './router';
 
 export default () => {
 
+	// Broadcast Event
 	CallbackRegistry.run('bluerain.preboot.start.sync');
 
 	/* Regist ReactXP Components */
@@ -58,7 +60,9 @@ export default () => {
 		return withRedux(App);
 	});
 
+	// Pages
+	ComponentRegistry.register('IndexPage', IndexPage);
 
-	//
+	// Broadcast Event
 	CallbackRegistry.run('bluerain.preboot.end.sync');
 };
