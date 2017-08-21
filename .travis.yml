@@ -3,6 +3,7 @@ node_js:
   - "6"
 before_install:
   - npm i -g npm
+  - npm install -g codecov
 jobs:
   include:
     - stage: Install
@@ -12,4 +13,4 @@ jobs:
     - stage: Flow
       script: npm run flow
     - stage: Unit Tests
-      script: npm test
+      script: npm test && npm run coverage

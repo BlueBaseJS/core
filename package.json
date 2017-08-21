@@ -8,7 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
+    "coverage": "codecov",
     "start": " webpack-dev-server --content-base tests/integration/web/hello-world/src --config ./tests/integration/web/hello-world/webpack.config.js --inline --hot --history-api-fallback",
     "demo:todo": " webpack-dev-server --content-base tests/integration/web/todo/src --config ./tests/integration/web/todo/webpack.config.js --inline --hot --history-api-fallback",
     "build": "rm -rf dist && babel -D src --out-dir dist",
@@ -73,12 +74,16 @@
     "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
     "prop-types": "^15.5.10",
+    "react-apollo": "^1.4.14",
+    "subscriptions-transport-ws": "^0.8.2",
     "todomvc-app-css": "^2.1.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "jest": {
     "testRegex": "\\.test\\.js$",
-    "rootDir": "./tests/unit/"
+    "rootDir": "./tests/unit/",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
