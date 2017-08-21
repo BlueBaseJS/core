@@ -18,6 +18,7 @@ import {
 
 
 import preboot from './preboot';
+import postinit from './postinit';
 import defaultConfigs from './config';
 
 /**
@@ -54,6 +55,9 @@ export const boot = function(options: BootOptions) {
 
 	// Initialize plugins
 	PluginRegistry.initializeAll();
+
+	// post-init
+	postinit();
 
 	// Set View
 	let SystemApp = ComponentRegistry.get('BlueRainApp');
