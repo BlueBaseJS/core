@@ -37,6 +37,13 @@ describe('Callbacks test specifications', () => {
 		it('should throw error b/c function undefined', () => {
 			expect(() => CallbackRegistry.add('', undefined)).toThrow();
 		});
+		it('should throw error b/c hook undefined', () => {
+			expect(() =>
+        CallbackRegistry.add(undefined, function abc() {
+	return 2;
+})
+      ).toThrow();
+		});
 	});
 
 	describe('run callback', () => {
@@ -59,6 +66,11 @@ describe('Callbacks test specifications', () => {
 			const value = CallbackRegistry.run('test.hook', 'string');
 
 			expect(value).toEqual('string2');
+		});
+		it('return the input value because it not added ', () => {
+			const value = CallbackRegistry.run('to.be.fail.hook', 'string');
+
+			expect(value).toEqual('string');
 		});
 	});
 	describe('remove callback', () => {

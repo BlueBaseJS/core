@@ -2,10 +2,8 @@
 
 import { Styles } from 'reactxp';
 
-import {
-	App,
-	ConfigRegistry,
-} from '../index';
+import App from '../App/App';
+import ConfigRegistry from '../registries/ConfigRegistry';
 
 /**
  * All system apps are stored in this registry
