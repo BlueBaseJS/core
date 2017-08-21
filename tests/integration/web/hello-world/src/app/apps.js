@@ -1,4 +1,4 @@
-import HelloWorldApp from '../../../common/HelloWorldApp';
+import HelloWorldApp from '../../../../common/HelloWorldApp';
 
 const apps = [
 	HelloWorldApp
