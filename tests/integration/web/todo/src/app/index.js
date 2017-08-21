@@ -1,5 +1,5 @@
 import React from 'react';
-import  { App, buildApp, CallbackRegistry } from '../../../../../../src/';
+import  { App, CallbackRegistry } from '../../../../../../src/';
 
 import ToDoContainer from './containers/App';
 import todoReducers, { initialState } from './reducers/todos';
@@ -13,6 +13,10 @@ CallbackRegistry.add('bluerain.redux.initialState', function addTodoInitialState
 });
 
 class ToDoApp extends App {
+
+	static appName = 'To Do';
+	static slug = 'todo';
+
 	render() {
 		return (
   <ToDoContainer />
@@ -20,4 +24,4 @@ class ToDoApp extends App {
 	}
 }
 
-export default buildApp(ToDoApp, { appName: 'To Do', slug: 'todo' });
+export default ToDoApp;

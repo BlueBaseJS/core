@@ -1,9 +1,12 @@
 /* @flow */
 
 import { Styles } from 'reactxp';
+import kebabCase from 'lodash.kebabcase';
 
-import App from '../App/App';
+import App from '../models/App';
 import ConfigRegistry from '../registries/ConfigRegistry';
+
+const defaultAppRoutePrefix = '/app';
 
 /**
  * All system apps are stored in this registry
@@ -11,7 +14,7 @@ import ConfigRegistry from '../registries/ConfigRegistry';
  */
 class AppRegistry {
 
-	AppsTable: {} = {};
+	AppsTable: { [string]: App } = {};
 
 	/**
 	 * Register an App
@@ -20,6 +23,18 @@ class AppRegistry {
 		if (app === undefined || app === null) {
 			throw new Error('No app provided');
 		}
+
+		if (!app.appName) {
+			throw new Error('App name not provided.');
+		}
+
+		if (!app.slug) {
+			app.slug = app.appName;
+		}
+
+		app.slug = kebabCase(app.slug);
+		app.appRoutePrefix = ConfigRegistry.get('appRoutePrefix') || defaultAppRoutePrefix;
+		app.path = `${app.appRoutePrefix}/${app.slug}`;
 
 		this.AppsTable[app.slug] = app;
 	}
@@ -35,9 +50,7 @@ class AppRegistry {
 			throw new Error('apps parameter must be an Array');
 		}
 
-		apps.forEach((app) => {
-			me.register(app);
-		});
+		apps.forEach(app => me.register(app));
 	}
 
 	/**
@@ -66,7 +79,6 @@ class AppRegistry {
 	 */
 	getComponentSchema() {
 		const apps = this.getApps();
-		const appPrefix = ConfigRegistry.get('appRoutePrefix') || '/app'; // path = /app
 
 		const appRoutes = [];
 		for (const key in apps) {
@@ -75,12 +87,11 @@ class AppRegistry {
 			if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
 
 			const app = apps[key];
-			app.appRoutePrefix = appPrefix;
 
 			appRoutes.push({
 				component: 'Route',
 				props: {
-					path: `${appPrefix}/${key}`,
+					path: app.path,
 					key,
 					component: app
 				}
