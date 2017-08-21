@@ -6,12 +6,13 @@ import { CallbackRegistry } from '../index';
 export default () => {
 
 	const bluerainReducers = CallbackRegistry.run('bluerain.redux.reducers.bluerain', {
-		stub: state => state || {}
+		stub: (state = {}) => state
 	});
 
-	const reducers = {
+	let reducers = {
 		bluerain: combineReducers(bluerainReducers)
 	};
 
+	reducers = CallbackRegistry.run('bluerain.redux.reducers', reducers);
 	return combineReducers(reducers);
 };

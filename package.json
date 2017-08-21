@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "jest --coverage",
-    "start": " webpack-dev-server --content-base tests/integration/web/src --config ./tests/integration/web/webpack.config.js --inline --hot --history-api-fallback",
+    "start": " webpack-dev-server --content-base tests/integration/web/hello-world/src --config ./tests/integration/web/hello-world/webpack.config.js --inline --hot --history-api-fallback",
+    "demo:todo": " webpack-dev-server --content-base tests/integration/web/todo/src --config ./tests/integration/web/todo/webpack.config.js --inline --hot --history-api-fallback",
     "build": "rm -rf dist && babel -D src --out-dir dist",
     "build:prod": "webpack -p && cp src/index.js dist/index.js",
     "lint": "./node_modules/.bin/eslint ./src/",
@@ -60,6 +61,7 @@
     "babel-preset-stage-0": "6.16.0",
     "babel-preset-stage-2": "6.18.0",
     "babel-register": "6.18.0",
+    "classnames": "^2.2.5",
     "documentation": "^5.2.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^15.1.0",
@@ -70,6 +72,8 @@
     "eslint-plugin-react": "^7.1.0",
     "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
+    "prop-types": "^15.5.10",
+    "todomvc-app-css": "^2.1.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },

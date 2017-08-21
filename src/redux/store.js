@@ -10,15 +10,17 @@ import { CallbackRegistry } from '../index';
 
 import getReducers from './reducers';
 
-let initialState = {};
+let initialState = {
+	bluerain: {}
+};
+
 let store;
 
 const createStore = () => {
 
 	initialState = CallbackRegistry.run('bluerain.redux.initialState', initialState);
 
-	let reducers = getReducers();
-	reducers = CallbackRegistry.run('bluerain.redux.reducers', reducers);
+	const reducers = getReducers();
 
 	let middlewares = [];
 	middlewares = CallbackRegistry.run('bluerain.redux.middlewares', initialState);
