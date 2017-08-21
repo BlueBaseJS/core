@@ -18,8 +18,6 @@ const Routes = () => {
 	const style = Styles.createViewStyle({
 		width: '100%',
 		height: '100%',
-		display: 'flex',
-		cursor: 'default'
 	}, false);
 
 	const appRoutes = AppRegistry.getComponentSchema();

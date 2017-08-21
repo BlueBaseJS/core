@@ -33,21 +33,24 @@ type BootOptions = {
 /**
  * Boots the OS and renders the main UI. Use it on the client side
  */
-export const boot = function(options: BootOptions) {
+export const boot = function(options: BootOptions = {}) {
 
 	// Extract app, plugins and configs from options
 	const { apps, plugins, config } = options;
-	const { debug = true, development = true } = config;
+
+	// Initialize all configs
+	ConfigRegistry.register(defaultConfigs);
+	ConfigRegistry.register(config);
+
+	// Get Enviornment Options
+	const debug = ConfigRegistry.get('debug');
+	const development = ConfigRegistry.get('development');
 
 	// Init
 	RX.App.initialize(debug, development);
 
 	// pre-boot
 	preboot();
-
-	// Initialize all configs
-	ConfigRegistry.register(defaultConfigs);
-	ConfigRegistry.register(config);
 
 	// Process option variables
 	AppRegistry.registerMany(apps);
