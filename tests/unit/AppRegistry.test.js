@@ -1,14 +1,14 @@
 import React from 'react';
 import AppRegistry from '../../src/registries/AppRegistry';
-import { App, buildApp } from '../../src/';
+import App from '../../src/models/App';
 
 class HelloApp extends App {
+	static appName = 'Hello World';
 	render() {
-		return (<div>hello world</div>);
+		return <div>hello world</div>;
 	}
 }
 
-const app = buildApp(HelloApp, { appName: 'Hello World' });
 describe('App registry tests', () => {
 	describe('register app', () => {
 		it('should throw error b/c name is undefined', () => {
@@ -19,7 +19,7 @@ describe('App registry tests', () => {
 		});
 
 		it('should have Apps', () => {
-			AppRegistry.register( app);
+			AppRegistry.register(HelloApp);
 			expect(AppRegistry.AppsTable.hasOwnProperty('hello-world')).toEqual(true);
 		});
 	});
@@ -35,7 +35,28 @@ describe('App registry tests', () => {
 		});
 		it('should have Apps', () => {
 			AppRegistry.remove('hello-world');
-			expect(AppRegistry.AppsTable.hasOwnProperty('hello')).toEqual(false);
+			expect(AppRegistry.AppsTable.hasOwnProperty('hello-world')).toEqual(
+        false
+      );
+		});
+	});
+	describe('register many app', () => {
+		it('should throw error b/c app is not array', () => {
+			expect(() => AppRegistry.registerMany({})).toThrow();
+		});
+		it('should have hello world app', () => {
+			AppRegistry.registerMany();
+			expect(AppRegistry.AppsTable).toEqual({});
+		});
+		it('should have hello world app', () => {
+			AppRegistry.registerMany([HelloApp]);
+			expect(AppRegistry.AppsTable.hasOwnProperty('hello-world')).toEqual(true);
+		});
+	});
+	describe('get component schema', () => {
+		it('should throw error b/c app is not array', () => {
+			const schema = AppRegistry.getComponentSchema();
+			expect(schema.children[0].props.path).toEqual('/app/hello-world');
 		});
 	});
 });

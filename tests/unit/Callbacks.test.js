@@ -37,6 +37,13 @@ describe('Callbacks test specifications', () => {
 		it('should throw error b/c function undefined', () => {
 			expect(() => CallbackRegistry.add('', undefined)).toThrow();
 		});
+		it('should throw error b/c hook undefined', () => {
+			expect(() =>
+        CallbackRegistry.add(undefined, function abc() {
+	return 2;
+})
+      ).toThrow();
+		});
 	});
 
 	describe('run callback', () => {
@@ -59,6 +66,11 @@ describe('Callbacks test specifications', () => {
 			const value = CallbackRegistry.run('test.hook', 'string');
 
 			expect(value).toEqual('string2');
+		});
+		it('return the input value because it not added ', () => {
+			const value = CallbackRegistry.run('to.be.fail.hook', 'string');
+
+			expect(value).toEqual('string');
 		});
 	});
 	describe('remove callback', () => {
@@ -93,6 +105,29 @@ describe('Callbacks test specifications', () => {
 			expect(() => CallbackRegistry.remove('test.hook', undefined)).toThrow(
         'callback of test.hook cannot be undefined'
       );
+		});
+	});
+	describe('run callback async', () => {
+		it('should be undefined b/c hook undefined', () => {
+			expect(() => CallbackRegistry.runAsync(undefined)).toThrow();
+		});
+		it('should be throw error b/c hook null', () => {
+			expect(() => CallbackRegistry.runAsync(null)).toThrow();
+		});
+		it('should run async functions', () => {
+			CallbackRegistry.add('async.hook', function abc() {
+				return 1;
+			});
+			CallbackRegistry.add('async.hook', function abc2() {
+        /* do some work */
+			});
+			CallbackRegistry.add('async.hook', function abc3() {
+        /* do some work */
+			});
+			CallbackRegistry.add('async.hook', function abc4() {
+        /* do some work */
+			});
+			CallbackRegistry.runAsync('async.hook');
 		});
 	});
 });

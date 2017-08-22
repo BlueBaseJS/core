@@ -1,42 +1,38 @@
 /* @flow */
 
-import { Route } from 'react-router-dom';
+import { Styles } from 'reactxp';
+import { Route } from './router';
 
-import AppRegistry from './registries/AppRegistry';
-import CallbackRegistry from './registries/CallbackRegistry';
-import ComponentRegistry from './registries/ComponentRegistry';
-import ConfigRegistry from './registries/ConfigRegistry';
+import {
+	AppRegistry,
+	CallbackRegistry,
+	ComponentRegistry,
+} from './index';
+
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 ComponentRegistry.register('Route', Route);
 
 const Routes = () => {
 
-	const apps = AppRegistry.getApps();
-	const appPrefix = ConfigRegistry.get('appRoutePrefix') || '/app'; // path = /app
+	const style = Styles.createViewStyle({
+		width: '100%',
+		height: '100%',
+	}, false);
 
-	const appRoutes = [];
-	for (const key in apps) {
-
-		// skip loop if the property is from prototype
-		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
-
-		const app = apps[key];
-		app.appRoutePrefix = appPrefix;
-
-		appRoutes.push({
-			component: 'Route',
-			props: {
-				path: `${appPrefix}/${key}`,
-				key,
-				component: app
-			}
-		});
-	}
+	const appRoutes = AppRegistry.getComponentSchema();
 
 	const routes = {
-		component: 'div', // TODO: Change this to View with ReactXP
-		children: appRoutes
+		component: 'View',
+		props: { style },
+		children: [{
+			component: 'Route',
+			props: {
+				path: '/',
+				exact: true,
+				component: ComponentRegistry.get('IndexPage')
+			}
+		}, appRoutes]
 	};
 
 	return parseJsonSchema(CallbackRegistry.run('bluerain.routes', routes));

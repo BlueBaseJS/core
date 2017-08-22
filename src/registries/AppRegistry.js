@@ -1,6 +1,12 @@
 /* @flow */
 
-import App from '../App/App';
+import { Styles } from 'reactxp';
+import kebabCase from 'lodash.kebabcase';
+
+import App from '../models/App';
+import ConfigRegistry from '../registries/ConfigRegistry';
+
+const defaultAppRoutePrefix = '/app';
 
 /**
  * All system apps are stored in this registry
@@ -8,7 +14,7 @@ import App from '../App/App';
  */
 class AppRegistry {
 
-	AppsTable: {} = {};
+	AppsTable: { [string]: App } = {};
 
 	/**
 	 * Register an App
@@ -17,6 +23,18 @@ class AppRegistry {
 		if (app === undefined || app === null) {
 			throw new Error('No app provided');
 		}
+
+		if (!app.appName) {
+			throw new Error('App name not provided.');
+		}
+
+		if (!app.slug) {
+			app.slug = app.appName;
+		}
+
+		app.slug = kebabCase(app.slug);
+		app.appRoutePrefix = ConfigRegistry.get('appRoutePrefix') || defaultAppRoutePrefix;
+		app.path = `${app.appRoutePrefix}/${app.slug}`;
 
 		this.AppsTable[app.slug] = app;
 	}
@@ -32,9 +50,7 @@ class AppRegistry {
 			throw new Error('apps parameter must be an Array');
 		}
 
-		apps.forEach((app) => {
-			me.register(app);
-		});
+		apps.forEach(app => me.register(app));
 	}
 
 	/**
@@ -55,6 +71,43 @@ class AppRegistry {
 	 */
 	getApps() : {} {
 		return this.AppsTable;
+	}
+
+	/**
+	 * Returns the JSON schema of the main APPs component.
+	 * This component renders all the apps.
+	 */
+	getComponentSchema() {
+		const apps = this.getApps();
+
+		const appRoutes = [];
+		for (const key in apps) {
+
+			// skip loop if the property is from prototype
+			if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
+
+			const app = apps[key];
+
+			appRoutes.push({
+				component: 'Route',
+				props: {
+					path: app.path,
+					key,
+					component: app
+				}
+			});
+		}
+
+		const style = Styles.createViewStyle({
+			width: '100%',
+			height: '100%',
+		}, false);
+
+		return {
+			component: 'View',
+			props: { style },
+			children: appRoutes
+		};
 	}
 }
 

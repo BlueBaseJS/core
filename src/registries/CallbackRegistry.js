@@ -1,7 +1,7 @@
 /* @flow */
 
 import reject from 'lodash.reject';
-
+import parallel from 'async.parallel';
 /**
  * All system callbacks are stored in this registry
  * @property {Object} CallbacksTable Storage table of all callbacks
@@ -153,6 +153,10 @@ class CallbackRegistry {
 		//     });
 		//   });
 		// }
+		if (hook === undefined || hook === null) {
+			throw new Error(`hook cannot be ${hook}`);
+		}
+		parallel(this.CallbacksTable[hook]);
 	};
 }
 
