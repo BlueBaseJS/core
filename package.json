@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/BlueEastCode/bluerain-os#readme",
   "dependencies": {
+    "async.parallel": "^0.5.2",
     "history": "^4.6.3",
     "lodash.get": "^4.4.2",
     "lodash.kebabcase": "^4.1.1",
