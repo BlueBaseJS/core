@@ -153,9 +153,9 @@ class CallbackRegistry {
 		//     });
 		//   });
 		// }
-    if (hook === undefined || hook === null) {
-      throw new Error(`hook cannot be ${hook}`);
-    }
+		if (hook === undefined || hook === null) {
+			throw new Error(`hook cannot be ${hook}`);
+		}
 		parallel(this.CallbacksTable[hook]);
 	};
 }
