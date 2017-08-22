@@ -107,4 +107,19 @@ describe('Callbacks test specifications', () => {
       );
 		});
 	});
+  describe('run callback async', () => {
+    it('should be undefined b/c hook undefined', () => {
+      expect(() => CallbackRegistry.runAsync(undefined)).toThrow();
+    });
+    it('should be throw error b/c hook null', () => {
+      expect(() => CallbackRegistry.runAsync(null)).toThrow();
+    });
+    it('should run async functions', () => {
+      CallbackRegistry.add('async.hook', function abc() { return 1; });
+      CallbackRegistry.add('async.hook', function abc2() { /* do some work */ });
+      CallbackRegistry.add('async.hook', function abc3() { /* do some work */ });
+      CallbackRegistry.add('async.hook', function abc4() { /* do some work */ });
+      CallbackRegistry.runAsync('async.hook');
+    });
+  });
 });
