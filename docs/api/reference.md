@@ -2,19 +2,23 @@
 
 ### Table of Contents
 
--   [App](#app)
-    -   [getPath](#getpath)
--   [buildApp](#buildapp)
 -   [BootOptions](#bootoptions)
 -   [boot](#boot)
 -   [bootOnServer](#bootonserver)
+-   [title](#title)
+-   [appRoutePrefix](#approuteprefix)
+-   [debug](#debug)
+-   [development](#development)
+-   [apps](#apps)
+-   [plugins](#plugins)
+-   [App](#app)
 -   [Plugin](#plugin)
-    -   [initialize](#initialize)
 -   [AppRegistry](#appregistry)
     -   [register](#register)
     -   [registerMany](#registermany)
     -   [remove](#remove)
     -   [getApps](#getapps)
+    -   [getComponentSchema](#getcomponentschema)
 -   [CallbackRegistry](#callbackregistry)
     -   [add](#add)
     -   [remove](#remove-1)
@@ -34,8 +38,64 @@
 -   [PluginRegistry](#pluginregistry)
     -   [register](#register-3)
     -   [registerMany](#registermany-1)
-    -   [removePlugin](#removeplugin)
+    -   [remove](#remove-2)
+    -   [get](#get-2)
     -   [initializeAll](#initializeall)
+
+## BootOptions
+
+Options object that `boot` and `bootOnServer` methods expect.
+
+Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?, config: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
+
+**Properties**
+
+-   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?** 
+-   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** 
+-   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?** 
+-   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
+-   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
+-   `ssrMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
+
+## boot
+
+Boots the OS and renders the main UI. Use it on the client side
+
+**Parameters**
+
+-   `options` **[BootOptions](#bootoptions)**  (optional, default `{}`)
+
+## bootOnServer
+
+Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
+
+**Parameters**
+
+-   `options` **[BootOptions](#bootoptions)** 
+
+## title
+
+Main title of the app
+
+## appRoutePrefix
+
+This route will be prependded to all app routes
+
+## debug
+
+Debug mode
+
+## development
+
+Development mode
+
+## apps
+
+Configurations for apps
+
+## plugins
+
+Configurations for plugins
 
 ## App
 
@@ -48,71 +108,23 @@ A BlueRain App base class
 -   `appName` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
 -   `slug` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App's slug, used in to build URL
 -   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
+-   `description` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App description
 -   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
 -   `appRoutePrefix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path that will be prepended before slug to build URL.
-
-### getPath
-
-Get the App's URL
-
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-## buildApp
-
-[Write docs]
-
-**Parameters**
-
--   `AppComponent` **any** 
--   `opts` **any** 
-
-## BootOptions
-
-Options object that `boot` and `bootOnServer` methods expect.
-
-Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>, config: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>}
-
-**Properties**
-
--   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** 
--   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
--   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>** 
-
-## boot
-
-Boots the OS and renders the main UI. Use it on the client side
-
-**Parameters**
-
--   `options` **[BootOptions](#bootoptions)** 
-
-## bootOnServer
-
-Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
-
-**Parameters**
-
--   `options` **[BootOptions](#bootoptions)** 
+-   `path` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path of the app's home page
 
 ## Plugin
 
 Base class of a plugin which is to be extended.
 
-**Parameters**
-
--   `opts` **{name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), slug: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), config: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), category: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), description: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), version: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)}** 
-
 **Properties**
 
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
+-   `pluginName` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the app
 -   `slug` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App's slug, used in to build URL
 -   `config` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Plugin configurations
 -   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
+-   `description` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App description
 -   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
-
-### initialize
-
-To initialize Plagin i.e To add all the callbacks against the specific plugin
 
 ## AppRegistry
 
@@ -151,6 +163,11 @@ Remove an app from the registry
 Get all apps
 
 Returns **{}** 
+
+### getComponentSchema
+
+Returns the JSON schema of the main APPs component.
+This component renders all the apps.
 
 ## CallbackRegistry
 
@@ -343,13 +360,23 @@ Register many plugins at once
 
 -   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>** 
 
-### removePlugin
+### remove
 
 Remove a plugin from the registry
 
 **Parameters**
 
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+### get
+
+Get a plugin
+
+**Parameters**
+
+-   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **[Plugin](#plugin)** 
 
 ### initializeAll
 
