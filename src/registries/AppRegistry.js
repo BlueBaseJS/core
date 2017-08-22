@@ -18,6 +18,7 @@ class AppRegistry {
 
 	/**
 	 * Register an App
+	 * @param {App} app The BlueRain app to register
 	 */
 	register(app: App) {
 		if (app === undefined || app === null) {
@@ -41,6 +42,7 @@ class AppRegistry {
 
 	/**
 	 * Register many apps at once
+	 * @param {Array<App>} apps The BlueRain apps to register
 	 */
 	registerMany(apps: Array<App>) {
 		const me = this;
@@ -55,29 +57,33 @@ class AppRegistry {
 
 	/**
 	 * Remove an app from the registry
+	 * @param {string} slug The slug of the app to remove
 	 */
-	remove(name: string) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+	remove(slug: string) {
+		if (slug === undefined || slug === null) {
+			throw new Error(`slug cannot be ${slug}`);
 		}
-		if (!this.AppsTable[name]) {
-			throw new Error(`${name} is not registered.`);
+		if (!this.AppsTable[slug]) {
+			throw new Error(`${slug} is not registered.`);
 		}
-		delete this.AppsTable[name];
+		delete this.AppsTable[slug];
 	}
 
 	/**
 	 * Get all apps
+	 * @returns {Object} An object with slug: app key value pair
 	 */
-	getApps() : {} {
+	getApps() : { [string]: App } {
 		return this.AppsTable;
 	}
 
 	/**
 	 * Returns the JSON schema of the main APPs component.
 	 * This component renders all the apps.
+	 *
+	 * @returns {Object} JSON Schema
 	 */
-	getComponentSchema() {
+	getComponentSchema() : {} {
 		const apps = this.getApps();
 
 		const appRoutes = [];

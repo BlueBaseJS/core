@@ -5,12 +5,7 @@
 -   [BootOptions](#bootoptions)
 -   [boot](#boot)
 -   [bootOnServer](#bootonserver)
--   [title](#title)
--   [appRoutePrefix](#approuteprefix)
--   [debug](#debug)
--   [development](#development)
--   [apps](#apps)
--   [plugins](#plugins)
+-   [Config](#config)
 -   [App](#app)
 -   [Plugin](#plugin)
 -   [AppRegistry](#appregistry)
@@ -46,12 +41,12 @@
 
 Options object that `boot` and `bootOnServer` methods expect.
 
-Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?, config: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
+Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?, config: ConfigType?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
 
 **Properties**
 
 -   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?** 
--   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** 
+-   `config` **ConfigType?** 
 -   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?** 
 -   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
 -   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
@@ -73,29 +68,21 @@ Boots the OS and renders the main UI. Use it on the server for Server Side Rende
 
 -   `options` **[BootOptions](#bootoptions)** 
 
-## title
+## Config
 
-Main title of the app
+This is the default configuration set
+that is used at boot time.
 
-## appRoutePrefix
+Type: ConfigType
 
-This route will be prependded to all app routes
+**Properties**
 
-## debug
-
-Debug mode
-
-## development
-
-Development mode
-
-## apps
-
-Configurations for apps
-
-## plugins
-
-Configurations for plugins
+-   `apps` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for apps
+-   `appRoutePrefix` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "/app"]	This route will be prependded to all app routes
+-   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true]							Debug mode
+-   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true]				Development mode
+-   `plugins` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for plugins
+-   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "BlueRain OS"]		Main title of the app
 
 ## App
 
@@ -140,7 +127,7 @@ Register an App
 
 **Parameters**
 
--   `app` **[App](#app)** 
+-   `app` **[App](#app)** The BlueRain app to register
 
 ### registerMany
 
@@ -148,7 +135,7 @@ Register many apps at once
 
 **Parameters**
 
--   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** 
+-   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** The BlueRain apps to register
 
 ### remove
 
@@ -156,18 +143,20 @@ Remove an app from the registry
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug of the app to remove
 
 ### getApps
 
 Get all apps
 
-Returns **{}** 
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** An object with slug: app key value pair
 
 ### getComponentSchema
 
 Returns the JSON schema of the main APPs component.
 This component renders all the apps.
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** JSON Schema
 
 ## CallbackRegistry
 

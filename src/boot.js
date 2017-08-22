@@ -19,14 +19,14 @@ import {
 
 import preboot from './preboot';
 import postinit from './postinit';
-import defaultConfigs from './config';
+import defaultConfigs, { type ConfigType } from './config';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
  */
 type BootOptions = {
 	apps?: Array<App>,
-	config?: Object,
+	config?: ConfigType,
 	plugins?: Array<Plugin>,
 	debug?: boolean,
 	development?: boolean,
