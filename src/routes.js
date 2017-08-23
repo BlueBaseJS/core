@@ -32,7 +32,7 @@ const Routes = () => {
 		}, appRoutes]
 	};
 
-	return parseJsonSchema(CallbackRegistry.run('bluerain.routes', routes));
+	return parseJsonSchema(CallbackRegistry.run('bluerain.system.routes', routes));
 };
 
 export default Routes;

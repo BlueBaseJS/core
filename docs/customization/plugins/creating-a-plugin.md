@@ -15,7 +15,7 @@ class HelloWorldPlugin extends Plugin {
 	
     initialize() {
 
-        addCallback('bluerain.routes', (routes) => {
+        CallbackRegistry.add('bluerain.routes', (routes) => {
             routes.push({
                 path: '/hello-world',
                 component: HelloWorldComponent

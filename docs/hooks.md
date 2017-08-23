@@ -4,7 +4,7 @@ These are the known callback hooks in the system:
 
 - [System App]()
 	-	[bluerain.system.app]()
-	-	[bluerain.routes]()
+	-	[bluerain.system.routes]()
 - [System Lifecycle Events]()
 	-	[bluerain.system.boot.start]()
 	-	[bluerain.system.configurations.loaded]()
@@ -25,8 +25,52 @@ These are the known callback hooks in the system:
 	-	[bluerain.redux.provider]()
 
 ## System App
+
 ### bluerain.system.app
-### bluerain.routes
+This hook gives the ability to modify the main System App component.
+
+**Parameters:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+SystemApp | React.Component | The main system app component.
+
+**Returns:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+SystemApp | React.Component | The main system app component.
+
+**Example:**
+
+This example wraps the System App with a Redux provider by using a `withRedux` higher order component (HOC).
+
+```javascript
+import { CallbackRegistry } from 'bluerain-os';
+import withRedux from './withRedux';
+
+CallbackRegistry.add(
+	'bluerain.system.app', 
+	function AddReduxToSystemApp(App) {
+		return withRedux(App);
+	}
+);
+```
+
+### bluerain.system.routes
+This hook gives the ability to modify system routes JSON schema. This is very useful for adding or modifying pages and routes.
+
+**Parameters:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+routes | Object | This is the json schema structure of the system routes. This schema is passed to the `parseJsonSchema` method to generate react components after callback execution.
+
+**Returns:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+routes | Object | This is the json schema structure of the system routes. This schema is passed to the `parseJsonSchema` method to generate react components after callback execution.
 
 ## System Lifecycle Events
 
@@ -89,14 +133,17 @@ This example sets the `bluerain.taskbar.active` state of the redux store to true
 ```javascript
 import { CallbackRegistry } from 'bluerain-os';
 
-CallbackRegistry.add('bluerain.redux.initialState', (initialState) => {
-	return Object.assign({}, reducers, {
-		bluerain: {
-			taskbar: {
-				active: true
+CallbackRegistry.add(
+	'bluerain.redux.initialState',
+	function ActivateTaskbar(reducers) {
+		return Object.assign({}, reducers, {
+			bluerain: {
+				taskbar: {
+					active: true
+				}
 			}
-		}
-	})
+		})
+	}
 );
 
 ```
@@ -125,10 +172,13 @@ This example adds a reducer to bluerain state, which will be accessible at `foo`
 import { CallbackRegistry } from 'bluerain-os';
 import reducer from './reducer';
 
-CallbackRegistry.add('bluerain.redux.reducers', (reducers) => {
-	return Object.assign({}, reducers, {
-		foo: 'bar'
-	})
+CallbackRegistry.add(
+	'bluerain.redux.reducers', 
+	function AddReducer(reducers) {
+		return Object.assign({}, reducers, {
+			foo: 'bar'
+		});
+	}
 );
 
 ```
@@ -157,10 +207,13 @@ This example adds a taskbar reducer to bluerain state, which will be accessible 
 import { CallbackRegistry } from 'bluerain-os';
 import reducer from './reducer';
 
-CallbackRegistry.add('bluerain.redux.reducers.bluerain', (reducers) => {
-	return Object.assign({}, reducers, {
-		taskbar: reducer
-	})
+CallbackRegistry.add(
+	'bluerain.redux.reducers.bluerain', 
+	function AddReducers(reducers) {
+		return Object.assign({}, reducers, {
+			taskbar: reducer
+		})
+	}
 );
 
 ```
@@ -191,8 +244,11 @@ This example adds a taskbar reducer to bluerain state, which will be accessible 
 import { CallbackRegistry } from 'bluerain-os';
 import customMiddleware from './customMiddleware';
 
-CallbackRegistry.add('bluerain.redux.middlewares', (middlewares) => {
-	return middlewares.push(customMiddleware());
+CallbackRegistry.add(
+	'bluerain.redux.middlewares', 
+	function AddMiddleware(middlewares) {
+		return middlewares.push(customMiddleware());
+	}
 );
 
 ```
@@ -257,8 +313,10 @@ This example replaces the original provider with Apollo's provider.
 import { CallbackRegistry } from 'bluerain-os';
 import { ApolloProvider } from 'react-apollo';
 
-CallbackRegistry.add('bluerain.redux.provider', (Provider) {
-	return ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
-}
+CallbackRegistry.add(
+	'bluerain.redux.provider', 
+	function ChangeProvider(Provider) {
+		return ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+});
 
 ```
