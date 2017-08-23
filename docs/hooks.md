@@ -46,9 +46,9 @@ initialState | Object | initialState Object
 
 **Returns:**
 
-Type | Description
-------------- | -------------
-Object | initialState Object
+Name | Type | Description
+------------ | ------------- | -------------
+initialState | Object | initialState Object
 
 **Example:**
 
@@ -133,8 +133,6 @@ CallbackRegistry.add('bluerain.redux.reducers.bluerain', (reducers) => {
 
 ```
 
-
-
 ### bluerain.redux.middlewares
 
 This hook gives the ability to add or modify custom middlewares to the main redux store.
@@ -168,5 +166,67 @@ CallbackRegistry.add('bluerain.redux.middlewares', (middlewares) => {
 ```
 
 ### bluerain.redux.enhancers
+This hook gives the ability to modify the redux enhancers array. After execution, this array will be sent to the redux's `compose` function.
+
+**Parameters:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+enhancers | Array | This is an array of redux enhancers. This array will be sent as a param to the `compose ` of Redux after callback execution.
+middlewares | Array | This is an array of redux middlewares. This array was used to create the enhancer (by passing as a param to `applyMiddleware` function) that was sent inside the array as the first param of this function.
+
+
+**Returns:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+enhancers | Array | This is an array of redux enhancers. This array will be sent as a param to the `compose ` of Redux after callback execution.
+
+
 ### bluerain.redux.composed
+This hook gives the ability to modify the final composed `enhancers` array (by passing enhancers array as a parameter to the `compose` function), right before they are used in the redux store.
+**Parameters:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+composed | Array | This is the composed enhancers array (by passing `enhancers` array as a parameter to the `compose` function), right before they are used in the redux store.
+enhancers | Array | This is an array of redux middlewares. This array was passed as a parameter to the `compose` function. The result was as the first param of this function.
+
+
+**Returns:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+composed | Array | This is the composed enhancers array (by passing `enhancers` array as a parameter to the `compose` function), right before they are used in the redux store.
+
+
 ### bluerain.redux.provider
+This hook gives the ability to modify the Provider component of the redux store.
+
+**Parameters:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+Provider | Provider | The react-redux Provider component
+
+
+**Returns:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+Provider | Provider | The react-redux Provider component
+
+
+**Example:**
+
+This example replaces the original provider with Apollo's provider.
+
+```javascript
+import { CallbackRegistry } from 'bluerain-os';
+import { ApolloProvider } from 'react-apollo';
+
+CallbackRegistry.add('bluerain.redux.provider', (Provider) {
+	return ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+}
+
+```
