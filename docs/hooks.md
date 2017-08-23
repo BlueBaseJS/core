@@ -6,10 +6,15 @@ These are the known callback hooks in the system:
 	-	[bluerain.system.app]()
 	-	[bluerain.routes]()
 - [System Lifecycle Events]()
-	-	[bluerain.postinit.start.sync]()
-	-	[bluerain.postinit.end.sync]()
-	-	[bluerain.preboot.start.sync]()
-	-	[bluerain.preboot.end.sync]()
+	-	[bluerain.system.boot.start]()
+	-	[bluerain.system.configurations.loaded]()
+	-	[bluerain.system.components.registered]()
+	-	[bluerain.system.plugins.registered]()
+	-	[bluerain.system.plugins.initialized]()
+	-	[bluerain.system.apps.registered]()
+	-	[bluerain.system.apps.initialized]()
+	-	[bluerain.system.initialized]()
+	-	[bluerain.system.boot.end]()
 - [Redux Store](#reduxstore)
 	-	[bluerain.redux.initialState](#bluerainreduxinitialState)
 	-	[bluerain.redux.reducers]()
@@ -25,10 +30,37 @@ These are the known callback hooks in the system:
 
 ## System Lifecycle Events
 
-### bluerain.postinit.start
-### bluerain.postinit.end
-### bluerain.preboot.start
-### bluerain.preboot.end
+The following system lifecycle events are listed in the sequence of their execution.
+
+
+### bluerain.system.boot.start
+This Callback is executed at the start of the boot process.
+
+### bluerain.system.configurations.loaded
+This Callback is executed after all configurations are loaded.
+
+### bluerain.system.components.registered
+This Callback is executed when all system react components are registered.
+
+
+### bluerain.system.plugins.registered
+This Callback is executed when all plugins are registered.
+
+### bluerain.system.plugins.initialized
+This Callback is executed when all plugins are initialized.
+
+
+### bluerain.system.apps.registered
+This Callback is executed when all apps are registered.
+
+### bluerain.system.apps.initialized
+This Callback is executed when all apps are initialized.
+
+### bluerain.system.initialized
+This Callback is executed when initialization process is complete.
+
+### bluerain.system.boot.end
+This Callback is executed at the end of the boot process.
 
 
 ## Redux Store
