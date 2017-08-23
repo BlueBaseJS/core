@@ -14,6 +14,8 @@
 ## Customisation
 
 * [Apps](customization/apps/README.md)
+  * [Installation](customization/apps/installation.md)
+  * [Configuration](customization/apps/configuration.md)
   * [Creating an App](customization/apps/creating-an-app)
 
 * [Plugins](customization/plugins/README.md)

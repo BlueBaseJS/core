@@ -11,6 +11,7 @@
 -   [AppRegistry](#appregistry)
     -   [register](#register)
     -   [registerMany](#registermany)
+    -   [initializeAll](#initializeall)
     -   [remove](#remove)
     -   [getApps](#getapps)
     -   [getComponentSchema](#getcomponentschema)
@@ -35,7 +36,7 @@
     -   [registerMany](#registermany-1)
     -   [remove](#remove-2)
     -   [get](#get-2)
-    -   [initializeAll](#initializeall)
+    -   [initializeAll](#initializeall-1)
 
 ## BootOptions
 
@@ -136,6 +137,10 @@ Register many apps at once
 **Parameters**
 
 -   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** The BlueRain apps to register
+
+### initializeAll
+
+Initialize all apps
 
 ### remove
 

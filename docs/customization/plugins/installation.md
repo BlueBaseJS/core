@@ -9,9 +9,9 @@ npm i --save bluerain-plugin-apollo
 Then import your plugins in your plugins.js file
 
 ```js
-module.exports = {
-    'apollo': require('bluerain-plugin-apollo')
-};
+const apollo = require('bluerain-plugin-apollo');
+
+module.exports = [apollo];
 ```
 
 At last, boot your client with the plugin:
@@ -19,7 +19,7 @@ At last, boot your client with the plugin:
 ```js
 import boot from 'bluerain-core';
 
-const plugins = require('../bluerain/plugins');
+const plugins = require('./plugins');
 
 boot({ plugins });
 ```
