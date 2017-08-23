@@ -1,7 +1,6 @@
 /* @flow */
 
 import { Styles } from 'reactxp';
-import { Route } from './router';
 
 import {
 	AppRegistry,
@@ -10,8 +9,6 @@ import {
 } from './index';
 
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
-
-ComponentRegistry.register('Route', Route);
 
 const Routes = () => {
 

@@ -6,7 +6,7 @@ import {
 	ComponentRegistry,
 } from './index';
 
-import { Link } from './router';
+import { Link, Route } from './router';
 
 export default () => {
 
@@ -29,6 +29,7 @@ export default () => {
 
 	/* Register Router Components */
 	ComponentRegistry.register('Link', Link);
+	ComponentRegistry.register('Route', Route);
 
 	// Broadcast Event
 	CallbackRegistry.run('bluerain.preboot.end.sync');
