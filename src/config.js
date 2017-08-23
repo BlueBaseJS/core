@@ -16,8 +16,8 @@ export type ConfigType = {
  * @namespace
  * @property {Object}		apps															Configurations for apps
  * @property {string}		appRoutePrefix [default: "/app"]	This route will be prependded to all app routes
- * @property {boolean}	debug [default: true]							Debug mode
- * @property {boolean}	development [default: true]				Development mode
+ * @property {boolean}	debug [default: true, false if NODE_ENV="production"]							Debug mode
+ * @property {boolean}	development [default: true, false if NODE_ENV="production"]				Development mode
  * @property {Object}		plugins														Configurations for plugins
  * @property {string}		title [default: "BlueRain OS"]		Main title of the app
  */
@@ -29,5 +29,10 @@ const Config: ConfigType = {
 	plugins: {},
 	title: 'BlueRain OS',
 };
+
+if (process.env.NODE_ENV === 'production') {
+	Config.debug = false;
+	Config.development = false;
+}
 
 export default Config;
