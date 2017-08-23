@@ -17,7 +17,7 @@ import Routes from './routes';
 export default () => {
 
 	// Broadcast Event
-	CallbackRegistry.run('bluerain.postinit.start.sync');
+	CallbackRegistry.run('bluerain.postinit.start');
 
 	/* Main System Component */
 	ComponentRegistry.register('BlueRainApp', () => (
@@ -45,5 +45,5 @@ export default () => {
 	ComponentRegistry.register('IndexPage', IndexPage);
 
 	// Broadcast Event
-	CallbackRegistry.run('bluerain.postinit.end.sync');
+	CallbackRegistry.run('bluerain.postinit.end');
 };

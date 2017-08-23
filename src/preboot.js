@@ -11,7 +11,7 @@ import { Link, Route } from './router';
 export default () => {
 
 	// Broadcast Event
-	CallbackRegistry.run('bluerain.preboot.start.sync');
+	CallbackRegistry.run('bluerain.preboot.start');
 
 	/* Regist ReactXP Components */
 	ComponentRegistry.register('ActivityIndicator', RX.ActivityIndicator);
@@ -32,5 +32,5 @@ export default () => {
 	ComponentRegistry.register('Route', Route);
 
 	// Broadcast Event
-	CallbackRegistry.run('bluerain.preboot.end.sync');
+	CallbackRegistry.run('bluerain.preboot.end');
 };
