@@ -6,6 +6,7 @@
 -   [boot](#boot)
 -   [bootOnServer](#bootonserver)
 -   [Config](#config)
+-   [SystemLayout](#systemlayout)
 -   [App](#app)
 -   [Plugin](#plugin)
 -   [AppRegistry](#appregistry)
@@ -80,10 +81,17 @@ Type: ConfigType
 
 -   `apps` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for apps
 -   `appRoutePrefix` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "/app"]	This route will be prependded to all app routes
--   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true]							Debug mode
--   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true]				Development mode
+-   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true, false if NODE_ENV="production"]							Debug mode
+-   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true, false if NODE_ENV="production"]				Development mode
 -   `plugins` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for plugins
 -   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "BlueRain OS"]		Main title of the app
+
+## SystemLayout
+
+Returns the main system layout view. This is the first view
+of the layout heirarcy.
+
+Returns **React.Component** The layout react component
 
 ## App
 
@@ -344,7 +352,7 @@ Register a Plugin
 
 **Parameters**
 
--   `plugin` **[Plugin](#plugin)** 
+-   `plugin` **[Plugin](#plugin)** The plugin to register
 
 ### registerMany
 
@@ -352,7 +360,7 @@ Register many plugins at once
 
 **Parameters**
 
--   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>** 
+-   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>** The array of plugins to register
 
 ### remove
 
@@ -360,7 +368,7 @@ Remove a plugin from the registry
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug plugin to remove
 
 ### get
 
@@ -368,7 +376,7 @@ Get a plugin
 
 **Parameters**
 
--   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug plugin to remove
 
 Returns **[Plugin](#plugin)** 
 

@@ -2,6 +2,7 @@
 
 import reject from 'lodash.reject';
 import parallel from 'async.parallel';
+
 /**
  * All system callbacks are stored in this registry
  * @property {Object} CallbacksTable Storage table of all callbacks
@@ -85,10 +86,6 @@ class CallbackRegistry {
 			throw new Error(`hook cannot be ${hook}`);
 		}
 
-		// Disabled this condition by design - (by ART)
-		// if (!this.CallbacksTable.hasOwnProperty(hook)) {
-		// 	throw new Error(`${hook}  is not added. First add hook to run it.`);
-		// }
 		const callbacks = Array.isArray(hook) ? hook : this.CallbacksTable[hook];
 
 		if (typeof callbacks !== 'undefined' && !!callbacks.length) {
