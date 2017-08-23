@@ -56,6 +56,24 @@ class AppRegistry {
 	}
 
 	/**
+	 * Initialize all apps
+	 */
+	initializeAll() {
+		const me = this;
+		Object.keys(me.AppsTable).forEach((key) => {
+
+			const app = me.AppsTable[key];
+			if (app.initialize) {
+				const config = ConfigRegistry.get(`apps.${app.slug}`);
+				app.config = config;
+				app.initialize(config);
+			}
+
+		});
+
+	}
+
+	/**
 	 * Remove an app from the registry
 	 * @param {string} slug The slug of the app to remove
 	 */

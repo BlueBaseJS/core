@@ -49,18 +49,19 @@ export const boot = function(options: BootOptions = {}) {
 	const debug = ConfigRegistry.get('debug');
 	const development = ConfigRegistry.get('development');
 
-	// Init
+	// Init System
 	RX.App.initialize(debug, development);
 
 	// pre-boot
 	preboot();
 
 	// Process option variables
-	AppRegistry.registerMany(apps);
 	PluginRegistry.registerMany(plugins);
+	AppRegistry.registerMany(apps);
 
-	// Initialize plugins
+	// Initialize plugins and apps
 	PluginRegistry.initializeAll();
+	AppRegistry.initializeAll();
 
 	// post-init
 	postinit();
