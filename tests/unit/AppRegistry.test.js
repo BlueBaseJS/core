@@ -23,6 +23,11 @@ describe('App registry tests', () => {
 			expect(AppRegistry.AppsTable.hasOwnProperty('hello-world')).toEqual(true);
 		});
 	});
+	describe('initialize apps', () => {
+		it('should initialize all apps', () => {
+			AppRegistry.initializeAll();
+		});
+	});
 	describe('remove app', () => {
 		it('should throw error b/c name is undefined', () => {
 			expect(() => AppRegistry.remove(undefined)).toThrow();
