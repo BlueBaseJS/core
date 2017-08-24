@@ -1,6 +1,15 @@
+/* @flow */
+import RX from 'reactxp';
+
 import { parseJsonSchema } from '../utils/JsonSchemaToReact';
 
-export default function SystemLayout() {
+/**
+ * Returns the main system layout view. This is the first view
+ * of the layout heirarcy.
+ *
+ * @returns {React.Component} The layout react component
+ */
+export default function SystemLayout() : RX.Component<*> {
 	const schema = {
 		component: 'View',
 

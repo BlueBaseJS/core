@@ -2,9 +2,7 @@
 
 All plugins in BlueRain OS extend the Plugin Class.
 
-## Example: Adding a new page
-
-**index.js**
+Let's create a simple plugin that registers a new route `/hello-world`. When this route is called, `HelloWorldComponent` component should be rendered.
 
 ```js
 import { Plugin } from 'bluerain-os';
@@ -12,9 +10,12 @@ import HelloWorldComponent from './HelloWorldComponent';
 
 class HelloWorldPlugin extends Plugin {
 
+	static pluginName = HelloWorldPlugin;
+	static slug = 'hello-world';
+	
     initialize() {
 
-        addCallback('bluerain.routes', (routes) => {
+        CallbackRegistry.add('bluerain.routes', (routes) => {
             routes.push({
                 path: '/hello-world',
                 component: HelloWorldComponent
@@ -25,17 +26,10 @@ class HelloWorldPlugin extends Plugin {
 
 export default HelloWorldPlugin;
 ```
+Notice that we also defined `pluginName ` and `slug` static properties. 
 
-**HelloWorldComponent.js**
+- `pluginName ` defines the name of the plugin. This is a required property and not providing one will throw error when you register the plugin. 
 
-```js
-// Write code here
-```
+- `slug` property defines the slug for your plugin. If you don't give one, then BlueRain will automatically create a slug by kebab casing the `pluginName` property. It's a good convention manually define the `slug`. This slug is used to get an app from the `PluginRegistry`.
 
-## Example: Modifying existing page layout
-
-**index.js**
-
-```js
-// Write code here
-```
+You can define even more Plugin properties. For a complete list, please refer to the [API Reference](../../api/reference.md).

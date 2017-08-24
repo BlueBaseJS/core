@@ -16,6 +16,7 @@ class PluginRegistry {
 
 	/**
 	 * Register a Plugin
+	 * @param {Plugin} plugin The plugin to register
 	 */
 	register(plugin: Plugin) {
 		if (plugin === undefined || plugin === null) {
@@ -37,6 +38,7 @@ class PluginRegistry {
 
 	/**
 	 * Register many plugins at once
+	 * @param {Array<Plugin>} plugins The array of plugins to register
 	 */
 	registerMany(plugins: Array<Plugin>) {
 		const me = this;
@@ -51,19 +53,22 @@ class PluginRegistry {
 
 	/**
 	 * Remove a plugin from the registry
+	 * @param {string} slug The slug plugin to remove
 	 */
-	remove(name: string) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+	remove(slug: string) {
+		if (slug === undefined || slug === null) {
+			throw new Error(`slug cannot be ${slug}`);
 		}
-		if (!this.PluginsTable[name]) {
-			throw new Error(`${name} is not registered.`);
+		if (!this.PluginsTable[slug]) {
+			throw new Error(`${slug} is not registered.`);
 		}
-		delete this.PluginsTable[name];
+		delete this.PluginsTable[slug];
 	}
 
 	/**
 	 * Get a plugin
+	 * @param {string} slug The slug plugin to remove
+	 * @return {Plugin}
 	 */
 	get(slug: string) : Plugin {
 		if (slug === undefined || slug === null) {

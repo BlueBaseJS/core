@@ -1,18 +1,10 @@
 import RX from 'reactxp';
 
-import {
-	// Registries
-	CallbackRegistry,
-	ComponentRegistry,
-} from './index';
+import { ComponentRegistry } from './index';
 
-import { Link } from './router';
+import { Link, Route } from './router';
 
 export default () => {
-
-	// Broadcast Event
-	CallbackRegistry.run('bluerain.preboot.start.sync');
-
 	/* Regist ReactXP Components */
 	ComponentRegistry.register('ActivityIndicator', RX.ActivityIndicator);
 	ComponentRegistry.register('Button', RX.Button);
@@ -29,7 +21,5 @@ export default () => {
 
 	/* Register Router Components */
 	ComponentRegistry.register('Link', Link);
-
-	// Broadcast Event
-	CallbackRegistry.run('bluerain.preboot.end.sync');
+	ComponentRegistry.register('Route', Route);
 };
