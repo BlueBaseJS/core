@@ -30,12 +30,11 @@ const subTitleStyle = RX.Styles.createViewStyle({
 }, false);
 
 /**
- * Returns the main system layout view. This is the first view
- * of the layout heirarcy.
+ * Returns the Index Page layout.
  *
  * @returns {React.Component} The layout react component
  */
-export default function SystemLayout() : RX.Component<*> {
+export default function Layout() : RX.Component<*> {
 	const schema = {
 		component: 'Page',
 		props: { style: pageStyle },
