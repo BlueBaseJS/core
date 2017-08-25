@@ -83,7 +83,7 @@ describe('App registry tests', () => {
 	describe('get component schema', () => {
 		it('should throw error b/c app is not array', () => {
 			const schema = AppRegistry.getComponentSchema();
-			expect(schema.children[0].props.path).toEqual('/app/hello-world');
+			expect(schema[0].props.path).toEqual('/app/hello-world');
 		});
 	});
 });
