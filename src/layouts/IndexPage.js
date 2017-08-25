@@ -4,6 +4,7 @@ import RX from 'reactxp';
 import { parseJsonSchema } from '../utils/JsonSchemaToReact';
 
 const pageStyle = RX.Styles.createViewStyle({
+	justifyContent: 'center',
 	padding: 20,
 	textAlign: 'center',
 }, false);
@@ -17,11 +18,15 @@ const titleStyle = RX.Styles.createViewStyle({
 	color: '#fff',
 	fontSize: 68,
 	marginBottom: 20,
-	paddingLeft: 20,
-	paddingRight: 20,
+	padding: 20,
 	shadowOffset: { height: 5, width: 0 },
 	shadowRadius: 15,
 	shadowColor: 'rgba(0,0,0,.3)'
+}, false);
+
+const subTitleStyle = RX.Styles.createViewStyle({
+	color: 'rgb(150, 150, 150)',
+	marginBottom: 20,
 }, false);
 
 /**
@@ -43,6 +48,7 @@ export default function SystemLayout() : RX.Component<*> {
 			}]
 		}, {
 			component: 'Text',
+			props: { style: subTitleStyle },
 			text: 'Welcome to BlueRain OS!',
 		}, {
 			component: 'Link',
