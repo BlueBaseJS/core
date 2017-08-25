@@ -1,6 +1,5 @@
 /* @flow */
 
-import { Styles } from 'reactxp';
 import kebabCase from 'lodash.kebabcase';
 
 import App from '../models/App';
@@ -101,7 +100,7 @@ class AppRegistry {
 	 *
 	 * @returns {Object} JSON Schema
 	 */
-	getComponentSchema() : {} {
+	getComponentSchema() : Array<*> {
 		const apps = this.getApps();
 
 		const appRoutes = [];
@@ -123,16 +122,6 @@ class AppRegistry {
 		}
 
 		return appRoutes;
-		// const style = Styles.createViewStyle({
-		// 	width: '100%',
-		// 	height: '100%',
-		// }, false);
-
-		// return {
-		// 	component: 'Switch',
-		// 	props: { style },
-		// 	children: appRoutes
-		// };
 	}
 }
 
