@@ -122,16 +122,17 @@ class AppRegistry {
 			});
 		}
 
-		const style = Styles.createViewStyle({
-			width: '100%',
-			height: '100%',
-		}, false);
+		return appRoutes;
+		// const style = Styles.createViewStyle({
+		// 	width: '100%',
+		// 	height: '100%',
+		// }, false);
 
-		return {
-			component: 'View',
-			props: { style },
-			children: appRoutes
-		};
+		// return {
+		// 	component: 'Switch',
+		// 	props: { style },
+		// 	children: appRoutes
+		// };
 	}
 }
 

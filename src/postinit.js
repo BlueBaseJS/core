@@ -11,7 +11,9 @@ import {
 
 import { getProvider, createStore } from './redux';
 
+import Page from './layouts/Page';
 import IndexPage from './layouts/IndexPage';
+import FourOFourPage from './layouts/404Page';
 import Routes from './routes';
 
 export default () => {
@@ -39,5 +41,7 @@ export default () => {
 	});
 
 	// Pages
+	ComponentRegistry.register('Page', Page);
 	ComponentRegistry.register('IndexPage', IndexPage);
+	ComponentRegistry.register('404Page', FourOFourPage);
 };
