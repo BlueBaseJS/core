@@ -49,15 +49,6 @@ export default function Layout() : RX.Component<*> {
 			component: 'Text',
 			props: { style: subTitleStyle },
 			text: 'Welcome to BlueRain OS!',
-		}, {
-			component: 'Link',
-			props: {
-				to: '/app/hello-world'
-			},
-			children: [{
-				component: 'Text',
-				text: 'Hello World App!',
-			}]
 		}]
 	};
 
