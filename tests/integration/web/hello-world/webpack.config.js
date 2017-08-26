@@ -31,6 +31,10 @@ const config = {
 				loader: 'file-loader'
 			},
       { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
 		]
 	}
 };

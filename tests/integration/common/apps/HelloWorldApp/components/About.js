@@ -1,6 +1,6 @@
 import React from 'react';
 import { Styles, View, Text, Button } from 'reactxp';
-
+import { FormattedMessage } from 'react-intl';
 import  { history } from '../../../../../../src/router';
 import pageStyle from './pageStyles';
 
@@ -20,7 +20,10 @@ export class About extends React.Component {
 	render() {
 		return (
   <View style={pageStyle}>
-    <Text>The About Page</Text>
+		<FormattedMessage
+			id="hello.about"
+			defaultMessage="The About Page"
+		/>
     {/* <p>User ID: {this.props.params.id}</p> */}
     <Button style={buttonStyles} onPress={this.onNavigateHome}>Click Me!</Button>
   </View>
