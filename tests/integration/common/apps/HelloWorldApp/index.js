@@ -1,7 +1,6 @@
 import React from 'react';
-
 import  { Route, Redirect, Switch } from '../../../../../src/router';
-import  { App, ComponentRegistry, CallbackRegistry } from '../../../../../src/';
+import  { App, CallbackRegistry, ComponentRegistry } from '../../../../../src/';
 
 import Header from './components/Header';
 import Home from './components/Home';
