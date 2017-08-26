@@ -1,16 +1,9 @@
 language: node_js
 node_js:
   - "6"
-before_install:
-  - npm i -g npm
-  - npm install -g codecov
 jobs:
   include:
-    - stage: Install
-      script: npm i
-    - stage: ES Lint
-      script: npm run lint
-    - stage: Flow
-      script: npm run flow
+    - stage: ES Lint & Flow
+      script: npm run lint && npm run flow
     - stage: Unit Tests
-      script: npm test && npm run coverage
+      script: npm test && npm install -g codecov && npm run coverage

@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'reactxp';
 import  { Route, Redirect, Switch } from '../../../../../src/router';
 import  { App, CallbackRegistry, ComponentRegistry } from '../../../../../src/';
 
@@ -19,8 +18,8 @@ class HelloWorldApp extends App {
 	static appName = 'Hello World';
 
 	render() {
-    const { match } = this.props;
-    const Page = ComponentRegistry.get('Page');
+		const { match } = this.props;
+		const Page = ComponentRegistry.get('Page');
 		return (
   <Page>
     <Header match={match} appName={this.constructor.appName} />
