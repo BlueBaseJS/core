@@ -6,9 +6,7 @@ before_install:
   - npm install -g codecov
 jobs:
   include:
+    - stage: ES Lint & Flow
+      script: npm run lint && npm run flow
     - stage: Unit Tests
       script: npm test && npm run coverage
-    - stage: ES Lint
-      script: npm run lint
-    - stage: Flow
-      script: npm run flow
