@@ -230,7 +230,7 @@ All system components are stored in this registry
 
 ### register
 
-Register a Vulcan component with a name, a raw component than can be extended
+Register a component with a name, a raw component than can be extended
 and one or more optional higher order components.
 
 **Parameters**
@@ -281,7 +281,7 @@ Returns **ReactElement&lt;any>**
 
 ### replace
 
-Replace a Vulcan component with the same name with a new component or
+Replace a component with the same name with a new component or
 an extension of the raw component and one or more optional higher order components.
 This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
 

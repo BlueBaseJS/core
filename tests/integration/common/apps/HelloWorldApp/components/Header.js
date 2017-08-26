@@ -29,9 +29,19 @@ export default ({ match, appName }) => {
 		props: { style: headerStyle },
 		children: [
 			{
-				component: 'Text',
-				props: { style: titleStyle },
-				text: `Welcome to the ${appName} app!`
+				component:'View',
+				props:{ style: titleStyle },
+				children: [
+          {
+            component: 'FormattedMessage',
+            props: {
+              style: titleStyle,
+              id: 'hello.header.title',
+              defaultMessage: 'Welcome to the {appName}',
+              values: { appName }
+            }
+          }
+				]
 			},
 			{
 				component: 'View',
@@ -41,25 +51,34 @@ export default ({ match, appName }) => {
 						component: 'Link',
 						props: { to: `${match.url}`, style: navItemStyle },
 						children: [{
-							component: 'Text',
-							text: 'Home'
+							component: 'FormattedMessage',
+							props:{
+								id:'hello.header.homeLinkText',
+								defaultMessage:'Home d'
+							}
 						}]
 					},
 					{
 						component: 'Link',
 						props: { to: `${match.url}/about`, style: navItemStyle },
 						children: [{
-							component: 'Text',
-							text: 'About'
-						}]
+              component: 'FormattedMessage',
+              props:{
+                id:'hello.header.aboutLinkText',
+                defaultMessage:'about'
+              }
+            }]
 					},
 					{
 						component: 'Link',
 						props: { to: `${match.url}/contact`, style: navItemStyle },
 						children: [{
-							component: 'Text',
-							text: 'Contact'
-						}]
+              component: 'FormattedMessage',
+              props:{
+                id:'hello.header.contactLinkText',
+                defaultMessage:'Conta'
+              }
+            }]
 					}
 				]
 			}

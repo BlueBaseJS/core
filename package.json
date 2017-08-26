@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "jest",
-    "coverage": "codecov",
+    "coverage": "npm run codecov-coverage && npm run codacy-coverage",
+    "codecov-coverage": "codecov",
+    "codacy-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "start": " webpack-dev-server --content-base tests/integration/web/hello-world/src --config ./tests/integration/web/hello-world/webpack.config.js --inline --hot --history-api-fallback",
     "demo:todo": " webpack-dev-server --content-base tests/integration/web/todo/src --config ./tests/integration/web/todo/webpack.config.js --inline --hot --history-api-fallback",
     "build": "rm -rf dist && babel -D src --out-dir dist",
@@ -42,6 +44,7 @@
     "lodash.set": "^4.3.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-intl": "^2.3.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.2",
     "react-router-native": "^4.1.1",
@@ -64,6 +67,7 @@
     "babel-preset-stage-2": "6.18.0",
     "babel-register": "6.18.0",
     "classnames": "^2.2.5",
+    "codacy-coverage": "^2.0.2",
     "documentation": "^5.2.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^15.1.0",
@@ -74,6 +78,8 @@
     "eslint-plugin-react": "^7.1.0",
     "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "json-loader": "^0.5.7",
     "prop-types": "^15.5.10",
     "react-apollo": "^1.4.14",
     "subscriptions-transport-ws": "^0.8.2",
@@ -83,8 +89,8 @@
   },
   "jest": {
     "testRegex": "\\.test\\.js$",
-    "rootDir": "./tests/unit/",
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "collectCoverageFrom" : ["src/**.{js,jsx}"]
   }
 }

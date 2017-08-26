@@ -11,8 +11,8 @@ const pageStyle = RX.Styles.createViewStyle({
 
 const titleStyle = RX.Styles.createViewStyle({
 	alignSelf: 'center',
-	backgroundColor: 'rgba(0,123,255,1)',
-	borderColor: 'rgba(0,123,255,1)',
+	backgroundColor: 'rgb(220,53,69)',
+	borderColor: 'rgb(220,53,69)',
 	borderRadius: 10,
 	borderWidth: 1,
 	color: '#fff',
@@ -27,10 +27,11 @@ const titleStyle = RX.Styles.createViewStyle({
 const subTitleStyle = RX.Styles.createViewStyle({
 	color: 'rgb(150, 150, 150)',
 	marginBottom: 20,
+	overflow: 'initial'
 }, false);
 
 /**
- * Returns the Index Page layout.
+ * Returns the 404 Page layout.
  *
  * @returns {React.Component} The layout react component
  */
@@ -43,12 +44,12 @@ export default function Layout() : RX.Component<*> {
 			props: { style: titleStyle },
 			children: [{
 				component: 'Text',
-				text: 'BR'
+				text: '404'
 			}]
 		}, {
 			component: 'Text',
 			props: { style: subTitleStyle },
-			text: 'Welcome to BlueRain OS!',
+			text: 'Page not found!',
 		}]
 	};
 

@@ -2,7 +2,7 @@ import RX from 'reactxp';
 
 import { ComponentRegistry } from './index';
 
-import { Link, Route } from './router';
+import { Link, Route, Switch } from './router';
 
 export default () => {
 	/* Regist ReactXP Components */
@@ -22,4 +22,5 @@ export default () => {
 	/* Register Router Components */
 	ComponentRegistry.register('Link', Link);
 	ComponentRegistry.register('Route', Route);
+	ComponentRegistry.register('Switch', Switch);
 };
