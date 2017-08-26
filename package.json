@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "jest",
-    "coverage": "codecov",
+    "coverage": "codecov-coverage && codacy-coverage",
+    "codecov-coverage": "codecov",
+    "codacy-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "start": " webpack-dev-server --content-base tests/integration/web/hello-world/src --config ./tests/integration/web/hello-world/webpack.config.js --inline --hot --history-api-fallback",
     "demo:todo": " webpack-dev-server --content-base tests/integration/web/todo/src --config ./tests/integration/web/todo/webpack.config.js --inline --hot --history-api-fallback",
     "build": "rm -rf dist && babel -D src --out-dir dist",
@@ -85,8 +87,8 @@
   },
   "jest": {
     "testRegex": "\\.test\\.js$",
-    "rootDir": "./tests/unit/",
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "collectCoverageFrom" : ["src/**.{js,jsx}"]
   }
 }

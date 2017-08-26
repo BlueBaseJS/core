@@ -6,11 +6,9 @@ before_install:
   - npm install -g codecov
 jobs:
   include:
-    - stage: Install
-      script: npm i
+    - stage: Unit Tests
+      script: npm test && npm run coverage
     - stage: ES Lint
       script: npm run lint
     - stage: Flow
       script: npm run flow
-    - stage: Unit Tests
-      script: npm test && npm run coverage && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
