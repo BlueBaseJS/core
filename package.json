@@ -64,6 +64,7 @@
     "babel-preset-stage-2": "6.18.0",
     "babel-register": "6.18.0",
     "classnames": "^2.2.5",
+    "codacy-coverage": "^2.0.2",
     "documentation": "^5.2.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^15.1.0",

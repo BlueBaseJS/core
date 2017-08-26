@@ -13,4 +13,4 @@ jobs:
     - stage: Flow
       script: npm run flow
     - stage: Unit Tests
-      script: npm test && npm run coverage
+      script: npm test && npm run coverage && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
