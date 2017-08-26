@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest",
-    "coverage": "codecov-coverage && codacy-coverage",
+    "coverage": "npm run codecov-coverage && npm run codacy-coverage",
     "codecov-coverage": "codecov",
     "codacy-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "start": " webpack-dev-server --content-base tests/integration/web/hello-world/src --config ./tests/integration/web/hello-world/webpack.config.js --inline --hot --history-api-fallback",
