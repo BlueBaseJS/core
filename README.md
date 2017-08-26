@@ -1,5 +1,5 @@
 
-> ### ⚠️ This is a work in progress and is not fit for production.
+> ⚠️ This is a work in progress and the API is not stable. May not be fit for use in production.
 
 # BlueRain OS
 
