@@ -1,9 +1,9 @@
 /**
  * Created by umair on 8/22/17.
  */
-import InternationalizationPlugin from '../../../../common/plugins/InternationalizationPlugin/';
+import InternationalizationPlugin from '../../../../../../src/plugins/InternationalizationPlugin';
 
 const plugins = [
-  InternationalizationPlugin
+	InternationalizationPlugin
 ];
 export default plugins;

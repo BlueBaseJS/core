@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
-import { Plugin, CallbackRegistry, ComponentRegistry } from '../../../../../src/';
+import { Plugin, CallbackRegistry, ComponentRegistry } from '../../';
 
 const withInternationalization = (App, locale) => (props) => {
 	const messages = CallbackRegistry.run(
