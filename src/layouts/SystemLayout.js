@@ -11,6 +11,8 @@ const defaultStyle = RX.Styles.createViewStyle({
 
 class SystemLayout extends RX.Component {
 
+	onLayout: Function;
+
 	constructor(props) {
 		super(props);
 		this.onLayout = this.onLayout.bind(this);
