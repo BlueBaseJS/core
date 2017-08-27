@@ -2,7 +2,7 @@
 import React from 'react';
 import RX from 'reactxp';
 
-import { withWindowInfo } from '../plugins/window';
+import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
 const defaultStyle = RX.Styles.createViewStyle({
 	width: '100%',
@@ -21,8 +21,12 @@ class SystemLayout extends RX.Component {
 	 * update `state.bluerain.window` object.
 	 */
 	onLayout() {
-		const dimentions = RX.UserInterface.measureWindow();
-		this.props.setWindowDimentions(dimentions.width, dimentions.height);
+		const newDimentions = RX.UserInterface.measureWindow();
+		const oldDimentions = this.props.window;
+
+		if (newDimentions.width !== oldDimentions.width || newDimentions.height !== oldDimentions.height) {
+			this.props.setWindowDimentions(newDimentions.width, newDimentions.height);
+		}
 	}
 
 	render() {
