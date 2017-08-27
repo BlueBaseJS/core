@@ -20,6 +20,7 @@ import {
 import registerComponents from './registerComponents';
 import postinit from './postinit';
 import defaultConfigs, { type ConfigType } from './config';
+import defaultPlugins from './plugins/defaultPlugins';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
@@ -63,6 +64,7 @@ export const boot = function(options: BootOptions = {}) {
 	CallbackRegistry.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
+	PluginRegistry.registerMany(defaultPlugins);
 	PluginRegistry.registerMany(plugins);
 	CallbackRegistry.run('bluerain.system.plugins.registered');
 
