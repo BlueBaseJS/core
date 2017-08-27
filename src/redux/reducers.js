@@ -6,7 +6,7 @@ import { CallbackRegistry } from '../index';
 export default () => {
 
 	const bluerainReducers = CallbackRegistry.run('bluerain.redux.reducers.bluerain', {
-		stub: (state = {}) => state
+		// stub: (state = {}) => state
 	});
 
 	let reducers = {
