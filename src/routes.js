@@ -6,7 +6,6 @@ import {
 	ComponentRegistry,
 } from './index';
 
-import SystemLayout from './layouts/SystemLayout';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 const Routes = () => {
@@ -14,7 +13,7 @@ const Routes = () => {
 	const appRoutes = AppRegistry.getComponentSchema();
 
 	const routes = {
-		component: SystemLayout,
+		component: 'SystemLayout',
 		children: [
 			{
 				component: 'Switch',

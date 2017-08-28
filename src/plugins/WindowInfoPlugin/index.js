@@ -17,6 +17,8 @@ export default class WindowInfoPlugin extends Plugin {
 			});
 		});
 	}
+
+	static withWindowInfo = withWindowInfo;
 }
 
 export {

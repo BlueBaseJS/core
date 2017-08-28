@@ -5,6 +5,7 @@ import  { App, CallbackRegistry, ComponentRegistry } from '../../../../../src/';
 import Header from './components/Header';
 import Home from './components/Home';
 import { About } from './components/About';
+import Responsive from './components/Responsive';
 import Contact from './components/Contact';
 
 CallbackRegistry.add('bluerain.intl.messages', function eng(messages) {
@@ -26,6 +27,7 @@ class HelloWorldApp extends App {
     <Switch>
       <Route exact path={`${match.url}`} component={Home} />
       <Route path={`${match.url}/about`} component={About} />
+      <Route path={`${match.url}/responsive`} component={Responsive} />
       <Route path={`${match.url}/contact`} component={Contact} />
       <Redirect path="*" to={`${match.url}`} />
     </Switch>

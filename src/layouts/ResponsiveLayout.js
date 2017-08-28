@@ -9,7 +9,7 @@ class ResponsiveLayout extends RX.Component {
 
 	render() {
 
-		const { window, default: def, xs, xm, md, lg, xl, ...props } = this.props;
+		const { window, default: def, xs, xm, md, lg, xl, ...props } = this.props; // eslint-disable-line no-unused-vars
 		const Component = (this.props[window.size]) ? this.props[window.size] : def;
 
 		return (<Component {...props} />);
@@ -17,12 +17,12 @@ class ResponsiveLayout extends RX.Component {
 }
 
 ResponsiveLayout.propTypes = {
-	default: PropTypes.element.isRequired,
-	xs: PropTypes.element,
-	sm: PropTypes.element,
-	md: PropTypes.element,
-	lg: PropTypes.element,
-	xl: PropTypes.element,
+	default: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+	xs: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+	sm: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+	md: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+	lg: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+	xl: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 
 export default withWindowInfo(ResponsiveLayout);
