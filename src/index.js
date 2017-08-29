@@ -11,5 +11,11 @@ export ComponentRegistry from './registries/ComponentRegistry';
 export ConfigRegistry from './registries/ConfigRegistry';
 export PluginRegistry from './registries/PluginRegistry';
 
+// export const blueRain = {
+//   apps:AppRegistry,
+//   plugins: PluginRegistry,
+//   filters: CallbackRegistry,
+//   events: '',
+// };
 // Router
 export * from './router';

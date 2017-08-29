@@ -1,5 +1,5 @@
 
-import CallbackRegistry from '../../registries/CallbackRegistry';
+import CallbackRegistry from '../../registries/FilterRegistry';
 import Plugin from '../../models/Plugin';
 
 import reducer from './reducer';
