@@ -6,7 +6,7 @@ export Plugin from './models/Plugin';
 
 // Registries
 export AppRegistry from './registries/AppRegistry';
-export CallbackRegistry from './registries/CallbackRegistry';
+export CallbackRegistry from './registries/FilterRegistry';
 export ComponentRegistry from './registries/ComponentRegistry';
 export ConfigRegistry from './registries/ConfigRegistry';
 export PluginRegistry from './registries/PluginRegistry';
