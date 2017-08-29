@@ -2,9 +2,6 @@ import React, { PropTypes } from 'react';
 import ComponentRegistry from '../../src/registries/ComponentRegistry';
 import { parseJsonSchema } from '../../src/utils/JsonSchemaToReact';
 class Paragraph extends React.Component {
-	static propTypes = {
-		paragraph: PropTypes.string
-	};
 	render() {
 		return (
   <p>
