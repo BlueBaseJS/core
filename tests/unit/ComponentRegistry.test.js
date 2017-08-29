@@ -105,16 +105,6 @@ describe('Component Registry test specifications', () => {
         'Component test not registered.'
       );
 		});
-		it('should throw error b/c hoc null', () => {
-			expect(() => ComponentRegistry.addHOCs('test', null)).toThrow(
-        'HOCs not provided.'
-      );
-		});
-		it('should throw error b/c hoc undefined', () => {
-			expect(() => ComponentRegistry.addHOCs('test', undefined)).toThrow(
-        'HOCs not provided.'
-      );
-		});
 		it('should throw error b/c hook null', () => {
 			expect(() => ComponentRegistry.addHOCs(null, () => Heading)).toThrow();
 		});

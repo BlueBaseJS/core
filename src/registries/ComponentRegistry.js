@@ -53,9 +53,6 @@ class ComponentRegistry {
 		if (name === undefined || name === null) {
 			throw new Error(`name cannot be ${name}`);
 		}
-		if (hocs.includes(undefined) || hocs.includes(null)) {
-			throw new Error('HOCs not provided.');
-		}
 		if (!Object.prototype.hasOwnProperty.call(this.ComponentsTable, name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
