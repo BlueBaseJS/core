@@ -4,7 +4,7 @@
 import PluginRegistry from '../../src/registries/PluginRegistry';
 import Plugin from '../../src/models/Plugin';
 import ConfigRegistry from '../../src/registries/ConfigRegistry';
-import CallbackRegistry from '../../src/registries/CallbackRegistry';
+import FilterRegistry from '../../src/registries/FilterRegistry';
 
 describe('Plugin registry tests', () => {
   // tests for registering plugin
@@ -180,14 +180,14 @@ describe('Plugin registry tests', () => {
 					return <div>hello world</div>;
 				}
 				static initialize(config) {
-					CallbackRegistry.add('plugin.test.initialize.hook', function abc() {
+					FilterRegistry.add('plugin.test.initialize.hook', function abc() {
 						return config + 34;
 					});
 				}
       }
 			PluginRegistry.register(HelloReactplugin);
 			PluginRegistry.initializeAll();
-			expect(CallbackRegistry.run('plugin.test.initialize.hook')).toEqual(
+			expect(FilterRegistry.run('plugin.test.initialize.hook')).toEqual(
         '334'
       );
 		});

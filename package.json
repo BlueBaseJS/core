@@ -36,6 +36,7 @@
   "homepage": "https://github.com/BlueEastCode/bluerain-os#readme",
   "dependencies": {
     "async.parallel": "^0.5.2",
+    "eventemitter3": "^2.0.3",
     "history": "^4.6.3",
     "lodash.get": "^4.4.2",
     "lodash.kebabcase": "^4.1.1",
@@ -91,6 +92,8 @@
     "testRegex": "\\.test\\.js$",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "collectCoverageFrom" : ["src/**.{js,jsx}"]
+    "collectCoverageFrom": [
+      "src/**.{js,jsx}"
+    ]
   }
 }

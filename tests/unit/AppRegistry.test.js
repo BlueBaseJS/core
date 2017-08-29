@@ -2,7 +2,7 @@ import React from 'react';
 import AppRegistry from '../../src/registries/AppRegistry';
 import App from '../../src/models/App';
 import   ConfigRegistry from '../../src/registries/ConfigRegistry';
-import   CallbackRegistry from '../../src/registries/CallbackRegistry';
+import   FilterRegistry from '../../src/registries/FilterRegistry';
 
 class HelloApp extends App {
 	static appName = 'Hello World';
@@ -259,12 +259,12 @@ describe('App registry tests', () => {
 					return <div>hello world</div>;
 				}
 				static initialize(config) {
-					CallbackRegistry.add('test.initialize.hook', function abc() { return config + 34; });
+					FilterRegistry.add('test.initialize.hook', function abc() { return config + 34; });
 				}
        }
 			AppRegistry.register(HelloReactApp);
 			AppRegistry.initializeAll();
-			expect(CallbackRegistry.run('test.initialize.hook')).toEqual('334');
+			expect(FilterRegistry.run('test.initialize.hook')).toEqual('334');
 		});
 	});
 	describe('get component schema', () => {
