@@ -91,6 +91,8 @@
     "testRegex": "\\.test\\.js$",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "collectCoverageFrom" : ["src/**.{js,jsx}"]
+    "collectCoverageFrom": [
+      "src/**.{js,jsx}"
+    ]
   }
 }
