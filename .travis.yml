@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "6"
+jobs:
+  include:
+    - stage: ES Lint & Flow
+      script: npm run lint && npm run flow
+    - stage: Unit Tests
+      script: npm test && npm install -g codecov && npm run coverage

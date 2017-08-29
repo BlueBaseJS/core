@@ -5,9 +5,18 @@
 
 ## API
 
-* [Callbacks](api/callbacks.md)
+* [Reference](api/reference.md)
+
+## Guides
+* [Callbacks](guides/callbacks.md)
+* [Components](guides/components.md)
 
 ## Customisation
+
+* [Apps](customization/apps/README.md)
+  * [Installation](customization/apps/installation.md)
+  * [Configuration](customization/apps/configuration.md)
+  * [Creating an App](customization/apps/creating-an-app)
 
 * [Plugins](customization/plugins/README.md)
   * [Installation](customization/plugins/installation.md)
