@@ -21,12 +21,12 @@ export const BlueRain = {
 };
 
 //This will have ReactXPApi as objects
-export const ReactXP = {
-  location: RX.Location,
-  network: RX.Network,
-  platform: RX.Platform,
-  app: RX.App
-};
+// export const ReactXP = {
+//   location: RX.Location,
+//   network: RX.Network,
+//   platform: RX.Platform,
+//   app: RX.App
+// };
 
 // Router
 export * from './router';
