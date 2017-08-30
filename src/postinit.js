@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
 	// Registries
-	CallbackRegistry,
+	BlueRain,
 	ComponentRegistry,
 
 	// Router
@@ -36,7 +36,7 @@ export default () => {
 	);
 
 	// Add redux to main system app
-	CallbackRegistry.add('bluerain.system.app', function AddReduxToSystemApp(App) {
+	BlueRain.filters.add('bluerain.system.app', function AddReduxToSystemApp(App) {
 		return withRedux(App);
 	});
 

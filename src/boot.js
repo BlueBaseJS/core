@@ -7,10 +7,8 @@ import {
 	// Models
 	App,
 	Plugin,
-
 	// Registries
   BlueRain,
-	CallbackRegistry,
 	ComponentRegistry,
 	ConfigRegistry,
 } from './index';
@@ -42,14 +40,14 @@ export const boot = function(options: BootOptions = {}) {
 	const { apps, plugins, config } = options;
 
 	// =[ System Lifecycle Event ]= Boot Start
-	CallbackRegistry.run('bluerain.system.boot.start');
+	BlueRain.filters.run('bluerain.system.boot.start');
 
 	// Initialize all configs
 	ConfigRegistry.register(defaultConfigs);
 	ConfigRegistry.register(config);
 
 	// =[ System Lifecycle Event ]= Configurations Loaded
-	CallbackRegistry.run('bluerain.system.configurations.loaded');
+	BlueRain.filters.run('bluerain.system.configurations.loaded');
 
 	// Get Enviornment Options
 	const debug = ConfigRegistry.get('debug');
@@ -60,37 +58,37 @@ export const boot = function(options: BootOptions = {}) {
 
 	// =[ System Lifecycle Event ]= Components Registered
 	registerComponents();
-	CallbackRegistry.run('bluerain.system.components.registered');
+	BlueRain.filters.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
   BlueRain.plugins.registerMany(defaultPlugins);
   BlueRain.plugins.registerMany(plugins);
-	CallbackRegistry.run('bluerain.system.plugins.registered');
+	BlueRain.filters.run('bluerain.system.plugins.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Initialized
   BlueRain.plugins.initializeAll();
-	CallbackRegistry.run('bluerain.system.plugins.initialized');
+	BlueRain.filters.run('bluerain.system.plugins.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Registered
   BlueRain.apps.registerMany(apps);
-	CallbackRegistry.run('bluerain.system.apps.registered');
+	BlueRain.filters.run('bluerain.system.apps.registered');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
   BlueRain.apps.initializeAll();
-	CallbackRegistry.run('bluerain.system.apps.initialized');
+	BlueRain.filters.run('bluerain.system.apps.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
 	postinit();
-	CallbackRegistry.run('bluerain.system.initialized');
+  BlueRain.filters.run('bluerain.system.initialized');
 
 	// Set View
 	let SystemApp = ComponentRegistry.get('BlueRainApp');
-	SystemApp = CallbackRegistry.run('bluerain.system.app', SystemApp);
+	SystemApp = BlueRain.filters.run('bluerain.system.app', SystemApp);
 
 	RX.UserInterface.setMainView(( <SystemApp /> ));
 
 	// =[ System Lifecycle Event ]= Boot End
-	CallbackRegistry.run('bluerain.system.boot.end');
+	BlueRain.filters.run('bluerain.system.boot.end');
 };
 
 /**

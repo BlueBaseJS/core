@@ -1,14 +1,14 @@
 import React from 'react';
-import  { App, CallbackRegistry } from '../../../../../src/';
+import  { App, BlueRain } from '../../../../../src/';
 
 import ToDoContainer from './containers/App';
 import todoReducers, { initialState } from './reducers/todos';
 
-CallbackRegistry.add('bluerain.redux.reducers', function addTodoReducers(reducers) {
+BlueRain.filters.add('bluerain.redux.reducers', function addTodoReducers(reducers) {
 	return Object.assign({}, reducers, { todos: todoReducers });
 });
 
-CallbackRegistry.add('bluerain.redux.initialState', function addTodoInitialState(state) {
+BlueRain.filters.add('bluerain.redux.initialState', function addTodoInitialState(state) {
 	return Object.assign({}, state, { todos: initialState });
 });
 

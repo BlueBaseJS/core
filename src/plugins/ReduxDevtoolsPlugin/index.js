@@ -1,5 +1,5 @@
 import { compose } from 'redux';
-import  { Plugin, CallbackRegistry } from '../../';
+import  { Plugin, BlueRain } from '../../';
 
 function addReduxDevTools(composed, enhancers) {
 	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -12,7 +12,7 @@ class ReduxDevtoolsPlugin extends Plugin {
 	static slug = 'redux-devtools';
 
 	static initialize() {
-		CallbackRegistry.add('bluerain.redux.composed', addReduxDevTools);
+		BlueRain.filters.add('bluerain.redux.composed', addReduxDevTools);
 	}
 }
 

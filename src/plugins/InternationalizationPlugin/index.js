@@ -3,10 +3,10 @@
  */
 import React from 'react';
 import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
-import { Plugin, CallbackRegistry, ComponentRegistry } from '../../';
+import { Plugin, BlueRain, ComponentRegistry } from '../../';
 
 const withInternationalization = (App, locale) => (props) => {
-	const messages = CallbackRegistry.run(
+	const messages = BlueRain.filters.run(
     'bluerain.intl.messages',
     {}
   );
@@ -29,7 +29,7 @@ class InternationalizationPlugin extends Plugin {
 		ComponentRegistry.register('FormattedMessage', FormattedMessage);
 		addLocaleData(localeData);
     // Add internationalization to main system app
-		CallbackRegistry.add(
+		BlueRain.filters.add(
       'bluerain.system.app',
       function AddInternationalizationToSystemApp(App) {
 	return withInternationalization(App, locale);

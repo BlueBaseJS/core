@@ -2,7 +2,6 @@
 
 import {
   BlueRain,
-	CallbackRegistry,
 	ComponentRegistry,
 } from './index';
 
@@ -39,7 +38,7 @@ const Routes = () => {
 		]
 	};
 
-	return parseJsonSchema(CallbackRegistry.run('bluerain.system.routes', routes));
+	return parseJsonSchema(BlueRain.filters.run('bluerain.system.routes', routes));
 };
 
 export default Routes;
