@@ -32,15 +32,15 @@ export default ({ match, appName }) => {
 				component:'View',
 				props:{ style: titleStyle },
 				children: [
-          {
-            component: 'FormattedMessage',
-            props: {
-              style: titleStyle,
-              id: 'hello.header.title',
-              defaultMessage: 'Welcome to the {appName}',
-              values: { appName }
-            }
-          }
+					{
+						component: 'FormattedMessage',
+						props: {
+							style: titleStyle,
+							id: 'hello.header.title',
+							defaultMessage: 'Welcome to the {appName}',
+							values: { appName }
+						}
+					}
 				]
 			},
 			{
@@ -62,23 +62,31 @@ export default ({ match, appName }) => {
 						component: 'Link',
 						props: { to: `${match.url}/about`, style: navItemStyle },
 						children: [{
-              component: 'FormattedMessage',
-              props:{
-                id:'hello.header.aboutLinkText',
-                defaultMessage:'about'
-              }
-            }]
+							component: 'FormattedMessage',
+							props:{
+								id:'hello.header.aboutLinkText',
+								defaultMessage:'about'
+							}
+						}]
+					},
+					{
+						component: 'Link',
+						props: { to: `${match.url}/responsive`, style: navItemStyle },
+						children: [{
+							component: 'View',
+							text: 'Responsive'
+						}]
 					},
 					{
 						component: 'Link',
 						props: { to: `${match.url}/contact`, style: navItemStyle },
 						children: [{
-              component: 'FormattedMessage',
-              props:{
-                id:'hello.header.contactLinkText',
-                defaultMessage:'Conta'
-              }
-            }]
+							component: 'FormattedMessage',
+							props:{
+								id:'hello.header.contactLinkText',
+								defaultMessage:'Conta'
+							}
+						}]
 					}
 				]
 			}

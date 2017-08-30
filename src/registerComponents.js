@@ -1,8 +1,9 @@
 import RX from 'reactxp';
 
 import { ComponentRegistry } from './index';
-
 import { Link, Route, Switch } from './router';
+import SystemLayout from './layouts/SystemLayout';
+import ResponsiveLayout from './layouts/ResponsiveLayout';
 
 export default () => {
 	/* Regist ReactXP Components */
@@ -23,4 +24,8 @@ export default () => {
 	ComponentRegistry.register('Link', Link);
 	ComponentRegistry.register('Route', Route);
 	ComponentRegistry.register('Switch', Switch);
+
+	/* Register Layout Components */
+	ComponentRegistry.register('SystemLayout', SystemLayout);
+	ComponentRegistry.register('ResponsiveLayout', ResponsiveLayout);
 };
