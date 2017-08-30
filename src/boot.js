@@ -2,16 +2,7 @@
 
 import React from 'react';
 import RX from 'reactxp';
-
-import {
-	// Models
-	App,
-	Plugin,
-	// Registries
-  BlueRain,
-	ComponentRegistry,
-	ConfigRegistry,
-} from './index';
+import BR from './index';
 
 
 import registerComponents from './registerComponents';
@@ -23,9 +14,9 @@ import defaultPlugins from './plugins/defaultPlugins';
  * Options object that `boot` and `bootOnServer` methods expect.
  */
 type BootOptions = {
-	apps?: Array<App>,
+	apps?: Array<BR.App>,
 	config?: ConfigType,
-	plugins?: Array<Plugin>,
+	plugins?: Array<BR.Plugin>,
 	debug?: boolean,
 	development?: boolean,
 	ssrMode?: boolean
@@ -40,55 +31,55 @@ export const boot = function(options: BootOptions = {}) {
 	const { apps, plugins, config } = options;
 
 	// =[ System Lifecycle Event ]= Boot Start
-	BlueRain.filters.run('bluerain.system.boot.start');
+	BR.Filters.run('bluerain.system.boot.start');
 
 	// Initialize all configs
-	ConfigRegistry.register(defaultConfigs);
-	ConfigRegistry.register(config);
+	BR.Configs.register(defaultConfigs);
+	BR.Configs.register(config);
 
 	// =[ System Lifecycle Event ]= Configurations Loaded
-	BlueRain.filters.run('bluerain.system.configurations.loaded');
+	BR.Filters.run('bluerain.system.configurations.loaded');
 
 	// Get Enviornment Options
-	const debug = ConfigRegistry.get('debug');
-	const development = ConfigRegistry.get('development');
+	const debug = BR.Configs.get('debug');
+	const development = BR.Configs.get('development');
 
 	// Init System
 	RX.App.initialize(debug, development);
 
 	// =[ System Lifecycle Event ]= Components Registered
 	registerComponents();
-	BlueRain.filters.run('bluerain.system.components.registered');
+	BR.Filters.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
-  BlueRain.plugins.registerMany(defaultPlugins);
-  BlueRain.plugins.registerMany(plugins);
-	BlueRain.filters.run('bluerain.system.plugins.registered');
+	BR.Plugins.registerMany(defaultPlugins);
+	BR.Plugins.registerMany(plugins);
+	BR.Filters.run('bluerain.system.plugins.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Initialized
-  BlueRain.plugins.initializeAll();
-	BlueRain.filters.run('bluerain.system.plugins.initialized');
+	BR.Plugins.initializeAll();
+	BR.Filters.run('bluerain.system.plugins.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Registered
-  BlueRain.apps.registerMany(apps);
-	BlueRain.filters.run('bluerain.system.apps.registered');
+	BR.Apps.registerMany(apps);
+	BR.Filters.run('bluerain.system.apps.registered');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
-  BlueRain.apps.initializeAll();
-	BlueRain.filters.run('bluerain.system.apps.initialized');
+	BR.Apps.initializeAll();
+	BR.Filters.run('bluerain.system.apps.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
 	postinit();
-  BlueRain.filters.run('bluerain.system.initialized');
+	BR.Filters.run('bluerain.system.initialized');
 
 	// Set View
-	let SystemApp = ComponentRegistry.get('BlueRainApp');
-	SystemApp = BlueRain.filters.run('bluerain.system.app', SystemApp);
+	let SystemApp = BR.Components.get('BlueRainApp');
+	SystemApp = BR.Filters.run('bluerain.system.app', SystemApp);
 
 	RX.UserInterface.setMainView(( <SystemApp /> ));
 
 	// =[ System Lifecycle Event ]= Boot End
-	BlueRain.filters.run('bluerain.system.boot.end');
+	BR.Filters.run('bluerain.system.boot.end');
 };
 
 /**

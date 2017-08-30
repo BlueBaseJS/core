@@ -2,34 +2,43 @@ import RX from 'reactxp';
 
 // Registries
 import AppRegistry from './registries/AppRegistry';
-import CallbackRegistry from './registries/FilterRegistry';
+import ComponentRegistry from './registries/ComponentRegistry';
+import ConfigRegistry from './registries/ConfigRegistry';
+import EventRegistry from './registries/EventRegistry';
+import FilterRegistry from './registries/FilterRegistry';
 import PluginRegistry from './registries/PluginRegistry';
-import EventRegistry from './registries/Events';
 
-export * from './boot';
 // Models
-export App from './models/App';
-export Plugin from './models/Plugin';
+import App from './models/App';
+import Plugin from './models/Plugin';
 
-
-export ComponentRegistry from './registries/ComponentRegistry';
-export ConfigRegistry from './registries/ConfigRegistry';
+import { boot, bootOnServer } from './boot';
 
 // This will have all registries as objects
-export const BlueRain = {
-	apps:AppRegistry,
-	plugins: PluginRegistry,
-	filters: CallbackRegistry,
-	events: EventRegistry
+const BlueRain = {
+	// BlueRain
+	Apps: new AppRegistry(),
+	Plugins: new PluginRegistry(),
+	Filters: new FilterRegistry(),
+	Events: new EventRegistry(),
+	Components: new ComponentRegistry(),
+	Configs: new ConfigRegistry(),
+
+	// boot
+	boot,
+	bootOnServer,
+
+	// Models
+	App,
+	Plugin,
+
+	// ReactXP
+	International: RX.International,
+	Location: RX.Location,
+	Network: RX.Network,
+	Platform: RX.Platform,
+	StatusBar: RX.StatusBar,
+	Storage: RX.Storage,
 };
 
-// This will have ReactXPApi as objects
-export const ReactXP = {
-	location: RX.Location,
-	network: RX.Network,
-	platform: RX.Platform,
-	app: RX.App
-};
-
-// Router
-export * from './router';
+export default BlueRain;

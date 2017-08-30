@@ -157,5 +157,4 @@ class FilterRegistry {
 	};
 }
 
-const filterRegistry = new FilterRegistry();
-export default filterRegistry;
+export default FilterRegistry;

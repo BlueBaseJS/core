@@ -143,5 +143,4 @@ class ComponentRegistry {
 	}
 }
 
-const componentRegistry = new ComponentRegistry();
-export default componentRegistry;
+export default ComponentRegistry;

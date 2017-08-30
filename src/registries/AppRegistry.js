@@ -125,5 +125,4 @@ class AppRegistry {
 	}
 }
 
-const appRegistry = new AppRegistry();
-export default appRegistry;
+export default AppRegistry;

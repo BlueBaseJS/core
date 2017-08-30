@@ -97,5 +97,4 @@ class PluginRegistry {
 	}
 }
 
-const pluginRegistry = new PluginRegistry();
-export default pluginRegistry;
+export default PluginRegistry;
