@@ -1,11 +1,11 @@
 /* @flow */
 
 import { combineReducers } from 'redux';
-import { BlueRain } from '../index';
+import BR from '../index';
 
 export default () => {
 
-	const bluerainReducers = BlueRain.filters.run('bluerain.redux.reducers.bluerain', {
+	const bluerainReducers = BR.Filters.run('bluerain.redux.reducers.bluerain', {
 		// stub: (state = {}) => state
 	});
 
@@ -13,6 +13,6 @@ export default () => {
 		bluerain: combineReducers(bluerainReducers)
 	};
 
-	reducers = BlueRain.filters.run('bluerain.redux.reducers', reducers);
+	reducers = BR.Filters.run('bluerain.redux.reducers', reducers);
 	return combineReducers(reducers);
 };

@@ -3,7 +3,8 @@ import React from 'react';
 import RX from 'reactxp';
 import PropTypes from 'prop-types';
 
-import ComponentRegistry from '../registries/ComponentRegistry';
+import BR from '../index';
+
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
 class ResponsiveLayout extends RX.Component {
@@ -14,7 +15,7 @@ class ResponsiveLayout extends RX.Component {
 		let Component = (this.props[window.size]) ? this.props[window.size] : def;
 
 		if (typeof Component === 'string') {
-			Component = ComponentRegistry.get('Component');
+			Component = BR.Components.get(Component);
 		}
 
 		if (!Component) {

@@ -1,18 +1,18 @@
 import { compose } from 'redux';
-import  { Plugin, BlueRain } from '../../';
+import  BR from '../../';
 
 function addReduxDevTools(composed, enhancers) {
 	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	return composeEnhancers(enhancers);
 }
 
-class ReduxDevtoolsPlugin extends Plugin {
+class ReduxDevtoolsPlugin extends BR.Plugin {
 
 	static pluginName = 'ReduxDevtoolsPlugin';
 	static slug = 'redux-devtools';
 
 	static initialize() {
-		BlueRain.filters.add('bluerain.redux.composed', addReduxDevTools);
+		BR.Filters.add('bluerain.redux.composed', addReduxDevTools);
 	}
 }
 

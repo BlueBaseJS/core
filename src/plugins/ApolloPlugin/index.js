@@ -3,7 +3,7 @@ import React from 'react';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 
-import  { Plugin, BlueRain } from '../../';
+import BR from '../../';
 
 import defaultParams from './defaultParams';
 
@@ -21,7 +21,7 @@ function replaceReduxProvider(Provider) {
 	return ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
 }
 
-class ApolloPlugin extends Plugin {
+class ApolloPlugin extends BR.Plugin {
 
 	static pluginName = 'ApolloPlugin';
 	static slug = 'apollo';
@@ -64,9 +64,9 @@ class ApolloPlugin extends Plugin {
 		client = new ApolloClient({ networkInterface });
 
 		// Add callbacks
-		BlueRain.filters.add('bluerain.redux.reducers', addApolloReducer);
-		BlueRain.filters.add('bluerain.redux.middlewares', addApolloMiddlewares);
-		BlueRain.filters.add('bluerain.redux.provider', replaceReduxProvider);
+		BR.Filters.add('bluerain.redux.reducers', addApolloReducer);
+		BR.Filters.add('bluerain.redux.middlewares', addApolloMiddlewares);
+		BR.Filters.add('bluerain.redux.provider', replaceReduxProvider);
 	}
 
 	static getClient() {

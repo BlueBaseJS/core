@@ -6,7 +6,7 @@ import {
 	compose
 } from 'redux';
 
-import { BlueRain } from '../index';
+import BR from '../index';
 
 import getReducers from './reducers';
 
@@ -18,18 +18,18 @@ let store;
 
 const createStore = () => {
 
-	initialState = BlueRain.filters.run('bluerain.redux.initialState', initialState);
+	initialState = BR.Filters.run('bluerain.redux.initialState', initialState);
 
 	const reducers = getReducers();
 
 	let middlewares = [];
-	middlewares = BlueRain.filters.run('bluerain.redux.middlewares', middlewares);
+	middlewares = BR.Filters.run('bluerain.redux.middlewares', middlewares);
 
 	let enhancers = [applyMiddleware(...middlewares)];
-	enhancers = BlueRain.filters.run('bluerain.redux.enhancers', enhancers, ...middlewares);
+	enhancers = BR.Filters.run('bluerain.redux.enhancers', enhancers, ...middlewares);
 
 	let composed = compose(...enhancers);
-	composed = BlueRain.filters.run('bluerain.redux.composed', composed, ...enhancers);
+	composed = BR.Filters.run('bluerain.redux.composed', composed, ...enhancers);
 
 	store = createReduxStore(reducers, initialState,  composed);
 
