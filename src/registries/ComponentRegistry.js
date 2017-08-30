@@ -14,7 +14,6 @@ type ComponentItem = {
  * @property {Object} ComponentsTable Storage table of all components
  */
 class ComponentRegistry {
-
 	ComponentsTable: {} = {};
 
 	/**
@@ -43,15 +42,25 @@ class ComponentRegistry {
 		if (name === undefined || name === null) {
 			throw new Error(`name cannot be ${name}`);
 		}
-		// store the component in the table
+    // store the component in the table
 		this.ComponentsTable[name] = {
 			name,
 			rawComponent,
 			hocs
 		};
 	}
+	addHOCs(name: string, ...hocs: Array<Function>) {
+		if (name === undefined || name === null) {
+			throw new Error(`name cannot be ${name}`);
+		}
+		if (!Object.prototype.hasOwnProperty.call(this.ComponentsTable, name)) {
+			throw new Error(`Component ${name} not registered.`);
+		}
+    // store the component in the table
+		this.ComponentsTable[name].hocs.push(...hocs);
+	}
 
-	/**
+  /**
 	 * Check if a component is registered with registerComponent(name, component, ...hocs).
 	 *
 	 * @param {String} name The name of the component to get.
@@ -86,18 +95,18 @@ class ComponentRegistry {
 		return compose(...hocs)(component.rawComponent);
 	}
 
-	/**
+  /**
 	 * Get the **raw** (original) component registered with registerComponent
 	 * without the possible HOCs wrapping it.
 	 *
 	 * @param {String} name The name of the component to get.
 	 * @returns {Function|React Component} An interchangeable/extendable React component
 	 */
-	getRawComponent(name: string) : ReactElement<*> {
+	getRawComponent(name: string): ReactElement<*> {
 		return this.ComponentsTable[name].rawComponent;
 	}
 
-	/**
+  /**
 	 * Replace a Vulcan component with the same name with a new component or
 	 * an extension of the raw component and one or more optional higher order components.
 	 * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
@@ -119,12 +128,12 @@ class ComponentRegistry {
 		}
 		const previousComponent = this.ComponentsTable[name];
 
-		// xxx : throw an error if the previous component doesn't exist
+    // xxx : throw an error if the previous component doesn't exist
 
 		this.register(name, newComponent, ...newHocs, ...previousComponent.hocs);
 	}
 
-	/**
+  /**
 	 * [write docs]
 	 * @param {*} sourceComponent
 	 * @param {*} targetComponent
@@ -132,7 +141,6 @@ class ComponentRegistry {
 	static copyHoCs(sourceComponent: ComponentItem, targetComponent: ReactElement<*>) : ReactElement<*> {
 		return compose(...sourceComponent.hocs)(targetComponent);
 	}
-
 }
 
 const componentRegistry = new ComponentRegistry();

@@ -4,75 +4,75 @@ import reject from 'lodash.reject';
 import parallel from 'async.parallel';
 
 /**
- * All system callbacks are stored in this registry
- * @property {Object} CallbacksTable Storage table of all callbacks
+ * All system filters are stored in this registry
+ * @property {Object} FiltersTable Storage table of all filters
  */
-class CallbackRegistry {
+class FilterRegistry {
 
-	CallbacksTable: {} = {};
+	FiltersTable: {} = {};
 
 	/**
-	 * Add a callback function to a hook
+	 * Add a filter function to a hook
 	 * @param {String} hook - The name of the hook
-	 * @param {Function} callback - The callback function
+	 * @param {Function} filter - The filter function
 	 */
-	add(hook: string, callback: Function) {
+	add(hook: string, filter: Function) {
 		if (hook === undefined || hook === null) {
 			throw new Error(`hook cannot be ${hook}`);
 		}
-		if (!callback.name) {
+		if (!filter.name) {
 			throw new Error(
-				`// Warning! You are adding an unnamed callback to ${hook}.
+				`// Warning! You are adding an unnamed filter to ${hook}.
 			Please use the function foo () {} syntax.`
 			);
 		}
 
-		// if callback array doesn't exist yet, initialize it
-		if (typeof this.CallbacksTable[hook] === 'undefined') {
-			this.CallbacksTable[hook] = [];
+		// if filter array doesn't exist yet, initialize it
+		if (typeof this.FiltersTable[hook] === 'undefined') {
+			this.FiltersTable[hook] = [];
 		}
 
-		this.CallbacksTable[hook].push(callback);
+		this.FiltersTable[hook].push(filter);
 	}
 
 	/**
-	 * Remove a callback from a hook
+	 * Remove a filter from a hook
 	 * @param {string} hookName - The name of the hook
-	 * @param {string} callbackName - The name of the function to remove
+	 * @param {string} filterName - The name of the function to remove
 	 */
-	remove(hookName: string, callbackName: string) {
+	remove(hookName: string, filterName: string) {
 		if (hookName === undefined || hookName === null) {
 			throw new Error(`hook cannot be ${hookName}`);
 		}
 
-		if (callbackName === undefined || callbackName === null) {
-			throw new Error(`callback of ${hookName} cannot be ${callbackName}`);
+		if (filterName === undefined || filterName === null) {
+			throw new Error(`filter of ${hookName} cannot be ${filterName}`);
 		}
 
-		if (!Object.prototype.hasOwnProperty.call(this.CallbacksTable, hookName)) {
+		if (!Object.prototype.hasOwnProperty.call(this.FiltersTable, hookName)) {
 			throw new Error(`${hookName}  is not added. First add hook to remove it.`);
 		}
 
-		const noOfCallbacks = this.CallbacksTable[hookName].length;
-		this.CallbacksTable[hookName] = reject(
-			this.CallbacksTable[hookName],
-			callback => callback.name === callbackName
+		const noOffilters = this.FiltersTable[hookName].length;
+		this.FiltersTable[hookName] = reject(
+			this.FiltersTable[hookName],
+			filter => filter.name === filterName
 		);
-		if (this.CallbacksTable[hookName].length === noOfCallbacks) {
+		if (this.FiltersTable[hookName].length === noOffilters) {
 			throw new Error(
-				`${hookName} has no callback named ${callbackName}.
-			First add callback in ${hookName} to remove it`
+				`${hookName} has no filter named ${filterName}.
+			First add filter in ${hookName} to remove it`
 			);
 		}
 	}
 
 	/**
-	 * Successively run all of a hook's callbacks on an item
+	 * Successively run all of a hook's filters on an item
 	 * @param {String} hook - First argument: the name of the hook
 	 * @param {Object} item - Second argument: the post, comment, modifier, etc.
-	 *  on which to run the callbacks
+	 *  on which to run the filters
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
-	 * @returns {Object} Returns the item after it's been through all the callbacks for this hook
+	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
 	run(hook: string, item: {}) {
 		// the first argument is the name of the hook or an array of functions
@@ -86,20 +86,20 @@ class CallbackRegistry {
 			throw new Error(`hook cannot be ${hook}`);
 		}
 
-		const callbacks = Array.isArray(hook) ? hook : this.CallbacksTable[hook];
+		const filters = Array.isArray(hook) ? hook : this.FiltersTable[hook];
 
-		if (typeof callbacks !== 'undefined' && !!callbacks.length) {
-			// if the hook exists, and contains callbacks to run
-			return callbacks.reduce((accumulator, callback) => {
+		if (typeof filters !== 'undefined' && !!filters.length) {
+			// if the hook exists, and contains filters to run
+			return filters.reduce((accumulator, filter) => {
 				const newArguments = [accumulator].concat(args);
 
 				try {
-					const result = callback.apply({}, newArguments);
+					const result = filter.apply({}, newArguments);
 
 					if (typeof result === 'undefined') {
 						// if result of current iteration is undefined, don't pass it on
 						// console.log(
-						//   `// Warning: Sync callback [${callback.name}] in hook
+						//   `// Warning: Sync filter [${filter.name}] in hook
 						// [${hook}] didn't return a result!`
 						// );
 						return accumulator;
@@ -107,7 +107,7 @@ class CallbackRegistry {
 					return result;
 				} catch (error) {
 					// console.log(
-					//   `// error at callback [${callback.name}] in hook [${hook}]`
+					//   `// error at filter [${filter.name}] in hook [${hook}]`
 					// );
 					// console.log(error);
 					throw error;
@@ -123,7 +123,7 @@ class CallbackRegistry {
 	}
 
 	/**
-	 * Successively run all of a hook's callbacks on an item
+	 * Successively run all of a hook's filters on an item
 	 * in async mode (only works on server)
 	 * @param {String} hook - First argument: the name of the hook
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
@@ -153,9 +153,9 @@ class CallbackRegistry {
 		if (hook === undefined || hook === null) {
 			throw new Error(`hook cannot be ${hook}`);
 		}
-		parallel(this.CallbacksTable[hook]);
+		parallel(this.FiltersTable[hook]);
 	};
 }
 
-const callbackRegistry = new CallbackRegistry();
-export default callbackRegistry;
+const filterRegistry = new FilterRegistry();
+export default filterRegistry;

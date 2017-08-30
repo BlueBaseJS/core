@@ -99,4 +99,34 @@ describe('Component Registry test specifications', () => {
 			expect(component.propTypes.paragraph).toBeDefined();
 		});
 	});
+	describe('Add HOCs', () => {
+		it('should throw error b/c component is not registered', () => {
+			expect(() => ComponentRegistry.addHOCs('test', () => Heading)).toThrow(
+        'Component test not registered.'
+      );
+		});
+		it('should throw error b/c hook null', () => {
+			expect(() => ComponentRegistry.addHOCs(null, () => Heading)).toThrow();
+		});
+		it('should throw error b/c hook undefined', () => {
+			expect(() =>
+        ComponentRegistry.addHOCs(undefined, () => Heading)
+      ).toThrow();
+		});
+		it('should add hoc', () => {
+			ComponentRegistry.addHOCs('', () => Heading);
+			expect(ComponentRegistry.ComponentsTable[''].hocs.length).toEqual(1);
+		});
+	});
+	describe('copy HOCs', () => {
+		it('should throw error b/c hoc undefined', () => {
+			ComponentRegistry.constructor.copyHoCs(
+        ComponentRegistry.ComponentsTable.heading,
+        () => Heading
+      );
+			expect(ComponentRegistry.ComponentsTable.heading.hocs.length).toEqual(
+        0
+      );
+		});
+	});
 });

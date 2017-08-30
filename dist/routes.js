@@ -4,50 +4,34 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _reactRouterDom = require('react-router-dom');
+var _index = require('./index');
 
-var _Callbacks = require('./Callbacks');
+var _JsonSchemaToReact = require('./utils/JsonSchemaToReact');
 
-var _ComponentRegistry = require('./ComponentRegistry');
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var _JsonSchemaToReact = require('./JsonSchemaToReact');
+var Routes = function Routes() {
 
-(0, _ComponentRegistry.registerComponent)('Route', _reactRouterDom.Route);
-
-var Routes = function Routes(props) {
-	var apps = props.apps,
-	    config = props.config;
-
-
-	var appPrefix = config && config.apps.routePrefix && config.apps.routePrefix || '/app'; // path = /app
-
-	var appRoutes = [];
-	for (var key in apps) {
-
-		// skip loop if the property is from prototype
-		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
-
-		var app = apps[key];
-		var component = app.getComponent();
-		console.log('app', component);
-		if (component) {
-			appRoutes.push({
-				component: 'Route',
-				props: {
-					path: appPrefix + '/' + key,
-					key: key,
-					component: component
-				}
-			});
-		}
-	}
+	var appRoutes = _index.AppRegistry.getComponentSchema();
 
 	var routes = {
-		component: 'div', // TODO: Change this to View with ReactXP
-		children: appRoutes
+		component: 'Switch',
+		children: [{
+			component: 'Route',
+			props: {
+				path: '/',
+				exact: true,
+				component: _index.ComponentRegistry.get('IndexPage')
+			}
+		}].concat(_toConsumableArray(appRoutes), [{
+			component: 'Route',
+			props: {
+				component: _index.ComponentRegistry.get('404Page')
+			}
+		}])
 	};
 
-	return (0, _JsonSchemaToReact.parseJsonSchema)((0, _Callbacks.runCallbacks)('bluerain.routes', routes));
+	return (0, _JsonSchemaToReact.parseJsonSchema)(_index.CallbackRegistry.run('bluerain.system.routes', routes));
 };
 
 exports.default = Routes;
