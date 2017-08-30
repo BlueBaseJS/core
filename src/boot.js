@@ -9,11 +9,10 @@ import {
 	Plugin,
 
 	// Registries
-	AppRegistry,
+  BlueRain,
 	CallbackRegistry,
 	ComponentRegistry,
 	ConfigRegistry,
-	PluginRegistry,
 } from './index';
 
 
@@ -64,20 +63,20 @@ export const boot = function(options: BootOptions = {}) {
 	CallbackRegistry.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
-	PluginRegistry.registerMany(defaultPlugins);
-	PluginRegistry.registerMany(plugins);
+  BlueRain.plugins.registerMany(defaultPlugins);
+  BlueRain.plugins.registerMany(plugins);
 	CallbackRegistry.run('bluerain.system.plugins.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Initialized
-	PluginRegistry.initializeAll();
+  BlueRain.plugins.initializeAll();
 	CallbackRegistry.run('bluerain.system.plugins.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Registered
-	AppRegistry.registerMany(apps);
+  BlueRain.apps.registerMany(apps);
 	CallbackRegistry.run('bluerain.system.apps.registered');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
-	AppRegistry.initializeAll();
+  BlueRain.apps.initializeAll();
 	CallbackRegistry.run('bluerain.system.apps.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Initialized

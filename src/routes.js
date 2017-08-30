@@ -1,7 +1,7 @@
 /* @flow */
 
 import {
-	AppRegistry,
+  BlueRain,
 	CallbackRegistry,
 	ComponentRegistry,
 } from './index';
@@ -11,7 +11,7 @@ import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 const Routes = () => {
 
-	const appRoutes = AppRegistry.getComponentSchema();
+	const appRoutes = BlueRain.apps.getComponentSchema();
 
 	const routes = {
 		component: SystemLayout,

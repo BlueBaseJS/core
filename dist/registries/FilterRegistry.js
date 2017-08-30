@@ -19,14 +19,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * All system callbacks are stored in this registry
- * @property {Object} CallbacksTable Storage table of all callbacks
+ * All system filters are stored in this registry
+ * @property {Object} FiltersTable Storage table of all filters
  */
-var CallbackRegistry = function () {
-	function CallbackRegistry() {
-		_classCallCheck(this, CallbackRegistry);
+var FilterRegistry = function () {
+	function FilterRegistry() {
+		_classCallCheck(this, FilterRegistry);
 
-		this.CallbacksTable = {};
+		this.FiltersTable = {};
 
 		this.runAsync = function (hook, args) {
 			// the first argument is the name of the hook or an array of functions
@@ -53,72 +53,72 @@ var CallbackRegistry = function () {
 			if (hook === undefined || hook === null) {
 				throw new Error('hook cannot be ' + hook);
 			}
-			(0, _async2.default)(this.CallbacksTable[hook]);
+			(0, _async2.default)(this.FiltersTable[hook]);
 		};
 	}
 
-	_createClass(CallbackRegistry, [{
+	_createClass(FilterRegistry, [{
 		key: 'add',
 
 
 		/**
-   * Add a callback function to a hook
+   * Add a filter function to a hook
    * @param {String} hook - The name of the hook
-   * @param {Function} callback - The callback function
+   * @param {Function} filter - The filter function
    */
-		value: function add(hook, callback) {
+		value: function add(hook, filter) {
 			if (hook === undefined || hook === null) {
 				throw new Error('hook cannot be ' + hook);
 			}
-			if (!callback.name) {
-				throw new Error('// Warning! You are adding an unnamed callback to ' + hook + '.\n\t\t\tPlease use the function foo () {} syntax.');
+			if (!filter.name) {
+				throw new Error('// Warning! You are adding an unnamed filter to ' + hook + '.\n\t\t\tPlease use the function foo () {} syntax.');
 			}
 
-			// if callback array doesn't exist yet, initialize it
-			if (typeof this.CallbacksTable[hook] === 'undefined') {
-				this.CallbacksTable[hook] = [];
+			// if filter array doesn't exist yet, initialize it
+			if (typeof this.FiltersTable[hook] === 'undefined') {
+				this.FiltersTable[hook] = [];
 			}
 
-			this.CallbacksTable[hook].push(callback);
+			this.FiltersTable[hook].push(filter);
 		}
 
 		/**
-   * Remove a callback from a hook
+   * Remove a filter from a hook
    * @param {string} hookName - The name of the hook
-   * @param {string} callbackName - The name of the function to remove
+   * @param {string} filterName - The name of the function to remove
    */
 
 	}, {
 		key: 'remove',
-		value: function remove(hookName, callbackName) {
+		value: function remove(hookName, filterName) {
 			if (hookName === undefined || hookName === null) {
 				throw new Error('hook cannot be ' + hookName);
 			}
 
-			if (callbackName === undefined || callbackName === null) {
-				throw new Error('callback of ' + hookName + ' cannot be ' + callbackName);
+			if (filterName === undefined || filterName === null) {
+				throw new Error('filter of ' + hookName + ' cannot be ' + filterName);
 			}
 
-			if (!Object.prototype.hasOwnProperty.call(this.CallbacksTable, hookName)) {
+			if (!Object.prototype.hasOwnProperty.call(this.FiltersTable, hookName)) {
 				throw new Error(hookName + '  is not added. First add hook to remove it.');
 			}
 
-			var noOfCallbacks = this.CallbacksTable[hookName].length;
-			this.CallbacksTable[hookName] = (0, _lodash2.default)(this.CallbacksTable[hookName], function (callback) {
-				return callback.name === callbackName;
+			var noOffilters = this.FiltersTable[hookName].length;
+			this.FiltersTable[hookName] = (0, _lodash2.default)(this.FiltersTable[hookName], function (filter) {
+				return filter.name === filterName;
 			});
-			if (this.CallbacksTable[hookName].length === noOfCallbacks) {
-				throw new Error(hookName + ' has no callback named ' + callbackName + '.\n\t\t\tFirst add callback in ' + hookName + ' to remove it');
+			if (this.FiltersTable[hookName].length === noOffilters) {
+				throw new Error(hookName + ' has no filter named ' + filterName + '.\n\t\t\tFirst add filter in ' + hookName + ' to remove it');
 			}
 		}
 
 		/**
-   * Successively run all of a hook's callbacks on an item
+   * Successively run all of a hook's filters on an item
    * @param {String} hook - First argument: the name of the hook
    * @param {Object} item - Second argument: the post, comment, modifier, etc.
-   *  on which to run the callbacks
+   *  on which to run the filters
    * @param {Any} args - Other arguments will be passed to each successive iteration
-   * @returns {Object} Returns the item after it's been through all the callbacks for this hook
+   * @returns {Object} Returns the item after it's been through all the filters for this hook
    */
 
 	}, {
@@ -135,20 +135,20 @@ var CallbackRegistry = function () {
 				throw new Error('hook cannot be ' + hook);
 			}
 
-			var callbacks = Array.isArray(hook) ? hook : this.CallbacksTable[hook];
+			var filters = Array.isArray(hook) ? hook : this.FiltersTable[hook];
 
-			if (typeof callbacks !== 'undefined' && !!callbacks.length) {
-				// if the hook exists, and contains callbacks to run
-				return callbacks.reduce(function (accumulator, callback) {
+			if (typeof filters !== 'undefined' && !!filters.length) {
+				// if the hook exists, and contains filters to run
+				return filters.reduce(function (accumulator, filter) {
 					var newArguments = [accumulator].concat(args);
 
 					try {
-						var result = callback.apply({}, newArguments);
+						var result = filter.apply({}, newArguments);
 
 						if (typeof result === 'undefined') {
 							// if result of current iteration is undefined, don't pass it on
 							// console.log(
-							//   `// Warning: Sync callback [${callback.name}] in hook
+							//   `// Warning: Sync filter [${filter.name}] in hook
 							// [${hook}] didn't return a result!`
 							// );
 							return accumulator;
@@ -156,7 +156,7 @@ var CallbackRegistry = function () {
 						return result;
 					} catch (error) {
 						// console.log(
-						//   `// error at callback [${callback.name}] in hook [${hook}]`
+						//   `// error at filter [${filter.name}] in hook [${hook}]`
 						// );
 						// console.log(error);
 						throw error;
@@ -172,7 +172,7 @@ var CallbackRegistry = function () {
 		}
 
 		/**
-   * Successively run all of a hook's callbacks on an item
+   * Successively run all of a hook's filters on an item
    * in async mode (only works on server)
    * @param {String} hook - First argument: the name of the hook
    * @param {Any} args - Other arguments will be passed to each successive iteration
@@ -180,8 +180,8 @@ var CallbackRegistry = function () {
 
 	}]);
 
-	return CallbackRegistry;
+	return FilterRegistry;
 }();
 
-var callbackRegistry = new CallbackRegistry();
-exports.default = callbackRegistry;
+var filterRegistry = new FilterRegistry();
+exports.default = filterRegistry;
