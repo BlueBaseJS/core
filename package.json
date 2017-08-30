@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-os",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A browser based OS, made with React JS",
   "main": "index.js",
   "directories": {
