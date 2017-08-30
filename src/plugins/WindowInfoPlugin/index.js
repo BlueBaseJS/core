@@ -1,9 +1,10 @@
-import BR from '../../index';
+import BR from '../../';
+import Plugin from '../../models/Plugin'; // BR.Plugin doesn't exist yet.
 
 import reducer from './reducer';
 import withWindowInfo from './connect';
 
-export default class WindowInfoPlugin extends BR.Plugin {
+export default class WindowInfoPlugin extends Plugin {
 
 	static pluginName = 'WindowInfoPlugin';
 	static slug = 'window-info';

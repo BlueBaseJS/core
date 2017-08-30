@@ -1,13 +1,8 @@
 import React from 'react';
 
-import {
-	// Registries
-	BlueRain,
-	ComponentRegistry,
+import BR from './index';
 
-	// Router
-	SystemRouter
-} from './index';
+import { SystemRouter } from './router';
 
 import { getProvider, createStore } from './redux';
 
@@ -19,7 +14,7 @@ import Routes from './routes';
 export default () => {
 
 	/* Main System Component */
-	ComponentRegistry.register('BlueRainApp', () => (
+	BR.Components.register('BlueRainApp', () => (
   <SystemRouter>
     <Routes />
   </SystemRouter>
@@ -36,12 +31,12 @@ export default () => {
 	);
 
 	// Add redux to main system app
-	BlueRain.filters.add('bluerain.system.app', function AddReduxToSystemApp(App) {
+	BR.Filters.add('bluerain.system.app', function AddReduxToSystemApp(App) {
 		return withRedux(App);
 	});
 
 	// Pages
-	ComponentRegistry.register('Page', Page);
-	ComponentRegistry.register('IndexPage', IndexPage);
-	ComponentRegistry.register('404Page', FourOFourPage);
+	BR.Components.register('Page', Page);
+	BR.Components.register('IndexPage', IndexPage);
+	BR.Components.register('404Page', FourOFourPage);
 };

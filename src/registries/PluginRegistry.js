@@ -3,7 +3,7 @@
 import get from 'lodash.get';
 import kebabCase from 'lodash.kebabcase';
 
-import BR from '../index';
+import BR from '../../src';
 
 /**
  * All system plugins are stored in this registry

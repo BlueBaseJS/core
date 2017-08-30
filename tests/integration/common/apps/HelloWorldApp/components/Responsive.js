@@ -1,8 +1,5 @@
-import React from 'react';
 import RX from 'reactxp';
-import { FormattedMessage } from 'react-intl';
 import  { parseJsonSchema } from '../../../../../../src/utils/JsonSchemaToReact';
-import  { PluginRegistry } from '../../../../../../src/';
 
 const styleView = RX.Styles.createViewStyle({
 	padding: 20,
