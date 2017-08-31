@@ -3,10 +3,8 @@ import cardStyles from './components/Card';
 
 const initialState = {
 
-  theme: {
     IndexPage: indexPageStyles,
     Card: cardStyles,
-  },
 
 };
 
