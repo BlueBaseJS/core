@@ -14,7 +14,7 @@ class ResponsiveLayout extends RX.Component {
 		let Component = (this.props[window.size]) ? this.props[window.size] : def;
 
 		if (typeof Component === 'string') {
-			Component = ComponentRegistry.get('Component');
+			Component = ComponentRegistry.get(Component);
 		}
 
 		if (!Component) {
