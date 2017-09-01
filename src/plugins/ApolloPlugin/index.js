@@ -1,4 +1,6 @@
 import React from 'react';
+// import type { Store } from 'redux';
+import PropTypes from 'prop-types';
 
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
@@ -14,11 +16,22 @@ function addApolloReducer(reducers) {
 }
 
 function addApolloMiddlewares(middlewares) {
-	return middlewares.push(client.middleware());
+	middlewares.push(client.middleware());
+	return middlewares;
 }
 
 function replaceReduxProvider(Provider) {
-	return ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+	const ApolloProviderHoc = ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+
+	ApolloProviderHoc.propTypes = {
+		store: PropTypes.node.isRequired,
+		children: PropTypes.oneOfType([
+			PropTypes.arrayOf(PropTypes.node),
+			PropTypes.node
+		]).isRequired
+	};
+
+	return ApolloProviderHoc;
 }
 
 class ApolloPlugin extends BR.Plugin {
