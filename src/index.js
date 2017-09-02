@@ -14,7 +14,7 @@ import Plugin from './models/Plugin';
 
 // Others
 import Platform from './Platform';
-import { boot, bootOnServer } from './boot';
+import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 // This will have all registries as objects
@@ -29,7 +29,6 @@ const BlueRain = {
 
 	// boot
 	boot,
-	bootOnServer,
 
 	// Models
 	App,

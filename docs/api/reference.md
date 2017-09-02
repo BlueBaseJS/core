@@ -4,7 +4,6 @@
 
 -   [BootOptions](#bootoptions)
 -   [boot](#boot)
--   [bootOnServer](#bootonserver)
 -   [Config](#config)
 -   [ResponsiveLayout](#responsivelayout)
 -   [onLayout](#onlayout)
@@ -56,16 +55,20 @@
 
 Options object that `boot` and `bootOnServer` methods expect.
 
-Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>?, config: ConfigType?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
+Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>?, config: ConfigType?, dontRender: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>?, serverMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
 
 **Properties**
 
+-   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>** An array of apps to load
+-   `config` **ConfigType** Configuration object
+-   `dontRender` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** If set to true, BlueRain will not render the main app, instead it is up to the developer to render it. The App is returned from the boot function.
+-   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>** An array of plugins to load
+-   `serverMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Set this flag to true when rendering during Server Side Rendering
 -   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>?** 
 -   `config` **ConfigType?** 
+-   `dontRender` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
 -   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>?** 
--   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
--   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
--   `ssrMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
+-   `serverMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
 
 ## boot
 
@@ -73,15 +76,9 @@ Boots the OS and renders the main UI. Use it on the client side
 
 **Parameters**
 
--   `options` **[BootOptions](#bootoptions)**  (optional, default `{}`)
+-   `options` **[BootOptions](#bootoptions)**  (optional, default `{serverMode:false,dontRender:false}`)
 
-## bootOnServer
-
-Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
-
-**Parameters**
-
--   `options` **[BootOptions](#bootoptions)** 
+Returns **ComponentType&lt;any>** 
 
 ## Config
 
@@ -96,6 +93,7 @@ Type: ConfigType
 -   `appRoutePrefix` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "/app"]	This route will be prependded to all app routes
 -   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true, false if NODE_ENV="production"]							Debug mode
 -   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** [default: true, false if NODE_ENV="production"]				Development mode
+-   `locale` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "en"]						App locale
 -   `plugins` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for plugins
 -   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "BlueRain OS"]		Main title of the app
 
