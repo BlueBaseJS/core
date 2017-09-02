@@ -1,5 +1,5 @@
 import { Styles } from 'reactxp';
-import  { parseJsonSchema } from '../../../../../../src/utils/JsonSchemaToReact';
+import BR from '../../../../../../src';
 
 const headerStyle = Styles.createViewStyle({
 	backgroundColor: 'rgba(240, 240, 240, 0.5)',
@@ -93,5 +93,5 @@ export default ({ match, appName }) => {
 		]
 	};
 
-	return parseJsonSchema(layout);
+	return BR.Utils.parseJsonSchema(layout);
 };

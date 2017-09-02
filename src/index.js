@@ -43,7 +43,9 @@ const BlueRain = {
 	Storage: RX.Storage,
 
 	// Miscellaneous
-	parseJsonSchema,
+	Utils: {
+		parseJsonSchema,
+	}
 };
 
 export default BlueRain;
