@@ -13,7 +13,7 @@ import { getProvider, createStore } from './redux';
 
 import Page from './pages/Page';
 import IndexPage from './pages/IndexPage';
-import FourOFourPage from './pages/404Page';
+import NotFoundPage from './pages/NotFoundPage';
 import Routes from './routes';
 
 export default () => {
@@ -43,5 +43,5 @@ export default () => {
 	// Pages
 	ComponentRegistry.register('Page', Page);
 	ComponentRegistry.register('IndexPage', IndexPage);
-	ComponentRegistry.register('404Page', FourOFourPage);
+	ComponentRegistry.register('NotFoundPage', NotFoundPage);
 };

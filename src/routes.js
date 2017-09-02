@@ -30,7 +30,7 @@ const Routes = () => {
 					{
 						component: 'Route',
 						props: {
-							component: ComponentRegistry.get('404Page')
+							component: ComponentRegistry.get('NotFoundPage')
 						}
 					}
 				]
