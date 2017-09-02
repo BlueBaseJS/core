@@ -14,14 +14,14 @@ import defaultPlugins from './plugins/defaultPlugins';
  *
  * @property {Array<BR.App>} apps		An array of apps to load
  * @property {ConfigType} config		Configuration object
- * @property {boolean} 	dontRender	If set to true, BlueRain will not render the main app, instead it is up to the developer to render it. The App is returned from the boot function.
+ * @property {boolean} 	renderApp	If set to false, BlueRain will not render the main app, instead it is up to the developer to render it. The App is returned from the boot function.
  * @property {Array<BR.Plugin>} plugins		An array of plugins to load
  * @property {boolean} 	serverMode	Set this flag to true when rendering during Server Side Rendering
  */
 type BootOptions = {
 	apps?: Array<BR.App>,
 	config?: ConfigType,
-	dontRender?: boolean,
+	renderApp?: boolean,
 	plugins?: Array<BR.Plugin>,
 	serverMode?: boolean,
 }
@@ -31,11 +31,11 @@ type BootOptions = {
  */
 export default function(options: BootOptions = {
 	serverMode: false,
-	dontRender: false,
+	renderApp: true,
 }) : ComponentType<any> {
 
 	// Extract app, plugins and configs from options
-	const { apps, plugins, config, serverMode, dontRender } = options;
+	const { apps, plugins, config, serverMode, renderApp } = options;
 
 	// Server mode
 	BR.Platform.setServerMode(serverMode);
@@ -86,7 +86,7 @@ export default function(options: BootOptions = {
 	let SystemApp = BR.Components.get('BlueRainApp');
 	SystemApp = BR.Filters.run('bluerain.system.app', SystemApp);
 
-	if (dontRender !== true) {
+	if (renderApp !== false) {
 		RX.UserInterface.setMainView(( <SystemApp /> ));
 	}
 
