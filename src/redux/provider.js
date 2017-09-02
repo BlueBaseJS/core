@@ -1,6 +1,6 @@
 /* @flow */
 
 import { Provider } from 'react-redux';
-import { CallbackRegistry } from '../index';
+import BR from '../index';
 
-export default () => CallbackRegistry.run('bluerain.redux.provider', Provider);
+export default () => BR.Filters.run('bluerain.redux.provider', Provider);

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import ComponentRegistry from '../../src/registries/ComponentRegistry';
+import BR from '../../src/index';
 import { parseJsonSchema } from '../../src/utils/JsonSchemaToReact';
 class Paragraph extends React.Component {
 	render() {
@@ -19,7 +19,7 @@ class Heading extends React.Component {
 		);
 	}
 }
-ComponentRegistry.register('Heading', Heading);
+BR.Components.register('Heading', Heading);
 describe('Json to react tests', () => {
 	it('should throw error for null schema', () => {
 		expect(() => parseJsonSchema(null)).toThrow();

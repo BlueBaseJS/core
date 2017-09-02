@@ -1,15 +1,44 @@
-export * from './boot';
-
-// Models
-export App from './models/App';
-export Plugin from './models/Plugin';
+import RX from 'reactxp';
 
 // Registries
-export AppRegistry from './registries/AppRegistry';
-export CallbackRegistry from './registries/FilterRegistry';
-export ComponentRegistry from './registries/ComponentRegistry';
-export ConfigRegistry from './registries/ConfigRegistry';
-export PluginRegistry from './registries/PluginRegistry';
+import AppRegistry from './registries/AppRegistry';
+import ComponentRegistry from './registries/ComponentRegistry';
+import ConfigRegistry from './registries/ConfigRegistry';
+import EventRegistry from './registries/EventRegistry';
+import FilterRegistry from './registries/FilterRegistry';
+import PluginRegistry from './registries/PluginRegistry';
 
-// Router
-export * from './router';
+// Models
+import App from './models/App';
+import Plugin from './models/Plugin';
+
+import { boot, bootOnServer } from './boot';
+
+// This will have all registries as objects
+const BlueRain = {
+	// BlueRain
+	Apps: new AppRegistry(),
+	Plugins: new PluginRegistry(),
+	Filters: new FilterRegistry(),
+	Events: new EventRegistry(),
+	Components: new ComponentRegistry(),
+	Configs: new ConfigRegistry(),
+
+	// boot
+	boot,
+	bootOnServer,
+
+	// Models
+	App,
+	Plugin,
+
+	// ReactXP
+	International: RX.International,
+	Location: RX.Location,
+	Network: RX.Network,
+	Platform: RX.Platform,
+	StatusBar: RX.StatusBar,
+	Storage: RX.Storage,
+};
+
+export default BlueRain;

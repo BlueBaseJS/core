@@ -9,5 +9,5 @@ var _reactRedux = require('react-redux');
 var _index = require('../index');
 
 exports.default = function () {
-  return _index.CallbackRegistry.run('bluerain.redux.provider', _reactRedux.Provider);
+  return _index.blueRain.filters.run('bluerain.redux.provider', _reactRedux.Provider);
 };

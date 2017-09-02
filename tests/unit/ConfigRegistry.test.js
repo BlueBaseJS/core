@@ -2,58 +2,58 @@
  * Created by umair on 8/21/17.
  */
 import React from 'react';
-import ConfigRegistry from '../../src/registries/ConfigRegistry';
+import BR from '../../src/index';
 
 describe('Config registry tests', () => {
 	describe('set Config', () => {
 		it('should throw error b/c key is undefined', () => {
-			expect(() => ConfigRegistry.set(undefined, 'value')).toThrow(
+			expect(() => BR.Configs.set(undefined, 'value')).toThrow(
         'No config key provided'
       );
 		});
 		it('should throw error b/c key is null', () => {
-			expect(() => ConfigRegistry.set(null, 'value')).toThrow(
+			expect(() => BR.Configs.set(null, 'value')).toThrow(
         'No config key provided'
       );
 		});
 
 		it('should throw error b/c value is undefined', () => {
-			expect(() => ConfigRegistry.set('key', undefined)).toThrow(
+			expect(() => BR.Configs.set('key', undefined)).toThrow(
         'No config value provided'
       );
 		});
 		it('should throw error b/c value is null', () => {
-			expect(() => ConfigRegistry.set('key', null)).toThrow(
+			expect(() => BR.Configs.set('key', null)).toThrow(
         'No config value provided'
       );
 		});
 		it('should have set value', () => {
-			ConfigRegistry.set('title', 'abc title');
-			expect(ConfigRegistry.get('title')).toEqual('abc title');
+			BR.Configs.set('title', 'abc title');
+			expect(BR.Configs.get('title')).toEqual('abc title');
 		});
 	});
 	describe('get Config', () => {
 		it('should throw error b/c key is undefined', () => {
-			expect(() => ConfigRegistry.get(undefined)).toThrow(
+			expect(() => BR.Configs.get(undefined)).toThrow(
         'No config key provided'
       );
 		});
 		it('should throw error b/c key is null', () => {
-			expect(() => ConfigRegistry.get(null)).toThrow('No config key provided');
+			expect(() => BR.Configs.get(null)).toThrow('No config key provided');
 		});
 
 		it('should reutrn value', () => {
-			expect(ConfigRegistry.get('title')).toEqual('abc title');
+			expect(BR.Configs.get('title')).toEqual('abc title');
 		});
 	});
 	describe('register Config', () => {
 		it('register config', () => {
-			ConfigRegistry.register({ app: 'hello world' });
-			expect(ConfigRegistry.get('app')).toEqual('hello world');
+			BR.Configs.register({ app: 'hello world' });
+			expect(BR.Configs.get('app')).toEqual('hello world');
 		});
 		it('register config', () => {
-			ConfigRegistry.register({ title: 'changed title' });
-			expect(ConfigRegistry.get('title')).toEqual('changed title');
+			BR.Configs.register({ title: 'changed title' });
+			expect(BR.Configs.get('title')).toEqual('changed title');
 		});
 	});
 });

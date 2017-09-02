@@ -12,15 +12,15 @@ var _index = require('./index');
 
 var _redux = require('./redux');
 
-var _Page = require('./layouts/Page');
+var _Page = require('./pages/Page');
 
 var _Page2 = _interopRequireDefault(_Page);
 
-var _IndexPage = require('./layouts/IndexPage');
+var _IndexPage = require('./pages/IndexPage');
 
 var _IndexPage2 = _interopRequireDefault(_IndexPage);
 
-var _Page3 = require('./layouts/404Page');
+var _Page3 = require('./pages/404Page');
 
 var _Page4 = _interopRequireDefault(_Page3);
 
@@ -56,7 +56,7 @@ exports.default = function () {
 	};
 
 	// Add redux to main system app
-	_index.CallbackRegistry.add('bluerain.system.app', function AddReduxToSystemApp(App) {
+	_index.blueRain.filters.add('bluerain.system.app', function AddReduxToSystemApp(App) {
 		return withRedux(App);
 	});
 
