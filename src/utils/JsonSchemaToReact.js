@@ -7,7 +7,8 @@ import {
 	type ElementType,
 } from 'react';
 import set from 'lodash.set';
-import ComponentRegistry from '../registries/ComponentRegistry';
+
+import BR from '../index';
 
 type ComponentSchema = {
 	component: string | ReactElement<*>,
@@ -65,8 +66,8 @@ export default class JsonToReact {
 		if (Object.prototype.hasOwnProperty.call(schema, 'component')) {
 			if (schema.component === Object(schema.component)) {
 				return schema.component;
-			} else if (ComponentRegistry.has(String(schema.component))) {
-				return ComponentRegistry.get(String(schema.component));
+			} else if (BR.Components.has(String(schema.component))) {
+				return BR.Components.get(String(schema.component));
 			} else if (Object.prototype.hasOwnProperty.call(DOM, schema.component)) {
 				return schema.component;
 			}

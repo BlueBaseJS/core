@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PluginRegistry = exports.ConfigRegistry = exports.ComponentRegistry = exports.CallbackRegistry = exports.AppRegistry = exports.Plugin = exports.App = undefined;
+exports.blueRain = exports.ConfigRegistry = exports.ComponentRegistry = exports.Plugin = exports.App = undefined;
 
 var _boot = require('./boot');
 
@@ -37,13 +37,13 @@ var _Plugin2 = require('./models/Plugin');
 
 var _Plugin3 = _interopRequireDefault(_Plugin2);
 
-var _AppRegistry2 = require('./registries/AppRegistry');
+var _AppRegistry = require('./registries/AppRegistry');
 
-var _AppRegistry3 = _interopRequireDefault(_AppRegistry2);
+var _AppRegistry2 = _interopRequireDefault(_AppRegistry);
 
-var _CallbackRegistry2 = require('./registries/CallbackRegistry');
+var _FilterRegistry = require('./registries/FilterRegistry');
 
-var _CallbackRegistry3 = _interopRequireDefault(_CallbackRegistry2);
+var _FilterRegistry2 = _interopRequireDefault(_FilterRegistry);
 
 var _ComponentRegistry2 = require('./registries/ComponentRegistry');
 
@@ -53,9 +53,9 @@ var _ConfigRegistry2 = require('./registries/ConfigRegistry');
 
 var _ConfigRegistry3 = _interopRequireDefault(_ConfigRegistry2);
 
-var _PluginRegistry2 = require('./registries/PluginRegistry');
+var _PluginRegistry = require('./registries/PluginRegistry');
 
-var _PluginRegistry3 = _interopRequireDefault(_PluginRegistry2);
+var _PluginRegistry2 = _interopRequireDefault(_PluginRegistry);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67,10 +67,11 @@ exports.Plugin = _Plugin3.default;
 
 // Registries
 
-exports.AppRegistry = _AppRegistry3.default;
-exports.CallbackRegistry = _CallbackRegistry3.default;
 exports.ComponentRegistry = _ComponentRegistry3.default;
 exports.ConfigRegistry = _ConfigRegistry3.default;
-exports.PluginRegistry = _PluginRegistry3.default;
-
+var blueRain = exports.blueRain = {
+  apps: _AppRegistry2.default,
+  plugins: _PluginRegistry2.default,
+  filters: _FilterRegistry2.default
+};
 // Router

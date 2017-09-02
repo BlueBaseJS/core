@@ -46,5 +46,4 @@ class ConfigRegistry {
 	}
 }
 
-const configRegistry = new ConfigRegistry();
-export default configRegistry;
+export default ConfigRegistry;

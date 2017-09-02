@@ -1,49 +1,48 @@
 import React from 'react';
 import RX from 'reactxp';
 
-import { boot, bootOnServer } from '../../src/boot';
-import App from '../../src/models/App';
+import BR from '../../src';
 
-describe('boot func tests', () => {
+describe('BR.boot func tests', () => {
 	document.body.innerHTML = '<div class="app-container">' + '</div>';
 
 	it('should throw error b/c null', () => {
-		expect(() => boot(null)).toThrow();
+		expect(() => BR.boot(null)).toThrow();
 	});
 	it('should not throw error b/c empty handled', () => {
-		expect(() => boot()).not.toThrow();
+		expect(() => BR.boot()).not.toThrow();
 	});
 	it('should throw with expected params and unexpected values', () => {
 		expect(() =>
-      boot({ apps: undefined, plugins: undefined, config: undefined })
+      BR.boot({ apps: undefined, plugins: undefined, config: undefined })
     ).not.toThrow();
 	});
-  it('should throw with unexpected params', () => {
-    expect(() =>
-      boot({ Apps: {}, Plugin: {}, Config: {} })
+	it('should throw with unexpected params', () => {
+		expect(() =>
+      BR.boot({ Apps: {}, Plugin: {}, Config: {} })
     ).not.toThrow();
-  });
-	it('should boot with expected params and expected values', () => {
-		class HelloWorld extends App {
+	});
+	it('should BR.boot with expected params and expected values', () => {
+		class HelloWorld extends BR.App {
 			static appName = 'Hello World';
 			render() {
 				return <RX.View><RX.Text>Hello world</RX.Text></RX.View>;
 			}
     }
 		expect(() =>
-      boot({ apps: [HelloWorld], config: { title: 'Hello OS!' } })
+      BR.boot({ apps: [HelloWorld], config: { title: 'Hello OS!' } })
     ).not.toThrow();
 	});
 
-	it('should boot on server with expected params and expected values', () => {
-		class HelloWorld extends App {
+	it('should BR.boot on server with expected params and expected values', () => {
+		class HelloWorld extends BR.App {
 			static appName = 'Hello World';
 			render() {
 				return <RX.View><RX.Text>Hello world</RX.Text></RX.View>;
 			}
     }
 		expect(() =>
-      bootOnServer({ apps: [HelloWorld], config: { title: 'Hello OS!' } })
+      BR.bootOnServer({ apps: [HelloWorld], config: { title: 'Hello OS!' } })
     ).not.toThrow();
 	});
 });

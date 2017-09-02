@@ -1,7 +1,6 @@
 /* @flow */
 
 import reject from 'lodash.reject';
-import parallel from 'async.parallel';
 
 /**
  * All system filters are stored in this registry
@@ -121,41 +120,6 @@ class FilterRegistry {
 		} // else, just return the item unchanged
 		return item;
 	}
-
-	/**
-	 * Successively run all of a hook's filters on an item
-	 * in async mode (only works on server)
-	 * @param {String} hook - First argument: the name of the hook
-	 * @param {Any} args - Other arguments will be passed to each successive iteration
-	 */
-	runAsync = function(hook: string, args: any) {
-		// the first argument is the name of the hook or an array of functions
-		// const hook = arguments[0];
-		// successive arguments are passed to each iteration
-		// const args = Array.prototype.slice.call(arguments).slice(1);
-
-		// const callbacks = Array.isArray(hook) ? hook : this.CallbacksTable[hook];
-
-		// Todo: Find solution for async rather than by using meteor object
-		// if (
-		//   Meteor.isServer &&
-		//   typeof callbacks !== 'undefined' &&
-		//   !!callbacks.length
-		// ) {
-		//   // use defer to avoid holding up client
-		//   Meteor.defer(() => {
-		//     // run all post submit server callbacks on post object successively
-		//     callbacks.forEach(function(callback) {
-		//       callback.apply(this, args);
-		//     });
-		//   });
-		// }
-		if (hook === undefined || hook === null) {
-			throw new Error(`hook cannot be ${hook}`);
-		}
-		parallel(this.FiltersTable[hook]);
-	};
 }
 
-const filterRegistry = new FilterRegistry();
-export default filterRegistry;
+export default FilterRegistry;

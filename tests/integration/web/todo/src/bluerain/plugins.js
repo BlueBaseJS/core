@@ -1,5 +1,5 @@
-import ReduxDevtoolsPlugin from '../../../../common/plugins/ReduxDevtoolsPlugin';
-import ApolloPlugin from '../../../../common/plugins/ApolloPlugin';
+import ReduxDevtoolsPlugin from '../../../../../../src/plugins/ReduxDevtoolsPlugin';
+import ApolloPlugin from '../../../../../../src/plugins/ApolloPlugin';
 
 const plugins = [
 	ReduxDevtoolsPlugin,
