@@ -12,6 +12,8 @@ import PluginRegistry from './registries/PluginRegistry';
 import App from './models/App';
 import Plugin from './models/Plugin';
 
+// Others
+import Platform from './Platform';
 import { boot, bootOnServer } from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
@@ -37,7 +39,7 @@ const BlueRain = {
 	International: RX.International,
 	Location: RX.Location,
 	Network: RX.Network,
-	Platform: RX.Platform,
+	Platform,
 	StatusBar: RX.StatusBar,
 	Storage: RX.Storage,
 

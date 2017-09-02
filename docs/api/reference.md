@@ -12,6 +12,9 @@
 -   [Plugin](#plugin)
 -   [IndexPage](#indexpage)
 -   [NotFoundPage](#notfoundpage)
+-   [Platform](#platform)
+    -   [getType](#gettype)
+    -   [setServerMode](#setservermode)
 -   [subscriptions](#subscriptions)
 -   [wsUri](#wsuri)
 -   [subscriptionClient](#subscriptionclient)
@@ -162,6 +165,23 @@ Returns **React.Component** The layout react component
 Returns the 404 Page layout.
 
 Returns **React.Component** The layout react component
+
+## Platform
+
+This interface provides information about the OS or runtime platform on which the app is running.
+
+### getType
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** PlatformType ('web' | 'server' | 'ios' | 'android' | 'windows' | 'electron')
+
+### setServerMode
+
+Set the Platform to 'server'.
+Useful to see if the app is rendering on server due to SSR.
+
+**Parameters**
+
+-   `mode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**  (optional, default `true`)
 
 ## subscriptions
 
