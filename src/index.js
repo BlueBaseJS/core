@@ -13,6 +13,7 @@ import App from './models/App';
 import Plugin from './models/Plugin';
 
 import { boot, bootOnServer } from './boot';
+import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 // This will have all registries as objects
 const BlueRain = {
@@ -39,6 +40,9 @@ const BlueRain = {
 	Platform: RX.Platform,
 	StatusBar: RX.StatusBar,
 	Storage: RX.Storage,
+
+	// Miscellaneous
+	parseJsonSchema,
 };
 
 export default BlueRain;

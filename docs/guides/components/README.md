@@ -1,19 +1,19 @@
-# Component Registry
-The Component Registry stores components which can be dynamically used and replaced. This plays a major role in creating a pluggable and modular system.
+# Components
+BlueRain stores components which can be dynamically used and replaced. This plays a major role in creating a pluggable and modular system.
 
 ## Registering Components
 
 You can add new Components with the `register` method:
 
 ```js
-import { ComponentRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 
 const Logo = props => {
   return (
     <div>/* component code */</div>
   )
 }
-ComponentRegistry.register('Logo', Logo);
+BR.Components.register('Logo', Logo);
 ```
 
 ### Components & HoCs
@@ -27,7 +27,7 @@ The first argument of `register` is the component's name, the second is the comp
 For example, this is how you'd pass the `currentUser` object to the `Logo` component:
 
 ```js
-ComponentRegistry.register('Logo', Logo, withCurrentUser);
+BR.Components.register('Logo', Logo, withCurrentUser);
 ```
 
 ### "Delayed" HoCs
@@ -43,7 +43,7 @@ On the other hand, `register('Foo', Foo, withCurrentUser)` *doesn't* execute the
 But what about HoC functions that take arguments? For example if you were to write:
 
 ```js
-ComponentRegistry.register('PostsList', PostsList, withList(options));
+BR.Components.register('PostsList', PostsList, withList(options));
 ```
 
 The `withList(options)` would be executed immediately, and you would have no way of overriding the `options` object later on (a common use case being overriding a fragment).
@@ -51,7 +51,7 @@ The `withList(options)` would be executed immediately, and you would have no way
 For that reason, to delay the execution until the start of the app, you can use the following alternative syntax:
 
 ```js
-ComponentRegistry.register('PostsList', PostsList, [withList, options]);
+BR.Components.register('PostsList', PostsList, [withList, options]);
 ```
 ### Accessing Raw Components
 
@@ -67,9 +67,9 @@ For that reason, BlueRain provides a `getRawComponent` utility that lets you acc
 
 ```
 MyComponent.foo = "bar";
-const WrappedComponent = ComponentRegistry.register(MyComponent, withCurrentUser);
+const WrappedComponent = BR.Components.register(MyComponent, withCurrentUser);
 console.log(WrappedComponent.foo); // undefined
-console.log(ComponentRegistry.getRawComponent(WrappedComponent).foo); // "bar"
+console.log(BR.Components.getRawComponent(WrappedComponent).foo); // "bar"
 ```
 
 ## Replacing Components
@@ -77,30 +77,30 @@ console.log(ComponentRegistry.getRawComponent(WrappedComponent).foo); // "bar"
 For example, if you wanted to use your own `CustomLogo` component you would do:
 
 ```js
-import { ComponentRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 
 const CustomLogo = props => {
   return (
     <div>/* custom component code */</div>
   )
 }
-ComponentRegistry.replace('Logo', CustomLogo);
+BR.Components.replace('Logo', CustomLogo);
 ```
 
 Note that `replace` will preserve any HoCs originally defined using `register`. In other words, in the following example:
 
 ```js
-ComponentRegistry.register('Logo', Logo, withCurrentUser, withRouter);
-ComponentRegistry.replace('Logo', CustomLogo);
+BR.Components.register('Logo', Logo, withCurrentUser, withRouter);
+BR.Components.replace('Logo', CustomLogo);
 ```
 
 The `CustomLogo` component will also be wrapped with `withCurrentUser` and `withRouter`.
 
-Once you've replaced the `Logo` component with your own `CustomLogo`, `Components.Logo` will now point to `CustomLogo`. If you want an easy way to keep track of which components have been customized, you could add a `custom` attribute when calling the component as a reminder for yourself:
+Once you've replaced the `Logo` component with your own `CustomLogo`, `BR.Components.get('Logo')` will now return `CustomLogo`. If you want an easy way to keep track of which components have been customized, you could add a `custom` attribute when calling the component as a reminder for yourself:
 
 ```js
-import { ComponentRegistry } from 'bluerain-os';
-const Logo = ComponentRegistry.get('Logo');
+import BR from '@blueeast/bluerain-os';
+const Logo = BR.Components.get('Logo');
 
 const CustomHeader = props => {
   return (
@@ -120,14 +120,14 @@ For components defined as ES6 classes, make sure you `extend` the original compo
 In order to extend the original, non-wrapped component we use the `getRawComponent` method:
 
 ```js
-class CustomLogo extends ComponentRegistry.getRawComponent('Logo'){
+class CustomLogo extends BR.Components.getRawComponent('Logo'){
   render() {
     return (
       <div>/* custom component code */</div>
     )
   }
 }
-ComponentRegistry.replace('Logo', CustomLogo);
+BR.Components.replace('Logo', CustomLogo);
 ```
 
 #### Alternative Approach
