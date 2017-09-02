@@ -15,6 +15,12 @@ var _getWindowSize2 = _interopRequireDefault(_getWindowSize);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * The state of current window or screen. Stored in `bluerain.window` in the redux store.
+ * @property {number} width The window width
+ * @property {number} height The window height
+ * @property {"xs" | "sm" | "md" | "lg" | "xl"} size The window size i.e. (xs|sm|md|lg|xl)
+ */
 function initialState() {
 	var dimentions = _reactxp2.default.UserInterface.measureWindow();
 

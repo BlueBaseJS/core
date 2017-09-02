@@ -10,6 +10,10 @@ var _redux = require('redux');
 
 var _ = require('../../');
 
+var _2 = _interopRequireDefault(_);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -17,12 +21,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function addReduxDevTools(composed, enhancers) {
-	var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
+	var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose; // eslint-disable-line no-undef
 	return composeEnhancers(enhancers);
 }
 
-var ReduxDevtoolsPlugin = function (_Plugin) {
-	_inherits(ReduxDevtoolsPlugin, _Plugin);
+var ReduxDevtoolsPlugin = function (_BR$Plugin) {
+	_inherits(ReduxDevtoolsPlugin, _BR$Plugin);
 
 	function ReduxDevtoolsPlugin() {
 		_classCallCheck(this, ReduxDevtoolsPlugin);
@@ -33,12 +37,12 @@ var ReduxDevtoolsPlugin = function (_Plugin) {
 	_createClass(ReduxDevtoolsPlugin, null, [{
 		key: 'initialize',
 		value: function initialize() {
-			_.blueRain.filters.add('bluerain.redux.composed', addReduxDevTools);
+			_2.default.Filters.add('bluerain.redux.composed', addReduxDevTools);
 		}
 	}]);
 
 	return ReduxDevtoolsPlugin;
-}(_.Plugin);
+}(_2.default.Plugin);
 
 ReduxDevtoolsPlugin.pluginName = 'ReduxDevtoolsPlugin';
 ReduxDevtoolsPlugin.slug = 'redux-devtools';

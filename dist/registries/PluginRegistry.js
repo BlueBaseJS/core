@@ -14,13 +14,9 @@ var _lodash3 = require('lodash.kebabcase');
 
 var _lodash4 = _interopRequireDefault(_lodash3);
 
-var _Plugin = require('../models/Plugin');
+var _src = require('../../src');
 
-var _Plugin2 = _interopRequireDefault(_Plugin);
-
-var _ConfigRegistry = require('./ConfigRegistry');
-
-var _ConfigRegistry2 = _interopRequireDefault(_ConfigRegistry);
+var _src2 = _interopRequireDefault(_src);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -128,7 +124,7 @@ var PluginRegistry = function () {
 
 				var plugin = me.PluginsTable[key];
 				if (plugin.initialize) {
-					var config = _ConfigRegistry2.default.get('plugins.' + plugin.slug);
+					var config = _src2.default.Configs.get('plugins.' + plugin.slug);
 					plugin.config = config;
 					plugin.initialize(config);
 				}
@@ -139,5 +135,4 @@ var PluginRegistry = function () {
 	return PluginRegistry;
 }();
 
-var pluginRegistry = new PluginRegistry();
-exports.default = pluginRegistry;
+exports.default = PluginRegistry;

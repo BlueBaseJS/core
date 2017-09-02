@@ -31,7 +31,7 @@ var ComponentRegistry = function () {
 
 
 		/**
-   * Register a Vulcan component with a name, a raw component than can be extended
+   * Register a component with a name, a raw component than can be extended
    * and one or more optional higher order components.
    *
    * @param {String} name The name of the component to register.
@@ -145,7 +145,7 @@ var ComponentRegistry = function () {
 		}
 
 		/**
-  * Replace a Vulcan component with the same name with a new component or
+  * Replace a component with the same name with a new component or
   * an extension of the raw component and one or more optional higher order components.
   * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
   *
@@ -194,5 +194,4 @@ var ComponentRegistry = function () {
 	return ComponentRegistry;
 }();
 
-var componentRegistry = new ComponentRegistry();
-exports.default = componentRegistry;
+exports.default = ComponentRegistry;

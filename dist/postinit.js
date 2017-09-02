@@ -10,6 +10,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _index = require('./index');
 
+var _index2 = _interopRequireDefault(_index);
+
+var _router = require('./router');
+
 var _redux = require('./redux');
 
 var _Page = require('./pages/Page');
@@ -20,9 +24,9 @@ var _IndexPage = require('./pages/IndexPage');
 
 var _IndexPage2 = _interopRequireDefault(_IndexPage);
 
-var _Page3 = require('./pages/404Page');
+var _NotFoundPage = require('./pages/NotFoundPage');
 
-var _Page4 = _interopRequireDefault(_Page3);
+var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
 var _routes = require('./routes');
 
@@ -33,9 +37,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function () {
 
 	/* Main System Component */
-	_index.ComponentRegistry.register('BlueRainApp', function () {
+	_index2.default.Components.register('BlueRainApp', function () {
 		return _react2.default.createElement(
-			_index.SystemRouter,
+			_router.SystemRouter,
 			null,
 			_react2.default.createElement(_routes2.default, null)
 		);
@@ -56,12 +60,12 @@ exports.default = function () {
 	};
 
 	// Add redux to main system app
-	_index.blueRain.filters.add('bluerain.system.app', function AddReduxToSystemApp(App) {
+	_index2.default.Filters.add('bluerain.system.app', function AddReduxToSystemApp(App) {
 		return withRedux(App);
 	});
 
 	// Pages
-	_index.ComponentRegistry.register('Page', _Page2.default);
-	_index.ComponentRegistry.register('IndexPage', _IndexPage2.default);
-	_index.ComponentRegistry.register('404Page', _Page4.default);
+	_index2.default.Components.register('Page', _Page2.default);
+	_index2.default.Components.register('IndexPage', _IndexPage2.default);
+	_index2.default.Components.register('NotFoundPage', _NotFoundPage2.default);
 };

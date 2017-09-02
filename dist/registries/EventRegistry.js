@@ -10,7 +10,6 @@ var _eventemitter2 = _interopRequireDefault(_eventemitter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var event = new _eventemitter2.default(); /**
+exports.default = _eventemitter2.default; /**
                                            * Created by umair on 8/28/17.
                                            */
-exports.default = event;

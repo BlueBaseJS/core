@@ -19,7 +19,7 @@ Object.keys(_reactRouterDom).forEach(function (key) {
 Object.defineProperty(exports, 'SystemRouter', {
 	enumerable: true,
 	get: function get() {
-		return _reactRouterDom.MemoryRouter;
+		return _reactRouterDom.BrowserRouter;
 	}
 });
 

@@ -14,6 +14,8 @@ var _reactIntl = require('react-intl');
 
 var _ = require('../../');
 
+var _2 = _interopRequireDefault(_);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,7 +29,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var withInternationalization = function withInternationalization(App, locale) {
 	return function (props) {
-		var messages = _.blueRain.filters.run('bluerain.intl.messages', {});
+		var messages = _2.default.Filters.run('bluerain.intl.messages', {});
 		return _react2.default.createElement(
 			_reactIntl.IntlProvider,
 			{ locale: locale, messages: messages[locale] },
@@ -36,8 +38,8 @@ var withInternationalization = function withInternationalization(App, locale) {
 	};
 };
 
-var InternationalizationPlugin = function (_Plugin) {
-	_inherits(InternationalizationPlugin, _Plugin);
+var InternationalizationPlugin = function (_BR$Plugin) {
+	_inherits(InternationalizationPlugin, _BR$Plugin);
 
 	function InternationalizationPlugin() {
 		_classCallCheck(this, InternationalizationPlugin);
@@ -55,17 +57,17 @@ var InternationalizationPlugin = function (_Plugin) {
 			}
 			var locale = config.locale;
 			var localeData = require('react-intl/locale-data/' + locale);
-			_.ComponentRegistry.register('FormattedMessage', _reactIntl.FormattedMessage);
+			_2.default.Components.register('FormattedMessage', _reactIntl.FormattedMessage);
 			(0, _reactIntl.addLocaleData)(localeData);
 			// Add internationalization to main system app
-			_.blueRain.filters.add('bluerain.system.app', function AddInternationalizationToSystemApp(App) {
+			_2.default.Filters.add('bluerain.system.app', function AddInternationalizationToSystemApp(App) {
 				return withInternationalization(App, locale);
 			});
 		}
 	}]);
 
 	return InternationalizationPlugin;
-}(_.Plugin);
+}(_2.default.Plugin);
 
 InternationalizationPlugin.pluginName = 'InternationalizationPlugin';
 InternationalizationPlugin.slug = 'Internationalization';

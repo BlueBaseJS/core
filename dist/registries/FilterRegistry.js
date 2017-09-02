@@ -10,10 +10,6 @@ var _lodash = require('lodash.reject');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _async = require('async.parallel');
-
-var _async2 = _interopRequireDefault(_async);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,34 +23,6 @@ var FilterRegistry = function () {
 		_classCallCheck(this, FilterRegistry);
 
 		this.FiltersTable = {};
-
-		this.runAsync = function (hook, args) {
-			// the first argument is the name of the hook or an array of functions
-			// const hook = arguments[0];
-			// successive arguments are passed to each iteration
-			// const args = Array.prototype.slice.call(arguments).slice(1);
-
-			// const callbacks = Array.isArray(hook) ? hook : this.CallbacksTable[hook];
-
-			// Todo: Find solution for async rather than by using meteor object
-			// if (
-			//   Meteor.isServer &&
-			//   typeof callbacks !== 'undefined' &&
-			//   !!callbacks.length
-			// ) {
-			//   // use defer to avoid holding up client
-			//   Meteor.defer(() => {
-			//     // run all post submit server callbacks on post object successively
-			//     callbacks.forEach(function(callback) {
-			//       callback.apply(this, args);
-			//     });
-			//   });
-			// }
-			if (hook === undefined || hook === null) {
-				throw new Error('hook cannot be ' + hook);
-			}
-			(0, _async2.default)(this.FiltersTable[hook]);
-		};
 	}
 
 	_createClass(FilterRegistry, [{
@@ -170,18 +138,9 @@ var FilterRegistry = function () {
 			} // else, just return the item unchanged
 			return item;
 		}
-
-		/**
-   * Successively run all of a hook's filters on an item
-   * in async mode (only works on server)
-   * @param {String} hook - First argument: the name of the hook
-   * @param {Any} args - Other arguments will be passed to each successive iteration
-   */
-
 	}]);
 
 	return FilterRegistry;
 }();
 
-var filterRegistry = new FilterRegistry();
-exports.default = filterRegistry;
+exports.default = FilterRegistry;

@@ -6,9 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _index = require('./index');
 
-var _SystemLayout = require('./layouts/SystemLayout');
-
-var _SystemLayout2 = _interopRequireDefault(_SystemLayout);
+var _index2 = _interopRequireDefault(_index);
 
 var _JsonSchemaToReact = require('./utils/JsonSchemaToReact');
 
@@ -18,10 +16,10 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var Routes = function Routes() {
 
-	var appRoutes = _index.blueRain.apps.getComponentSchema();
+	var appRoutes = _index2.default.Apps.getComponentSchema();
 
 	var routes = {
-		component: _SystemLayout2.default,
+		component: 'SystemLayout',
 		children: [{
 			component: 'Switch',
 			children: [{
@@ -29,18 +27,18 @@ var Routes = function Routes() {
 				props: {
 					path: '/',
 					exact: true,
-					component: _index.ComponentRegistry.get('IndexPage')
+					component: _index2.default.Components.get('IndexPage')
 				}
 			}].concat(_toConsumableArray(appRoutes), [{
 				component: 'Route',
 				props: {
-					component: _index.ComponentRegistry.get('404Page')
+					component: _index2.default.Components.get('NotFoundPage')
 				}
 			}])
 		}]
 	};
 
-	return (0, _JsonSchemaToReact.parseJsonSchema)(_index.blueRain.filters.run('bluerain.system.routes', routes));
+	return (0, _JsonSchemaToReact.parseJsonSchema)(_index2.default.Filters.run('bluerain.system.routes', routes));
 };
 
 exports.default = Routes;
