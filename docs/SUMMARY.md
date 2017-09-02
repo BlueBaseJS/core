@@ -10,7 +10,7 @@
 * [Apps](guides/apps/README.md)
   * [Installation](guides/apps/installation.md)
   * [Configuration](guides/apps/configuration.md)
-  * [Creating an App](guides/apps/creating-an-app)
+  * [Creating an App](guides/apps/creating-an-app.md)
 
 * [Components](guides/components/README.md)
 
