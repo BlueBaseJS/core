@@ -24,7 +24,7 @@ type ResponsiveLayoutProps = {
  * @prop {object} window The window state passed from the store
  * @prop {number} window.width The window width
  * @prop {number} window.height The window height
- * @prop {string} window.width The window size i.e. (xs|sm|md|lg|xl)
+ * @prop {string} window.size The window size i.e. (xs|sm|md|lg|xl)
  * @prop {React.Component} default The default component to render, if a current size component is not given.
  * @prop {React.Component} xs The component to render when the screen size is extra-small.
  * @prop {React.Component} sm The component to render when the screen size is small.

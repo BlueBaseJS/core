@@ -18,6 +18,7 @@
 -   [networkInterface](#networkinterface)
 -   [client](#client)
 -   [React](#react)
+-   [WindowState](#windowstate)
 -   [AppRegistry](#appregistry)
     -   [register](#register)
     -   [registerMany](#registermany)
@@ -41,7 +42,6 @@
     -   [add](#add)
     -   [remove](#remove-1)
     -   [run](#run)
-    -   [runAsync](#runasync)
 -   [PluginRegistry](#pluginregistry)
     -   [register](#register-3)
     -   [registerMany](#registermany-1)
@@ -53,13 +53,13 @@
 
 Options object that `boot` and `bootOnServer` methods expect.
 
-Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?, config: ConfigType?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
+Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>?, config: ConfigType?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
 
 **Properties**
 
--   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?** 
+-   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>?** 
 -   `config` **ConfigType?** 
--   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?** 
+-   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>?** 
 -   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
 -   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
 -   `ssrMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
@@ -109,7 +109,7 @@ ResponsiveLayout component to create responsive layouts.
 -   `window` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The window state passed from the store
     -   `window.width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window width
     -   `window.height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window height
-    -   `window.width` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The window size i.e. (xs|sm|md|lg|xl)
+    -   `window.size` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The window size i.e. (xs|sm|md|lg|xl)
 -   `default` **React.Component** The default component to render, if a current size component is not given.
 -   `xs` **React.Component** The component to render when the screen size is extra-small.
 -   `sm` **React.Component** The component to render when the screen size is small.
@@ -186,6 +186,21 @@ Apollo client params
 ## React
 
 Created by umair on 8/22/17.
+
+## WindowState
+
+The state of current window or screen. Stored in `bluerain.window` in the redux store.
+
+Type: {width: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), height: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), size: (`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)}
+
+**Properties**
+
+-   `width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window width
+-   `height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window height
+-   `size` **(`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)** The window size i.e. (xs|sm|md|lg|xl)
+-   `width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `size` **(`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)** 
 
 ## AppRegistry
 
@@ -396,16 +411,6 @@ Successively run all of a hook's filters on an item
 -   `args` **Any** Other arguments will be passed to each successive iteration
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns the item after it's been through all the filters for this hook
-
-### runAsync
-
-Successively run all of a hook's filters on an item
-in async mode (only works on server)
-
-**Parameters**
-
--   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
--   `args` **Any** Other arguments will be passed to each successive iteration
 
 ## PluginRegistry
 
