@@ -86,5 +86,6 @@ export const boot = function(options: BootOptions = {}) {
  * Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
  */
 export const bootOnServer = function(options: BootOptions) {
+	BR.Platform.setServerMode(true);
 	boot(options);
 };
