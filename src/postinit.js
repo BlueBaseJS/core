@@ -8,7 +8,7 @@ import { getProvider, createStore } from './redux';
 
 import Page from './pages/Page';
 import IndexPage from './pages/IndexPage';
-import FourOFourPage from './pages/404Page';
+import NotFoundPage from './pages/NotFoundPage';
 import Routes from './routes';
 
 export default () => {
@@ -38,5 +38,5 @@ export default () => {
 	// Pages
 	BR.Components.register('Page', Page);
 	BR.Components.register('IndexPage', IndexPage);
-	BR.Components.register('404Page', FourOFourPage);
+	BR.Components.register('NotFoundPage', NotFoundPage);
 };

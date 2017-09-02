@@ -26,7 +26,7 @@ const Routes = () => {
 					{
 						component: 'Route',
 						props: {
-							component: BR.Components.get('404Page')
+							component: BR.Components.get('NotFoundPage')
 						}
 					}
 				]

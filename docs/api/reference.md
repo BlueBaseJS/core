@@ -6,17 +6,19 @@
 -   [boot](#boot)
 -   [bootOnServer](#bootonserver)
 -   [Config](#config)
+-   [ResponsiveLayout](#responsivelayout)
 -   [onLayout](#onlayout)
 -   [App](#app)
 -   [Plugin](#plugin)
--   [Layout](#layout)
--   [Layout](#layout-1)
+-   [IndexPage](#indexpage)
+-   [NotFoundPage](#notfoundpage)
 -   [subscriptions](#subscriptions)
 -   [wsUri](#wsuri)
 -   [subscriptionClient](#subscriptionclient)
 -   [networkInterface](#networkinterface)
 -   [client](#client)
 -   [React](#react)
+-   [WindowState](#windowstate)
 -   [AppRegistry](#appregistry)
     -   [register](#register)
     -   [registerMany](#registermany)
@@ -94,6 +96,27 @@ Type: ConfigType
 -   `plugins` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for plugins
 -   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "BlueRain OS"]		Main title of the app
 
+## ResponsiveLayout
+
+ResponsiveLayout component to create responsive layouts.
+
+**Parameters**
+
+-   `props` **ResponsiveLayoutProps** 
+
+**Properties**
+
+-   `window` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The window state passed from the store
+    -   `window.width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window width
+    -   `window.height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window height
+    -   `window.size` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The window size i.e. (xs|sm|md|lg|xl)
+-   `default` **React.Component** The default component to render, if a current size component is not given.
+-   `xs` **React.Component** The component to render when the screen size is extra-small.
+-   `sm` **React.Component** The component to render when the screen size is small.
+-   `md` **React.Component** The component to render when the screen size is medium.
+-   `lg` **React.Component** The component to render when the screen size is large.
+-   `xl` **React.Component** The component to render when the screen size is extra-large.
+
 ## onLayout
 
 Whenever the screen/window size changes, notify redux to
@@ -128,15 +151,15 @@ Base class of a plugin which is to be extended.
 -   `description` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App description
 -   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
 
-## Layout
+## IndexPage
 
-Returns the 404 Page layout.
+Returns the Index Page layout.
 
 Returns **React.Component** The layout react component
 
-## Layout
+## NotFoundPage
 
-Returns the Index Page layout.
+Returns the 404 Page layout.
 
 Returns **React.Component** The layout react component
 
@@ -163,6 +186,21 @@ Apollo client params
 ## React
 
 Created by umair on 8/22/17.
+
+## WindowState
+
+The state of current window or screen. Stored in `bluerain.window` in the redux store.
+
+Type: {width: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), height: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), size: (`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)}
+
+**Properties**
+
+-   `width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window width
+-   `height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window height
+-   `size` **(`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)** The window size i.e. (xs|sm|md|lg|xl)
+-   `width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `size` **(`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)** 
 
 ## AppRegistry
 
@@ -223,7 +261,7 @@ All system components are stored in this registry
 
 ### register
 
-Register a Vulcan component with a name, a raw component than can be extended
+Register a component with a name, a raw component than can be extended
 and one or more optional higher order components.
 
 **Parameters**
@@ -274,7 +312,7 @@ Returns **ReactElement&lt;any>**
 
 ### replace
 
-Replace a Vulcan component with the same name with a new component or
+Replace a component with the same name with a new component or
 an extension of the raw component and one or more optional higher order components.
 This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
 

@@ -35,7 +35,7 @@ const subTitleStyle = RX.Styles.createViewStyle({
  *
  * @returns {React.Component} The layout react component
  */
-export default function Layout() : RX.Component<*> {
+export default function NotFoundPage() : RX.Component<*> {
 	const schema = {
 		component: 'Page',
 		props: { style: pageStyle },
