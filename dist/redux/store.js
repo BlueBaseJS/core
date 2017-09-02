@@ -9,6 +9,8 @@ var _redux = require('redux');
 
 var _index = require('../index');
 
+var _index2 = _interopRequireDefault(_index);
+
 var _reducers = require('./reducers');
 
 var _reducers2 = _interopRequireDefault(_reducers);
@@ -24,20 +26,20 @@ var initialState = {
 var store = void 0;
 
 var createStore = function createStore() {
-	var _blueRain$filters, _blueRain$filters2;
+	var _BR$Filters, _BR$Filters2;
 
-	initialState = _index.blueRain.filters.run('bluerain.redux.initialState', initialState);
+	initialState = _index2.default.Filters.run('bluerain.redux.initialState', initialState);
 
 	var reducers = (0, _reducers2.default)();
 
 	var middlewares = [];
-	middlewares = _index.blueRain.filters.run('bluerain.redux.middlewares', middlewares);
+	middlewares = _index2.default.Filters.run('bluerain.redux.middlewares', middlewares);
 
 	var enhancers = [_redux.applyMiddleware.apply(undefined, _toConsumableArray(middlewares))];
-	enhancers = (_blueRain$filters = _index.blueRain.filters).run.apply(_blueRain$filters, ['bluerain.redux.enhancers', enhancers].concat(_toConsumableArray(middlewares)));
+	enhancers = (_BR$Filters = _index2.default.Filters).run.apply(_BR$Filters, ['bluerain.redux.enhancers', enhancers].concat(_toConsumableArray(middlewares)));
 
 	var composed = _redux.compose.apply(undefined, _toConsumableArray(enhancers));
-	composed = (_blueRain$filters2 = _index.blueRain.filters).run.apply(_blueRain$filters2, ['bluerain.redux.composed', composed].concat(_toConsumableArray(enhancers)));
+	composed = (_BR$Filters2 = _index2.default.Filters).run.apply(_BR$Filters2, ['bluerain.redux.composed', composed].concat(_toConsumableArray(enhancers)));
 
 	store = (0, _redux.createStore)(reducers, initialState, composed);
 

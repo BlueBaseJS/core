@@ -39,9 +39,9 @@ const schema = {
 
 To use function:
 ```
-import { parseJsonSchema } from 'bluerain-client-services/lib/JsonSchemaToReact';
+import BR from '@blueeast/bluerain-os';
 
-parseJsonSchema(schema);
+BR.parseJsonSchema(schema);
 
 ```
 
@@ -50,15 +50,14 @@ parseJsonSchema(schema);
 We can also create already defined react componets by using JSON. The format for using them is that first we have to register them in Component Registry. JSONTOReact can create React elements for HTML elements and registered react elements.
 
 ```
-import { registerComponent } from 'bluerain-client-services/lib/ComponentRegistry';
-import { parseJsonSchema } from 'bluerain-client-services/lib/JsonSchemaToReact';
+import BR from '@blueeast/bluerain-os';
 
 const Logo = props => {
   return (
     <div>/* component code */</div>
   )
 } 
-registerComponent('BluerainLogo', Logo);
+BR.Components.register('BluerainLogo', Logo);
 
 const schema = {
     component: 'BluerainLogo',
@@ -67,7 +66,7 @@ const schema = {
         color: 'blue'
     }
 }
-parseJsonSchema(schema);
+BR.parseJsonSchema(schema);
 
 ```
 The above code will return react element containing `BluerainLogo` component.

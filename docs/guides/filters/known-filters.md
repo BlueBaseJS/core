@@ -2,27 +2,27 @@
 
 These are the known callback hooks in the system:
 
-- [System App]()
-	-	[bluerain.system.app]()
-	-	[bluerain.system.routes]()
-- [System Lifecycle Events]()
-	-	[bluerain.system.boot.start]()
-	-	[bluerain.system.configurations.loaded]()
-	-	[bluerain.system.components.registered]()
-	-	[bluerain.system.plugins.registered]()
-	-	[bluerain.system.plugins.initialized]()
-	-	[bluerain.system.apps.registered]()
-	-	[bluerain.system.apps.initialized]()
-	-	[bluerain.system.initialized]()
-	-	[bluerain.system.boot.end]()
-- [Redux Store](#reduxstore)
-	-	[bluerain.redux.initialState](#bluerainreduxinitialState)
-	-	[bluerain.redux.reducers]()
-	-	[bluerain.redux.reducers.bluerain]()
-	-	[bluerain.redux.middlewares]()
-	-	[bluerain.redux.enhancers]()
-	-	[bluerain.redux.composed]()
-	-	[bluerain.redux.provider]()
+- [System App](#system-app)
+	-	[bluerain.system.app](#bluerainsystemapp)
+	-	[bluerain.system.routes](#bluerainsystemroutes)
+- [System Lifecycle Events](#system-lifecycle-events)
+	-	[bluerain.system.boot.start](#bluerainsystembootstart)
+	-	[bluerain.system.configurations.loaded](#bluerainsystemconfigurationsloaded)
+	-	[bluerain.system.components.registered](#bluerainsystemcomponentsregistered)
+	-	[bluerain.system.plugins.registered](#bluerainsystempluginsregistered)
+	-	[bluerain.system.plugins.initialized](#bluerainsystempluginsinitialized)
+	-	[bluerain.system.apps.registered](#bluerainsystemappsregistered)
+	-	[bluerain.system.apps.initialized](#bluerainsystemappsinitialized)
+	-	[bluerain.system.initialized](#bluerainsysteminitialized)
+	-	[bluerain.system.boot.end](#bluerainsystembootend)
+- [Redux Store](#redux-store)
+	-	[bluerain.redux.initialState](#bluerainreduxinitialstate)
+	-	[bluerain.redux.reducers](#bluerainreduxreducers)
+	-	[bluerain.redux.reducers.bluerain](#bluerainreduxreducersbluerain)
+	-	[bluerain.redux.middlewares](#bluerainreduxmiddlewares)
+	-	[bluerain.redux.enhancers](#bluerainreduxenhancers)
+	-	[bluerain.redux.composed](#bluerainreduxcomposed)
+	-	[bluerain.redux.provider](#bluerainreduxprovider)
 
 ## System App
 
@@ -46,10 +46,10 @@ SystemApp | React.Component | The main system app component.
 This example wraps the System App with a Redux provider by using a `withRedux` higher order component (HOC).
 
 ```javascript
-import { CallbackRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 import withRedux from './withRedux';
 
-CallbackRegistry.add(
+BR.Filters(
 	'bluerain.system.app', 
 	function AddReduxToSystemApp(App) {
 		return withRedux(App);
@@ -131,9 +131,9 @@ initialState | Object | initialState Object
 This example sets the `bluerain.taskbar.active` state of the redux store to true at system boot time.
 
 ```javascript
-import { CallbackRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 
-CallbackRegistry.add(
+BR.Filters.add(
 	'bluerain.redux.initialState',
 	function ActivateTaskbar(reducers) {
 		return Object.assign({}, reducers, {
@@ -169,10 +169,10 @@ reducers | Object | The reducer object. This object will be sent as a param to t
 This example adds a reducer to bluerain state, which will be accessible at `foo`.
 
 ```javascript
-import { CallbackRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 import reducer from './reducer';
 
-CallbackRegistry.add(
+BR.Filters(
 	'bluerain.redux.reducers', 
 	function AddReducer(reducers) {
 		return Object.assign({}, reducers, {
@@ -204,10 +204,10 @@ reducers | Object | The reducer object. This object will be sent as a param to t
 This example adds a taskbar reducer to bluerain state, which will be accessible at `bluerain.taskbar`.
 
 ```javascript
-import { CallbackRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 import reducer from './reducer';
 
-CallbackRegistry.add(
+BR.Filters(
 	'bluerain.redux.reducers.bluerain', 
 	function AddReducers(reducers) {
 		return Object.assign({}, reducers, {
@@ -241,10 +241,10 @@ middlewares | Array | This is an array of redux middlewares. This array will be 
 This example adds a taskbar reducer to bluerain state, which will be accessible at `bluerain.taskbar`.
 
 ```javascript
-import { CallbackRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 import customMiddleware from './customMiddleware';
 
-CallbackRegistry.add(
+BR.Filters(
 	'bluerain.redux.middlewares', 
 	function AddMiddleware(middlewares) {
 		return middlewares.push(customMiddleware());
@@ -310,10 +310,10 @@ Provider | Provider | The react-redux Provider component
 This example replaces the original provider with Apollo's provider.
 
 ```javascript
-import { CallbackRegistry } from 'bluerain-os';
+import BR from '@blueeast/bluerain-os';
 import { ApolloProvider } from 'react-apollo';
 
-CallbackRegistry.add(
+BR.Filters(
 	'bluerain.redux.provider', 
 	function ChangeProvider(Provider) {
 		return ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);

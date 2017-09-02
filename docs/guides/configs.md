@@ -1,1 +1,0 @@
-Will have documentation about getting and setting configs.

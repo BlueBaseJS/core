@@ -10,13 +10,9 @@ var _lodash = require('lodash.kebabcase');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _App = require('../models/App');
+var _index = require('../index');
 
-var _App2 = _interopRequireDefault(_App);
-
-var _ConfigRegistry = require('../registries/ConfigRegistry');
-
-var _ConfigRegistry2 = _interopRequireDefault(_ConfigRegistry);
+var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58,7 +54,7 @@ var AppRegistry = function () {
 			}
 
 			app.slug = (0, _lodash2.default)(app.slug);
-			app.appRoutePrefix = _ConfigRegistry2.default.get('appRoutePrefix') || defaultAppRoutePrefix;
+			app.appRoutePrefix = _index2.default.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 			app.path = app.appRoutePrefix + '/' + app.slug;
 
 			this.AppsTable[app.slug] = app;
@@ -96,7 +92,7 @@ var AppRegistry = function () {
 
 				var app = me.AppsTable[key];
 				if (app.initialize) {
-					var config = _ConfigRegistry2.default.get('apps.' + app.slug);
+					var config = _index2.default.Configs.get('apps.' + app.slug);
 					app.config = config;
 					app.initialize(config);
 				}
@@ -168,5 +164,4 @@ var AppRegistry = function () {
 	return AppRegistry;
 }();
 
-var appRegistry = new AppRegistry();
-exports.default = appRegistry;
+exports.default = AppRegistry;

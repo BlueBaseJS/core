@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.default = Layout;
+exports.default = NotFoundPage;
 
 var _reactxp = require('reactxp');
 
@@ -45,7 +45,7 @@ var subTitleStyle = _reactxp2.default.Styles.createViewStyle({
  *
  * @returns {React.Component} The layout react component
  */
-function Layout() {
+function NotFoundPage() {
 	var schema = {
 		component: 'Page',
 		props: { style: pageStyle },

@@ -80,5 +80,4 @@ var ConfigRegistry = function () {
 	return ConfigRegistry;
 }();
 
-var configRegistry = new ConfigRegistry();
-exports.default = configRegistry;
+exports.default = ConfigRegistry;

@@ -13,9 +13,9 @@ var _lodash = require('lodash.set');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _ComponentRegistry = require('../registries/ComponentRegistry');
+var _index = require('../index');
 
-var _ComponentRegistry2 = _interopRequireDefault(_ComponentRegistry);
+var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -109,8 +109,8 @@ var JsonToReact = function () {
 			if (Object.prototype.hasOwnProperty.call(schema, 'component')) {
 				if (schema.component === Object(schema.component)) {
 					return schema.component;
-				} else if (_ComponentRegistry2.default.has(String(schema.component))) {
-					return _ComponentRegistry2.default.get(String(schema.component));
+				} else if (_index2.default.Components.has(String(schema.component))) {
+					return _index2.default.Components.get(String(schema.component));
 				} else if (Object.prototype.hasOwnProperty.call(_react.DOM, schema.component)) {
 					return schema.component;
 				}
