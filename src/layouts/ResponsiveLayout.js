@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import ComponentRegistry from '../registries/ComponentRegistry';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
-class ResponsiveLayout extends RX.Component {
+class ResponsiveLayout extends RX.Component<*> {
 
 	render() {
 
