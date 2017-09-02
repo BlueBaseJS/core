@@ -6,7 +6,7 @@ import configureMockStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import React from 'react';
 import ResponsiveLayout from '../../src/layouts/ResponsiveLayout';
-import ComponentRegistry from '../../src/registries/ComponentRegistry';
+import BR from '../../src/';
 import {
   setWindowDimentions
 } from '../../src/plugins/WindowInfoPlugin/actions';
@@ -277,7 +277,7 @@ describe('Responsive Layout tests', () => {
 	});
 	describe('Pass components as strings rather than React Components', () => {
 		it('should Heading when size xs is not passsed ', () => {
-			ComponentRegistry.register('Heading', () => <h1>Heading</h1>);
+			BR.Components.register('Heading', () => <h1>Heading</h1>);
 			const mockStore = configureMockStore([]);
 			const mockStoreInitialized = mockStore({
 				bluerain: {
@@ -304,7 +304,7 @@ describe('Responsive Layout tests', () => {
 			expect(wrapper.containsMatchingElement(<h1>Heading</h1>)).toEqual(true);
 		});
 		it('should render pargraph when size sm is not passsed ', () => {
-			ComponentRegistry.register('Paragraph', () => <p>This is a paragraph</p>);
+			BR.Components.register('Paragraph', () => <p>This is a paragraph</p>);
 			const mockStore = configureMockStore([]);
 			const mockStoreInitialized = mockStore({
 				bluerain: {
