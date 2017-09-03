@@ -3,57 +3,26 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.bootOnServer = exports.boot = undefined;
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactxp = require('reactxp');
-
-var _reactxp2 = _interopRequireDefault(_reactxp);
-
-var _index = require('./index');
-
-var _index2 = _interopRequireDefault(_index);
-
-var _registerComponents = require('./registerComponents');
-
-var _registerComponents2 = _interopRequireDefault(_registerComponents);
-
-var _postinit = require('./postinit');
-
-var _postinit2 = _interopRequireDefault(_postinit);
-
-var _config = require('./config');
-
-var _config2 = _interopRequireDefault(_config);
-
-var _defaultPlugins = require('./plugins/defaultPlugins');
-
-var _defaultPlugins2 = _interopRequireDefault(_defaultPlugins);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Boots the OS and renders the main UI. Use it on the client side
- */
-
-
-/**
- * Options object that `boot` and `bootOnServer` methods expect.
- */
-var boot = exports.boot = function boot() {
-	var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+exports.default = function () {
+	var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+		serverMode: false,
+		renderApp: true
+	};
 
 
 	// Extract app, plugins and configs from options
 	var apps = options.apps,
 	    plugins = options.plugins,
-	    config = options.config;
+	    config = options.config,
+	    serverMode = options.serverMode,
+	    renderApp = options.renderApp;
+
+	// Server mode
+
+	_index2.default.Platform.setServerMode(serverMode);
 
 	// =[ System Lifecycle Event ]= Boot Start
-
 	_index2.default.Filters.run('bluerain.system.boot.start');
 
 	// Initialize all configs
@@ -99,17 +68,42 @@ var boot = exports.boot = function boot() {
 	var SystemApp = _index2.default.Components.get('BlueRainApp');
 	SystemApp = _index2.default.Filters.run('bluerain.system.app', SystemApp);
 
-	_reactxp2.default.UserInterface.setMainView(_react2.default.createElement(SystemApp, null));
+	if (renderApp !== false) {
+		_reactxp2.default.UserInterface.setMainView(_react2.default.createElement(SystemApp, null));
+	}
 
 	// =[ System Lifecycle Event ]= Boot End
 	_index2.default.Filters.run('bluerain.system.boot.end');
+
+	return SystemApp;
 };
 
-/**
- * Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
- */
+var _react = require('react');
 
+var _react2 = _interopRequireDefault(_react);
 
-var bootOnServer = exports.bootOnServer = function bootOnServer(options) {
-	boot(options);
-};
+var _reactxp = require('reactxp');
+
+var _reactxp2 = _interopRequireDefault(_reactxp);
+
+var _index = require('./index');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _registerComponents = require('./registerComponents');
+
+var _registerComponents2 = _interopRequireDefault(_registerComponents);
+
+var _postinit = require('./postinit');
+
+var _postinit2 = _interopRequireDefault(_postinit);
+
+var _config = require('./config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _defaultPlugins = require('./plugins/defaultPlugins');
+
+var _defaultPlugins2 = _interopRequireDefault(_defaultPlugins);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
