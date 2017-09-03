@@ -15,8 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var pageStyle = _reactxp2.default.Styles.createViewStyle({
 	justifyContent: 'center',
-	padding: 20,
-	textAlign: 'center'
+	padding: 20
 }, false);
 
 var titleStyle = _reactxp2.default.Styles.createViewStyle({
@@ -26,6 +25,7 @@ var titleStyle = _reactxp2.default.Styles.createViewStyle({
 	borderRadius: 10,
 	borderWidth: 1,
 	color: '#fff',
+	textAlign: 'center',
 	fontSize: 68,
 	marginBottom: 20,
 	padding: 20,
@@ -36,7 +36,8 @@ var titleStyle = _reactxp2.default.Styles.createViewStyle({
 
 var subTitleStyle = _reactxp2.default.Styles.createViewStyle({
 	color: 'rgb(150, 150, 150)',
-	marginBottom: 20
+	marginBottom: 20,
+	textAlign: 'center'
 }, false);
 
 /**
@@ -50,9 +51,9 @@ function IndexPage() {
 		props: { style: pageStyle },
 		children: [{
 			component: 'View',
-			props: { style: titleStyle },
 			children: [{
 				component: 'Text',
+				props: { style: titleStyle },
 				text: 'BR'
 			}]
 		}, {

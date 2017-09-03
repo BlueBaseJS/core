@@ -15,12 +15,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var pageStyle = _reactxp2.default.Styles.createViewStyle({
 	justifyContent: 'center',
-	padding: 20,
-	textAlign: 'center'
+	padding: 20
 }, false);
 
 var titleStyle = _reactxp2.default.Styles.createViewStyle({
 	alignSelf: 'center',
+	textAlign: 'center',
 	backgroundColor: 'rgb(220,53,69)',
 	borderColor: 'rgb(220,53,69)',
 	borderRadius: 10,
@@ -35,6 +35,7 @@ var titleStyle = _reactxp2.default.Styles.createViewStyle({
 }, false);
 
 var subTitleStyle = _reactxp2.default.Styles.createViewStyle({
+	textAlign: 'center',
 	color: 'rgb(150, 150, 150)',
 	marginBottom: 20,
 	overflow: 'initial'
@@ -51,8 +52,8 @@ function NotFoundPage() {
 		props: { style: pageStyle },
 		children: [{
 			component: 'View',
-			props: { style: titleStyle },
 			children: [{
+				props: { style: titleStyle },
 				component: 'Text',
 				text: '404'
 			}]
