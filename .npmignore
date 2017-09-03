@@ -1,0 +1,10 @@
+coverage/
+docs/
+flow-typed/
+src/
+tests/
+.babelrc
+.codacy.yaml
+.eslintrc
+.flowconfig
+.travis.yaml
