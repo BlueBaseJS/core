@@ -11,6 +11,6 @@ export default class Page extends RX.Component {
 
 	render() {
 		const { children, style } = this.props;
-		return (<RX.View style={[defaultStyle, style]}> {children} </RX.View>);
+		return (<RX.View style={[defaultStyle, style]}>{children}</RX.View>);
 	}
 }
