@@ -88,7 +88,7 @@ class PluginRegistry {
 			if (plugin.initialize) {
 				const config = BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;
-				plugin.initialize(config);
+				plugin.initialize(config, BR);
 			}
 
 		});
