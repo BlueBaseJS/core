@@ -126,7 +126,7 @@ var PluginRegistry = function () {
 				if (plugin.initialize) {
 					var config = _index2.default.Configs.get('plugins.' + plugin.slug);
 					plugin.config = config;
-					plugin.initialize(config);
+					plugin.initialize(config, _index2.default);
 				}
 			});
 		}
