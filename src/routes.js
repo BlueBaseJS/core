@@ -1,16 +1,12 @@
 /* @flow */
 
-import {
-	AppRegistry,
-	CallbackRegistry,
-	ComponentRegistry,
-} from './index';
+import BR from './index';
 
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 const Routes = () => {
 
-	const appRoutes = AppRegistry.getComponentSchema();
+	const appRoutes = BR.Apps.getComponentSchema();
 
 	const routes = {
 		component: 'SystemLayout',
@@ -23,14 +19,14 @@ const Routes = () => {
 						props: {
 							path: '/',
 							exact: true,
-							component: ComponentRegistry.get('IndexPage')
+							component: BR.Components.get('IndexPage')
 						}
 					},
 					...appRoutes,
 					{
 						component: 'Route',
 						props: {
-							component: ComponentRegistry.get('404Page')
+							component: BR.Components.get('NotFoundPage')
 						}
 					}
 				]
@@ -38,7 +34,7 @@ const Routes = () => {
 		]
 	};
 
-	return parseJsonSchema(CallbackRegistry.run('bluerain.system.routes', routes));
+	return parseJsonSchema(BR.Filters.run('bluerain.system.routes', routes));
 };
 
 export default Routes;

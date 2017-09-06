@@ -1,6 +1,5 @@
-
-import CallbackRegistry from '../../registries/CallbackRegistry';
-import Plugin from '../../models/Plugin';
+import BR from '../../';
+import Plugin from '../../models/Plugin'; // BR.Plugin doesn't exist yet.
 
 import reducer from './reducer';
 import withWindowInfo from './connect';
@@ -11,7 +10,7 @@ export default class WindowInfoPlugin extends Plugin {
 	static slug = 'window-info';
 
 	static initialize() {
-		CallbackRegistry.add('bluerain.redux.reducers.bluerain', function AddReducers(reducers) {
+		BR.Filters.add('bluerain.redux.reducers.bluerain', function AddReducers(reducers) {
 			return Object.assign({}, reducers, {
 				window: reducer
 			});

@@ -1,24 +1,26 @@
 # Summary
 
 * [Introduction](README.md)
-* [Hooks](hooks.md)
 
 ## API
 
-* [Reference](api/reference.md)
+* [API Reference](api/reference.md)
 
 ## Guides
-* [Callbacks](guides/callbacks.md)
-* [Components](guides/components.md)
+* [Apps](guides/apps/README.md)
+  * [Installation](guides/apps/installation.md)
+  * [Configuration](guides/apps/configuration.md)
+  * [Creating an App](guides/apps/creating-an-app.md)
 
-## Customisation
+* [Components](guides/components/README.md)
 
-* [Apps](customization/apps/README.md)
-  * [Installation](customization/apps/installation.md)
-  * [Configuration](customization/apps/configuration.md)
-  * [Creating an App](customization/apps/creating-an-app)
+* [Filters](guides/filters/README.md)
+  * [Known Filters](guides/filters/known-filters.md)
 
-* [Plugins](customization/plugins/README.md)
-  * [Installation](customization/plugins/installation.md)
-  * [Configuration](customization/plugins/configuration.md)
-  * [Creating a Plugin](customization/plugins/creating-a-plugin.md)
+* [Plugins](guides/plugins/README.md)
+  * [Installation](guides/plugins/installation.md)
+  * [Configuration](guides/plugins/configuration.md)
+  * [Creating a Plugin](guides/plugins/creating-a-plugin.md)
+
+## Miscellaneous
+* [JSON to React](/miscellaneous/json-to-react.md)

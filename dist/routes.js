@@ -4,50 +4,41 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _reactRouterDom = require('react-router-dom');
+var _index = require('./index');
 
-var _Callbacks = require('./Callbacks');
+var _index2 = _interopRequireDefault(_index);
 
-var _ComponentRegistry = require('./ComponentRegistry');
+var _JsonSchemaToReact = require('./utils/JsonSchemaToReact');
 
-var _JsonSchemaToReact = require('./JsonSchemaToReact');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _ComponentRegistry.registerComponent)('Route', _reactRouterDom.Route);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var Routes = function Routes(props) {
-	var apps = props.apps,
-	    config = props.config;
+var Routes = function Routes() {
 
-
-	var appPrefix = config && config.apps.routePrefix && config.apps.routePrefix || '/app'; // path = /app
-
-	var appRoutes = [];
-	for (var key in apps) {
-
-		// skip loop if the property is from prototype
-		if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
-
-		var app = apps[key];
-		var component = app.getComponent();
-		console.log('app', component);
-		if (component) {
-			appRoutes.push({
-				component: 'Route',
-				props: {
-					path: appPrefix + '/' + key,
-					key: key,
-					component: component
-				}
-			});
-		}
-	}
+	var appRoutes = _index2.default.Apps.getComponentSchema();
 
 	var routes = {
-		component: 'div', // TODO: Change this to View with ReactXP
-		children: appRoutes
+		component: 'SystemLayout',
+		children: [{
+			component: 'Switch',
+			children: [{
+				component: 'Route',
+				props: {
+					path: '/',
+					exact: true,
+					component: _index2.default.Components.get('IndexPage')
+				}
+			}].concat(_toConsumableArray(appRoutes), [{
+				component: 'Route',
+				props: {
+					component: _index2.default.Components.get('NotFoundPage')
+				}
+			}])
+		}]
 	};
 
-	return (0, _JsonSchemaToReact.parseJsonSchema)((0, _Callbacks.runCallbacks)('bluerain.routes', routes));
+	return (0, _JsonSchemaToReact.parseJsonSchema)(_index2.default.Filters.run('bluerain.system.routes', routes));
 };
 
 exports.default = Routes;

@@ -6,9 +6,19 @@
 -   [boot](#boot)
 -   [bootOnServer](#bootonserver)
 -   [Config](#config)
--   [SystemLayout](#systemlayout)
+-   [ResponsiveLayout](#responsivelayout)
+-   [onLayout](#onlayout)
 -   [App](#app)
 -   [Plugin](#plugin)
+-   [IndexPage](#indexpage)
+-   [NotFoundPage](#notfoundpage)
+-   [subscriptions](#subscriptions)
+-   [wsUri](#wsuri)
+-   [subscriptionClient](#subscriptionclient)
+-   [networkInterface](#networkinterface)
+-   [client](#client)
+-   [React](#react)
+-   [WindowState](#windowstate)
 -   [AppRegistry](#appregistry)
     -   [register](#register)
     -   [registerMany](#registermany)
@@ -16,11 +26,6 @@
     -   [remove](#remove)
     -   [getApps](#getapps)
     -   [getComponentSchema](#getcomponentschema)
--   [CallbackRegistry](#callbackregistry)
-    -   [add](#add)
-    -   [remove](#remove-1)
-    -   [run](#run)
-    -   [runAsync](#runasync)
 -   [ComponentRegistry](#componentregistry)
     -   [register](#register-1)
     -   [has](#has)
@@ -32,6 +37,11 @@
     -   [set](#set)
     -   [get](#get-1)
     -   [register](#register-2)
+-   [EventEmitter](#eventemitter)
+-   [FilterRegistry](#filterregistry)
+    -   [add](#add)
+    -   [remove](#remove-1)
+    -   [run](#run)
 -   [PluginRegistry](#pluginregistry)
     -   [register](#register-3)
     -   [registerMany](#registermany-1)
@@ -43,13 +53,13 @@
 
 Options object that `boot` and `bootOnServer` methods expect.
 
-Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?, config: ConfigType?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
+Type: {apps: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>?, config: ConfigType?, plugins: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>?, debug: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, development: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?, ssrMode: [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?}
 
 **Properties**
 
--   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>?** 
+-   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.App>?** 
 -   `config` **ConfigType?** 
--   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>?** 
+-   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;BR.Plugin>?** 
 -   `debug` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
 -   `development` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
 -   `ssrMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** 
@@ -86,12 +96,31 @@ Type: ConfigType
 -   `plugins` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for plugins
 -   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "BlueRain OS"]		Main title of the app
 
-## SystemLayout
+## ResponsiveLayout
 
-Returns the main system layout view. This is the first view
-of the layout heirarcy.
+ResponsiveLayout component to create responsive layouts.
 
-Returns **React.Component** The layout react component
+**Parameters**
+
+-   `props` **ResponsiveLayoutProps** 
+
+**Properties**
+
+-   `window` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The window state passed from the store
+    -   `window.width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window width
+    -   `window.height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window height
+    -   `window.size` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The window size i.e. (xs|sm|md|lg|xl)
+-   `default` **React.Component** The default component to render, if a current size component is not given.
+-   `xs` **React.Component** The component to render when the screen size is extra-small.
+-   `sm` **React.Component** The component to render when the screen size is small.
+-   `md` **React.Component** The component to render when the screen size is medium.
+-   `lg` **React.Component** The component to render when the screen size is large.
+-   `xl` **React.Component** The component to render when the screen size is extra-large.
+
+## onLayout
+
+Whenever the screen/window size changes, notify redux to
+update `state.bluerain.window` object.
 
 ## App
 
@@ -121,6 +150,57 @@ Base class of a plugin which is to be extended.
 -   `category` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Category the App belongs to
 -   `description` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App description
 -   `version` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** App version
+
+## IndexPage
+
+Returns the Index Page layout.
+
+Returns **React.Component** The layout react component
+
+## NotFoundPage
+
+Returns the 404 Page layout.
+
+Returns **React.Component** The layout react component
+
+## subscriptions
+
+Activate subscriptions
+
+## wsUri
+
+URI of websocket server
+
+## subscriptionClient
+
+SubscriptionClient params, if subscriptions are activated
+
+## networkInterface
+
+NetworkInterface params
+
+## client
+
+Apollo client params
+
+## React
+
+Created by umair on 8/22/17.
+
+## WindowState
+
+The state of current window or screen. Stored in `bluerain.window` in the redux store.
+
+Type: {width: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), height: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), size: (`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)}
+
+**Properties**
+
+-   `width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window width
+-   `height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window height
+-   `size` **(`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)** The window size i.e. (xs|sm|md|lg|xl)
+-   `width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `size` **(`"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`)** 
 
 ## AppRegistry
 
@@ -170,55 +250,6 @@ Returns the JSON schema of the main APPs component.
 This component renders all the apps.
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** JSON Schema
-
-## CallbackRegistry
-
-All system callbacks are stored in this registry
-
-**Properties**
-
--   `CallbacksTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all callbacks
-
-### add
-
-Add a callback function to a hook
-
-**Parameters**
-
--   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
--   `callback` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The callback function
-
-### remove
-
-Remove a callback from a hook
-
-**Parameters**
-
--   `hookName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
--   `callbackName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the function to remove
-
-### run
-
-Successively run all of a hook's callbacks on an item
-
-**Parameters**
-
--   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
--   `item` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Second argument: the post, comment, modifier, etc.
-     on which to run the callbacks
--   `args` **Any** Other arguments will be passed to each successive iteration
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns the item after it's been through all the callbacks for this hook
-
-### runAsync
-
-Successively run all of a hook's callbacks on an item
-in async mode (only works on server)
-
-**Parameters**
-
--   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
--   `args` **Any** Other arguments will be passed to each successive iteration
 
 ## ComponentRegistry
 
@@ -337,6 +368,49 @@ Register many configs at once
 **Parameters**
 
 -   `configs` **{}** 
+
+## EventEmitter
+
+Created by umair on 8/28/17.
+
+## FilterRegistry
+
+All system filters are stored in this registry
+
+**Properties**
+
+-   `FiltersTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all filters
+
+### add
+
+Add a filter function to a hook
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `filter` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The filter function
+
+### remove
+
+Remove a filter from a hook
+
+**Parameters**
+
+-   `hookName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `filterName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the function to remove
+
+### run
+
+Successively run all of a hook's filters on an item
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** First argument: the name of the hook
+-   `item` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Second argument: the post, comment, modifier, etc.
+     on which to run the filters
+-   `args` **Any** Other arguments will be passed to each successive iteration
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns the item after it's been through all the filters for this hook
 
 ## PluginRegistry
 

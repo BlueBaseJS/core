@@ -2,8 +2,7 @@
 
 import kebabCase from 'lodash.kebabcase';
 
-import App from '../models/App';
-import ConfigRegistry from '../registries/ConfigRegistry';
+import BR from '../index';
 
 const defaultAppRoutePrefix = '/app';
 
@@ -13,13 +12,13 @@ const defaultAppRoutePrefix = '/app';
  */
 class AppRegistry {
 
-	AppsTable: { [string]: App } = {};
+	AppsTable: { [string]: BR.App } = {};
 
 	/**
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	register(app: App) {
+	register(app: BR.App) {
 		if (app === undefined || app === null) {
 			throw new Error('No app provided');
 		}
@@ -33,7 +32,7 @@ class AppRegistry {
 		}
 
 		app.slug = kebabCase(app.slug);
-		app.appRoutePrefix = ConfigRegistry.get('appRoutePrefix') || defaultAppRoutePrefix;
+		app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 		app.path = `${app.appRoutePrefix}/${app.slug}`;
 
 		this.AppsTable[app.slug] = app;
@@ -43,7 +42,7 @@ class AppRegistry {
 	 * Register many apps at once
 	 * @param {Array<App>} apps The BlueRain apps to register
 	 */
-	registerMany(apps: Array<App>) {
+	registerMany(apps: Array<BR.App>) {
 		const me = this;
 		apps = apps || [];
 
@@ -63,7 +62,7 @@ class AppRegistry {
 
 			const app = me.AppsTable[key];
 			if (app.initialize) {
-				const config = ConfigRegistry.get(`apps.${app.slug}`);
+				const config = BR.Configs.get(`apps.${app.slug}`);
 				app.config = config;
 				app.initialize(config);
 			}
@@ -90,7 +89,7 @@ class AppRegistry {
 	 * Get all apps
 	 * @returns {Object} An object with slug: app key value pair
 	 */
-	getApps() : { [string]: App } {
+	getApps() : { [string]: BR.App } {
 		return this.AppsTable;
 	}
 
@@ -125,5 +124,4 @@ class AppRegistry {
 	}
 }
 
-const appRegistry = new AppRegistry();
-export default appRegistry;
+export default AppRegistry;

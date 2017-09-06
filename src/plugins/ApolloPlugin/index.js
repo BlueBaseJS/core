@@ -1,10 +1,11 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 
-import  { Plugin, CallbackRegistry } from '../../';
+import BR from '../../';
 
 import defaultParams from './defaultParams';
 
@@ -15,22 +16,26 @@ function addApolloReducer(reducers) {
 }
 
 function addApolloMiddlewares(middlewares) {
-	return middlewares.push(client.middleware());
+	middlewares.push(client.middleware());
+	return middlewares;
 }
 
 function replaceReduxProvider(Provider) {
-	const ApoloProviderComponent = ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
-	ApoloProviderComponent.propTypes = {
-		store : PropTypes.isRequired,
-		children: PropTypes.node
+
+	const ApolloProviderHoc = ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+
+	ApolloProviderHoc.propTypes = {
+		store: PropTypes.node.isRequired,
+		children: PropTypes.oneOfType([
+			PropTypes.arrayOf(PropTypes.node),
+			PropTypes.node
+		]).isRequired
 	};
-	ApoloProviderComponent.defaultProps = {
-		children: {}
-	};
-	return ApoloProviderComponent;
+
+	return ApolloProviderHoc;
 }
 
-class ApolloPlugin extends Plugin {
+class ApolloPlugin extends BR.Plugin {
 
 	static pluginName = 'ApolloPlugin';
 	static slug = 'apollo';
@@ -73,9 +78,9 @@ class ApolloPlugin extends Plugin {
 		client = new ApolloClient({ networkInterface });
 
 		// Add callbacks
-		CallbackRegistry.add('bluerain.redux.reducers', addApolloReducer);
-		CallbackRegistry.add('bluerain.redux.middlewares', addApolloMiddlewares);
-		CallbackRegistry.add('bluerain.redux.provider', replaceReduxProvider);
+		BR.Filters.add('bluerain.redux.reducers', addApolloReducer);
+		BR.Filters.add('bluerain.redux.middlewares', addApolloMiddlewares);
+		BR.Filters.add('bluerain.redux.provider', replaceReduxProvider);
 	}
 
 	static getClient() {
