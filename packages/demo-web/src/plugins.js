@@ -1,3 +1,3 @@
 module.exports = [
-	// require('@blueeast/bluerain-plugin-boilerplate').default
+	require('@blueeast/bluerain-plugin-redux-devtools').default
 ];

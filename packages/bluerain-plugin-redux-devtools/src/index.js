@@ -1,5 +1,5 @@
+import BR from '@blueeast/bluerain-os';
 import { compose } from 'redux';
-import BR from '../../';
 
 function addReduxDevTools(composed, enhancers) {
 	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-undef
