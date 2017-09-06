@@ -17,7 +17,7 @@ class ThemePlugin extends Plugin {
 	}
 
 	static withTheme = (component, options) => {
-		const { name } = options;
+
 
 		const mapStateToProps = state => ({
 			style: state.bluerainTheme.theme.IndexPage

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
@@ -18,7 +19,15 @@ function addApolloMiddlewares(middlewares) {
 }
 
 function replaceReduxProvider(Provider) {
-	return ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+	const ApoloProviderComponent = ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+	ApoloProviderComponent.propTypes = {
+		store : PropTypes.isRequired,
+		children: PropTypes.node
+	};
+	ApoloProviderComponent.defaultProps = {
+		children: {}
+	};
+	return ApoloProviderComponent;
 }
 
 class ApolloPlugin extends Plugin {

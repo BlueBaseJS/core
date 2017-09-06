@@ -1,6 +1,5 @@
-export const setTheme = (theme) => {
-  return {
-    type: 'CHANGE_DEFAULT_THEME',
-    theme,
-  };
-};
+const setTheme = theme => ({
+	type: 'CHANGE_DEFAULT_THEME',
+	theme
+});
+export default setTheme;

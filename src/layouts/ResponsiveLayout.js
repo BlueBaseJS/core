@@ -20,7 +20,7 @@ class ResponsiveLayout extends RX.Component {
 		if (!Component) {
 			throw new Error('Invalid Component.');
 		}
-
+		// $FlowFixMe
 		return (<Component {...props} />);
 	}
 }
