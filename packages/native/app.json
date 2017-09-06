@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Expo and BlueRain",
+    "description": "An empty new project demonstrating how to combine React Native and BlueRain.",
+    "slug": "expo-and-bluerain",
+    "privacy": "public",
+    "sdkVersion": "19.0.0",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/icons/app-icon.png",
+    "loading": {
+      "icon": "./assets/icons/loading-icon.png",
+      "hideExponentText": false
+    },
+    "packagerOpts": {
+      "assetExts": [
+        "mp4",
+        "ttf"
+      ],
+      "sourceExts": [
+        "js",
+        "jsx"
+      ]
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}

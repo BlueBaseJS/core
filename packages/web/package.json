@@ -1,0 +1,26 @@
+{
+  "name": "bluerain-boilerplate-web",
+  "version": "0.3.0",
+  "description": "Hello BlueRain!",
+  "author": "BlueEast Team <code@blueeast.com>",
+  "private": true,
+  "main": "../src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --history-api-fallback"
+  },
+  "dependencies": {
+    "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
+    "@blueeast/bluerain-plugin-boilerplate": "../bluerain-plugin-boilerplate",
+    "react": "16.0.0-alpha.12",
+    "react-dom": "^16.0.0-alpha.12",
+    "reactxp": "^0.42.0-rc.25"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "@types/react": "15.0.39",
+    "@types/webpack": "^2.2.14",
+    "source-map-loader": "^0.1.6",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}

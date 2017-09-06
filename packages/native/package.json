@@ -1,0 +1,29 @@
+{
+  "name": "bluerain-boilerplate-native",
+  "version": "0.3.0",
+  "description": "Hello BlueRain!",
+  "author": "BlueEast Team <code@blueeast.com>",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "exp start"
+  },
+  "dependencies": {
+    "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#feature/custom_platform",
+    "expo": "19.0.1",
+    "react": "16.0.0-alpha.12",
+    "react-dom": "^16.0.0-alpha.12",
+    "react-native": "0.46.4",
+    "react-native-windows": "^0.33.0",
+    "reactxp": "^0.42.0-rc.25",
+    "reactxp-navigation": "1.0.5",
+    "reactxp-video": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "@types/react": "15.0.39",
+    "@types/react-native": "0.46.7",
+    "@types/webpack": "^2.2.14",
+    "source-map-loader": "^0.1.6"
+  }
+}

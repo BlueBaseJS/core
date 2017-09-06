@@ -1,0 +1,33 @@
+{
+  "name": "bluerain-boilerplate-electron",
+  "version": "0.3.0",
+  "description": "Hello BlueRain!",
+  "author": "BlueEast Team <code@blueeast.com>",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "NODE_ENV=development electron .",
+    "lint": "./node_modules/.bin/eslint ./src/"
+  },
+  "dependencies": {
+    "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
+    "@blueeast/bluerain-plugin-boilerplate": "../bluerain-plugin-boilerplate",
+    "react": "16.0.0-alpha.12",
+    "react-dom": "^16.0.0-alpha.12",
+    "react-native": "0.46.4",
+    "react-native-windows": "^0.33.0",
+    "reactxp": "^0.42.0-rc.25"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "@types/react": "15.0.39",
+    "@types/webpack": "^2.2.14",
+    "devtron": "^1.4.0",
+    "electron": "^1.7.5",
+    "electron-debug": "^1.4.0",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "source-map-loader": "^0.1.6",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
