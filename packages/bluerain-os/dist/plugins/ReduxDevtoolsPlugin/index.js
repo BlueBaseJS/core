@@ -36,8 +36,8 @@ var ReduxDevtoolsPlugin = function (_BR$Plugin) {
 
 	_createClass(ReduxDevtoolsPlugin, null, [{
 		key: 'initialize',
-		value: function initialize() {
-			_2.default.Filters.add('bluerain.redux.composed', addReduxDevTools);
+		value: function initialize(config, ctx) {
+			ctx.Filters.add('bluerain.redux.composed', addReduxDevTools);
 		}
 	}]);
 
