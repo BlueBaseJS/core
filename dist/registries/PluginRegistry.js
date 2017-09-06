@@ -14,9 +14,9 @@ var _lodash3 = require('lodash.kebabcase');
 
 var _lodash4 = _interopRequireDefault(_lodash3);
 
-var _src = require('../../src');
+var _index = require('../index');
 
-var _src2 = _interopRequireDefault(_src);
+var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -124,9 +124,9 @@ var PluginRegistry = function () {
 
 				var plugin = me.PluginsTable[key];
 				if (plugin.initialize) {
-					var config = _src2.default.Configs.get('plugins.' + plugin.slug);
+					var config = _index2.default.Configs.get('plugins.' + plugin.slug);
 					plugin.config = config;
-					plugin.initialize(config);
+					plugin.initialize(config, _index2.default);
 				}
 			});
 		}

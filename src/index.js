@@ -12,7 +12,9 @@ import PluginRegistry from './registries/PluginRegistry';
 import App from './models/App';
 import Plugin from './models/Plugin';
 
-import { boot, bootOnServer } from './boot';
+// Others
+import Platform from './Platform';
+import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 // This will have all registries as objects
@@ -27,7 +29,6 @@ const BlueRain = {
 
 	// boot
 	boot,
-	bootOnServer,
 
 	// Models
 	App,
@@ -37,12 +38,14 @@ const BlueRain = {
 	International: RX.International,
 	Location: RX.Location,
 	Network: RX.Network,
-	Platform: RX.Platform,
+	Platform,
 	StatusBar: RX.StatusBar,
 	Storage: RX.Storage,
 
 	// Miscellaneous
-	parseJsonSchema,
+	Utils: {
+		parseJsonSchema,
+	}
 };
 
 export default BlueRain;

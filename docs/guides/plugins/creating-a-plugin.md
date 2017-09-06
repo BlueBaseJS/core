@@ -13,9 +13,9 @@ class HelloWorldPlugin extends Plugin {
 	static pluginName = HelloWorldPlugin;
 	static slug = 'hello-world';
 	
-    initialize() {
+    initialize(config, ctx) {
 
-        CallbackRegistry.add('bluerain.routes', (routes) => {
+        ctx.Callbacks.add('bluerain.routes', (routes) => {
             routes.push({
                 path: '/hello-world',
                 component: HelloWorldComponent

@@ -1,5 +1,5 @@
 import { FormattedNumber, FormattedDate } from 'react-intl';
-import { parseJsonSchema } from '../../../../../../src/utils/JsonSchemaToReact';
+import BR from '../../../../../../src';
 
 import pageStyle from './pageStyles';
 
@@ -30,5 +30,5 @@ export default ({ match, appName }) => {
 		]
 	};
 
-	return parseJsonSchema(layout);
+	return BR.Utils.parseJsonSchema(layout);
 };

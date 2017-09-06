@@ -94,7 +94,7 @@ var AppRegistry = function () {
 				if (app.initialize) {
 					var config = _index2.default.Configs.get('apps.' + app.slug);
 					app.config = config;
-					app.initialize(config);
+					app.initialize(config, _index2.default);
 				}
 			});
 		}

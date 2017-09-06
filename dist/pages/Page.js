@@ -46,9 +46,7 @@ var Page = function (_RX$Component) {
 			return _react2.default.createElement(
 				_reactxp2.default.View,
 				{ style: [defaultStyle, style] },
-				' ',
-				children,
-				' '
+				children
 			);
 		}
 	}]);

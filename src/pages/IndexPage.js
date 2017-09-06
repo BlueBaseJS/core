@@ -6,7 +6,6 @@ import { parseJsonSchema } from '../utils/JsonSchemaToReact';
 const pageStyle = RX.Styles.createViewStyle({
 	justifyContent: 'center',
 	padding: 20,
-	textAlign: 'center',
 }, false);
 
 const titleStyle = RX.Styles.createViewStyle({
@@ -16,17 +15,19 @@ const titleStyle = RX.Styles.createViewStyle({
 	borderRadius: 10,
 	borderWidth: 1,
 	color: '#fff',
+	textAlign: 'center',
 	fontSize: 68,
 	marginBottom: 20,
 	padding: 20,
 	shadowOffset: { height: 5, width: 0 },
 	shadowRadius: 15,
-	shadowColor: 'rgba(0,0,0,.3)'
+	shadowColor: 'rgba(0,0,0,.3)',
 }, false);
 
 const subTitleStyle = RX.Styles.createViewStyle({
 	color: 'rgb(150, 150, 150)',
 	marginBottom: 20,
+	textAlign: 'center',
 }, false);
 
 /**
@@ -40,9 +41,9 @@ export default function IndexPage() : RX.Component<*> {
 		props: { style: pageStyle },
 		children: [{
 			component: 'View',
-			props: { style: titleStyle },
 			children: [{
 				component: 'Text',
+				props: { style: titleStyle },
 				text: 'BR'
 			}]
 		}, {

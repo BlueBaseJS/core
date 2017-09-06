@@ -17,9 +17,7 @@ import { Plugin } from 'bluerain-os';
 
 class GoogleAnalyticsPlugin extends Plugin {
 
-	initialize(config) {
-		super(config);
-		
+	initialize(config, ctx) {
 		// use config here
 	}
 }

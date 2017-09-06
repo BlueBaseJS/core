@@ -40,19 +40,19 @@ var _Plugin = require('./models/Plugin');
 
 var _Plugin2 = _interopRequireDefault(_Plugin);
 
+var _Platform = require('./Platform');
+
+var _Platform2 = _interopRequireDefault(_Platform);
+
 var _boot = require('./boot');
+
+var _boot2 = _interopRequireDefault(_boot);
 
 var _JsonSchemaToReact = require('./utils/JsonSchemaToReact');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // This will have all registries as objects
-
-
-// Models
-
-
-// Registries
 var BlueRain = {
 	// BlueRain
 	Apps: new _AppRegistry2.default(),
@@ -63,8 +63,7 @@ var BlueRain = {
 	Configs: new _ConfigRegistry2.default(),
 
 	// boot
-	boot: _boot.boot,
-	bootOnServer: _boot.bootOnServer,
+	boot: _boot2.default,
 
 	// Models
 	App: _App2.default,
@@ -74,12 +73,21 @@ var BlueRain = {
 	International: _reactxp2.default.International,
 	Location: _reactxp2.default.Location,
 	Network: _reactxp2.default.Network,
-	Platform: _reactxp2.default.Platform,
+	Platform: _Platform2.default,
 	StatusBar: _reactxp2.default.StatusBar,
 	Storage: _reactxp2.default.Storage,
 
 	// Miscellaneous
-	parseJsonSchema: _JsonSchemaToReact.parseJsonSchema
+	Utils: {
+		parseJsonSchema: _JsonSchemaToReact.parseJsonSchema
+	}
 };
 
+// Others
+
+
+// Models
+
+
+// Registries
 exports.default = BlueRain;

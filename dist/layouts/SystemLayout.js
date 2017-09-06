@@ -67,9 +67,7 @@ var SystemLayout = function (_RX$Component) {
 			return _react2.default.createElement(
 				_reactxp2.default.View,
 				{ onLayout: this.onLayout, style: [defaultStyle, style] },
-				' ',
-				children,
-				' '
+				children
 			);
 		}
 	}]);

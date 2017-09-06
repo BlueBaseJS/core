@@ -64,7 +64,7 @@ class AppRegistry {
 			if (app.initialize) {
 				const config = BR.Configs.get(`apps.${app.slug}`);
 				app.config = config;
-				app.initialize(config);
+				app.initialize(config, BR);
 			}
 
 		});
