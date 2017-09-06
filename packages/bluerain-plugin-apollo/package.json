@@ -1,17 +1,20 @@
 {
-  "name": "@blueeast/bluerain-plugin-redux-devtools",
+  "name": "@blueeast/bluerain-plugin-apollo",
   "version": "0.1.0",
-  "description": "A BlueRain Plugin to add Redux Devtools extension support",
+  "description": "A BlueRain Plugin that integrates Apollo GraphQl Client",
   "main": "dist/index.js",
   "scripts": {
     "test": "npm test",
-    "build": "rm -rf dist && babel -D src --out-dir dist"
+    "build": "rm -rf dist && babel -D src --out-dir dist",
+    "flow": "flow",
+    "lint": "./node_modules/.bin/eslint ./src/"    
   },
   "author": "BlueEast Team",
   "license": "ISC",
   "dependencies": {
     "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
-    "redux": "^3.7.2"
+    "react-apollo": "^1.4.15",
+    "subscriptions-transport-ws": "^0.8.2"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

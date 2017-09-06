@@ -1,7 +1,7 @@
 {
-  "name": "@blueeast/bluerain-plugin-redux-devtools",
+  "name": "@blueeast/bluerain-plugin-intl",
   "version": "0.1.0",
-  "description": "A BlueRain Plugin to add Redux Devtools extension support",
+  "description": "A BlueRain Plugin to add Internationalization through react-intl",
   "main": "dist/index.js",
   "scripts": {
     "test": "npm test",
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
+    "react-intl": "^2.4.0",
     "redux": "^3.7.2"
   },
   "devDependencies": {
