@@ -19,3 +19,6 @@ BR.boot({
 	plugins: [ReduxDevtoolsPlugin]
 })
 ```
+
+## API
+API Docs
