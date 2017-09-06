@@ -1,13 +1,13 @@
 /* @flow */
 
 import React from 'react';
-import type { ChildrenArray } from 'react';
-
 import BR from '@blueeast/bluerain-os';
-import type { Store as StoreType } from 'redux';
 
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
+
+import type { ChildrenArray } from 'react';
+import type { Store as StoreType } from 'redux';
 
 import defaultParams from './defaultParams';
 
@@ -24,8 +24,8 @@ function addApolloMiddlewares(middlewares) {
 
 function replaceReduxProvider(Provider) {
 	const ApolloProviderHoc = ({ store, children } : {
-		store: StoreType,
-		children: ChildrenArray
+		store: StoreType<*>,
+		children: ChildrenArray<any>
 	}) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
 
 	return ApolloProviderHoc;

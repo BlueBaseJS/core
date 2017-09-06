@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
+    "@blueeast/bluerain-plugin-apollo": "../bluerain-plugin-apollo",
     "@blueeast/bluerain-plugin-redux-devtools": "../bluerain-plugin-redux-devtools",
     "react": "16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
