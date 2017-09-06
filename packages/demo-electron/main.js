@@ -6,7 +6,7 @@ const BrowserWindow = electron.BrowserWindow;
 
 const devServer = require('./dev-server');
 
-const PORT = 8080;
+const PORT = 9090;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

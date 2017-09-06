@@ -1,5 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-redux-devtools",
+  "private": true,
   "version": "0.1.0",
   "description": "A BlueRain Plugin to add Redux Devtools extension support",
   "main": "dist/index.js",
