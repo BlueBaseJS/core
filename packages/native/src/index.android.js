@@ -1,7 +1,7 @@
 /*
-* This file demonstrates using BlueRain Client on Android
+* This file demonstrates using BlueRain Client on iOS
 */
-import BR from '@blueeast/bluerain-os';
+import BR from '../bluerain-os';
 const App = BR.boot({ appRender: false });
 
 export default App;

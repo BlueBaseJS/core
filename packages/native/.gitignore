@@ -61,3 +61,6 @@ typings/
 
 MacOS
 .DS_Store
+
+# BlueRain
+bluerain-os

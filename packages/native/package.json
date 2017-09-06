@@ -6,24 +6,35 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "exp start"
+    "start": "exp start",
+    "watch": "cpx \"../bluerain-os/src/**/*\" ./bluerain-os --watch"
   },
   "dependencies": {
-    "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#feature/custom_platform",
+    "eventemitter3": "^2.0.3",
     "expo": "19.0.1",
+    "is-electron": "^2.1.0",
+    "lodash.get": "^4.4.2",
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.merge": "^4.6.0",
+    "lodash.reject": "^4.6.0",
+    "lodash.set": "^4.3.2",
     "react": "16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
     "react-native": "0.46.4",
     "react-native-windows": "^0.33.0",
+    "react-redux": "^5.0.6",
+    "react-router-native": "^4.2.0",
     "reactxp": "^0.42.0-rc.25",
     "reactxp-navigation": "1.0.5",
-    "reactxp-video": "^0.2.0"
+    "reactxp-video": "^0.2.0",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "@types/node": "^7.0.12",
     "@types/react": "15.0.39",
     "@types/react-native": "0.46.7",
     "@types/webpack": "^2.2.14",
+    "cpx": "^1.5.0",
     "source-map-loader": "^0.1.6"
   }
 }
