@@ -1,24 +1,23 @@
 import { connect } from 'react-redux';
 import { setTheme } from './actions';
-import { Plugin, CallbackRegistry } from '../../';
-import  ThemeReducer  from './reducers';
+import BR from '../../';
+import ThemeReducer from './reducers';
 
-class ThemePlugin extends Plugin {
+class ThemePlugin extends BR.Plugin {
 	static pluginName = 'ThemingPlugin';
 	static slug = 'theme';
 	static initialize(config = {}) {
     // Configurations
 
-		CallbackRegistry.add('bluerain.redux.reducers.bluerain', function addThemingReducer(
-      reducers
-    ) {
-			return Object.assign({}, reducers, { theme: ThemeReducer });
-		});
+		BR.Filters.add(
+      'bluerain.redux.reducers.bluerain',
+      function addThemingReducer(reducers) {
+	return Object.assign({}, reducers, { theme: ThemeReducer });
+}
+    );
 	}
 
 	static withTheme = (component, options) => {
-
-
 		const mapStateToProps = state => ({
 			style: state.bluerainTheme.theme.IndexPage
 		});
