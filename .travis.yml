@@ -1,9 +1,11 @@
 language: node_js
 node_js:
   - "6"
+before_install:
+  lerna bootstrap --concurrency=1
 jobs:
   include:
     - stage: ES Lint & Flow
-      script: npm run lint && npm run flow
+      script: lerna run lint && lerna run flow
     - stage: Unit Tests
-      script: npm test && npm install -g codecov && npm run coverage
+      script: lerna test && lerna install -g codecov && lerna run coverage
