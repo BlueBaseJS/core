@@ -4,7 +4,7 @@
 import React from 'react';
 import BR from '../../../src';
 import ReduxDevtoolsPlugin from '../../../src/plugins/ReduxDevtoolsPlugin';
-describe('Internationalization Plugin tests', () => {
+describe('ReduxDevtools Plugin tests', () => {
 	it('should test plugin', () => {
 		class HelloWorld extends BR.App {
 			static appName = 'Hello World';
