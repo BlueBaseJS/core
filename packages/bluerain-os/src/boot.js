@@ -51,8 +51,8 @@ export default function(options: BootOptions = {
 	BR.Filters.run('bluerain.system.configurations.loaded');
 
 	// Get Enviornment Options
-	const debug = BR.Configs.get('debug');
-	const development = BR.Configs.get('development');
+	const debug: boolean = BR.Configs.get('debug');
+	const development: boolean = BR.Configs.get('development');
 
 	// Init System
 	RX.App.initialize(debug, development);
