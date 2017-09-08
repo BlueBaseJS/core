@@ -4,8 +4,6 @@ import BR from './index';
 
 import { SystemRouter } from './router';
 
-import { getProvider, createStore } from './redux';
-
 import Page from './pages/Page';
 import IndexPage from './pages/IndexPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -19,21 +17,6 @@ export default () => {
     <Routes />
   </SystemRouter>
 	));
-
-	const store = createStore();
-	const ReduxProvider = getProvider();
-
-	// withRedux HOC Method
-	const withRedux = App => props => (
-  <ReduxProvider store={store}>
-    <App {...props} />
-  </ReduxProvider>
-	);
-
-	// Add redux to main system app
-	BR.Filters.add('bluerain.system.app', function AddReduxToSystemApp(App) {
-		return withRedux(App);
-	});
 
 	// Pages
 	BR.Components.register('Page', Page);
