@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "6"
 before_install:
-  lerna bootstrap --concurrency=1
+  yarn && lerna bootstrap --concurrency=1
 jobs:
   include:
     - stage: ES Lint & Flow
