@@ -5,7 +5,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import BR from '../../../src';
 import ThemingPlugin from '../../../src/plugins/themingPlugin';
-describe('Internationalization Plugin tests', () => {
+describe('Theming Plugin tests', () => {
   it('should add plugin', () => {
     class HelloWorld extends BR.App {
       static appName = 'Hello World';
