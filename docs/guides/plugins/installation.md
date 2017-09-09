@@ -17,9 +17,9 @@ module.exports = [apollo];
 At last, boot your client with the plugin:
 
 ```js
-import boot from 'bluerain-core';
+import boot from '@blueeast/bluerain-os';
 
 const plugins = require('./plugins');
 
-boot({ plugins });
+BR.boot({ plugins });
 ```
