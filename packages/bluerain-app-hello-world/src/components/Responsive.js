@@ -1,5 +1,5 @@
 import RX from 'reactxp';
-import BR from '../../../../../../src';
+import BR from '../../../bluerain-os/src';
 
 const styleView = RX.Styles.createViewStyle({
 	padding: 20,
@@ -30,9 +30,9 @@ const descriptionText = RX.Styles.createViewStyle({
 	color: 'rgba(255,255,255,.5)'
 });
 
-
 const pageContent = (size) => {
-	let title, bg;
+	let title;
+	let	bg;
 
 	switch (size) {
 	case 'xs':
@@ -60,24 +60,34 @@ const pageContent = (size) => {
 	}
 
 	const subtitle = `${title} Layout`;
-	const description = 'Try changing browser window width to see the layout change.';
+	const description =
+    'Try changing browser window width to see the layout change.';
 
 	return BR.Utils.parseJsonSchema({
 		component: 'View',
-		props: { style: [styleView, RX.Styles.createViewStyle({ backgroundColor: bg }, false)] },
-		children: [{
-			component: 'Text',
-			props: { style: sizeText },
-			text: size
-		}, {
-			component: 'Text',
-			props: { style: subtitleText },
-			text: subtitle
-		}, {
-			component: 'Text',
-			props: { style: descriptionText },
-			text: description
-		}]
+		props: {
+			style: [
+				styleView,
+				RX.Styles.createViewStyle({ backgroundColor: bg }, false)
+			]
+		},
+		children: [
+			{
+				component: 'Text',
+				props: { style: sizeText },
+				text: size
+			},
+			{
+				component: 'Text',
+				props: { style: subtitleText },
+				text: subtitle
+			},
+			{
+				component: 'Text',
+				props: { style: descriptionText },
+				text: description
+			}
+		]
 	});
 };
 
@@ -90,11 +100,11 @@ export default ({ match, appName }) => {
 			sm: () => pageContent('sm'),
 			md: () => pageContent('md'),
 			lg: () => pageContent('lg'),
-			xl: () => pageContent('xl'),
+			xl: () => pageContent('xl')
 		}
 	};
 
-	// const WindowInfo = PluginRegistry.get('window-info');
-	// return WindowInfo.withWindowInfo(BR.Utils.parseJsonSchema(layout));
+  // const WindowInfo = PluginRegistry.get('window-info');
+  // return WindowInfo.withWindowInfo(BR.Utils.parseJsonSchema(layout));
 	return BR.Utils.parseJsonSchema(layout);
 };

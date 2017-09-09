@@ -7,7 +7,10 @@ import { About } from './components/About';
 import Responsive from './components/Responsive';
 import Contact from './components/Contact';
 
-let Page, Route, Redirect, Switch;
+let Page;
+let	Route;
+let	Redirect;
+let	Switch;
 
 class HelloWorldApp extends BR.App {
 	static appName = 'Hello World';
@@ -15,7 +18,7 @@ class HelloWorldApp extends BR.App {
 	render() {
 		const { match } = this.props;
 		return (
-			<Page>
+  <Page>
     <Header match={match} appName={this.constructor.appName} />
     <Switch>
       <Route exact path={`${match.url}`} component={Home} />
@@ -27,21 +30,24 @@ class HelloWorldApp extends BR.App {
   </Page>
 		);
 	}
-	
+
 	static initialize(config, ctx) {
 		Page = ctx.Components.get('Page');
 		Route = ctx.Components.get('Route');
 		Redirect = ctx.Components.get('Redirect');
 		Switch = ctx.Components.get('Switch');
 
-		// Add translations
-		ctx.Filters.add('bluerain.intl.messages', function helloWorldAppTranslations(messages) {
-			const en = require('./lang/en.json');
-			const ur = require('./lang/ur.json');
-			messages.en =  Object.assign(messages.en ? messages.en : {}, en);
-			messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
-			return messages;
-		});
+    // Add translations
+		ctx.Filters.add(
+      'bluerain.intl.messages',
+      function helloWorldAppTranslations(messages) {
+	const en = require('./lang/en.json');
+	const ur = require('./lang/ur.json');
+	messages.en = Object.assign(messages.en ? messages.en : {}, en);
+	messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
+	return messages;
+}
+    );
 	}
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Styles, View, Text, Button } from 'reactxp';
+import { Styles, View, Button } from 'reactxp';
 import { FormattedMessage } from 'react-intl';
-import  { history } from '../../../../../../src/router';
+import { history } from '../../../bluerain-os/src/router';
 import pageStyle from './pageStyles';
 
 const buttonStyles = Styles.createViewStyle({
@@ -12,20 +12,19 @@ const buttonStyles = Styles.createViewStyle({
 	borderRadius: 3
 });
 
-export class About extends React.Component {
-	onNavigateHome() {
+export default class About extends React.Component {
+	static onNavigateHome() {
 		history.push('/');
 	}
 
 	render() {
 		return (
   <View style={pageStyle}>
-		<FormattedMessage
-			id="hello.about"
-			defaultMessage="The About Page"
-		/>
+    <FormattedMessage id="hello.about" defaultMessage="The About Page" />
     {/* <p>User ID: {this.props.params.id}</p> */}
-    <Button style={buttonStyles} onPress={this.onNavigateHome}>Click Me!</Button>
+    <Button style={buttonStyles} onPress={About.onNavigateHome}>
+          Click Me!
+        </Button>
   </View>
 		);
 	}

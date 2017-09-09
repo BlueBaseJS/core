@@ -1,5 +1,5 @@
 import { FormattedNumber, FormattedDate } from 'react-intl';
-import BR from '../../../../../../src';
+import BR from '../../../bluerain-os/src';
 
 import pageStyle from './pageStyles';
 

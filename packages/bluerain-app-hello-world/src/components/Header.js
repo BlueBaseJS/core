@@ -1,5 +1,5 @@
 import { Styles } from 'reactxp';
-import BR from '../../../../../../src';
+import BR from '../../../bluerain-os/src';
 
 const headerStyle = Styles.createViewStyle({
 	backgroundColor: 'rgba(240, 240, 240, 0.5)',
