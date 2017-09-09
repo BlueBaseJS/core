@@ -3,7 +3,7 @@
 import get from 'lodash.get';
 import kebabCase from 'lodash.kebabcase';
 
-import BR from '../../src';
+import BR from '../index';
 
 /**
  * All system plugins are stored in this registry
@@ -88,7 +88,7 @@ class PluginRegistry {
 			if (plugin.initialize) {
 				const config = BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;
-				plugin.initialize(config);
+				plugin.initialize(config, BR);
 			}
 
 		});

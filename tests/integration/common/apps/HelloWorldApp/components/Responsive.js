@@ -1,5 +1,5 @@
 import RX from 'reactxp';
-import  { parseJsonSchema } from '../../../../../../src/utils/JsonSchemaToReact';
+import BR from '../../../../../../src';
 
 const styleView = RX.Styles.createViewStyle({
 	padding: 20,
@@ -62,7 +62,7 @@ const pageContent = (size) => {
 	const subtitle = `${title} Layout`;
 	const description = 'Try changing browser window width to see the layout change.';
 
-	return parseJsonSchema({
+	return BR.Utils.parseJsonSchema({
 		component: 'View',
 		props: { style: [styleView, RX.Styles.createViewStyle({ backgroundColor: bg }, false)] },
 		children: [{
@@ -95,6 +95,6 @@ export default ({ match, appName }) => {
 	};
 
 	// const WindowInfo = PluginRegistry.get('window-info');
-	// return WindowInfo.withWindowInfo(parseJsonSchema(layout));
-	return parseJsonSchema(layout);
+	// return WindowInfo.withWindowInfo(BR.Utils.parseJsonSchema(layout));
+	return BR.Utils.parseJsonSchema(layout);
 };

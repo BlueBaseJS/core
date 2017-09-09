@@ -1,5 +1,5 @@
 import React from 'react';
-// import type { Store } from 'redux';
+
 import PropTypes from 'prop-types';
 
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
@@ -21,6 +21,7 @@ function addApolloMiddlewares(middlewares) {
 }
 
 function replaceReduxProvider(Provider) {
+
 	const ApolloProviderHoc = ({ store, children }) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
 
 	ApolloProviderHoc.propTypes = {

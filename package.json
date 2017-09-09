@@ -2,7 +2,7 @@
   "name": "@blueeast/bluerain-os",
   "version": "0.1.0",
   "description": "A browser based OS, made with React JS",
-  "main": "index.js",
+  "main": "dist/index.js",
   "directories": {
     "doc": "docs",
     "test": "tests"
@@ -37,6 +37,7 @@
   "dependencies": {
     "eventemitter3": "^2.0.3",
     "history": "^4.6.3",
+    "is-electron": "^2.1.0",
     "lodash.get": "^4.4.2",
     "lodash.kebabcase": "^4.1.1",
     "lodash.merge": "^4.6.0",
@@ -90,6 +91,9 @@
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
+  "files": [
+    "dist"
+  ],
   "jest": {
     "testRegex": "\\.test\\.js$",
     "coverageDirectory": "./coverage/",

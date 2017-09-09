@@ -6,11 +6,11 @@ import { parseJsonSchema } from '../utils/JsonSchemaToReact';
 const pageStyle = RX.Styles.createViewStyle({
 	justifyContent: 'center',
 	padding: 20,
-	textAlign: 'center',
 }, false);
 
 const titleStyle = RX.Styles.createViewStyle({
 	alignSelf: 'center',
+	textAlign: 'center',
 	backgroundColor: 'rgb(220,53,69)',
 	borderColor: 'rgb(220,53,69)',
 	borderRadius: 10,
@@ -25,6 +25,7 @@ const titleStyle = RX.Styles.createViewStyle({
 }, false);
 
 const subTitleStyle = RX.Styles.createViewStyle({
+	textAlign: 'center',
 	color: 'rgb(150, 150, 150)',
 	marginBottom: 20,
 	overflow: 'initial'
@@ -41,8 +42,8 @@ export default function NotFoundPage() : RX.Component<*> {
 		props: { style: pageStyle },
 		children: [{
 			component: 'View',
-			props: { style: titleStyle },
 			children: [{
+				props: { style: titleStyle },
 				component: 'Text',
 				text: '404'
 			}]

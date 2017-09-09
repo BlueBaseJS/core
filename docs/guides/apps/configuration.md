@@ -20,9 +20,7 @@ class HelloWorldApp extends App {
 	static appName = 'Hello World';
 	static slug = 'hello-world';
 	
-	initialize(config) {
-		super(config);
-		
+	static initialize(config, ctx) {
 		// use config here
 	}
 }

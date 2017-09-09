@@ -1,10 +1,9 @@
 /* @flow */
 
-import React from 'react';
+import React, { type ComponentType } from 'react';
 import RX from 'reactxp';
+
 import BR from './index';
-
-
 import registerComponents from './registerComponents';
 import postinit from './postinit';
 import defaultConfigs, { type ConfigType } from './config';
@@ -12,23 +11,34 @@ import defaultPlugins from './plugins/defaultPlugins';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
+ *
+ * @property {Array<BR.App>} apps		An array of apps to load
+ * @property {ConfigType} config		Configuration object
+ * @property {boolean} 	renderApp	If set to false, BlueRain will not render the main app, instead it is up to the developer to render it. The App is returned from the boot function.
+ * @property {Array<BR.Plugin>} plugins		An array of plugins to load
+ * @property {boolean} 	serverMode	Set this flag to true when rendering during Server Side Rendering
  */
 type BootOptions = {
 	apps?: Array<BR.App>,
 	config?: ConfigType,
+	renderApp?: boolean,
 	plugins?: Array<BR.Plugin>,
-	debug?: boolean,
-	development?: boolean,
-	ssrMode?: boolean
+	serverMode?: boolean,
 }
 
 /**
  * Boots the OS and renders the main UI. Use it on the client side
  */
-export const boot = function(options: BootOptions = {}) {
+export default function(options: BootOptions = {
+	serverMode: false,
+	renderApp: true,
+}) : ComponentType<any> {
 
 	// Extract app, plugins and configs from options
-	const { apps, plugins, config } = options;
+	const { apps, plugins, config, serverMode, renderApp } = options;
+
+	// Server mode
+	BR.Platform.setServerMode(serverMode);
 
 	// =[ System Lifecycle Event ]= Boot Start
 	BR.Filters.run('bluerain.system.boot.start');
@@ -76,15 +86,12 @@ export const boot = function(options: BootOptions = {}) {
 	let SystemApp = BR.Components.get('BlueRainApp');
 	SystemApp = BR.Filters.run('bluerain.system.app', SystemApp);
 
-	RX.UserInterface.setMainView(( <SystemApp /> ));
+	if (renderApp !== false) {
+		RX.UserInterface.setMainView(( <SystemApp /> ));
+	}
 
 	// =[ System Lifecycle Event ]= Boot End
 	BR.Filters.run('bluerain.system.boot.end');
-};
 
-/**
- * Boots the OS and renders the main UI. Use it on the server for Server Side Rendering
- */
-export const bootOnServer = function(options: BootOptions) {
-	boot(options);
-};
+	return SystemApp;
+}

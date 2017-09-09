@@ -42,7 +42,7 @@ describe('BR.boot func tests', () => {
 			}
     }
 		expect(() =>
-      BR.bootOnServer({ apps: [HelloWorld], config: { title: 'Hello OS!' } })
+      BR.boot({ apps: [HelloWorld], config: { title: 'Hello OS!' }, serverMode: true })
     ).not.toThrow();
 	});
 });

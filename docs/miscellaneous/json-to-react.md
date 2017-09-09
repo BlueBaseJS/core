@@ -41,7 +41,7 @@ To use function:
 ```
 import BR from '@blueeast/bluerain-os';
 
-BR.parseJsonSchema(schema);
+BR.Utils.parseJsonSchema(schema);
 
 ```
 
@@ -66,7 +66,7 @@ const schema = {
         color: 'blue'
     }
 }
-BR.parseJsonSchema(schema);
+BR.Utils.parseJsonSchema(schema);
 
 ```
 The above code will return react element containing `BluerainLogo` component.
