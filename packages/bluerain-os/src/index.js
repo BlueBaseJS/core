@@ -1,5 +1,3 @@
-import RX from 'reactxp';
-
 // Registries
 import AppRegistry from './registries/AppRegistry';
 import ComponentRegistry from './registries/ComponentRegistry';
@@ -13,12 +11,14 @@ import App from './models/App';
 import Plugin from './models/Plugin';
 
 // Others
-import Platform from './Platform';
 import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
+export { withBlueRain } from './Provider';
+export * from './api';
+
 // This will have all registries as objects
-const BlueRain = {
+export default {
 	// BlueRain
 	Apps: new AppRegistry(),
 	Plugins: new PluginRegistry(),
@@ -34,18 +34,8 @@ const BlueRain = {
 	App,
 	Plugin,
 
-	// ReactXP
-	International: RX.International,
-	Location: RX.Location,
-	Network: RX.Network,
-	Platform,
-	StatusBar: RX.StatusBar,
-	Storage: RX.Storage,
-
 	// Miscellaneous
 	Utils: {
 		parseJsonSchema,
 	}
 };
-
-export default BlueRain;

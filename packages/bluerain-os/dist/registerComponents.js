@@ -22,6 +22,18 @@ var _ResponsiveLayout = require('./layouts/ResponsiveLayout');
 
 var _ResponsiveLayout2 = _interopRequireDefault(_ResponsiveLayout);
 
+var _Page = require('./pages/Page');
+
+var _Page2 = _interopRequireDefault(_Page);
+
+var _IndexPage = require('./pages/IndexPage');
+
+var _IndexPage2 = _interopRequireDefault(_IndexPage);
+
+var _NotFoundPage = require('./pages/NotFoundPage');
+
+var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
@@ -43,8 +55,14 @@ exports.default = function () {
 	_index2.default.Components.register('Link', _router.Link);
 	_index2.default.Components.register('Route', _router.Route);
 	_index2.default.Components.register('Switch', _router.Switch);
+	_index2.default.Components.register('Redirect', _router.Redirect);
 
 	/* Register Layout Components */
 	_index2.default.Components.register('SystemLayout', _SystemLayout2.default);
 	_index2.default.Components.register('ResponsiveLayout', _ResponsiveLayout2.default);
+
+	/* Register Pages */
+	_index2.default.Components.register('Page', _Page2.default);
+	_index2.default.Components.register('IndexPage', _IndexPage2.default);
+	_index2.default.Components.register('NotFoundPage', _NotFoundPage2.default);
 };

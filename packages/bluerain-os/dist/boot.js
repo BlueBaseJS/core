@@ -20,7 +20,7 @@ exports.default = function () {
 
 	// Server mode
 
-	_index2.default.Platform.setServerMode(serverMode);
+	_index.Platform.setServerMode(serverMode);
 
 	// =[ System Lifecycle Event ]= Boot Start
 	_index2.default.Filters.run('bluerain.system.boot.start');

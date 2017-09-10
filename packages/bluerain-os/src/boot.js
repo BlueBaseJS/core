@@ -3,7 +3,7 @@
 import React, { type ComponentType } from 'react';
 import RX from 'reactxp';
 
-import BR from './index';
+import BR, { Platform } from './index';
 import registerComponents from './registerComponents';
 import postinit from './postinit';
 import defaultConfigs, { type ConfigType } from './config';
@@ -38,7 +38,7 @@ export default function(options: BootOptions = {
 	const { apps, plugins, config, serverMode, renderApp } = options;
 
 	// Server mode
-	BR.Platform.setServerMode(serverMode);
+	Platform.setServerMode(serverMode);
 
 	// =[ System Lifecycle Event ]= Boot Start
 	BR.Filters.run('bluerain.system.boot.start');

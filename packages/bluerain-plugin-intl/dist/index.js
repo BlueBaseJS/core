@@ -6,11 +6,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _bluerainOs = require('@blueeast/bluerain-os');
 
 var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
 
-var _redux = require('redux');
+var _reactIntl = require('react-intl');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20,30 +24,48 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function addReduxDevTools(composed, enhancers) {
-	var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose; // eslint-disable-line no-undef
-	return composeEnhancers(enhancers);
-}
+var withInternationalization = function withInternationalization(App, locale) {
+	return function (props) {
+		var messages = _bluerainOs2.default.Filters.run('bluerain.intl.messages', {});
+		return _react2.default.createElement(
+			_reactIntl.IntlProvider,
+			{ locale: locale, messages: messages[locale] },
+			_react2.default.createElement(App, props)
+		);
+	};
+};
 
-var ReduxDevtoolsPlugin = function (_BR$Plugin) {
-	_inherits(ReduxDevtoolsPlugin, _BR$Plugin);
+var InternationalizationPlugin = function (_BR$Plugin) {
+	_inherits(InternationalizationPlugin, _BR$Plugin);
 
-	function ReduxDevtoolsPlugin() {
-		_classCallCheck(this, ReduxDevtoolsPlugin);
+	function InternationalizationPlugin() {
+		_classCallCheck(this, InternationalizationPlugin);
 
-		return _possibleConstructorReturn(this, (ReduxDevtoolsPlugin.__proto__ || Object.getPrototypeOf(ReduxDevtoolsPlugin)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (InternationalizationPlugin.__proto__ || Object.getPrototypeOf(InternationalizationPlugin)).apply(this, arguments));
 	}
 
-	_createClass(ReduxDevtoolsPlugin, null, [{
+	_createClass(InternationalizationPlugin, null, [{
 		key: 'initialize',
-		value: function initialize(config, ctx) {
-			ctx.Filters.add('bluerain.redux.composed', addReduxDevTools);
+		value: function initialize() {
+			var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+			if (!config.locale) {
+				config.locale = 'en';
+			}
+			var locale = config.locale;
+			var localeData = require('react-intl/locale-data/' + locale);
+			_bluerainOs2.default.Components.register('FormattedMessage', _reactIntl.FormattedMessage);
+			(0, _reactIntl.addLocaleData)(localeData);
+			// Add internationalization to main system app
+			_bluerainOs2.default.Filters.add('bluerain.system.app', function AddInternationalizationToSystemApp(App) {
+				return withInternationalization(App, locale);
+			});
 		}
 	}]);
 
-	return ReduxDevtoolsPlugin;
+	return InternationalizationPlugin;
 }(_bluerainOs2.default.Plugin);
 
-ReduxDevtoolsPlugin.pluginName = 'ReduxDevtoolsPlugin';
-ReduxDevtoolsPlugin.slug = 'redux-devtools';
-exports.default = ReduxDevtoolsPlugin;
+InternationalizationPlugin.pluginName = 'InternationalizationPlugin';
+InternationalizationPlugin.slug = 'Internationalization';
+exports.default = InternationalizationPlugin;

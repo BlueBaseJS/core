@@ -14,6 +14,8 @@ var _reactxp = require('reactxp');
 
 var _reactxp2 = _interopRequireDefault(_reactxp);
 
+var _Provider = require('../Provider');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39,6 +41,7 @@ var Page = function (_RX$Component) {
 	_createClass(Page, [{
 		key: 'render',
 		value: function render() {
+			console.log('Page props', this.props);
 			var _props = this.props,
 			    children = _props.children,
 			    style = _props.style;
@@ -54,4 +57,4 @@ var Page = function (_RX$Component) {
 	return Page;
 }(_reactxp2.default.Component);
 
-exports.default = Page;
+exports.default = (0, _Provider.withBlueRain)(Page);

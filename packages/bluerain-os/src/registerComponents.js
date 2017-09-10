@@ -2,8 +2,13 @@ import RX from 'reactxp';
 
 import BR from './index';
 import { Link, Route, Switch, Redirect } from './router';
+
 import SystemLayout from './layouts/SystemLayout';
 import ResponsiveLayout from './layouts/ResponsiveLayout';
+
+import Page from './pages/Page';
+import IndexPage from './pages/IndexPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default () => {
 	/* Regist ReactXP Components */
@@ -29,4 +34,9 @@ export default () => {
 	/* Register Layout Components */
 	BR.Components.register('SystemLayout', SystemLayout);
 	BR.Components.register('ResponsiveLayout', ResponsiveLayout);
+
+	/* Register Pages */
+	BR.Components.register('Page', Page);
+	BR.Components.register('IndexPage', IndexPage);
+	BR.Components.register('NotFoundPage', NotFoundPage);
 };
