@@ -1,6 +1,5 @@
 import React from 'react';
 import { withBlueRain } from '@blueeast/bluerain-os';
-console.log('hello', withBlueRain)
 
 let App = (props) => {
 

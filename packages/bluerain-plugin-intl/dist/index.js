@@ -12,8 +12,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
-
 var _reactIntl = require('react-intl');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24,9 +22,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var withInternationalization = function withInternationalization(App, locale) {
+var withInternationalization = function withInternationalization(App, locale, ctx) {
 	return function (props) {
-		var messages = _bluerainOs2.default.Filters.run('bluerain.intl.messages', {});
+		var messages = ctx.Filters.run('bluerain.intl.messages', {});
 		return _react2.default.createElement(
 			_reactIntl.IntlProvider,
 			{ locale: locale, messages: messages[locale] },
@@ -35,8 +33,8 @@ var withInternationalization = function withInternationalization(App, locale) {
 	};
 };
 
-var InternationalizationPlugin = function (_BR$Plugin) {
-	_inherits(InternationalizationPlugin, _BR$Plugin);
+var InternationalizationPlugin = function (_Plugin) {
+	_inherits(InternationalizationPlugin, _Plugin);
 
 	function InternationalizationPlugin() {
 		_classCallCheck(this, InternationalizationPlugin);
@@ -48,23 +46,24 @@ var InternationalizationPlugin = function (_BR$Plugin) {
 		key: 'initialize',
 		value: function initialize() {
 			var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+			var ctx = arguments[1];
 
 			if (!config.locale) {
 				config.locale = 'en';
 			}
 			var locale = config.locale;
 			var localeData = require('react-intl/locale-data/' + locale);
-			_bluerainOs2.default.Components.register('FormattedMessage', _reactIntl.FormattedMessage);
+			ctx.Components.register('FormattedMessage', _reactIntl.FormattedMessage);
 			(0, _reactIntl.addLocaleData)(localeData);
 			// Add internationalization to main system app
-			_bluerainOs2.default.Filters.add('bluerain.system.app', function AddInternationalizationToSystemApp(App) {
-				return withInternationalization(App, locale);
+			ctx.Filters.add('bluerain.system.app', function AddInternationalizationToSystemApp(App) {
+				return withInternationalization(App, locale, ctx);
 			});
 		}
 	}]);
 
 	return InternationalizationPlugin;
-}(_bluerainOs2.default.Plugin);
+}(_bluerainOs.Plugin);
 
 InternationalizationPlugin.pluginName = 'InternationalizationPlugin';
 InternationalizationPlugin.slug = 'Internationalization';

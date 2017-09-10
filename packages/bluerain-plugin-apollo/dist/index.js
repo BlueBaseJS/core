@@ -12,8 +12,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
-
 var _subscriptionsTransportWs = require('subscriptions-transport-ws');
 
 var _reactApollo = require('react-apollo');
@@ -55,8 +53,8 @@ function replaceReduxProvider(Provider) {
 	return ApolloProviderHoc;
 }
 
-var ApolloPlugin = function (_BR$Plugin) {
-	_inherits(ApolloPlugin, _BR$Plugin);
+var ApolloPlugin = function (_Plugin) {
+	_inherits(ApolloPlugin, _Plugin);
 
 	function ApolloPlugin() {
 		_classCallCheck(this, ApolloPlugin);
@@ -115,7 +113,7 @@ var ApolloPlugin = function (_BR$Plugin) {
 	}]);
 
 	return ApolloPlugin;
-}(_bluerainOs2.default.Plugin);
+}(_bluerainOs.Plugin);
 
 ApolloPlugin.pluginName = 'ApolloPlugin';
 ApolloPlugin.slug = 'apollo';

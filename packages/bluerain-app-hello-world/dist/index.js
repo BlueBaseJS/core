@@ -12,8 +12,6 @@ var _bluerainOs = require('@blueeast/bluerain-os');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log('hello', _bluerainOs.withBlueRain);
-
 var App = function App(props) {
 
 	console.log(props);

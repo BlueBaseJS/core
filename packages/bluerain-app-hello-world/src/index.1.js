@@ -1,7 +1,6 @@
 import React from 'react';
-import BR, { withBlueRain } from '@blueeast/bluerain-os';
+import BR, { App, withBlueRain } from '@blueeast/bluerain-os';
 
-console.log(require('@blueeast/bluerain-os'))
 import Header from './components/Header';
 import Home from './components/Home';
 import { About } from './components/About';
@@ -13,7 +12,7 @@ let Page,
 	Redirect,
 	Switch;
 
-class HelloWorldApp extends BR.App {
+class HelloWorldApp extends App {
 	static appName = 'Hello World';
 
 	render() {

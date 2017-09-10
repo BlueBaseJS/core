@@ -6,13 +6,13 @@ import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import PluginRegistry from './registries/PluginRegistry';
 
-// Models
-import App from './models/App';
-import Plugin from './models/Plugin';
-
 // Others
 import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
+
+// Models
+export App from './models/App';
+export Plugin from './models/Plugin';
 
 export { withBlueRain } from './Provider';
 export * from './api';
@@ -29,10 +29,6 @@ export default {
 
 	// boot
 	boot,
-
-	// Models
-	App,
-	Plugin,
 
 	// Miscellaneous
 	Utils: {

@@ -40,16 +40,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-console.log(require('@blueeast/bluerain-os'));
-
-
 var Page = void 0,
     Route = void 0,
     Redirect = void 0,
     Switch = void 0;
 
-var HelloWorldApp = function (_BR$App) {
-	_inherits(HelloWorldApp, _BR$App);
+var HelloWorldApp = function (_App) {
+	_inherits(HelloWorldApp, _App);
 
 	function HelloWorldApp() {
 		_classCallCheck(this, HelloWorldApp);
@@ -97,7 +94,7 @@ var HelloWorldApp = function (_BR$App) {
 	}]);
 
 	return HelloWorldApp;
-}(_bluerainOs2.default.App);
+}(_bluerainOs.App);
 
 // const App = withBlueRain((props) => {
 

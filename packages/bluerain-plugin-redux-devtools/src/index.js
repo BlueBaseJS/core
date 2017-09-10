@@ -1,4 +1,4 @@
-import BR from '@blueeast/bluerain-os';
+import { Plugin } from '@blueeast/bluerain-os';
 import { compose } from 'redux';
 
 function addReduxDevTools(composed, enhancers) {
@@ -6,7 +6,7 @@ function addReduxDevTools(composed, enhancers) {
 	return composeEnhancers(enhancers);
 }
 
-class ReduxDevtoolsPlugin extends BR.Plugin {
+class ReduxDevtoolsPlugin extends Plugin {
 
 	static pluginName = 'ReduxDevtoolsPlugin';
 	static slug = 'redux-devtools';
