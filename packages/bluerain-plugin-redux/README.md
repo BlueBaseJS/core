@@ -1,22 +1,22 @@
-# Redux Devtools Plugin
+# Redux Plugin
 
-Adds compatibitlity of (Redux Devtools Extension)[https://github.com/gaearon/redux-devtools].
+Adds Redux state management.
 
 ## Usage
 Run the following command in the plugin directoy:
 
 ```shell
-npm i --save @blueeast/bluerain-plugin-redux-devtools
+npm i --save @blueeast/bluerain-plugin-redux
 ```
 
 Then in your boot function, pass the plugin like this:
 
 ```javascript
 import BR from '@blueeast/bluerain-os';
-import ReduxDevtoolsPlugin from '@blueeast/bluerain-plugin-redux-devtools';
+import ReduxPlugin from '@blueeast/bluerain-plugin-redux';
 
 BR.boot({
-	plugins: [ReduxDevtoolsPlugin]
+	plugins: [ReduxPlugin]
 })
 ```
 
