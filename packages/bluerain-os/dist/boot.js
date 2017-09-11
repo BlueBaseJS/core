@@ -26,6 +26,7 @@ exports.default = function () {
 	_index2.default.Filters.run('bluerain.system.boot.start');
 
 	// Initialize all configs
+	var defaultPlugins = require('./plugins/defaultPlugins').default;
 	_index2.default.Configs.register(_config2.default);
 	_index2.default.Configs.register(config);
 
@@ -44,7 +45,7 @@ exports.default = function () {
 	_index2.default.Filters.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
-	_index2.default.Plugins.registerMany(_defaultPlugins2.default);
+	_index2.default.Plugins.registerMany(defaultPlugins);
 	_index2.default.Plugins.registerMany(plugins);
 	_index2.default.Filters.run('bluerain.system.plugins.registered');
 
@@ -101,9 +102,5 @@ var _postinit2 = _interopRequireDefault(_postinit);
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
-
-var _defaultPlugins = require('./plugins/defaultPlugins');
-
-var _defaultPlugins2 = _interopRequireDefault(_defaultPlugins);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

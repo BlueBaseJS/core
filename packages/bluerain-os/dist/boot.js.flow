@@ -7,7 +7,6 @@ import BR, { Platform } from './index';
 import registerComponents from './registerComponents';
 import postinit from './postinit';
 import defaultConfigs, { type ConfigType } from './config';
-import defaultPlugins from './plugins/defaultPlugins';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
@@ -44,6 +43,7 @@ export default function(options: BootOptions = {
 	BR.Filters.run('bluerain.system.boot.start');
 
 	// Initialize all configs
+	const defaultPlugins = require('./plugins/defaultPlugins').default;
 	BR.Configs.register(defaultConfigs);
 	BR.Configs.register(config);
 
