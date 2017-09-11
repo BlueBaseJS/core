@@ -1,6 +1,6 @@
 import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
-import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
+import { IntlProvider, addLocaleData, FormattedMessage, FormattedNumber, FormattedDate } from 'react-intl';
 
 const withInternationalization = (App, locale, ctx) => (props) => {
 	const messages = ctx.Filters.run(
@@ -24,9 +24,13 @@ class InternationalizationPlugin extends Plugin {
 		}
 		const locale = config.locale;
 		const localeData = require(`react-intl/locale-data/${locale}`);
-		ctx.Components.register('FormattedMessage', FormattedMessage);
 		addLocaleData(localeData);
-    // Add internationalization to main system app
+
+		ctx.Components.register('FormattedMessage', FormattedMessage);
+		ctx.Components.register('FormattedNumber', FormattedNumber);
+		ctx.Components.register('FormattedDate', FormattedDate);
+
+		// Add internationalization to main system app
 		ctx.Filters.add(
       'bluerain.system.app',
       function AddInternationalizationToSystemApp(App) {

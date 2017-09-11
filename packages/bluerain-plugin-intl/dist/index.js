@@ -53,8 +53,12 @@ var InternationalizationPlugin = function (_Plugin) {
 			}
 			var locale = config.locale;
 			var localeData = require('react-intl/locale-data/' + locale);
-			ctx.Components.register('FormattedMessage', _reactIntl.FormattedMessage);
 			(0, _reactIntl.addLocaleData)(localeData);
+
+			ctx.Components.register('FormattedMessage', _reactIntl.FormattedMessage);
+			ctx.Components.register('FormattedNumber', _reactIntl.FormattedNumber);
+			ctx.Components.register('FormattedDate', _reactIntl.FormattedDate);
+
 			// Add internationalization to main system app
 			ctx.Filters.add('bluerain.system.app', function AddInternationalizationToSystemApp(App) {
 				return withInternationalization(App, locale, ctx);
