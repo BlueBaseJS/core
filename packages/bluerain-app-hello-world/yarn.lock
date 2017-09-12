@@ -5,7 +5,7 @@
 "@blueeast/bluerain-os@../bluerain-os":
   version "0.1.0"
   dependencies:
-    "@blueeast/bluerain-plugin-redux" "0.1.0"
+    "@blueeast/bluerain-plugin-redux" "0.1.1"
     eventemitter3 "^2.0.3"
     history "^4.6.3"
     is-electron "^2.1.0"
@@ -44,9 +44,17 @@
     reactxp "^0.42.0-rc.25"
     redux "^3.7.2"
 
-"@blueeast/bluerain-plugin-redux@0.1.0":
+"@blueeast/bluerain-plugin-intl@^0.1.0":
   version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.1.0.tgz#f1c618455d340359fd5e78d92df07266f442e250"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-intl/-/bluerain-plugin-intl-0.1.0.tgz#aa561cb90443fe4e3ff03652a6c4f9a6984a40a7"
+  dependencies:
+    "@blueeast/bluerain-os" "git://github.com/BlueEastCode/bluerain-os.git#next"
+    react-intl "^2.4.0"
+    redux "^3.7.2"
+
+"@blueeast/bluerain-plugin-redux@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.1.1.tgz#775e88f616eb6cca5bd90950b8e1f8e7161ac5b4"
   dependencies:
     "@blueeast/bluerain-os" "git://github.com/BlueEastCode/bluerain-os.git#next"
     react-redux "^5.0.6"
@@ -4501,7 +4509,7 @@ react-dom@^16.0.0-alpha.12:
     object-assign "^4.1.0"
     prop-types "^15.5.6"
 
-react-intl@^2.3.0:
+react-intl@^2.3.0, react-intl@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.4.0.tgz#66c14dc9df9a73b2fbbfbd6021726e80a613eb15"
   dependencies:

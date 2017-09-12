@@ -1,5 +1,5 @@
 import { Styles } from 'reactxp';
-import BR from '@blueeast/bluerain-os';
+import { withBlueRain } from '@blueeast/bluerain-os';
 
 const headerStyle = Styles.createViewStyle({
 	backgroundColor: 'rgba(240, 240, 240, 0.5)',
@@ -23,7 +23,8 @@ const navItemStyle = Styles.createViewStyle({
 	padding: 10
 });
 
-export default ({ match, appName }) => {
+export default withBlueRain(({ match, appName, bluerain: BR }) => {
+
 	const layout = {
 		component: 'View',
 		props: { style: headerStyle },
@@ -54,7 +55,7 @@ export default ({ match, appName }) => {
 							component: 'FormattedMessage',
 							props:{
 								id:'hello.header.homeLinkText',
-								defaultMessage:'Home d'
+								defaultMessage:'Home'
 							}
 						}]
 					},
@@ -65,7 +66,7 @@ export default ({ match, appName }) => {
 							component: 'FormattedMessage',
 							props:{
 								id:'hello.header.aboutLinkText',
-								defaultMessage:'about'
+								defaultMessage:'About'
 							}
 						}]
 					},
@@ -84,7 +85,7 @@ export default ({ match, appName }) => {
 							component: 'FormattedMessage',
 							props:{
 								id:'hello.header.contactLinkText',
-								defaultMessage:'Conta'
+								defaultMessage:'Contact'
 							}
 						}]
 					}
@@ -94,4 +95,4 @@ export default ({ match, appName }) => {
 	};
 
 	return BR.Utils.parseJsonSchema(layout);
-};
+});

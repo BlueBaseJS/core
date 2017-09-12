@@ -1,5 +1,5 @@
 import RX from 'reactxp';
-import BR from '@blueeast/bluerain-os';
+import { withBlueRain } from '@blueeast/bluerain-os';
 
 const styleView = RX.Styles.createViewStyle({
 	padding: 20,
@@ -31,8 +31,9 @@ const descriptionText = RX.Styles.createViewStyle({
 });
 
 
-const pageContent = (size) => {
-	let title, bg;
+const pageContent = (size, BR) => {
+	let title;
+	let bg;
 
 	switch (size) {
 	case 'xs':
@@ -81,20 +82,18 @@ const pageContent = (size) => {
 	});
 };
 
-export default ({ match, appName }) => {
+export default withBlueRain(({ match, appName, bluerain: BR }) => {
 	const layout = {
 		component: 'ResponsiveLayout',
 		props: {
-			default: () => pageContent('default'),
-			xs: () => pageContent('xs'),
-			sm: () => pageContent('sm'),
-			md: () => pageContent('md'),
-			lg: () => pageContent('lg'),
-			xl: () => pageContent('xl'),
+			default: () => pageContent('default', BR),
+			xs: () => pageContent('xs', BR),
+			sm: () => pageContent('sm', BR),
+			md: () => pageContent('md', BR),
+			lg: () => pageContent('lg', BR),
+			xl: () => pageContent('xl', BR),
 		}
 	};
 
-	// const WindowInfo = PluginRegistry.get('window-info');
-	// return WindowInfo.withWindowInfo(BR.Utils.parseJsonSchema(layout));
 	return BR.Utils.parseJsonSchema(layout);
-};
+});

@@ -4,11 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _reactIntl = require('react-intl');
-
 var _bluerainOs = require('@blueeast/bluerain-os');
-
-var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
 
 var _pageStyles = require('./pageStyles');
 
@@ -16,9 +12,10 @@ var _pageStyles2 = _interopRequireDefault(_pageStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (_ref) {
+exports.default = (0, _bluerainOs.withBlueRain)(function (_ref) {
 	var match = _ref.match,
-	    appName = _ref.appName;
+	    appName = _ref.appName,
+	    BR = _ref.bluerain;
 
 	var layout = {
 		component: 'View',
@@ -30,17 +27,17 @@ exports.default = function (_ref) {
 				defaultMessage: 'Welcome to the home page! default'
 			}
 		}, {
-			component: _reactIntl.FormattedNumber,
+			component: 'FormattedNumber',
 			props: {
 				value: 10000
 			}
 		}, {
-			component: _reactIntl.FormattedDate,
+			component: 'FormattedDate',
 			props: {
 				value: Date.now()
 			}
 		}]
 	};
 
-	return _bluerainOs2.default.Utils.parseJsonSchema(layout);
-};
+	return BR.Utils.parseJsonSchema(layout);
+});

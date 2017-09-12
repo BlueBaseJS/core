@@ -1,14 +1,7 @@
-import React from 'react';
 import { withBlueRain } from '@blueeast/bluerain-os';
+import App from './components/App';
 
-let App = (props) => {
+const EnhancedApp = withBlueRain(App);
+EnhancedApp.appName = 'Hello World';
 
-	console.log(props);
-	return <p>Hey There</p>;
-};
-
-App = withBlueRain(App);
-
-App.appName = 'Hello World';
-
-export default App;
+export default EnhancedApp;

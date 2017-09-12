@@ -1,9 +1,8 @@
-import { FormattedNumber, FormattedDate } from 'react-intl';
-import BR from '@blueeast/bluerain-os';
+import { withBlueRain } from '@blueeast/bluerain-os';
 
 import pageStyle from './pageStyles';
 
-export default ({ match, appName }) => {
+export default withBlueRain(({ match, appName, bluerain: BR }) => {
 	const layout = {
 		component: 'View',
 		props: { style: pageStyle },
@@ -16,13 +15,13 @@ export default ({ match, appName }) => {
 				}
 			},
 			{
-				component: FormattedNumber,
+				component: 'FormattedNumber',
 				props: {
 					value: 10000
 				}
 			},
 			{
-				component: FormattedDate,
+				component: 'FormattedDate',
 				props: {
 					value: Date.now()
 				}
@@ -31,4 +30,4 @@ export default ({ match, appName }) => {
 	};
 
 	return BR.Utils.parseJsonSchema(layout);
-};
+});

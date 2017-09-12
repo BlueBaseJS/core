@@ -10,8 +10,6 @@ var _reactxp2 = _interopRequireDefault(_reactxp);
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styleView = _reactxp2.default.Styles.createViewStyle({
@@ -43,9 +41,9 @@ var descriptionText = _reactxp2.default.Styles.createViewStyle({
 	color: 'rgba(255,255,255,.5)'
 });
 
-var pageContent = function pageContent(size) {
-	var title = void 0,
-	    bg = void 0;
+var pageContent = function pageContent(size, BR) {
+	var title = void 0;
+	var bg = void 0;
 
 	switch (size) {
 		case 'xs':
@@ -75,7 +73,7 @@ var pageContent = function pageContent(size) {
 	var subtitle = title + ' Layout';
 	var description = 'Try changing browser window width to see the layout change.';
 
-	return _bluerainOs2.default.Utils.parseJsonSchema({
+	return BR.Utils.parseJsonSchema({
 		component: 'View',
 		props: { style: [styleView, _reactxp2.default.Styles.createViewStyle({ backgroundColor: bg }, false)] },
 		children: [{
@@ -94,35 +92,34 @@ var pageContent = function pageContent(size) {
 	});
 };
 
-exports.default = function (_ref) {
+exports.default = (0, _bluerainOs.withBlueRain)(function (_ref) {
 	var match = _ref.match,
-	    appName = _ref.appName;
+	    appName = _ref.appName,
+	    BR = _ref.bluerain;
 
 	var layout = {
 		component: 'ResponsiveLayout',
 		props: {
 			default: function _default() {
-				return pageContent('default');
+				return pageContent('default', BR);
 			},
 			xs: function xs() {
-				return pageContent('xs');
+				return pageContent('xs', BR);
 			},
 			sm: function sm() {
-				return pageContent('sm');
+				return pageContent('sm', BR);
 			},
 			md: function md() {
-				return pageContent('md');
+				return pageContent('md', BR);
 			},
 			lg: function lg() {
-				return pageContent('lg');
+				return pageContent('lg', BR);
 			},
 			xl: function xl() {
-				return pageContent('xl');
+				return pageContent('xl', BR);
 			}
 		}
 	};
 
-	// const WindowInfo = PluginRegistry.get('window-info');
-	// return WindowInfo.withWindowInfo(BR.Utils.parseJsonSchema(layout));
-	return _bluerainOs2.default.Utils.parseJsonSchema(layout);
-};
+	return BR.Utils.parseJsonSchema(layout);
+});

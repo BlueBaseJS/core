@@ -11,4 +11,5 @@ const bootOptions = {
 	config,
 	plugins
 };
+
 BR.boot(bootOptions);
