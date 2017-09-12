@@ -11,7 +11,6 @@ const defaultStyle = RX.Styles.createViewStyle({
 class Page extends RX.Component {
 
 	render() {
-		console.log('Page props', this.props)
 		const { children, style } = this.props;
 		return (<RX.View style={[defaultStyle, style]}>{children}</RX.View>);
 	}

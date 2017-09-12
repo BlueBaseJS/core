@@ -41,7 +41,6 @@ var Page = function (_RX$Component) {
 	_createClass(Page, [{
 		key: 'render',
 		value: function render() {
-			console.log('Page props', this.props);
 			var _props = this.props,
 			    children = _props.children,
 			    style = _props.style;
