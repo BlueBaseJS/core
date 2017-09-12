@@ -14,8 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
-    "react-intl": "^2.4.0",
-    "redux": "^3.7.2"
+    "react-intl": "^2.4.0"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",
@@ -30,7 +29,7 @@
     "babel-preset-react": "6.16.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "6.18.0",
-    "documentation": "^5.2.1",    
+    "documentation": "^5.2.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-blueeast": "^0.2.0",
