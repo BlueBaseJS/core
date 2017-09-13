@@ -5,7 +5,6 @@ import RX from 'reactxp';
 
 import BR, { Platform } from './index';
 import registerComponents from './registerComponents';
-import postinit from './postinit';
 import defaultConfigs, { type ConfigType } from './config';
 
 /**
@@ -79,7 +78,6 @@ export default function(options: BootOptions = {
 	BR.Filters.run('bluerain.system.apps.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
-	postinit();
 	BR.Filters.run('bluerain.system.initialized');
 
 	// Set View

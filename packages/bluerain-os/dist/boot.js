@@ -62,7 +62,6 @@ exports.default = function () {
 	_index2.default.Filters.run('bluerain.system.apps.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
-	(0, _postinit2.default)();
 	_index2.default.Filters.run('bluerain.system.initialized');
 
 	// Set View
@@ -94,10 +93,6 @@ var _index2 = _interopRequireDefault(_index);
 var _registerComponents = require('./registerComponents');
 
 var _registerComponents2 = _interopRequireDefault(_registerComponents);
-
-var _postinit = require('./postinit');
-
-var _postinit2 = _interopRequireDefault(_postinit);
 
 var _config = require('./config');
 
