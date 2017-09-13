@@ -58,7 +58,7 @@ var Platform = function () {
 	}, {
 		key: 'setServerMode',
 		value: function setServerMode() {
-			var mode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+			var mode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
 			Platform.isOnServer = mode;
 		}
@@ -67,5 +67,5 @@ var Platform = function () {
 	return Platform;
 }();
 
-Platform.isOnServer = true;
+Platform.isOnServer = false;
 exports.default = Platform;

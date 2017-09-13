@@ -8,8 +8,6 @@ var _reactxp = require('reactxp');
 
 var _reactxp2 = _interopRequireDefault(_reactxp);
 
-var _bluerainPluginReactRouter = require('@blueeast/bluerain-plugin-react-router');
-
 var _index = require('./index');
 
 var _index2 = _interopRequireDefault(_index);
@@ -52,12 +50,6 @@ exports.default = function () {
 	_index2.default.Components.register('TextInput', _reactxp2.default.TextInput);
 	_index2.default.Components.register('View', _reactxp2.default.View);
 	_index2.default.Components.register('WebView', _reactxp2.default.WebView);
-
-	/* Register Router Components */
-	_index2.default.Components.register('Link', _bluerainPluginReactRouter.Link);
-	_index2.default.Components.register('Route', _bluerainPluginReactRouter.Route);
-	_index2.default.Components.register('Switch', _bluerainPluginReactRouter.Switch);
-	_index2.default.Components.register('Redirect', _bluerainPluginReactRouter.Redirect);
 
 	/* Register Layout Components */
 	_index2.default.Components.register('SystemLayout', _SystemLayout2.default);

@@ -1,13 +1,40 @@
-import React from 'react';
+/* @flow */
 
-import { SystemRouter } from '@blueeast/bluerain-plugin-react-router';
-import { BlueRainProvider } from './Provider';
-import Routes from './routes';
+import BR from './index';
 
-export default () => (
-  <BlueRainProvider>
-    <SystemRouter>
-      <Routes />
-    </SystemRouter>
-  </BlueRainProvider>
-);
+import { parseJsonSchema } from './utils/JsonSchemaToReact';
+
+const Routes = () => {
+
+	const appRoutes = BR.Apps.getComponentSchema();
+
+	const routes = {
+		component: 'SystemLayout',
+		children: [
+			{
+				component: 'Switch',
+				children: [
+					{
+						component: 'Route',
+						props: {
+							path: '/',
+							exact: true,
+							component: BR.Components.get('IndexPage')
+						}
+					},
+					...appRoutes,
+					{
+						component: 'Route',
+						props: {
+							component: BR.Components.get('NotFoundPage')
+						}
+					}
+				]
+			}
+		]
+	};
+
+	return parseJsonSchema(BR.Filters.run('bluerain.system.routes', routes));
+};
+
+export default Routes;

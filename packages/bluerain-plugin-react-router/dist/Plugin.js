@@ -6,9 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _bluerainOs = require('@blueeast/bluerain-os');
+var _react = require('react');
 
-var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
+var _react2 = _interopRequireDefault(_react);
+
+var _bluerainOs = require('@blueeast/bluerain-os');
 
 var _reactRouterRedux = require('react-router-redux');
 
@@ -19,6 +21,8 @@ var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 var _createMemoryHistory = require('history/createMemoryHistory');
 
 var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
+
+var _ = require('./');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,9 +49,32 @@ var ReactRouterPlugin = function (_Plugin) {
 
 
 			// Create history
-			var history = _bluerainOs2.default.Platform.getType() === 'web' ? (0, _createBrowserHistory2.default)() : (0, _createMemoryHistory2.default)();
+			var history = _bluerainOs.Platform.getType() === 'web' ? (0, _createBrowserHistory2.default)() : (0, _createMemoryHistory2.default)();
 			ctx.router = {};
 			ctx.router.history = history;
+
+			console.log('Platform.getType()', _bluerainOs.Platform.getType());
+			console.log('historyu', history);
+			/* Register Router Components */
+			ctx.Components.register('Link', _.Link);
+			ctx.Components.register('Route', _.Route);
+			ctx.Components.register('Switch', _.Switch);
+			ctx.Components.register('Redirect', _.Redirect);
+
+			// Add router to main system app
+			var withRouter = function withRouter(App) {
+				return function (props) {
+					return _react2.default.createElement(
+						_reactRouterRedux.ConnectedRouter,
+						{ history: history },
+						_react2.default.createElement(App, props)
+					);
+				};
+			};
+
+			ctx.Filters.add('bluerain.system.app', function AddRouterToSystemApp(App) {
+				return withRouter(App);
+			});
 
 			// Add filters to integrate with Redux
 			ctx.Filters.add('bluerain.redux.reducers.bluerain', function ReduxRouterReducer(reducers) {

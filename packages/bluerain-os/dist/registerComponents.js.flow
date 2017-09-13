@@ -1,5 +1,4 @@
 import RX from 'reactxp';
-import { Link, Route, Switch, Redirect } from '@blueeast/bluerain-plugin-react-router';
 
 import BR from './index';
 
@@ -24,12 +23,6 @@ export default () => {
 	BR.Components.register('TextInput', RX.TextInput);
 	BR.Components.register('View', RX.View);
 	BR.Components.register('WebView', RX.WebView);
-
-	/* Register Router Components */
-	BR.Components.register('Link', Link);
-	BR.Components.register('Route', Route);
-	BR.Components.register('Switch', Switch);
-	BR.Components.register('Redirect', Redirect);
 
 	/* Register Layout Components */
 	BR.Components.register('SystemLayout', SystemLayout);
