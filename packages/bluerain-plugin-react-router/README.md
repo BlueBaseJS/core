@@ -1,0 +1,24 @@
+# React Router
+
+React Router V4.
+
+## Usage
+Run the following command in the plugin directoy:
+
+```shell
+npm i --save @blueeast/bluerain-plugin-redux-devtools
+```
+
+Then in your boot function, pass the plugin like this:
+
+```javascript
+import BR from '@blueeast/bluerain-os';
+import ReactRouterPlugin from '@blueeast/bluerain-plugin-react-router';
+
+BR.boot({
+	plugins: [ReactRouterPlugin]
+})
+```
+
+## API
+API Docs
