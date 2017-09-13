@@ -10,7 +10,7 @@ export type PlatformType = 'web' | 'server' | 'ios' | 'android' | 'windows' | 'e
  */
 export default class Platform {
 
-	static isOnServer: boolean = true;
+	static isOnServer: boolean = false;
 
 	/**
 	 * @return {string} PlatformType ('web' | 'server' | 'ios' | 'android' | 'windows' | 'electron')
@@ -36,7 +36,7 @@ export default class Platform {
 	 *
 	 * @param {boolean} mode
 	 */
-	static setServerMode(mode: boolean = true) {
+	static setServerMode(mode: boolean = false) {
 		Platform.isOnServer = mode;
 	}
 }

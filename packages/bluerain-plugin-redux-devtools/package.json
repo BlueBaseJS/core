@@ -13,7 +13,7 @@
   "author": "BlueEast Team",
   "license": "ISC",
   "dependencies": {
-    "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
+    "@blueeast/bluerain-os": "^0.1.0",
     "redux": "^3.7.2"
   },
   "devDependencies": {
