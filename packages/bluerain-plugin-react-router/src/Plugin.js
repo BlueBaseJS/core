@@ -18,8 +18,6 @@ class ReactRouterPlugin extends Plugin {
 		ctx.router = {};
 		ctx.router.history = history;
 
-		console.log('Platform.getType()', Platform.getType())
-		console.log('historyu', history)
 		/* Register Router Components */
 		ctx.Components.register('Link', Link);
 		ctx.Components.register('Route', Route);
