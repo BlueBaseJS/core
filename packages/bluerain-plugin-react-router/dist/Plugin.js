@@ -53,8 +53,6 @@ var ReactRouterPlugin = function (_Plugin) {
 			ctx.router = {};
 			ctx.router.history = history;
 
-			console.log('Platform.getType()', _bluerainOs.Platform.getType());
-			console.log('historyu', history);
 			/* Register Router Components */
 			ctx.Components.register('Link', _.Link);
 			ctx.Components.register('Route', _.Route);

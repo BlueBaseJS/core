@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SystemRouter = undefined;
 
 var _reactRouterNative = require('react-router-native');
 
@@ -15,15 +14,6 @@ Object.keys(_reactRouterNative).forEach(function (key) {
       return _reactRouterNative[key];
     }
   });
-});
-
-var _reactRouterRedux = require('react-router-redux');
-
-Object.defineProperty(exports, 'SystemRouter', {
-  enumerable: true,
-  get: function get() {
-    return _reactRouterRedux.ConnectedRouter;
-  }
 });
 
 var _Plugin = require('./Plugin');
