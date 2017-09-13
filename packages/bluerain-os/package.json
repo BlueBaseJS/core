@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/BlueEastCode/bluerain-os#readme",
   "dependencies": {
+    "@blueeast/bluerain-plugin-react-router": "../bluerain-plugin-react-router",
     "@blueeast/bluerain-plugin-redux": "0.1.1",
     "eventemitter3": "^2.0.3",
     "history": "^4.6.3",
