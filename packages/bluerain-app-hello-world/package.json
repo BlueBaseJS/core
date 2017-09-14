@@ -11,7 +11,7 @@
     "docs": "documentation readme src/** --section=API"
   },
   "author": "BlueEast Team",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@blueeast/bluerain-os": "^0.1.0"
   },
