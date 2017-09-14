@@ -43,7 +43,7 @@
     "lodash.merge": "^4.6.0",
     "lodash.reject": "^4.6.0",
     "lodash.set": "^4.3.2",
-    "react": "16.0.0-alpha.12",
+    "react": "^16.0.0-alpha.12",
     "react-apollo": "^1.4.15",
     "react-dom": "^16.0.0-alpha.12",
     "react-intl": "^2.4.0",

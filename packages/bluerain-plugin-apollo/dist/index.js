@@ -14,9 +14,9 @@ var _bluerainOs = require('@blueeast/bluerain-os');
 
 var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
 
-var _reactApollo = require('react-apollo');
-
 var _subscriptionsTransportWs = require('subscriptions-transport-ws');
+
+var _reactApollo = require('react-apollo');
 
 var _defaultParams = require('./defaultParams');
 

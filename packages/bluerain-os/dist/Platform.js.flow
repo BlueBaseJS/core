@@ -21,7 +21,7 @@ export default class Platform {
 			return 'server';
 		}
 
-		const type = RX.Platform.getType();
+		const type: PlatformType = RX.Platform.getType();
 
 		if (type === 'web' && isElectron()) {
 			return 'electron';

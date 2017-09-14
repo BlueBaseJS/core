@@ -3,17 +3,17 @@
 import React from 'react';
 import BR from '@blueeast/bluerain-os';
 
-import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
+import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 
 import type { ChildrenArray } from 'react';
 import type { Store as StoreType } from 'redux';
 
 import defaultParams from './defaultParams';
 
-let client;
+let client: ApolloClient;
 
-function addApolloReducer(reducers) {
+function addApolloReducer(reducers: { [string]: any }) {
 	return Object.assign({}, reducers, { apollo: client.reducer() });
 }
 

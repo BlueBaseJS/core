@@ -43,6 +43,7 @@ exports.default = function () {
 	_index2.default.Components.register('Link', _router.Link);
 	_index2.default.Components.register('Route', _router.Route);
 	_index2.default.Components.register('Switch', _router.Switch);
+	_index2.default.Components.register('Redirect', _router.Redirect);
 
 	/* Register Layout Components */
 	_index2.default.Components.register('SystemLayout', _SystemLayout2.default);
