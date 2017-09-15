@@ -10,11 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _bluerainOs = require('@blueeast/bluerain-os');
+
 var _reactxp = require('reactxp');
-
-var _reactIntl = require('react-intl');
-
-var _router = require('../../../bluerain-os/src/router');
 
 var _pageStyles = require('./pageStyles');
 
@@ -27,6 +25,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import  { history } from '../../../../../../src/router';
+
 
 var buttonStyles = _reactxp.Styles.createViewStyle({
 	padding: 5,
@@ -46,27 +46,37 @@ var About = function (_React$Component) {
 	}
 
 	_createClass(About, [{
+		key: 'onNavigateHome',
+		value: function onNavigateHome() {
+			// history.push('/');
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var BR = this.props.bluerain;
+
+
+			var View = BR.Components.get('View');
+			var Button = BR.Components.get('Button');
+			var FormattedMessage = BR.Components.get('FormattedMessage');
+
 			return _react2.default.createElement(
-				_reactxp.View,
+				View,
 				{ style: _pageStyles2.default },
-				_react2.default.createElement(_reactIntl.FormattedMessage, { id: 'hello.about', defaultMessage: 'The About Page' }),
+				_react2.default.createElement(FormattedMessage, {
+					id: 'hello.about',
+					defaultMessage: 'The About Page'
+				}),
 				_react2.default.createElement(
-					_reactxp.Button,
+					Button,
 					{ style: buttonStyles, onPress: About.onNavigateHome },
 					'Click Me!'
 				)
 			);
-		}
-	}], [{
-		key: 'onNavigateHome',
-		value: function onNavigateHome() {
-			_router.history.push('/');
 		}
 	}]);
 
 	return About;
 }(_react2.default.Component);
 
-exports.default = About;
+exports.default = (0, _bluerainOs.withBlueRain)(About);

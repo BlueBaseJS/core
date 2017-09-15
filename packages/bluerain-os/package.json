@@ -19,7 +19,8 @@
     "lint": "./node_modules/.bin/eslint ./src/",
     "flow": "flow",
     "docs": "./node_modules/.bin/documentation build src/** -f md -o docs/api/reference.md",
-    "docs:watch": "./node_modules/.bin/documentation build --watch src/** -f md -o docs/api/reference.md"
+    "docs:watch": "./node_modules/.bin/documentation build --watch src/** -f md -o docs/api/reference.md",
+    "build:watch": "nodemon --exec \"yarn build\" --ignore dist/"
   },
   "keywords": [
     "reactjs"
@@ -35,7 +36,8 @@
   },
   "homepage": "https://github.com/BlueEastCode/bluerain-os#readme",
   "dependencies": {
-    "@blueeast/bluerain-plugin-redux": "../bluerain-plugin-redux",
+    "@blueeast/bluerain-plugin-react-router": "^0.1.0",
+    "@blueeast/bluerain-plugin-redux": "^0.1.1",
     "eventemitter3": "^2.0.3",
     "history": "^4.6.3",
     "is-electron": "^2.1.0",
@@ -45,11 +47,13 @@
     "lodash.reject": "^4.6.0",
     "lodash.set": "^4.3.2",
     "react": "^16.0.0-alpha.12",
-    "react-apollo": "^1.4.15",
     "react-dom": "^16.0.0-alpha.12",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.2",
     "react-router-native": "^4.1.1",
-    "reactxp": "^0.42.0-rc.25"
+    "reactxp": "^0.42.0-rc.25",
+    "recompose": "^0.25.0",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

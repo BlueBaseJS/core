@@ -1789,8 +1789,8 @@ doctrine@^2.0.0:
     isarray "^1.0.0"
 
 documentation@^5.2.1:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/documentation/-/documentation-5.3.2.tgz#45a106cd58bcb74ec0446431e5777a063fab6731"
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/documentation/-/documentation-5.3.1.tgz#f7fda4b65ad96b7686976173b0c573f53448ed3e"
   dependencies:
     ansi-html "^0.0.7"
     babel-core "^6.17.0"
@@ -2232,9 +2232,9 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extglob@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/extglob/-/extglob-2.0.2.tgz#3290f46208db1b2e8eb8be0c94ed9e6ad80edbe2"
+extglob@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/extglob/-/extglob-2.0.0.tgz#af747cb146aac7d24d845269ca90f32e7e6459dd"
   dependencies:
     array-unique "^0.3.2"
     define-property "^1.0.0"
@@ -2851,8 +2851,8 @@ inquirer@^0.12.0:
     through "^2.3.6"
 
 interpret@^1.0.0:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
 invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
@@ -3843,15 +3843,15 @@ micromatch@^2.1.5, micromatch@^2.3.11, micromatch@^2.3.7:
     regex-cache "^0.4.2"
 
 micromatch@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.0.tgz#5102d4eaf20b6997d6008e3acfe1c44a3fa815e2"
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.0.5.tgz#99717da26f83c050cd712ab5ea59f71821f758f9"
   dependencies:
     arr-diff "^4.0.0"
     array-unique "^0.3.2"
     braces "^2.2.2"
     define-property "^1.0.0"
     extend-shallow "^2.0.1"
-    extglob "^2.0.2"
+    extglob "^2.0.0"
     fragment-cache "^0.2.1"
     kind-of "^5.0.2"
     nanomatch "^1.2.1"
@@ -3941,8 +3941,8 @@ nan@^2.3.0:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.7.0.tgz#d95bf721ec877e08db276ed3fc6eb78f9083ad46"
 
 nanomatch@^1.2.1:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.3.tgz#15e1c02dcf990c27a283b08c0ba1801ce249a6a6"
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.1.tgz#5e25489283bd318be20305375000fcda2c4132e7"
   dependencies:
     arr-diff "^4.0.0"
     array-unique "^0.3.2"
@@ -4440,8 +4440,8 @@ react-apollo@^1.4.15:
     prop-types "^15.5.8"
 
 react@^16.0.0-alpha.12:
-  version "16.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-rc.3.tgz#4a9df996326ba7185903d9fbed3149765e237e26"
+  version "16.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-rc.2.tgz#1e55cc18fd9c56260f1d0ccf9caca6d3152dc83c"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.1.0"

@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import BR from '@blueeast/bluerain-os';
+import { Plugin } from '@blueeast/bluerain-os';
 
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
@@ -31,7 +31,7 @@ function replaceReduxProvider(Provider) {
 	return ApolloProviderHoc;
 }
 
-class ApolloPlugin extends BR.Plugin {
+class ApolloPlugin extends Plugin {
 
 	static pluginName = 'ApolloPlugin';
 	static slug = 'apollo';

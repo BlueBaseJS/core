@@ -1,10 +1,10 @@
 import React from 'react';
-import BR from '@blueeast/bluerain-os';
+import { Plugin } from '@blueeast/bluerain-os';
 import { Provider } from 'react-redux';
 
 import { createStore } from './index';
 
-class ReduxPlugin extends BR.Plugin {
+class ReduxPlugin extends Plugin {
 	static pluginName = 'Redux';
 	static slug = 'redux';
 

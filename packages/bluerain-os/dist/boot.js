@@ -20,7 +20,7 @@ exports.default = function () {
 
 	// Server mode
 
-	_index2.default.Platform.setServerMode(serverMode);
+	_index.Platform.setServerMode(serverMode);
 
 	// =[ System Lifecycle Event ]= Boot Start
 	_index2.default.Filters.run('bluerain.system.boot.start');
@@ -44,7 +44,8 @@ exports.default = function () {
 	_index2.default.Filters.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
-	_index2.default.Plugins.registerMany(_defaultPlugins2.default);
+	var defaultPlugins = require('./plugins/defaultPlugins').default;
+	_index2.default.Plugins.registerMany(defaultPlugins);
 	_index2.default.Plugins.registerMany(plugins);
 	_index2.default.Filters.run('bluerain.system.plugins.registered');
 
@@ -61,21 +62,27 @@ exports.default = function () {
 	_index2.default.Filters.run('bluerain.system.apps.initialized');
 
 	// =[ System Lifecycle Event ]= Apps Initialized
-	(0, _postinit2.default)();
 	_index2.default.Filters.run('bluerain.system.initialized');
 
 	// Set View
 	var SystemApp = _index2.default.Components.get('BlueRainApp');
 	SystemApp = _index2.default.Filters.run('bluerain.system.app', SystemApp);
+	var BluerainApp = function BluerainApp() {
+		return _react2.default.createElement(
+			_Provider.BlueRainProvider,
+			null,
+			_react2.default.createElement(SystemApp, null)
+		);
+	};
 
 	if (renderApp !== false) {
-		_reactxp2.default.UserInterface.setMainView(_react2.default.createElement(SystemApp, null));
+		_reactxp2.default.UserInterface.setMainView(_react2.default.createElement(BluerainApp, null));
 	}
 
 	// =[ System Lifecycle Event ]= Boot End
 	_index2.default.Filters.run('bluerain.system.boot.end');
 
-	return SystemApp;
+	return BluerainApp;
 };
 
 var _react = require('react');
@@ -94,16 +101,10 @@ var _registerComponents = require('./registerComponents');
 
 var _registerComponents2 = _interopRequireDefault(_registerComponents);
 
-var _postinit = require('./postinit');
-
-var _postinit2 = _interopRequireDefault(_postinit);
-
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _defaultPlugins = require('./plugins/defaultPlugins');
-
-var _defaultPlugins2 = _interopRequireDefault(_defaultPlugins);
+var _Provider = require('./Provider');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

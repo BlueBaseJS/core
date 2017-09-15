@@ -6,11 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactxp = require('reactxp');
 
-var _src = require('../../../bluerain-os/src');
-
-var _src2 = _interopRequireDefault(_src);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _bluerainOs = require('@blueeast/bluerain-os');
 
 var headerStyle = _reactxp.Styles.createViewStyle({
 	backgroundColor: 'rgba(240, 240, 240, 0.5)',
@@ -34,9 +30,11 @@ var navItemStyle = _reactxp.Styles.createViewStyle({
 	padding: 10
 });
 
-exports.default = function (_ref) {
+exports.default = (0, _bluerainOs.withBlueRain)(function (_ref) {
 	var match = _ref.match,
-	    appName = _ref.appName;
+	    appName = _ref.appName,
+	    BR = _ref.bluerain;
+
 
 	var layout = {
 		component: 'View',
@@ -63,7 +61,7 @@ exports.default = function (_ref) {
 					component: 'FormattedMessage',
 					props: {
 						id: 'hello.header.homeLinkText',
-						defaultMessage: 'Home d'
+						defaultMessage: 'Home'
 					}
 				}]
 			}, {
@@ -73,7 +71,7 @@ exports.default = function (_ref) {
 					component: 'FormattedMessage',
 					props: {
 						id: 'hello.header.aboutLinkText',
-						defaultMessage: 'about'
+						defaultMessage: 'About'
 					}
 				}]
 			}, {
@@ -90,12 +88,12 @@ exports.default = function (_ref) {
 					component: 'FormattedMessage',
 					props: {
 						id: 'hello.header.contactLinkText',
-						defaultMessage: 'Conta'
+						defaultMessage: 'Contact'
 					}
 				}]
 			}]
 		}]
 	};
 
-	return _src2.default.Utils.parseJsonSchema(layout);
-};
+	return BR.Utils.parseJsonSchema(layout);
+});

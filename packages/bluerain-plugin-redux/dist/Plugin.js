@@ -12,8 +12,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
-
 var _reactRedux = require('react-redux');
 
 var _index = require('./index');
@@ -26,8 +24,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ReduxPlugin = function (_BR$Plugin) {
-	_inherits(ReduxPlugin, _BR$Plugin);
+var ReduxPlugin = function (_Plugin) {
+	_inherits(ReduxPlugin, _Plugin);
 
 	function ReduxPlugin() {
 		_classCallCheck(this, ReduxPlugin);
@@ -63,7 +61,7 @@ var ReduxPlugin = function (_BR$Plugin) {
 	}]);
 
 	return ReduxPlugin;
-}(_bluerainOs2.default.Plugin);
+}(_bluerainOs.Plugin);
 
 ReduxPlugin.pluginName = 'Redux';
 ReduxPlugin.slug = 'redux';

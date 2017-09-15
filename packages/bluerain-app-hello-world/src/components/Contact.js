@@ -1,15 +1,14 @@
-import { FormattedMessage } from 'react-intl';
-import BR from '../../../bluerain-os/src';
+import { withBlueRain } from '@blueeast/bluerain-os';
 
 import pageStyle from './pageStyles';
 
-export default ({ match, appName }) => {
+export default withBlueRain(({ match, appName, bluerain: BR }) => {
 	const layout = {
 		component: 'View',
 		props: { style: pageStyle },
 		children: [
 			{
-				component: FormattedMessage,
+				component: 'FormattedMessage',
 				props:{
 					id:'hello.contact',
 					defaultMessage:'Welcome to the contact page!'
@@ -19,4 +18,4 @@ export default ({ match, appName }) => {
 	};
 
 	return BR.Utils.parseJsonSchema(layout);
-};
+});

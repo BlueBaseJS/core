@@ -3,10 +3,28 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.withBlueRain = exports.Plugin = exports.App = undefined;
 
-var _reactxp = require('reactxp');
+var _Provider = require('./Provider');
 
-var _reactxp2 = _interopRequireDefault(_reactxp);
+Object.defineProperty(exports, 'withBlueRain', {
+	enumerable: true,
+	get: function get() {
+		return _Provider.withBlueRain;
+	}
+});
+
+var _api = require('./api');
+
+Object.keys(_api).forEach(function (key) {
+	if (key === "default" || key === "__esModule") return;
+	Object.defineProperty(exports, key, {
+		enumerable: true,
+		get: function get() {
+			return _api[key];
+		}
+	});
+});
 
 var _AppRegistry = require('./registries/AppRegistry');
 
@@ -32,28 +50,35 @@ var _PluginRegistry = require('./registries/PluginRegistry');
 
 var _PluginRegistry2 = _interopRequireDefault(_PluginRegistry);
 
-var _App = require('./models/App');
-
-var _App2 = _interopRequireDefault(_App);
-
-var _Plugin = require('./models/Plugin');
-
-var _Plugin2 = _interopRequireDefault(_Plugin);
-
-var _Platform = require('./Platform');
-
-var _Platform2 = _interopRequireDefault(_Platform);
-
 var _boot = require('./boot');
 
 var _boot2 = _interopRequireDefault(_boot);
 
 var _JsonSchemaToReact = require('./utils/JsonSchemaToReact');
 
+var _App2 = require('./models/App');
+
+var _App3 = _interopRequireDefault(_App2);
+
+var _Plugin2 = require('./models/Plugin');
+
+var _Plugin3 = _interopRequireDefault(_Plugin2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+exports.App = _App3.default;
+
+// Models
+
+
+// Others
+// Registries
+
+exports.Plugin = _Plugin3.default;
+
+
 // This will have all registries as objects
-var BlueRain = {
+exports.default = {
 	// BlueRain
 	Apps: new _AppRegistry2.default(),
 	Plugins: new _PluginRegistry2.default(),
@@ -65,29 +90,8 @@ var BlueRain = {
 	// boot
 	boot: _boot2.default,
 
-	// Models
-	App: _App2.default,
-	Plugin: _Plugin2.default,
-
-	// ReactXP
-	International: _reactxp2.default.International,
-	Location: _reactxp2.default.Location,
-	Network: _reactxp2.default.Network,
-	Platform: _Platform2.default,
-	StatusBar: _reactxp2.default.StatusBar,
-	Storage: _reactxp2.default.Storage,
-
 	// Miscellaneous
 	Utils: {
 		parseJsonSchema: _JsonSchemaToReact.parseJsonSchema
 	}
 };
-
-// Others
-
-
-// Models
-
-
-// Registries
-exports.default = BlueRain;

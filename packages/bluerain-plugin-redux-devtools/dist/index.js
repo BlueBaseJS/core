@@ -8,11 +8,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _bluerainOs2 = _interopRequireDefault(_bluerainOs);
-
 var _redux = require('redux');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25,8 +21,8 @@ function addReduxDevTools(composed, enhancers) {
 	return composeEnhancers(enhancers);
 }
 
-var ReduxDevtoolsPlugin = function (_BR$Plugin) {
-	_inherits(ReduxDevtoolsPlugin, _BR$Plugin);
+var ReduxDevtoolsPlugin = function (_Plugin) {
+	_inherits(ReduxDevtoolsPlugin, _Plugin);
 
 	function ReduxDevtoolsPlugin() {
 		_classCallCheck(this, ReduxDevtoolsPlugin);
@@ -42,7 +38,7 @@ var ReduxDevtoolsPlugin = function (_BR$Plugin) {
 	}]);
 
 	return ReduxDevtoolsPlugin;
-}(_bluerainOs2.default.Plugin);
+}(_bluerainOs.Plugin);
 
 ReduxDevtoolsPlugin.pluginName = 'ReduxDevtoolsPlugin';
 ReduxDevtoolsPlugin.slug = 'redux-devtools';

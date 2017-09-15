@@ -1,7 +1,8 @@
 import React from 'react';
-import { Styles, View, Button } from 'reactxp';
-import { FormattedMessage } from 'react-intl';
-import { history } from '../../../bluerain-os/src/router';
+import { withBlueRain } from '@blueeast/bluerain-os';
+
+import { Styles } from 'reactxp';
+// import  { history } from '../../../../../../src/router';
 import pageStyle from './pageStyles';
 
 const buttonStyles = Styles.createViewStyle({
@@ -12,15 +13,26 @@ const buttonStyles = Styles.createViewStyle({
 	borderRadius: 3
 });
 
-export default class About extends React.Component {
-	static onNavigateHome() {
-		history.push('/');
+class About extends React.Component {
+	onNavigateHome() {
+		// history.push('/');
 	}
 
 	render() {
+
+
+		const { bluerain: BR } = this.props;
+
+		const View = BR.Components.get('View');
+		const Button = BR.Components.get('Button');
+		const FormattedMessage = BR.Components.get('FormattedMessage');
+
 		return (
   <View style={pageStyle}>
-    <FormattedMessage id="hello.about" defaultMessage="The About Page" />
+    <FormattedMessage
+      id="hello.about"
+      defaultMessage="The About Page"
+    />
     {/* <p>User ID: {this.props.params.id}</p> */}
     <Button style={buttonStyles} onPress={About.onNavigateHome}>
           Click Me!
@@ -29,3 +41,5 @@ export default class About extends React.Component {
 		);
 	}
 }
+
+export default withBlueRain(About);
