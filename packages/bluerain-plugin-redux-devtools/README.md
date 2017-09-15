@@ -1,6 +1,6 @@
 # Redux Devtools Plugin
 
-Adds compatibitlity of (Redux Devtools Extension)[https://github.com/gaearon/redux-devtools].
+Adds [Redux Devtools Extension](https://github.com/gaearon/redux-devtools) compatibility to BlueRain OS.
 
 ## Usage
 Run the following command in the plugin directoy:
@@ -21,4 +21,4 @@ BR.boot({
 ```
 
 ## API
-API Docs
+None.
