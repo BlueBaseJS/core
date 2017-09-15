@@ -11,9 +11,9 @@
     "docs": "documentation readme src/** --section=API"
   },
   "author": "BlueEast Team",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
+    "@blueeast/bluerain-os": "^0.1.0",
     "react-intl": "^2.4.0",
     "redux": "^3.7.2"
   },

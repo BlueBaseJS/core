@@ -7,9 +7,10 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "exp start",
-    "watch": "cpx \"../bluerain-os/src/**/*\" ./bluerain-os --watch"
+    "watch": "cpx \"../../packages/**/*.{js,json}\" ./packages --watch"
   },
   "dependencies": {
+    "@blueeast/bluerain-os": "^0.1.2",
     "eventemitter3": "^2.0.3",
     "expo": "19.0.1",
     "is-electron": "^2.1.0",
@@ -33,6 +34,7 @@
     "@types/react-native": "0.46.7",
     "@types/webpack": "^2.2.14",
     "cpx": "^1.5.0",
+    "rimraf": "^2.6.2",
     "source-map-loader": "^0.1.6"
   }
 }

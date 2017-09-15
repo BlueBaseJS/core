@@ -9,10 +9,10 @@
     "start": "webpack-dev-server --inline --hot --history-api-fallback"
   },
   "dependencies": {
-    "@blueeast/bluerain-os": "git://github.com/BlueEastCode/bluerain-os.git#next",
-    "@blueeast/bluerain-plugin-apollo": "../bluerain-plugin-apollo",
-    "@blueeast/bluerain-plugin-redux-devtools": "../bluerain-plugin-redux-devtools",
-    "react": "16.0.0-alpha.12",
+    "@blueeast/bluerain-os": "^0.1.0",
+    "@blueeast/bluerain-plugin-apollo": "^0.1.0",
+    "@blueeast/bluerain-plugin-redux-devtools": "^0.1.0",
+    "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
     "reactxp": "^0.42.0-rc.25"
   },

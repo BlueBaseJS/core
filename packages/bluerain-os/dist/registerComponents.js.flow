@@ -1,7 +1,7 @@
 import RX from 'reactxp';
 
 import BR from './index';
-import { Link, Route, Switch } from './router';
+import { Link, Route, Switch, Redirect } from './router';
 import SystemLayout from './layouts/SystemLayout';
 import ResponsiveLayout from './layouts/ResponsiveLayout';
 
@@ -24,6 +24,7 @@ export default () => {
 	BR.Components.register('Link', Link);
 	BR.Components.register('Route', Route);
 	BR.Components.register('Switch', Switch);
+	BR.Components.register('Redirect', Redirect);
 
 	/* Register Layout Components */
 	BR.Components.register('SystemLayout', SystemLayout);
