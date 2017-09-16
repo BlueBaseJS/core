@@ -18,7 +18,7 @@
     "build:prod": "webpack -p && cp src/index.js dist/index.js",
     "lint": "./node_modules/.bin/eslint ./src/",
     "flow": "flow",
-    "docs": "./node_modules/.bin/documentation build src/** -f md -o docs/api/reference.md",
+    "docs": "./node_modules/.bin/documentation build src/** -f md -o ../../docs/api/reference.md",
     "docs:watch": "./node_modules/.bin/documentation build --watch src/** -f md -o docs/api/reference.md",
     "build:watch": "nodemon --exec \"yarn build\" --ignore dist/"
   },

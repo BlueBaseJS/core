@@ -1,16 +1,19 @@
 {
-	"name": "bluerain-monorepo",
-  "version": "0.1.0",
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "clean": "lerna clean --yes",
-    "build": "lerna run build",
-    "copy-internal-deps": "cd demo/demo-react-native && node ./copy-internal-deps.js && cd ../..",
-    "test": "lerna run test",
-    "lint": "lerna run lint",
-    "welcome": "yarn run clean && yarn run bootstrap -- --ignore-engines && yarn run build && yarn run copy-internal-deps && yarn run lint -s"
-	},
-	"devDependencies": {
-		"lerna": "^2.1.2"
-	}
+ "name": "bluerain-monorepo",
+ "version": "0.1.0",
+ "scripts": {
+  "bootstrap": "lerna bootstrap",
+  "clean": "lerna clean --yes",
+  "build": "lerna run build",
+  "copy-internal-deps": "cd demo/demo-react-native && node ./copy-internal-deps.js && cd ../..",
+  "test": "lerna run test",
+  "lint": "lerna run lint",
+  "welcome": "yarn run clean && yarn run bootstrap -- --ignore-engines && yarn run build && yarn run copy-internal-deps && yarn run lint -s",
+  "docs": "lerna run docs && node ./docs/plugins/copyPlugins.js"
+ },
+ "devDependencies": {
+  "cpx": "^1.5.0",
+  "fs-extra": "^4.0.2",
+  "lerna": "^2.1.2"
+ }
 }
