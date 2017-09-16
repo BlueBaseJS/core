@@ -4,6 +4,8 @@
  "scripts": {
   "bootstrap": "lerna bootstrap",
   "clean": "lerna clean --yes",
+  "coverage": "npm run codecov-coverage",
+  "codecov-coverage": "codecov",
   "build": "lerna run build && yarn run docs",
   "copy-internal-deps": "cd demo/demo-react-native && node ./copy-internal-deps.js && cd ../..",
   "test": "lerna run test",

@@ -5,7 +5,7 @@ before_install:
   yarn && lerna bootstrap --concurrency=1
 jobs:
   include:
+    - stage: Unit Tests
+      script: lerna test && lerna install -g codecov && yarn run coverage
     - stage: ES Lint & Flow
       script: lerna run lint && lerna run flow
-    - stage: Unit Tests
-      script: lerna test && lerna install -g codecov && lerna run coverage
