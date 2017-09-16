@@ -12,6 +12,7 @@ import type { Store as StoreType } from 'redux';
 import defaultParams from './defaultParams';
 
 let client: ApolloClient;
+let subscriptionClient: SubscriptionClient;
 
 function addApolloReducer(reducers: { [string]: any }) {
 	return Object.assign({}, reducers, { apollo: client.reducer() });
@@ -31,6 +32,9 @@ function replaceReduxProvider(Provider) {
 	return ApolloProviderHoc;
 }
 
+/**
+ * Main Apollo Plugin class.
+ */
 class ApolloPlugin extends Plugin {
 
 	static pluginName = 'ApolloPlugin';
@@ -40,6 +44,7 @@ class ApolloPlugin extends Plugin {
 
 		// Configurations
 		config = Object.assign({}, defaultParams, config);
+		config = ctx.Filters.run('apollo.config', config);
 
 		let networkInterface;
 
@@ -55,7 +60,7 @@ class ApolloPlugin extends Plugin {
 			}
 
 			// Create websocket client
-			const wsClient = new SubscriptionClient(config.wsUri, config.subscriptionClient);
+			subscriptionClient = new SubscriptionClient(config.wsUri, config.subscriptionClient);
 
 			// Create a normal network interface:
 			const simpleNetworkInterface = createNetworkInterface(config.networkInterface);
@@ -63,7 +68,7 @@ class ApolloPlugin extends Plugin {
 			// Extend the network interface with the WebSocket
 			networkInterface = addGraphQLSubscriptions(
 				simpleNetworkInterface,
-				wsClient
+				subscriptionClient
 			);
 
 		} else {
@@ -79,8 +84,20 @@ class ApolloPlugin extends Plugin {
 		ctx.Filters.add('bluerain.redux.provider', replaceReduxProvider);
 	}
 
+	/**
+	 * Returns Apollo client
+	 * @returns {ApolloClient}
+	 */
 	static getClient() {
 		return client;
+	}
+
+	/**
+	 * Returns Apollo's Subscription Client
+	 * @returns {SubscriptionClient}
+	 */
+	static getSubscriptionClient() {
+		return subscriptionClient;
 	}
 }
 
