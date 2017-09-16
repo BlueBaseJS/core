@@ -3,10 +3,7 @@ import { Plugin } from '@blueeast/bluerain-os';
 import { IntlProvider, addLocaleData, FormattedMessage, FormattedNumber, FormattedDate } from 'react-intl';
 
 const withInternationalization = (App, locale, ctx) => (props) => {
-	const messages = ctx.Filters.run(
-    'bluerain.intl.messages',
-    {}
-  );
+	const messages = ctx.Filters.run('bluerain.intl.messages', {});
 	return (
   <IntlProvider locale={locale} messages={messages[locale]}>
     <App {...props} />

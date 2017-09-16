@@ -15,7 +15,7 @@ const buttonStyles = Styles.createViewStyle({
 
 class About extends React.Component {
 	onNavigateHome() {
-		// history.push('/');
+			// history.push('/');
 	}
 
 	render() {
