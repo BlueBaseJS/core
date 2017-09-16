@@ -4347,8 +4347,8 @@ react-redux@^5.0.6:
     prop-types "^15.5.10"
 
 react@^16.0.0-alpha.12:
-  version "16.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-rc.2.tgz#1e55cc18fd9c56260f1d0ccf9caca6d3152dc83c"
+  version "16.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-rc.3.tgz#4a9df996326ba7185903d9fbed3149765e237e26"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.1.0"

@@ -19,6 +19,9 @@
     "redux": "^3.7.2",
     "subscriptions-transport-ws": "^0.8.2"
   },
+  "peerDependencies": {
+    "@blueeast/bluerain-plugin-redux": "^0.1.0"
+  },
   "devDependencies": {
     "babel-cli": "6.16.0",
     "babel-core": "6.18.0",
