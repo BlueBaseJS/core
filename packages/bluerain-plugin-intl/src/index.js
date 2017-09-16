@@ -19,10 +19,12 @@ class InternationalizationPlugin extends Plugin {
 	static slug = 'Internationalization';
 
 	static initialize(config = {}, ctx) {
-		if (!config.locale) {
-			config.locale = 'en';
+
+		let locale = ctx.Configs.get('locale');
+		if (!locale) {
+			locale = 'en';
 		}
-		const locale = config.locale;
+
 		const localeData = require(`react-intl/locale-data/${locale}`);
 		addLocaleData(localeData);
 

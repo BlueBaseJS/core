@@ -1,6 +1,8 @@
 const config = {
 	title: 'Todo MVC',
 
+	locale: 'ur',
+	
 	plugins: {
 		apollo: {
 			networkInterface: {
