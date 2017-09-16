@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "rm -rf dist && babel -D src --out-dir dist && flow-copy-source src dist",
+    "build:watch": "nodemon --exec \"yarn build\" --ignore dist/",    
     "flow": "flow",
     "lint": "eslint ./src/",
     "docs": "documentation readme src/** --section=API"
@@ -15,9 +16,11 @@
   "dependencies": {
     "@blueeast/bluerain-os": "^0.1.0",
     "react": "^16.0.0-alpha.12",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-native": "^4.2.0",
-    "react-router-redux": "^5.0.0-alpha.6"
+    "react-router-redux": "^5.0.0-alpha.6",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

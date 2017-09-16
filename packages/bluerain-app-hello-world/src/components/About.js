@@ -1,5 +1,6 @@
 import React from 'react';
 import { withBlueRain } from '@blueeast/bluerain-os';
+// import { withRouter } from '@blueeast/bluerain-plugin-react-router';
 
 import { Styles } from 'reactxp';
 // import  { history } from '../../../../../../src/router';
@@ -14,12 +15,18 @@ const buttonStyles = Styles.createViewStyle({
 });
 
 class About extends React.Component {
+
+	constructor(props) {
+		super(props);
+
+		this.onNavigateHome = this.onNavigateHome.bind(this);
+	}
 	onNavigateHome() {
-			// history.push('/');
+			// this.props.router.push('/');
+		this.props.history.goBack();
 	}
 
 	render() {
-
 
 		const { bluerain: BR } = this.props;
 
@@ -34,8 +41,8 @@ class About extends React.Component {
       defaultMessage="The About Page"
     />
     {/* <p>User ID: {this.props.params.id}</p> */}
-    <Button style={buttonStyles} onPress={About.onNavigateHome}>
-          Click Me!
+    <Button style={buttonStyles} onPress={this.onNavigateHome}>
+          Go Back!
         </Button>
   </View>
 		);
@@ -43,3 +50,4 @@ class About extends React.Component {
 }
 
 export default withBlueRain(About);
+// export default withBlueRain(withRouter(About));
