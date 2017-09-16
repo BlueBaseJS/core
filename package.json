@@ -4,7 +4,7 @@
  "scripts": {
   "bootstrap": "lerna bootstrap",
   "clean": "lerna clean --yes",
-  "build": "lerna run build",
+  "build": "lerna run build && yarn run docs",
   "copy-internal-deps": "cd demo/demo-react-native && node ./copy-internal-deps.js && cd ../..",
   "test": "lerna run test",
   "lint": "lerna run lint",
@@ -12,7 +12,6 @@
   "docs": "lerna run docs && node ./docs/plugins/copyPlugins.js"
  },
  "devDependencies": {
-  "cpx": "^1.5.0",
   "fs-extra": "^4.0.2",
   "lerna": "^2.1.2"
  }
