@@ -16,6 +16,7 @@
     "@blueeast/bluerain-plugin-redux-devtools": "^0.1.0",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
+    "react-intl": "^2.4.0",
     "reactxp": "^0.42.0-rc.25"
   },
   "devDependencies": {

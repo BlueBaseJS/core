@@ -9,7 +9,7 @@ import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apol
 import type { ChildrenArray } from 'react';
 import type { Store as StoreType } from 'redux';
 
-import defaultParams from './defaultParams';
+import defaultConfigs from './defaultConfigs';
 
 let client: ApolloClient;
 let subscriptionClient: SubscriptionClient;
@@ -45,7 +45,7 @@ class ApolloPlugin extends Plugin {
 	static initialize(config = {}, ctx) {
 
 		// Configurations
-		config = Object.assign({}, defaultParams, config);
+		config = Object.assign({}, defaultConfigs, config);
 		config = ctx.Filters.run('apollo.config', config);
 
 		let networkInterface;
