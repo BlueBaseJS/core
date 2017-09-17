@@ -60,8 +60,8 @@ import BR from '@blueeast/bluerain-os';
 
 BR.Filters.add(
 	'bluerain.redux.initialState',
-	function ActivateTaskbar(reducers) {
-		return Object.assign({}, reducers, {
+	function ActivateTaskbar(state) {
+		return Object.assign({}, state, {
 			bluerain: {
 				taskbar: {
 					active: true
@@ -96,7 +96,7 @@ This example adds a reducer to bluerain state, which will be accessible at `foo`
 import BR from '@blueeast/bluerain-os';
 import reducer from './reducer';
 
-BR.Filters(
+BR.Filters.add(
 	'bluerain.redux.reducers', 
 	function AddReducer(reducers) {
 		return Object.assign({}, reducers, {
