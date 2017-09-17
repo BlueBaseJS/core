@@ -6,6 +6,12 @@ function addReduxDevTools(composed, enhancers) {
 	return composeEnhancers(enhancers);
 }
 
+/**
+ * Adds compatibility to [Redux Devtools Extension](https://github.com/gaearon/redux-devtools) to make it easy to debug redux in BlueRain OS.
+ *
+ * @property {string} pluginName "ReduxDevtoolsPlugin"
+ * @property {string} slug "redux-devtools"
+ */
 class ReduxDevtoolsPlugin extends Plugin {
 
 	static pluginName = 'ReduxDevtoolsPlugin';
