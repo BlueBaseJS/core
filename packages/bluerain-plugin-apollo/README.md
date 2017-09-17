@@ -23,7 +23,10 @@ BR.boot({
 })
 ```
 
-## Filter Hooks
+## Components
+None.
+
+## Filters
 
 This plugin provides complete flexibility to modify the apollo client. This is done by providing various filter hooks at different stages of store initialization.
 

@@ -1,17 +1,26 @@
-import React from 'react';
 import { Plugin, Platform } from '@blueeast/bluerain-os';
 
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
 import createMemoryHistory from 'history/createMemoryHistory';
 
+import defaultConfig from './defaultConfig';
+import withReactRouter from './withReactRouter';
 import { Link, Route, Switch, Redirect } from './';
 
+/**
+ * React Router (v4) plugin to add routing capabilities to BlueRain Apps.
+ * @property {string} pluginName "ReactRouterPlugin"
+ * @property {string} slug "router"
+ */
 class ReactRouterPlugin extends Plugin {
 	static pluginName = 'ReactRouterPlugin';
 	static slug = 'router';
 
 	static initialize(config = {}, ctx) {
+
+		config = Object.assign({}, defaultConfig, config);
+		config = ctx.Filters.run('router.config', config);
 
 		// Create history
 		const history = Platform.getType() === 'web' ? createBrowserHistory() : createMemoryHistory();
@@ -25,14 +34,9 @@ class ReactRouterPlugin extends Plugin {
 		ctx.Components.register('Redirect', Redirect);
 
 		// Add router to main system app
-		const withRouter = App => (props) => {
-			return (<ConnectedRouter history={history}><App {...props} /></ConnectedRouter>);
-		};
-
 		ctx.Filters.add('bluerain.system.app', function AddRouterToSystemApp(App) {
-			return withRouter(App);
+			return withReactRouter(App, history, config);
 		});
-
 
 		// Add filters to integrate with Redux
 		ctx.Filters.add(
