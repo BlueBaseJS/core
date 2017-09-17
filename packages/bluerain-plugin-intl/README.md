@@ -1,4 +1,4 @@
-# Redux Devtools Plugin
+# Internationalization Plugin
 
 Adds compatibitlity of (Redux Devtools Extension)[https://github.com/gaearon/redux-devtools].
 

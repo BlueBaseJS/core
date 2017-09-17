@@ -11,9 +11,14 @@ const withInternationalization = (App, locale, ctx) => (props) => {
 	);
 };
 
+/**
+ * react-intl plugin to add internationalization to BlueRain Apps
+ * @property {string} pluginName "InternationalizationPlugin"
+ * @property {string} slug "intl"
+ */
 class InternationalizationPlugin extends Plugin {
 	static pluginName = 'InternationalizationPlugin';
-	static slug = 'Internationalization';
+	static slug = 'intl';
 
 	static initialize(config = {}, ctx) {
 
