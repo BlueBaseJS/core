@@ -4,6 +4,11 @@ import { Provider } from 'react-redux';
 
 import { createStore } from './index';
 
+/**
+ * Add Redux state management to BlueRain Apps
+ * @property {string} pluginName "Redux"
+ * @property {string} slug "redux"
+ */
 class ReduxPlugin extends Plugin {
 	static pluginName = 'Redux';
 	static slug = 'redux';
