@@ -40,6 +40,7 @@
     "@blueeast/bluerain-plugin-redux": "^0.1.1",
     "eventemitter3": "^2.0.3",
     "history": "^4.6.3",
+    "html-tags": "^2.0.0",
     "is-electron": "^2.1.0",
     "lodash.get": "^4.4.2",
     "lodash.kebabcase": "^4.1.1",

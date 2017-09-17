@@ -1,6 +1,6 @@
 
 import {
-	DOM,
+	// DOM,
 	createElement,
 	isValidElement,
 	type Element as ReactElement,
@@ -8,7 +8,8 @@ import {
 } from 'react';
 import set from 'lodash.set';
 
-import BR from '../index';
+import DOM from './dom';
+import BR from '../../index';
 
 type ComponentSchema = {
 	component: string | ReactElement<*>,
@@ -66,17 +67,21 @@ export default class JsonToReact {
 		if (Object.prototype.hasOwnProperty.call(schema, 'component')) {
 			if (schema.component === Object(schema.component)) {
 				return schema.component;
-			} else if (BR.Components.has(String(schema.component))) {
+			} else if (BR && BR.Components.has(String(schema.component))) {
 				return BR.Components.get(String(schema.component));
-			} else if (Object.prototype.hasOwnProperty.call(DOM, schema.component)) {
+			} else if (DOM.indexOf(schema.component) > -1) {
 				return schema.component;
 			}
+			// Discontinuing this because `import DOM from 'react';` now returns undefiend.
+			// else if (Object.prototype.hasOwnProperty.call(DOM, schema.component)) {
+			// 	return schema.component;
+			// }
 		} else {
 			throw new Error('JsonToReact could not resolve a component' +
 			'due to a missing component attribute in the schema.');
 		}
 
-		throw new Error('JsonToReact could not resolve a component');
+		throw new Error(`JsonToReact could not resolve a component: ${schema.component}`);
 	}
 
 	resolveComponentChildren(schema: ComponentSchema) {
