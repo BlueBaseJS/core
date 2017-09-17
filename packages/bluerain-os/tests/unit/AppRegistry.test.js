@@ -1,7 +1,7 @@
 import React from 'react';
-import BR from '../../src';
+import BR, { App } from '../../src';
 
-class HelloApp extends BR.App {
+class HelloApp extends App {
 	static appName = 'Hello World';
 	render() {
 		return <div>hello world</div>;
@@ -16,7 +16,7 @@ describe('App registry tests', () => {
   // tests for registering apps
 	describe('register app', () => {
 		it('should throw error b/c appname is not given', () => {
-			class HelloAppWithoutName extends BR.App {
+			class HelloAppWithoutName extends App {
 				render() {
 					return <div>hello world</div>;
 				}
@@ -26,7 +26,7 @@ describe('App registry tests', () => {
       );
 		});
 		it('slug should be abc-app', () => {
-			class TestApp extends BR.App {
+			class TestApp extends App {
 				static appName = 'Hello World';
 				static slug = 'abc-app';
 				render() {
@@ -53,7 +53,7 @@ describe('App registry tests', () => {
 			expect(() => BR.Apps.register(undefined)).toThrow();
 		});
 		it('should throw error b/c App name is no given', () => {
-			class HelloAppNOName extends BR.App {
+			class HelloAppNOName extends App {
 				render() {
 					return <div>hello world</div>;
 				}
@@ -186,7 +186,7 @@ describe('App registry tests', () => {
 	});
 	describe('initialize apps', () => {
 		it('should initialize all apps', () => {
-			class HelloReactApp extends BR.App {
+			class HelloReactApp extends App {
 				static appName = 'Hello React World';
 				render() {
 					return <div>hello world</div>;
@@ -250,7 +250,7 @@ describe('App registry tests', () => {
 	describe('initialize apps', () => {
 		it('should initialize all apps', () => {
 			BR.Configs.set('apps.hello-react-world', '3');
-			class HelloReactApp extends BR.App {
+			class HelloReactApp extends App {
 				static appName = 'Hello React World';
 				render() {
 					return <div>hello world</div>;

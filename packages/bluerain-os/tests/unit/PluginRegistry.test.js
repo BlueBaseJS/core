@@ -1,13 +1,13 @@
 /**
  * Created by umair on 8/24/17.
  */
-import BR from '../../src/index';
+import BR, { Plugin } from '../../src/index';
 
 describe('Plugin registry tests', () => {
   // tests for registering plugin
 	describe('register plugin', () => {
 		it('With pluginName, Plugin should be created', () => {
-			class HelloPlugin extends BR.Plugin {
+			class HelloPlugin extends Plugin {
 				static pluginName = 'HelloPlugin';
 				initialize() {}
       }
@@ -15,7 +15,7 @@ describe('Plugin registry tests', () => {
 			expect(Object.keys(BR.Plugins.PluginsTable).length).toEqual(1);
 		});
 		it('Without pluginName, Plugin should throw error', () => {
-			class HelloPlugin extends BR.Plugin {
+			class HelloPlugin extends Plugin {
 				initialize() {}
       }
 			expect(() => BR.Plugins.register(HelloPlugin)).toThrow(
@@ -23,7 +23,7 @@ describe('Plugin registry tests', () => {
       );
 		});
 		it('slug should be abc-plugin', () => {
-			class HelloPlugin extends BR.Plugin {
+			class HelloPlugin extends Plugin {
 				static pluginName = 'WithSlugPlugin';
 				static slug = 'with-slug';
 				initialize() {}
@@ -32,7 +32,7 @@ describe('Plugin registry tests', () => {
 			expect(BR.Plugins.get('with-slug').slug).toEqual('with-slug');
 		});
 		it('slug should be hello-world', () => {
-			class HelloWorldPlugin extends BR.Plugin {
+			class HelloWorldPlugin extends Plugin {
 				static pluginName = 'HelloWorldPlugin';
 				initialize() {}
       }
@@ -144,7 +144,7 @@ describe('Plugin registry tests', () => {
 			expect(Object.keys(BR.Plugins.PluginsTable).length).toEqual(2);
 		});
 		it('should throw error b/c errornous plugins', () => {
-			class HelloPlugin extends BR.Plugin {
+			class HelloPlugin extends Plugin {
 				static pluginName = 'WithSlugPlugin';
 				static slug = 'with-slug';
 				initialize() {}
@@ -155,12 +155,12 @@ describe('Plugin registry tests', () => {
 		});
 		it('should have hello world plugin', () => {
 			BR.Plugins.PluginsTable = {};
-			class HelloPlugin extends BR.Plugin {
+			class HelloPlugin extends Plugin {
 				static pluginName = 'WithSlugPlugin';
 				static slug = 'with-slug';
 				initialize() {}
       }
-			class HelloWorldPlugin extends BR.Plugin {
+			class HelloWorldPlugin extends Plugin {
 				static pluginName = 'HelloWorldPlugin';
 				initialize() {}
       }
@@ -171,7 +171,7 @@ describe('Plugin registry tests', () => {
 	describe('initialize plugins', () => {
 		it('should initialize all plugins', () => {
 			BR.Configs.set('plugins.hello-react-world', '3');
-			class HelloReactplugin extends BR.Plugin {
+			class HelloReactplugin extends Plugin {
 				static pluginName = 'Hello React World';
 				render() {
 					return <div>hello world</div>;

@@ -1,7 +1,7 @@
 import React from 'react';
 import RX from 'reactxp';
 
-import BR from '../../src';
+import BR, { App } from '../../src';
 
 describe('BR.boot func tests', () => {
 	document.body.innerHTML = '<div class="app-container">' + '</div>';
@@ -23,7 +23,7 @@ describe('BR.boot func tests', () => {
     ).not.toThrow();
 	});
 	it('should BR.boot with expected params and expected values', () => {
-		class HelloWorld extends BR.App {
+		class HelloWorld extends App {
 			static appName = 'Hello World';
 			render() {
 				return <RX.View><RX.Text>Hello world</RX.Text></RX.View>;
@@ -35,7 +35,7 @@ describe('BR.boot func tests', () => {
 	});
 
 	it('should BR.boot on server with expected params and expected values', () => {
-		class HelloWorld extends BR.App {
+		class HelloWorld extends App {
 			static appName = 'Hello World';
 			render() {
 				return <RX.View><RX.Text>Hello world</RX.Text></RX.View>;
