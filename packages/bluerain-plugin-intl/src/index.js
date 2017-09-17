@@ -16,13 +16,11 @@ import { updateIntl, IntlProvider, intlReducer } from 'react-intl-redux';
 import defaultConfigs from './defaultConfigs';
 
 let messages = {};
-const withIntl = (App, locale, ctx) => (props) => {
-	return (
+const withIntl = App => props => (
   <IntlProvider>
     <App {...props} />
   </IntlProvider>
 	);
-};
 
 /**
  * react-intl plugin to add internationalization to BlueRain Apps
@@ -55,7 +53,7 @@ class InternationalizationPlugin extends Plugin {
 		// Add internationalization to main system app
 		ctx.Filters.add(
       'bluerain.redux.app',
-      function AddInternationalizationToSystemApp(App) { return withIntl(App, locale, ctx); }
+      function AddInternationalizationToSystemApp(App) { return withIntl(App); }
 		);
 
 		ctx.Filters.add(
@@ -76,10 +74,16 @@ class InternationalizationPlugin extends Plugin {
 		);
 	}
 
-	static setLocale(locale, BR) {
+	/**
+	 * Change app's locale
+	 *
+	 * @param {string} locale The locale id
+	 * @param {BlueRain} ctx	The BlueRain Context
+	 */
+	static setLocale(locale, ctx) {
 		try {
 			const localMessages = messages[locale];
-			BR.refs.store.dispatch(updateIntl({
+			ctx.refs.store.dispatch(updateIntl({
 				locale,
 				messages: localMessages,
 			}));

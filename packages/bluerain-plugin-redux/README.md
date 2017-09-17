@@ -27,6 +27,7 @@ This plugin provides complete flexibility to modify the main redux store. This i
 
 ### Summary
 
+-   [bluerain.redux.app](#bluerainreduxapp)
 -   [bluerain.redux.initialState](#bluerainreduxinitialstate)
 -   [bluerain.redux.reducers](#bluerainreduxreducers)
 -   [bluerain.redux.reducers.bluerain](#bluerainreduxreducersbluerain)
@@ -34,6 +35,38 @@ This plugin provides complete flexibility to modify the main redux store. This i
 -   [bluerain.redux.enhancers](#bluerainreduxenhancers)
 -   [bluerain.redux.composed](#bluerainreduxcomposed)
 -   [bluerain.redux.provider](#bluerainreduxprovider)
+
+### bluerain.redux.app
+
+This hook gives the ability to modify the main System App component that gets wrapped in Redux's Provider.
+
+**Parameters:**
+
+| Name      | Type            | Description                    |
+| --------- | --------------- | ------------------------------ |
+| SystemApp | React.Component | The main system app component. |
+
+**Returns:**
+
+| Name      | Type            | Description                    |
+| --------- | --------------- | ------------------------------ |
+| SystemApp | React.Component | The main system app component. |
+
+**Example:**
+
+This example wraps the System App with a Redux provider by using a `withRedux` higher order component (HOC).
+
+```javascript
+import BR from '@blueeast/bluerain-os';
+import withRedux from './withReduxBasedComponent';
+
+BR.Filters(
+	'bluerain.redux.app', 
+	function AddReduxPluginToSystemApp(App) {
+		return withReduxBasedComponent(App);
+	}
+);
+```
 
 ### bluerain.redux.initialState
 

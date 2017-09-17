@@ -24,6 +24,7 @@ BR.boot({
 ```
 
 ## Components
+
 None.
 
 ## Filters
