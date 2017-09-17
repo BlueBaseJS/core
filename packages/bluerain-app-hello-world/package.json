@@ -59,8 +59,5 @@
     "collectCoverageFrom": [
       "src/**.{js,jsx}"
     ]
-  },
-  "peerDependencies": {
-    "@blueeast/bluerain-plugin-intl": "^0.1.0"
   }
 }
