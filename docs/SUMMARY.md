@@ -28,6 +28,7 @@
 ## Plugins
 * [Apollo](/plugins/apollo.md)
 * [Internationalization](/plugins/intl.md)
+* [Material UI](/plugins/material-ui.md)
 * [React Router](/plugins/react-router.md)
 * [Redux](/plugins/redux.md)
 * [Redux Devtools](/plugins/redux-devtools.md)

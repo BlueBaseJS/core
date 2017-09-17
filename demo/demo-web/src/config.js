@@ -1,5 +1,5 @@
 const config = {
-	title: 'Todo MVC',
+	title: 'Brand Name',
 
 	locale: 'ur',
 	
@@ -18,6 +18,12 @@ const config = {
 				require('react-intl/locale-data/ur'),
 				// require('react-intl/locale-data/fr')
 			)
+		}
+	},
+
+	theme: {
+		appBar: {
+			color: 'red'
 		}
 	}
 };

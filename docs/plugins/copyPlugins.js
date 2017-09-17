@@ -4,6 +4,7 @@ var fs = require('fs-extra');
 const plugins = [
 	'apollo',
 	'intl',
+	'material-ui',
 	'react-router',
 	'redux',
 	'redux-devtools'
