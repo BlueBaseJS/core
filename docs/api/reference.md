@@ -5,6 +5,7 @@
 -   [Platform](#platform)
     -   [getType](#gettype)
     -   [setServerMode](#setservermode)
+-   [BlueRain](#bluerain)
 -   [BootOptions](#bootoptions)
 -   [boot](#boot)
 -   [Config](#config)
@@ -61,6 +62,25 @@ Useful to see if the app is rendering on server due to SSR.
 **Parameters**
 
 -   `mode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**  (optional, default `false`)
+
+## BlueRain
+
+This is the main BlueRain context. Works as a backbone of whole system.
+
+Type: BlueRainType
+
+**Properties**
+
+-   `Apps` **[AppRegistry](#appregistry)** Instance object of AppRegistry.
+-   `Components` **[ComponentRegistry](#componentregistry)** Instance object of ComponentRegistry.
+-   `Configs` **[ConfigRegistry](#configregistry)** Instance object of ConfigRegistry.
+-   `Events` **EventRegistry** Instance object of EventRegistry.
+-   `Filters` **[FilterRegistry](#filterregistry)** Instance object of FilterRegistry.
+-   `Plugins` **[PluginRegistry](#pluginregistry)** Instance object of PluginRegistry.
+-   `Utils` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains utility methods.
+    -   `Utils.parseJsonSchema` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Converts JSON schema to React Component tree
+-   `refs` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains references of objects created by different apps and plugins
+-   `boot` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Function to boot the OS.
 
 ## BootOptions
 
