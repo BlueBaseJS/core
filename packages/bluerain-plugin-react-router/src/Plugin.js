@@ -24,8 +24,19 @@ class ReactRouterPlugin extends Plugin {
 
 		// Create history
 		const history = Platform.getType() === 'web' ? createBrowserHistory() : createMemoryHistory();
-		ctx.router = {};
-		ctx.router.history = history;
+
+		/**
+		 * This plugin saves `router` object in the BlueRain context. This can be accessed in the following way:
+		 *
+		 * ```javascript
+		 * const router = ctx.refs.router;
+		 * ```
+		 *
+		 * @namespace
+		 * @prop {object} history React Router's history object
+		 */
+		const RouterRef = { history };
+		ctx.refs.router = RouterRef;
 
 		/* Register Router Components */
 		ctx.Components.register('Link', Link);

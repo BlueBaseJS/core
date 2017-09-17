@@ -250,3 +250,11 @@ Add Redux state management to BlueRain Apps
 
 -   `pluginName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** "Redux"
 -   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** "redux"
+
+### StoreRef
+
+This plugin saves `store` object in the BlueRain context. This can be accessed in the following way:
+
+```javascript
+const store = ctx.refs.store;
+```

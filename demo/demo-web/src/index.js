@@ -13,3 +13,4 @@ const bootOptions = {
 };
 
 BR.boot(bootOptions);
+console.log('BlueRain Booted!', BR);

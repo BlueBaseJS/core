@@ -61,6 +61,18 @@ React Router (v4) plugin to add routing capabilities to BlueRain Apps.
 -   `pluginName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** "ReactRouterPlugin"
 -   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** "router"
 
+### RouterRef
+
+This plugin saves `router` object in the BlueRain context. This can be accessed in the following way:
+
+```javascript
+const router = ctx.refs.router;
+```
+
+**Properties**
+
+-   `history` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** React Router's history object
+
 ### withRouterActions
 
 withRouterActions higher order component that passes router action functions inside `router` prop.

@@ -18,6 +18,19 @@ class ReduxPlugin extends Plugin {
 		// withRedux HOC Method
 		const withRedux = App => (props) => {
 			const store = createStore(ctx);
+
+			/**
+			 * This plugin saves `store` object in the BlueRain context. This can be accessed in the following way:
+			 *
+			 * ```javascript
+			 * const store = ctx.refs.store;
+			 * ```
+			 *
+			 * @namespace
+			 */
+			const StoreRef = store;
+			ctx.refs.store = StoreRef;
+
 			const ReduxProvider = ctx.Filters.run('bluerain.redux.provider', Provider);
 			return (<ReduxProvider store={store}><App {...props} /></ReduxProvider>);
 		};
