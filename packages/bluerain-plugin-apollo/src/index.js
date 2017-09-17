@@ -34,6 +34,8 @@ function replaceReduxProvider(Provider) {
 
 /**
  * Main Apollo Plugin class.
+ * @property {string} pluginName "ApolloPlugin"
+ * @property {string} slug "apollo"
  */
 class ApolloPlugin extends Plugin {
 
@@ -86,6 +88,7 @@ class ApolloPlugin extends Plugin {
 
 	/**
 	 * Returns Apollo client
+	 * @static
 	 * @returns {ApolloClient}
 	 */
 	static getClient() {
@@ -94,6 +97,7 @@ class ApolloPlugin extends Plugin {
 
 	/**
 	 * Returns Apollo's Subscription Client
+	 * @static
 	 * @returns {SubscriptionClient}
 	 */
 	static getSubscriptionClient() {

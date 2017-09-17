@@ -22,7 +22,7 @@
  * @property {NetworkInterfaceOptions}	networkInterface			NetworkInterface params
  * @property {ApolloClientOptions}	client										Apollo client params
  */
-const defaultConfigs = {
+const ApolloPluginConfigs = {
 	subscriptions: false,
 	wsUri: undefined,
 	subscriptionClient: {},
@@ -30,4 +30,4 @@ const defaultConfigs = {
 	client: {}
 };
 
-export default defaultConfigs;
+export default ApolloPluginConfigs;
