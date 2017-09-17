@@ -2,7 +2,7 @@
 
 A fully-featured, production ready caching GraphQL client for every server or UI framework. 
 
--   [Github Repo](https://github.com/apollographql/apollo-client)
+-   [Github Repo](http://dev.apollodata.com/react/)
 
 ## Usage
 
