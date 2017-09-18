@@ -23,12 +23,12 @@ class About extends React.Component {
 	}
 	onNavigateHome() {
 			// this.props.router.push('/');
-		this.props.history.goBack();
+		this.props.history.goBack();// eslint-disable-line
 	}
 
 	render() {
 
-		const { bluerain: BR } = this.props;
+		const { bluerain: BR } = this.props;// eslint-disable-line
 
 		const View = BR.Components.get('View');
 		const Button = BR.Components.get('Button');
