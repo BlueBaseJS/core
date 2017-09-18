@@ -1,8 +1,8 @@
 /* @flow */
 
 import { getStore, createStore, getInitialState } from './store';
-
-export default from './Plugin';
+const ReduxPlugin = require('./Plugin').default;
+export default ReduxPlugin;
 export {
 	getStore,
 	createStore,
