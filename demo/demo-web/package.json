@@ -1,0 +1,32 @@
+{
+  "name": "bluerain-demo-web",
+  "version": "0.3.0",
+  "description": "Hello BlueRain!",
+  "author": "BlueEast Team <code@blueeast.com>",
+  "private": true,
+  "main": "../src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --history-api-fallback"
+  },
+  "dependencies": {
+    "@blueeast/bluerain-app-hello-world": "^0.0.0",
+    "@blueeast/bluerain-app-material-design": "^0.0.0",
+    "@blueeast/bluerain-os": "^0.1.0",
+    "@blueeast/bluerain-plugin-apollo": "^0.1.0",
+    "@blueeast/bluerain-plugin-intl": "^0.1.0",
+    "@blueeast/bluerain-plugin-material-ui": "^0.0.0",
+    "@blueeast/bluerain-plugin-redux-devtools": "^0.1.0",
+    "react": "^16.0.0-alpha.12",
+    "react-dom": "^16.0.0-alpha.12",
+    "react-intl": "^2.4.0",
+    "reactxp": "^0.42.0-rc.25"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "@types/react": "15.0.39",
+    "@types/webpack": "^2.2.14",
+    "source-map-loader": "^0.1.6",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}

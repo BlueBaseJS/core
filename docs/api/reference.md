@@ -2,6 +2,10 @@
 
 ### Table of Contents
 
+-   [Platform](#platform)
+    -   [getType](#gettype)
+    -   [setServerMode](#setservermode)
+-   [BlueRain](#bluerain)
 -   [BootOptions](#bootoptions)
 -   [boot](#boot)
 -   [Config](#config)
@@ -11,15 +15,6 @@
 -   [Plugin](#plugin)
 -   [IndexPage](#indexpage)
 -   [NotFoundPage](#notfoundpage)
--   [Platform](#platform)
-    -   [getType](#gettype)
-    -   [setServerMode](#setservermode)
--   [subscriptions](#subscriptions)
--   [wsUri](#wsuri)
--   [subscriptionClient](#subscriptionclient)
--   [networkInterface](#networkinterface)
--   [client](#client)
--   [React](#react)
 -   [WindowState](#windowstate)
 -   [AppRegistry](#appregistry)
     -   [register](#register)
@@ -50,6 +45,42 @@
     -   [remove](#remove-2)
     -   [get](#get-2)
     -   [initializeAll](#initializeall-1)
+
+## Platform
+
+This interface provides information about the OS or runtime platform on which the app is running.
+
+### getType
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** PlatformType ('web' | 'server' | 'ios' | 'android' | 'windows' | 'electron')
+
+### setServerMode
+
+Set the Platform to 'server'.
+Useful to see if the app is rendering on server due to SSR.
+
+**Parameters**
+
+-   `mode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**  (optional, default `false`)
+
+## BlueRain
+
+This is the main BlueRain context. Works as a backbone of whole system.
+
+Type: BlueRainType
+
+**Properties**
+
+-   `Apps` **[AppRegistry](#appregistry)** Instance object of AppRegistry.
+-   `Components` **[ComponentRegistry](#componentregistry)** Instance object of ComponentRegistry.
+-   `Configs` **[ConfigRegistry](#configregistry)** Instance object of ConfigRegistry.
+-   `Events` **EventRegistry** Instance object of EventRegistry.
+-   `Filters` **[FilterRegistry](#filterregistry)** Instance object of FilterRegistry.
+-   `Plugins` **[PluginRegistry](#pluginregistry)** Instance object of PluginRegistry.
+-   `Utils` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains utility methods.
+    -   `Utils.parseJsonSchema` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Converts JSON schema to React Component tree
+-   `refs` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains references of objects created by different apps and plugins
+-   `boot` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Function to boot the OS.
 
 ## BootOptions
 
@@ -163,47 +194,6 @@ Returns **React.Component** The layout react component
 Returns the 404 Page layout.
 
 Returns **React.Component** The layout react component
-
-## Platform
-
-This interface provides information about the OS or runtime platform on which the app is running.
-
-### getType
-
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** PlatformType ('web' | 'server' | 'ios' | 'android' | 'windows' | 'electron')
-
-### setServerMode
-
-Set the Platform to 'server'.
-Useful to see if the app is rendering on server due to SSR.
-
-**Parameters**
-
--   `mode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**  (optional, default `true`)
-
-## subscriptions
-
-Activate subscriptions
-
-## wsUri
-
-URI of websocket server
-
-## subscriptionClient
-
-SubscriptionClient params, if subscriptions are activated
-
-## networkInterface
-
-NetworkInterface params
-
-## client
-
-Apollo client params
-
-## React
-
-Created by umair on 8/22/17.
 
 ## WindowState
 

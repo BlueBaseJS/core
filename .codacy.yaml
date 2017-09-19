@@ -1,3 +1,4 @@
 ---
 exclude_paths:
-  - flow-typed/**
+  - demo/**
+  - packages/*/flow-typed/**
