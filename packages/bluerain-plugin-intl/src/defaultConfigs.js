@@ -7,7 +7,10 @@
  */
 const IntlPluginConfigs = {
 	locale: 'en',
-	localeData: []
+	localeData: [],
+	selectable: {
+		en: 'English'
+	},
 };
 
 export default IntlPluginConfigs;

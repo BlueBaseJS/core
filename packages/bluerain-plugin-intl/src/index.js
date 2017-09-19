@@ -11,9 +11,13 @@ import {
 	FormattedRelative
 } from 'react-intl';
 
-import { updateIntl, IntlProvider, intlReducer } from 'react-intl-redux';
+import { updateIntl, intlReducer } from './redux';
+import IntlProvider from './redux/IntlProvider';
 
 import defaultConfigs from './defaultConfigs';
+import settings from './settings';
+
+const rtlDetect = require('rtl-detect');
 
 let messages = {};
 const withIntl = App => props => (
@@ -60,18 +64,29 @@ class InternationalizationPlugin extends Plugin {
 			'bluerain.redux.initialState',
 			function AddIntlInitState(state) {
 				messages = ctx.Filters.run('bluerain.intl.messages', messages);
-				return Object.assign({}, state, { intl: { locale, messages: messages[locale] } });
+				return Object.assign({}, state, {
+					bluerain: { 
+						intl: { 
+							locale,
+							rtl: rtlDetect.isRtlLang(locale),
+							messages: messages[locale] 
+						} 
+					}
+				});
 			}
 		);
 
 		ctx.Filters.add(
-			'bluerain.redux.reducers',
+			'bluerain.redux.reducers.bluerain',
 			function AddIntlReducer(reducers) {
 				return Object.assign({}, reducers, {
 					intl: intlReducer
 				});
 			}
 		);
+
+		// Add Settings
+		ctx.Filters.add('app.settings.general', settings(ctx, config));
 	}
 
 	/**
