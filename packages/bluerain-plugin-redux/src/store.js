@@ -5,7 +5,7 @@ import {
 	applyMiddleware,
 	compose
 } from 'redux';
-
+import { type BlueRainType } from '@blueeast/bluerain-os';
 import getReducers from './reducers';
 
 let initialState = {
@@ -14,7 +14,7 @@ let initialState = {
 
 let store;
 
-const createStore = (ctx) => {
+const createStore = (ctx: BlueRainType) => {
 
 	initialState = ctx.Filters.run('bluerain.redux.initialState', initialState);
 
