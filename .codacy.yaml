@@ -1,4 +1,4 @@
 ---
 exclude_paths:
-  - demo
+  - demo/**
   - packages/*/flow-typed/**
