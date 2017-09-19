@@ -1,8 +1,8 @@
 /* @flow */
-
+import { type BlueRainType } from '@blueeast/bluerain-os';
 import { combineReducers } from 'redux';
 
-export default (ctx) => {
+export default (ctx: BlueRainType) => {
 
 	const bluerainReducers = ctx.Filters.run('bluerain.redux.reducers.bluerain', {
 		// stub: (state = {}) => state

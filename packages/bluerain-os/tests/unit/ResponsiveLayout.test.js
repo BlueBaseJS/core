@@ -3,19 +3,47 @@
  */
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import { mount } from 'enzyme';
+import TestUtils from 'react-dom/test-utils';
 import React from 'react';
 import ResponsiveLayout from '../../src/layouts/ResponsiveLayout';
 import BR from '../../src/';
 import {
   setWindowDimentions
 } from '../../src/plugins/WindowInfoPlugin/actions';
+class xs extends React.Component {
+	render() {
+		return <div>xs</div>
+	}
+}
+class sm extends React.Component {
+	render() {
+		return <div>sm</div>
+	}
+}
+class md extends React.Component {
+	render() {
+		return <div>md</div>
+	}
+}
+class lg extends React.Component {
+	render() {
+		return <div>lg</div>
+	}
+}
+class xl extends React.Component {
+	render() {
+		return <div>xl</div>
+	}
+}
+class defaultComponent extends React.Component {
+	render() {
+		return <div>default</div>
+	}
+}
 describe('Responsive Layout tests', () => {
 	it('should render the xs layout when size xs is passsed', () => {
 		const mockStore = configureMockStore(
-			[
-        /* middlewares */
-			]
+			[]
     );
 		const mockStoreInitialized = mockStore({
 			bluerain: {
@@ -26,29 +54,24 @@ describe('Responsive Layout tests', () => {
 				}
 			}
 		});
-		const wrapper = mount(
+		const wrapper = TestUtils.renderIntoDocument(
       // enzyme
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-      default={() => <h1>default</h1>}
-      xs={() => <h1>xs</h1>}
-      sm={() => <h1>sm</h1>}
-      md={() => <h1>md</h1>}
-      lg={() => <h1>lg</h1>}
-      xl={() => <h1>xl</h1>}
+      default={defaultComponent}
+      xs={xs}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
     />
   </Provider>
     );
-
-		expect(wrapper.containsMatchingElement(<h1>xs</h1>)).toEqual(true);
-		expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(false);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, xs).length).toEqual(1);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(0);
 	});
 	it('should render the sm layout when size sm is passsed', () => {
-		const mockStore = configureMockStore(
-			[
-        /* middlewares */
-			]
-    );
+		const mockStore = configureMockStore([]);
 		const mockStoreInitialized = mockStore({
 			bluerain: {
 				window: {
@@ -58,29 +81,25 @@ describe('Responsive Layout tests', () => {
 				}
 			}
 		});
-		const wrapper = mount(
+		const wrapper = TestUtils.renderIntoDocument(
       // enzyme
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-      default={() => <h1>default</h1>}
-      xs={() => <h1>xs</h1>}
-      sm={() => <h1>sm</h1>}
-      md={() => <h1>md</h1>}
-      lg={() => <h1>lg</h1>}
-      xl={() => <h1>xl</h1>}
+      default={defaultComponent}
+      xs={xs}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
     />
   </Provider>
     );
 
-		expect(wrapper.containsMatchingElement(<h1>sm</h1>)).toEqual(true);
-		expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(false);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, sm).length).toEqual(1);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(0);
 	});
 	it('should render the md layout when size md is passsed', () => {
-		const mockStore = configureMockStore(
-			[
-        /* middlewares */
-			]
-    );
+		const mockStore = configureMockStore([]);
 		const mockStoreInitialized = mockStore({
 			bluerain: {
 				window: {
@@ -90,29 +109,25 @@ describe('Responsive Layout tests', () => {
 				}
 			}
 		});
-		const wrapper = mount(
+		const wrapper = TestUtils.renderIntoDocument(
       // enzyme
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-      default={() => <h1>default</h1>}
-      xs={() => <h1>xs</h1>}
-      sm={() => <h1>sm</h1>}
-      md={() => <h1>md</h1>}
-      lg={() => <h1>lg</h1>}
-      xl={() => <h1>xl</h1>}
+      default={defaultComponent}
+      xs={xs}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
     />
   </Provider>
     );
 
-		expect(wrapper.containsMatchingElement(<h1>md</h1>)).toEqual(true);
-		expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(false);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, md).length).toEqual(1);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(0);
 	});
 	it('should render the lg layout when size lg is passsed', () => {
-		const mockStore = configureMockStore(
-			[
-        /* middlewares */
-			]
-    );
+		const mockStore = configureMockStore([]);
 		const mockStoreInitialized = mockStore({
 			bluerain: {
 				window: {
@@ -122,29 +137,25 @@ describe('Responsive Layout tests', () => {
 				}
 			}
 		});
-		const wrapper = mount(
+		const wrapper = TestUtils.renderIntoDocument(
       // enzyme
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-      default={() => <h1>default</h1>}
-      xs={() => <h1>xs</h1>}
-      sm={() => <h1>sm</h1>}
-      md={() => <h1>md</h1>}
-      lg={() => <h1>lg</h1>}
-      xl={() => <h1>xl</h1>}
+      default={defaultComponent}
+      xs={xs}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
     />
   </Provider>
     );
 
-		expect(wrapper.containsMatchingElement(<h1>lg</h1>)).toEqual(true);
-		expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(false);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, lg).length).toEqual(1);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(0);
 	});
 	it('should render the xl layout when size xl is passsed', () => {
-		const mockStore = configureMockStore(
-			[
-        /* middlewares */
-			]
-    );
+		const mockStore = configureMockStore([]);
 		const mockStoreInitialized = mockStore({
 			bluerain: {
 				window: {
@@ -154,22 +165,22 @@ describe('Responsive Layout tests', () => {
 				}
 			}
 		});
-		const wrapper = mount(
+		const wrapper = TestUtils.renderIntoDocument(
       // enzyme
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-      default={() => <h1>default</h1>}
-      xs={() => <h1>xs</h1>}
-      sm={() => <h1>sm</h1>}
-      md={() => <h1>md</h1>}
-      lg={() => <h1>lg</h1>}
-      xl={() => <h1>xl</h1>}
+      default={defaultComponent}
+      xs={xs}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
     />
   </Provider>
     );
 
-		expect(wrapper.containsMatchingElement(<h1>xl</h1>)).toEqual(true);
-		expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(false);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, xl).length).toEqual(1);
+		expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(0);
 	});
 	describe('default layout when any of following layouts are not provided', () => {
 		it('should render the default layout when size xs is not passsed ', () => {
@@ -183,20 +194,19 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-      default={() => <h1>default</h1>}
-      xs=""
-      sm={() => <h1>sm</h1>}
-      md={() => <h1>md</h1>}
-      lg={() => <h1>lg</h1>}
-      xl={() => <h1>xl</h1>}
+      default={defaultComponent}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
     />
   </Provider>
       );
 
-			expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(1);
 		});
 		it('should render the default layout when size sm is not passsed ', () => {
 			const mockStore = configureMockStore([]);
@@ -209,13 +219,13 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
-    <ResponsiveLayout default={() => <h1>default</h1>} />
+    <ResponsiveLayout default={defaultComponent} />
   </Provider>
       );
 
-			expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(1);
 		});
 		it('should render the default layout when size md is not passsed ', () => {
 			const mockStore = configureMockStore([]);
@@ -228,13 +238,13 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
-    <ResponsiveLayout default={() => <h1>default</h1>} />
+    <ResponsiveLayout default={defaultComponent} />
   </Provider>
       );
 
-			expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(1);
 		});
 		it('should render the default layout when size lg is not passsed ', () => {
 			const mockStore = configureMockStore([]);
@@ -247,13 +257,13 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
-    <ResponsiveLayout default={() => <h1>default</h1>} />
+    <ResponsiveLayout default={defaultComponent} />
   </Provider>
       );
 
-			expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(1);
 		});
 		it('should render the default layout when size xl is not passsed ', () => {
 			const mockStore = configureMockStore([]);
@@ -266,18 +276,23 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
-    <ResponsiveLayout default={() => <h1>default</h1>} />
+    <ResponsiveLayout default={defaultComponent} />
   </Provider>
       );
 
-			expect(wrapper.containsMatchingElement(<h1>default</h1>)).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, defaultComponent).length).toEqual(1);
 		});
 	});
 	describe('Pass components as strings rather than React Components', () => {
 		it('should Heading when size xs is not passsed ', () => {
-			BR.Components.register('Heading', () => <h1>Heading</h1>);
+			class Heading extends React.Component {
+				render() {
+					return <h1>Heading</h1>;
+				}
+			}
+			BR.Components.register('Heading', Heading);
 			const mockStore = configureMockStore([]);
 			const mockStoreInitialized = mockStore({
 				bluerain: {
@@ -288,23 +303,28 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-      default={() => <h1>default</h1>}
+		default={defaultComponent}
       xs="Heading"
-      sm={() => <h1>sm</h1>}
-      md={() => <h1>md</h1>}
-      lg={() => <h1>lg</h1>}
-      xl={() => <h1>xl</h1>}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
     />
   </Provider>
       );
 
-			expect(wrapper.containsMatchingElement(<h1>Heading</h1>)).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, Heading).length).toEqual(1);
 		});
 		it('should render pargraph when size sm is not passsed ', () => {
-			BR.Components.register('Paragraph', () => <p>This is a paragraph</p>);
+			class Paragraph extends React.Component {
+				render() {
+					return <p>This is a paragraph</p>;
+				}
+			}
+			BR.Components.register('Paragraph', Paragraph);
 			const mockStore = configureMockStore([]);
 			const mockStoreInitialized = mockStore({
 				bluerain: {
@@ -315,15 +335,13 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
-    <ResponsiveLayout default={() => <h1>default</h1>} sm="Paragraph" />
+    <ResponsiveLayout default={defaultComponent} sm="Paragraph" />
   </Provider>
       );
 
-			expect(
-        wrapper.containsMatchingElement(<p>This is a paragraph</p>)
-      ).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, Paragraph).length).toEqual(1);
 		});
 		it('should throw error b/c component is no registered ', () => {
 			const mockStore = configureMockStore([]);
@@ -337,10 +355,10 @@ describe('Responsive Layout tests', () => {
 				}
 			});
 			expect(() =>
-        mount(
+        TestUtils.renderIntoDocument(
           <Provider store={mockStoreInitialized}>
             <ResponsiveLayout
-              default={() => <h1>default</h1>}
+              default={defaultComponent}
               lg="NotRegistered"
             />
           </Provider>
@@ -361,7 +379,7 @@ describe('Responsive Layout tests', () => {
 				}
 			});
 			expect(() =>
-        mount(
+        TestUtils.renderIntoDocument(
           <Provider store={mockStoreInitialized}>
             <ResponsiveLayout default={null} />
           </Provider>
@@ -380,7 +398,7 @@ describe('Responsive Layout tests', () => {
 				}
 			});
 			expect(() =>
-        mount(
+        TestUtils.renderIntoDocument(
           <Provider store={mockStoreInitialized}>
             <ResponsiveLayout default={undefined} />
           </Provider>
@@ -399,7 +417,7 @@ describe('Responsive Layout tests', () => {
 				}
 			});
 			expect(() =>
-        mount(
+        TestUtils.renderIntoDocument(
           <Provider store={mockStoreInitialized}>
             <ResponsiveLayout default={{ abc: 'abc' }} />
           </Provider>
@@ -436,17 +454,17 @@ describe('Responsive Layout tests', () => {
 					}
 				}
 			});
-			const wrapper = mount(
+			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
       default=""
-      xs={() => <h1>xs</h1>}
-      lg={() => <h1>lg</h1>}
+      xs={xs}
+      lg={lg}
     />
   </Provider>
       );
 
-			expect(wrapper.containsMatchingElement(<h1>xs</h1>)).toEqual(true);
+			expect(TestUtils.scryRenderedComponentsWithType(wrapper, xs).length).toEqual(1);
 			mockStoreInitialized.dispatch(setWindowDimentions(1000, 500));
 			const actions = mockStoreInitialized.getActions();
 			expect(actions[0].width).toEqual(1000);

@@ -8,7 +8,7 @@ import Contact from './Contact';
 
 const App = (props) => {
 
-	const { match, appName, bluerain: BR } = props;
+	const { match, appName, bluerain: BR } = props;// eslint-disable-line
 
 	const Page = BR.Components.get('Page');
 	const Route = BR.Components.get('Route');
