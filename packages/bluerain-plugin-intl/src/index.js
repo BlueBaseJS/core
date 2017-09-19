@@ -12,6 +12,7 @@ import {
 } from 'react-intl';
 
 import { updateIntl, intlReducer } from './redux';
+import { connect } from 'react-redux';
 import IntlProvider from './redux/IntlProvider';
 
 import defaultConfigs from './defaultConfigs';
@@ -85,7 +86,10 @@ class InternationalizationPlugin extends Plugin {
 			}
 		);
 
-		// Add Settings
+		/**
+		 * Integrations
+		 */
+		// Settings App
 		ctx.Filters.add('app.settings.general', settings(ctx, config));
 	}
 
@@ -105,6 +109,10 @@ class InternationalizationPlugin extends Plugin {
 		} catch (e) {
 			console.log('There was an error changing locale');
 		}
+	}
+
+	static withIntl(Component) {
+		return connect(state => ({ intl: state.bluerain.intl }) )(Component);
 	}
 }
 

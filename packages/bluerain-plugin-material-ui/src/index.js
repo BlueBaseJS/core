@@ -8,6 +8,10 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const withMUI = (App, theme, ctx) => (props) => {
 
+	if (props.intl !== undefined && props.intl.rtl !== undefined) {
+		theme.isRtl = props.intl.rtl;
+	}
+
 	theme = ctx.Filters.run('material-ui.theme', theme);
 	const muiTheme = getMuiTheme(theme);
 
@@ -34,7 +38,17 @@ class MaterialUiPlugin extends Plugin {
 		// Add Material UI Provider
 		ctx.Filters.add(
       'bluerain.redux.app',
-      function AddMUI(App) { return withMUI(App, theme, ctx); }
+      function AddMUI(App) {
+
+	const result = withMUI(App, theme, ctx);
+
+							// Wrap in Intl, if intl plugin is installed
+	if (ctx.Plugins.get('intl')) {
+		return ctx.Plugins.get('intl').withIntl(result);
+	}
+
+	return result;
+}
 		);
 	}
 }
