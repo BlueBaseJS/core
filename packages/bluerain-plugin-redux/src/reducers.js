@@ -1,5 +1,5 @@
 /* @flow */
-import {type BlueRainType} from '@blueeast/bluerain-os'
+import { type BlueRainType } from '@blueeast/bluerain-os';
 import { combineReducers } from 'redux';
 
 export default (ctx: BlueRainType) => {

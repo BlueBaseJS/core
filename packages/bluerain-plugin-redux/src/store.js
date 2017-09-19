@@ -5,7 +5,7 @@ import {
 	applyMiddleware,
 	compose
 } from 'redux';
-import {type BlueRainType} from '@blueeast/bluerain-os'
+import { type BlueRainType } from '@blueeast/bluerain-os';
 import getReducers from './reducers';
 
 let initialState = {
