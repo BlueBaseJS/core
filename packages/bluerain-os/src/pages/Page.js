@@ -3,10 +3,7 @@ import React from 'react';
 import RX from 'reactxp';
 import { withBlueRain } from '../Provider';
 
-const defaultStyle = RX.Styles.createViewStyle({
-	width: '100%',
-	height: '100%',
-}, false);
+const defaultStyle = RX.Styles.createViewStyle({}, false);
 
 class Page extends RX.Component {
 
