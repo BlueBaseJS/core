@@ -3,6 +3,8 @@
 import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
 
+import PropTypes from 'prop-types';
+
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 
@@ -28,6 +30,15 @@ function replaceReduxProvider(Provider) {
 		store: StoreType<*>,
 		children: ChildrenArray<any>
 	}) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
+
+
+	ApolloProviderHoc.propTypes = {
+		store: PropTypes.node.isRequired,
+		children: PropTypes.oneOfType([
+			PropTypes.arrayOf(PropTypes.node),
+			PropTypes.node
+		]).isRequired
+	};
 
 	return ApolloProviderHoc;
 }

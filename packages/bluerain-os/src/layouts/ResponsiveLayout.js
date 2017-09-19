@@ -18,6 +18,7 @@ type ResponsiveLayoutProps = {
 	xl?: ComponentType<any>,
 }
 
+
 /**
  * ResponsiveLayout component to create responsive layouts.
  *
@@ -43,7 +44,6 @@ function ResponsiveLayout(props: ResponsiveLayoutProps) {
 	if (!Component) {
 		throw new Error('Invalid Component.');
 	}
-
 	return <Component {...otherProps} />;
 }
 
