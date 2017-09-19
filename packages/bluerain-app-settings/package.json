@@ -1,7 +1,7 @@
 {
-  "name": "@blueeast/bluerain-app-material-design",
+  "name": "@blueeast/bluerain-app-settings",
   "version": "0.0.0",
-  "description": "A demo app for BlueRain OS made with Material UI",
+  "description": "A settings app for BlueRain OS made with Material UI",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",

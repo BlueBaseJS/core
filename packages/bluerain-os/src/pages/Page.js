@@ -4,8 +4,8 @@ import RX from 'reactxp';
 import { withBlueRain } from '../Provider';
 
 const defaultStyle = RX.Styles.createViewStyle({
-	width: '100%',
-	height: '100%',
+	flex: 1,
+	overflow: 'auto',
 }, false);
 
 class Page extends RX.Component {
