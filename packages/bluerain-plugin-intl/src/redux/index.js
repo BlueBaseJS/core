@@ -5,9 +5,9 @@ export Provider from './Provider';
 
 export const UPDATE = '@@BLUERAIN/INTL/UPDATE';
 
-export const updateIntl = ({ locale, formats, messages }) => ({
+export const updateIntl = locale => ({
 	type: UPDATE,
-	payload: { locale, formats, messages },
+	payload: { locale },
 });
 
 export const initialState = {

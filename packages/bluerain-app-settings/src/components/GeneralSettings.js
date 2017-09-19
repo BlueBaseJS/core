@@ -1,56 +1,42 @@
 import React from 'react';
+import { withBlueRain  } from '@blueeast/bluerain-os';
+
 import { List, ListItem } from 'material-ui/List';
 import Card from 'material-ui/Card';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
 
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+
+import LocalePicker from './LocalePicker';
 
 const styles = {
 	root: {
 	},
 	card: {
-		display: 'flex',
-		flexDirection: 'column',
-		flexWrap: 'wrap',
+		// display: 'flex',
+		// flexDirection: 'column',
+		// flexWrap: 'wrap',
 	},
 };
 
-const ListExampleSettings = () => (
-  <div style={styles.root}>
-    <Card style={styles.card}>
-      <List>
-        <Subheader>General</Subheader>
-        <ListItem
-          primaryText="Profile photo"
-          secondaryText="Change your Google+ profile photo"
-        />
-        <ListItem
-          primaryText="Show your status"
-          secondaryText="Your status is visible to everyone you use with"
-        />
-      </List>
-      <Divider />
-      <List>
-        <Subheader>Hangout Notifications</Subheader>
-        <ListItem
-          leftCheckbox={<Checkbox />}
-          primaryText="Notifications"
-          secondaryText="Allow notifications"
-        />
-        <ListItem
-          leftCheckbox={<Checkbox />}
-          primaryText="Sounds"
-          secondaryText="Hangouts message"
-        />
-        <ListItem
-          leftCheckbox={<Checkbox />}
-          primaryText="Video sounds"
-          secondaryText="Hangouts video call"
-        />
-      </List>
-    </Card>
-  </div>
-);
+const ListExampleSettings = ({ bluerain: BR }) => {
 
-export default ListExampleSettings;
+	const FormattedMessage = BR.Components.get('FormattedMessage');
+
+	let schema = {
+		component: 'View',
+		children: []
+	};
+
+	schema = BR.Filters.run('app.settings.general', schema);
+
+	return BR.Utils.parseJsonSchema(schema);
+};
+
+// primaryText={<FormattedMessage id="app.settings.language" defaultMessage="Language" />}
+// secondaryText={<FormattedMessage id="app.settings.language.description" defaultMessage="Select your preferred language" />}
+
+export default withBlueRain(ListExampleSettings);

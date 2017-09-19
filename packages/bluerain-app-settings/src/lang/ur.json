@@ -1,9 +1,5 @@
 {
-  "hello.home":"ہوم پیج پر خوش آمدید!",
-  "hello.about": "کے بارے میں صفحہ ",
-  "hello.contact":"رابطے کے صفحے پر خوش آمدید!",
-  "hello.header.title":"Welcome to the {appName} app!",
-  "hello.header.homeLinkText":"گھر",
-  "hello.header.aboutLinkText":"کے بارے میں",
-  "hello.header.contactLinkText":"رابطہ کریں"
+  "app.settings.title":"ترتیبات",
+  "app.settings.language":"زبان",
+  "app.settings.language.description":"اپنی پسندیدہ زبان منتخب کریں"
 }

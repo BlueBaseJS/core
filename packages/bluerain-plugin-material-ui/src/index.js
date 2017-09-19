@@ -15,7 +15,9 @@ const withMUI = (App, theme, ctx) => (props) => {
 	theme = ctx.Filters.run('material-ui.theme', theme);
 	const muiTheme = getMuiTheme(theme);
 
-	return (<MuiThemeProvider muiTheme={muiTheme}><App {...props} /></MuiThemeProvider>);
+	const style = { direction: theme.isRtl ? 'rtl' : 'ltr' };
+
+	return (<MuiThemeProvider muiTheme={muiTheme}><App {...props} style={style} /></MuiThemeProvider>);
 };
 
 /**

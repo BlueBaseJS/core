@@ -8,15 +8,17 @@ EnhancedApp.appName = 'Settings';
 EnhancedApp.initialize = function(config, ctx) {
 
 	ctx.Components.register('SettingsLayout', SettingsLayout);
-	// ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
-	// 	const en = require('./lang/en.json');
-	// 	const ur = require('./lang/ur.json');
 
-	// 	messages.en =  Object.assign(messages.en ? messages.en : {}, en);
-	// 	messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
+	// Add translations
+	ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
+		const en = require('./lang/en.json');
+		const ur = require('./lang/ur.json');
 
-	// 	return messages;
-	// });
+		messages.en =  Object.assign(messages.en ? messages.en : {}, en);
+		messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
+
+		return messages;
+	});
 };
 
 export default EnhancedApp;

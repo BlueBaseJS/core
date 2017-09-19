@@ -34,10 +34,11 @@ export const SystemRoutes = () => {
 	return systemRoutes;
 };
 
-export default () => {
+export default (props) => {
 
 	const routes = {
 		component: 'SystemLayout',
+		props,
 		children: [
 			{
 				component: 'Switch',

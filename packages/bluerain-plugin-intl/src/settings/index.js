@@ -1,4 +1,5 @@
 import React from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import Card from 'material-ui/Card';
 import { List, ListItem } from 'material-ui/List';
@@ -7,6 +8,18 @@ import Subheader from 'material-ui/Subheader';
 import LocalePicker from './LocalePicker';
 
 export default (BR, config) => (schema) => {
+
+// 	const messages = defineMessages({
+//     greeting: {
+//         id: 'app.greeting',
+//         defaultMessage: 'Hello, {name}!',
+//         description: 'Greeting to welcome the user to the app',
+//     },
+// });
+
+//  const res = formatMessage(messages.greeting, {name: 'Eric'}); // "Hello, Eric!"
+// 	console.log('red', res)
+
 
 	schema.children.push({
 		component: Card,

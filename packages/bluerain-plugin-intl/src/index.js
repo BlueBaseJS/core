@@ -20,7 +20,6 @@ import settings from './settings';
 
 const rtlDetect = require('rtl-detect');
 
-let messages = {};
 const withIntl = App => props => (
   <IntlProvider>
     <App {...props} />
@@ -64,14 +63,14 @@ class InternationalizationPlugin extends Plugin {
 		ctx.Filters.add(
 			'bluerain.redux.initialState',
 			function AddIntlInitState(state) {
-				messages = ctx.Filters.run('bluerain.intl.messages', messages);
+				const messages = ctx.Filters.run('bluerain.intl.messages', {});
 				return Object.assign({}, state, {
-					bluerain: { 
-						intl: { 
+					bluerain: {
+						intl: {
 							locale,
 							rtl: rtlDetect.isRtlLang(locale),
-							messages: messages[locale] 
-						} 
+							messages,
+						}
 					}
 				});
 			}
@@ -101,11 +100,7 @@ class InternationalizationPlugin extends Plugin {
 	 */
 	static setLocale(locale, ctx) {
 		try {
-			const localMessages = messages[locale];
-			ctx.refs.store.dispatch(updateIntl({
-				locale,
-				messages: localMessages,
-			}));
+			ctx.refs.store.dispatch(updateIntl(locale));
 		} catch (e) {
 			console.log('There was an error changing locale');
 		}

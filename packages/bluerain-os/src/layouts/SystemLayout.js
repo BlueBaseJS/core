@@ -32,8 +32,8 @@ class SystemLayout extends RX.Component {
 	}
 
 	render() {
-		const { children, style } = this.props;
-		return (<RX.View onLayout={this.onLayout} style={[defaultStyle, style]}>{children}</RX.View>);
+		const { children, style, ...other } = this.props;
+		return (<RX.View onLayout={this.onLayout} style={[defaultStyle, style]} {...other} >{children}</RX.View>);
 	}
 }
 

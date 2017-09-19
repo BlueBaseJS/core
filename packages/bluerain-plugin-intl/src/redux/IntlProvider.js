@@ -7,10 +7,11 @@ function defaultSelector(state) {
 
 const mapStateToProps = (state, { intlSelector = defaultSelector }) => {
 	const intl = intlSelector(state);
-	return {
-		...intl,
+
+	return Object.assign({}, intl, {
 		key: intl.locale,
-	};
+		messages: intl.messages[intl.locale]
+	});
 };
 
 export default connect(mapStateToProps)(IntlProvider);

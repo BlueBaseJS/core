@@ -14,11 +14,15 @@ const config = {
 
 		// Internationalization
 		intl: {
+			selectable: {
+				'en': 'English',
+				'ur': 'اردو'
+			},
 			localeData: [].concat(
 				require('react-intl/locale-data/ur'),
 				// require('react-intl/locale-data/fr')
 			)
-		}
+		},
 	},
 
 	theme: {
