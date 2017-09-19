@@ -89,8 +89,6 @@ const getMobileLayout = (match, items, BR) => {
 
 const SettingsLayout = ({ match, bluerain: BR, items }) => {
 
-	items = BR.Filters.run('app.settings.items', items);
-
 	const layout = {
 		component: 'ResponsiveLayout',
 		props: {

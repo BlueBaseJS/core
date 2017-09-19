@@ -1,10 +1,13 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
 import App from './components/App';
+import SettingsLayout from './SettingsLayout';
 
 const EnhancedApp = withBlueRain(App);
-EnhancedApp.appName = 'Material UI';
+EnhancedApp.appName = 'Settings';
 
 EnhancedApp.initialize = function(config, ctx) {
+
+	ctx.Components.register('SettingsLayout', SettingsLayout);
 	// ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
 	// 	const en = require('./lang/en.json');
 	// 	const ur = require('./lang/ur.json');
