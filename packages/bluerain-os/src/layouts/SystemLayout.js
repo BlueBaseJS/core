@@ -4,7 +4,10 @@ import RX from 'reactxp';
 
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
-const defaultStyle = RX.Styles.createViewStyle({}, false);
+const defaultStyle = RX.Styles.createViewStyle({
+	flex: 1,
+	overflow: 'auto',
+}, false);
 
 class SystemLayout extends RX.Component {
 
