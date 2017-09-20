@@ -23,11 +23,12 @@ export default (BR, config) => (schema) => {
 				component: ListItem,
 				props: {
 					primaryText: <FormattedMessage id="app.settings.language" defaultMessage="Language" />,
-					secondaryText: <FormattedMessage id="app.settings.language.description" defaultMessage="Select your preferred language" />,
+					secondaryText: <div><FormattedMessage id="app.settings.language.description" defaultMessage="Select your preferred language" /></div>,
 					leftIcon: <ActionTranslate />,
-					rightAvatar: <LocalePicker options={config.selectable} />,
 					disabled: true
 				}
+			}, {
+				component: () => <LocalePicker options={config.selectable} />
 			}]
 		}]
 	});

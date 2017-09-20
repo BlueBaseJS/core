@@ -18,12 +18,7 @@ const LanguageDropDown = ({ options, intl, updateIntl }: Props) => {
 		return <div />;
 	}
 	const keys = Object.keys(options);
-
-	const style = (intl.rtl === false) ? { right: 4 } : { left: 4 };
-	// $FlowFixMe
-	style.position = 'absolute';
-	// $FlowFixMe
-	style.top = 8;
+	const style = { marginLeft: 48 };
 
 	return (
 		// $FlowFixMe
