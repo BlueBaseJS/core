@@ -1,5 +1,4 @@
 // @flow
-import RX from 'reactxp';
 import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 

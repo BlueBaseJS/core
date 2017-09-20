@@ -1,5 +1,5 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
-import parseSettingsList, { type SettingsListType } from './parseSettingsList';
+import parseSettingsList from './parseSettingsList';
 
 const Sidebar = ({ match, bluerain: BR, items }) => {
 

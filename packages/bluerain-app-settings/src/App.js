@@ -2,13 +2,24 @@ import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import AppBar from 'material-ui/AppBar';
 
+import type { BlueRainType } from '@blueeast/bluerain-os';
+
 import getSettingItems from './items';
 
 import SettingsLayout from './SettingsLayout';
 
-const App = (props) => {
+type Props = {
+  bluerain: BlueRainType,
+  muiTheme: {
+    palette: {
+      accent2Color: string
+    }
+  }
+};
 
-	const { match, appName, bluerain: BR } = props;
+const App = (props: Props) => {
+
+	const { bluerain: BR } = props;
 
 	const Page = BR.Components.get('Page');
 	const FormattedMessage = BR.Components.get('FormattedMessage');
