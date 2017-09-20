@@ -3,22 +3,31 @@ import React from 'react';
 import Sidebar from '../common/Sidebar';
 import extractPageRoutes from '../common/extractPageRoutes';
 
-export default (match, items, BR) => (props) => {
+import AppBar from './AppBar';
 
+export default (location, match, items, BR) => (props) => {
+
+	const withIntl = BR.Plugins.get('intl').withIntl;
 	const pages = extractPageRoutes(match, items);
 
 	const layout = {
-		component: 'Switch',
+		component: 'View',
 		children: [{
-			component: 'View',
+			component: withIntl(AppBar),
+			props: { location, match, BR }
+		}, {
+			component: 'Switch',
 			children: [{
-				component: 'Route',
-				props: {
-					path: match.url,
-					exact: true,
-					component: () => (<Sidebar match={match} items={items} />)
-				}
-			}, ...pages]
+				component: 'View',
+				children: [{
+					component: 'Route',
+					props: {
+						path: match.url,
+						exact: true,
+						component: () => (<Sidebar match={match} items={items} />)
+					}
+				}, ...pages]
+			}]
 		}]
 	};
 

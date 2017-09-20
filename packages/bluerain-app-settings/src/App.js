@@ -1,6 +1,5 @@
 import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
-import AppBar from './components/AppBar';
 
 import type { BlueRainType } from '@blueeast/bluerain-os';
 
@@ -19,19 +18,13 @@ type Props = {
 
 const App = (props: Props) => {
 
-	const { bluerain: BR, match } = props;
+	const { bluerain: BR } = props;
 
 	const Page = BR.Components.get('Page');
-	const Route = BR.Components.get('Route');
-	const FormattedMessage = BR.Components.get('FormattedMessage');
-
-	const path = BR.Apps.get('settings').path;
-
 	const items = getSettingItems(BR);
 
 	return (
   <Page style={{ backgroundColor: props.muiTheme.palette.accent2Color }}>
-    <Route items={items} path={match.url} component={AppBar} />
     <SettingsLayout items={items} {...props} />
   </Page>
 	);

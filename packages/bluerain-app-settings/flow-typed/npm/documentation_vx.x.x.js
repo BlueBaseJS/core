@@ -1,4 +1,4 @@
-// flow-typed signature: 6e8895f615c239460c534bae5c6c0a5e
+// flow-typed signature: f8a8be477d67281d9947d8834c808daa
 // flow-typed version: <<STUB>>/documentation_v^5.2.1/flow_v0.53.1
 
 /**
@@ -330,6 +330,10 @@ declare module 'documentation/__tests__/lib/infer/access' {
   declare module.exports: any;
 }
 
+declare module 'documentation/__tests__/lib/infer/augments' {
+  declare module.exports: any;
+}
+
 declare module 'documentation/__tests__/lib/infer/finders' {
   declare module.exports: any;
 }
@@ -350,7 +354,19 @@ declare module 'documentation/__tests__/lib/infer/params' {
   declare module.exports: any;
 }
 
+declare module 'documentation/__tests__/lib/infer/properties' {
+  declare module.exports: any;
+}
+
+declare module 'documentation/__tests__/lib/infer/return' {
+  declare module.exports: any;
+}
+
 declare module 'documentation/__tests__/lib/infer/type' {
+  declare module.exports: any;
+}
+
+declare module 'documentation/__tests__/lib/input/dependency' {
   declare module.exports: any;
 }
 
@@ -363,6 +379,10 @@ declare module 'documentation/__tests__/lib/lint' {
 }
 
 declare module 'documentation/__tests__/lib/merge_config' {
+  declare module.exports: any;
+}
+
+declare module 'documentation/__tests__/lib/module_filters' {
   declare module.exports: any;
 }
 
@@ -1094,6 +1114,9 @@ declare module 'documentation/__tests__/lib/hierarchy.js' {
 declare module 'documentation/__tests__/lib/infer/access.js' {
   declare module.exports: $Exports<'documentation/__tests__/lib/infer/access'>;
 }
+declare module 'documentation/__tests__/lib/infer/augments.js' {
+  declare module.exports: $Exports<'documentation/__tests__/lib/infer/augments'>;
+}
 declare module 'documentation/__tests__/lib/infer/finders.js' {
   declare module.exports: $Exports<'documentation/__tests__/lib/infer/finders'>;
 }
@@ -1109,8 +1132,17 @@ declare module 'documentation/__tests__/lib/infer/name.js' {
 declare module 'documentation/__tests__/lib/infer/params.js' {
   declare module.exports: $Exports<'documentation/__tests__/lib/infer/params'>;
 }
+declare module 'documentation/__tests__/lib/infer/properties.js' {
+  declare module.exports: $Exports<'documentation/__tests__/lib/infer/properties'>;
+}
+declare module 'documentation/__tests__/lib/infer/return.js' {
+  declare module.exports: $Exports<'documentation/__tests__/lib/infer/return'>;
+}
 declare module 'documentation/__tests__/lib/infer/type.js' {
   declare module.exports: $Exports<'documentation/__tests__/lib/infer/type'>;
+}
+declare module 'documentation/__tests__/lib/input/dependency.js' {
+  declare module.exports: $Exports<'documentation/__tests__/lib/input/dependency'>;
 }
 declare module 'documentation/__tests__/lib/input/shallow.js' {
   declare module.exports: $Exports<'documentation/__tests__/lib/input/shallow'>;
@@ -1120,6 +1152,9 @@ declare module 'documentation/__tests__/lib/lint.js' {
 }
 declare module 'documentation/__tests__/lib/merge_config.js' {
   declare module.exports: $Exports<'documentation/__tests__/lib/merge_config'>;
+}
+declare module 'documentation/__tests__/lib/module_filters.js' {
+  declare module.exports: $Exports<'documentation/__tests__/lib/module_filters'>;
 }
 declare module 'documentation/__tests__/lib/nest.js' {
   declare module.exports: $Exports<'documentation/__tests__/lib/nest'>;

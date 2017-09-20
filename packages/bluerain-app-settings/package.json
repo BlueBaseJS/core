@@ -18,10 +18,12 @@
     "material-ui": "^0.19.1",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
-    "reactxp": "^0.42.0-rc.25"
+    "reactxp": "^0.42.0-rc.25",
+    "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "@blueeast/bluerain-plugin-intl": "^0.1.0"
+    "@blueeast/bluerain-plugin-intl": "^0.1.0",
+    "@blueeast/bluerain-plugin-material-ui": "^0.1.0"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

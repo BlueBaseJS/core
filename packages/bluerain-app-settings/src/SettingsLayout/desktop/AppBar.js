@@ -1,10 +1,11 @@
 import React from 'react';
-import { withBlueRain } from '@blueeast/bluerain-os';
 import AppBar from 'material-ui/AppBar';
 
-const EnhancedAppBar = (props) => {
+import type { BlueRainType } from '@blueeast/bluerain-os';
 
-	const { bluerain: BR, } = props;
+const EnhancedAppBar = (props: { BR: BlueRainType }) => {
+
+	const { BR } = props;
 	const FormattedMessage = BR.Components.get('FormattedMessage');
 
 	const appBarProps = {
@@ -17,4 +18,4 @@ const EnhancedAppBar = (props) => {
 	);
 };
 
-export default withBlueRain(EnhancedAppBar);
+export default EnhancedAppBar;

@@ -1,15 +1,21 @@
 import React from 'react';
-import { withBlueRain } from '@blueeast/bluerain-os';
+import type { BlueRainType } from '@blueeast/bluerain-os';
 import AppBar from 'material-ui/AppBar';
 
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import NavigationArrowForward from 'material-ui/svg-icons/navigation/arrow-forward';
 
+const warning = require('warning');
 
-const EnhancedAppBar = (props) => {
+const EnhancedAppBar = (props: {
+	BR: BlueRainType,
+	match: { url: string },
+	location: { pathname: string },
+	intl: { rtl: boolean }
+}) => {
 
-	const { bluerain: BR, match, location } = props;
+	const { BR, match, location, intl } = props;
 	const FormattedMessage = BR.Components.get('FormattedMessage');
 
 	const appUrl = match.url;
@@ -21,16 +27,23 @@ const EnhancedAppBar = (props) => {
 
 	if (appUrl !== currentUrl) {
 		appBarProps.title = <FormattedMessage id="global.back" defaultMessage="Back" />;
-		appBarProps.iconElementLeft = <IconButton><NavigationArrowBack /></IconButton>;
+		appBarProps.iconElementLeft = (intl.rtl === true) ?
+  <IconButton><NavigationArrowForward /></IconButton> :
+  <IconButton><NavigationArrowBack /></IconButton>;
+		appBarProps.onLeftIconButtonTouchTap = () => {
+			try {
+				BR.refs.router.history.goBack();
+			} catch (e) {
+				warning('No router found');
+			}
+		};
 	} else {
 		appBarProps.showMenuIconButton = false;
 	}
-	console.log('props', props);
-
 
 	return (
   <AppBar {...appBarProps} />
 	);
 };
 
-export default withBlueRain(EnhancedAppBar);
+export default EnhancedAppBar;
