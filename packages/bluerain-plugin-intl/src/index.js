@@ -12,8 +12,9 @@ import {
 	FormattedRelative
 } from 'react-intl';
 
-import { updateIntl, intlReducer } from './redux';
 import { connect } from 'react-redux';
+
+import { updateIntl, intlReducer } from './redux';
 import IntlProvider from './redux/IntlProvider';
 
 import defaultConfigs from './defaultConfigs';
