@@ -5,10 +5,10 @@ export type ConfigType = {
 	appRoutePrefix: string,
 	debug: boolean,
 	development: boolean,
-	locale: string,
+	locale?: string,
 	plugins: { [string]: {} },
 	title: string,
-	theme: {}
+	theme?: {}
 };
 
 /**
