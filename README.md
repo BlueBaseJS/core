@@ -36,7 +36,9 @@ A modular, pluggable and cross-platform app framework. It is built on top of [Re
 Name | Description | Dependency
 ------ | ------ | ------
 Apollo | A fully-featured, production ready caching GraphQL client for every server or UI framework. Based on [Apollo Client](http://dev.apollodata.com/react/). | Redux
-Internationalization | Internationalize React apps. This library provides React components and an API to format dates, numbers, and strings, including pluralization and handling translations. Based on [react-intl](https://github.com/yahoo/react-intl). | 
+Internationalization | Internationalize React apps. This library provides React components and an API to format dates, numbers, and strings, including pluralization and handling translations. Based on [react-intl](https://github.com/yahoo/react-intl). | Redux
+Material UI | Adds [Material UI](http://www.material-ui.com/#/) theme Provider to BlueRain. | 
+React Router (v4) | [React Router V4](https://github.com/ReactTraining/react-router) and [Redux integration](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux). | Redux
 Redux | Predictable state container for JavaScript apps. Based on [Redux](http://redux.js.org/) & [React Redux](https://github.com/reactjs/react-redux).
 Redux DevTools | [DevTools](https://github.com/gaearon/redux-devtools) for Redux with hot reloading, action replay, and customizable UI.  | Redux
-Sentry | [Sentry](https://sentry.io/) is a cross-platform crash reporting and aggregation platform. 
+Sentry (Coming Soon) | [Sentry](https://sentry.io/) is a cross-platform crash reporting and aggregation platform. 
