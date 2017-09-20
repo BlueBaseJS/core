@@ -91,6 +91,17 @@ class InternationalizationPlugin extends Plugin {
 		 */
 		// Settings App
 		ctx.Filters.add('app.settings.general', settings(ctx, config));
+
+		// Translations
+		ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
+			const en = require('./lang/en.json');
+			const ur = require('./lang/ur.json');
+
+			messages.en =  Object.assign(messages.en ? messages.en : {}, en);
+			messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
+
+			return messages;
+		});
 	}
 
 	/**
@@ -107,10 +118,20 @@ class InternationalizationPlugin extends Plugin {
 		}
 	}
 
+	/**
+	 * Higher Order component in inject `intl` prop in Component
+	 * @param {Component} Component
+	 * @returns {Component}
+	 */
 	static withIntl(Component) {
 		return connect(state => ({ intl: state.bluerain.intl }) )(Component);
 	}
 
+	/**
+	 * `reqact-intl`'s higher order component
+	 * @param {Component} Component
+	 * @returns {Component}
+	 */
 	static injectIntl(Component) {
 		return injectIntl(Component);
 	}
