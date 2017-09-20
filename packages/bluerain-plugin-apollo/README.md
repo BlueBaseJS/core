@@ -31,7 +31,7 @@ None.
 
 This plugin provides complete flexibility to modify the apollo client. This is done by providing various filter hooks at different stages of store initialization.
 
-### apollo.config
+### plugin.apollo.config
 
 This hook gives the ability to modify the plugin configurations.
 
@@ -55,7 +55,7 @@ This example activates subscriptions in apollo client.
 import BR from '@blueeast/bluerain-os';
 
 BR.Filters.add(
-	'apollo.config',
+	'plugin.apollo.config',
 	function ActivateApolloSubscriptions(configs) {
 		return Object.assign({}, configs, {
 			subscriptions: true
@@ -63,6 +63,23 @@ BR.Filters.add(
 	}
 );
 ```
+
+### plugin.apollo.networkInterface
+
+This hook gives the ability to hook into Apollo's network interface. A usecase can be to apply middlewares to it.
+
+**Parameters:**
+
+| Name   | Type   | Description           |
+| ------ | ------ | --------------------- |
+| networkInterface | Object | Apollo's networkInterface object |
+
+**Returns:**
+
+| Name   | Type   | Description           |
+| ------ | ------ | --------------------- |
+| networkInterface | Object | Apollo's networkInterface object |
+
 
 ## API
 
