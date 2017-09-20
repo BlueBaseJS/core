@@ -1,6 +1,6 @@
 {
- "name": "bluerain-monorepo",
- "version": "0.1.0",
+ "name": "@blueeast/bluerain-os",
+ "version": "0.2.0",
  "scripts": {
   "bootstrap": "lerna bootstrap",
   "clean": "lerna clean --yes",

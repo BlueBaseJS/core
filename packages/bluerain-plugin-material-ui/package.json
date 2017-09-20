@@ -15,7 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "@blueeast/bluerain-os": "^0.1.0",
-    "material-ui": "^0.19.1"
+    "material-ui": "^0.19.1",
+    "react": "^16.0.0-alpha.12"
   },
   "peerDependencies": {},
   "devDependencies": {

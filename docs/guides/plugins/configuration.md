@@ -8,6 +8,8 @@ Plugins can be configured in the `config.plugins` object, where `config` is the 
 So to configure the Google Analytics plugin create an object at `config.plugins[${slug}]` where `slug` is the plugin's slug. 
 
 To find out what configurations a plugin needs, please refer to the plugin documentation.
+## Context
+Plugin  `initialize` functions get BlueRain context as second params.
 
 ## Accessing configurations inside Plugin
 The plugin specific configurations are passed to the initialize method of the plugin class at system boot time.
@@ -47,11 +49,11 @@ Note that we used the same custom key here to reference the plugin.
 At last, boot your client with the plugin:
 
 ```js
-import boot from 'bluerain-core';
+import BR from '@blueeast/bluerain-os';
 
 const config = require('./config');
 const plugins = require('./plugins');
 
-boot({ config, plugins });
+BR.boot({ config, plugins });
 ```
  

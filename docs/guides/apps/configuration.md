@@ -9,6 +9,9 @@ So to configure the Hello World app create an object at `config.apps[${slug}]` w
 
 To find out what configurations a app needs, please refer to the app documentation.
 
+## Context
+Plugin and App `initialize` functions get BlueRain context as second params.
+
 ## Accessing configurations inside App
 The app specific configurations are passed to the initialize method of the app class at system boot time.
 
@@ -49,11 +52,11 @@ Note that we used the same custom key here to reference the app.
 At last, boot your client with the app:
 
 ```js
-import boot from 'bluerain-core';
+import BR from '@blueeast/bluerain-os';
 
 const config = require('./config');
 const apps = require('./apps');
 
-boot({ config, apps });
+BR.boot({ config, apps });
 ```
  
