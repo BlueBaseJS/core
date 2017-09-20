@@ -16,7 +16,7 @@ const extractPageRoutes = (match, items) => {
 		component: 'Route',
 		props: {
 			extact: true,
-			path: `${match.url}/${item.path}`,
+			path: `${match.url.replace(/\/+$/, '')}/${item.path}`,
 			component: item.main
 		}
 	}));
@@ -26,22 +26,19 @@ const extractPageRoutes = (match, items) => {
 const getDesktopLayout = (match, items, BR) => {
 	const pages = extractPageRoutes(match, items);
 
-
 	const sidebarStyle = RX.Styles.createViewStyle({
-		paddingTop: 16,
-		paddingBottom: 16,
-		paddingLeft: 16,
-	}, false);
-
-	const mainStyle = RX.Styles.createViewStyle({
 		padding: 16
 	}, false);
+
+	// const mainStyle = RX.Styles.createViewStyle({
+	// 	padding: 16
+	// }, false);
 
 	const layout = {
 		component: SidebarLayout,
 		props: {
 			sidebarStyle,
-			mainStyle,
+			// mainStyle,
 			sidebar: () => (<Sidebar match={match} items={items} />),
 			main: () => BR.Utils.parseJsonSchema({
 				component: 'Switch',
@@ -65,7 +62,7 @@ const getMobileLayout = (match, items, BR) => {
 	const pages = extractPageRoutes(match, items);
 
 	const style = RX.Styles.createViewStyle({
-		padding: 16
+		// padding: 16
 	}, false);
 
 	const layout = {

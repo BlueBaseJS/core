@@ -1,10 +1,8 @@
 import React from 'react';
-import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import ActionSettings from 'material-ui/svg-icons/action/settings';
-// import ActionGrade from 'material-ui/svg-icons/action/language';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 
-import GeneralSettings from './GeneralSettings';
+import GeneralSettings from './pages/GeneralSettings';
 
 export default (BR) => {
 	const FormattedMessage = BR.Components.get('FormattedMessage');

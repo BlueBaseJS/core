@@ -9,7 +9,7 @@ const Sidebar = ({ match, bluerain: BR, items }) => {
 	items = items.map((item) => {
 		if (item.path && item.listItemProps && !item.listItemProps.onClick) {
 			item.listItemProps = Object.assign({}, item.listItemProps, {
-				onClick: () => history.push(`${match.url}/${item.path}`)
+				onClick: () => history.push(`${match.url.replace(/\/+$/, '')}/${item.path}`)
 			});
 		}
 		return item;

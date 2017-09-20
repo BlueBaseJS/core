@@ -2,9 +2,9 @@ import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import AppBar from 'material-ui/AppBar';
 
-import getSettingItems from './SettingItems';
+import getSettingItems from './items';
 
-import SettingsLayout from '../SettingsLayout';
+import SettingsLayout from './SettingsLayout';
 
 const App = (props) => {
 

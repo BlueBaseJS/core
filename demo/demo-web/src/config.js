@@ -27,7 +27,7 @@ const config = {
 
 	theme: {
 		appBar: {
-			color: 'red'
+			color: '#3949ab'
 		}
 	}
 };

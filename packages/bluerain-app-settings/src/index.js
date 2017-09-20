@@ -1,5 +1,5 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
-import App from './components/App';
+import App from './App';
 import SettingsLayout from './SettingsLayout';
 
 const EnhancedApp = withBlueRain(App);
