@@ -1,7 +1,4 @@
 {
-    "app.settings.title":"Settings",
-    "app.settings.general": "General",
-    "app.settings.about": "About",
     "app.settings.language":"Language",
     "app.settings.language.description":"Select your preferred language"
 }

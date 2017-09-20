@@ -1,7 +1,7 @@
 const config = {
 	title: 'Brand Name',
 
-	locale: 'ur',
+	locale: 'en',
 	
 	plugins: {
 

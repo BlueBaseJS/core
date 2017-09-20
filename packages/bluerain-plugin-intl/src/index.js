@@ -2,6 +2,7 @@ import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
 import {
 	// IntlProvider,
+	injectIntl,
 	addLocaleData,
 	FormattedMessage,
 	FormattedNumber,
@@ -108,6 +109,10 @@ class InternationalizationPlugin extends Plugin {
 
 	static withIntl(Component) {
 		return connect(state => ({ intl: state.bluerain.intl }) )(Component);
+	}
+
+	static injectIntl(Component) {
+		return injectIntl(Component);
 	}
 }
 

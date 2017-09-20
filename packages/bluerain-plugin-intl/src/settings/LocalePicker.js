@@ -10,12 +10,14 @@ const LanguageDropDown = ({ options, intl, updateIntl }) => {
 	}
 	const keys = Object.keys(options);
 
+	const style = (intl.rtl === false) ? { right: 4 } : { left: 4 };
+	style.position = 'absolute';
+	style.top = 8;
+
 	return (
-  <div >
-    <DropDownMenu value={intl.locale} onChange={(event, index, value) => updateIntl(value)}>
-      {keys.map(key => (<MenuItem value={key} key={key} primaryText={options[key]} />))}
-    </DropDownMenu>
-  </div>
+  <DropDownMenu style={style} value={intl.locale} onChange={(event, index, value) => updateIntl(value)} >
+    {keys.map(key => (<MenuItem value={key} key={key} primaryText={options[key]} />))}
+  </DropDownMenu>
 	);
 };
 

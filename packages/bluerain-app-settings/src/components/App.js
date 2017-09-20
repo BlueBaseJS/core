@@ -2,7 +2,7 @@ import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import AppBar from 'material-ui/AppBar';
 
-import SettingItems from './SettingItems';
+import getSettingItems from './SettingItems';
 
 import SettingsLayout from '../SettingsLayout';
 
@@ -12,8 +12,8 @@ const App = (props) => {
 
 	const Page = BR.Components.get('Page');
 	const FormattedMessage = BR.Components.get('FormattedMessage');
-  
-	const items = BR.Filters.run('app.settings.items', SettingItems);
+
+	const items = getSettingItems(BR);
 
 	return (
   <Page style={{ backgroundColor: props.muiTheme.palette.accent2Color }}>

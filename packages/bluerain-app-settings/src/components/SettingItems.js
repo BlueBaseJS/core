@@ -1,33 +1,33 @@
 import React from 'react';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import ActionGrade from 'material-ui/svg-icons/action/grade';
-import ContentSend from 'material-ui/svg-icons/content/send';
+import ActionSettings from 'material-ui/svg-icons/action/settings';
+// import ActionGrade from 'material-ui/svg-icons/action/language';
+import ActionInfo from 'material-ui/svg-icons/action/info';
 
 import GeneralSettings from './GeneralSettings';
 
-export default [
-	{
-		path: 'inbox',
-		listItemProps: {
-			primaryText: 'Inbox',
-			leftIcon: <ContentInbox />
+export default (BR) => {
+	const FormattedMessage = BR.Components.get('FormattedMessage');
+
+	const SettingItems = [
+		{
+			path: 'general',
+			listItemProps: {
+				primaryText: (<FormattedMessage id="app.settings.general" defaultMessage="General" />),
+				leftIcon: <ActionSettings />
+			},
+			main: GeneralSettings
 		},
-		main: GeneralSettings
-	},
-	{
-		path: 'bubblegum',
-		listItemProps: {
-			primaryText: 'Bubblegum',
-			leftIcon: <ActionGrade />
-		},
-		main: () => <h2>Bubblegum</h2>
-	},
-	'-',
-	{ path: 'shoelaces',
-		listItemProps: {
-			primaryText: 'Shoelaces',
-			leftIcon: <ContentSend />
-		},
-		main: () => <h2>Shoelaces</h2>
-	}
-];
+		'-',
+		{
+			path: 'about',
+			listItemProps: {
+				primaryText: (<FormattedMessage id="app.settings.about" defaultMessage="About" />),
+				leftIcon: <ActionInfo />
+			},
+			main: () => <h2>About</h2>
+		}
+	];
+
+	return BR.Filters.run('app.settings.items', SettingItems);
+};
