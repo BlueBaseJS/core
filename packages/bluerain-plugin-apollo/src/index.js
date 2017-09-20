@@ -3,7 +3,7 @@
 import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';

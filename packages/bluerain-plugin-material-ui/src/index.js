@@ -6,7 +6,7 @@ import { Plugin } from '@blueeast/bluerain-os';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-const withMUI = (App, theme, ctx) => (props) => {
+const withMUI = (App, theme, ctx) => (props: { intl: { rtl: string }}) => {
 
 	if (props.intl !== undefined && props.intl.rtl !== undefined) {
 		theme.isRtl = props.intl.rtl;
