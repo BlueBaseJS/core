@@ -24,13 +24,13 @@ describe('Filters test specifications', () => {
 
 			expect(BR.Filters.FiltersTable['error.hook'].length).toEqual(1);
 		});
-		it('should throw error b/c unnamed function ', () => {
+		it('should not throw error b/c unnamed function ', () => {
 			expect(() =>
         BR.Filters.add('test.hook', (prevVal) => {
 	const number = 2;
 	return prevVal + number;
 })
-      ).toThrow();
+      ).not.toThrow();
 		});
 		it('should throw error b/c function null', () => {
 			expect(() => BR.Filters.add('', null)).toThrow();
@@ -54,7 +54,7 @@ describe('Filters test specifications', () => {
 		it('should run the filter fine', () => {
 			const number4 = 4;
 			const value = BR.Filters.run('test.hook', number4);
-			const expectedNumber = 6;
+			const expectedNumber = 8;
 			expect(value).toEqual(expectedNumber);
 		});
 		it('should be undefined b/c hook undefined', () => {
@@ -66,7 +66,7 @@ describe('Filters test specifications', () => {
 		it('should add the input ', () => {
 			const value = BR.Filters.run('test.hook', 'string');
 
-			expect(value).toEqual('string2');
+			expect(value).toEqual('string22');
 		});
 		it('return the input value because it not added ', () => {
 			const value = BR.Filters.run('to.be.fail.hook', 'string');
@@ -75,9 +75,9 @@ describe('Filters test specifications', () => {
 		});
 	});
 	describe('remove filter', () => {
-		it('should have length 1 of test.hook', () => {
+		it('should have length 2 of test.hook', () => {
 			BR.Filters.remove('test.hook', 'func1');
-			expect(BR.Filters.FiltersTable['test.hook'].length).toEqual(1);
+			expect(BR.Filters.FiltersTable['test.hook'].length).toEqual(2);
 		});
 		it('should throw error because func1 is not available', () => {
 			expect(() => BR.Filters.remove('test.hook', 'func1')).toThrow();
