@@ -1,4 +1,4 @@
-import { language } from './detect';
+import { parentLanguage } from './detect';
 
 /**
  * This is the default configuration set that is used at boot time.
@@ -8,7 +8,7 @@ import { language } from './detect';
  * @property {Array}	localeData				An array of localData files.
  */
 const IntlPluginConfigs = {
-	locale: language || 'en',
+	locale: parentLanguage || 'en',
 	localeData: [],
 	selectable: {
 		en: 'English'
