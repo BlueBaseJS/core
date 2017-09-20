@@ -2,6 +2,7 @@ import React from 'react';
 import ActionSettings from 'material-ui/svg-icons/action/settings';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 
+import AboutSettings from './pages/AboutSettings';
 import GeneralSettings from './pages/GeneralSettings';
 
 export default (BR) => {
@@ -23,7 +24,7 @@ export default (BR) => {
 				primaryText: (<FormattedMessage id="app.settings.about" defaultMessage="About" />),
 				leftIcon: <ActionInfo />
 			},
-			main: () => <h2>About</h2>
+			main: AboutSettings
 		}
 	];
 
