@@ -1,10 +1,19 @@
+// @flow
 import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
 import { updateIntl } from '../redux';
 
-const LanguageDropDown = ({ options, intl, updateIntl }) => {
+type Props = {
+	intl: {
+		rtl: boolean
+	},
+	updateIntl: Function,
+	options: {[id: string]: string}
+}
+
+const LanguageDropDown = ({ options, intl, updateIntl }: Props) => {
 	if (!options) {
 		return <div />;
 	}
