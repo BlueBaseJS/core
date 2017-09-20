@@ -66,7 +66,7 @@ class PluginRegistry {
 
 	/**
 	 * Get a plugin
-	 * @param {string} slug The slug plugin to remove
+	 * @param {string} slug The slug of the plugin
 	 * @return {Plugin}
 	 */
 	get(slug: string) : BR.Plugin {

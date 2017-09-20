@@ -1,7 +1,7 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
 import parseSettingsList from './parseSettingsList';
 
-const Sidebar = ({ match, bluerain: BR, items }) => {
+const Sidebar = ({ match, bluerain: BR, items, style }) => {
 
 	const history = BR.refs.router.history;
 
@@ -15,7 +15,7 @@ const Sidebar = ({ match, bluerain: BR, items }) => {
 		return item;
 	});
 
-	let schema = parseSettingsList(items);
+	let schema = parseSettingsList(items, style);
 
 	schema = BR.Filters.run('app.settings.sidebar', schema);
 

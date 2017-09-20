@@ -45,12 +45,13 @@ function createSets(list) {
 	return sets;
 }
 // $FlowFixMe
-const parseSettingsList = (list) => {
+const parseSettingsList = (list, style) => {
 
 	const sets = createSets(list);
 
 	return {
 		component: 'View',
+		props: { style },
 		children: sets.map((item) => {
 			if (item === '-') {
 				return { component: Divider };
