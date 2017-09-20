@@ -1,4 +1,4 @@
-// @flow
+
 import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -20,10 +20,13 @@ const LanguageDropDown = ({ options, intl, updateIntl }: Props) => {
 	const keys = Object.keys(options);
 
 	const style = (intl.rtl === false) ? { right: 4 } : { left: 4 };
+	// $FlowFixMe
 	style.position = 'absolute';
+	// $FlowFixMe
 	style.top = 8;
 
 	return (
+		// $FlowFixMe
   <DropDownMenu style={style} value={intl.locale} onChange={(event, index, value) => updateIntl(value)} >
     {keys.map(key => (<MenuItem value={key} key={key} primaryText={options[key]} />))}
   </DropDownMenu>
