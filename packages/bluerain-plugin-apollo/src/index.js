@@ -3,8 +3,6 @@
 import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
 
-import PropTypes from 'prop-types';
-
 import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
 
@@ -31,15 +29,6 @@ function replaceReduxProvider(Provider) {
 		children: ChildrenArray<any>
 	}) => (<ApolloProvider store={store} client={client}>{children}</ApolloProvider>);
 
-
-	ApolloProviderHoc.propTypes = {
-		store: PropTypes.node.isRequired,
-		children: PropTypes.oneOfType([
-			PropTypes.arrayOf(PropTypes.node),
-			PropTypes.node
-		]).isRequired
-	};
-
 	return ApolloProviderHoc;
 }
 
@@ -57,7 +46,7 @@ class ApolloPlugin extends Plugin {
 
 		// Configurations
 		config = Object.assign({}, defaultConfigs, config);
-		config = ctx.Filters.run('apollo.config', config);
+		config = ctx.Filters.run('plugin.apollo.config', config);
 
 		let networkInterface;
 
@@ -87,6 +76,8 @@ class ApolloPlugin extends Plugin {
 		} else {
 			networkInterface = createNetworkInterface(config.networkInterface);
 		}
+
+		networkInterface = ctx.Filters.add('plugin.apollo.networkInterface', networkInterface);
 
 		// Finally, create your ApolloClient instance with the modified network interface
 		client = new ApolloClient({ networkInterface });
