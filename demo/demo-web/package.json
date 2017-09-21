@@ -9,16 +9,6 @@
     "start": "webpack-dev-server --inline --hot --history-api-fallback"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@blueeast/bluerain-app-hello-world": "^0.0.0",
-    "@blueeast/bluerain-app-settings": "^0.0.0",
-    "@blueeast/bluerain-os": "^0.1.0",
-    "@blueeast/bluerain-plugin-apollo": "^0.1.0",
-    "@blueeast/bluerain-plugin-intl": "^0.1.0",
-    "@blueeast/bluerain-plugin-material-ui": "^0.0.0",
-    "@blueeast/bluerain-plugin-redux-devtools": "^0.1.0",
-    "@blueeast/bluerain-plugin-why-did-you-update": "^0.0.0",
-=======
     "@blueeast/bluerain-app-hello-world": "^0.4.0",
     "@blueeast/bluerain-app-settings": "^0.4.0",
     "@blueeast/bluerain-os": "^0.4.0",
@@ -26,7 +16,7 @@
     "@blueeast/bluerain-plugin-intl": "^0.4.0",
     "@blueeast/bluerain-plugin-material-ui": "^0.4.0",
     "@blueeast/bluerain-plugin-redux-devtools": "^0.4.0",
->>>>>>> 960786529760c1eaf6a61c83a6577e003e7f0902
+    "@blueeast/bluerain-why-did-you-update": "^0.0.0",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
     "react-intl": "^2.4.0",

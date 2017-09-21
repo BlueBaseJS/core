@@ -1,10 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-react-router",
-<<<<<<< HEAD
-  "version": "0.3.0",
-=======
   "version": "0.4.0",
->>>>>>> 960786529760c1eaf6a61c83a6577e003e7f0902
   "description": "A BlueRain Plugin that adds cross platform routing via react-router v4",
   "main": "dist/index.js",
   "scripts": {
