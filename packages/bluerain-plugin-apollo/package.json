@@ -13,7 +13,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.1.0",
+    "@blueeast/bluerain-os": "^0.4.0",
     "prop-types": "^15.5.10",
     "react": "^16.0.0-alpha.12",
     "react-apollo": "^1.4.15",
@@ -21,7 +21,7 @@
     "subscriptions-transport-ws": "^0.8.2"
   },
   "peerDependencies": {
-    "@blueeast/bluerain-plugin-redux": "^0.1.0"
+    "@blueeast/bluerain-plugin-redux": "^0.4.0"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

@@ -14,7 +14,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.1.0",
+    "@blueeast/bluerain-os": "^0.4.0",
     "material-ui": "^0.19.2",
     "react": "^16.0.0-alpha.12",
     "react-intl": "^2.4.0",

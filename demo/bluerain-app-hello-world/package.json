@@ -14,14 +14,14 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.1.0",
-    "@blueeast/bluerain-plugin-react-router": "^0.1.0",
+    "@blueeast/bluerain-os": "^0.4.0",
+    "@blueeast/bluerain-plugin-react-router": "^0.4.0",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
     "reactxp": "^0.42.0-rc.25"
   },
   "peerDependencies": {
-    "@blueeast/bluerain-plugin-intl": "^0.1.0"
+    "@blueeast/bluerain-plugin-intl": "^0.4.0"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",
