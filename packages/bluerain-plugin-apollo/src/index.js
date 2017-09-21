@@ -56,7 +56,7 @@ class ApolloPlugin extends Plugin {
 
 		// Configurations
 		config = Object.assign({}, defaultConfigs, config);
-		config = ctx.Filters.run('apollo.config', config);
+		config = ctx.Filters.run('plugin.apollo.config', config);
 
 		let networkInterface;
 
