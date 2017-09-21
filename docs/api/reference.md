@@ -19,6 +19,7 @@
 -   [AppRegistry](#appregistry)
     -   [register](#register)
     -   [registerMany](#registermany)
+    -   [get](#get)
     -   [initializeAll](#initializeall)
     -   [remove](#remove)
     -   [getApps](#getapps)
@@ -26,13 +27,13 @@
 -   [ComponentRegistry](#componentregistry)
     -   [register](#register-1)
     -   [has](#has)
-    -   [get](#get)
+    -   [get](#get-1)
     -   [getRawComponent](#getrawcomponent)
     -   [replace](#replace)
     -   [copyHoCs](#copyhocs)
 -   [ConfigRegistry](#configregistry)
     -   [set](#set)
-    -   [get](#get-1)
+    -   [get](#get-2)
     -   [register](#register-2)
 -   [EventEmitter](#eventemitter)
 -   [FilterRegistry](#filterregistry)
@@ -43,7 +44,7 @@
     -   [register](#register-3)
     -   [registerMany](#registermany-1)
     -   [remove](#remove-2)
-    -   [get](#get-2)
+    -   [get](#get-3)
     -   [initializeAll](#initializeall-1)
 
 ## Platform
@@ -234,6 +235,16 @@ Register many apps at once
 **Parameters**
 
 -   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** The BlueRain apps to register
+
+### get
+
+Get an app
+
+**Parameters**
+
+-   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug of the app
+
+Returns **[App](#app)** 
 
 ### initializeAll
 
@@ -459,7 +470,7 @@ Get a plugin
 
 **Parameters**
 
--   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug plugin to remove
+-   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug of the plugin
 
 Returns **[Plugin](#plugin)** 
 
