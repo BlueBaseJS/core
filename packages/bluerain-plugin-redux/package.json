@@ -1,6 +1,10 @@
 {
   "name": "@blueeast/bluerain-plugin-redux",
+<<<<<<< HEAD
   "version": "0.3.0",
+=======
+  "version": "0.4.0",
+>>>>>>> 960786529760c1eaf6a61c83a6577e003e7f0902
   "description": "Adds redux state management to BlueRain OS",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +17,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.1.0",
+    "@blueeast/bluerain-os": "^0.4.0",
     "react": "^16.0.0-alpha.12",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"

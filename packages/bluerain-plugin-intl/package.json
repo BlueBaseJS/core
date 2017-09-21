@@ -1,6 +1,10 @@
 {
   "name": "@blueeast/bluerain-plugin-intl",
+<<<<<<< HEAD
   "version": "0.3.0",
+=======
+  "version": "0.4.0",
+>>>>>>> 960786529760c1eaf6a61c83a6577e003e7f0902
   "description": "A BlueRain Plugin to add Internationalization through react-intl",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +18,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.1.0",
+    "@blueeast/bluerain-os": "^0.4.0",
     "material-ui": "^0.19.2",
     "react": "^16.0.0-alpha.12",
     "react-intl": "^2.4.0",
