@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@blueeast/bluerain-app-hello-world": "^0.0.0",
-    "@blueeast/bluerain-app-material-design": "^0.0.0",
+    "@blueeast/bluerain-app-settings": "^0.0.0",
     "@blueeast/bluerain-os": "^0.1.0",
     "@blueeast/bluerain-plugin-apollo": "^0.1.0",
     "@blueeast/bluerain-plugin-intl": "^0.1.0",

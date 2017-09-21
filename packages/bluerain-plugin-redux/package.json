@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-redux",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "description": "Adds redux state management to BlueRain OS",
   "main": "dist/index.js",
   "scripts": {

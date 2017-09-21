@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-apollo",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A BlueRain Plugin that integrates Apollo GraphQl Client",
   "main": "dist/index.js",
   "scripts": {

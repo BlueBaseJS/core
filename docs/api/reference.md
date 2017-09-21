@@ -127,6 +127,7 @@ Type: ConfigType
 -   `locale` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "en"]						App locale
 -   `plugins` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Configurations for plugins
 -   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** [default: "BlueRain OS"]		Main title of the app
+-   `theme` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Theme to customize styling
 
 ## ResponsiveLayout
 

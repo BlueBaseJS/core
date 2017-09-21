@@ -2,6 +2,7 @@ import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
 import {
 	// IntlProvider,
+	injectIntl,
 	addLocaleData,
 	FormattedMessage,
 	FormattedNumber,
@@ -11,11 +12,16 @@ import {
 	FormattedRelative
 } from 'react-intl';
 
-import { updateIntl, IntlProvider, intlReducer } from 'react-intl-redux';
+import { connect } from 'react-redux';
+
+import { updateIntl, intlReducer } from './redux';
+import IntlProvider from './redux/IntlProvider';
 
 import defaultConfigs from './defaultConfigs';
+import settings from './settings';
 
-let messages = {};
+const rtlDetect = require('rtl-detect');
+
 const withIntl = App => props => (
   <IntlProvider>
     <App {...props} />
@@ -59,19 +65,44 @@ class InternationalizationPlugin extends Plugin {
 		ctx.Filters.add(
 			'bluerain.redux.initialState',
 			function AddIntlInitState(state) {
-				messages = ctx.Filters.run('bluerain.intl.messages', messages);
-				return Object.assign({}, state, { intl: { locale, messages: messages[locale] } });
+				const messages = ctx.Filters.run('bluerain.intl.messages', {});
+				return Object.assign({}, state, {
+					bluerain: {
+						intl: {
+							locale,
+							rtl: rtlDetect.isRtlLang(locale),
+							messages,
+						}
+					}
+				});
 			}
 		);
 
 		ctx.Filters.add(
-			'bluerain.redux.reducers',
+			'bluerain.redux.reducers.bluerain',
 			function AddIntlReducer(reducers) {
 				return Object.assign({}, reducers, {
 					intl: intlReducer
 				});
 			}
 		);
+
+		/**
+		 * Integrations
+		 */
+		// Settings App
+		ctx.Filters.add('app.settings.general', settings(ctx, config));
+
+		// Translations
+		ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
+			const en = require('./lang/en.json');
+			const ur = require('./lang/ur.json');
+
+			messages.en =  Object.assign(messages.en ? messages.en : {}, en);
+			messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
+
+			return messages;
+		});
 	}
 
 	/**
@@ -82,14 +113,28 @@ class InternationalizationPlugin extends Plugin {
 	 */
 	static setLocale(locale, ctx) {
 		try {
-			const localMessages = messages[locale];
-			ctx.refs.store.dispatch(updateIntl({
-				locale,
-				messages: localMessages,
-			}));
+			ctx.refs.store.dispatch(updateIntl(locale));
 		} catch (e) {
 			console.log('There was an error changing locale');
 		}
+	}
+
+	/**
+	 * Higher Order component in inject `intl` prop in Component
+	 * @param {Component} Component
+	 * @returns {Component}
+	 */
+	static withIntl(Component) {
+		return connect(state => ({ intl: state.bluerain.intl }) )(Component);
+	}
+
+	/**
+	 * `reqact-intl`'s higher order component
+	 * @param {Component} Component
+	 * @returns {Component}
+	 */
+	static injectIntl(Component) {
+		return injectIntl(Component);
 	}
 }
 

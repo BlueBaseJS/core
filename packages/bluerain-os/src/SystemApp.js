@@ -34,13 +34,16 @@ export const SystemRoutes = () => {
 	return systemRoutes;
 };
 
-export default () => {
+// $FlowFixMe
+export default (props) => {
 
 	const routes = {
 		component: 'SystemLayout',
+		props,
 		children: [
 			{
 				component: 'Switch',
+				props: { style: { flex: 1, flexGrow: 1 } },
 				children: SystemRoutes()
 			}
 		]

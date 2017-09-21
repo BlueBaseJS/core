@@ -4,6 +4,7 @@ These are the known callback hooks in the system:
 
 - [System App](#system-app)
 	-	[bluerain.system.app](#bluerainsystemapp)
+	-	[bluerain.system.app.schema](#bluerainsystemappschema)
 	-	[bluerain.system.routes](#bluerainsystemroutes)
 - [System Lifecycle Events](#system-lifecycle-events)
 	-	[bluerain.system.boot.start](#bluerainsystembootstart)
@@ -19,7 +20,7 @@ These are the known callback hooks in the system:
 ## System App
 
 ### bluerain.system.app
-This hook gives the ability to modify the main System App component.
+This hook gives the ability to modify the main System App component. This can be used to do things like wrapping the SystemApp in a HOC.
 
 **Parameters:**
 
@@ -48,6 +49,22 @@ BR.Filters(
 	}
 );
 ```
+
+### bluerain.system.app.schema
+If you would rather modify the structure of the SystemApp itself, you can hook into it's JSON schema right before it is converted into a React Component at runtime.
+
+**Parameters:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+schema | Object | This is the json schema structure of the system app. This schema is passed to the `parseJsonSchema` method to generate react components after callback execution.
+
+**Returns:**
+
+Name | Type | Description
+------------ | ------------- | -------------
+schema | Object | This is the json schema structure of the system app. This schema is passed to the `parseJsonSchema` method to generate react components after callback execution.
+
 
 ### bluerain.system.routes
 This hook gives the ability to modify system routes JSON schema. This is very useful for adding or modifying pages and routes.
