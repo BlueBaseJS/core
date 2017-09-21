@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-app-settings",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A settings app for BlueRain OS made with Material UI",
   "main": "dist/index.js",
   "scripts": {
