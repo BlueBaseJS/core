@@ -5,9 +5,10 @@ export type ConfigType = {
 	appRoutePrefix: string,
 	debug: boolean,
 	development: boolean,
-	locale: string,
+	locale?: string,
 	plugins: { [string]: {} },
 	title: string,
+	theme?: {}
 };
 
 /**
@@ -22,13 +23,13 @@ export type ConfigType = {
  * @property {string}		locale [default: "en"]						App locale
  * @property {Object}		plugins														Configurations for plugins
  * @property {string}		title [default: "BlueRain OS"]		Main title of the app
+ * @property {string}		theme															Theme to customize styling
  */
 const Config: ConfigType = {
 	apps: {},
 	appRoutePrefix: '/app',
 	debug: true,
 	development: true,
-	locale: 'en',
 	plugins: {},
 	title: 'BlueRain OS',
 };

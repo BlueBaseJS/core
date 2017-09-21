@@ -20,7 +20,7 @@ class FilterRegistry {
 			throw new Error(`hook cannot be ${hook}`);
 		}
 		if (!filter.name) {
-			throw new Error(
+			console.warn(
 				`// Warning! You are adding an unnamed filter to ${hook}.
 			Please use the function foo () {} syntax.`
 			);

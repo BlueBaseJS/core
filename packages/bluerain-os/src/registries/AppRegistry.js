@@ -1,8 +1,9 @@
 /* @flow */
 
 import kebabCase from 'lodash.kebabcase';
+import get from 'lodash.get';
 
-import BR from '../index';
+import BR, { App } from '../index';
 
 const defaultAppRoutePrefix = '/app';
 
@@ -12,13 +13,13 @@ const defaultAppRoutePrefix = '/app';
  */
 class AppRegistry {
 
-	AppsTable: { [string]: BR.App } = {};
+	AppsTable: { [string]: App } = {};
 
 	/**
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	register(app: BR.App) {
+	register(app: App) {
 		if (app === undefined || app === null) {
 			throw new Error('No app provided');
 		}
@@ -42,7 +43,7 @@ class AppRegistry {
 	 * Register many apps at once
 	 * @param {Array<App>} apps The BlueRain apps to register
 	 */
-	registerMany(apps: Array<BR.App>) {
+	registerMany(apps: Array<App>) {
 		const me = this;
 		apps = apps || [];
 
@@ -51,6 +52,19 @@ class AppRegistry {
 		}
 
 		apps.forEach(app => me.register(app));
+	}
+
+	/**
+	 * Get an app
+	 * @param {string} slug The slug of the app
+	 * @return {App}
+	 */
+	get(slug: string) : App {
+		if (slug === undefined || slug === null) {
+			throw new Error('No plugin slug provided');
+		}
+
+		return get(this.AppsTable, slug);
 	}
 
 	/**
@@ -89,7 +103,7 @@ class AppRegistry {
 	 * Get all apps
 	 * @returns {Object} An object with slug: app key value pair
 	 */
-	getApps() : { [string]: BR.App } {
+	getApps() : { [string]: App } {
 		return this.AppsTable;
 	}
 
