@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-material-ui",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "A BlueRain Plugin that integrates material-ui",
   "main": "dist/index.js",
   "scripts": {
