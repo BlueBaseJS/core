@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-redux-devtools",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A BlueRain Plugin to add Redux Devtools extension support",
   "main": "dist/index.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "babel-preset-react": "6.16.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "6.18.0",
-    "documentation": "^5.2.1",    
+    "documentation": "^5.2.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-blueeast": "^0.2.0",

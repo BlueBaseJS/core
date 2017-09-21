@@ -115,7 +115,7 @@ This is the default configuration set that is used at boot time.
 
 **Properties**
 
--   `locale` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** [default: "en"]					An array of localData files.
+-   `locale` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** [default: "en"]					Tries to detect automatically, falls back to 'en'.
 -   `localeData` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** An array of localData files.
 
 ### InternationalizationPlugin
@@ -137,3 +137,27 @@ Change app's locale
 
 -   `locale` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The locale id
 -   `ctx` **BlueRain** The BlueRain Context
+
+#### withIntl
+
+Higher Order component in inject `intl` prop in Component
+
+**Parameters**
+
+-   `Component` **Component** 
+
+Returns **Component** 
+
+#### injectIntl
+
+`reqact-intl`'s higher order component
+
+**Parameters**
+
+-   `Component` **Component** 
+
+Returns **Component** 
+
+### add
+
+Integrations

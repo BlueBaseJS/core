@@ -1,7 +1,7 @@
 const config = {
 	title: 'Brand Name',
 
-	locale: 'ur',
+	locale: 'en',
 	
 	plugins: {
 
@@ -14,16 +14,20 @@ const config = {
 
 		// Internationalization
 		intl: {
+			selectable: {
+				'en': 'English',
+				'ur': 'اردو'
+			},
 			localeData: [].concat(
 				require('react-intl/locale-data/ur'),
 				// require('react-intl/locale-data/fr')
 			)
-		}
+		},
 	},
 
 	theme: {
 		appBar: {
-			color: 'red'
+			color: '#3949ab'
 		}
 	}
 };
