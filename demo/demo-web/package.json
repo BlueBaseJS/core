@@ -16,7 +16,7 @@
     "@blueeast/bluerain-plugin-intl": "^0.4.0",
     "@blueeast/bluerain-plugin-material-ui": "^0.4.0",
     "@blueeast/bluerain-plugin-redux-devtools": "^0.4.0",
-    "@blueeast/bluerain-why-did-you-update": "^0.0.0",
+    "@blueeast/bluerain-plugin-why-did-you-update": "^0.0.0",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
     "react-intl": "^2.4.0",
