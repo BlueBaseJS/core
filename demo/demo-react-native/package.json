@@ -1,6 +1,6 @@
 {
   "name": "bluerain-demo-react-native",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Hello BlueRain!",
   "author": "BlueEast Team <code@blueeast.com>",
   "private": true,
@@ -10,7 +10,7 @@
     "watch": "cpx \"../../packages/**/*.{js,json}\" ./packages --watch"
   },
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.0",
+    "@blueeast/bluerain-os": "^0.4.1",
     "eventemitter3": "^2.0.3",
     "expo": "19.0.1",
     "is-electron": "^2.1.0",
