@@ -17,6 +17,9 @@ class ReduxPlugin extends Plugin {
 
 		// withRedux HOC Method
 		const withRedux = App => (props) => {
+
+			ctx.Filters.run('bluerain.redux.beforeInit');
+			
 			const store = createStore(ctx);
 
 			/**
