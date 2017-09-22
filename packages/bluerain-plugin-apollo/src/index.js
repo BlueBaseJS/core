@@ -42,6 +42,46 @@ function replaceReduxProvider(Provider) {
 	return ApolloProviderHoc;
 }
 
+const initApolloProvider = (config, ctx) => function initApollo() {
+
+	// Configurations
+	config = ctx.Filters.run('plugin.apollo.config', config);
+
+	let networkInterface;
+
+	if (!config.networkInterface.uri) {
+		throw new Error('Websocket Server URI not provided to Apollo');
+	}
+
+	// Setup with Subscriptions
+	if (config.subscriptions === true) {
+
+		if (!config.wsUri) {
+			throw new Error('Websocket Server URI not provided to Apollo');
+		}
+
+		// Create websocket client
+		subscriptionClient = new SubscriptionClient(config.wsUri, config.subscriptionClient);
+
+		// Create a normal network interface:
+		const simpleNetworkInterface = createNetworkInterface(config.networkInterface);
+
+		// Extend the network interface with the WebSocket
+		networkInterface = addGraphQLSubscriptions(
+			simpleNetworkInterface,
+			subscriptionClient
+		);
+
+	} else {
+		networkInterface = createNetworkInterface(config.networkInterface);
+	}
+
+	networkInterface = ctx.Filters.run('plugin.apollo.networkInterface', networkInterface);
+
+	// Finally, create your ApolloClient instance with the modified network interface
+	client = new ApolloClient({ networkInterface });
+};
+
 /**
  * Main Apollo Plugin class.
  * @property {string} pluginName "ApolloPlugin"
@@ -54,43 +94,8 @@ class ApolloPlugin extends Plugin {
 
 	static initialize(config = {}, ctx) {
 
-		// Configurations
 		config = Object.assign({}, defaultConfigs, config);
-		config = ctx.Filters.run('plugin.apollo.config', config);
-
-		let networkInterface;
-
-		if (!config.networkInterface.uri) {
-			throw new Error('Websocket Server URI not provided to Apollo');
-		}
-
-		// Setup with Subscriptions
-		if (config.subscriptions === true) {
-
-			if (!config.wsUri) {
-				throw new Error('Websocket Server URI not provided to Apollo');
-			}
-
-			// Create websocket client
-			subscriptionClient = new SubscriptionClient(config.wsUri, config.subscriptionClient);
-
-			// Create a normal network interface:
-			const simpleNetworkInterface = createNetworkInterface(config.networkInterface);
-
-			// Extend the network interface with the WebSocket
-			networkInterface = addGraphQLSubscriptions(
-				simpleNetworkInterface,
-				subscriptionClient
-			);
-
-		} else {
-			networkInterface = createNetworkInterface(config.networkInterface);
-		}
-
-		networkInterface = ctx.Filters.add('plugin.apollo.networkInterface', networkInterface);
-
-		// Finally, create your ApolloClient instance with the modified network interface
-		client = new ApolloClient({ networkInterface });
+		ctx.Filters.add('bluerain.redux.beforeInit', initApolloProvider(config, ctx));
 
 		// Add callbacks
 		ctx.Filters.add('bluerain.redux.reducers', addApolloReducer);
