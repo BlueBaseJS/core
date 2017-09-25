@@ -4,7 +4,7 @@ import BlueRain from './BlueRain';
 export App from './models/App';
 export Plugin from './models/Plugin';
 
-export { withBlueRain } from './Provider';
+export { withBlueRain, BlueRainProvider } from './Provider';
 export * from './api';
 
 // This will have all registries as objects
