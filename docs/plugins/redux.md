@@ -36,6 +36,10 @@ This plugin provides complete flexibility to modify the main redux store. This i
 -   [bluerain.redux.composed](#bluerainreduxcomposed)
 -   [bluerain.redux.provider](#bluerainreduxprovider)
 
+### bluerain.redux.beforeInit
+
+This hook is executed before anyother hooks are registered or executed.
+
 ### bluerain.redux.app
 
 This hook gives the ability to modify the main System App component that gets wrapped in Redux's Provider.

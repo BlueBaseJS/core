@@ -1,12 +1,12 @@
 {
   "name": "@blueeast/bluerain-plugin-react-router",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "A BlueRain Plugin that adds cross platform routing via react-router v4",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "build": "rm -rf dist && babel -D src --out-dir dist && flow-copy-source src dist",
-    "build:watch": "nodemon --exec \"yarn build\" --ignore dist/",    
+    "build:watch": "nodemon --exec \"yarn build\" --ignore dist/",
     "flow": "flow",
     "lint": "eslint ./src/",
     "docs": "documentation readme src/** --section=API"
@@ -14,7 +14,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.1.0",
+    "@blueeast/bluerain-os": "^0.4.0",
     "react": "^16.0.0-alpha.12",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",

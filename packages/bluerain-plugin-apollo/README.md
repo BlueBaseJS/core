@@ -70,16 +70,15 @@ This hook gives the ability to hook into Apollo's network interface. A usecase c
 
 **Parameters:**
 
-| Name   | Type   | Description           |
-| ------ | ------ | --------------------- |
+| Name             | Type   | Description                      |
+| ---------------- | ------ | -------------------------------- |
 | networkInterface | Object | Apollo's networkInterface object |
 
 **Returns:**
 
-| Name   | Type   | Description           |
-| ------ | ------ | --------------------- |
+| Name             | Type   | Description                      |
+| ---------------- | ------ | -------------------------------- |
 | networkInterface | Object | Apollo's networkInterface object |
-
 
 ## API
 
