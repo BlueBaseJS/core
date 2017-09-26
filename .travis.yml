@@ -5,7 +5,7 @@ before_install:
   - npm install -g codecov
 jobs:
   include:
-    - stage: Lerna Bootstrap Test
-      script: yarn cache clean && lerna bootstrap
+    - stage: Lerna Bootstrap
+      script: yarn cache clean && lerna bootstrap && lerna run lint
     - stage: ES Lint & Flow
-      script: lerna run lint && lerna run flow
+      script: lerna run test && lerna run flow
