@@ -6,8 +6,6 @@ import { Plugin } from '@blueeast/bluerain-os';
 
 import { persistStore, autoRehydrate } from 'redux-persist';
 
-import reducer from './reducer';
-
 /**
  * Main Persist Redux Plugin class.
  * @property {string} pluginName "PersistReduxPlugin"
@@ -21,9 +19,8 @@ class ApolloPlugin extends Plugin {
 	static initialize(config = {}, ctx) {
 		ctx.Filters.add('bluerain.redux.enhancers', (enhancers) => {
 			enhancers.push(autoRehydrate());
+			return enhancers;
 		});
-		ctx.Filters.add('bluerain.redux.reducers.bluerain', reducers => Object.assign({}, reducers,  reducer
-		));
 		ctx.Filters.add('bluerain.redux.store', (store) => {
 			persistStore(store);
 		});
