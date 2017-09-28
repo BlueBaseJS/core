@@ -2,8 +2,8 @@ import { Plugin } from '@blueeast/bluerain-os';
 import { compose } from 'redux';
 
 function addReduxDevTools(composed, enhancers) {
-	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-undef
-	return composeEnhancers(enhancers);
+	composed = compose(composed, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); // eslint-disable-line no-undef
+	return composed;
 }
 
 /**
