@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-persist-redux",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A BlueRain Plugin that integrates persist redux in to redux",
   "main": "dist/index.js",
   "scripts": {
