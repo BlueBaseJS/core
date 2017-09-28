@@ -1,0 +1,9 @@
+{
+	"extends": "eslint-config-blueeast/react",
+	"plugins": [ "flowtype" ],
+	"parser": "babel-eslint",
+	"rules": {
+		"prefer-arrow-callback": 0, // Because named functions are required in filters
+		"import/no-dynamic-require": 0 // Because we do this to avoid circular dependencies
+	}
+}

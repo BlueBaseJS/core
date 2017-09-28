@@ -30,7 +30,7 @@ const createStore = (ctx: BlueRainType) => {
 	composed = ctx.Filters.run('bluerain.redux.composed', composed, ...enhancers);
 
 	store = createReduxStore(reducers, initialState,  composed);
-
+	ctx.Filters.run('bluerain.redux.store', store);
 	return store;
 };
 
