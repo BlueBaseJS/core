@@ -108,6 +108,21 @@ export default class Registry {
 	}
 
 	/**
+	 * Remove a plugin from the registry
+	 * @param {string} key The key plugin to remove
+	 */
+	remove(key: string) {
+		if (key === undefined || key === null) {
+			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);
+		}
+		if (!this.Table[key]) {
+			throw new Error(`${key} is not registered in the ${this.name} registry.`);
+		}
+
+		delete this.Table[key];
+	}
+
+	/**
 	 * Merge registry with another obne.
 	 *
 	 * @param {object} table The registry table
