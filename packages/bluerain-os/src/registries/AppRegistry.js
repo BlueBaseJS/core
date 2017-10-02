@@ -1,8 +1,8 @@
 /* @flow */
 
 import kebabCase from 'lodash.kebabcase';
-import get from 'lodash.get';
 
+import MapRegistry from './MapRegistry';
 import BR, { App } from '../index';
 
 const defaultAppRoutePrefix = '/app';
@@ -11,15 +11,19 @@ const defaultAppRoutePrefix = '/app';
  * All system apps are stored in this registry
  * @property {Object} AppsTable Storage table of all apps
  */
-class AppRegistry {
+class AppRegistry extends MapRegistry {
 
-	AppsTable: { [string]: App } = {};
+	data: Map<string, App>;
+
+	constructor() {
+		super('AppRegistry');
+	}
 
 	/**
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	register(app: App) {
+	set(app: App) {
 		if (app === undefined || app === null) {
 			throw new Error('No app provided');
 		}
@@ -36,7 +40,7 @@ class AppRegistry {
 		app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 		app.path = `${app.appRoutePrefix}/${app.slug}`;
 
-		this.AppsTable[app.slug] = app;
+		super.set(app.slug, app);
 	}
 
 	/**
@@ -51,60 +55,20 @@ class AppRegistry {
 			throw new Error('apps parameter must be an Array');
 		}
 
-		apps.forEach(app => me.register(app));
-	}
-
-	/**
-	 * Get an app
-	 * @param {string} slug The slug of the app
-	 * @return {App}
-	 */
-	get(slug: string) : App {
-		if (slug === undefined || slug === null) {
-			throw new Error('No plugin slug provided');
-		}
-
-		return get(this.AppsTable, slug);
+		apps.forEach(app => me.set(app));
 	}
 
 	/**
 	 * Initialize all apps
 	 */
 	initializeAll() {
-		const me = this;
-		Object.keys(me.AppsTable).forEach((key) => {
-
-			const app = me.AppsTable[key];
+		for (const app of this.data.values()) {
 			if (app.initialize) {
 				const config = BR.Configs.get(`apps.${app.slug}`);
 				app.config = config;
 				app.initialize(config, BR);
 			}
-
-		});
-
-	}
-
-	/**
-	 * Remove an app from the registry
-	 * @param {string} slug The slug of the app to remove
-	 */
-	remove(slug: string) {
-		if (slug === undefined || slug === null) {
-			throw new Error(`slug cannot be ${slug}`);
 		}
-		if (!this.AppsTable[slug]) {
-			throw new Error(`${slug} is not registered.`);
-		}
-		delete this.AppsTable[slug];
-	}
-
-	/**
-	 * Get all apps
-	 * @returns {Object} An object with slug: app key value pair
-	 */
-	getApps() : { [string]: App } {
-		return this.AppsTable;
 	}
 
 	/**
@@ -114,21 +78,13 @@ class AppRegistry {
 	 * @returns {Object} JSON Schema
 	 */
 	getComponentSchema() : Array<*> {
-		const apps = this.getApps();
-
 		const appRoutes = [];
-		for (const key in apps) {
-
-			// skip loop if the property is from prototype
-			if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
-
-			const app = apps[key];
-
+		for (const app of this.data.values()) {
 			appRoutes.push({
 				component: 'Route',
 				props: {
 					path: app.path,
-					key,
+					key: app.slug,
 					component: app
 				}
 			});

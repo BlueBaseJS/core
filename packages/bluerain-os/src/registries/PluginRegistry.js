@@ -13,7 +13,6 @@ export default class PluginRegistry extends MapRegistry {
 
 	constructor() {
 		super('PluginRegistry');
-		console.log('Shiny new plugin registry');
 	}
 
 	/**
@@ -50,7 +49,6 @@ export default class PluginRegistry extends MapRegistry {
 			throw new Error('plugins parameter must be an Array');
 		}
 
-		console.dir(plugins)
 		plugins.forEach((plugin: Plugin) => me.set(plugin));
 	}
 
