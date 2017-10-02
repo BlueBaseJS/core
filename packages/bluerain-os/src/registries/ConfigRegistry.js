@@ -41,7 +41,7 @@ class ConfigRegistry {
 	/**
 	 * Register many configs at once
 	 */
-	register(configs: {}) {
+	registerMany(configs: {}) {
 		this.ConfigsTable = merge(this.ConfigsTable, configs);
 	}
 }

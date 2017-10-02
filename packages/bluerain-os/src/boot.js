@@ -43,8 +43,8 @@ export default function(options: BootOptions = {
 	BR.Filters.run('bluerain.system.boot.start');
 
 	// Initialize all configs
-	BR.Configs.register(defaultConfigs);
-	BR.Configs.register(config);
+	BR.Configs.registerMany(defaultConfigs);
+	BR.Configs.registerMany(config);
 
 	// =[ System Lifecycle Event ]= Configurations Loaded
 	BR.Filters.run('bluerain.system.configurations.loaded');
