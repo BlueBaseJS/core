@@ -13,6 +13,8 @@ const bootOptions = {
 	plugins
 };
 
+console.time('BlueRain Booted');
 BR.boot(bootOptions);
+console.timeEnd('BlueRain Booted');
 
 console.log('BlueRain Booted!', BR);

@@ -16,5 +16,8 @@
  "devDependencies": {
   "fs-extra": "^4.0.2",
   "lerna": "^2.1.2"
+ },
+ "dependencies": {
+  "immutable": "^3.8.1"
  }
 }

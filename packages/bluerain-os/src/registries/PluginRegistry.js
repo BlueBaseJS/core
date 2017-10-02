@@ -1,23 +1,26 @@
-/* @flow */
-
-import get from 'lodash.get';
 import kebabCase from 'lodash.kebabcase';
 
-import BR from '../index';
+import MapRegistry from './MapRegistry';
+import BR, { Plugin } from '../index';
 
 /**
  * All system plugins are stored in this registry
- * @property {Object} PluginsTable Storage table of all plugins
+ * @property {Object} data Storage table of all plugins
  */
-class PluginRegistry {
+export default class PluginRegistry extends MapRegistry {
 
-	PluginsTable: { [string]: BR.Plugin } = {};
+	data: Map<string, Plugin>;
+
+	constructor() {
+		super('PluginRegistry');
+		console.log('Shiny new plugin registry');
+	}
 
 	/**
 	 * Register a Plugin
 	 * @param {Plugin} plugin The plugin to register
 	 */
-	register(plugin: BR.Plugin) {
+	set(plugin: Plugin) {
 		if (plugin === undefined || plugin === null) {
 			throw new Error('No plugin provided');
 		}
@@ -32,14 +35,14 @@ class PluginRegistry {
 
 		plugin.slug = kebabCase(plugin.slug);
 
-		this.PluginsTable[plugin.slug] = plugin;
+		super.set(plugin.slug, plugin);
 	}
 
 	/**
 	 * Register many plugins at once
 	 * @param {Array<Plugin>} plugins The array of plugins to register
 	 */
-	registerMany(plugins: Array<BR.Plugin>) {
+	registerMany(plugins: Array<Plugin>) {
 		const me = this;
 		plugins = plugins || [];
 
@@ -47,53 +50,20 @@ class PluginRegistry {
 			throw new Error('plugins parameter must be an Array');
 		}
 
-		plugins.forEach((plugin: BR.Plugin) => me.register(plugin));
-	}
-
-	/**
-	 * Remove a plugin from the registry
-	 * @param {string} slug The slug plugin to remove
-	 */
-	remove(slug: string) {
-		if (slug === undefined || slug === null) {
-			throw new Error(`slug cannot be ${slug}`);
-		}
-		if (!this.PluginsTable[slug]) {
-			throw new Error(`${slug} is not registered.`);
-		}
-		delete this.PluginsTable[slug];
-	}
-
-	/**
-	 * Get a plugin
-	 * @param {string} slug The slug of the plugin
-	 * @return {Plugin}
-	 */
-	get(slug: string) : BR.Plugin {
-		if (slug === undefined || slug === null) {
-			throw new Error('No plugin slug provided');
-		}
-
-		return get(this.PluginsTable, slug);
+		console.dir(plugins)
+		plugins.forEach((plugin: Plugin) => me.set(plugin));
 	}
 
 	/**
 	 * Initialize all plugins
 	 */
 	initializeAll() {
-		const me = this;
-		Object.keys(me.PluginsTable).forEach((key) => {
-
-			const plugin = me.PluginsTable[key];
+		for (const plugin of this.data.values()) {
 			if (plugin.initialize) {
 				const config = BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;
 				plugin.initialize(config, BR);
 			}
-
-		});
-
+		}
 	}
 }
-
-export default PluginRegistry;
