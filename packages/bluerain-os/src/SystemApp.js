@@ -14,7 +14,8 @@ export const SystemRoutes = () => {
 			props: {
 				path: '/',
 				exact: true,
-				component: BR.Components.get('IndexPage')
+				component: BR.Utils.AsyncComponent(() =>
+				System.import('./pages/IndexPage').then(module => module.default))
 			}
 		},
 		...appRoutes
@@ -27,7 +28,8 @@ export const SystemRoutes = () => {
 	systemRoutes.push({
 		component: 'Route',
 		props: {
-			component: BR.Components.get('NotFoundPage')
+			component: BR.Utils.AsyncComponent(() =>
+			System.import('./pages/NotFoundPage').then(module => module.default))
 		}
 	});
 
