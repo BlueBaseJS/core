@@ -1,10 +1,7 @@
-/**
- * Created by amna on 9/9/17.
- */
+// @flow
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withBlueRain } from '@blueeast/bluerain-os';
+import { withBlueRain, type BlueRain } from '@blueeast/bluerain-os';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import TaskbarComponent from './TaskbarComponent';
@@ -25,48 +22,43 @@ const messages = defineMessages({
 	deviceexplorer: {
 		id: 'plugin.taskbar.deviceexplorer',
 		defaultMessage: 'Device Explorer'
+	},
+	settings: {
+		id: 'plugin.taskbar.settings',
+		defaultMessage: 'Settings'
 	}
 });
 
-class TaskbarContainer extends React.Component {
+const TaskbarContainer = (props: {
+	hideLabels: boolean,
+	bluerain: BlueRain,
+	intl: {}
+}) => {
 
-	constructor(props) {
-		super(props);
-	}
+	const history = props.bluerain.refs.router.history;
+	const intl = props.intl;
 
-	render() {
+	const items = [
+		{
+			icon: <Launcher />,
+			label: intl.formatMessage(messages.apps),
+			onClick: () => { history.push('/'); }
+		},
+		'-',
+		{
+			icon: <Bulb />,
+			label: intl.formatMessage(messages.deviceexplorer),
+			onClick: () => { history.push('/app/hello-world'); }
+		},
+		'->',
+		{
+			icon: <Bulb />,
+			label: intl.formatMessage(messages.settings),
+			onClick: () => { history.push('/app/settings'); }
+		}
+	];
 
-		const history = this.props.bluerain.refs.router.history;
-		const intl = this.props.intl;
-
-		const items = [
-			{
-				icon: <Mevris />,
-				label: intl.formatMessage(messages.mevris),
-				onClick: () => { history.push('/'); }
-			},
-			{
-				icon: <Launcher />,
-				label: intl.formatMessage(messages.apps),
-				onClick: () => { history.push('/'); }
-			},
-			{
-				icon: <Bulb />,
-				label: intl.formatMessage(messages.deviceexplorer),
-				onClick: () => { history.push('/app/hello-world'); }
-			}
-		];
-
-		return (<TaskbarComponent
-  items={items}
-  hideLabels={this.props.hideLabels}
-  style={{ justifyContent: 'space-evenly' }}
-		/> );
-	}
-}
-
-TaskbarContainer.propTypes = {
-	hideLabels: PropTypes.bool
+	return (<TaskbarComponent logo={<Mevris />} title={intl.formatMessage(messages.mevris)} items={items} hideLabels={props.hideLabels} /> );
 };
 
 TaskbarContainer.defaultProps = {

@@ -1,7 +1,7 @@
 import RX from 'reactxp';
 
 const SidebarStyles = RX.Styles.createViewStyle({
-	width: '16%'
+	width: '20%',
 });
 
 export default (BR, Content) => (props) => {
