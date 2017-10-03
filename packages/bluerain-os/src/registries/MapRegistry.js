@@ -35,7 +35,7 @@ export default class Registry {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 
-		if (this.has(key)) {
+		if (this.data.has(key)) {
 			throw new Error(`An item with ${key} key already exists in the ${this.name} registry. Try using the "replace" method instead.`);
 		}
 
@@ -50,9 +50,9 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 	add(key: string, item: any) {
-		this.set(key, item);
+		this.set.apply(null, arguments); // eslint-disable-line
 	}
-
+	
 	/**
 	 * Add an item to the Registry.
 	 * Alias of 'set' method.
@@ -61,7 +61,7 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 	register(key: string, item: any) {
-		this.set(key, item);
+		this.set.apply(null, arguments); // eslint-disable-line
 	}
 
 	/**
