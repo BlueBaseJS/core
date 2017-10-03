@@ -4,7 +4,7 @@ import { withBlueRain } from '@blueeast/bluerain-os';
 
 import { Styles } from 'reactxp';
 // import  { history } from '../../../../../../src/router';
-import pageStyle from './pageStyles';
+import pageStyle from '../pageStyles';
 
 const buttonStyles = Styles.createViewStyle({
 	padding: 5,

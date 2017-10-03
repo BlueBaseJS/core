@@ -1,6 +1,6 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
 
-import pageStyle from './pageStyles';
+import pageStyle from '../pageStyles';
 
 export default withBlueRain(({ match, appName, bluerain: BR }) => {
 	const layout = {
