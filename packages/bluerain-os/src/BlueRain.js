@@ -6,7 +6,6 @@ import ConfigRegistry from './registries/ConfigRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import PluginRegistry from './registries/PluginRegistry';
-import AsyncComponent from './utils/AsyncComponent';
 
 // Others
 import boot from './boot';
@@ -56,7 +55,6 @@ const BlueRain: BlueRainType = {
 	// Miscellaneous
 	Utils: {
 		parseJsonSchema,
-		AsyncComponent
 	},
 
 	// References
