@@ -9,6 +9,7 @@ import List from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 
+import NavHeader from '../Buttons/NavHeader';
 import NavItem from '../Buttons/NavItem';
 import Spacer from '../Buttons/Spacer';
 
@@ -50,10 +51,7 @@ const TaskbarComponent = (props: {
 	return (
   <MuiThemeProvider muiTheme={theme}>
     <Paper rounded={false} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <AppBar
-        title={title}
-        iconElementLeft={logo}
-      />
+      <NavHeader title={title} logo={logo} hideLabel={hideLabels} />
       <List {...rest} style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }} >
         {
           items.map((item, index) => {
