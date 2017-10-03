@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { setWindowDimentions } from './actions';
 
@@ -9,6 +10,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	setWindowDimentions: (w, h) => dispatch(setWindowDimentions(w, h))
 });
 
-const withWindowInfo = Component => connect(mapStateToProps, mapDispatchToProps)(Component);
+const withWindowInfo = Component => connect(mapStateToProps, mapDispatchToProps)(props => <Component {...props} />);
 
 export default withWindowInfo;
