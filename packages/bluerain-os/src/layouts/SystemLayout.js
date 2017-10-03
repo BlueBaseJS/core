@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react';
 import RX from 'reactxp';
-
+import BR from '../index';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
 const defaultStyle = RX.Styles.createViewStyle({
@@ -32,8 +32,22 @@ class SystemLayout extends RX.Component {
 	}
 
 	render() {
-		const { children, style, ...other } = this.props;
-		return (<RX.View onLayout={this.onLayout} style={[defaultStyle, style]} {...other} >{children}</RX.View>);
+		const { children, style, systemNav, ...other } = this.props;
+		const schema = {
+			component: 'View',
+			props: {
+				onLayout: this.onLayout,
+				style: [defaultStyle, style],
+				...other
+			},
+			children: [{
+				component: 'View', // System Content
+				text: children,
+				props: { style: { flexGrow: 1, flex: 1 } }
+			}]
+		};
+		const layout = BR.Filters.run('bluerain.system.app.layout', schema, systemNav.disabled);
+		return BR.Utils.parseJsonSchema(layout);
 	}
 }
 

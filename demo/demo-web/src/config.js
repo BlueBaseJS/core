@@ -19,7 +19,7 @@ const config = {
 				'ur': 'اردو'
 			},
 			localeData: [].concat(
-				require('react-intl/locale-data/ur'),
+				require('react-intl/locale-data/ur')
 				// require('react-intl/locale-data/fr')
 			)
 		},
