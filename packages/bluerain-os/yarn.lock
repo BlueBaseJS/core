@@ -2,6 +2,49 @@
 # yarn lockfile v1
 
 
+"@blueeast/bluerain-os@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-0.4.2.tgz#0d8ca90cfbe61da646a8938f9d859a79d65f169a"
+  dependencies:
+    "@blueeast/bluerain-plugin-react-router" "^0.4.2"
+    "@blueeast/bluerain-plugin-redux" "^0.4.2"
+    eventemitter3 "^2.0.3"
+    history "^4.6.3"
+    html-tags "^2.0.0"
+    is-electron "^2.1.0"
+    lodash.get "^4.4.2"
+    lodash.kebabcase "^4.1.1"
+    lodash.merge "^4.6.0"
+    lodash.reject "^4.6.0"
+    lodash.set "^4.3.2"
+    react "^16.0.0-alpha.12"
+    react-dom "^16.0.0-alpha.12"
+    react-redux "^5.0.6"
+    reactxp "^0.42.0-rc.25"
+    recompose "^0.25.0"
+    redux "^3.7.2"
+
+"@blueeast/bluerain-plugin-react-router@^0.4.0", "@blueeast/bluerain-plugin-react-router@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.2.tgz#1f24e019bb850adbf9ae518ff90c3cec56026f2f"
+  dependencies:
+    "@blueeast/bluerain-os" "^0.4.2"
+    react "^16.0.0-alpha.12"
+    react-redux "^5.0.6"
+    react-router-dom "^4.2.2"
+    react-router-native "^4.2.0"
+    react-router-redux "^5.0.0-alpha.6"
+    redux "^3.7.2"
+
+"@blueeast/bluerain-plugin-redux@^0.4.0", "@blueeast/bluerain-plugin-redux@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.4.2.tgz#ac5caeef8ec165ac217248d66aa66b2cdac127d4"
+  dependencies:
+    "@blueeast/bluerain-os" "^0.4.2"
+    react "^16.0.0-alpha.12"
+    react-redux "^5.0.6"
+    redux "^3.7.2"
+
 "@types/lodash@^4.14.64", "@types/lodash@^4.14.66":
   version "4.14.74"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.74.tgz#ac3bd8db988e7f7038e5d22bd76a7ba13f876168"
@@ -2482,6 +2525,18 @@ fbjs@^0.8.1, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
+fbjs@^0.8.16:
+  version "0.8.16"
+  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
+  dependencies:
+    core-js "^1.0.0"
+    isomorphic-fetch "^2.1.1"
+    loose-envify "^1.0.0"
+    object-assign "^4.1.0"
+    promise "^7.1.1"
+    setimmediate "^1.0.5"
+    ua-parser-js "^0.7.9"
+
 figures@^1.3.5:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
@@ -2951,7 +3006,7 @@ highlight.js@^9.1.0:
   version "9.12.0"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.12.0.tgz#e6d9dbe57cbefe60751f02af336195870c90c01e"
 
-history@^4.6.3:
+history@^4.5.1, history@^4.6.3, history@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/history/-/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
   dependencies:
@@ -2969,7 +3024,7 @@ hoist-non-react-statics@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
-hoist-non-react-statics@^2.2.1:
+hoist-non-react-statics@^2.2.1, hoist-non-react-statics@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
@@ -3953,6 +4008,14 @@ lodash.isequal@^4.0.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
 
+lodash.isfunction@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.8.tgz#4db709fc81bc4a8fd7127a458a5346c5cdce2c6b"
+
+lodash.isnil@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isnil/-/lodash.isnil-4.0.0.tgz#49e28cd559013458c814c5479d3c663a21bfaa6c"
+
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
@@ -4419,7 +4482,7 @@ oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
-object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0:
+object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -4697,6 +4760,12 @@ path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
 
+path-to-regexp@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
+  dependencies:
+    isarray "0.0.1"
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -4798,6 +4867,14 @@ prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.5.9:
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
+
+prop-types@^15.5.4:
+  version "15.6.0"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
 
 property-information@^3.1.0:
   version "3.2.0"
@@ -4910,6 +4987,44 @@ react-redux@^5.0.6:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
+
+react-router-dom@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"
+  dependencies:
+    history "^4.7.2"
+    invariant "^2.2.2"
+    loose-envify "^1.3.1"
+    prop-types "^15.5.4"
+    react-router "^4.2.0"
+    warning "^3.0.0"
+
+react-router-native@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-router-native/-/react-router-native-4.2.0.tgz#cb4ff08542ffe336b5f76167376cd788e1d4006a"
+  dependencies:
+    prop-types "^15.5.4"
+    react-router "^4.2.0"
+
+react-router-redux@^5.0.0-alpha.6:
+  version "5.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.6.tgz#7418663c2ecd3c51be856fcf28f3d1deecc1a576"
+  dependencies:
+    history "^4.5.1"
+    prop-types "^15.5.4"
+    react-router "^4.1.1"
+
+react-router@^4.1.1, react-router@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.2.0.tgz#61f7b3e3770daeb24062dae3eedef1b054155986"
+  dependencies:
+    history "^4.7.2"
+    hoist-non-react-statics "^2.3.0"
+    invariant "^2.2.2"
+    loose-envify "^1.3.1"
+    path-to-regexp "^1.7.0"
+    prop-types "^15.5.4"
+    warning "^3.0.0"
 
 react@^16.0.0-alpha.12:
   version "16.0.0-rc.3"
