@@ -7,6 +7,7 @@ import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 const defaultStyle = RX.Styles.createViewStyle({
 	flex: 1,
 	overflow: 'auto',
+	flexDirection: 'row'
 }, false);
 
 class SystemLayout extends RX.Component {

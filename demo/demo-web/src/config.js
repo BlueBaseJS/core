@@ -23,6 +23,10 @@ const config = {
 				// require('react-intl/locale-data/fr')
 			)
 		},
+		'user-management': {
+			logoUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/mevris-logo.svg',
+			bannerImageUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/bg.jpg'
+		}
 	},
 
 	theme: {
