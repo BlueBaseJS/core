@@ -4,7 +4,7 @@ import SettingsLayout from './SettingsLayout';
 
 const EnhancedApp = withBlueRain(App);
 EnhancedApp.appName = 'Settings';
-
+EnhancedApp.iconColor = 'blue';
 EnhancedApp.initialize = function(config, ctx) {
 
 	ctx.Components.register('SettingsLayout', SettingsLayout);

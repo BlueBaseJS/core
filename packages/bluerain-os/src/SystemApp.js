@@ -36,7 +36,6 @@ export const SystemRoutes = () => {
 
 // $FlowFixMe
 export default (props) => {
-	BR.Filters.run('bluerain.systemlayout');
 	const routes = {
 		component: 'SystemLayout',
 		props,

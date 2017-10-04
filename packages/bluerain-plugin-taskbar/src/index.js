@@ -18,13 +18,9 @@ class TaskbarPlugin extends Plugin {
 	static initialize(config = {}, ctx) {
 
 		// Add taskbar
-		ctx.Filters.add('bluerain.system.app.layout', function taskbar(schema, disabled) {
-
+		ctx.Filters.add('bluerain.system.app.layout', function taskbar(schema) {
 			const withWindowInfo = ctx.Plugins.get('window-info').withWindowInfo;
-
-			if (!disabled) {
-				schema.children.unshift({ component: withWindowInfo(withSystemNav(Taskbar)) });
-			}
+			schema.children.unshift({ component: withWindowInfo(withSystemNav(Taskbar)) });
 			return schema;
 		});
 
