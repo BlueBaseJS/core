@@ -7,12 +7,6 @@ import Taskbar from './common/Taskbar';
 import setResponsiveConfigs from './redux/setResponsiveConfigs';
 import reducer from './redux/reducer';
 import withSystemNav from './redux/withSystemNav';
-import {
-  openSystemNav,
-  closeSystemNav,
-  dockSystemNav,
-	undockSystemNav,
-} from './redux/actions';
 
 /**
  * Main Taskbar Plugin class.
@@ -50,6 +44,14 @@ class TaskbarPlugin extends Plugin {
 		});
 
 		// When window is resized
+		//	- on boot
+		ctx.Filters.add('bluerain.system.boot.end', function eng(messages) {
+			const state = ctx.refs.store.getState();
+			const size = state.bluerain.window.size;
+			setResponsiveConfigs(ctx.refs.store.dispatch, size);
+		});
+
+		// 	- every time window is resized
 		ctx.Events.on('plugin.window_info.resize', (size, prevSize) => {
 			setResponsiveConfigs(ctx.refs.store.dispatch, size);
 		});
