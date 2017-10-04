@@ -1,31 +1,23 @@
 /* @flow */
-import React, { type ComponentType } from 'react';
+import React, { type Node } from 'react';
 
 import BR from '../index';
-import { withWindowInfo } from '../plugins/WindowInfoPlugin';
+import { withWindowSize } from '../plugins/WindowInfoPlugin';
 
 type ResponsiveLayoutProps = {
-	window: {
-		width: number,
-		height: number,
-		size: string
-	},
-	default: ComponentType<any> | string,
-	xs?: ComponentType<any>,
-	sm?: ComponentType<any>,
-	md?: ComponentType<any>,
-	lg?: ComponentType<any>,
-	xl?: ComponentType<any>,
+	windowSize: string,
+	default: Node | string,
+	xs?: Node,
+	sm?: Node,
+	md?: Node,
+	lg?: Node,
+	xl?: Node,
 }
-
 
 /**
  * ResponsiveLayout component to create responsive layouts.
  *
- * @prop {object} window The window state passed from the store
- * @prop {number} window.width The window width
- * @prop {number} window.height The window height
- * @prop {string} window.size The window size i.e. (xs|sm|md|lg|xl)
+ * @prop {string} windowSize The window size i.e. (xs|sm|md|lg|xl)
  * @prop {React.Component} default The default component to render, if a current size component is not given.
  * @prop {React.Component} xs The component to render when the screen size is extra-small.
  * @prop {React.Component} sm The component to render when the screen size is small.
@@ -34,8 +26,8 @@ type ResponsiveLayoutProps = {
  * @prop {React.Component} xl The component to render when the screen size is extra-large.
  */
 function ResponsiveLayout(props: ResponsiveLayoutProps) {
-	const { window, default: def, xs, sm, md, lg, xl, ...otherProps } = props; // eslint-disable-line no-unused-vars
-	let Component = (props[window.size]) ? props[window.size] : def;
+	const { windowSize, default: def, xs, sm, md, lg, xl, ...otherProps } = props; // eslint-disable-line no-unused-vars
+	let Component = (props[windowSize]) ? props[windowSize] : def;
 
 	if (typeof Component === 'string') {
 		Component = BR.Components.get(Component);
@@ -55,4 +47,4 @@ ResponsiveLayout.defaultProps = {
 	xl: undefined,
 };
 
-export default withWindowInfo(ResponsiveLayout);
+export default withWindowSize(ResponsiveLayout);

@@ -12,11 +12,15 @@ import {
 
 import initialState from './InitialState';
 
-export default function systemNav(state = initialState, action) {
+export default (state = initialState, action) => {
+
+	if (!action.type.startsWith('@@BLUERAIN/SYSTEM_NAV/')) {
+		return state;
+	}
 
 	switch (action.type) {
 
-	// Activate/Deactivate
+		// Activate/Deactivate
 	case ENABLE_SYSTEM_NAV:
 		return Object.assign({}, state, {
 			disabled: false
@@ -27,7 +31,7 @@ export default function systemNav(state = initialState, action) {
 			disabled: true
 		});
 
-	// Open/Close
+		// Open/Close
 	case OPEN_SYSTEM_NAV:
 		return Object.assign({}, state, {
 			open: true
@@ -43,7 +47,7 @@ export default function systemNav(state = initialState, action) {
 			open: state.open !== true
 		});
 
-  // Docking
+		// Docking
 	case DOCK_SYSTEM_NAV:
 
 		return Object.assign({}, state, {
@@ -56,7 +60,7 @@ export default function systemNav(state = initialState, action) {
 			docked: false
 		});
 
-	// Labels
+		// Labels
 	case HIDE_LABELS_SYSTEM_NAV:
 
 		return Object.assign({}, state, {
@@ -72,4 +76,5 @@ export default function systemNav(state = initialState, action) {
 	default:
 		return state;
 	}
-}
+};
+

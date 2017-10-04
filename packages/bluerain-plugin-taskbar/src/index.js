@@ -2,9 +2,10 @@
 
 // import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
-import Taskbar from './common/Taskbar/TaskbarContainer';
+import Taskbar from './common/Taskbar';
 import reducer from './systemnav/reducer';
 import withSystemNav from './systemnav/withSystemNav';
+
 /**
  * Main Taskbar Plugin class.
  * @property {string} pluginName "TaskbarPlugin"
@@ -18,13 +19,8 @@ class TaskbarPlugin extends Plugin {
 	static initialize(config = {}, ctx) {
 
 		// Add taskbar
-		ctx.Filters.add('bluerain.system.app.layout', function taskbar(schema, disabled) {
-
-			const withWindowInfo = ctx.Plugins.get('window-info').withWindowInfo;
-
-			if (!disabled) {
-				schema.children.unshift({ component: withWindowInfo(withSystemNav(Taskbar)) });
-			}
+		ctx.Filters.add('bluerain.system.app.layout', function taskbar(schema) {
+			schema.children.unshift({ component: withSystemNav(Taskbar) });
 			return schema;
 		});
 

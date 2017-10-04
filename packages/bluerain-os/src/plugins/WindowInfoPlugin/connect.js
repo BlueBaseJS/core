@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { setWindowDimentions } from './actions';
 
@@ -10,6 +9,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	setWindowDimentions: (w, h) => dispatch(setWindowDimentions(w, h))
 });
 
-const withWindowInfo = Component => connect(mapStateToProps, mapDispatchToProps)(props => <Component {...props} />);
+export const withWindowInfo = Component => connect(mapStateToProps, mapDispatchToProps)(Component);
 
-export default withWindowInfo;
+export const withWindowSize = Component => connect(state => ({
+	windowSize: state.bluerain.window.size
+}))(Component);
+

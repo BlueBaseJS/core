@@ -34,9 +34,8 @@ const TaskbarContainer = (props: {
 }) => {
 
 	console.log('taskbar props', props)
-	const { intl, systemNav, bluerain: BR, window } = props;
+	const { intl, systemNav, bluerain: BR } = props;
 	const hideLabels = systemNav.hideLabels;
-	const windowSize = window.size;
 
 	const Logo = <Mevris />; // TODO: This should come from bluerain config as a SVG path
 	const title = BR.Configs.get('title');
