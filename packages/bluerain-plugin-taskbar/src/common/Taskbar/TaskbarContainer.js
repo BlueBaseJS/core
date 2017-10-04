@@ -33,7 +33,6 @@ const TaskbarContainer = (props: {
 	intl: {}
 }) => {
 
-	console.log('taskbar props', props)
 	const { intl, systemNav, bluerain: BR } = props;
 	const hideLabels = systemNav.hideLabels;
 
@@ -61,14 +60,6 @@ const TaskbarContainer = (props: {
 			onClick: () => { history.push('/app/settings'); }
 		}
 	];
-
-	// Props based on screen size
-	// // This is just temporary
-	// if (windowSize === 'xs' || windowSize === 'sm') {
-	// 	props.systemNavActions.undock();
-	// } else {
-	// 	props.systemNavActions.dock();
-	// }
 
 	return (<TaskbarComponent
   logo={Logo}

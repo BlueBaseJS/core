@@ -2,6 +2,7 @@ import BR from '../../';
 import Plugin from '../../models/Plugin'; // BR.Plugin doesn't exist yet.
 
 import reducer from './reducer';
+import getWindowSize from './getWindowSize';
 import { withWindowInfo, withWindowSize } from './connect';
 
 export default class WindowInfoPlugin extends Plugin {
@@ -15,6 +16,32 @@ export default class WindowInfoPlugin extends Plugin {
 				window: reducer
 			});
 		});
+
+		// Middleware
+		const middleware = store => next => (action) => {
+
+			if (action.type !== '@@BLUERAIN/SET_WINDOW_INFO') {
+				return next(action);
+			}
+
+			const state = store.getState();
+			const prevSize = state.bluerain.window.size;
+			const newSize = getWindowSize(action.width);
+
+			if (prevSize !== newSize) {
+				BR.Events.emit('plugin.window_info.resize', newSize, prevSize);
+			}
+
+			next(action);
+		};
+
+		BR.Filters.add(
+			'bluerain.redux.middlewares',
+			function AddMiddleware(middlewares) {
+				middlewares.push(middleware);
+				return middlewares;
+			}
+		);
 	}
 
 	static withWindowInfo = withWindowInfo;

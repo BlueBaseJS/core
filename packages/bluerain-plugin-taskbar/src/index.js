@@ -3,8 +3,16 @@
 // import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
 import Taskbar from './common/Taskbar';
-import reducer from './systemnav/reducer';
-import withSystemNav from './systemnav/withSystemNav';
+
+import setResponsiveConfigs from './redux/setResponsiveConfigs';
+import reducer from './redux/reducer';
+import withSystemNav from './redux/withSystemNav';
+import {
+  openSystemNav,
+  closeSystemNav,
+  dockSystemNav,
+	undockSystemNav,
+} from './redux/actions';
 
 /**
  * Main Taskbar Plugin class.
@@ -39,6 +47,11 @@ class TaskbarPlugin extends Plugin {
 			messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
 
 			return messages;
+		});
+
+		// When window is resized
+		ctx.Events.on('plugin.window_info.resize', (size, prevSize) => {
+			setResponsiveConfigs(ctx.refs.store.dispatch, size);
 		});
 	}
 }
