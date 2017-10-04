@@ -1,12 +1,11 @@
 {
-  "name": "@blueeast/bluerain-plugin-material-ui",
-  "version": "0.4.2",
-  "description": "A BlueRain Plugin that integrates material-ui",
+  "name": "@blueeast/bluerain-plugin-why-did-you-update",
+  "version": "0.0.0",
+  "description": "A BlueRain Plugin to add why-did-you-update to test React performance",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "build": "rm -rf dist && babel -D src --out-dir dist && flow-copy-source src dist",
-    "build:watch": "nodemon --exec \"yarn build\" --ignore dist/",
     "flow": "flow",
     "lint": "eslint ./src/",
     "docs": "documentation readme src/** --section=API"
@@ -14,9 +13,8 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.2",
-    "material-ui": "^0.19.1",
-    "react": "^16.0.0-alpha.12"
+    "@blueeast/bluerain-os": "^0.4.0",
+    "why-did-you-update": "^0.0.8"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

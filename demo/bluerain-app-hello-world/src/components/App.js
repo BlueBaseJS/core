@@ -14,7 +14,6 @@ const App = (props) => {
 	const Route = BR.Components.get('Route');
 	const Redirect = BR.Components.get('Redirect');
 	const Switch = BR.Components.get('Switch');
-
 	return (
   <Page>
     <Header match={match} appName={appName} />
