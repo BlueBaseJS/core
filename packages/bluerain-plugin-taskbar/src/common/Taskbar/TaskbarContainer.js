@@ -9,7 +9,6 @@ import Bulb from '../icons/Bulb.component';
 import Launcher from '../icons/Launcher.component';
 import Mevris from '../icons/Mevris.component';
 
-
 const messages = defineMessages({
 	mevris: {
 		id: 'plugin.taskbar.mevris',
@@ -30,13 +29,15 @@ const messages = defineMessages({
 });
 
 const TaskbarContainer = (props: {
-	hideLabels: boolean,
 	bluerain: BlueRain,
 	intl: {}
 }) => {
 
+	console.log('Taskbar Container props', props)
+
+	const { intl, systemNav } = props;
 	const history = props.bluerain.refs.router.history;
-	const intl = props.intl;
+	const hideLabels = systemNav.hideLabels;
 
 	const items = [
 		{
@@ -58,7 +59,7 @@ const TaskbarContainer = (props: {
 		}
 	];
 
-	return (<TaskbarComponent logo={<Mevris />} title={intl.formatMessage(messages.mevris)} items={items} hideLabels={props.hideLabels} /> );
+	return (<TaskbarComponent logo={<Mevris />} title={intl.formatMessage(messages.mevris)} items={items} hideLabels={hideLabels} /> );
 };
 
 TaskbarContainer.defaultProps = {
