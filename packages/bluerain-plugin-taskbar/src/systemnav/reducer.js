@@ -14,8 +14,6 @@ import initialState from './InitialState';
 
 export default function systemNav(state = initialState, action) {
 
-	let obj;
-
 	switch (action.type) {
 
 	// Activate/Deactivate

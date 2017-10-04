@@ -9,6 +9,6 @@ export default (props: {
 }) => {
 
 	const { primaryText, hideLabel, ...other } = props;
-	const label = (hideLabel === true) ? (<span>.</span>) : primaryText; // dirty hack, should send undefined not span
+	const label = (hideLabel === true) ? null : primaryText; // dirty hack, should send undefined not span
 	return <ListItem primaryText={label} {...other} />;
 };

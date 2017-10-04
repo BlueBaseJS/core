@@ -8,6 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import List from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
+import Drawer from 'material-ui/Drawer';
 
 import NavHeader from '../Buttons/NavHeader';
 import NavItem from '../Buttons/NavItem';
@@ -48,12 +49,16 @@ const TaskbarComponent = (props: {
   } = props;
 
 	const theme = getMuiTheme(darkBaseTheme);
+
+	const drawerStyles = (props.docked === true && props.open === true) ? { position: 'relative' } : {};
+
 	return (
   <MuiThemeProvider muiTheme={theme}>
-    <Paper rounded={false} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <NavHeader title={title} logo={logo} hideLabel={hideLabels} />
-      <List {...rest} style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }} >
-        {
+    <Drawer {...rest} containerStyle={drawerStyles}>
+      <Paper rounded={false} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <NavHeader title={title} logo={logo} hideLabel={hideLabels} />
+        <List style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }} >
+          {
           items.map((item, index) => {
 	if (typeof item !== 'string') {
 		item.hideLabel = hideLabels;
@@ -62,8 +67,9 @@ const TaskbarComponent = (props: {
 	return renderItem(item, index);
 })
         }
-      </List>
-    </Paper>
+        </List>
+      </Paper>
+    </Drawer>
   </MuiThemeProvider>
 	);
 };

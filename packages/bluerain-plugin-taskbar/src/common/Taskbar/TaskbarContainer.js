@@ -33,12 +33,16 @@ const TaskbarContainer = (props: {
 	intl: {}
 }) => {
 
-	console.log('Taskbar Container props', props)
-
-	const { intl, systemNav } = props;
-	const history = props.bluerain.refs.router.history;
+	console.log('taskbar props', props)
+	const { intl, systemNav, bluerain: BR, window } = props;
 	const hideLabels = systemNav.hideLabels;
+	const windowSize = window.size;
 
+	const Logo = <Mevris />; // TODO: This should come from bluerain config as a SVG path
+	const title = BR.Configs.get('title');
+
+	// Items
+	const history = BR.refs.router.history;
 	const items = [
 		{
 			icon: <Launcher />,
@@ -59,11 +63,22 @@ const TaskbarContainer = (props: {
 		}
 	];
 
-	return (<TaskbarComponent logo={<Mevris />} title={intl.formatMessage(messages.mevris)} items={items} hideLabels={hideLabels} /> );
-};
+	// Props based on screen size
+	// // This is just temporary
+	// if (windowSize === 'xs' || windowSize === 'sm') {
+	// 	props.systemNavActions.undock();
+	// } else {
+	// 	props.systemNavActions.dock();
+	// }
 
-TaskbarContainer.defaultProps = {
-	hideLabels: false
+	return (<TaskbarComponent
+  logo={Logo}
+  title={title}
+  items={items}
+  hideLabels={hideLabels}
+  open={systemNav.open}
+  docked={systemNav.docked}
+	/> );
 };
 
 export default injectIntl(withBlueRain(TaskbarContainer));
