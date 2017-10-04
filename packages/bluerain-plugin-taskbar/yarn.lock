@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@blueeast/bluerain-os@^0.4.0", "@blueeast/bluerain-os@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-0.4.2.tgz#0d8ca90cfbe61da646a8938f9d859a79d65f169a"
+"@blueeast/bluerain-os@^0.4.0", "@blueeast/bluerain-os@^0.4.4":
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-0.4.5.tgz#622e1dd527d733192043febd5baada78527ebeb8"
   dependencies:
     "@blueeast/bluerain-plugin-react-router" "^0.4.2"
     "@blueeast/bluerain-plugin-redux" "^0.4.2"
@@ -25,10 +25,10 @@
     redux "^3.7.2"
 
 "@blueeast/bluerain-plugin-react-router@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.2.tgz#1f24e019bb850adbf9ae518ff90c3cec56026f2f"
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.4.tgz#c2717d33f918eeb9935b2d57a7e3c0160d544c63"
   dependencies:
-    "@blueeast/bluerain-os" "^0.4.2"
+    "@blueeast/bluerain-os" "^0.4.4"
     react "^16.0.0-alpha.12"
     react-redux "^5.0.6"
     react-router-dom "^4.2.2"
@@ -37,17 +37,17 @@
     redux "^3.7.2"
 
 "@blueeast/bluerain-plugin-redux@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.4.2.tgz#ac5caeef8ec165ac217248d66aa66b2cdac127d4"
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.4.4.tgz#6f82860335e4f66e740df9f86d14ba2907ee3639"
   dependencies:
-    "@blueeast/bluerain-os" "^0.4.2"
+    "@blueeast/bluerain-os" "^0.4.4"
     react "^16.0.0-alpha.12"
     react-redux "^5.0.6"
     redux "^3.7.2"
 
 "@types/lodash@^4.14.64", "@types/lodash@^4.14.66":
-  version "4.14.76"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.76.tgz#87874f766774d54e89589697340be9496fb8bf70"
+  version "4.14.77"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.77.tgz#0bc699413e84d6ed5d927ca30ea0f0a890b42d75"
 
 JSONStream@^1.0.3:
   version "1.3.1"
@@ -5512,8 +5512,8 @@ symbol-tree@^3.2.1:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
 synctasks@^0.2.9:
-  version "0.2.22"
-  resolved "https://registry.yarnpkg.com/synctasks/-/synctasks-0.2.22.tgz#c63ae0c94be0dd9c799bd9c8fd98d571bf544947"
+  version "0.2.23"
+  resolved "https://registry.yarnpkg.com/synctasks/-/synctasks-0.2.23.tgz#2f3378adca9bd65f8784b500dce5aff18ef446f7"
 
 table@^3.7.8:
   version "3.8.3"

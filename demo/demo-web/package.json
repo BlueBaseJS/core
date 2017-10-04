@@ -12,7 +12,7 @@
     "@blueeast/bluerain-app-hello-world": "../bluerain-app-hello-world",
 
     "@blueeast/bluerain-app-settings": "^0.4.0",
-    "@blueeast/bluerain-os": "0.4.0",
+    "@blueeast/bluerain-os": "0.4.2",
     "@blueeast/bluerain-plugin-apollo": "^0.4.0",
     "@blueeast/bluerain-plugin-intl": "^0.4.0",
     "@blueeast/bluerain-plugin-material-ui": "^0.4.0",
@@ -20,8 +20,7 @@
     "@blueeast/bluerain-plugin-redux":"^0.4.0",
     "@blueeast/bluerain-plugin-persist-redux": "^0.4.0",
     "@blueeast/bluerain-plugin-launcher": "../../packages/bluerain-plugin-launcher",
-    "@blueeast/bluerain-plugin-taskbar": "git+ssh://github.com/amnajunaid/bluerain-plugin-taskbar.git",
-    "@blueeast/bluerain-plugin-user-management": "git+ssh://git@bitbucket.org:be-iot-platform/bluerain-plugin-user-management.git",
+    "@blueeast/bluerain-plugin-taskbar": "0.0.0",
     "@blueeast/bluerain-plugin-why-did-you-update": "^0.0.0",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
