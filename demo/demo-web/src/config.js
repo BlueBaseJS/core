@@ -8,7 +8,7 @@ const config = {
 		// Apollo GraphQl
 		apollo: {
 			networkInterface: {
-				uri: 'http://localhost:3000/graphql'
+				uri: 'http://localhost:8000/graphql'
 			}
 		},
 
@@ -25,6 +25,9 @@ const config = {
 		},
 		'user-management': {
 			logoUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/mevris-logo.svg',
+			bannerImageUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/bg.jpg'
+		},
+		'launcher': {
 			bannerImageUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/bg.jpg'
 		}
 	},
