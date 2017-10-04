@@ -1,5 +1,5 @@
 /* @flow */
-import React from 'react';
+
 import RX from 'reactxp';
 import BR from '../index';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
@@ -33,7 +33,7 @@ class SystemLayout extends RX.Component {
 	}
 
 	render() {
-		const { children, style, systemNav, ...other } = this.props;
+		const { children, style, ...other } = this.props;
 		const schema = {
 			component: 'View',
 			props: {
@@ -47,7 +47,7 @@ class SystemLayout extends RX.Component {
 				props: { style: { flexGrow: 1, flex: 1 } }
 			}]
 		};
-		const layout = BR.Filters.run('bluerain.system.app.layout', schema, systemNav.disabled);
+		const layout = BR.Filters.run('bluerain.system.app.layout', schema);
 		return BR.Utils.parseJsonSchema(layout);
 	}
 }

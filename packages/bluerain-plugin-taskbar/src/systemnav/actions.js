@@ -12,6 +12,9 @@ export const TOGGLE_SYSTEM_NAV = 'TOGGLE_SYSTEM_NAV';
 export const DOCK_SYSTEM_NAV = 'DOCK_SYSTEM_NAV';
 export const UNDOCK_SYSTEM_NAV = 'UNDOCK_SYSTEM_NAV';
 
+export const SHOW_LABELS_SYSTEM_NAV = 'SHOW_LABELS_SYSTEM_NAV';
+export const HIDE_LABELS_SYSTEM_NAV = 'HIDE_LABELS_SYSTEM_NAV';
+
 /*
  * action creators
  */
@@ -42,4 +45,12 @@ export function dockSystemNav() {
 
 export function undockSystemNav() {
 	return { type: UNDOCK_SYSTEM_NAV };
+}
+
+export function showLabelsSystemNav() {
+	return { type: SHOW_LABELS_SYSTEM_NAV };
+}
+
+export function hideLabelsSystemNav() {
+	return { type: HIDE_LABELS_SYSTEM_NAV };
 }

@@ -2,7 +2,7 @@
 
 // import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
-import Taskbar from './pages/taskbar';
+import Taskbar from './common/Taskbar/TaskbarContainer';
 import reducer from './systemnav/reducer';
 import withSystemNav from './systemnav/withSystemNav';
 /**
@@ -17,19 +17,17 @@ class TaskbarPlugin extends Plugin {
 
 	static initialize(config = {}, ctx) {
 
-		// add withSystemNav HOC to SystemLayout
-		ctx.Filters.add('bluerain.systemlayout', function addSystemNav() {
-			ctx.Components.addHOCs('SystemLayout', withSystemNav);
-		});
-
 		// Add taskbar
 		ctx.Filters.add('bluerain.system.app.layout', function taskbar(schema, disabled) {
-			ctx.Components.addHOCs('SystemLayout', withSystemNav);
+
+			const withWindowInfo = ctx.Plugins.get('window-info').withWindowInfo;
+
 			if (!disabled) {
-				schema.children.unshift({ component: Taskbar });
+				schema.children.unshift({ component: withWindowInfo(withSystemNav(Taskbar)) });
 			}
 			return schema;
 		});
+
 		ctx.Filters.add('bluerain.redux.reducers.bluerain', function AddSystemNavReducers(reducers) {
 			return Object.assign({}, reducers, {
 				systemNav: reducer

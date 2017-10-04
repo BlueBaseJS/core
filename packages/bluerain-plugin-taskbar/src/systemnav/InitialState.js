@@ -1,7 +1,8 @@
 const initialState =  {
 	disabled: false,
-	open: false,
-	docked: false
+	open: true,
+	docked: true,
+	hideLabels: false,
 };
 
 

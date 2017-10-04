@@ -5,69 +5,69 @@ import {
   CLOSE_SYSTEM_NAV,
   TOGGLE_SYSTEM_NAV,
   DOCK_SYSTEM_NAV,
-  UNDOCK_SYSTEM_NAV
+	UNDOCK_SYSTEM_NAV,
+	SHOW_LABELS_SYSTEM_NAV,
+	HIDE_LABELS_SYSTEM_NAV
 } from './actions';
 
 import initialState from './InitialState';
 
 export default function systemNav(state = initialState, action) {
 
-	let obj;
-
 	switch (action.type) {
 
-	  // Activate/Deactivate
+	// Activate/Deactivate
 	case ENABLE_SYSTEM_NAV:
-		obj = Object.assign({}, state);
-		state.disabled = false;
-		return obj;
+		return Object.assign({}, state, {
+			disabled: false
+		});
 
 	case DISABLE_SYSTEM_NAV:
-		obj = Object.assign({}, state);
-		state.disabled = true;
-		return obj;
-	// { return { disabled:true,
-	// 	docked:false,
-	// 	open:false }; }
-    // state.disabled = true;
-		// obj = Object.assign({}, state, { disabled: true });
-		// console.log('obj', obj);
-		// // obj.disabled  = true;
-		// return obj;
+		return Object.assign({}, state, {
+			disabled: true
+		});
 
-	  // Open/Close
+	// Open/Close
 	case OPEN_SYSTEM_NAV:
-		obj = Object.assign({}, state);
-		state.open = true;
-		return obj;
+		return Object.assign({}, state, {
+			open: true
+		});
 
 	case CLOSE_SYSTEM_NAV:
-		obj = Object.assign({}, state);
-		state.open = false;
-		return obj;
+		return Object.assign({}, state, {
+			open: false
+		});
 
 	case TOGGLE_SYSTEM_NAV:
-		let open = true;
-		if (state.open === true) {
-			open = false;
-		}
+		return Object.assign({}, state, {
+			open: state.open !== true
+		});
 
-		obj = Object.assign({}, state);
-		obj.open = open;
-		return obj;
-
-    // Docking
+  // Docking
 	case DOCK_SYSTEM_NAV:
 
-		obj = Object.assign({}, state);
-		state.docked = true;
-		return obj;
+		return Object.assign({}, state, {
+			docked: true
+		});
 
 	case UNDOCK_SYSTEM_NAV:
 
-		obj = Object.assign({}, state);
-		state.docked = false;
-		return obj;
+		return Object.assign({}, state, {
+			docked: false
+		});
+
+	// Labels
+	case HIDE_LABELS_SYSTEM_NAV:
+
+		return Object.assign({}, state, {
+			hideLabels: true
+		});
+
+	case SHOW_LABELS_SYSTEM_NAV:
+
+		return Object.assign({}, state, {
+			hideLabels: false
+		});
 
 	default:
 		return state;
