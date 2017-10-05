@@ -57,7 +57,8 @@ class TaskbarPlugin extends Plugin {
 		ctx.Filters.add('bluerain.system.boot.end', function eng(messages) {
 			const state = ctx.refs.store.getState();
 			const size = state.bluerain.window.size;
-			setResponsiveConfigs(ctx.refs.store.dispatch, size);
+			const open = state.bluerain.systemNav.open;
+			setResponsiveConfigs(ctx.refs.store.dispatch, size, open);
 		});
 
 		// 	- every time window is resized

@@ -7,14 +7,16 @@ import {
 	hideLabelsSystemNav
 } from './actions';
 
-export default (dispatch, size) => {
-	if (size === 'xs' || size === 'sm') {
-		// dispatch(closeSystemNav());
-		dispatch(undockSystemNav());
-		dispatch(showLabelsSystemNav());
-	} else {
-		dispatch(openSystemNav());
-		dispatch(dockSystemNav());
-		dispatch(hideLabelsSystemNav());
+export default (dispatch, size, open) => {
+	if (open !== false) {
+		if (size === 'xs' || size === 'sm') {
+			dispatch(closeSystemNav());
+			dispatch(undockSystemNav());
+			dispatch(showLabelsSystemNav());
+		} else {
+			dispatch(openSystemNav());
+			dispatch(dockSystemNav());
+			dispatch(hideLabelsSystemNav());
+		}
 	}
 };
