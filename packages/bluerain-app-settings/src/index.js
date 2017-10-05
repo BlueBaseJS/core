@@ -1,9 +1,12 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
+import Icon from 'material-ui/svg-icons/action/settings';
+
 import App from './App';
 import SettingsLayout from './SettingsLayout';
 
 const EnhancedApp = withBlueRain(App);
 EnhancedApp.appName = 'Settings';
+EnhancedApp.appIcon = Icon;
 EnhancedApp.iconColor = 'blue';
 EnhancedApp.initialize = function(config, ctx) {
 

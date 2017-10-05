@@ -4,7 +4,8 @@ import React from 'react';
 import { withBlueRain, type BlueRain } from '@blueeast/bluerain-os';
 import ListItem from 'material-ui/List/ListItem';
 
-import Launcher from '../icons/Launcher.component';
+// import icon from 'material-ui/svg-icons/hardware/speaker';
+import icon from 'material-ui/svg-icons/navigation/apps';
 
 const NavAppItem =  (props: {
 	slug: string,
@@ -22,16 +23,19 @@ const NavAppItem =  (props: {
 	}
 
 	let label = App.appName;
-	let icon = App.appIcon || <Launcher />;
+	let Icon = App.appIcon || icon;
 	const path = App.path;
 
-	// debugger;
 	if (hideLabel === true) {
-		label = icon;
-		icon = null;
+		label = <Icon />;
+		Icon = undefined;
 	}
 
-	return <ListItem {...other} primaryText={label} leftIcon={icon} onClick={() => { history.push(path); }} />;
+	if (Icon) {
+		other.leftIcon = <Icon />;
+	}
+
+	return <ListItem {...other} primaryText={label} onClick={() => { history.push(path); }} />;
 };
 
 export default withBlueRain(NavAppItem);
