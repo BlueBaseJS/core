@@ -44,8 +44,20 @@ const config = {
 			logoUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/mevris-logo.svg',
 			bannerImageUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/bg.jpg'
 		},
-		'launcher': {
+		launcher: {
 			bannerImageUrl: 'https://s3-us-west-2.amazonaws.com/bluerainimages/bg.jpg'
+		},
+
+		taskbar: {
+			items: [{
+				component: 'NavAppItem',
+				props: { slug: 'hello-world' }
+			},
+			'->',
+			{
+				component: 'NavAppItem',
+				props: { slug: 'settings' }
+			}]
 		}
 	},
 

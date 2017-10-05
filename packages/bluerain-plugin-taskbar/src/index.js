@@ -8,6 +8,10 @@ import setResponsiveConfigs from './redux/setResponsiveConfigs';
 import reducer from './redux/reducer';
 import withSystemNav from './redux/withSystemNav';
 
+import NavAppItem from './common/Buttons/NavAppItem';
+import NavDividerItem from './common/Buttons/NavDividerItem';
+import NavSpacerItem from './common/Buttons/NavSpacerItem';
+
 /**
  * Main Taskbar Plugin class.
  * @property {string} pluginName "TaskbarPlugin"
@@ -19,6 +23,11 @@ class TaskbarPlugin extends Plugin {
 	static slug = 'taskbar';
 
 	static initialize(config = {}, ctx) {
+
+		// Components
+		ctx.Components.register('NavAppItem', NavAppItem);
+		ctx.Components.register('NavDividerItem', NavDividerItem);
+		ctx.Components.register('NavSpacerItem', NavSpacerItem);
 
 		// Add taskbar
 		ctx.Filters.add('bluerain.system.app.layout', function taskbar(schema) {

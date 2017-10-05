@@ -24,11 +24,10 @@ class Container extends React.Component {
 
 	static populateAppsList(appsList) {
 		forEach(appsList, (app, key) => {
-			debugger;
 			appListData.push({
 				icon: app.icon || <BulbIcon />,
 				appName: app.appName,
-				backgroundColors: app.iconColor || 'purple',
+				backgroundColors: app.iconColor ? [app.iconColor] : ['purple'],
 				link:  app.path
 			});
 		});

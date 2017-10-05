@@ -74,11 +74,10 @@ var Container = function (_React$Component) {
 		key: 'populateAppsList',
 		value: function populateAppsList(appsList) {
 			forEach(appsList, function (app, key) {
-				debugger;
 				appListData.push({
 					icon: app.icon || _react2.default.createElement(_Bulb2.default, null),
 					appName: app.appName,
-					backgroundColors: app.iconColor || 'purple',
+					backgroundColors: app.iconColor ? [app.iconColor] : ['purple'],
 					link: app.path
 				});
 			});

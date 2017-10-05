@@ -15,20 +15,6 @@ import NavHeader from '../Buttons/NavHeader';
 import NavItem from '../Buttons/NavItem';
 import Spacer from '../Buttons/Spacer';
 
-/**
- * Renders a taskbar item
- * @param {*} item
- * @param {*} index
- */
-function renderItem(item, index) {
-	if (item === '->') {
-		return <Spacer key={`${index}-spacer`} />;
-	} else if (item === '-') {
-		return <Divider key={`${index}-divider`} />;
-	}
-	return <NavItem key={`${index}-nav-item`} {...item} />;
-}
-
 const changeRequestHandler = props => (open) => {
 	props.systemNavActions.toggle();
 };
@@ -46,6 +32,7 @@ const TaskbarComponent = (props: {
 	const {
     items,
     hideLabels,
+    children,
     ...rest
   } = props;
 
@@ -65,15 +52,7 @@ const TaskbarComponent = (props: {
       <Paper rounded={false} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         <NavHeader hideLabel={hideLabels} />
         <List style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, padding: 0 }} >
-          {
-          items.map((item, index) => {
-	if (typeof item !== 'string') {
-		item.hideLabel = hideLabels;
-	}
-
-	return renderItem(item, index);
-})
-        }
+          {children}
         </List>
       </Paper>
     </Drawer>
