@@ -41,25 +41,25 @@ const TaskbarComponent = (props: {
 	const {
     items,
     hideLabels,
-    logo,
-    title,
     ...rest
   } = props;
 
 	const theme = getMuiTheme(darkBaseTheme);
 
 	const drawerStyles = (props.docked === true && props.open === true) ? { position: 'relative' } : {};
+	const zDepth = (props.docked === true) ? 0 : 2;
 
 	if (hideLabels === true) {
-		drawerStyles.width = 56;
+		drawerStyles.width = 64;
+		drawerStyles.textAlign = 'center';
 	}
 
 	return (
   <MuiThemeProvider muiTheme={theme}>
-    <Drawer {...rest} containerStyle={drawerStyles}>
+    <Drawer {...rest} zDepth={zDepth} containerStyle={drawerStyles}>
       <Paper rounded={false} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <NavHeader title={title} logo={logo} hideLabel={hideLabels} />
-        <List style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }} >
+        <NavHeader hideLabel={hideLabels} />
+        <List style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, padding: 0 }} >
           {
           items.map((item, index) => {
 	if (typeof item !== 'string') {

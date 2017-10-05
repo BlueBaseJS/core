@@ -9,7 +9,7 @@ import {
 
 export default (dispatch, size) => {
 	if (size === 'xs' || size === 'sm') {
-		dispatch(closeSystemNav());
+		// dispatch(closeSystemNav());
 		dispatch(undockSystemNav());
 		dispatch(showLabelsSystemNav());
 	} else {

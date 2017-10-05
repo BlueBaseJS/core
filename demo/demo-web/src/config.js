@@ -2,6 +2,23 @@ const config = {
 	title: 'Brand Name',
 
 	locale: 'en',
+
+	wallpaper: {}, // TODO: Implement
+	
+	logos: {
+		default: {
+      src: "https://s3-us-west-2.amazonaws.com/bluerainimages/mevris-logo.svg",
+      type: "image/svg+xml"
+    },
+		headerLogo: {
+      src: "https://s3-us-west-2.amazonaws.com/bluerainimages/mevris-logo-expended.svg",
+      type: "image/svg+xml"
+    },
+		headerLogoSquare: {
+      src: "https://s3-us-west-2.amazonaws.com/bluerainimages/mevris-logo-icon.svg",
+      type: "image/svg+xml"
+    },
+	},
 	
 	plugins: {
 

@@ -36,20 +36,11 @@ const TaskbarContainer = (props: {
 	const { intl, systemNav, bluerain: BR } = props;
 	const hideLabels = systemNav.hideLabels;
 
-	const Logo = <Mevris />; // TODO: This should come from bluerain config as a SVG path
-	const title = BR.Configs.get('title');
-
 	// Items
 	const history = BR.refs.router.history;
 	const items = [
 		{
 			icon: <Launcher />,
-			label: intl.formatMessage(messages.apps),
-			onClick: () => { history.push('/'); }
-		},
-		'-',
-		{
-			icon: <Bulb />,
 			label: intl.formatMessage(messages.deviceexplorer),
 			onClick: () => { history.push('/app/hello-world'); }
 		},
@@ -62,8 +53,6 @@ const TaskbarContainer = (props: {
 	];
 
 	return (<TaskbarComponent
-  logo={Logo}
-  title={title}
   items={items}
   hideLabels={hideLabels}
   open={systemNav.open}
