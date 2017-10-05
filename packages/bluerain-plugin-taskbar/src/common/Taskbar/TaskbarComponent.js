@@ -25,8 +25,6 @@ function renderItem(item, index) {
 	} else if (item === '-') {
 		return <Divider key={`${index}-divider`} />;
 	}
-	item.leftIcon = item.icon;
-	item.primaryText = item.label;
 	return <NavItem key={`${index}-nav-item`} {...item} />;
 }
 
@@ -51,6 +49,10 @@ const TaskbarComponent = (props: {
 	const theme = getMuiTheme(darkBaseTheme);
 
 	const drawerStyles = (props.docked === true && props.open === true) ? { position: 'relative' } : {};
+
+	if (hideLabels === true) {
+		drawerStyles.width = 56;
+	}
 
 	return (
   <MuiThemeProvider muiTheme={theme}>

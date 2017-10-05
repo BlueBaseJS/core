@@ -8,7 +8,18 @@ export default (props: {
 	hideLabel: boolean
 }) => {
 
-	const { primaryText, hideLabel, ...other } = props;
-	const label = (hideLabel === true) ? null : primaryText; // dirty hack, should send undefined not span
-	return <ListItem primaryText={label} {...other} />;
+	const { label, hideLabel, ...other } = props; // eslint-disable-line
+
+	let primaryText;
+	let icon;
+
+	if (hideLabel === true) {
+		primaryText = props.icon;
+		icon = null;
+	} else {
+		primaryText = label;
+		icon = props.icon;
+	}
+
+	return <ListItem primaryText={primaryText} leftIcon={icon} {...other} />;
 };
