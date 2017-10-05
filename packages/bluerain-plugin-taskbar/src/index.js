@@ -4,7 +4,8 @@
 import { Plugin } from '@blueeast/bluerain-os';
 import Taskbar from './common/Taskbar';
 
-import setResponsiveConfigs from './redux/setResponsiveConfigs';
+import { getResponsiveState } from './redux/InitialState';
+import { setStateSystemNav } from './redux/actions';
 import reducer from './redux/reducer';
 import withSystemNav from './redux/withSystemNav';
 
@@ -52,17 +53,22 @@ class TaskbarPlugin extends Plugin {
 			return messages;
 		});
 
-		// When window is resized
-		//	- on boot
-		ctx.Filters.add('bluerain.system.boot.end', function eng(messages) {
-			const state = ctx.refs.store.getState();
-			const size = state.bluerain.window.size;
-			setResponsiveConfigs(ctx.refs.store.dispatch, size);
+		// Setup initial state
+		ctx.Filters.add('bluerain.redux.initialState', function ActivateTaskbar(state) {
+			const size = ctx.Plugins.get('window-info').getCurrentSize();
+			const taskbarState = getResponsiveState(size);
+			return Object.assign({}, state, {
+				bluerain: {
+					systemNav: taskbarState
+				}
+			});
 		});
 
+		// When window is resized
 		// 	- every time window is resized
 		ctx.Events.on('plugin.window_info.resize', (size, prevSize) => {
-			setResponsiveConfigs(ctx.refs.store.dispatch, size);
+			const state = getResponsiveState(size);
+			ctx.refs.store.dispatch(setStateSystemNav(state));
 		});
 	}
 }

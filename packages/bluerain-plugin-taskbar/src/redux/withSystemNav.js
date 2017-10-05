@@ -9,7 +9,8 @@ import {
   dockSystemNav,
 	undockSystemNav,
 	showLabelsSystemNav,
-	hideLabelsSystemNav
+	hideLabelsSystemNav,
+	setStateSystemNav
 } from './actions';
 
 const mapStateToProps = state => ({
@@ -27,6 +28,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 		undock: () => dispatch(undockSystemNav()),
 		hideLabels: () => dispatch(hideLabelsSystemNav()),
 		showLabels: () => dispatch(showLabelsSystemNav()),
+		setState: state => dispatch(setStateSystemNav(state)),
 	}
 });
 

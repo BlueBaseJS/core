@@ -15,6 +15,8 @@ export const UNDOCK_SYSTEM_NAV = '@@BLUERAIN/SYSTEM_NAV/UNDOCK';
 export const SHOW_LABELS_SYSTEM_NAV = '@@BLUERAIN/SYSTEM_NAV/SHOW_LABELS';
 export const HIDE_LABELS_SYSTEM_NAV = '@@BLUERAIN/SYSTEM_NAV/HIDE_LABELS';
 
+export const SET_STATE_SYSTEM_NAV = '@@BLUERAIN/SYSTEM_NAV/SET_STATE';
+
 /*
  * action creators
  */
@@ -53,4 +55,8 @@ export function showLabelsSystemNav() {
 
 export function hideLabelsSystemNav() {
 	return { type: HIDE_LABELS_SYSTEM_NAV };
+}
+
+export function setStateSystemNav(payload) {
+	return { type: SET_STATE_SYSTEM_NAV, payload };
 }
