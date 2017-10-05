@@ -4,11 +4,12 @@ import React, { type Node } from 'react';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
 import List from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
+
+import withSystemNav from '../../redux/withSystemNav';
 
 import NavHeader from '../Buttons/NavHeader';
 import NavItem from '../Buttons/NavItem';
@@ -27,6 +28,10 @@ function renderItem(item, index) {
 	}
 	return <NavItem key={`${index}-nav-item`} {...item} />;
 }
+
+const changeRequestHandler = props => (open) => {
+	props.systemNavActions.toggle();
+};
 
 const TaskbarComponent = (props: {
   logo: Node,
@@ -56,7 +61,7 @@ const TaskbarComponent = (props: {
 
 	return (
   <MuiThemeProvider muiTheme={theme}>
-    <Drawer {...rest} zDepth={zDepth} containerStyle={drawerStyles}>
+    <Drawer {...rest} zDepth={zDepth} containerStyle={drawerStyles} onRequestChange={changeRequestHandler(props)}>
       <Paper rounded={false} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         <NavHeader hideLabel={hideLabels} />
         <List style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, padding: 0 }} >
@@ -81,4 +86,4 @@ TaskbarComponent.defaultProps = {
 	hideLabels: true
 };
 
-export default TaskbarComponent;
+export default withSystemNav(TaskbarComponent);
