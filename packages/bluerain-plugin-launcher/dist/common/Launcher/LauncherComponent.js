@@ -74,10 +74,16 @@ var MainPage = function (_React$Component) {
 					_GridList.GridList,
 					{ style: styles.gridList, cols: 0, cellHeight: 200, padding: 20 },
 					Apps.map(function (tile) {
+						var Icon = tile.icon,
+						    appName = tile.appName,
+						    backgroundColors = tile.backgroundColors,
+						    gradient = tile.gradient,
+						    link = tile.link;
+
 						return _react2.default.createElement(
 							_GridList.GridTile,
 							null,
-							_react2.default.createElement(_IconCard2.default, { icon: tile.icon, appName: tile.appName, backgroundColors: tile.backgroundColors, gradient: tile.gradient, link: tile.link })
+							_react2.default.createElement(_IconCard2.default, { icon: _react2.default.createElement(Icon, null), appName: appName, backgroundColors: backgroundColors, gradient: gradient, link: link })
 						);
 					})
 				)
