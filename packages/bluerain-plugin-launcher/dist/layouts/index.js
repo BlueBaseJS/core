@@ -32,8 +32,8 @@ var Layout = function Layout(_ref) {
 		component: 'ResponsiveLayout',
 		props: {
 			default: (0, _desktop2.default)(BR, Component, configBannerImage),
-			xs: (0, _mobile2.default)(BR, Component, configBannerImage),
-			sm: (0, _mobile2.default)(BR, Component, configBannerImage)
+			xs: (0, _desktop2.default)(BR, Component, configBannerImage),
+			sm: (0, _desktop2.default)(BR, Component, configBannerImage)
 		}
 	};
 
