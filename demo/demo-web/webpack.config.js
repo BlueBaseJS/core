@@ -11,7 +11,7 @@ const config = {
 	devtool: 'source-map',
 
 	resolve: {
-		extensions: ['.webpack.js', '.web.js', '.js'],
+		extensions: ['.webpack.js',  '.js'],
 		alias: {
       'react': path.resolve(path.join(__dirname, 'node_modules', 'react')),
       'react-dom': path.resolve(path.join(__dirname, 'node_modules', 'react-dom')),

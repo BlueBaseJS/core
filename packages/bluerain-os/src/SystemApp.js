@@ -36,7 +36,6 @@ export const SystemRoutes = () => {
 
 // $FlowFixMe
 export default (props) => {
-
 	const routes = {
 		component: 'SystemLayout',
 		props,
