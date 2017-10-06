@@ -16,9 +16,9 @@ var LayoutStyles = _reactxp2.default.Styles.createViewStyle({
 	flexGrow: 1
 });
 
-var MainStyles = _reactxp2.default.Styles.createViewStyle({
-	flex: 1
-});
+// const MainStyles = RX.Styles.createViewStyle({
+// 	flex: 1
+// });
 
 exports.default = function (BR, Content, bannerUrl) {
 	return function (props) {

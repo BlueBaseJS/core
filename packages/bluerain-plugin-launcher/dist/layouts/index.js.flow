@@ -1,6 +1,6 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
 
-import getMobileLayout from './mobile/';
+// import getMobileLayout from './mobile/';
 import getDesktopLayout from './desktop/';
 // import defaultConfigs from '../defaultConfigs';
 

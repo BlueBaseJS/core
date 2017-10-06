@@ -14,7 +14,7 @@ const goHome = BR => (ev) => {
 	try {
 		BR.refs.router.history.push('/');
 	} catch (error) {
-
+		console.log('Error in NavHeader', error.message);
 	}
 };
 
@@ -44,7 +44,7 @@ const NavHeader = (props: {
 	}
 
 	if (brand) {
-		brand = <img src={brand} />;
+		brand = <img src={brand} alt="Brand Name" />;
 	} else {
 		brand = title;
 	}

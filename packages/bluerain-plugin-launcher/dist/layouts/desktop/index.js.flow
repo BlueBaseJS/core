@@ -6,9 +6,9 @@ const LayoutStyles = RX.Styles.createViewStyle({
 	flexGrow: 1,
 });
 
-const MainStyles = RX.Styles.createViewStyle({
-	flex: 1
-});
+// const MainStyles = RX.Styles.createViewStyle({
+// 	flex: 1
+// });
 
 export default (BR, Content, bannerUrl) => (props) => {
 

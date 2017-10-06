@@ -1,9 +1,7 @@
 import React from 'react';
-import BulbIcon from '../icons/Bulb.component';
-import IconCard from './IconCard.component';
-import { PropTypes } from 'prop-types';
-import FileFolder from 'material-ui/svg-icons/file/folder';
+import PropTypes from 'prop-types';
 import { GridList, GridTile } from 'material-ui/GridList';
+import IconCard from './IconCard.component';
 
 const styleMainPage = {
 	height: '100vh',
@@ -24,26 +22,18 @@ const styles = {
 	},
 };
 
+const MainPage = props => (<div style={styleMainPage}>
+  <GridList style={styles.gridList} cols={0} cellHeight={200} padding={20}>
+    {props.apps.map(tile => (
+      <GridTile>
+        <IconCard icon={tile.icon} appName={tile.appName} backgroundColors={tile.backgroundColors} gradient={tile.gradient} link={tile.link} />
+      </GridTile>
+      ))}
+  </GridList>
+	</div>);
 
-class MainPage extends React.Component {
-	static propTypes = {
-		Apps: PropTypes.array,
-	};
-	render() {
-		const {
-            Apps,
-        } = this.props;
-		return (
-  <div style={styleMainPage}>
-    <GridList style={styles.gridList} cols={0} cellHeight={200} padding={20}>
-      {Apps.map(tile => (
-                    <GridTile>
-                    <IconCard icon={tile.icon} appName={tile.appName} backgroundColors={tile.backgroundColors} gradient={tile.gradient} link={tile.link} />
-                  </GridTile>
-                ))}
-    </GridList>
-  </div>);
-	}
+MainPage.propTypes = {
+	apps: PropTypes.arrayOf.isRequired
+};
 
-}
 export default MainPage;

@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withBlueRain, type BlueRain } from '@blueeast/bluerain-os';
 
 import TaskbarComponent from './TaskbarComponent';
@@ -37,6 +38,12 @@ const TaskbarContainer = (props: {
     {BR.Utils.parseJsonSchema(items)}
   </TaskbarComponent>
 	);
+};
+
+TaskbarContainer.propTypes = {
+  bluerain: PropTypes.object, // eslint-disable-line
+  systemNav: PropTypes.object, // eslint-disable-line
+  systemNavActions: PropTypes.object // eslint-disable-line
 };
 
 export default withBlueRain(TaskbarContainer);

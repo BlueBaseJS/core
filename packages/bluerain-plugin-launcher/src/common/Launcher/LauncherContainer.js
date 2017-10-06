@@ -37,7 +37,7 @@ class Container extends React.Component {
 		Container.populateAppsList(BR.Apps.AppsTable);
 		return (
   <div>
-    <Launcher Apps={appListData}  />
+    <Launcher apps={appListData}  />
   </div>);
 	}
 

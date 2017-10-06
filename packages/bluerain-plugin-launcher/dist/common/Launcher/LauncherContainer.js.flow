@@ -1,7 +1,6 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { withBlueRain } from '@blueeast/bluerain-os';
-import FileFolder from 'material-ui/svg-icons/file/folder';
 import BulbIcon from '../icons/Bulb.component';
 import Launcher from './LauncherComponent';
 const forEach = require('lodash.foreach');
@@ -38,9 +37,13 @@ class Container extends React.Component {
 		Container.populateAppsList(BR.Apps.AppsTable);
 		return (
   <div>
-    <Launcher Apps={appListData}  />
+    <Launcher apps={appListData}  />
   </div>);
 	}
 
 }
+
+Container.propTypes = {
+  bluerain: PropTypes.object // eslint-disable-line
+};
 export default withBlueRain(Container);

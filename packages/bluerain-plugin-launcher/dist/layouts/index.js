@@ -6,10 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _mobile = require('./mobile/');
-
-var _mobile2 = _interopRequireDefault(_mobile);
-
 var _desktop = require('./desktop/');
 
 var _desktop2 = _interopRequireDefault(_desktop);
@@ -40,4 +36,5 @@ var Layout = function Layout(_ref) {
 	return BR.Utils.parseJsonSchema(layout);
 };
 
+// import getMobileLayout from './mobile/';
 exports.default = (0, _bluerainOs.withBlueRain)(Layout);
