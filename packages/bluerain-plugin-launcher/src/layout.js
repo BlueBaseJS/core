@@ -1,8 +1,7 @@
 import React from 'react';
 import { withBlueRain } from '@blueeast/bluerain-os';
 
-import Launcher from '../common/Launcher';
-import getDesktopLayout from './desktop/';
+import Launcher from './Launcher';
 
 const Layout = ({ bluerain: BR, Component, bannerUrl }) => {
 
@@ -17,14 +16,17 @@ const Layout = ({ bluerain: BR, Component, bannerUrl }) => {
 				backgroundSize: 'cover',
 				display: 'flex',
 				flexDirection: 'column',
-				justifyContent: 'center',
 				flexGrow: 1,
 			}
 		},
 		children: [{
 			component: 'ResponsiveLayout',
 			props: {
-				default: () => <Launcher rows={6} />,
+				default: () => <Launcher cols={6} />,
+				xs: () => <Launcher cols={2} />,
+				sm: () => <Launcher cols={3} />,
+				md: () => <Launcher cols={4} />,
+				xl: () => <Launcher cols={8} />,
 			}
 		}]
 	};

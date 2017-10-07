@@ -7,12 +7,13 @@ import {
   DOCK_SYSTEM_NAV,
 	UNDOCK_SYSTEM_NAV,
 	SHOW_LABELS_SYSTEM_NAV,
-	HIDE_LABELS_SYSTEM_NAV
+	HIDE_LABELS_SYSTEM_NAV,
+	SET_STATE_SYSTEM_NAV
 } from './actions';
 
 import initialState from './InitialState';
 
-export default (state = initialState, action) => {
+export default (state = initialState(), action) => {
 
 	if (!action.type.startsWith('@@BLUERAIN/SYSTEM_NAV/')) {
 		return state;
@@ -72,6 +73,10 @@ export default (state = initialState, action) => {
 		return Object.assign({}, state, {
 			hideLabels: false
 		});
+
+	case SET_STATE_SYSTEM_NAV:
+
+		return Object.assign({}, state, action.payload);
 
 	default:
 		return state;

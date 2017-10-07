@@ -2,7 +2,7 @@
 
 // import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
-import Launcher from './pages/launcher';
+import Launcher from './layout';
 
 /**
  * Main Launcher Plugin class.
@@ -17,21 +17,7 @@ class LauncherPlugin extends Plugin {
 	static initialize(config = {}, ctx) {
 
 		// Add launcher
-		ctx.Filters.add('bluerain.system.routes', function launcher(route) {
-			route[0].props.component = Launcher;
-			return route;
-		});
-
-    // Add translations
-		// ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
-		// 	const en = require('./lang/en.json');
-		// 	const ur = require('./lang/ur.json');
-
-		// 	messages.en =  Object.assign(messages.en ? messages.en : {}, en);
-		// 	messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
-
-		// 	return messages;
-		// });
+		ctx.Components.replace('IndexPage', Launcher);
 	}
 }
 
