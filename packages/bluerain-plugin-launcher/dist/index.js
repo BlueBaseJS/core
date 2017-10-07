@@ -8,9 +8,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _launcher = require('./pages/launcher');
+var _layout = require('./layout');
 
-var _launcher2 = _interopRequireDefault(_launcher);
+var _layout2 = _interopRequireDefault(_layout);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,21 +45,7 @@ var LauncherPlugin = function (_Plugin) {
 
 
 			// Add launcher
-			ctx.Filters.add('bluerain.system.routes', function launcher(route) {
-				route[0].props.component = _launcher2.default;
-				return route;
-			});
-
-			// Add translations
-			// ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
-			// 	const en = require('./lang/en.json');
-			// 	const ur = require('./lang/ur.json');
-
-			// 	messages.en =  Object.assign(messages.en ? messages.en : {}, en);
-			// 	messages.ur = Object.assign(messages.ur ? messages.ur : {}, ur);
-
-			// 	return messages;
-			// });
+			ctx.Components.replace('IndexPage', _layout2.default);
 		}
 	}]);
 

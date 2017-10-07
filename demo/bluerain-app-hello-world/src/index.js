@@ -1,5 +1,4 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
-import React from 'react';
 import Icon from 'material-ui/svg-icons/action/code';
 
 import App from './components/App';
@@ -7,7 +6,7 @@ import App from './components/App';
 const EnhancedApp = withBlueRain(App);
 EnhancedApp.appName = 'Hello World';
 EnhancedApp.iconColor = 'red';
-// EnhancedApp.appIcon = Icon;
+EnhancedApp.appIcon = Icon;
 
 EnhancedApp.initialize = function(config, ctx) {
 	ctx.Filters.add('bluerain.intl.messages', function eng(messages) {
