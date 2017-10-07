@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-taskbar",
-  "version": "0.4.8",
+  "version": "0.5.0",
   "description": "A BlueRain Plugin that integrates taskbar into apps",
   "main": "dist/index.js",
   "scripts": {
@@ -14,12 +14,13 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.8",
+    "@blueeast/bluerain-os": "^0.5.0",
     "material-ui": "^0.19.3",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-intl": "^2.4.0",
-    "react-redux": "^5.0.6"
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

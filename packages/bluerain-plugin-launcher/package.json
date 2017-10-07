@@ -1,11 +1,12 @@
 {
   "name": "@blueeast/bluerain-plugin-launcher",
-  "version": "0.4.8",
+  "version": "0.5.0",
   "description": "A BlueRain Plugin that adds launcher screen listing apps",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "build": "babel -D src --out-dir dist && flow-copy-source src dist",
+    "build:watch": "nodemon --exec \"yarn build\" --ignore dist/",
     "flow": "flow",
     "lint": "eslint ./src/",
     "docs": "documentation readme src/** --section=API"
@@ -13,12 +14,12 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.8",
+    "@blueeast/bluerain-os": "^0.5.0",
     "lodash.foreach": "^4.5.0",
     "material-ui": "^0.19.3",
-    "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-loading-skeleton": "^0.3.1",
+    "reactxp": "^0.42.5",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {

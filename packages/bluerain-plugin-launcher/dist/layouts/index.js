@@ -4,7 +4,15 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _bluerainOs = require('@blueeast/bluerain-os');
+
+var _Launcher = require('../common/Launcher');
+
+var _Launcher2 = _interopRequireDefault(_Launcher);
 
 var _desktop = require('./desktop/');
 
@@ -12,29 +20,38 @@ var _desktop2 = _interopRequireDefault(_desktop);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import defaultConfigs from '../defaultConfigs';
-
 var Layout = function Layout(_ref) {
 	var BR = _ref.bluerain,
 	    Component = _ref.Component,
 	    bannerUrl = _ref.bannerUrl;
 
 
-	var configBannerImage = BR.Configs.get('plugins.launcher.bannerImageUrl');
-	// const defaultBannerImage = defaultConfigs.bannerImage;
-	// const bannerUrl = configBannerImage || defaultBannerImage;
+	var wallpaper = BR.Configs.get('plugins.launcher.bannerImageUrl');
 
 	var layout = {
-		component: 'ResponsiveLayout',
+		component: 'View',
 		props: {
-			default: (0, _desktop2.default)(BR, Component, configBannerImage),
-			xs: (0, _desktop2.default)(BR, Component, configBannerImage),
-			sm: (0, _desktop2.default)(BR, Component, configBannerImage)
-		}
+			style: {
+				backgroundImage: 'url(' + wallpaper + ')',
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: 'cover',
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				flexGrow: 1
+			}
+		},
+		children: [{
+			component: 'ResponsiveLayout',
+			props: {
+				default: function _default() {
+					return _react2.default.createElement(_Launcher2.default, { rows: 6 });
+				}
+			}
+		}]
 	};
 
 	return BR.Utils.parseJsonSchema(layout);
 };
 
-// import getMobileLayout from './mobile/';
 exports.default = (0, _bluerainOs.withBlueRain)(Layout);

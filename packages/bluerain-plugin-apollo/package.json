@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-apollo",
-  "version": "0.4.8",
+  "version": "0.5.0",
   "description": "A BlueRain Plugin that integrates Apollo GraphQl Client",
   "main": "dist/index.js",
   "scripts": {
@@ -13,12 +13,12 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.8",
+    "@blueeast/bluerain-os": "^0.5.0",
     "prop-types": "^15.5.10",
     "react": "^16.0.0-alpha.12",
     "react-apollo": "^1.4.15",
     "redux": "^3.7.2",
-    "subscriptions-transport-ws": "^0.8.2"
+    "subscriptions-transport-ws": "^0.5.5"
   },
   "peerDependencies": {
     "@blueeast/bluerain-plugin-redux": "^0.4.0"
