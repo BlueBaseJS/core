@@ -12,11 +12,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _propTypes = require('prop-types');
 
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _bluerainOs = require('@blueeast/bluerain-os');
-
-var _folder = require('material-ui/svg-icons/file/folder');
-
-var _folder2 = _interopRequireDefault(_folder);
 
 var _Bulb = require('../icons/Bulb.component');
 
@@ -67,7 +65,7 @@ var Container = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				null,
-				_react2.default.createElement(_LauncherComponent2.default, { Apps: appListData })
+				_react2.default.createElement(_LauncherComponent2.default, { apps: appListData })
 			);
 		}
 	}], [{
@@ -87,4 +85,7 @@ var Container = function (_React$Component) {
 	return Container;
 }(_react2.default.Component);
 
+Container.propTypes = {
+	bluerain: _propTypes2.default.object // eslint-disable-line
+};
 exports.default = (0, _bluerainOs.withBlueRain)(Container);

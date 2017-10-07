@@ -16,6 +16,7 @@ var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable */
 var Switch = function Switch(props) {
   return _react2.default.createElement(
     _SvgIcon2.default,

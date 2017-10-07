@@ -6,10 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _bluerainOs = require('@blueeast/bluerain-os');
 
-var _mobile = require('./mobile/');
-
-var _mobile2 = _interopRequireDefault(_mobile);
-
 var _desktop = require('./desktop/');
 
 var _desktop2 = _interopRequireDefault(_desktop);
@@ -32,12 +28,13 @@ var Layout = function Layout(_ref) {
 		component: 'ResponsiveLayout',
 		props: {
 			default: (0, _desktop2.default)(BR, Component, configBannerImage),
-			xs: (0, _mobile2.default)(BR, Component, configBannerImage),
-			sm: (0, _mobile2.default)(BR, Component, configBannerImage)
+			xs: (0, _desktop2.default)(BR, Component, configBannerImage),
+			sm: (0, _desktop2.default)(BR, Component, configBannerImage)
 		}
 	};
 
 	return BR.Utils.parseJsonSchema(layout);
 };
 
+// import getMobileLayout from './mobile/';
 exports.default = (0, _bluerainOs.withBlueRain)(Layout);

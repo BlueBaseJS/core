@@ -6,14 +6,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import List from 'material-ui/List';
 import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
 
 import withSystemNav from '../../redux/withSystemNav';
 
 import NavHeader from '../Buttons/NavHeader';
-import NavItem from '../Buttons/NavItem';
-import Spacer from '../Buttons/Spacer';
 
 const changeRequestHandler = props => (open) => {
 	props.systemNavActions.toggle();
@@ -27,10 +24,12 @@ const TaskbarComponent = (props: {
     label: string,
     onClick?: Function
   } | '-' | '->'>,
-  hideLabels: boolean
+  hideLabels: boolean,
+  children: Array,
+  docked: boolean,
+  open: boolean
 }) => {
 	const {
-    items,
     hideLabels,
     children,
     ...rest
@@ -62,7 +61,8 @@ const TaskbarComponent = (props: {
 
 TaskbarComponent.defaultProps = {
 	items: [],
-	hideLabels: true
+	hideLabels: true,
+	children: []
 };
 
 export default withSystemNav(TaskbarComponent);

@@ -1,6 +1,6 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
 
-import getMobileLayout from './mobile/';
+// import getMobileLayout from './mobile/';
 import getDesktopLayout from './desktop/';
 // import defaultConfigs from '../defaultConfigs';
 
@@ -14,8 +14,8 @@ const Layout = ({ bluerain: BR, Component, bannerUrl }) => {
 		component: 'ResponsiveLayout',
 		props: {
 			default: getDesktopLayout(BR, Component, configBannerImage),
-			xs: getMobileLayout(BR, Component, configBannerImage),
-			sm: getMobileLayout(BR, Component, configBannerImage)
+			xs: getDesktopLayout(BR, Component, configBannerImage),
+			sm: getDesktopLayout(BR, Component, configBannerImage)
 		}
 	};
 
