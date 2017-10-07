@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@blueeast/bluerain-os@^0.4.0", "@blueeast/bluerain-os@^0.4.4":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-0.4.5.tgz#622e1dd527d733192043febd5baada78527ebeb8"
+"@blueeast/bluerain-os@^0.4.0", "@blueeast/bluerain-os@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-0.4.8.tgz#e389e3083aba46fc57ead203afe16c5ad4224683"
   dependencies:
-    "@blueeast/bluerain-plugin-react-router" "^0.4.2"
-    "@blueeast/bluerain-plugin-redux" "^0.4.2"
+    "@blueeast/bluerain-plugin-react-router" "^0.4.8"
+    "@blueeast/bluerain-plugin-redux" "^0.4.8"
     eventemitter3 "^2.0.3"
     history "^4.6.3"
     html-tags "^2.0.0"
@@ -24,11 +24,11 @@
     recompose "^0.25.0"
     redux "^3.7.2"
 
-"@blueeast/bluerain-plugin-react-router@^0.4.2":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.4.tgz#c2717d33f918eeb9935b2d57a7e3c0160d544c63"
+"@blueeast/bluerain-plugin-react-router@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.8.tgz#624daf5839758f779561c3f0f3f56c4656ef9b6a"
   dependencies:
-    "@blueeast/bluerain-os" "^0.4.4"
+    "@blueeast/bluerain-os" "^0.4.8"
     react "^16.0.0-alpha.12"
     react-redux "^5.0.6"
     react-router-dom "^4.2.2"
@@ -36,11 +36,11 @@
     react-router-redux "^5.0.0-alpha.6"
     redux "^3.7.2"
 
-"@blueeast/bluerain-plugin-redux@^0.4.2":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.4.4.tgz#6f82860335e4f66e740df9f86d14ba2907ee3639"
+"@blueeast/bluerain-plugin-redux@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.4.8.tgz#b75cfe69a07bcf3d705e021f8183f9b841152908"
   dependencies:
-    "@blueeast/bluerain-os" "^0.4.4"
+    "@blueeast/bluerain-os" "^0.4.8"
     react "^16.0.0-alpha.12"
     react-redux "^5.0.6"
     redux "^3.7.2"
@@ -4697,8 +4697,8 @@ react@^16.0.0, react@^16.0.0-alpha.12:
     prop-types "^15.6.0"
 
 reactxp@^0.42.0-rc.25:
-  version "0.42.4"
-  resolved "https://registry.yarnpkg.com/reactxp/-/reactxp-0.42.4.tgz#8e43bec746897501706e42b0ebb168c227189dfd"
+  version "0.42.5"
+  resolved "https://registry.yarnpkg.com/reactxp/-/reactxp-0.42.5.tgz#6a1898aceefd83bcabb061ff4c70495b31ced3c9"
   dependencies:
     "@types/lodash" "^4.14.66"
     assert "^1.3.0"

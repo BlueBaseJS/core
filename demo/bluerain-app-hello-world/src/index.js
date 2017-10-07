@@ -1,6 +1,6 @@
 import { withBlueRain } from '@blueeast/bluerain-os';
 import React from 'react';
-// import Icon from 'material-ui/svg-icons/action/code';
+import Icon from 'material-ui/svg-icons/action/code';
 
 import App from './components/App';
 

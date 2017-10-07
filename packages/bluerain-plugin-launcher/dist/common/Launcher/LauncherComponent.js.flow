@@ -32,29 +32,4 @@ const MainPage = props => (<div style={styleMainPage}>
   </GridList>
 	</div>);
 
-class MainPage extends React.Component {
-	static propTypes = {
-		Apps: PropTypes.array,
-	};
-	render() {
-		const {
-            Apps,
-        } = this.props;
-		return (
-  <div style={styleMainPage}>
-    <GridList style={styles.gridList} cols={0} cellHeight={200} padding={20}>
-      {Apps.map(tile => {
-
-				const { icon: Icon, appName, backgroundColors, gradient, link } = tile;
-				return (
-                    <GridTile>
-                    <IconCard icon={<Icon />} appName={appName} backgroundColors={backgroundColors} gradient={gradient} link={link} />
-                  </GridTile>
-                );
-			})}
-    </GridList>
-  </div>);
-	}
-}
-
 export default MainPage;

@@ -39,48 +39,6 @@ var styles = {
 	}
 };
 
-<<<<<<< HEAD
-var MainPage = function (_React$Component) {
-	_inherits(MainPage, _React$Component);
-
-	function MainPage() {
-		_classCallCheck(this, MainPage);
-
-		return _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).apply(this, arguments));
-	}
-
-	_createClass(MainPage, [{
-		key: 'render',
-		value: function render() {
-			var Apps = this.props.Apps;
-
-			return _react2.default.createElement(
-				'div',
-				{ style: styleMainPage },
-				_react2.default.createElement(
-					_GridList.GridList,
-					{ style: styles.gridList, cols: 0, cellHeight: 200, padding: 20 },
-					Apps.map(function (tile) {
-						var Icon = tile.icon,
-						    appName = tile.appName,
-						    backgroundColors = tile.backgroundColors,
-						    gradient = tile.gradient,
-						    link = tile.link;
-
-						return _react2.default.createElement(
-							_GridList.GridTile,
-							null,
-							_react2.default.createElement(_IconCard2.default, { icon: _react2.default.createElement(Icon, null), appName: appName, backgroundColors: backgroundColors, gradient: gradient, link: link })
-						);
-					})
-				)
-			);
-		}
-	}]);
-
-	return MainPage;
-}(_react2.default.Component);
-=======
 var MainPage = function MainPage(props) {
 	return _react2.default.createElement(
 		'div',
@@ -97,11 +55,6 @@ var MainPage = function MainPage(props) {
 			})
 		)
 	);
-};
->>>>>>> 577c909437a07ffbe35ae3c9c3e5c49f144c1595
-
-MainPage.propTypes = {
-	apps: _propTypes2.default.arrayOf.isRequired
 };
 
 exports.default = MainPage;
