@@ -3,6 +3,7 @@
 import set from 'lodash.set';
 import get from 'lodash.get';
 import merge from 'lodash.merge';
+import isNil from 'lodash.isnil';
 
 /**
  * All system configs are stored in this registry
@@ -16,11 +17,11 @@ class ConfigRegistry {
 	 * Set a Config
 	 */
 	set(key: string, value: any) {
-		if (key === undefined || key === null) {
+		if (isNil(key)) {
 			throw new Error('No config key provided');
 		}
 
-		if (value === undefined || value === null) {
+		if (isNil(value)) {
 			throw new Error('No config value provided');
 		}
 
@@ -31,7 +32,7 @@ class ConfigRegistry {
 	 * Get a config value
 	 */
 	get(key: string) : any {
-		if (key === undefined || key === null) {
+		if (isNil(key)) {
 			throw new Error('No config key provided');
 		}
 

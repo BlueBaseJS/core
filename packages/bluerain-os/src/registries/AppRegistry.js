@@ -1,6 +1,7 @@
 /* @flow */
 
 import kebabCase from 'lodash.kebabcase';
+import isNil from 'lodash.isnil';
 
 import MapRegistry from './MapRegistry';
 import BR, { App } from '../index';
@@ -24,7 +25,7 @@ class AppRegistry extends MapRegistry {
 	 * @param {App} app The BlueRain app to register
 	 */
 	set(app: App) {
-		if (app === undefined || app === null) {
+		if (isNil(app)) {
 			throw new Error('No app provided');
 		}
 

@@ -1,6 +1,7 @@
 /* @flow */
 
 import { Map } from 'immutable';
+import isNil from 'lodash.isnil';
 
 /**
  * A generic Registry class in the BlueRain OS. Used to store data.
@@ -27,11 +28,11 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 	set(key: string, item: any) {
-		if (key === undefined || key === null) {
+		if (isNil(key)) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
 
-		if (item === undefined || item === null) {
+		if (isNil(item)) {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 
@@ -71,11 +72,11 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 	replace(key: string, item: any) {
-		if (key === undefined || key === null) {
+		if (isNil(key)) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
 
-		if (item === undefined || item === null) {
+		if (isNil(item)) {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 
@@ -93,7 +94,7 @@ export default class Registry {
 	 * @returns {any}
 	 */
 	get(key: string) : any {
-		if (key === undefined || key === null) {
+		if (isNil(key)) {
 			throw new Error(`No key provided in the get method of ${this.name} registry.`);
 		}
 
@@ -107,7 +108,7 @@ export default class Registry {
 	 * @returns {boolean}
 	 */
 	has(key: string) : boolean {
-		if (key === undefined || key === null) {
+		if (isNil(key)) {
 			throw new Error(`No key provided in the has method of ${this.name} registry.`);
 		}
 
@@ -119,10 +120,10 @@ export default class Registry {
 	 * @param {string} key The key plugin to remove
 	 */
 	remove(key: string) {
-		if (key === undefined || key === null) {
+		if (isNil(key)) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);
 		}
-		if (!this.Table[key]) {
+		if (!this.data.has(key)) {
 			throw new Error(`${key} is not registered in the ${this.name} registry.`);
 		}
 

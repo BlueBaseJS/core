@@ -1,4 +1,5 @@
 import kebabCase from 'lodash.kebabcase';
+import isNil from 'lodash.isnil';
 
 import MapRegistry from './MapRegistry';
 import BR, { Plugin } from '../index';
@@ -20,7 +21,7 @@ export default class PluginRegistry extends MapRegistry {
 	 * @param {Plugin} plugin The plugin to register
 	 */
 	set(plugin: Plugin) {
-		if (plugin === undefined || plugin === null) {
+		if (isNil(plugin)) {
 			throw new Error('No plugin provided');
 		}
 
