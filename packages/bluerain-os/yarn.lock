@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@blueeast/bluerain-os@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-0.4.2.tgz#0d8ca90cfbe61da646a8938f9d859a79d65f169a"
+"@blueeast/bluerain-os@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-0.4.8.tgz#e389e3083aba46fc57ead203afe16c5ad4224683"
   dependencies:
-    "@blueeast/bluerain-plugin-react-router" "^0.4.2"
-    "@blueeast/bluerain-plugin-redux" "^0.4.2"
+    "@blueeast/bluerain-plugin-react-router" "^0.4.8"
+    "@blueeast/bluerain-plugin-redux" "^0.4.8"
     eventemitter3 "^2.0.3"
     history "^4.6.3"
     html-tags "^2.0.0"
@@ -24,11 +24,11 @@
     recompose "^0.25.0"
     redux "^3.7.2"
 
-"@blueeast/bluerain-plugin-react-router@^0.4.0", "@blueeast/bluerain-plugin-react-router@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.2.tgz#1f24e019bb850adbf9ae518ff90c3cec56026f2f"
+"@blueeast/bluerain-plugin-react-router@^0.4.0", "@blueeast/bluerain-plugin-react-router@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.8.tgz#624daf5839758f779561c3f0f3f56c4656ef9b6a"
   dependencies:
-    "@blueeast/bluerain-os" "^0.4.2"
+    "@blueeast/bluerain-os" "^0.4.8"
     react "^16.0.0-alpha.12"
     react-redux "^5.0.6"
     react-router-dom "^4.2.2"
@@ -36,11 +36,11 @@
     react-router-redux "^5.0.0-alpha.6"
     redux "^3.7.2"
 
-"@blueeast/bluerain-plugin-redux@^0.4.0", "@blueeast/bluerain-plugin-redux@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.4.2.tgz#ac5caeef8ec165ac217248d66aa66b2cdac127d4"
+"@blueeast/bluerain-plugin-redux@^0.4.0", "@blueeast/bluerain-plugin-redux@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-redux/-/bluerain-plugin-redux-0.4.8.tgz#b75cfe69a07bcf3d705e021f8183f9b841152908"
   dependencies:
-    "@blueeast/bluerain-os" "^0.4.2"
+    "@blueeast/bluerain-os" "^0.4.8"
     react "^16.0.0-alpha.12"
     react-redux "^5.0.6"
     redux "^3.7.2"
@@ -3996,6 +3996,12 @@ lodash-es@^4.2.0, lodash-es@^4.2.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
 
+lodash.compose@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/lodash.compose/-/lodash.compose-2.4.1.tgz#a23f416fd91cee82c67879f63a070d3cbac31525"
+  dependencies:
+    lodash.isfunction "~2.4.1"
+
 lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
@@ -4011,6 +4017,10 @@ lodash.isequal@^4.0.0:
 lodash.isfunction@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.8.tgz#4db709fc81bc4a8fd7127a458a5346c5cdce2c6b"
+
+lodash.isfunction@~2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-2.4.1.tgz#2cfd575c73e498ab57e319b77fa02adef13a94d1"
 
 lodash.isnil@^4.0.0:
   version "4.0.0"

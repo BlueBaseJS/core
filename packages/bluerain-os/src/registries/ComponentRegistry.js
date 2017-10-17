@@ -1,20 +1,30 @@
 /* @flow */
 
-import { compose } from 'redux'; // note: at the moment, compose@react-apollo === compose@redux ; see https://github.com/apollostack/react-apollo/blob/master/src/index.ts#L4-L7
 import { type Element as ReactElement } from 'react';
+import compose from 'lodash.compose';
+import isNil from 'lodash.isnil';
 
-type ComponentItem = {
-	name: string,
+import MapRegistry from './MapRegistry';
+
+type ComponentRegistryHocItem = Function | Array<any>
+
+type ComponentRegistryItem = {
 	rawComponent: ReactElement<*>,
-	hocs: Array<Function>
+	hocs: Array<ComponentRegistryHocItem>
 };
+
 
 /**
  * All system components are stored in this registry
- * @property {Object} ComponentsTable Storage table of all components
+ * @property {Object} data Storage table of all components
  */
-class ComponentRegistry {
-	ComponentsTable: {} = {};
+class ComponentRegistry extends MapRegistry {
+
+	data: Map<string, ComponentRegistryItem>;
+
+	constructor() {
+		super('ComponentRegistry');
+	}
 
 	/**
 	 * Register a component with a name, a raw component than can be extended
@@ -26,7 +36,7 @@ class ComponentRegistry {
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
-	 * See https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15
+	 * See https://lodash.com/docs/4.17.4#flowRight
 	 *
 	 * @returns Structure of a component in the list:
 	 *
@@ -38,43 +48,40 @@ class ComponentRegistry {
 	 * }
 	 *
 	 */
-	register(name: string, rawComponent: ReactElement<*>, ...hocs: Array<Function>) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+	set(name: string, rawComponent: ReactElement<*>, ...hocs: Array<ComponentRegistryHocItem>) {
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}`);
 		}
-    // store the component in the table
-		this.ComponentsTable[name] = {
-			name,
-			rawComponent,
-			hocs
-		};
-	}
-	addHOCs(name: string, ...hocs: Array<Function>) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+
+		if (isNil(rawComponent)) {
+			throw new Error('rawComponent is required to register a component.');
 		}
-		if (!Object.prototype.hasOwnProperty.call(this.ComponentsTable, name)) {
-			throw new Error(`Component ${name} not registered.`);
+
+		if (!hocs) {
+			hocs = [];
 		}
-    // store the component in the table
-		this.ComponentsTable[name].hocs.push(...hocs);
+
+		super.set(name, { rawComponent, hocs });
 	}
 
-  /**
-	 * Check if a component is registered with registerComponent(name, component, ...hocs).
-	 *
-	 * @param {String} name The name of the component to get.
-	 * @returns {boolean}
+	/**
+	 * TODO: Add docs
+	 * @param {*} name 
+	 * @param {*} hocs 
 	 */
-	has(name: string) : boolean {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+	addHOCs(name: string, ...hocs: Array<ComponentRegistryHocItem>) {
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}`);
 		}
-		const component = this.ComponentsTable[name];
-		if (!component) {
-			return false;
+
+		if (!this.has(name)) {
+			throw new Error(`Component ${name} not registered.`);
 		}
-		return true;
+
+		const item = this.get(name);
+		item.hocs.push(...hocs);
+
+		this.data = this.data.set(name, item);
 	}
 
 	/**
@@ -84,18 +91,21 @@ class ComponentRegistry {
 	 * @returns {Function|React Component} A (wrapped) React component
 	 */
 	get(name: string) : ReactElement<*> {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}`);
 		}
-		const component = this.ComponentsTable[name];
-		if (!component) {
+
+		if (!this.has(name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
-		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
+
+		const component = this.data.get(name);
+
+		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc)); // TODO: Does this only send one param if hoc is an array?
 		return compose(...hocs)(component.rawComponent);
 	}
 
-  /**
+	/**
 	 * Get the **raw** (original) component registered with registerComponent
 	 * without the possible HOCs wrapping it.
 	 *
@@ -103,10 +113,19 @@ class ComponentRegistry {
 	 * @returns {Function|React Component} An interchangeable/extendable React component
 	 */
 	getRawComponent(name: string): ReactElement<*> {
-		return this.ComponentsTable[name].rawComponent;
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}`);
+		}
+
+		if (!this.has(name)) {
+			throw new Error(`Component ${name} not registered.`);
+		}
+
+		const component = this.data.get(name);
+		return component.rawComponent;
 	}
 
-  /**
+	/**
 	 * Replace a component with the same name with a new component or
 	 * an extension of the raw component and one or more optional higher order components.
 	 * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
@@ -118,28 +137,20 @@ class ComponentRegistry {
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
-	 * See https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15
+	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
 	replace(name: string, newComponent: ReactElement<*>, ...newHocs: Array<Function>) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
-		} else if (!Object.prototype.hasOwnProperty.call(this.ComponentsTable, name)) {
-			throw new Error(`${name} is not registered. Component should be registered to be replaced`);
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}`);
 		}
-		const previousComponent = this.ComponentsTable[name];
 
-    // xxx : throw an error if the previous component doesn't exist
+		if (!this.has(name)) {
+			throw new Error(`Component ${name} not registered.`);
+		}
 
-		this.register(name, newComponent, ...newHocs, ...previousComponent.hocs);
-	}
+		const previousComponent = this.data.get(name);
 
-  /**
-	 * [write docs]
-	 * @param {*} sourceComponent
-	 * @param {*} targetComponent
-	 */
-	static copyHoCs(sourceComponent: ComponentItem, targetComponent: ReactElement<*>) : ReactElement<*> {
-		return compose(...sourceComponent.hocs)(targetComponent);
+		this.set(name, newComponent, ...newHocs, ...previousComponent.hocs);
 	}
 }
 

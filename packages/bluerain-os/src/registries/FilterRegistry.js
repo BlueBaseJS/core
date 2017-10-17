@@ -63,7 +63,7 @@ class FilterRegistry extends MapRegistry {
 
 		list = (isNil(index)) ? list.push(item) : list.insert(index, item);
 
-		this.data.set(hook, list);
+		this.data = this.data.set(hook, list);
 	}
 
 	/**
@@ -92,7 +92,7 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		list = list.delete(index);
-		this.data.set(hook, list);
+		this.data = this.data.set(hook, list);
 	}
 
 	/**
