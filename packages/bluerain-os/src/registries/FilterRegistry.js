@@ -14,7 +14,7 @@ type FilterItem = {
 
 /**
  * All system filters are stored in this registry
- * @property {Object} FiltersTable Storage table of all filters
+ * @property {Map<string, List<{name:string, filter:Function}>>} data Storage of all filters and their respective functions
  */
 class FilterRegistry extends MapRegistry {
 
@@ -23,11 +23,16 @@ class FilterRegistry extends MapRegistry {
 	constructor() {
 		super('FilterRegistry');
 	}
-
+	add(hook: string, name: string | Function, filter: Function, index: number) {
+		console.warn('Deprecation Warning: add method of filter registry has been deprecated. Please use "set" method instead for registeries');
+		this.set(hook, name, filter, index);
+	}
 	/**
-	 * Add a filter function to a hook
+	 * Add a filter function to a hook.
 	 * @param {String} hook - The name of the hook
+	 * @param {String | function} name - The name of filter function
 	 * @param {Function} filter - The filter function
+	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
 	set(hook: string, name: string | Function, filter: Function, index: number) {
 		if (isNil(hook)) {
