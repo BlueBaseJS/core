@@ -24,7 +24,7 @@ class AppRegistry extends MapRegistry {
    * @param {App} app The BlueRain app to register
    */
 	register(app: App) {
-		console.warn('Deprecation Warning: register method of app registry has been deprecated. Please use set method intead for registeries');
+		console.warn('Deprecation Warning: "register" method of AppRegistry has been deprecated. Please use "set" method instead.');
 		this.set(app);
 	}
 	/**

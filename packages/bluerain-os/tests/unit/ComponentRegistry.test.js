@@ -29,18 +29,21 @@ class Paragragh extends React.Component {
 describe('Component Registry test specifications', () => {
 	describe('Add components', () => {
 		it('should add component to registry', () => {
-			BR.Components.register('heading', Heading);
+			BR.Components.set('heading', Heading);
 			expect(BR.Components.has('heading')).toEqual(true);
 		});
 		it('should add empty name component to registry', () => {
-			BR.Components.register('', <Heading heading="empty" />);
+			BR.Components.set('', <Heading heading="empty" />);
 			expect(BR.Components.has('')).toEqual(true);
 		});
 		it('should add null name component to registry', () => {
-			expect(() => BR.Components.register(null, Heading)).toThrow();
+			expect(() => BR.Components.set(null, Heading)).toThrow();
 		});
 		it('should add undefined component to registry', () => {
-			expect(() => BR.Components.register(undefined, Heading)).toThrow();
+			expect(() => BR.Components.set(undefined, Heading)).toThrow();
+		});
+		it('should throw because undefined component', () => {
+			expect(() => BR.Components.set('undefined', undefined)).toThrow();
 		});
 	});
 	describe('get components', () => {
@@ -65,6 +68,28 @@ describe('Component Registry test specifications', () => {
 			expect(() => BR.Components.get(undefined)).toThrow();
 		});
 	});
+	describe('get raw components', () => {
+		it('should return component from registry', () => {
+			const component = BR.Components.getRawComponent('heading');
+			expect(component).toEqual(Heading);
+		});
+		it('should return component from registry', () => {
+			const component = BR.Components.getRawComponent('');
+			expect(component).toEqual(<Heading heading="empty" />);
+		});
+		it('should throw error', () => {
+      // const component = BR.Components.get('abc')
+			expect(() => BR.Components.getRawComponent('abc')).toThrow();
+		});
+		it('should throw error due to null', () => {
+      // const component = BR.Components.get('abc')
+			expect(() => BR.Components.getRawComponent(null)).toThrow();
+		});
+		it('should throw error due to undefined', () => {
+      // const component = BR.Components.get('abc')
+			expect(() => BR.Components.getRawComponent(undefined)).toThrow();
+		});
+	});
 	describe('replace components', () => {
 		it('should replace component from registry', () => {
 			BR.Components.replace('heading', Paragragh);
@@ -72,7 +97,7 @@ describe('Component Registry test specifications', () => {
 		});
 		it('should throw error if component not available', () => {
 			expect(() => BR.Components.replace('head', Paragragh)).toThrow(
-        'head is not registered. Component should be registered to be replaced'
+        'Component head not registered.'
       );
 		});
 		it('should throw error b/c name is null', () => {
@@ -115,19 +140,8 @@ describe('Component Registry test specifications', () => {
       ).toThrow();
 		});
 		it('should add hoc', () => {
-			BR.Components.addHOCs('', () => Heading);
-			expect(BR.Components.ComponentsTable[''].hocs.length).toEqual(1);
-		});
-	});
-	describe('copy HOCs', () => {
-		it('should throw error b/c hoc undefined', () => {
-			BR.Components.constructor.copyHoCs(
-        BR.Components.ComponentsTable.heading,
-        () => Heading
-      );
-			expect(BR.Components.ComponentsTable.heading.hocs.length).toEqual(
-        0
-      );
+			BR.Components.addHOCs('heading', () => Heading);
+			expect(BR.Components.data.get('heading').hocs.length).toEqual(1);
 		});
 	});
 });

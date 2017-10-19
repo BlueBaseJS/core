@@ -24,7 +24,7 @@ class FilterRegistry extends MapRegistry {
 		super('FilterRegistry');
 	}
 	add(hook: string, name: string | Function, filter: Function, index: number) {
-		console.warn('Deprecation Warning: add method of filter registry has been deprecated. Please use "set" method instead for registeries');
+		console.warn('Deprecation Warning: "add" method of FilterRegistry has been deprecated. Please use "set" method instead.');
 		this.set(hook, name, filter, index);
 	}
 	/**

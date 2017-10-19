@@ -16,7 +16,7 @@ type ComponentRegistryItem = {
 
 /**
  * All system components are stored in this registry
- * @property {Object} data Storage table of all components
+ * @property {Map<string, {rawComponent: ReactElement<*>, hocs: Array<Function | Array<any>>}>} data Storage of all components
  */
 class ComponentRegistry extends MapRegistry {
 
@@ -25,14 +25,17 @@ class ComponentRegistry extends MapRegistry {
 	constructor() {
 		super('ComponentRegistry');
 	}
-
+	register(name: string, rawComponent: ReactElement<*>, ...hocs: Array<ComponentRegistryHocItem>) {
+		console.warn('Deprecation Warning: "register" method of ComponentRegistry has been deprecated. Please use "set" method instead.');
+		this.set(name, rawComponent, ...hocs);
+	}
 	/**
 	 * Register a component with a name, a raw component than can be extended
 	 * and one or more optional higher order components.
 	 *
 	 * @param {String} name The name of the component to register.
 	 * @param {React Component} rawComponent Interchangeable/extendable component.
-	 * @param {...Function} hocs The HOCs to compose with the raw component.
+	 * @param {Array<Function | Array<any>>} hocs The HOCs to compose with the raw component.
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
@@ -40,7 +43,7 @@ class ComponentRegistry extends MapRegistry {
 	 *
 	 * @returns Structure of a component in the list:
 	 *
-	 * this.ComponentsTable.Foo = {
+	 * this.data.Foo = {
 	 *    name: 'Foo',
 	 *    hocs: [fn1, fn2],
 	 *    rawComponent: React.Component,
@@ -57,17 +60,13 @@ class ComponentRegistry extends MapRegistry {
 			throw new Error('rawComponent is required to register a component.');
 		}
 
-		if (!hocs) {
-			hocs = [];
-		}
-
 		super.set(name, { rawComponent, hocs });
 	}
 
 	/**
-	 * TODO: Add docs
-	 * @param {*} name 
-	 * @param {*} hocs 
+	 * Adds higher order component to the registered component
+	 * @param {string} name The name of the registered component to whom hocs are to added
+	 * @param {Array<Function | Array<any>>} hocs The HOCs to compose with the raw component.
 	 */
 	addHOCs(name: string, ...hocs: Array<ComponentRegistryHocItem>) {
 		if (isNil(name)) {
@@ -78,7 +77,7 @@ class ComponentRegistry extends MapRegistry {
 			throw new Error(`Component ${name} not registered.`);
 		}
 
-		const item = this.get(name);
+		const item = this.data.get(name);
 		item.hocs.push(...hocs);
 
 		this.data = this.data.set(name, item);
@@ -149,8 +148,8 @@ class ComponentRegistry extends MapRegistry {
 		}
 
 		const previousComponent = this.data.get(name);
-
-		this.set(name, newComponent, ...newHocs, ...previousComponent.hocs);
+		const hocs = [...newHocs, ...previousComponent.hocs];
+		super.replace(name, { rawComponent: newComponent, hocs } );
 	}
 }
 
