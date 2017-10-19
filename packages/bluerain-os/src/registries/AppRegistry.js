@@ -10,7 +10,7 @@ const defaultAppRoutePrefix = '/app';
 
 /**
  * All system apps are stored in this registry
- * @property {Object} AppsTable Storage table of all apps
+ * @property {Map<string, App>} data  Map(immutablejs) of all apps
  */
 class AppRegistry extends MapRegistry {
 
@@ -19,7 +19,14 @@ class AppRegistry extends MapRegistry {
 	constructor() {
 		super('AppRegistry');
 	}
-
+  /**
+   * Register an App To be deprecated in 1.0.0
+   * @param {App} app The BlueRain app to register
+   */
+	register(app: App) {
+		console.warn('Deprecation Warning: register method of app registry has been deprecated. Please use set method intead for registeries');
+		this.set(app);
+	}
 	/**
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
@@ -60,7 +67,7 @@ class AppRegistry extends MapRegistry {
 	}
 
 	/**
-	 * Initialize all apps
+	 * Initialize all the registered apps
 	 */
 	initializeAll() {
 		for (const app of this.data.values()) {

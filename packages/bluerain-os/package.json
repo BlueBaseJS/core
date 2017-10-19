@@ -41,6 +41,7 @@
     "eventemitter3": "^2.0.3",
     "history": "^4.6.3",
     "html-tags": "^2.0.0",
+    "immutable": "^3.8.2",
     "is-electron": "^2.1.0",
     "lodash.compose": "^2.4.1",
     "lodash.get": "^4.4.2",

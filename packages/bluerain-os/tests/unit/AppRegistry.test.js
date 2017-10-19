@@ -1,6 +1,8 @@
 import React from 'react';
 import BR, { App } from '../../src';
-
+import { Map } from 'immutable';
+// import AppRegistry from '../../src/registries/AppRegistry';
+// BR.Apps = new AppRegistry()
 class HelloApp extends App {
 	static appName = 'Hello World';
 	render() {
@@ -21,7 +23,7 @@ describe('App registry tests', () => {
 					return <div>hello world</div>;
 				}
       }
-			expect(() => BR.Apps.register(HelloAppWithoutName)).toThrow(
+			expect(() => BR.Apps.set(HelloAppWithoutName)).toThrow(
         'App name not provided.'
       );
 		});
@@ -33,24 +35,21 @@ describe('App registry tests', () => {
 					return <div>hello world</div>;
 				}
       }
-			BR.Apps.register(TestApp);
+			BR.Apps.set(TestApp);
 			expect(
-        Object.prototype.hasOwnProperty.call(BR.Apps.AppsTable, 'abc-app')
+        BR.Apps.data.has('abc-app')
       ).toEqual(true);
-			expect(BR.Apps.AppsTable['abc-app'].slug).toEqual('abc-app');
+			expect(BR.Apps.data.get('abc-app').slug).toEqual('abc-app');
 		});
 		it('slug should be hello-world', () => {
-			BR.Apps.register(HelloApp);
+			BR.Apps.set(HelloApp);
 			expect(
-        Object.prototype.hasOwnProperty.call(
-          BR.Apps.AppsTable,
-          'hello-world'
-        )
+          BR.Apps.data.has('hello-world')
       ).toEqual(true);
-			expect(BR.Apps.AppsTable['hello-world'].slug).toEqual('hello-world');
+			expect(BR.Apps.data.get('hello-world').slug).toEqual('hello-world');
 		});
 		it('should throw error b/c name is undefined', () => {
-			expect(() => BR.Apps.register(undefined)).toThrow();
+			expect(() => BR.Apps.set(undefined)).toThrow();
 		});
 		it('should throw error b/c App name is no given', () => {
 			class HelloAppNOName extends App {
@@ -58,13 +57,13 @@ describe('App registry tests', () => {
 					return <div>hello world</div>;
 				}
       }
-			expect(() => BR.Apps.register(HelloAppNOName)).toThrow();
+			expect(() => BR.Apps.set(HelloAppNOName)).toThrow();
 		});
 		it('should throw error b/c name is null', () => {
-			expect(() => BR.Apps.register(null)).toThrow();
+			expect(() => BR.Apps.set(null)).toThrow();
 		});
 		it('slug Create other recognized static properties', () => {
-			const app = BR.Apps.AppsTable['hello-world'];
+			const app = BR.Apps.data.get('hello-world');
 			expect(app.slug).toEqual('hello-world');
 			expect(app.path).toEqual('/app/hello-world');
 			expect(app.appRoutePrefix).toEqual('/app');
@@ -88,7 +87,7 @@ describe('App registry tests', () => {
 					return <div>hello world</div>;
 				}
       }
-			expect(() => BR.Apps.register(HelloAppWithoutName)).toThrow(
+			expect(() => BR.Apps.set(HelloAppWithoutName)).toThrow(
         'App name not provided.'
       );
 		});
@@ -100,31 +99,23 @@ describe('App registry tests', () => {
 					return <div>hello world</div>;
 				}
       }
-			BR.Apps.register(TestApp);
+			BR.Apps.set(TestApp);
 			expect(
-        Object.prototype.hasOwnProperty.call(
-          BR.Apps.AppsTable,
-          'abc-react-app'
-        )
+          BR.Apps.data.has('abc-react-app')
       ).toEqual(true);
-			expect(BR.Apps.AppsTable['abc-react-app'].slug).toEqual(
+			expect(BR.Apps.data.get('abc-react-app').slug).toEqual(
         'abc-react-app'
       );
 		});
 		it('slug should be hello-react-world', () => {
-			BR.Apps.register(HelloReactApp);
-			expect(
-        Object.prototype.hasOwnProperty.call(
-          BR.Apps.AppsTable,
-          'hello-react-world'
-        )
-      ).toEqual(true);
-			expect(BR.Apps.AppsTable['hello-react-world'].slug).toEqual(
+			BR.Apps.set(HelloReactApp);
+			expect(BR.Apps.data.has('hello-react-world')).toEqual(true);
+			expect(BR.Apps.data.get('hello-react-world').slug).toEqual(
         'hello-react-world'
       );
 		});
 		it('slug Create other recognized static properties', () => {
-			const app = BR.Apps.AppsTable['hello-react-world'];
+			const app = BR.Apps.data.get('hello-react-world');
 			expect(app.slug).toEqual('hello-react-world');
 			expect(app.path).toEqual('/app/hello-react-world');
 			expect(app.appRoutePrefix).toEqual('/app');
@@ -140,7 +131,7 @@ describe('App registry tests', () => {
 		});
 		it('should throw error b/c appname is not given', () => {
 			const HelloAppWithoutName = () => <div>hello world</div>;
-			expect(() => BR.Apps.register(HelloAppWithoutName)).toThrow(
+			expect(() => BR.Apps.set(HelloAppWithoutName)).toThrow(
         'App name not provided.'
       );
 		});
@@ -148,31 +139,23 @@ describe('App registry tests', () => {
 			const TestApp = () => <div>hello world</div>;
 			TestApp.appName = 'Hello World';
 			TestApp.slug = 'abc-stateless-app';
-			BR.Apps.register(TestApp);
-			expect(
-        Object.prototype.hasOwnProperty.call(
-          BR.Apps.AppsTable,
-          'abc-stateless-app'
-        )
-      ).toEqual(true);
-			expect(BR.Apps.AppsTable['abc-stateless-app'].slug).toEqual(
+			BR.Apps.set(TestApp);
+			expect(BR.Apps.data.has('abc-stateless-app')).toEqual(true);
+			expect(BR.Apps.data.get('abc-stateless-app').slug).toEqual(
         'abc-stateless-app'
       );
 		});
 		it('slug should be hello-stateless-app', () => {
-			BR.Apps.register(HellostatelessApp);
+			BR.Apps.set(HellostatelessApp);
 			expect(
-        Object.prototype.hasOwnProperty.call(
-          BR.Apps.AppsTable,
-          'hello-stateless-app'
-        )
+          BR.Apps.data.has('hello-stateless-app')
       ).toEqual(true);
-			expect(BR.Apps.AppsTable['hello-stateless-app'].slug).toEqual(
+			expect(BR.Apps.data.get('hello-stateless-app').slug).toEqual(
         'hello-stateless-app'
       );
 		});
 		it('slug Create other recognized static properties', () => {
-			const app = BR.Apps.AppsTable['hello-stateless-app'];
+			const app = BR.Apps.data.get('hello-stateless-app');
 			expect(app.slug).toEqual('hello-stateless-app');
 			expect(app.path).toEqual('/app/hello-stateless-app');
 			expect(app.appRoutePrefix).toEqual('/app');
@@ -180,8 +163,7 @@ describe('App registry tests', () => {
 	});
 	describe('all apps', () => {
 		it('return all apps', () => {
-			const apps = BR.Apps.getApps();
-			expect(Object.keys(apps).length).toEqual(6);
+			expect(BR.Apps.data.count()).toEqual(6);
 		});
 	});
 	describe('initialize apps', () => {
@@ -193,7 +175,7 @@ describe('App registry tests', () => {
 				}
 				static initialize() {}
       }
-			BR.Apps.register(HelloReactApp);
+			BR.Apps.replace('hello-react-world', HelloReactApp);
 			BR.Apps.initializeAll();
 		});
 	});
@@ -209,16 +191,16 @@ describe('App registry tests', () => {
 		});
 		it('should have App with slug', () => {
 			BR.Apps.remove('hello-react-world');
-			expect(BR.Apps.AppsTable.hasOwnProperty('hello-react-world')).toEqual(
+			expect(BR.Apps.data.has('hello-react-world')).toEqual(
         false
       );
 		});
 		it('should have Apps', () => {
 			BR.Apps.remove('hello-world');
-			expect(BR.Apps.AppsTable.hasOwnProperty('hello-world')).toEqual(
+			expect(BR.Apps.data.has('hello-world')).toEqual(
         false
-      );
-			BR.Apps.AppsTable = {};
+			);
+			BR.Apps.data = Map();
 		});
 	});
 
@@ -228,10 +210,10 @@ describe('App registry tests', () => {
 		});
 		it('should be empty', () => {
 			BR.Apps.registerMany();
-			expect(BR.Apps.AppsTable).toEqual({});
+			expect(BR.Apps.data.count()).toEqual(0);
 		});
 		it('should throw error b/c errornous apps', () => {
-			expect(() => BR.Apps.registerMany([HelloApp,  'string', {}])).toThrow('App name not provided.');
+			expect(() => BR.Apps.registerMany(['string', {}])).toThrow('App name not provided.');
 		});
 		it('should have hello world app', () => {
 			class TestApp extends React.Component {
@@ -242,8 +224,7 @@ describe('App registry tests', () => {
 				}
             }
 			BR.Apps.registerMany([HelloApp, TestApp]);
-			const apps = BR.Apps.getApps();
-			expect(Object.keys(apps).length).toEqual(2);
+			expect(BR.Apps.data.count()).toEqual(2);
 		});
 	});
 
@@ -256,10 +237,10 @@ describe('App registry tests', () => {
 					return <div>hello world</div>;
 				}
 				static initialize(config) {
-					BR.Filters.add('test.initialize.hook', function abc() { return config + 34; });
+					BR.Filters.set('test.initialize.hook', function abc() { return config + 34; });
 				}
        }
-			BR.Apps.register(HelloReactApp);
+			BR.Apps.set(HelloReactApp);
 			BR.Apps.initializeAll();
 			expect(BR.Filters.run('test.initialize.hook')).toEqual('334');
 		});
