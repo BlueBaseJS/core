@@ -41,7 +41,9 @@ class FilterRegistry extends MapRegistry {
 
 		// If a plugin is using an old system of sending named functions
 		if (isFunction(name)) {
+			// $FlowFixMe
 			filter = name;
+			// $FlowFixMe
 			name = filter.name;
 		}
 
@@ -61,7 +63,7 @@ class FilterRegistry extends MapRegistry {
 
 		// Check if this filter already exists
 		if (list.findIndex(item => item.name === name) > -1) {
-			throw new Error(`Filter ${name} already exists in ${hook} hook.`);
+			throw new Error(`Filter ${name.toString()} already exists in ${hook} hook.`);
 		}
 
 		const item = { name, filter };
@@ -89,7 +91,7 @@ class FilterRegistry extends MapRegistry {
 			throw new Error(`${hook} filter is not added. First add filter to remove it.`);
 		}
 
-		let list = this.data.get(hook);
+		let list:List<FilterItem> = this.data.get(hook);
 		const index = list.findIndex(item => item.name === name);
 
 		if (index === -1) {
@@ -108,14 +110,14 @@ class FilterRegistry extends MapRegistry {
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
-	run(hook, item) {
+	run(hook:string, item:any) {
 		if (isNil(hook)) {
 			throw new Error(`hook cannot be ${hook}`);
 		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
 
-		const filters = this.data.get(hook);
+		const filters:List<FilterItem> = this.data.get(hook);
 
 		if (isNil(filters) || filters.size === 0) {
 			return item;

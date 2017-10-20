@@ -27,6 +27,7 @@ export default class Registry {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
+	// $FlowFixMe
 	set(key: string, item: any) {
 		if (isNil(key)) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
@@ -50,10 +51,11 @@ export default class Registry {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
+	// $FlowFixMe
 	add(key: string, item: any) {
 		this.set.apply(null, arguments); // eslint-disable-line
 	}
-	
+
 	/**
 	 * Add an item to the Registry.
 	 * Alias of 'set' method.
@@ -119,6 +121,7 @@ export default class Registry {
 	 * Remove a plugin from the registry
 	 * @param {string} key The key plugin to remove
 	 */
+	// $FlowFixMe
 	remove(key: string) {
 		if (isNil(key)) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);

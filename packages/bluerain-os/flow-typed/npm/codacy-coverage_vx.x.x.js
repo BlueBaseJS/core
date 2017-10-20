@@ -1,4 +1,4 @@
-// flow-typed signature: a06aa9ce9554ef1d9165634b7057b418
+// flow-typed signature: 3939507ca0cb67f465e1f92ff64a3d59
 // flow-typed version: <<STUB>>/codacy-coverage_v^2.0.2/flow_v0.53.1
 
 /**
@@ -70,11 +70,19 @@ declare module 'codacy-coverage/test/handleInput' {
   declare module.exports: any;
 }
 
+declare module 'codacy-coverage/test/handleMultiLangInput' {
+  declare module.exports: any;
+}
+
 declare module 'codacy-coverage/test/helper' {
   declare module.exports: any;
 }
 
 declare module 'codacy-coverage/test/lcov' {
+  declare module.exports: any;
+}
+
+declare module 'codacy-coverage/test/lcov2' {
   declare module.exports: any;
 }
 
@@ -129,11 +137,17 @@ declare module 'codacy-coverage/test/getGitData.js' {
 declare module 'codacy-coverage/test/handleInput.js' {
   declare module.exports: $Exports<'codacy-coverage/test/handleInput'>;
 }
+declare module 'codacy-coverage/test/handleMultiLangInput.js' {
+  declare module.exports: $Exports<'codacy-coverage/test/handleMultiLangInput'>;
+}
 declare module 'codacy-coverage/test/helper.js' {
   declare module.exports: $Exports<'codacy-coverage/test/helper'>;
 }
 declare module 'codacy-coverage/test/lcov.js' {
   declare module.exports: $Exports<'codacy-coverage/test/lcov'>;
+}
+declare module 'codacy-coverage/test/lcov2.js' {
+  declare module.exports: $Exports<'codacy-coverage/test/lcov2'>;
 }
 declare module 'codacy-coverage/test/logger.js' {
   declare module.exports: $Exports<'codacy-coverage/test/logger'>;

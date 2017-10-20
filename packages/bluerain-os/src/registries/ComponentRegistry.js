@@ -76,8 +76,8 @@ class ComponentRegistry extends MapRegistry {
 		if (!this.has(name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
-
-		const item = this.data.get(name);
+		// $FlowFixMe
+		const item:ComponentRegistryItem = this.data.get(name);
 		item.hocs.push(...hocs);
 
 		this.data = this.data.set(name, item);
@@ -92,7 +92,7 @@ class ComponentRegistry extends MapRegistry {
 	 */
 	get(...name: Array<string>) : ReactElement<*> {
 		if (isNil(name)) {
-			throw new Error(`Component name cannot be ${name}`);
+			throw new Error(`Component name cannot be ${name.toString()}`);
 		}
 
 		let component;
@@ -103,7 +103,7 @@ class ComponentRegistry extends MapRegistry {
 			}
 		}
 		if (!component) {
-			throw new Error(`None of components ${name} are registered.`);
+			throw new Error(`None of components ${name.toString()} are registered.`);
 		}
 
 		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc)); // TODO: Does this only send one param if hoc is an array?
@@ -125,8 +125,8 @@ class ComponentRegistry extends MapRegistry {
 		if (!this.has(name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
-
-		const component = this.data.get(name);
+		// $FlowFixMe
+		const component: ComponentRegistryItem = this.data.get(name);
 		return component.rawComponent;
 	}
 
@@ -152,8 +152,8 @@ class ComponentRegistry extends MapRegistry {
 		if (!this.has(name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
-
-		const previousComponent = this.data.get(name);
+		// $FlowFixMe
+		const previousComponent:ComponentRegistryItem = this.data.get(name);
 		const hocs = [...newHocs, ...previousComponent.hocs];
 		super.replace(name, { rawComponent: newComponent, hocs } );
 	}
