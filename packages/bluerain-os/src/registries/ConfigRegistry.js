@@ -39,6 +39,10 @@ class ConfigRegistry {
 		return get(this.ConfigsTable, key);
 	}
 
+	register(configs) {
+		console.warn('Deprecation Warning: "register" method of ConfigRegistry has been deprecated. Please use "registerMany" method instead.');
+		this.registerMany(configs);
+	}
 	/**
 	 * Register many configs at once
 	 */

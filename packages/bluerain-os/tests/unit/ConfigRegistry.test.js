@@ -48,11 +48,12 @@ describe('Config registry tests', () => {
 	});
 	describe('register Config', () => {
 		it('register config', () => {
-			BR.Configs.register({ app: 'hello world' });
+			BR.Configs.registerMany({ app: 'hello world'});
 			expect(BR.Configs.get('app')).toEqual('hello world');
 		});
 		it('register config', () => {
-			BR.Configs.register({ title: 'changed title' });
+
+			BR.Configs.registerMany({ title: 'changed title'} );
 			expect(BR.Configs.get('title')).toEqual('changed title');
 		});
 	});
