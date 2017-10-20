@@ -1,6 +1,7 @@
 /**
  * Created by umair on 8/24/17.
  */
+import { Map } from 'immutable';
 import BR, { Plugin } from '../../src/index';
 
 describe('Plugin registry tests', () => {
@@ -11,14 +12,14 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'HelloPlugin';
 				initialize() {}
       }
-			BR.Plugins.register(HelloPlugin);
-			expect(Object.keys(BR.Plugins.PluginsTable).length).toEqual(1);
+			BR.Plugins.set(HelloPlugin);
+			expect(BR.Plugins.data.size).toEqual(1);
 		});
 		it('Without pluginName, Plugin should throw error', () => {
 			class HelloPlugin extends Plugin {
 				initialize() {}
       }
-			expect(() => BR.Plugins.register(HelloPlugin)).toThrow(
+			expect(() => BR.Plugins.set(HelloPlugin)).toThrow(
         'Plugin name not provided.'
       );
 		});
@@ -28,7 +29,7 @@ describe('Plugin registry tests', () => {
 				static slug = 'with-slug';
 				initialize() {}
       }
-			BR.Plugins.register(HelloPlugin);
+			BR.Plugins.set(HelloPlugin);
 			expect(BR.Plugins.get('with-slug').slug).toEqual('with-slug');
 		});
 		it('slug should be hello-world', () => {
@@ -36,22 +37,19 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'HelloWorldPlugin';
 				initialize() {}
       }
-			BR.Plugins.register(HelloWorldPlugin);
+			BR.Plugins.set(HelloWorldPlugin);
 			expect(
-        Object.prototype.hasOwnProperty.call(
-          BR.Plugins.PluginsTable,
-          'hello-world-plugin'
-        )
+          BR.Plugins.data.has('hello-world-plugin')
       ).toEqual(true);
 		});
 		it('should throw error b/c name is undefined', () => {
-			expect(() => BR.Plugins.register(undefined)).toThrow();
+			expect(() => BR.Plugins.set(undefined)).toThrow();
 		});
 		it('should throw error b/c name is null', () => {
-			expect(() => BR.Plugins.register(null)).toThrow();
+			expect(() => BR.Plugins.set(null)).toThrow();
 		});
 		it('slug Create other recognized static properties', () => {
-			const plugin = BR.Plugins.PluginsTable['hello-world-plugin'];
+			const plugin = BR.Plugins.data.get('hello-world-plugin');
 			expect(plugin.slug).toEqual('hello-world-plugin');
 			expect(plugin.pluginName).toEqual('HelloWorldPlugin');
 		});
@@ -59,19 +57,19 @@ describe('Plugin registry tests', () => {
 	// plugin without extending BlueRain's Plugin component
 	describe('register plugin without extending BlueRain Plugin component', () => {
 		it('With pluginName, Plugin should be created', () => {
-			BR.Plugins.PluginsTable = {};
+			BR.Plugins.data = Map();
 			class HelloPlugin {
 				static pluginName = 'HelloPlugin';
 				initialize() {}
       }
-			BR.Plugins.register(HelloPlugin);
-			expect(Object.keys(BR.Plugins.PluginsTable).length).toEqual(1);
+			BR.Plugins.set(HelloPlugin);
+			expect(BR.Plugins.data.size).toEqual(1);
 		});
 		it('Without pluginName, Plugin should throw error', () => {
 			class HelloPlugin {
 				initialize() {}
       }
-			expect(() => BR.Plugins.register(HelloPlugin)).toThrow(
+			expect(() => BR.Plugins.set(HelloPlugin)).toThrow(
         'Plugin name not provided.'
       );
 		});
@@ -81,7 +79,7 @@ describe('Plugin registry tests', () => {
 				static slug = 'with-slug';
 				initialize() {}
       }
-			BR.Plugins.register(HelloPlugin);
+			BR.Plugins.set(HelloPlugin);
 			expect(BR.Plugins.get('with-slug').slug).toEqual('with-slug');
 		});
 		it('slug should be hello-world', () => {
@@ -89,16 +87,13 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'HelloWorldPlugin';
 				initialize() {}
       }
-			BR.Plugins.register(HelloWorldPlugin);
+			BR.Plugins.set(HelloWorldPlugin);
 			expect(
-        Object.prototype.hasOwnProperty.call(
-          BR.Plugins.PluginsTable,
-          'hello-world-plugin'
-        )
+          BR.Plugins.data.has('hello-world-plugin')
       ).toEqual(true);
 		});
 		it('slug Create other recognized static properties', () => {
-			const plugin = BR.Plugins.PluginsTable['hello-world-plugin'];
+			const plugin = BR.Plugins.data.get('hello-world-plugin');
 			expect(plugin.slug).toEqual('hello-world-plugin');
 			expect(plugin.pluginName).toEqual('HelloWorldPlugin');
 		});
@@ -141,12 +136,12 @@ describe('Plugin registry tests', () => {
 		});
 		it('should throw error b/c plugin is empty', () => {
 			BR.Plugins.registerMany();
-			expect(Object.keys(BR.Plugins.PluginsTable).length).toEqual(2);
+			expect(BR.Plugins.data.size).toEqual(2);
 		});
 		it('should throw error b/c errornous plugins', () => {
 			class HelloPlugin extends Plugin {
 				static pluginName = 'WithSlugPlugin';
-				static slug = 'with-slug';
+				static slug = 'with-slug-1';
 				initialize() {}
       }
 			expect(() =>
@@ -157,7 +152,7 @@ describe('Plugin registry tests', () => {
 			BR.Plugins.PluginsTable = {};
 			class HelloPlugin extends Plugin {
 				static pluginName = 'WithSlugPlugin';
-				static slug = 'with-slug';
+				static slug = 'with-slug-2';
 				initialize() {}
       }
 			class HelloWorldPlugin extends Plugin {
@@ -165,7 +160,7 @@ describe('Plugin registry tests', () => {
 				initialize() {}
       }
 			BR.Plugins.registerMany([HelloPlugin, HelloWorldPlugin]);
-			expect(Object.keys(BR.Plugins.PluginsTable).length).toEqual(2);
+			expect(BR.Plugins.data.size).toEqual(5);
 		});
 	});
 	describe('initialize plugins', () => {
@@ -182,7 +177,7 @@ describe('Plugin registry tests', () => {
 					});
 				}
       }
-			BR.Plugins.register(HelloReactplugin);
+			BR.Plugins.set(HelloReactplugin);
 			BR.Plugins.initializeAll();
 			expect(BR.Filters.run('plugin.test.initialize.hook')).toEqual(
         '334'

@@ -6,7 +6,7 @@ import BR, { Plugin } from '../index';
 
 /**
  * All system plugins are stored in this registry
- * @property {Object} data Storage table of all plugins
+ * @property {Map<string, Plugin>} data Storage Map of all plugins
  */
 export default class PluginRegistry extends MapRegistry {
 
@@ -16,6 +16,10 @@ export default class PluginRegistry extends MapRegistry {
 		super('PluginRegistry');
 	}
 
+	register(plugin: Plugin) {
+		console.warn('Deprecation Warning: "register" method of PluginRegistry has been deprecated. Please use "set" method instead.');
+		this.set(plugin);
+	}
 	/**
 	 * Register a Plugin
 	 * @param {Plugin} plugin The plugin to register
@@ -54,7 +58,7 @@ export default class PluginRegistry extends MapRegistry {
 	}
 
 	/**
-	 * Initialize all plugins
+	 * Initialize all the registered plugins
 	 */
 	initializeAll() {
 		for (const plugin of this.data.values()) {
