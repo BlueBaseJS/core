@@ -85,20 +85,26 @@ class ComponentRegistry extends MapRegistry {
 
 	/**
 	 * Get a component registered with registerComponent(name, component, ...hocs).
+	 * Its accepts multiple names and return the first availble component in the list of arguments
 	 *
 	 * @param {String} name The name of the component to get.
 	 * @returns {Function|React Component} A (wrapped) React component
 	 */
-	get(name: string) : ReactElement<*> {
+	get(...name: Array<string>) : ReactElement<*> {
 		if (isNil(name)) {
 			throw new Error(`Component name cannot be ${name}`);
 		}
 
-		if (!this.has(name)) {
-			throw new Error(`Component ${name} not registered.`);
+		let component;
+		for (let i = 0; i < name.length; i += 1) {
+			if (this.has(name[i])) {
+				component = this.data.get(name[i]);
+				break;
+			}
 		}
-
-		const component = this.data.get(name);
+		if (!component) {
+			throw new Error(`None of components ${name} are registered.`);
+		}
 
 		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc)); // TODO: Does this only send one param if hoc is an array?
 		return compose(...hocs)(component.rawComponent);

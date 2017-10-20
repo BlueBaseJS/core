@@ -302,6 +302,7 @@ Adds higher order component to the registered component
 ### get
 
 Get a component registered with registerComponent(name, component, ...hocs).
+Its accepts multiple names and return the first availble component in the list of arguments
 
 **Parameters**
 

@@ -52,6 +52,17 @@ describe('Component Registry test specifications', () => {
 			expect(component).toEqual(Heading);
 		});
 		it('should return component from registry', () => {
+			const component = BR.Components.get('abc', 'error', 'heading');
+			expect(component).toEqual(Heading);
+		});
+		it('should return first available component from registry', () => {
+			const component = BR.Components.get('abc', 'error', '', 'heading');
+			expect(component).toEqual(<Heading heading="empty" />);
+		});
+		it('should return first available component from registry', () => {
+			expect(() => BR.Components.get('abc', 'error', 'def' )).toThrow();
+		});
+		it('should return component from registry', () => {
 			const component = BR.Components.get('');
 			expect(component).toEqual(<Heading heading="empty" />);
 		});
