@@ -18,33 +18,36 @@
 -   [WindowState](#windowstate)
 -   [AppRegistry](#appregistry)
     -   [register](#register)
+    -   [set](#set)
     -   [registerMany](#registermany)
-    -   [get](#get)
     -   [initializeAll](#initializeall)
-    -   [remove](#remove)
-    -   [getApps](#getapps)
     -   [getComponentSchema](#getcomponentschema)
 -   [ComponentRegistry](#componentregistry)
-    -   [register](#register-1)
-    -   [has](#has)
-    -   [get](#get-1)
+    -   [set](#set-1)
+    -   [addHOCs](#addhocs)
+    -   [get](#get)
     -   [getRawComponent](#getrawcomponent)
     -   [replace](#replace)
-    -   [copyHoCs](#copyhocs)
 -   [ConfigRegistry](#configregistry)
-    -   [set](#set)
-    -   [get](#get-2)
-    -   [register](#register-2)
+    -   [set](#set-2)
+    -   [get](#get-1)
+    -   [registerMany](#registermany-1)
 -   [EventEmitter](#eventemitter)
 -   [FilterRegistry](#filterregistry)
-    -   [add](#add)
-    -   [remove](#remove-1)
+    -   [set](#set-3)
+    -   [remove](#remove)
     -   [run](#run)
+-   [Registry](#registry)
+    -   [set](#set-4)
+    -   [add](#add)
+    -   [register](#register-1)
+    -   [replace](#replace-1)
+    -   [get](#get-2)
+    -   [has](#has)
+    -   [remove](#remove-1)
 -   [PluginRegistry](#pluginregistry)
-    -   [register](#register-3)
-    -   [registerMany](#registermany-1)
-    -   [remove](#remove-2)
-    -   [get](#get-3)
+    -   [set](#set-5)
+    -   [registerMany](#registermany-2)
     -   [initializeAll](#initializeall-1)
 
 ## Platform
@@ -214,13 +217,23 @@ Type: {width: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/R
 
 ## AppRegistry
 
+**Extends MapRegistry**
+
 All system apps are stored in this registry
 
 **Properties**
 
--   `AppsTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all apps
+-   `data` **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), [App](#app)>** Map(immutablejs) of all apps
 
 ### register
+
+Register an App To be deprecated in 1.0.0
+
+**Parameters**
+
+-   `app` **[App](#app)** The BlueRain app to register
+
+### set
 
 Register an App
 
@@ -236,33 +249,9 @@ Register many apps at once
 
 -   `apps` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[App](#app)>** The BlueRain apps to register
 
-### get
-
-Get an app
-
-**Parameters**
-
--   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug of the app
-
-Returns **[App](#app)** 
-
 ### initializeAll
 
-Initialize all apps
-
-### remove
-
-Remove an app from the registry
-
-**Parameters**
-
--   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug of the app to remove
-
-### getApps
-
-Get all apps
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** An object with slug: app key value pair
+Initialize all the registered apps
 
 ### getComponentSchema
 
@@ -273,13 +262,15 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## ComponentRegistry
 
+**Extends MapRegistry**
+
 All system components are stored in this registry
 
 **Properties**
 
--   `ComponentsTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all components
+-   `data` **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), {rawComponent: ReactElement&lt;any>, hocs: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>}>** Storage of all components
 
-### register
+### set
 
 Register a component with a name, a raw component than can be extended
 and one or more optional higher order components.
@@ -288,26 +279,25 @@ and one or more optional higher order components.
 
 -   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
 -   `rawComponent` **ReactElement&lt;any>** 
--   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.Note: when a component is registered without higher order component, `hocs` will be
+-   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>** The HOCs to compose with the raw component.Note: when a component is registered without higher order component, `hocs` will be
     an empty array, and it's ok!
-    See <https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15>
+    See <https://lodash.com/docs/4.17.4#flowRight>
 
-Returns **any** Structure of a component in the list:this.ComponentsTable.Foo = {
+Returns **any** Structure of a component in the list:this.data.Foo = {
    name: 'Foo',
    hocs: [fn1, fn2],
    rawComponent: React.Component,
    call: () => compose(...hocs)(rawComponent),
 }
 
-### has
+### addHOCs
 
-Check if a component is registered with registerComponent(name, component, ...hocs).
+Adds higher order component to the registered component
 
 **Parameters**
 
--   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
-
-Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the registered component to whom hocs are to added
+-   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>** The HOCs to compose with the raw component.
 
 ### get
 
@@ -343,17 +333,6 @@ This function keeps track of the previous HOCs and wrap the new HOCs around prev
 -   `newHocs` **...[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)>** 
 -   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.
 
-### copyHoCs
-
-[write docs]
-
-**Parameters**
-
--   `sourceComponent` **any** 
--   `targetComponent` **any** 
-
-Returns **ReactElement&lt;any>** 
-
 ## ConfigRegistry
 
 All system configs are stored in this registry
@@ -381,7 +360,7 @@ Get a config value
 
 Returns **any** 
 
-### register
+### registerMany
 
 Register many configs at once
 
@@ -395,20 +374,24 @@ Created by umair on 8/28/17.
 
 ## FilterRegistry
 
+**Extends MapRegistry**
+
 All system filters are stored in this registry
 
 **Properties**
 
--   `FiltersTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all filters
+-   `data` **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), List&lt;{name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), filter: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}>>** Storage of all filters and their respective functions
 
-### add
+### set
 
-Add a filter function to a hook
+Add a filter function to a hook.
 
 **Parameters**
 
 -   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `name` **([String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** The name of filter function
 -   `filter` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The filter function
+-   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The index where function should be placed in array of functions against the hook
 
 ### remove
 
@@ -416,6 +399,8 @@ Remove a filter from a hook
 
 **Parameters**
 
+-   `hook` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 -   `hookName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
 -   `filterName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the function to remove
 
@@ -432,15 +417,92 @@ Successively run all of a hook's filters on an item
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns the item after it's been through all the filters for this hook
 
+## Registry
+
+A generic Registry class in the BlueRain OS. Used to store data.
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+### set
+
+Add an item to the Registry.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
+-   `item` **any** The item to add
+
+### add
+
+Add an item to the Registry.
+Alias of 'set' method.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
+-   `item` **any** The item to add
+
+### register
+
+Add an item to the Registry.
+Alias of 'set' method.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
+-   `item` **any** The item to add
+
+### replace
+
+Replace an item in the Registry.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
+-   `item` **any** The item to add
+
+### get
+
+Get an item from the Registry by its key.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
+
+Returns **any** 
+
+### has
+
+Check if an item is registered.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the item to check
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+### remove
+
+Remove a plugin from the registry
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key plugin to remove
+
 ## PluginRegistry
+
+**Extends MapRegistry**
 
 All system plugins are stored in this registry
 
 **Properties**
 
--   `PluginsTable` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Storage table of all plugins
+-   `data` **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), [Plugin](#plugin)>** Storage Map of all plugins
 
-### register
+### set
 
 Register a Plugin
 
@@ -456,24 +518,6 @@ Register many plugins at once
 
 -   `plugins` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Plugin](#plugin)>** The array of plugins to register
 
-### remove
-
-Remove a plugin from the registry
-
-**Parameters**
-
--   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug plugin to remove
-
-### get
-
-Get a plugin
-
-**Parameters**
-
--   `slug` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The slug of the plugin
-
-Returns **[Plugin](#plugin)** 
-
 ### initializeAll
 
-Initialize all plugins
+Initialize all the registered plugins
