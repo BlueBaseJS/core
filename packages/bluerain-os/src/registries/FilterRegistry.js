@@ -1,6 +1,5 @@
 /* @flow */
 
-import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 
 import { List } from 'immutable';
