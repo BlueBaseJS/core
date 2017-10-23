@@ -23,6 +23,13 @@ class FilterRegistry extends MapRegistry {
 	constructor() {
 		super('FilterRegistry');
 	}
+	/**
+	 * Add a filter function to a hook.To be deprecated in 2.0.0
+	 * @param {String} hook - The name of the hook
+	 * @param {String | function} name - The name of filter function
+	 * @param {Function} filter - The filter function
+	 * @param {number} index - The index where function should be placed in array of functions against the hook
+	 */
 	add(hook: string, name: string | Function, filter: Function, index: number) {
 		console.warn('Deprecation Warning: "add" method of FilterRegistry has been deprecated. Please use "set" method instead.');
 		this.set(hook, name, filter, index);
@@ -36,7 +43,7 @@ class FilterRegistry extends MapRegistry {
 	 */
 	set(hook: string, name: string | Function, filter: Function, index: number) {
 		if (isNil(hook)) {
-			throw new Error(`hook cannot be ${hook}`);
+			throw new Error(`Hook cannot be ${hook}`);
 		}
 
 		// If a plugin is using an old system of sending named functions
@@ -80,11 +87,11 @@ class FilterRegistry extends MapRegistry {
 	 */
 	remove(hook: string, name: string) {
 		if (isNil(hook)) {
-			throw new Error(`hook cannot be ${hook}`);
+			throw new Error(`Hook cannot be ${hook}`);
 		}
 
 		if (isNil(name)) {
-			throw new Error(`filter name cannot be ${name}`);
+			throw new Error(`Filter name cannot be ${name}`);
 		}
 
 		if (!this.data.has(hook)) {
@@ -112,7 +119,7 @@ class FilterRegistry extends MapRegistry {
 	 */
 	run(hook:string, item:any) {
 		if (isNil(hook)) {
-			throw new Error(`hook cannot be ${hook}`);
+			throw new Error(`Hook cannot be ${hook}`);
 		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params

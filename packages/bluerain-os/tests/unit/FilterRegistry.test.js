@@ -98,22 +98,22 @@ describe('Filters test specifications', () => {
 		});
 		it('should throw error because hook is null', () => {
 			expect(() => BR.Filters.remove(null, 'func1')).toThrow(
-        'hook cannot be null'
+        'Hook cannot be null'
       );
 		});
 		it('should throw error because hook is undefined', () => {
 			expect(() => BR.Filters.remove(undefined, 'func1')).toThrow(
-        'hook cannot be undefined'
+        'Hook cannot be undefined'
       );
 		});
 		it('should throw error because function is null', () => {
 			expect(() => BR.Filters.remove('test.hook', null)).toThrow(
-        'filter name cannot be null'
+        'Filter name cannot be null'
       );
 		});
 		it('should throw error because function is undefined', () => {
 			expect(() => BR.Filters.remove('test.hook', undefined)).toThrow(
-        'filter name cannot be undefined'
+        'Filter name cannot be undefined'
       );
 		});
 	});

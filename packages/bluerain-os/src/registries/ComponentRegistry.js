@@ -25,6 +25,15 @@ class ComponentRegistry extends MapRegistry {
 	constructor() {
 		super('ComponentRegistry');
 	}
+	/**
+	 * Register a component with a name, a raw component than can be extended
+	 * and one or more optional higher order components.To be deprecated in 2.0.0
+	 *
+	 * @param {String} name The name of the component to register.
+	 * @param {React Component} rawComponent Interchangeable/extendable component.
+	 * @param {Array<Function | Array<any>>} hocs The HOCs to compose with the raw component.
+	 *
+	 */
 	register(name: string, rawComponent: ReactElement<*>, ...hocs: Array<ComponentRegistryHocItem>) {
 		console.warn('Deprecation Warning: "register" method of ComponentRegistry has been deprecated. Please use "set" method instead.');
 		this.set(name, rawComponent, ...hocs);
@@ -84,8 +93,8 @@ class ComponentRegistry extends MapRegistry {
 	}
 
 	/**
-	 * Get a component registered with registerComponent(name, component, ...hocs).
-	 * Its accepts multiple names and return the first availble component in the list of arguments
+	 * Get a component registered with set(name, component, ...hocs).
+	 * Its accepts multiple component names.It iterates arguments and returns first found registered component.
 	 *
 	 * @param {String} name The name of the component to get.
 	 * @returns {Function|React Component} A (wrapped) React component
@@ -106,7 +115,15 @@ class ComponentRegistry extends MapRegistry {
 			throw new Error(`None of components ${name.toString()} are registered.`);
 		}
 
-		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc)); // TODO: Does this only send one param if hoc is an array?
+		const hocs = component.hocs.map((hoc) => {
+			if (Array.isArray(hoc)) {
+				let composedHoc = hoc[0](hoc[hoc.length - 1]);
+				for (let i = hoc.length - 2; i > 0; i -= 1) {
+					composedHoc = hoc[0](hoc[i])(composedHoc);
+				}
+				return composedHoc;
+			}  return hoc;
+		});
 		return compose(...hocs)(component.rawComponent);
 	}
 

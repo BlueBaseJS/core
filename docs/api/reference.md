@@ -22,7 +22,9 @@
     -   [registerMany](#registermany)
     -   [initializeAll](#initializeall)
     -   [getComponentSchema](#getcomponentschema)
+    -   [getAllRoutes](#getallroutes)
 -   [ComponentRegistry](#componentregistry)
+    -   [register](#register-1)
     -   [set](#set-1)
     -   [addHOCs](#addhocs)
     -   [get](#get)
@@ -31,21 +33,23 @@
 -   [ConfigRegistry](#configregistry)
     -   [set](#set-2)
     -   [get](#get-1)
+    -   [register](#register-2)
     -   [registerMany](#registermany-1)
 -   [EventEmitter](#eventemitter)
 -   [FilterRegistry](#filterregistry)
+    -   [add](#add)
     -   [set](#set-3)
     -   [remove](#remove)
     -   [run](#run)
 -   [Registry](#registry)
     -   [set](#set-4)
-    -   [add](#add)
-    -   [register](#register-1)
+    -   [add](#add-1)
     -   [replace](#replace-1)
     -   [get](#get-2)
     -   [has](#has)
     -   [remove](#remove-1)
 -   [PluginRegistry](#pluginregistry)
+    -   [register](#register-3)
     -   [set](#set-5)
     -   [registerMany](#registermany-2)
     -   [initializeAll](#initializeall-1)
@@ -227,7 +231,7 @@ All system apps are stored in this registry
 
 ### register
 
-Register an App To be deprecated in 1.0.0
+Register an App To be deprecated in 2.0.0
 
 **Parameters**
 
@@ -256,7 +260,14 @@ Initialize all the registered apps
 ### getComponentSchema
 
 Returns the JSON schema of the main APPs component.
-This component renders all the apps.
+This component renders all the routes of apps.To be deprecated in 2.0.0
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** JSON Schema
+
+### getAllRoutes
+
+Returns the JSON schema of the main APPs component.
+This component renders all the routes of apps.
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** JSON Schema
 
@@ -269,6 +280,17 @@ All system components are stored in this registry
 **Properties**
 
 -   `data` **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), {rawComponent: ReactElement&lt;any>, hocs: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>}>** Storage of all components
+
+### register
+
+Register a component with a name, a raw component than can be extended
+and one or more optional higher order components.To be deprecated in 2.0.0
+
+**Parameters**
+
+-   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
+-   `rawComponent` **ReactElement&lt;any>** 
+-   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>** The HOCs to compose with the raw component.
 
 ### set
 
@@ -301,8 +323,8 @@ Adds higher order component to the registered component
 
 ### get
 
-Get a component registered with registerComponent(name, component, ...hocs).
-Its accepts multiple names and return the first availble component in the list of arguments
+Get a component registered with set(name, component, ...hocs).
+Its accepts multiple component names.It iterates arguments and returns first found registered component.
 
 **Parameters**
 
@@ -361,6 +383,14 @@ Get a config value
 
 Returns **any** 
 
+### register
+
+Register a Config To be deprecated in 2.0.0
+
+**Parameters**
+
+-   `configs` **{}** 
+
 ### registerMany
 
 Register many configs at once
@@ -382,6 +412,17 @@ All system filters are stored in this registry
 **Properties**
 
 -   `data` **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), List&lt;{name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), filter: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}>>** Storage of all filters and their respective functions
+
+### add
+
+Add a filter function to a hook.To be deprecated in 2.0.0
+
+**Parameters**
+
+-   `hook` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the hook
+-   `name` **([String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** The name of filter function
+-   `filter` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The filter function
+-   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The index where function should be placed in array of functions against the hook
 
 ### set
 
@@ -445,16 +486,6 @@ Alias of 'set' method.
 -   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
 -   `item` **any** The item to add
 
-### register
-
-Add an item to the Registry.
-Alias of 'set' method.
-
-**Parameters**
-
--   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
--   `item` **any** The item to add
-
 ### replace
 
 Replace an item in the Registry.
@@ -502,6 +533,14 @@ All system plugins are stored in this registry
 **Properties**
 
 -   `data` **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), [Plugin](#plugin)>** Storage Map of all plugins
+
+### register
+
+Register a Plugin To be deprecated in 2.0.0
+
+**Parameters**
+
+-   `plugin` **[Plugin](#plugin)** The plugin to register
 
 ### set
 

@@ -16,6 +16,10 @@ export default class PluginRegistry extends MapRegistry {
 		super('PluginRegistry');
 	}
 
+	/**
+	 * Register a Plugin To be deprecated in 2.0.0
+	 * @param {Plugin} plugin The plugin to register
+	 */
 	register(plugin: Plugin) {
 		console.warn('Deprecation Warning: "register" method of PluginRegistry has been deprecated. Please use "set" method instead.');
 		this.set(plugin);
@@ -51,7 +55,7 @@ export default class PluginRegistry extends MapRegistry {
 		plugins = plugins || [];
 
 		if (!Array.isArray(plugins)) {
-			throw new Error('plugins parameter must be an Array');
+			throw new Error('Plugins parameter must be an Array');
 		}
 
 		plugins.forEach((plugin: Plugin) => me.set(plugin));

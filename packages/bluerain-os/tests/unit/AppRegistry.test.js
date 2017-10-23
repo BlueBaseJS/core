@@ -1,8 +1,6 @@
 import React from 'react';
 import BR, { App } from '../../src';
 import { Map } from 'immutable';
-// import AppRegistry from '../../src/registries/AppRegistry';
-// BR.Apps = new AppRegistry()
 class HelloApp extends App {
 	static appName = 'Hello World';
 	render() {

@@ -20,7 +20,7 @@ class AppRegistry extends MapRegistry {
 		super('AppRegistry');
 	}
   /**
-   * Register an App To be deprecated in 1.0.0
+   * Register an App To be deprecated in 2.0.0
    * @param {App} app The BlueRain app to register
    */
 	register(app: App) {
@@ -33,7 +33,7 @@ class AppRegistry extends MapRegistry {
 	 */
 	set(app: App) {
 		if (isNil(app)) {
-			throw new Error('No app provided');
+			throw new Error(`App cannot be ${app}`);
 		}
 
 		if (!app.appName) {
@@ -60,7 +60,7 @@ class AppRegistry extends MapRegistry {
 		apps = apps || [];
 
 		if (!Array.isArray(apps)) {
-			throw new Error('apps parameter must be an Array');
+			throw new Error('Apps parameter must be an array');
 		}
 
 		apps.forEach(app => me.set(app));
@@ -81,11 +81,21 @@ class AppRegistry extends MapRegistry {
 
 	/**
 	 * Returns the JSON schema of the main APPs component.
-	 * This component renders all the apps.
+	 * This component renders all the routes of apps.To be deprecated in 2.0.0
 	 *
 	 * @returns {Object} JSON Schema
 	 */
 	getComponentSchema() : Array<*> {
+		console.warn('Deprecation Warning: "getComponentSchema" method of AppRegistry has been deprecated. Please use "getAllRoutes" method instead.');
+		return this.getAllRoutes();
+	}
+	/**
+	 * Returns the JSON schema of the main APPs component.
+	 * This component renders all the routes of apps.
+	 *
+	 * @returns {Object} JSON Schema
+	 */
+	getAllRoutes() : Array<*> {
 		const appRoutes = [];
 		for (const app of this.data.values()) {
 			appRoutes.push({

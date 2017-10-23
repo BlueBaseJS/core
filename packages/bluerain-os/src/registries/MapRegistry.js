@@ -57,17 +57,6 @@ export default class Registry {
 	}
 
 	/**
-	 * Add an item to the Registry.
-	 * Alias of 'set' method.
-	 *
-	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
-	 */
-	register(key: string, item: any) {
-		this.set.apply(null, arguments); // eslint-disable-line
-	}
-
-	/**
 	 * Replace an item in the Registry.
 	 *
 	 * @param {string} key The key of the item

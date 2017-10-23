@@ -38,7 +38,9 @@ class ConfigRegistry {
 
 		return get(this.ConfigsTable, key);
 	}
-
+	/**
+	 * Register a Config To be deprecated in 2.0.0
+	 */
 	register(configs: {}) {
 		console.warn('Deprecation Warning: "register" method of ConfigRegistry has been deprecated. Please use "registerMany" method instead.');
 		this.registerMany(configs);
