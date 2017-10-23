@@ -44,17 +44,6 @@ export default class Registry {
 		this.data = this.data.set(key, item);
 	}
 
-	/**
-	 * Add an item to the Registry.
-	 * Alias of 'set' method.
-	 *
-	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
-	 */
-	// $FlowFixMe
-	add(key: string, item: any) {
-		this.set.apply(null, arguments); // eslint-disable-line
-	}
 
 	/**
 	 * Replace an item in the Registry.
