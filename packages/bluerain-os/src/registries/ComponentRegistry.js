@@ -85,8 +85,8 @@ class ComponentRegistry extends MapRegistry {
 		if (!this.has(name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
-		// $FlowFixMe
-		const item:ComponentRegistryItem = this.data.get(name);
+
+		const item:ComponentRegistryItem = super.get(name);
 		item.hocs.push(...hocs);
 
 		this.data = this.data.set(name, item);
@@ -142,8 +142,7 @@ class ComponentRegistry extends MapRegistry {
 		if (!this.has(name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
-		// $FlowFixMe
-		const component: ComponentRegistryItem = this.data.get(name);
+		const component: ComponentRegistryItem = super.get(name);
 		return component.rawComponent;
 	}
 
@@ -169,8 +168,7 @@ class ComponentRegistry extends MapRegistry {
 		if (!this.has(name)) {
 			throw new Error(`Component ${name} not registered.`);
 		}
-		// $FlowFixMe
-		const previousComponent:ComponentRegistryItem = this.data.get(name);
+		const previousComponent:ComponentRegistryItem = super.get(name);
 		const hocs = [...newHocs, ...previousComponent.hocs];
 		super.replace(name, { rawComponent: newComponent, hocs } );
 	}

@@ -27,8 +27,8 @@ export default class Registry {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	// $FlowFixMe
-	set(key: string, item: any) {
+
+	set(key: string, item: any, ...rest:Array<*>) {
 		if (isNil(key)) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
@@ -99,8 +99,8 @@ export default class Registry {
 	 * Remove a plugin from the registry
 	 * @param {string} key The key plugin to remove
 	 */
-	// $FlowFixMe
-	remove(key: string) {
+
+	remove(key: string, ...rest:Array<*>) {
 		if (isNil(key)) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);
 		}

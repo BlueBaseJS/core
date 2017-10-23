@@ -47,10 +47,8 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		// If a plugin is using an old system of sending named functions
-		if (isFunction(name)) {
-			// $FlowFixMe
+		if (typeof name === 'function') {
 			filter = name;
-			// $FlowFixMe
 			name = filter.name;
 		}
 
