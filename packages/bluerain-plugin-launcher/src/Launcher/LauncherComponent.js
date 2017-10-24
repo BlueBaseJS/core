@@ -12,7 +12,7 @@ const styles = {
 		padding: 30
 	},
 };
-
+/* eslint-disable */
 const MainPage = props => (
   <GridList style={styles.gridList} cols={props.cols} cellHeight="auto" padding={20}>
     {props.apps.map(tile => (
