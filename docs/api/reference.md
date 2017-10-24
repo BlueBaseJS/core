@@ -43,7 +43,6 @@
     -   [run](#run)
 -   [Registry](#registry)
     -   [set](#set-4)
-    -   [add](#add-1)
     -   [replace](#replace-1)
     -   [get](#get-2)
     -   [has](#has)
@@ -147,10 +146,7 @@ ResponsiveLayout component to create responsive layouts.
 
 **Properties**
 
--   `window` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The window state passed from the store
-    -   `window.width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window width
-    -   `window.height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The window height
-    -   `window.size` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The window size i.e. (xs|sm|md|lg|xl)
+-   `windowSize` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The window size i.e. (xs|sm|md|lg|xl)
 -   `default` **React.Component** The default component to render, if a current size component is not given.
 -   `xs` **React.Component** The component to render when the screen size is extra-small.
 -   `sm` **React.Component** The component to render when the screen size is small.
@@ -475,16 +471,7 @@ Add an item to the Registry.
 
 -   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
 -   `item` **any** The item to add
-
-### add
-
-Add an item to the Registry.
-Alias of 'set' method.
-
-**Parameters**
-
--   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the item
--   `item` **any** The item to add
+-   `rest` **...[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>** 
 
 ### replace
 
@@ -523,6 +510,7 @@ Remove a plugin from the registry
 **Parameters**
 
 -   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key plugin to remove
+-   `rest` **...[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>** 
 
 ## PluginRegistry
 

@@ -12,7 +12,7 @@ import withSystemNav from '../../redux/withSystemNav';
 
 import NavHeader from '../Buttons/NavHeader';
 
-const changeRequestHandler = props => (open) => {
+const changeRequestHandler = props => (open) => { // $FlowFixMe
 	props.systemNavActions.toggle();
 };
 
@@ -25,7 +25,7 @@ const TaskbarComponent = (props: {
     onClick?: Function
   } | '-' | '->'>,
   hideLabels: boolean,
-  children: Array,
+  children: Array<*>,
   docked: boolean,
   open: boolean
 }) => {
@@ -40,8 +40,8 @@ const TaskbarComponent = (props: {
 	const drawerStyles = (props.docked === true && props.open === true) ? { position: 'relative' } : {};
 	const zDepth = (props.docked === true) ? 0 : 2;
 
-	if (hideLabels === true) {
-		drawerStyles.width = 64;
+	if (hideLabels === true) { // $FlowFixMe
+		drawerStyles.width = 64;// $FlowFixMe
 		drawerStyles.textAlign = 'center';
 	}
 

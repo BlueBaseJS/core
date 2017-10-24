@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@blueeast/bluerain-os": "^0.4.0",
+    "react":"^16.0.0",
     "why-did-you-update": "^0.0.8"
   },
   "devDependencies": {

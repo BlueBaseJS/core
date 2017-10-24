@@ -1,7 +1,7 @@
 // @flow
 
 import React, { type Node } from 'react';
-import { withBlueRain } from '@blueeast/bluerain-os';
+import BR, { withBlueRain } from '@blueeast/bluerain-os';
 import AppBar from 'material-ui/AppBar';
 
 const styles = {
@@ -21,7 +21,8 @@ const goHome = BR => (ev) => {
 const NavHeader = (props: {
 	title: string,
 	logo: Node,
-	hideLabel: boolean
+	hideLabel: boolean,
+	bluerain: BR
 }) => {
 
 	const { hideLabel, bluerain: BR, ...other } = props; // eslint-disable-line
