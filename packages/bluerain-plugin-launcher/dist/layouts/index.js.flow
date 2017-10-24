@@ -1,0 +1,35 @@
+import React from 'react';
+import { withBlueRain } from '@blueeast/bluerain-os';
+
+import Launcher from '../common/Launcher';
+import getDesktopLayout from './desktop/';
+
+const Layout = ({ bluerain: BR, Component, bannerUrl }) => {
+
+	const wallpaper = BR.Configs.get('plugins.launcher.bannerImageUrl');
+
+	const layout = {
+		component: 'View',
+		props: {
+			style: {
+				backgroundImage: `url(${wallpaper})`,
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: 'cover',
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				flexGrow: 1,
+			}
+		},
+		children: [{
+			component: 'ResponsiveLayout',
+			props: {
+				default: () => <Launcher rows={6} />,
+			}
+		}]
+	};
+
+	return BR.Utils.parseJsonSchema(layout);
+};
+
+export default withBlueRain(Layout);

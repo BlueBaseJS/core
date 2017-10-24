@@ -7,7 +7,8 @@ const plugins = [
 	'material-ui',
 	'react-router',
 	'redux',
-	'redux-devtools'
+	'redux-devtools',
+	'why-did-you-update',
 ]
 
 plugins.forEach(function(plugin) {

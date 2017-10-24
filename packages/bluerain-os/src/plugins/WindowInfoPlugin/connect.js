@@ -9,6 +9,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	setWindowDimentions: (w, h) => dispatch(setWindowDimentions(w, h))
 });
 
-const withWindowInfo = Component => connect(mapStateToProps, mapDispatchToProps)(Component);
+export const withWindowInfo = Component => connect(mapStateToProps, mapDispatchToProps)(Component);
 
-export default withWindowInfo;
+export const withWindowSize = Component => connect(state => ({
+	windowSize: state.bluerain.window.size
+}))(Component);
+

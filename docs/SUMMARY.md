@@ -32,3 +32,4 @@
 * [React Router](/plugins/react-router.md)
 * [Redux](/plugins/redux.md)
 * [Redux Devtools](/plugins/redux-devtools.md)
+* [Why Did You Update](/plugins/why-did-you-update.md)

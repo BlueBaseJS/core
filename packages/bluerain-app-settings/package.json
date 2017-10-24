@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-app-settings",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "A settings app for BlueRain OS made with Material UI",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.0",
+    "@blueeast/bluerain-os": "^0.4.2",
     "material-ui": "^0.19.1",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0-alpha.12",
