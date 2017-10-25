@@ -1,5 +1,29 @@
 {
-    "extends": [
-      "@blueeast/tslint-config-blueeast/react"
-    ]
-  }
+	"compilerOptions": {
+			"moduleResolution": "node",
+			"types": ["node"],
+			"target": "es5",
+			"module":"es2015",
+			"lib": ["es2015", "es2016", "es2017", "dom", "esnext.asynciterable"],
+			"strict": true,
+			"sourceMap": true,
+			"declaration": true,
+			"allowSyntheticDefaultImports": true,
+			"noImplicitAny": false,
+			"experimentalDecorators": true,
+			"emitDecoratorMetadata": true,
+			"declarationDir": "dist/types",
+			"outDir": "compiled",
+			"jsx": "react", // process JSX
+			"typeRoots": [
+				"node_modules/@types"
+			],
+			"baseUrl": ".",
+			"paths": {
+				"*": [ "./typings/*" ]
+			}
+	},
+	"include": [
+			"src"
+	]
+}
