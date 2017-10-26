@@ -13,7 +13,7 @@ import BR from '../../index';
 export type ComponentSchema = {
 	component: string | ReactElement<any>;
 	text?: string;
-	props?: { key?: any };
+	props?: {[key: string]: any};
 	children?: ComponentSchema[];
 };
 
@@ -100,7 +100,7 @@ export default class JsonToReact {
 		return createElement(Component, props, Children);
 	}
 
-	resolveComponentChildren(schema: ComponentSchema) {
+	resolveComponentChildren(schema: ComponentSchema| ComponentSchema[]) {
 		return Object.prototype.hasOwnProperty.call(schema, 'children')
 			? this.parseSchema(schema.children)
 			: undefined;

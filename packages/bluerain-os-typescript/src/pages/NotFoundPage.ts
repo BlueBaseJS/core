@@ -14,13 +14,13 @@ const pageStyle = RX.Styles.createViewStyle(
 const titleStyle = RX.Styles.createViewStyle(
 	{
 		alignSelf: 'center',
-		textAlign: 'center',
+		// textAlign: 'center',
 		backgroundColor: 'rgb(220,53,69)',
 		borderColor: 'rgb(220,53,69)',
 		borderRadius: 10,
 		borderWidth: 1,
-		color: '#fff',
-		fontSize: 68,
+		// color: '#fff',
+		// fontSize: 68,
 		marginBottom: 20,
 		padding: 20,
 		shadowOffset: { height: 5, width: 0 },
@@ -32,10 +32,10 @@ const titleStyle = RX.Styles.createViewStyle(
 
 const subTitleStyle = RX.Styles.createViewStyle(
 	{
-		textAlign: 'center',
-		color: 'rgb(150, 150, 150)',
+		// textAlign: 'center',
+		// color: 'rgb(150, 150, 150)',
 		marginBottom: 20,
-		overflow: 'initial'
+		// overflow: 'initial'
 	},
 	false
 );

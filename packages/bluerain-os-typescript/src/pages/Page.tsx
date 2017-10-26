@@ -6,12 +6,14 @@ import { withBlueRain } from '../Provider';
 const defaultStyle = RX.Styles.createViewStyle(
 	{
 		flex: 1,
-		overflow: 'auto'
+		// overflow: 'auto'
 	},
 	false
 );
-
-class Page extends RX.Component {
+export interface IPageProps {
+	style:{[key: string]: any};
+}
+class Page extends RX.Component<IPageProps, {}> {
 	render() {
 		const { children, style } = this.props;
 		return <RX.View style={[defaultStyle, style]}>{children}</RX.View>;

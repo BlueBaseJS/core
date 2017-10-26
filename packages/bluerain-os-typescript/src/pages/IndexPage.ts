@@ -1,7 +1,7 @@
 /* @flow */
 import RX from 'reactxp';
 
-import { parseJsonSchema } from '../utils/JsonSchemaToReact';
+import { parseJsonSchema,ComponentSchema } from '../utils/JsonSchemaToReact';
 
 const pageStyle = RX.Styles.createViewStyle(
 	{
@@ -18,9 +18,9 @@ const titleStyle = RX.Styles.createViewStyle(
 		borderColor: 'rgba(0,123,255,1)',
 		borderRadius: 10,
 		borderWidth: 1,
-		color: '#fff',
-		textAlign: 'center',
-		fontSize: 68,
+		// color: '#fff',
+		// textAlign: 'center',
+		// fontSize: 68,
 		marginBottom: 20,
 		padding: 20,
 		shadowOffset: { height: 5, width: 0 },
@@ -32,9 +32,9 @@ const titleStyle = RX.Styles.createViewStyle(
 
 const subTitleStyle = RX.Styles.createViewStyle(
 	{
-		color: 'rgb(150, 150, 150)',
+		// color: 'rgb(150, 150, 150)',
 		marginBottom: 20,
-		textAlign: 'center'
+		// textAlign: 'center'
 	},
 	false
 );
@@ -45,7 +45,7 @@ const subTitleStyle = RX.Styles.createViewStyle(
  * @returns {React.Component} The layout react component
  */
 export default function IndexPage(): RX.Component<any> {
-	const schema = {
+	const schema:ComponentSchema = {
 		component: 'Page',
 		props: { style: pageStyle },
 		children: [

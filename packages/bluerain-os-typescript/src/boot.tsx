@@ -3,7 +3,7 @@
 import React, { ComponentType } from 'react';
 import RX from 'reactxp';
 
-import BR, { Platform } from './index';
+import BR, { Platform, App, Plugin } from './index';
 import registerComponents from './registerComponents';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
@@ -19,10 +19,10 @@ import { BlueRainProvider } from './Provider';
  * @property {boolean} 	serverMode	Set this flag to true when rendering during Server Side Rendering
  */
 export type BootOptions = {
-	apps?: BR.App[];
+	apps?: App[];
 	config?: ConfigType;
 	renderApp?: boolean;
-	plugins?: BR.Plugin[];
+	plugins?: Plugin[];
 	serverMode?: boolean;
 };
 
@@ -31,6 +31,7 @@ export type BootOptions = {
  */
 export default function(
 	options: BootOptions = {
+		apps:[],
 		serverMode: false,
 		renderApp: true
 	}

@@ -7,16 +7,19 @@ import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 const defaultStyle = RX.Styles.createViewStyle(
 	{
 		flex: 1,
-		overflow: 'auto',
+		// overflow: 'auto',
 		flexDirection: 'row'
 	},
 	false
 );
+export interface ISystemLayoutProps {
+	window: {width:number, height: number};
+  setWindowDimentions: Function;
+	style:object;
+}
+class SystemLayout extends RX.Component<ISystemLayoutProps, {}> {
 
-class SystemLayout extends RX.Component {
-	onLayout: Function;
-
-	constructor(props) {
+	constructor(props:ISystemLayoutProps) {
 		super(props);
 		this.onLayout = this.onLayout.bind(this);
 	}

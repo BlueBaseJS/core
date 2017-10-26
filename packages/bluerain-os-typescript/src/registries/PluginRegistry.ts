@@ -65,7 +65,7 @@ export default class PluginRegistry extends MapRegistry {
 	 * Initialize all the registered plugins
 	 */
 	initializeAll() {
-		for (const plugin of this.data.values()) {
+		for (const plugin of Array.from(this.data.values())) {
 			if (plugin.initialize) {
 				const config = BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;

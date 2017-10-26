@@ -89,8 +89,8 @@
     "lodash.merge": "^4.6.0",
     "lodash.reject": "^4.6.0",
     "lodash.set": "^4.3.2",
-    "react": "^16.0.0-alpha.12",
-    "react-dom": "^16.0.0-alpha.12",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "reactxp": "^0.42.0-rc.25",
     "recompose": "^0.25.0",
@@ -129,7 +129,7 @@
     "ts-node": "^3.0.6",
     "tslint": "^5.4.3",
     "typedoc": "^0.9.0",
-    "typescript": "^2.3.4",
+    "typescript": "^2.5.3",
     "validate-commit-msg": "^2.12.2"
   }
 }

@@ -14,8 +14,7 @@ export default class WindowInfoPlugin extends Plugin {
 
 	static initialize() {
 		BR.Filters.add(
-			'bluerain.redux.initialState',
-			function AddWindowInfoInitialState(state) {
+			'bluerain.redux.initialState', 'AddWindowInfoInitialState' , state => {
 				return Object.assign({}, state, {
 					bluerain: {
 						window: initialState()
@@ -24,9 +23,7 @@ export default class WindowInfoPlugin extends Plugin {
 			}
 		);
 
-		BR.Filters.add('bluerain.redux.reducers.bluerain', function AddReducers(
-			reducers
-		) {
+		BR.Filters.add('bluerain.redux.reducers.bluerain', 'AddReducers', reducers => {
 			return Object.assign({}, reducers, {
 				window: reducer
 			});
@@ -49,9 +46,7 @@ export default class WindowInfoPlugin extends Plugin {
 			next(action);
 		};
 
-		BR.Filters.add('bluerain.redux.middlewares', function AddMiddleware(
-			middlewares
-		) {
+		BR.Filters.add('bluerain.redux.middlewares','AddMiddleware', middlewares => {
 			middlewares.push(middleware);
 			return middlewares;
 		});

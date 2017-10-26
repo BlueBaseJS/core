@@ -27,7 +27,7 @@ class FilterRegistry extends MapRegistry {
 	 * @param {Function} filter - The filter function
 	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
-	add(hook: string, name: string | Function, filter: Function, index: number) {
+	add(hook: string, name: string | Function, filter: Function, index?: number) {
 		console.warn(
 			'Deprecation Warning: "add" method of FilterRegistry has been deprecated. Please use "set" method instead.'
 		);
@@ -40,7 +40,7 @@ class FilterRegistry extends MapRegistry {
 	 * @param {Function} filter - The filter function
 	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
-	set(hook: string, name: string | Function, filter: Function, index: number) {
+	set(hook: string, name: string | Function, filter: Function, index?: number) {
 		if (isNil(hook)) {
 			throw new Error(`Hook cannot be ${hook}`);
 		}
@@ -99,8 +99,8 @@ class FilterRegistry extends MapRegistry {
 			);
 		}
 
-		let list: List<FilterItem> = this.data.get(hook);
-		const index = list.findIndex(item => item.name === name);
+		let list: List<FilterItem> = this.data.get(hook) || List();
+		const index = list.findIndex(item => {const itemName = item.name ||''; return itemName === name;});
 
 		if (index === -1) {
 			throw new Error(
@@ -120,14 +120,14 @@ class FilterRegistry extends MapRegistry {
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
-	run(hook: string, item: any) {
+	run(hook: string, item?: any) {
 		if (isNil(hook)) {
 			throw new Error(`Hook cannot be ${hook}`);
 		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
 
-		const filters: List<FilterItem> = this.data.get(hook);
+		const filters: List<FilterItem> = this.data.get(hook) || List();
 
 		if (isNil(filters) || filters.size === 0) {
 			return item;

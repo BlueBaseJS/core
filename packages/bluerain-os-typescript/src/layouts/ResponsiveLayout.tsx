@@ -40,12 +40,12 @@ function ResponsiveLayout(props: ResponsiveLayoutProps) {
 	return <Component {...otherProps} />;
 }
 
-ResponsiveLayout.defaultProps = {
-	xs: undefined,
-	sm: undefined,
-	md: undefined,
-	lg: undefined,
-	xl: undefined
-};
+// ResponsiveLayout.defaultProps = {
+// 	xs: undefined,
+// 	sm: undefined,
+// 	md: undefined,
+// 	lg: undefined,
+// 	xl: undefined
+// };
 
 export default withWindowSize(ResponsiveLayout);

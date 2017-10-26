@@ -11,6 +11,7 @@ const defaultAppRoutePrefix = '/app';
  * All system apps are stored in this registry
  * @property {Map<string, App>} data  Map(immutablejs) of all apps
  */
+
 class AppRegistry extends MapRegistry {
 
 	data: Map<string, App>;
@@ -96,7 +97,7 @@ class AppRegistry extends MapRegistry {
 	 * @returns {Object} JSON Schema
 	 */
 	getAllRoutes() : any[] {
-		const appRoutes = [];
+		const appRoutes:object[] = [];
 		for (const app of this.data.values()) {
 			appRoutes.push({
 				component: 'Route',
