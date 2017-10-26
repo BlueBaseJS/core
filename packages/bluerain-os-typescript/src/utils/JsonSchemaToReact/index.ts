@@ -2,8 +2,7 @@ import {
 	// DOM,
 	createElement,
 	isValidElement,
-	Element as ReactElement,
-	ElementType
+	ReactElement,
 } from 'react';
 import set from 'lodash.set';
 
@@ -18,7 +17,7 @@ export type ComponentSchema = {
 };
 
 export default class JsonToReact {
-	static resolveComponent(schema: ComponentSchema): ElementType<any> | string {
+	static resolveComponent(schema: ComponentSchema): any | string {
 		if (Object.prototype.hasOwnProperty.call(schema, 'component')) {
 			if (schema.component === Object(schema.component)) {
 				return schema.component;
@@ -49,7 +48,7 @@ export default class JsonToReact {
 		if (schema === undefined || schema === null) {
 			throw new Error(`schema cannot be ${schema}`);
 		}
-		let element = null;
+		let element: ReactElement<any> | null = null;
 		let elements: Array<ReactElement<any>> | null = null;
 		if (Array.isArray(schema)) {
 			elements = this.parseSubSchemas(schema);
@@ -100,8 +99,8 @@ export default class JsonToReact {
 		return createElement(Component, props, Children);
 	}
 
-	resolveComponentChildren(schema: ComponentSchema| ComponentSchema[]) {
-		return Object.prototype.hasOwnProperty.call(schema, 'children')
+	resolveComponentChildren(schema: ComponentSchema) {
+		return schema.children
 			? this.parseSchema(schema.children)
 			: undefined;
 	}

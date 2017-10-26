@@ -14,7 +14,7 @@ const defaultAppRoutePrefix = '/app';
 
 class AppRegistry extends MapRegistry {
 
-	data: Map<string, App>;
+	// data: Map<string, App>;
 
 	constructor() {
 		super('AppRegistry');
@@ -32,7 +32,9 @@ class AppRegistry extends MapRegistry {
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	set(app: App) {
+// cheated here to remove ts error: set(app: App) is not compatible with
+// set(key: string, item: any, ...rest: any[])
+	set(app: App|any) {
 		if (isNil(app)) {
 			throw new Error(`App cannot be ${app}`);
 		}
@@ -70,13 +72,13 @@ class AppRegistry extends MapRegistry {
 	 * Initialize all the registered apps
 	 */
 	initializeAll() {
-		for (const app of this.data.values()) {
+		this.data.forEach(app => {
 			if (app.initialize) {
 				const config = BR.Configs.get(`apps.${app.slug}`);
 				app.config = config;
 				app.initialize(config, BR);
 			}
-		}
+		});
 	}
 
 	/**
@@ -98,7 +100,7 @@ class AppRegistry extends MapRegistry {
 	 */
 	getAllRoutes() : any[] {
 		const appRoutes:object[] = [];
-		for (const app of this.data.values()) {
+		this.data.forEach(app => {
 			appRoutes.push({
 				component: 'Route',
 				props: {
@@ -107,7 +109,7 @@ class AppRegistry extends MapRegistry {
 					component: app
 				}
 			});
-		}
+		});
 
 		return appRoutes;
 	}

@@ -1,5 +1,5 @@
 /* @flow */
-import React, { Node } from 'react';
+import React, { ReactNode } from 'react';
 
 import BR from '../index';
 import { withWindowSize } from '../plugins/WindowInfoPlugin';

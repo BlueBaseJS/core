@@ -44,7 +44,7 @@ const subTitleStyle = RX.Styles.createViewStyle(
  *
  * @returns {React.Component} The layout react component
  */
-export default function IndexPage(): RX.Component<any> {
+export default function IndexPage() {
 	const schema:ComponentSchema = {
 		component: 'Page',
 		props: { style: pageStyle },

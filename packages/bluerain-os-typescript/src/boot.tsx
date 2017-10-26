@@ -37,8 +37,10 @@ export default function(
 	}
 ): ComponentType<any> {
 	// Extract app, plugins and configs from options
-	const { apps, plugins, config, serverMode, renderApp } = options;
-
+	const { serverMode, renderApp } = options;
+	const apps = options.apps || [];
+	const plugins = options.plugins || [];
+	const config = options.config || [];
 	// Server mode
 	Platform.setServerMode(serverMode);
 

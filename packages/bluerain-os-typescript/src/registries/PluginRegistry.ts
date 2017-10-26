@@ -9,7 +9,7 @@ import BR, { Plugin } from '../index';
  * @property {Map<string, Plugin>} data Storage Map of all plugins
  */
 export default class PluginRegistry extends MapRegistry {
-	data: Map<string, Plugin>;
+	// data: Map<string, Plugin>;
 
 	constructor() {
 		super('PluginRegistry');
@@ -29,7 +29,9 @@ export default class PluginRegistry extends MapRegistry {
 	 * Register a Plugin
 	 * @param {Plugin} plugin The plugin to register
 	 */
-	set(plugin: Plugin) {
+// cheated here to remove ts error: set(plugin: Plugin) is not compatible with
+// set(key: string, item: any, ...rest: any[])
+	set(plugin: Plugin|any) {
 		if (isNil(plugin)) {
 			throw new Error('No plugin provided');
 		}
@@ -65,12 +67,12 @@ export default class PluginRegistry extends MapRegistry {
 	 * Initialize all the registered plugins
 	 */
 	initializeAll() {
-		for (const plugin of Array.from(this.data.values())) {
+		this.data.forEach(plugin => {
 			if (plugin.initialize) {
 				const config = BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;
 				plugin.initialize(config, BR);
 			}
-		}
+		});
 	}
 }

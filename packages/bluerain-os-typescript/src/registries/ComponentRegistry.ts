@@ -1,5 +1,5 @@
 
-import { Element as ReactElement } from 'react';
+import {Element as ReactElement } from 'react';
 import compose from 'lodash.compose';
 import isNil from 'lodash.isnil';
 
@@ -20,7 +20,7 @@ export type ComponentRegistryItem = {
  */
 class ComponentRegistry extends MapRegistry {
 
-	data: Map<string, ComponentRegistryItem>;
+	// data: Map<string, ComponentRegistryItem>;
 
 	constructor() {
 		super('ComponentRegistry');

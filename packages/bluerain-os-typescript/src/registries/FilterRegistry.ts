@@ -15,7 +15,7 @@ export type FilterItem = {
  * filters and their respective functions
  */
 class FilterRegistry extends MapRegistry {
-	data: Map<string, List<FilterItem>>;
+	// data: Map<string, List<FilterItem>>;
 
 	constructor() {
 		super('FilterRegistry');
