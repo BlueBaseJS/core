@@ -11,7 +11,7 @@
   "dependencies": {
     "@blueeast/bluerain-app-hello-world": "^0.4.8",
     "@blueeast/bluerain-app-settings": "^0.4.0",
-    "@blueeast/bluerain-os": "^0.4.2",
+    "@blueeast/bluerain-os": "^0.5.0",
     "@blueeast/bluerain-plugin-apollo": "^0.4.0",
     "@blueeast/bluerain-plugin-intl": "^0.4.0",
     "@blueeast/bluerain-plugin-material-ui": "^0.4.0",

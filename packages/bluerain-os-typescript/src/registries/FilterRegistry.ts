@@ -100,7 +100,7 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		let list: List<FilterItem> = this.data.get(hook) || List();
-		const index = list.findIndex(item => {const itemName = item.name ||''; return itemName === name;});
+		const index = list.findIndex((item= {name:'', filter: () => 1 }) => item.name === name);
 
 		if (index === -1) {
 			throw new Error(
@@ -133,7 +133,7 @@ class FilterRegistry extends MapRegistry {
 			return item;
 		}
 
-		return filters.reduce((accumulator, item) => {
+		return filters.reduce((accumulator, item = {name:'', filter: () => 0 }) => {
 			const newArguments = [accumulator].concat(args);
 			const result = item.filter.apply({}, newArguments);
 

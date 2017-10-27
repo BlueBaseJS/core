@@ -8,9 +8,9 @@ const config = require('./config');
 const plugins = require('./plugins');
 
 const bootOptions = {
-	apps,
-	config,
-	plugins
+	//apps,
+	//config,
+	//plugins
 };
 
 console.time('BlueRain Booted');
