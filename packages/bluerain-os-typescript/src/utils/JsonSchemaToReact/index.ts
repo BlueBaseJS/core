@@ -2,7 +2,7 @@ import {
 	// DOM,
 	createElement,
 	isValidElement,
-	ReactElement,
+	 ReactElement,
 } from 'react';
 import set from 'lodash.set';
 
@@ -17,7 +17,7 @@ export type ComponentSchema = {
 };
 
 export default class JsonToReact {
-	static resolveComponent(schema: ComponentSchema): any | string {
+	 resolveComponent(schema: ComponentSchema): any | string {
 		if (Object.prototype.hasOwnProperty.call(schema, 'component')) {
 			if (schema.component === Object(schema.component)) {
 				return schema.component;
@@ -91,7 +91,7 @@ export default class JsonToReact {
 		) {
 			return schema.component;
 		}
-		const Component = JsonToReact.resolveComponent(schema);
+		const Component = this.resolveComponent(schema);
 		const Children =
 			typeof text !== 'undefined'
 				? text

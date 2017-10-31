@@ -15,18 +15,16 @@ export default class WindowInfoPlugin extends Plugin {
 	static initialize() {
 		BR.Filters.add(
 			'bluerain.redux.initialState', 'AddWindowInfoInitialState' , state => {
-				return Object.assign({}, state, {
+				return {...state,
 					bluerain: {
 						window: initialState()
-					}
-				});
+					}};
 			}
 		);
 
 		BR.Filters.add('bluerain.redux.reducers.bluerain', 'AddReducers', reducers => {
-			return Object.assign({}, reducers, {
-				window: reducer
-			});
+			return {...reducers,
+				window: reducer};
 		});
 
 		// Middleware
@@ -40,7 +38,7 @@ export default class WindowInfoPlugin extends Plugin {
 			const newSize = getWindowSize(action.width);
 
 			if (prevSize !== newSize) {
-				BR.Events.emit('plugin.window_info.resize', newSize, prevSize);
+				BR.Events.data.emit('plugin.window_info.resize', newSize, prevSize);
 			}
 
 			next(action);

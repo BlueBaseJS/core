@@ -1,5 +1,5 @@
 
-import {Element as ReactElement } from 'react';
+import {ComponentType as ReactElement } from 'react';
 import compose from 'lodash.compose';
 import isNil from 'lodash.isnil';
 
@@ -34,7 +34,7 @@ class ComponentRegistry extends MapRegistry {
 	 * @param {Array<Function | Array<any>>} hocs The HOCs to compose with the raw component.
 	 *
 	 */
-	register(name: string, rawComponent: ReactElement<any>, ...hocs: ComponentRegistryHocItem[]) {
+	register(name: string, rawComponent: ReactElement<any> | any, ...hocs: ComponentRegistryHocItem[]) {
 		console.warn('Deprecation Warning: "register" method of ComponentRegistry has been deprecated.',
 		' Please use "set" method instead.');
 		this.set(name, rawComponent, ...hocs);
@@ -61,7 +61,7 @@ class ComponentRegistry extends MapRegistry {
 	 * }
 	 *
 	 */
-	set(name: string, rawComponent: ReactElement<any>, ...hocs: ComponentRegistryHocItem[]) {
+	set(name: string, rawComponent: ReactElement<any> | any, ...hocs: ComponentRegistryHocItem[]) {
 		if (isNil(name)) {
 			throw new Error(`Component name cannot be ${name}`);
 		}

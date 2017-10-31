@@ -92,7 +92,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
-    "reactxp": "^0.42.0-rc.25",
+    "reactxp": "0.42.10",
     "recompose": "^0.25.0",
     "redux": "^3.7.2"
   },
