@@ -33,11 +33,11 @@ class AppRegistry extends MapRegistry {
 	 */
 	set(app: App) {
 		if (isNil(app)) {
-			throw new Error(`App cannot be ${app}`);
+			throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
 		}
 
 		if (!app.appName) {
-			throw new Error('App name not provided.');
+			throw new Error('App name not provided. Please provide "appName" while registering an app');
 		}
 
 		if (!app.slug) {
@@ -60,7 +60,7 @@ class AppRegistry extends MapRegistry {
 		apps = apps || [];
 
 		if (!Array.isArray(apps)) {
-			throw new Error('Apps parameter must be an array');
+			throw new Error('Apps parameter while registering via "registerMany" method must be an array');
 		}
 
 		apps.forEach(app => me.set(app));

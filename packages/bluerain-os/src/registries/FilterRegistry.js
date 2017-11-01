@@ -56,7 +56,7 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		if (isNil(filter)) {
-			throw new Error(`You have to provide a filter function to ${hook}.`);
+			throw new Error(`You have to provide a filter function while adding it to ${hook}.`);
 		}
 
 		let list = this.data.get(hook);
@@ -84,11 +84,11 @@ class FilterRegistry extends MapRegistry {
 	 */
 	remove(hook: string, name: string) {
 		if (isNil(hook)) {
-			throw new Error(`Hook cannot be ${hook}`);
+			throw new Error(`Hook cannot be ${hook}. Please provide valid hook while removing filter.`);
 		}
 
 		if (isNil(name)) {
-			throw new Error(`Filter name cannot be ${name}`);
+			throw new Error(`Filter name cannot be ${name}. Please provide valid function name while removing filter.`);
 		}
 
 		if (!this.data.has(hook)) {

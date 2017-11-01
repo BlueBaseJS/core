@@ -42,9 +42,9 @@ This example wraps the System App with a Redux provider by using a `withRedux` h
 import BR from '@blueeast/bluerain-os';
 import withRedux from './withRedux';
 
-BR.Filters(
-	'bluerain.system.app', 
-	function AddReduxToSystemApp(App) {
+BR.Filters.set(
+	'bluerain.system.app','AddReduxToSystemApp', 
+	(App) => {
 		return withRedux(App);
 	}
 );
