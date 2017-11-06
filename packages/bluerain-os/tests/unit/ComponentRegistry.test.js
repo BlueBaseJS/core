@@ -138,20 +138,20 @@ describe('Component Registry test specifications', () => {
 	});
 	describe('Add HOCs', () => {
 		it('should throw error b/c component is not registered', () => {
-			expect(() => BR.Components.addHOCs('test', () => Heading)).toThrow(
+			expect(() => BR.Components.addHocs('test', () => Heading)).toThrow(
         'Component test not registered.'
       );
 		});
 		it('should throw error b/c hook null', () => {
-			expect(() => BR.Components.addHOCs(null, () => Heading)).toThrow();
+			expect(() => BR.Components.addHocs(null, () => Heading)).toThrow();
 		});
 		it('should throw error b/c hook undefined', () => {
 			expect(() =>
-        BR.Components.addHOCs(undefined, () => Heading)
+        BR.Components.addHocs(undefined, () => Heading)
       ).toThrow();
 		});
 		it('should add hoc', () => {
-			BR.Components.addHOCs('heading', () => Heading);
+			BR.Components.addHocs('heading', () => Heading);
 			expect(BR.Components.data.get('heading').hocs.length).toEqual(1);
 		});
 	});
