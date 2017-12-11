@@ -6,6 +6,7 @@ import ConfigRegistry from './registries/ConfigRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import PluginRegistry from './registries/PluginRegistry';
+import HooksRegistry from './registries/HooksRegistry';
 
 // Others
 import boot from './boot';
@@ -18,6 +19,7 @@ export type BlueRainType = {
 	Events: EventRegistry,
 	Filters: FilterRegistry,
 	Plugins: PluginRegistry,
+	Hooks: HooksRegistry,
 
 	Utils: {
 		parseJsonSchema: Function
@@ -51,6 +53,7 @@ const BlueRain: BlueRainType = {
 	Events: new EventRegistry(),
 	Filters: new FilterRegistry(),
 	Plugins: new PluginRegistry(),
+	Hooks: new HooksRegistry(),
 
 	// Miscellaneous
 	Utils: {
