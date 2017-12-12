@@ -9,5 +9,5 @@ jobs:
   include:
     - stage: Lerna Bootstrap && ES Lint & Flow
       script: yarn cache clean && lerna bootstrap && lerna run lint && lerna run flow
-    - stage: ES Lint & Flow
-      script: lerna run test 
+    - stage: Tests
+      script: yarn cache clean && lerna bootstrap && lerna run test 
