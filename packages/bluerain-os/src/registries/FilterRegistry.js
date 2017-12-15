@@ -5,6 +5,7 @@ import isNil from 'lodash.isnil';
 import { List } from 'immutable';
 
 import MapRegistry from './MapRegistry';
+import BR from '../index';
 
 type FilterItem = {
 	name: string,
@@ -120,7 +121,7 @@ class FilterRegistry extends MapRegistry {
 		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
-
+		args.push(BR);
 		const filters:List<FilterItem> = this.data.get(hook);
 
 		if (isNil(filters) || filters.size === 0) {
@@ -128,7 +129,7 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		return filters.reduce((accumulator, item) => {
-			const newArguments = [accumulator].concat(args);
+			const newArguments = accumulator ? [accumulator].concat(args) : args;
 			const result = item.filter.apply({}, newArguments);
 
 			if (typeof result === 'undefined') {

@@ -45,15 +45,17 @@ export type BlueRainType = {
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
  * @prop {Function} 					boot 				Function to boot the OS.
  */
+const filtersObj = new FilterRegistry();
+const eventsObj = new EventRegistry();
 const BlueRain: BlueRainType = {
 	// BlueRain
 	Apps: new AppRegistry(),
 	Components: new ComponentRegistry(),
 	Configs: new ConfigRegistry(),
-	Events: new EventRegistry(),
-	Filters: new FilterRegistry(),
+	Events: eventsObj,
+	Filters: filtersObj,
 	Plugins: new PluginRegistry(),
-	Hooks: new HooksRegistry(),
+	Hooks: new HooksRegistry(filtersObj, eventsObj),
 
 	// Miscellaneous
 	Utils: {

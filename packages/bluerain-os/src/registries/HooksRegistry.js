@@ -2,7 +2,7 @@ import isNil from 'lodash.isnil';
 
 import FilterRegistry from './FilterRegistry';
 import EventRegistry from './EventRegistry';
-
+import BR from '../index';
 /**
  * All system hooks are stored in this registry
  *
@@ -11,9 +11,9 @@ export default class HookRegistry {
 	filters:FilterRegistry;
 	events:EventRegistry;
 
-	constructor() {
-		this.filters = new FilterRegistry();
-		this.events = new EventRegistry();
+	constructor(filters, events) {
+		this.filters = filters || new FilterRegistry();
+		this.events = events || new EventRegistry();
 	}
     /**
 	 * Add a filter function to a hook.
@@ -42,13 +42,16 @@ export default class HookRegistry {
 		if (isNil(hook)) {
 			throw new Error(`Hook cannot be ${hook}. Please provide valid hook while running it.`);
 		}
+		if (mode && (mode !== 'both' && mode !== 'sync' && mode !== 'async')) {
+			throw new Error(`Invalid mode is entered. Please enter valid mode while running hooks`);
+		}
 		if (mode === 'both') {
-			this.events.emit(hook, ...args);
+			this.events.emit(hook, ...args, BR);
 			return this.filters.run(hook, ...args);
 		} else if (mode === 'sync') {
 			return this.filters.run(hook, ...args);
 		} else if (mode === 'async') {
-			this.events.emit(hook, ...args);
+			this.events.emit(hook, ...args, BR);
 		}
 	}
 }
