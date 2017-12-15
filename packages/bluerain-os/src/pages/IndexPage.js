@@ -1,14 +1,14 @@
 /* @flow */
-import RX from 'reactxp';
+import  createStyleSheet  from '../utils/createStyleSheet';
 
 import { parseJsonSchema } from '../utils/JsonSchemaToReact';
 
-const pageStyle = RX.Styles.createViewStyle({
+const pageStyle = createStyleSheet({
 	justifyContent: 'center',
 	padding: 20,
-}, false);
+}, 'View');
 
-const titleStyle = RX.Styles.createViewStyle({
+const titleStyle = createStyleSheet({
 	alignSelf: 'center',
 	backgroundColor: 'rgba(0,123,255,1)',
 	borderColor: 'rgba(0,123,255,1)',
@@ -22,20 +22,20 @@ const titleStyle = RX.Styles.createViewStyle({
 	shadowOffset: { height: 5, width: 0 },
 	shadowRadius: 15,
 	shadowColor: 'rgba(0,0,0,.3)',
-}, false);
+}, 'Text');
 
-const subTitleStyle = RX.Styles.createViewStyle({
+const subTitleStyle = createStyleSheet({
 	color: 'rgb(150, 150, 150)',
 	marginBottom: 20,
 	textAlign: 'center',
-}, false);
+}, 'Text');
 
 /**
  * Returns the Index Page layout.
  *
  * @returns {React.Component} The layout react component
  */
-export default function IndexPage() : RX.Component<*> {
+ const IndexPage = (props) =>{
 	const schema = {
 		component: 'Page',
 		props: { style: pageStyle },
@@ -55,3 +55,5 @@ export default function IndexPage() : RX.Component<*> {
 
 	return parseJsonSchema(schema);
 }
+
+export default IndexPage;

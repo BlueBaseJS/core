@@ -1,14 +1,13 @@
 /* @flow */
-import RX from 'reactxp';
-
 import { parseJsonSchema } from '../utils/JsonSchemaToReact';
+import  createStyleSheet  from '../utils/createStyleSheet';
 
-const pageStyle = RX.Styles.createViewStyle({
+const pageStyle = createStyleSheet({
 	justifyContent: 'center',
 	padding: 20,
-}, false);
+}, 'View');
 
-const titleStyle = RX.Styles.createViewStyle({
+const titleStyle = createStyleSheet({
 	alignSelf: 'center',
 	textAlign: 'center',
 	backgroundColor: 'rgb(220,53,69)',
@@ -22,21 +21,21 @@ const titleStyle = RX.Styles.createViewStyle({
 	shadowOffset: { height: 5, width: 0 },
 	shadowRadius: 15,
 	shadowColor: 'rgba(0,0,0,.3)'
-}, false);
+}, 'Text');
 
-const subTitleStyle = RX.Styles.createViewStyle({
+const subTitleStyle = createStyleSheet({
 	textAlign: 'center',
 	color: 'rgb(150, 150, 150)',
 	marginBottom: 20,
 	overflow: 'initial'
-}, false);
+}, 'Text');
 
 /**
  * Returns the 404 Page layout.
  *
  * @returns {React.Component} The layout react component
  */
-export default function NotFoundPage() : RX.Component<*> {
+const  NotFoundPage=() =>{
 	const schema = {
 		component: 'Page',
 		props: { style: pageStyle },

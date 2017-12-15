@@ -1,19 +1,20 @@
 /* @flow */
 import React from 'react';
-import RX from 'reactxp';
 import { withBlueRain } from '../Provider';
+import  createStyleSheet  from './utils/createStyleSheet';
 
-const defaultStyle = RX.Styles.createViewStyle({
+const defaultStyle =createStyleSheet({
 	flex: 1,
 	overflow: 'auto',
-}, false);
+}, 'View');
 
-class Page extends RX.Component {
+const  Page= (props)=>{
 
+	const View = BR.Components.get('View');
 	render() {
 		const { children, style } = this.props;
-		return (<RX.View style={[defaultStyle, style]}>{children}</RX.View>);
+		return (<View style={[defaultStyle, style]}>{children}</View>);
 	}
-}
+};
 
 export default withBlueRain(Page);

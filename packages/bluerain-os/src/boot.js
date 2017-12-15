@@ -1,12 +1,10 @@
 /* @flow */
-
 import React, { type ComponentType } from 'react';
-import RX from 'reactxp';
-
-import BR, { Platform } from './index';
+import BR from './index';
 import registerComponents from './registerComponents';
 import defaultConfigs, { type ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
+import { AppRegistry, Image, StyleSheet, Text, View } from 'react-native'
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
@@ -35,9 +33,9 @@ export default function(options: BootOptions = {
 
 	// Extract app, plugins and configs from options
 	const { apps, plugins, config, serverMode, renderApp } = options;
-
+	
 	// Server mode
-	Platform.setServerMode(serverMode);
+	BR.Platform.setServerMode(serverMode);
 
 	// =[ System Lifecycle Event ]= Boot Start
 	BR.Filters.run('bluerain.system.boot.start');
@@ -53,8 +51,6 @@ export default function(options: BootOptions = {
 	const debug: boolean = BR.Configs.get('debug');
 	const development: boolean = BR.Configs.get('development');
 
-	// Init System
-	RX.App.initialize(debug, development);
 
 	// =[ System Lifecycle Event ]= Components Registered
 	registerComponents();
@@ -62,10 +58,11 @@ export default function(options: BootOptions = {
 
 	// =[ System Lifecycle Event ]= Plugins Registered
 	const defaultPlugins = require('./plugins/defaultPlugins').default;
+
 	BR.Plugins.registerMany(defaultPlugins);
 	BR.Plugins.registerMany(plugins);
 	BR.Filters.run('bluerain.system.plugins.registered');
-
+			
 	// =[ System Lifecycle Event ]= Plugins Initialized
 	BR.Plugins.initializeAll();
 	BR.Filters.run('bluerain.system.plugins.initialized');
@@ -87,7 +84,8 @@ export default function(options: BootOptions = {
 	const BluerainApp = () => (<BlueRainProvider><SystemApp /></BlueRainProvider>);
 
 	if (renderApp !== false) {
-		RX.UserInterface.setMainView(( <BluerainApp /> ));
+	
+	    BR.setMainView(BluerainApp);
 	}
 
 	// =[ System Lifecycle Event ]= Boot End

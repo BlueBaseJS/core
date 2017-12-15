@@ -1,16 +1,16 @@
 /* @flow */
 
-import RX from 'reactxp';
 import BR from '../index';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
+import { createStyleSheet } from './utils/createStyleSheet';
 
-const defaultStyle = RX.Styles.createViewStyle({
+const defaultStyle = createStyleSheet({
 	flex: 1,
 	overflow: 'auto',
 	flexDirection: 'row'
-}, false);
+}, 'View');
 
-class SystemLayout extends RX.Component {
+const  SystemLayout=(props)=>{
 
 	onLayout: Function;
 

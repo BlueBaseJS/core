@@ -6,10 +6,11 @@ import ConfigRegistry from './registries/ConfigRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import PluginRegistry from './registries/PluginRegistry';
-
+import setMainView from './setMainView';
 // Others
 import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
+import  createStyleSheet  from './utils/createStyleSheet';
 
 export type BlueRainType = {
 	Apps: AppRegistry,
@@ -18,6 +19,7 @@ export type BlueRainType = {
 	Events: EventRegistry,
 	Filters: FilterRegistry,
 	Plugins: PluginRegistry,
+	setMainView:setMainView
 
 	Utils: {
 		parseJsonSchema: Function
@@ -51,10 +53,12 @@ const BlueRain: BlueRainType = {
 	Events: new EventRegistry(),
 	Filters: new FilterRegistry(),
 	Plugins: new PluginRegistry(),
+	setMainView:new setMainView(),
 
 	// Miscellaneous
 	Utils: {
 		parseJsonSchema,
+		createStyleSheet
 	},
 
 	// References
