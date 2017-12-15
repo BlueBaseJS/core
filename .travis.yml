@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "6"
+before_install:
+  - npm install -g codecov
+jobs:
+  include:
+    - stage: Lerna Bootstrap
+      script: yarn cache clean && lerna bootstrap && lerna run lint
+    - stage: ES Lint & Flow
+      script: lerna run test && lerna run flow
