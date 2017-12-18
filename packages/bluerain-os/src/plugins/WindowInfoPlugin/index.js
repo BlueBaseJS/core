@@ -40,6 +40,10 @@ export default class WindowInfoPlugin extends Plugin {
 			return middlewares;
 		}
 	}
+	static uses= {
+		components: [],
+		hooks: [],
+	}
 	static initialize() {
 
 	}
