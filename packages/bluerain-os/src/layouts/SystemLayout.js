@@ -2,7 +2,7 @@
 
 import BR from '../index';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
-import { createStyleSheet } from './utils/createStyleSheet';
+import  createStyleSheet  from './utils/createStyleSheet';
 
 const defaultStyle = createStyleSheet({
 	flex: 1,

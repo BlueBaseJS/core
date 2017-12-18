@@ -4,7 +4,6 @@ import BR from './index';
 import registerComponents from './registerComponents';
 import defaultConfigs, { type ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
-import { AppRegistry, Image, StyleSheet, Text, View } from 'react-native'
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
@@ -85,7 +84,7 @@ export default function(options: BootOptions = {
 
 	if (renderApp !== false) {
 	
-	    BR.setMainView(BluerainApp);
+	    BR.Utils.setMainView(BluerainApp);
 	}
 
 	// =[ System Lifecycle Event ]= Boot End

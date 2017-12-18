@@ -53,12 +53,12 @@ const BlueRain: BlueRainType = {
 	Events: new EventRegistry(),
 	Filters: new FilterRegistry(),
 	Plugins: new PluginRegistry(),
-	setMainView:new setMainView(),
 
 	// Miscellaneous
 	Utils: {
 		parseJsonSchema,
-		createStyleSheet
+		createStyleSheet,
+		setMainView,
 	},
 
 	// References
