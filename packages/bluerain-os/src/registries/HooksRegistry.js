@@ -43,7 +43,7 @@ export default class HookRegistry {
 			throw new Error(`Hook cannot be ${hook}. Please provide valid hook while running it.`);
 		}
 		if (mode && (mode !== 'both' && mode !== 'sync' && mode !== 'async')) {
-			throw new Error(`Invalid mode is entered. Please enter valid mode while running hooks`);
+			throw new Error('Invalid mode is entered. Please enter valid mode while running hooks');
 		}
 		if (mode === 'both') {
 			this.events.emit(hook, ...args, BR);
