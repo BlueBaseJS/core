@@ -1,5 +1,5 @@
 /* @flow */
-import React, { type ComponentType } from 'react';
+import React, {  ComponentType } from 'react';
 import BR from './index';
 import registerComponents from './registerComponents';
 import defaultConfigs, { type ConfigType } from './config';
@@ -31,10 +31,11 @@ export default function(options: BootOptions = {
 }) : ComponentType<any> {
 
 	// Extract app, plugins and configs from options
-	const { apps, plugins, config, serverMode, renderApp } = options;
-	
-	// Server mode
-	BR.Platform.setServerMode(serverMode);
+	const { apps, plugins, platforms, config, serverMode, renderApp } = options;
+
+	BR.Plugins.registerMany(platforms);
+	BR.Filters.run('bluerain.system.platforms.registered');
+
 
 	// =[ System Lifecycle Event ]= Boot Start
 	BR.Filters.run('bluerain.system.boot.start');
@@ -61,11 +62,14 @@ export default function(options: BootOptions = {
 	BR.Plugins.registerMany(defaultPlugins);
 	BR.Plugins.registerMany(plugins);
 	BR.Filters.run('bluerain.system.plugins.registered');
-			
+				
 	// =[ System Lifecycle Event ]= Plugins Initialized
 	BR.Plugins.initializeAll();
 	BR.Filters.run('bluerain.system.plugins.initialized');
-
+ 
+	// Server mode
+	BR.Platform.setServerMode(serverMode);
+	
 	// =[ System Lifecycle Event ]= Apps Registered
 	BR.Apps.registerMany(apps);
 	BR.Filters.run('bluerain.system.apps.registered');
