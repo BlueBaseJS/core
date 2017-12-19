@@ -35,7 +35,7 @@ const subTitleStyle = createStyleSheet({
  *
  * @returns {React.Component} The layout react component
  */
-const  NotFoundPage=() =>{
+export default () => {
 	const schema = {
 		component: 'Page',
 		props: { style: pageStyle },
@@ -54,4 +54,4 @@ const  NotFoundPage=() =>{
 	};
 
 	return parseJsonSchema(schema);
-}
+};

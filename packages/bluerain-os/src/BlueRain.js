@@ -21,9 +21,9 @@ export type BlueRainType = {
 	Plugins: PluginRegistry,
 
 	Utils: {
-		parseJsonSchema: Function
-		setMainView,
-		
+		parseJsonSchema: Function,
+		setMainView:Function
+
 	},
 
 	refs: { [id: string]: {} },
@@ -54,7 +54,7 @@ const BlueRain: BlueRainType = {
 	Events: new EventRegistry(),
 	Filters: new FilterRegistry(),
 	Plugins: new PluginRegistry(),
-	
+
 	// Miscellaneous
 	Utils: {
 		parseJsonSchema,

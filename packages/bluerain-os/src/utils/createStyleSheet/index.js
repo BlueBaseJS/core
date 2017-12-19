@@ -1,7 +1,5 @@
 
-const createStyleSheet=(styles )=> {
-return styles;
-}
+const createStyleSheet = styles => styles;
 
 
 export default createStyleSheet;

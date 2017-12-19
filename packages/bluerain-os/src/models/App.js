@@ -10,7 +10,7 @@
  * @property {String}	path	Path of the app's home page
  */
 
-    const App=(prop)=> {
+export default class App {
 
 	appName: string;
 	slug: string;
@@ -22,4 +22,3 @@
 
 }
 
-export default App;

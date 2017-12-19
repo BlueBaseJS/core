@@ -8,14 +8,14 @@ import reject from 'lodash.reject';
  */
 class FilterRegistry {
 
-	FiltersTable: {} = {};
+	FiltersTable = {};
 
 	/**
 	 * Add a filter function to a hook
 	 * @param {String} hook - The name of the hook
 	 * @param {Function} filter - The filter function
 	 */
-	add(hook: string, filter: Function) {
+	add(hook, filter) {
 		if (hook === undefined || hook === null) {
 			throw new Error(`hook cannot be ${hook}`);
 		}

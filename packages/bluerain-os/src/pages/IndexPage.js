@@ -35,7 +35,7 @@ const subTitleStyle = createStyleSheet({
  *
  * @returns {React.Component} The layout react component
  */
- const IndexPage = (props) =>{
+const IndexPage = (props) => {
 	const schema = {
 		component: 'Page',
 		props: { style: pageStyle },
@@ -54,6 +54,6 @@ const subTitleStyle = createStyleSheet({
 	};
 
 	return parseJsonSchema(schema);
-}
+};
 
 export default IndexPage;

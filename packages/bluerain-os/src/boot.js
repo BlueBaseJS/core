@@ -48,8 +48,8 @@ export default function(options: BootOptions = {
 	BR.Filters.run('bluerain.system.configurations.loaded');
 
 	// Get Enviornment Options
-	const debug: boolean = BR.Configs.get('debug');
-	const development: boolean = BR.Configs.get('development');
+	// const debug  = BR.Configs.get('debug');
+	// const development = BR.Configs.get('development');
 
 
 	// =[ System Lifecycle Event ]= Components Registered
@@ -62,14 +62,14 @@ export default function(options: BootOptions = {
 	BR.Plugins.registerMany(defaultPlugins);
 	BR.Plugins.registerMany(plugins);
 	BR.Filters.run('bluerain.system.plugins.registered');
-				
+
 	// =[ System Lifecycle Event ]= Plugins Initialized
 	BR.Plugins.initializeAll();
 	BR.Filters.run('bluerain.system.plugins.initialized');
- 
+
 	// Server mode
 	BR.Platform.setServerMode(serverMode);
-	
+
 	// =[ System Lifecycle Event ]= Apps Registered
 	BR.Apps.registerMany(apps);
 	BR.Filters.run('bluerain.system.apps.registered');
@@ -87,8 +87,8 @@ export default function(options: BootOptions = {
 	const BluerainApp = () => (<BlueRainProvider><SystemApp /></BlueRainProvider>);
 
 	if (renderApp !== false) {
-	
-	    BR.Utils.setMainView(BluerainApp);
+
+		BR.Utils.setMainView(BluerainApp);
 	}
 
 	// =[ System Lifecycle Event ]= Boot End
