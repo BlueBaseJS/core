@@ -29,7 +29,7 @@ const  SystemLayout = (props) => {
 	};
 
 
-	const { children, style, ...other } = this.props;
+	const { children, style, ...other } = props;
 	const schema = {
 		component: 'View',
 		props: {
