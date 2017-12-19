@@ -1,4 +1,3 @@
-import RX from 'reactxp';
 import getWindowSize from './getWindowSize';
 
 /**
@@ -12,9 +11,10 @@ export type WindowState = {
 	height: number,
 	size: "xs" | "sm" | "md" | "lg" | "xl"
 };
-
+		//eslint-disable-next-line
 export default function initialState(): WindowState {
-	const dimentions = RX.UserInterface.measureWindow();
+		//eslint-disable-next-line
+		const dimentions = RX.UserInterface.measureWindow();
 
 	const initState = {
 		width: dimentions.width || 0,
