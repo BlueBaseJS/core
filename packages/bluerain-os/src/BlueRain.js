@@ -57,7 +57,7 @@ const BlueRain: BlueRainType = {
 	Utils: {
 		parseJsonSchema,
 		createStyleSheet:styles => styles,
-		setMainView:  () => { throw Error('SetMainView is not set'); }
+		setMainView:  () => { throw  new Error('setMainView is not implemented by the platform.'); }
 	},
 
 	// References
