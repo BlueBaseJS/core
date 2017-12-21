@@ -1,13 +1,13 @@
 /* @flow */
 import { parseJsonSchema } from '../utils/JsonSchemaToReact';
-import  createStyleSheet  from '../utils/createStyleSheet';
+import BR from '../index';
 
-const pageStyle = createStyleSheet({
+const pageStyle = BR.Utils.createStyleSheet({
 	justifyContent: 'center',
 	padding: 20,
 }, 'View');
 
-const titleStyle = createStyleSheet({
+const titleStyle = BR.Utils.createStyleSheet({
 	alignSelf: 'center',
 	textAlign: 'center',
 	backgroundColor: 'rgb(220,53,69)',
@@ -23,7 +23,7 @@ const titleStyle = createStyleSheet({
 	shadowColor: 'rgba(0,0,0,.3)'
 }, 'Text');
 
-const subTitleStyle = createStyleSheet({
+const subTitleStyle = BR.Utils.createStyleSheet({
 	textAlign: 'center',
 	color: 'rgb(150, 150, 150)',
 	marginBottom: 20,

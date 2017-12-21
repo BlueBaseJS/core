@@ -6,11 +6,9 @@ import ConfigRegistry from './registries/ConfigRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import PluginRegistry from './registries/PluginRegistry';
-import setMainView from './setMainView';
 // Others
 import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
-import  createStyleSheet  from './utils/createStyleSheet';
 
 export type BlueRainType = {
 	Apps: AppRegistry,
@@ -58,8 +56,8 @@ const BlueRain: BlueRainType = {
 	// Miscellaneous
 	Utils: {
 		parseJsonSchema,
-		createStyleSheet,
-		setMainView,
+		createStyleSheet:styles => styles,
+		setMainView:  () => { throw Error('SetMainView is not set'); }
 	},
 
 	// References

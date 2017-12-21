@@ -31,10 +31,10 @@ export default function(options: BootOptions = {
 }) : ComponentType<any> {
 
 	// Extract app, plugins and configs from options
-	const { apps, plugins, platforms, config, serverMode, renderApp } = options;
+	const { apps, plugins, platform, config,  renderApp } = options;
 
-	BR.Plugins.registerMany(platforms);
-	BR.Filters.run('bluerain.system.platforms.registered');
+	BR.Plugins.registerMany(platform);
+	BR.Filters.run('bluerain.system.platform.registered');
 
 
 	// =[ System Lifecycle Event ]= Boot Start
@@ -67,8 +67,6 @@ export default function(options: BootOptions = {
 	BR.Plugins.initializeAll();
 	BR.Filters.run('bluerain.system.plugins.initialized');
 
-	// Server mode
-	BR.Platform.setServerMode(serverMode);
 
 	// =[ System Lifecycle Event ]= Apps Registered
 	BR.Apps.registerMany(apps);

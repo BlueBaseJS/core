@@ -2,9 +2,8 @@
 
 import BR from '../index';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
-import  createStyleSheet  from '../utils/createStyleSheet';
 
-const defaultStyle = createStyleSheet({
+const defaultStyle = BR.Utils.createStyleSheet({
 	flex: 1,
 	overflow: 'auto',
 	flexDirection: 'row'
