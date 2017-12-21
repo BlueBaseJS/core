@@ -18,7 +18,8 @@ const  SystemLayout = (props) => {
 	 */
 	//eslint-disable-next-line
 	const onLayout = () => {
-		//eslint-disable-next-line
+		// below  lint would  be resolved after systm Layout task
+		// eslint-disable-next-line 
 		const newDimentions = RX.UserInterface.measureWindow();
 		const oldDimentions = this.props.window;
 
