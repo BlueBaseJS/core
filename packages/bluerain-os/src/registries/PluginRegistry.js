@@ -66,6 +66,11 @@ export default class PluginRegistry extends MapRegistry {
 	 */
 	initializeAll() {
 		for (const plugin of this.data.values()) {
+			if (plugin.hooks) {
+				Object.keys(plugin.hooks).forEach((hook) => {
+					BR.Hooks.add(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
+				});
+			}
 			if (plugin.initialize) {
 				const config = BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;

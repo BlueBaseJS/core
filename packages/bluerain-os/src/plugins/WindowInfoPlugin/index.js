@@ -10,46 +10,42 @@ export default class WindowInfoPlugin extends Plugin {
 
 	static pluginName = 'WindowInfoPlugin';
 	static slug = 'window-info';
+	static hooks = {
+		'bluerain.redux.initialState':(state, ctx) => Object.assign({}, state, {
+			bluerain: {
+				window: initialState()
+			}
+		}),
+		'bluerain.redux.reducers.bluerain':(reducers, ctx) => Object.assign({}, reducers, {
+			window: reducer
+		}),
+		'bluerain.redux.middlewares':(middlewares, ctx) => {
+			const middleware = store => next => (action) => {
 
-	static initialize() {
-
-		BR.Filters.add('bluerain.redux.initialState', function AddWindowInfoInitialState(state) {
-			return Object.assign({}, state, {
-				bluerain: {
-					window: initialState()
+				if (action.type !== '@@BLUERAIN/SET_WINDOW_INFO') {
+					return next(action);
 				}
-			});
-		});
 
+				const state = store.getState();
+				const prevSize = state.bluerain.window.size;
+				const newSize = getWindowSize(action.width);
 
-		BR.Filters.add('bluerain.redux.reducers.bluerain', function AddReducers(reducers) {
-			return Object.assign({}, reducers, {
-				window: reducer
-			});
-		});
+				if (prevSize !== newSize) {
+					BR.Events.emit('plugin.window_info.resize', newSize, prevSize);
+				}
 
-		// Middleware
-		const middleware = store => next => (action) => {
-
-			if (action.type !== '@@BLUERAIN/SET_WINDOW_INFO') {
-				return next(action);
-			}
-
-			const state = store.getState();
-			const prevSize = state.bluerain.window.size;
-			const newSize = getWindowSize(action.width);
-
-			if (prevSize !== newSize) {
-				BR.Events.emit('plugin.window_info.resize', newSize, prevSize);
-			}
-
-			next(action);
-		};
-
-		BR.Filters.add('bluerain.redux.middlewares', function AddMiddleware(middlewares) {
+				next(action);
+			};
 			middlewares.push(middleware);
 			return middlewares;
-		});
+		}
+	}
+	static uses= {
+		components: [],
+		hooks: [],
+	}
+	static initialize() {
+
 	}
 
 	static withWindowInfo = withWindowInfo;
