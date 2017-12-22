@@ -1,37 +1,80 @@
 /* @flow */
 
-import reject from 'lodash.reject';
+import isNil from 'lodash.isnil';
+
+import { List } from 'immutable';
+
+import MapRegistry from './MapRegistry';
+
+type FilterItem = {
+	name: string,
+	filter: Function
+};
 
 /**
  * All system filters are stored in this registry
- * @property {Object} FiltersTable Storage table of all filters
+ * @property {Map<string, List<{name:string, filter:Function}>>} data Storage of all filters and their respective functions
  */
-class FilterRegistry {
+class FilterRegistry extends MapRegistry {
 
-	FiltersTable: {} = {};
+	data: Map<string, List<FilterItem>>;
 
+	constructor() {
+		super('FilterRegistry');
+	}
 	/**
-	 * Add a filter function to a hook
+	 * Add a filter function to a hook.To be deprecated in 2.0.0
 	 * @param {String} hook - The name of the hook
+	 * @param {String | function} name - The name of filter function
 	 * @param {Function} filter - The filter function
+	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
-	add(hook: string, filter: Function) {
-		if (hook === undefined || hook === null) {
-			throw new Error(`hook cannot be ${hook}`);
-		}
-		if (!filter.name) {
-			console.warn(
-				`// Warning! You are adding an unnamed filter to ${hook}.
-			Please use the function foo () {} syntax.`
-			);
+	add(hook: string, name: string | Function, filter: Function, index: number) {
+		console.warn('Deprecation Warning: "add" method of FilterRegistry has been deprecated. Please use "set" method instead.');
+		this.set(hook, name, filter, index);
+	}
+	/**
+	 * Add a filter function to a hook.
+	 * @param {String} hook - The name of the hook
+	 * @param {String | function} name - The name of filter function
+	 * @param {Function} filter - The filter function
+	 * @param {number} index - The index where function should be placed in array of functions against the hook
+	 */
+	set(hook: string, name: string | Function, filter: Function, index: number) {
+		if (isNil(hook)) {
+			throw new Error(`Hook cannot be ${hook}`);
 		}
 
-		// if filter array doesn't exist yet, initialize it
-		if (typeof this.FiltersTable[hook] === 'undefined') {
-			this.FiltersTable[hook] = [];
+		// If a plugin is using an old system of sending named functions
+		if (typeof name === 'function') {
+			filter = name;
+			name = filter.name;
 		}
 
-		this.FiltersTable[hook].push(filter);
+		if (isNil(name)) {
+			throw new Error(`You are adding an unnamed filter to ${hook}.`);
+		}
+
+		if (isNil(filter)) {
+			throw new Error(`You have to provide a filter function while adding it to ${hook}.`);
+		}
+
+		let list = this.data.get(hook);
+
+		if (!list) {
+			list = List();
+		}
+
+		// Check if this filter already exists
+		if (list.findIndex(item => item.name === name) > -1) {
+			throw new Error(`Filter ${name.toString()} already exists in ${hook} hook.`);
+		}
+
+		const item = { name, filter };
+
+		list = (isNil(index)) ? list.push(item) : list.insert(index, item);
+
+		this.data = this.data.set(hook, list);
 	}
 
 	/**
@@ -39,30 +82,28 @@ class FilterRegistry {
 	 * @param {string} hookName - The name of the hook
 	 * @param {string} filterName - The name of the function to remove
 	 */
-	remove(hookName: string, filterName: string) {
-		if (hookName === undefined || hookName === null) {
-			throw new Error(`hook cannot be ${hookName}`);
+	remove(hook: string, name: string) {
+		if (isNil(hook)) {
+			throw new Error(`Hook cannot be ${hook}. Please provide valid hook while removing filter.`);
 		}
 
-		if (filterName === undefined || filterName === null) {
-			throw new Error(`filter of ${hookName} cannot be ${filterName}`);
+		if (isNil(name)) {
+			throw new Error(`Filter name cannot be ${name}. Please provide valid function name while removing filter.`);
 		}
 
-		if (!Object.prototype.hasOwnProperty.call(this.FiltersTable, hookName)) {
-			throw new Error(`${hookName}  is not added. First add hook to remove it.`);
+		if (!this.data.has(hook)) {
+			throw new Error(`${hook} filter is not added. First add filter to remove it.`);
 		}
 
-		const noOffilters = this.FiltersTable[hookName].length;
-		this.FiltersTable[hookName] = reject(
-			this.FiltersTable[hookName],
-			filter => filter.name === filterName
-		);
-		if (this.FiltersTable[hookName].length === noOffilters) {
-			throw new Error(
-				`${hookName} has no filter named ${filterName}.
-			First add filter in ${hookName} to remove it`
-			);
+		let list:List<FilterItem> = this.data.get(hook);
+		const index = list.findIndex(item => item.name === name);
+
+		if (index === -1) {
+			throw new Error(`${name} filter is not added in ${hook} hook. First add filter to remove it.`);
 		}
+
+		list = list.delete(index);
+		this.data = this.data.set(hook, list);
 	}
 
 	/**
@@ -73,52 +114,30 @@ class FilterRegistry {
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
-	run(hook: string, item: {}) {
-		// the first argument is the name of the hook or an array of functions
-		// const hook = arguments[0];
-		// the second argument is the item on which to iterate
-		// const item = arguments[1];
-		// successive arguments are passed to each iteration
+	run(hook:string, item:any) {
+		if (isNil(hook)) {
+			throw new Error(`Hook cannot be ${hook}`);
+		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
-		if (hook === undefined || hook === null) {
-			throw new Error(`hook cannot be ${hook}`);
+
+		const filters:List<FilterItem> = this.data.get(hook);
+
+		if (isNil(filters) || filters.size === 0) {
+			return item;
 		}
 
-		const filters = Array.isArray(hook) ? hook : this.FiltersTable[hook];
+		return filters.reduce((accumulator, item) => {
+			const newArguments = [accumulator].concat(args);
+			const result = item.filter.apply({}, newArguments);
 
-		if (typeof filters !== 'undefined' && !!filters.length) {
-			// if the hook exists, and contains filters to run
-			return filters.reduce((accumulator, filter) => {
-				const newArguments = [accumulator].concat(args);
-
-				try {
-					const result = filter.apply({}, newArguments);
-
-					if (typeof result === 'undefined') {
-						// if result of current iteration is undefined, don't pass it on
-						// console.log(
-						//   `// Warning: Sync filter [${filter.name}] in hook
-						// [${hook}] didn't return a result!`
-						// );
-						return accumulator;
-					}
-					return result;
-				} catch (error) {
-					// console.log(
-					//   `// error at filter [${filter.name}] in hook [${hook}]`
-					// );
-					// console.log(error);
-					throw error;
-					// if (error.break || error.data && error.data.break) {
-
-					// }
-					// pass the unchanged accumulator to the next iteration of the loop
-					// return accumulator;
-				}
-			}, item);
-		} // else, just return the item unchanged
-		return item;
+			if (typeof result === 'undefined') {
+				// if result of current iteration is undefined, don't pass it on
+				console.warn(`Warning: Sync filter [${item.name}] in hook [${hook}] didn't return a result!`);
+				return accumulator;
+			}
+			return result;
+		}, item);
 	}
 }
 

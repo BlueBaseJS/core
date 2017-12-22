@@ -9,7 +9,7 @@ import TaskbarComponent from './TaskbarComponent';
 const TaskbarContainer = (props: {
 	bluerain: BlueRain
 }) => {
-
+	// $FlowFixMe
 	const { systemNav, bluerain: BR } = props;
 	const hideLabels = systemNav.hideLabels;
 

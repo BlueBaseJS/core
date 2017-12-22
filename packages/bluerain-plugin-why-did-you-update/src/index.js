@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/unresolved
 import React from 'react';
 import { Plugin } from '@blueeast/bluerain-os';
 const { whyDidYouUpdate } = require('why-did-you-update');

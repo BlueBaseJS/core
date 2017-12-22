@@ -4,8 +4,10 @@ import React from 'react';
 import ListItem from 'material-ui/List/ListItem';
 
 export default (props: {
+	icon: ?string,
 	primaryText: string,
-	hideLabel: boolean
+	hideLabel: boolean,
+	label:string
 }) => {
 
 	const { label, hideLabel, ...other } = props; // eslint-disable-line

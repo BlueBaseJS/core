@@ -3,6 +3,7 @@
 import set from 'lodash.set';
 import get from 'lodash.get';
 import merge from 'lodash.merge';
+import isNil from 'lodash.isnil';
 
 /**
  * All system configs are stored in this registry
@@ -16,12 +17,12 @@ class ConfigRegistry {
 	 * Set a Config
 	 */
 	set(key: string, value: any) {
-		if (key === undefined || key === null) {
-			throw new Error('No config key provided');
+		if (isNil(key)) {
+			throw new Error('No config key provided. Please provide valid key while adding config.');
 		}
 
-		if (value === undefined || value === null) {
-			throw new Error('No config value provided');
+		if (isNil(value)) {
+			throw new Error('No config value provided. Please provide valid value while adding config.');
 		}
 
 		set(this.ConfigsTable, key, value);
@@ -31,17 +32,23 @@ class ConfigRegistry {
 	 * Get a config value
 	 */
 	get(key: string) : any {
-		if (key === undefined || key === null) {
-			throw new Error('No config key provided');
+		if (isNil(key)) {
+			throw new Error('No config key provided. Please provide valid key while getting config.');
 		}
 
 		return get(this.ConfigsTable, key);
 	}
-
+	/**
+	 * Register a Config To be deprecated in 2.0.0
+	 */
+	register(configs: {}) {
+		console.warn('Deprecation Warning: "register" method of ConfigRegistry has been deprecated. Please use "registerMany" method instead.');
+		this.registerMany(configs);
+	}
 	/**
 	 * Register many configs at once
 	 */
-	register(configs: {}) {
+	registerMany(configs: {}) {
 		this.ConfigsTable = merge(this.ConfigsTable, configs);
 	}
 }

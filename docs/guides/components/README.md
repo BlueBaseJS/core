@@ -3,7 +3,7 @@ BlueRain stores components which can be dynamically used and replaced. This play
 
 ## Registering Components
 
-You can add new Components with the `register` method:
+You can add new Components with the `set` method:
 
 ```js
 import BR from '@blueeast/bluerain-os';
@@ -13,7 +13,7 @@ const Logo = props => {
     <div>/* component code */</div>
   )
 }
-BR.Components.register('Logo', Logo);
+BR.Components.set('Logo', Logo);
 ```
 
 ### Components & HoCs
@@ -22,28 +22,28 @@ To understand how theming works in BlueRain, it's important to understand how co
 
 A higher-order component's role is to wrap a regular component to pass it a specific prop (such as a list of posts, the current user, the `Router` object, etc.). You can think of HoCs as specialized assistants that each hand the component a tool it needs to do its job. 
 
-The first argument of `register` is the component's name, the second is the component itself, and any successive arguments will be interpreted as higher-order components and wrapped around the component.
+The first argument of `set` is the component's name, the second is the component itself, and any successive arguments will be interpreted as higher-order components and wrapped around the component.
 
 For example, this is how you'd pass the `currentUser` object to the `Logo` component:
 
 ```js
-BR.Components.register('Logo', Logo, withCurrentUser);
+BR.Components.set('Logo', Logo, withCurrentUser);
 ```
 
 ### "Delayed" HoCs
 
-There are a few subtle differences between registering a component with `register` and the more standard `export default Foo` and `import Foo from './Foo.jsx'` ES6 syntax. 
+There are a few subtle differences between registering a component with `set` and the more standard `export default Foo` and `import Foo from './Foo.jsx'` ES6 syntax. 
 
-First, you can only override a component if it's been registered using `register`. This means that if you're building any kind of theme or plugin and would like end users to be able to replace specific components, you shouldn't use import/export. 
+First, you can only override a component if it's been registered using `set`. This means that if you're building any kind of theme or plugin and would like end users to be able to replace specific components, you shouldn't use import/export. 
 
 Second, both techniques also lead to different results when it comes to higher-order components (more on this below). If you write `export withCurrentUser(Foo)`, the `withCurrentUser` function will be executed immediately, which will trigger an error because the fragment it depends on isn't properly initialized yet. 
 
-On the other hand, `register('Foo', Foo, withCurrentUser)` *doesn't* execute the function (note that we write `withCurrentUser` and not `withCurrentUser()`), delaying execution until app's initialization. 
+On the other hand, `set('Foo', Foo, withCurrentUser)` *doesn't* execute the function (note that we write `withCurrentUser` and not `withCurrentUser()`), delaying execution until app's initialization. 
 
 But what about HoC functions that take arguments? For example if you were to write:
 
 ```js
-BR.Components.register('PostsList', PostsList, withList(options));
+BR.Components.set('PostsList', PostsList, withList(options));
 ```
 
 The `withList(options)` would be executed immediately, and you would have no way of overriding the `options` object later on (a common use case being overriding a fragment).
@@ -51,8 +51,13 @@ The `withList(options)` would be executed immediately, and you would have no way
 For that reason, to delay the execution until the start of the app, you can use the following alternative syntax:
 
 ```js
-BR.Components.register('PostsList', PostsList, [withList, options]);
+BR.Components.set('PostsList', PostsList, [withList, options]);
 ```
+### Add HoCs
+
+Adds Hocs to the registered component.
+```js
+BR.Components.addHocs('PostsList', withCurrentUser , withList(options));
 ### Accessing Raw Components
 
 Going back to our example:
@@ -63,11 +68,11 @@ const WrappedComponent = withCurrentUser(MyComponent);
 
 This would result a *new* `WrappedComponent` component that has `MyComponent` as a child. This has the consequence that properties and objects you set on `MyComponent` might not exist on `WrappedComponent`. 
 
-For that reason, BlueRain provides a `getRawComponent` utility that lets you access the unwrapped “raw” component, provided said component has been registered with `register`:
+For that reason, BlueRain provides a `getRawComponent` utility that lets you access the unwrapped “raw” component, provided said component has been registered with `set`:
 
 ```
 MyComponent.foo = "bar";
-const WrappedComponent = BR.Components.register(MyComponent, withCurrentUser);
+const WrappedComponent = BR.Components.set(MyComponent, withCurrentUser);
 console.log(WrappedComponent.foo); // undefined
 console.log(BR.Components.getRawComponent(WrappedComponent).foo); // "bar"
 ```
@@ -87,10 +92,10 @@ const CustomLogo = props => {
 BR.Components.replace('Logo', CustomLogo);
 ```
 
-Note that `replace` will preserve any HoCs originally defined using `register`. In other words, in the following example:
+Note that `replace` will preserve any HoCs originally defined using `set`. In other words, in the following example:
 
 ```js
-BR.Components.register('Logo', Logo, withCurrentUser, withRouter);
+BR.Components.set('Logo', Logo, withCurrentUser, withRouter);
 BR.Components.replace('Logo', CustomLogo);
 ```
 

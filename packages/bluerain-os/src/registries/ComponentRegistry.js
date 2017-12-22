@@ -1,145 +1,160 @@
 /* @flow */
 
-import { compose } from 'redux'; // note: at the moment, compose@react-apollo === compose@redux ; see https://github.com/apollostack/react-apollo/blob/master/src/index.ts#L4-L7
 import { type Element as ReactElement } from 'react';
+import compose from 'lodash.compose';
+import isNil from 'lodash.isnil';
 
-type ComponentItem = {
-	name: string,
+import MapRegistry from './MapRegistry';
+
+type ComponentRegistryHocItem = Function | Array<any>
+
+type ComponentRegistryItem = {
 	rawComponent: ReactElement<*>,
-	hocs: Array<Function>
+	hocs: Array<ComponentRegistryHocItem>
 };
+
 
 /**
  * All system components are stored in this registry
- * @property {Object} ComponentsTable Storage table of all components
+ * @property {Map<string, {rawComponent: ReactElement<*>, hocs: Array<Function | Array<any>>}>} data Storage of all components
  */
-class ComponentRegistry {
-	ComponentsTable: {} = {};
+class ComponentRegistry extends MapRegistry {
 
+	data: Map<string, ComponentRegistryItem>;
+
+	constructor() {
+		super('ComponentRegistry');
+	}
+	/**
+	 * Register a component with a name, a raw component than can be extended
+	 * and one or more optional higher order components.To be deprecated in 2.0.0
+	 *
+	 * @param {String} name The name of the component to register.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
+	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
+	 *
+	 */
+	register(name: string, rawComponent: ReactElement<*>, ...hocs: Array<ComponentRegistryHocItem>) {
+		console.warn('Deprecation Warning: "register" method of ComponentRegistry has been deprecated. Please use "set" method instead.');
+		this.set(name, rawComponent, ...hocs);
+	}
 	/**
 	 * Register a component with a name, a raw component than can be extended
 	 * and one or more optional higher order components.
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React Component} rawComponent Interchangeable/extendable component.
-	 * @param {...Function} hocs The HOCs to compose with the raw component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
+	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
-	 * See https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15
+	 * See https://lodash.com/docs/4.17.4#flowRight
 	 *
-	 * @returns Structure of a component in the list:
-	 *
-	 * this.ComponentsTable.Foo = {
-	 *    name: 'Foo',
-	 *    hocs: [fn1, fn2],
-	 *    rawComponent: React.Component,
-	 *    call: () => compose(...hocs)(rawComponent),
-	 * }
 	 *
 	 */
-	register(name: string, rawComponent: ReactElement<*>, ...hocs: Array<Function>) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+	set(name: string, rawComponent: ReactElement<*>, ...hocs: Array<ComponentRegistryHocItem>) {
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}. Please provide valid name while adding component`);
 		}
-    // store the component in the table
-		this.ComponentsTable[name] = {
-			name,
-			rawComponent,
-			hocs
-		};
-	}
-	addHOCs(name: string, ...hocs: Array<Function>) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
-		}
-		if (!Object.prototype.hasOwnProperty.call(this.ComponentsTable, name)) {
-			throw new Error(`Component ${name} not registered.`);
-		}
-    // store the component in the table
-		this.ComponentsTable[name].hocs.push(...hocs);
-	}
 
-  /**
-	 * Check if a component is registered with registerComponent(name, component, ...hocs).
-	 *
-	 * @param {String} name The name of the component to get.
-	 * @returns {boolean}
-	 */
-	has(name: string) : boolean {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+		if (isNil(rawComponent)) {
+			throw new Error('rawComponent is required to register a component.Please provide valid component while adding component');
 		}
-		const component = this.ComponentsTable[name];
-		if (!component) {
-			return false;
-		}
-		return true;
+
+		super.set(name, { rawComponent, hocs });
 	}
 
 	/**
-	 * Get a component registered with registerComponent(name, component, ...hocs).
+	 * Adds higher order component to the registered component
+	 * @param {string} name The name of the registered component to whom hocs are to added
+	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
+	 */
+	addHocs(name: string, ...hocs: Array<ComponentRegistryHocItem>) {
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}. Please provide valid name while adding Hocs`);
+		}
+
+		if (!this.has(name)) {
+			throw new Error(`Component ${name} not registered.Please register component before adding Hocs`);
+		}
+
+		const item:ComponentRegistryItem = super.get(name);
+		item.hocs.push(...hocs);
+
+		this.data = this.data.set(name, item);
+	}
+
+	/**
+	 * Get a component registered with set(name, component, ...hocs).
+	 * Its accepts multiple component names.It iterates arguments and returns first found registered component.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React Component} A (wrapped) React component
+	 * @returns {Function|ReactElement<*>} A (wrapped) React component
 	 */
-	get(name: string) : ReactElement<*> {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
+	get(...name: Array<string>) : ReactElement<*> {
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name.toString()}.Please provide valid name while getting component`);
 		}
-		const component = this.ComponentsTable[name];
+
+		let component;
+		for (let i = 0; i < name.length; i += 1) {
+			if (this.has(name[i])) {
+				component = this.data.get(name[i]);
+				break;
+			}
+		}
 		if (!component) {
-			throw new Error(`Component ${name} not registered.`);
+			throw new Error(`None of components ${name.toString()} are registered.`);
 		}
+
 		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 		return compose(...hocs)(component.rawComponent);
 	}
 
-  /**
+	/**
 	 * Get the **raw** (original) component registered with registerComponent
 	 * without the possible HOCs wrapping it.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React Component} An interchangeable/extendable React component
+	 * @returns {Function|ReactElement<*>} An interchangeable/extendable React component
 	 */
 	getRawComponent(name: string): ReactElement<*> {
-		return this.ComponentsTable[name].rawComponent;
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}.Please provide valid name while getting raw component`);
+		}
+
+		if (!this.has(name)) {
+			throw new Error(`Component ${name} not registered. Please register component before getting raw component`);
+		}
+		const component: ComponentRegistryItem = super.get(name);
+		return component.rawComponent;
 	}
 
-  /**
+	/**
 	 * Replace a component with the same name with a new component or
 	 * an extension of the raw component and one or more optional higher order components.
 	 * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React Component} rawComponent Interchangeable/extendable component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
 	 * @param {...Function} hocs The HOCs to compose with the raw component.
-	 * @returns {Function|React Component} A component callable with Components[name]
+	 * @returns {Function|ReactElement<*>} A component callable with Components[name]
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
-	 * See https://github.com/reactjs/redux/blob/master/src/compose.js#L13-L15
+	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
 	replace(name: string, newComponent: ReactElement<*>, ...newHocs: Array<Function>) {
-		if (name === undefined || name === null) {
-			throw new Error(`name cannot be ${name}`);
-		} else if (!Object.prototype.hasOwnProperty.call(this.ComponentsTable, name)) {
-			throw new Error(`${name} is not registered. Component should be registered to be replaced`);
+		if (isNil(name)) {
+			throw new Error(`Component name cannot be ${name}.Please valid component name while replacing it`);
 		}
-		const previousComponent = this.ComponentsTable[name];
 
-    // xxx : throw an error if the previous component doesn't exist
-
-		this.register(name, newComponent, ...newHocs, ...previousComponent.hocs);
-	}
-
-  /**
-	 * [write docs]
-	 * @param {*} sourceComponent
-	 * @param {*} targetComponent
-	 */
-	static copyHoCs(sourceComponent: ComponentItem, targetComponent: ReactElement<*>) : ReactElement<*> {
-		return compose(...sourceComponent.hocs)(targetComponent);
+		if (!this.has(name)) {
+			throw new Error(`Component ${name} not registered.Please register component before replacing it`);
+		}
+		const previousComponent:ComponentRegistryItem = super.get(name);
+		const hocs = [...newHocs, ...previousComponent.hocs];
+		super.replace(name, { rawComponent: newComponent, hocs } );
 	}
 }
 

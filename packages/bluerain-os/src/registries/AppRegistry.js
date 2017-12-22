@@ -1,31 +1,43 @@
 /* @flow */
 
 import kebabCase from 'lodash.kebabcase';
-import get from 'lodash.get';
+import isNil from 'lodash.isnil';
 
+import MapRegistry from './MapRegistry';
 import BR, { App } from '../index';
 
 const defaultAppRoutePrefix = '/app';
 
 /**
  * All system apps are stored in this registry
- * @property {Object} AppsTable Storage table of all apps
+ * @property {Map<string, App>} data  Map(immutablejs) of all apps
  */
-class AppRegistry {
+class AppRegistry extends MapRegistry {
 
-	AppsTable: { [string]: App } = {};
+	data: Map<string, App>;
 
+	constructor() {
+		super('AppRegistry');
+	}
+  /**
+   * Register an App To be deprecated in 2.0.0
+   * @param {App} app The BlueRain app to register
+   */
+	register(app: App) {
+		console.warn('Deprecation Warning: "register" method of AppRegistry has been deprecated. Please use "set" method instead.');
+		this.set(app);
+	}
 	/**
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	register(app: App) {
-		if (app === undefined || app === null) {
-			throw new Error('No app provided');
+	set(app: App) {
+		if (isNil(app)) {
+			throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
 		}
 
 		if (!app.appName) {
-			throw new Error('App name not provided.');
+			throw new Error('App name not provided. Please provide "appName" while registering an app');
 		}
 
 		if (!app.slug) {
@@ -36,7 +48,7 @@ class AppRegistry {
 		app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 		app.path = `${app.appRoutePrefix}/${app.slug}`;
 
-		this.AppsTable[app.slug] = app;
+		super.set(app.slug, app);
 	}
 
 	/**
@@ -48,87 +60,49 @@ class AppRegistry {
 		apps = apps || [];
 
 		if (!Array.isArray(apps)) {
-			throw new Error('apps parameter must be an Array');
+			throw new Error('Apps parameter while registering via "registerMany" method must be an array');
 		}
 
-		apps.forEach(app => me.register(app));
+		apps.forEach(app => me.set(app));
 	}
 
 	/**
-	 * Get an app
-	 * @param {string} slug The slug of the app
-	 * @return {App}
-	 */
-	get(slug: string) : App {
-		if (slug === undefined || slug === null) {
-			throw new Error('No plugin slug provided');
-		}
-
-		return get(this.AppsTable, slug);
-	}
-
-	/**
-	 * Initialize all apps
+	 * Initialize all the registered apps
 	 */
 	initializeAll() {
-		const me = this;
-		Object.keys(me.AppsTable).forEach((key) => {
-
-			const app = me.AppsTable[key];
+		for (const app of this.data.values()) {
 			if (app.initialize) {
 				const config = BR.Configs.get(`apps.${app.slug}`);
 				app.config = config;
 				app.initialize(config, BR);
 			}
-
-		});
-
-	}
-
-	/**
-	 * Remove an app from the registry
-	 * @param {string} slug The slug of the app to remove
-	 */
-	remove(slug: string) {
-		if (slug === undefined || slug === null) {
-			throw new Error(`slug cannot be ${slug}`);
 		}
-		if (!this.AppsTable[slug]) {
-			throw new Error(`${slug} is not registered.`);
-		}
-		delete this.AppsTable[slug];
-	}
-
-	/**
-	 * Get all apps
-	 * @returns {Object} An object with slug: app key value pair
-	 */
-	getApps() : { [string]: App } {
-		return this.AppsTable;
 	}
 
 	/**
 	 * Returns the JSON schema of the main APPs component.
-	 * This component renders all the apps.
+	 * This component renders all the routes of apps.To be deprecated in 2.0.0
 	 *
 	 * @returns {Object} JSON Schema
 	 */
 	getComponentSchema() : Array<*> {
-		const apps = this.getApps();
-
+		console.warn('Deprecation Warning: "getComponentSchema" method of AppRegistry has been deprecated. Please use "getAllRoutes" method instead.');
+		return this.getAllRoutes();
+	}
+	/**
+	 * Returns the JSON schema of the main APPs component.
+	 * This component renders all the routes of apps.
+	 *
+	 * @returns {Object} JSON Schema
+	 */
+	getAllRoutes() : Array<*> {
 		const appRoutes = [];
-		for (const key in apps) {
-
-			// skip loop if the property is from prototype
-			if (!Object.prototype.hasOwnProperty.call(apps, key)) continue;
-
-			const app = apps[key];
-
+		for (const app of this.data.values()) {
 			appRoutes.push({
 				component: 'Route',
 				props: {
 					path: app.path,
-					key,
+					key: app.slug,
 					component: app
 				}
 			});

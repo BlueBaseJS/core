@@ -12,32 +12,32 @@ import {
 } from '../../src/plugins/WindowInfoPlugin/actions';
 class xs extends React.Component {
 	render() {
-		return <div>xs</div>
+		return <div>xs</div>;
 	}
 }
 class sm extends React.Component {
 	render() {
-		return <div>sm</div>
+		return <div>sm</div>;
 	}
 }
 class md extends React.Component {
 	render() {
-		return <div>md</div>
+		return <div>md</div>;
 	}
 }
 class lg extends React.Component {
 	render() {
-		return <div>lg</div>
+		return <div>lg</div>;
 	}
 }
 class xl extends React.Component {
 	render() {
-		return <div>xl</div>
+		return <div>xl</div>;
 	}
 }
 class defaultComponent extends React.Component {
 	render() {
-		return <div>default</div>
+		return <div>default</div>;
 	}
 }
 describe('Responsive Layout tests', () => {
@@ -306,7 +306,7 @@ describe('Responsive Layout tests', () => {
 			const wrapper = TestUtils.renderIntoDocument(
   <Provider store={mockStoreInitialized}>
     <ResponsiveLayout
-		default={defaultComponent}
+      default={defaultComponent}
       xs="Heading"
       sm={sm}
       md={md}
@@ -363,7 +363,7 @@ describe('Responsive Layout tests', () => {
             />
           </Provider>
         )
-      ).toThrow('Component NotRegistered not registered.');
+      ).toThrow('None of components NotRegistered are registered.');
 		});
 	});
 	describe('pass invalid variables as component', () => {
