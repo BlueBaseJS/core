@@ -7,7 +7,7 @@ before_install:
   - npm install -g jest
 jobs:
   include:
-    - stage: Lerna Bootstrap
-      script: yarn cache clean && lerna bootstrap && lerna run lint
-    - stage: ES Lint & Flow
-      script: lerna run test && lerna run flow
+    - stage: Lerna Bootstrap && ES Lint & Flow
+      script: yarn cache clean && lerna bootstrap && lerna run lint && lerna run flow
+    - stage: Tests
+      script: yarn cache clean && lerna bootstrap && lerna run test 
