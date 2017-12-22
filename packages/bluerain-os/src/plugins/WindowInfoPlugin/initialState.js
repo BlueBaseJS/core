@@ -14,7 +14,7 @@ export type WindowState = {
 		//eslint-disable-next-line
 export default function initialState(): WindowState {
 		//eslint-disable-next-line
-		const dimentions = RX.UserInterface.measureWindow();
+		const dimentions = BR.Dimensions;
 
 	const initState = {
 		width: dimentions.width || 0,

@@ -1,39 +1,20 @@
 /* @flow */
 
 import BR from '../index';
-import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
 const defaultStyle = BR.Utils.createStyleSheet({
 	flex: 1,
 	overflow: 'auto',
 	flexDirection: 'row'
 }, 'View');
+const withWindowInfo = BR.Plugins.get('window-info').withWindowInfo;
 
 const  SystemLayout = (props) => {
-
-
-	/**
-	 * Whenever the screen/window size changes, notify redux to
-	 * update `state.bluerain.window` object.
-	 */
-	//eslint-disable-next-line
-	const onLayout = () => {
-		// below  lint would  be resolved after systm Layout task
-		// eslint-disable-next-line 
-		const newDimentions = RX.UserInterface.measureWindow();
-		const oldDimentions = this.props.window;
-
-		if (newDimentions.width !== oldDimentions.width || newDimentions.height !== oldDimentions.height) {
-			this.props.setWindowDimentions(newDimentions.width, newDimentions.height);
-		}
-	};
-
-
-	const { children, style, ...other } = props;
+	const { children, style, Layout, ...other } = props;
 	const schema = {
 		component: 'View',
 		props: {
-			onLayout: this.onLayout,
+			onLayout: Layout,
 			style: [defaultStyle, style],
 			...other
 		},
