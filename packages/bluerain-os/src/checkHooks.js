@@ -1,6 +1,6 @@
 import BR from './index';
 export default() => {
-	BR.Hooks.add('bluerain.system.plugins.registered', () => {
+	BR.Hooks.add('bluerain.system.apps.registered', () => {
 		const systemHooks = ['bluerain.system.boot.start', 'bluerain.system.configurations.loaded',
 			'bluerain.system.components.registered', 'bluerain.system.plugins.registered',
 			'bluerain.system.plugins.initialized', 'bluerain.system.apps.registered', 'bluerain.system.apps.initialized',

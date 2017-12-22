@@ -20,15 +20,18 @@ export default class HookRegistry {
 	 * @param {String} hook - The name of the hook
 	 * @param {Function} filter - The filter function
 	 */
-	add(hook:string, filter: Function) {
+	add(hook:string, name:string|Function, filter: Function) {
 		if (isNil(hook)) {
 			throw new Error(`You are adding an invalid hook:${hook}.`);
 		}
-
+		if (typeof name === 'function') {
+			filter = name;
+			name = filter.name;
+		}
 		if (isNil(filter)) {
 			throw new Error(`You have to provide a filter function while adding it to ${hook}.`);
 		}
-		this.filters.set(hook, filter);
+		this.filters.set(hook, name, filter);
 		this.events.on(hook, filter);
 	}
     /**
