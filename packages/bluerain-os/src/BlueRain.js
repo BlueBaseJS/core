@@ -17,6 +17,7 @@ export type BlueRainType = {
 	Events: EventRegistry,
 	Filters: FilterRegistry,
 	Plugins: PluginRegistry,
+    Platform:PluginRegistry,
 
 	Utils: {
 		parseJsonSchema: Function,
@@ -44,6 +45,7 @@ export type BlueRainType = {
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
  * @prop {Function} 					boot 				Function to boot the OS.
  */
+const pluginObj = new PluginRegistry();
 const BlueRain: BlueRainType = {
 	// BlueRain
 	Apps: new AppRegistry(),
@@ -51,7 +53,8 @@ const BlueRain: BlueRainType = {
 	Configs: new ConfigRegistry(),
 	Events: new EventRegistry(),
 	Filters: new FilterRegistry(),
-	Plugins: new PluginRegistry(),
+	Plugins: pluginObj,
+	Platform: pluginObj,
 
 	// Miscellaneous
 	Utils: {

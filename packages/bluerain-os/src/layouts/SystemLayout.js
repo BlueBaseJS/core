@@ -7,7 +7,6 @@ const defaultStyle = BR.Utils.createStyleSheet({
 	overflow: 'auto',
 	flexDirection: 'row'
 }, 'View');
-const withWindowInfo = BR.Plugins.get('window-info').withWindowInfo;
 
 const  SystemLayout = (props) => {
 	const { children, style, Layout, ...other } = props;
@@ -29,4 +28,4 @@ const  SystemLayout = (props) => {
 
 };
 
-export default withWindowInfo(SystemLayout);
+export default SystemLayout;
