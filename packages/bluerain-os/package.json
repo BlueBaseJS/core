@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "A browser based OS, made with React JS",
   "keywords": [],
-  "main": "dist/bluerain-os-typescript.umd.js",
-  "module": "dist/bluerain-os-typescript.es5.js",
-  "typings": "dist/types/bluerain-os-typescript.d.ts",
+  "main": "dist/bluerain-os.umd.js",
+  "module": "dist/bluerain-os.es5.js",
+  "typings": "dist/types/bluerain-os.d.ts",
   "files": [
     "dist"
   ],
@@ -75,7 +75,7 @@
   },
   "bundlesize": [
     {
-      "path": "./dist/bluerain-os-typescript.es5.js",
+      "path": "./dist/bluerain-os.es5.js",
       "maxSize": "18 kB"
     }
   ],

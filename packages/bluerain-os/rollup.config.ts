@@ -6,7 +6,7 @@ import camelCase from 'lodash.camelcase'
 
 const pkg = require('./package.json')
 
-const libraryName = 'bluerain-os-typescript'
+const libraryName = 'bluerain-os';
 
 export default {
   input: `compiled/${libraryName}.js`,
