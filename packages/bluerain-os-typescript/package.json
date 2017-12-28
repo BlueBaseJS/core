@@ -1,7 +1,7 @@
 {
-  "name": "bluerain-os-typescript",
+  "name": "bluerain-os",
   "version": "0.1.0",
-  "description": "A browser based OS, made with React JS and typescript",
+  "description": "A browser based OS, made with React JS",
   "keywords": [],
   "main": "dist/bluerain-os-typescript.umd.js",
   "module": "dist/bluerain-os-typescript.es5.js",
@@ -92,7 +92,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
-    "reactxp": "0.42.10",
+    "reactxp": "0.46.5",
     "recompose": "^0.25.0",
     "redux": "^3.7.2"
   },

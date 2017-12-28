@@ -1,5 +1,6 @@
 /* @flow */
 
+import React from 'react';
 import BR from './index';
 
 import { parseJsonSchema } from './utils/JsonSchemaToReact';

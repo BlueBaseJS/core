@@ -1,3 +1,4 @@
+import React from 'react';
 import BR from '../../';
 import Plugin from '../../models/Plugin'; // BR.Plugin doesn't exist yet.
 

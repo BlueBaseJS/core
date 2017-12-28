@@ -1,5 +1,5 @@
 /* @flow */
-
+import React from 'react';
 import RX from 'reactxp';
 import BR from '../index';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
