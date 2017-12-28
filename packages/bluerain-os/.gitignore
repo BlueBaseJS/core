@@ -1,3 +1,4 @@
+node_modules
 # Logs
 logs
 
@@ -16,10 +17,13 @@ pids
 lib-cov
 
 # Coverage directory used by tools like istanbul
-coverage
 
-# nyc test coverage
+coverage
 .nyc_output
+.DS_Store
+*.log
+.vscode
+.idea
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
@@ -33,7 +37,8 @@ bower_components
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 dist
-
+compiled
+.awcache
 # Dependency directories
 node_modules/
 jspm_packages/
