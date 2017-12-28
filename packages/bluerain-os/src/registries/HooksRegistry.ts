@@ -15,12 +15,12 @@ export default class HookRegistry {
 		this.filters = filters || new FilterRegistry();
 		this.events = events || new EventRegistry();
 	}
-    /**
+	/**
 	 * Add a filter function to a hook.
 	 * @param {String} hook - The name of the hook
 	 * @param {Function} filter - The filter function
 	 */
-	add(hook:string, name:string|Function, filter: Function) {
+	add(hook:string, name:string, filter: () => void) {
 		if (isNil(hook)) {
 			throw new Error(`You are adding an invalid hook:${hook}.`);
 		}
@@ -34,10 +34,11 @@ export default class HookRegistry {
 		this.filters.set(hook, name, filter);
 		this.events.on(hook, filter);
 	}
-    /**
+ /**
 	 * Successively run all of a hook's functions on an item
 	 * @param {String} hook - First argument: the name of the hook
-	 * @param {'async' |'sync' | 'both'} mode - Second argument: mode in which hook will run. If not given mode will be sync
+	 * @param {'async' |'sync' | 'both'} mode - Second argument: mode in which hook will run.
+	 * If not given mode will be sync
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */

@@ -73,7 +73,6 @@ class AppRegistry extends MapRegistry {
 	 */
 	initializeAll() {
 		this.data.forEach(app => {
-		for (const app of this.data.values()) {
 			if (app.hooks) {
 				Object.keys(app.hooks).forEach((hook) => {
 					BR.Hooks.add(hook, `${app.slug}.${hook}`, app.hooks[hook]);

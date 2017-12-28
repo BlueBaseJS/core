@@ -1,15 +1,15 @@
 import BR from './index';
 export default() => {
-	BR.Hooks.add('bluerain.system.apps.registered', () => {
+	BR.Hooks.add('bluerain.system.apps.registered','checkHooks', () => {
 		const systemHooks = ['bluerain.system.boot.start', 'bluerain.system.configurations.loaded',
 			'bluerain.system.components.registered', 'bluerain.system.plugins.registered',
 			'bluerain.system.plugins.initialized', 'bluerain.system.apps.registered', 'bluerain.system.apps.initialized',
 			'bluerain.system.initialized', 'bluerain.system.app', 'bluerain.system.boot.end', 'bluerain.system.routes',
 			'bluerain.system.app.schema', 'bluerain.system.app.layout'
 		];
-		const hooksData = [];
+		const hooksData:any[] = [];
 		// const addedHooks = [];
-		const runnedHooks = [];
+		const runnedHooks:any[] = [];
 		BR.Plugins.data.forEach((plugin) => {
 			const hooks = plugin.hooks ? Object.keys(plugin.hooks) : [];
 			const uses = plugin.uses ? plugin.uses.hooks : [];
