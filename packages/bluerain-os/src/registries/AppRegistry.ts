@@ -36,11 +36,11 @@ class AppRegistry extends MapRegistry {
 // set(key: string, item: any, ...rest: any[])
 	set(app: App|any) {
 		if (isNil(app)) {
-			throw new Error(`App cannot be ${app}`);
+			throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
 		}
 
 		if (!app.appName) {
-			throw new Error('App name not provided.');
+			throw new Error('App name not provided. Please provide "appName" while registering an app');
 		}
 
 		if (!app.slug) {
@@ -62,7 +62,7 @@ class AppRegistry extends MapRegistry {
 		apps = apps || [];
 
 		if (!Array.isArray(apps)) {
-			throw new Error('Apps parameter must be an array');
+			throw new Error('Apps parameter while registering via "registerMany" method must be an array');
 		}
 
 		apps.forEach(app => this.set(app));
@@ -73,6 +73,12 @@ class AppRegistry extends MapRegistry {
 	 */
 	initializeAll() {
 		this.data.forEach(app => {
+		for (const app of this.data.values()) {
+			if (app.hooks) {
+				Object.keys(app.hooks).forEach((hook) => {
+					BR.Hooks.add(hook, `${app.slug}.${hook}`, app.hooks[hook]);
+				});
+			}
 			if (app.initialize) {
 				const config = BR.Configs.get(`apps.${app.slug}`);
 				app.config = config;

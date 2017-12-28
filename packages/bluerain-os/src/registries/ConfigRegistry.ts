@@ -15,11 +15,11 @@ class ConfigRegistry {
 	 */
 	set(key: string, value: any) {
 		if (isNil(key)) {
-			throw new Error('No config key provided');
+			throw new Error('No config key provided. Please provide valid key while adding config.');
 		}
 
 		if (isNil(value)) {
-			throw new Error('No config value provided');
+			throw new Error('No config value provided. Please provide valid value while adding config.');
 		}
 
 		set(this.ConfigsTable, key, value);
@@ -30,7 +30,7 @@ class ConfigRegistry {
 	 */
 	get(key: string): any {
 		if (isNil(key)) {
-			throw new Error('No config key provided');
+			throw new Error('No config key provided. Please provide valid key while getting config.');
 		}
 
 		return get(this.ConfigsTable, key);

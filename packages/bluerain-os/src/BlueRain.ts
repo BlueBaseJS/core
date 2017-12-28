@@ -6,18 +6,20 @@ import ConfigRegistry from './registries/ConfigRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import PluginRegistry from './registries/PluginRegistry';
+import HooksRegistry from './registries/HooksRegistry';
 
 // Others
 import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 export type BlueRainType = {
-	Apps: AppRegistry;
-	Components: ComponentRegistry;
-	Configs: ConfigRegistry;
-	Events: EventRegistry;
-	Filters: FilterRegistry;
-	Plugins: PluginRegistry;
+	Apps: AppRegistry,
+	Components: ComponentRegistry,
+	Configs: ConfigRegistry,
+	Events: EventRegistry,
+	Filters: FilterRegistry,
+	Plugins: PluginRegistry,
+	Hooks: HooksRegistry,
 
 	Utils: {
 		parseJsonSchema: Function;
@@ -43,14 +45,17 @@ export type BlueRainType = {
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
  * @prop {Function} 					boot 				Function to boot the OS.
  */
+const filtersObj = new FilterRegistry();
+const eventsObj = new EventRegistry();
 const BlueRain: BlueRainType = {
 	// BlueRain
 	Apps: new AppRegistry(),
 	Components: new ComponentRegistry(),
 	Configs: new ConfigRegistry(),
-	Events: new EventRegistry(),
-	Filters: new FilterRegistry(),
+	Events: eventsObj,
+	Filters: filtersObj,
 	Plugins: new PluginRegistry(),
+	Hooks: new HooksRegistry(filtersObj, eventsObj),
 
 	// Miscellaneous
 	Utils: {

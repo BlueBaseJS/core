@@ -26,7 +26,7 @@
 -   [ComponentRegistry](#componentregistry)
     -   [register](#register-1)
     -   [set](#set-1)
-    -   [addHOCs](#addhocs)
+    -   [addHocs](#addhocs)
     -   [get](#get)
     -   [getRawComponent](#getrawcomponent)
     -   [replace](#replace)
@@ -285,8 +285,8 @@ and one or more optional higher order components.To be deprecated in 2.0.0
 **Parameters**
 
 -   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
--   `rawComponent` **ReactElement&lt;any>** 
--   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>** The HOCs to compose with the raw component.
+-   `rawComponent` **ReactElement&lt;any>** Interchangeable/extendable component.
+-   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;ComponentRegistryHocItem>** The HOCs to compose with the raw component.
 
 ### set
 
@@ -296,26 +296,19 @@ and one or more optional higher order components.
 **Parameters**
 
 -   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
--   `rawComponent` **ReactElement&lt;any>** 
--   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>** The HOCs to compose with the raw component.Note: when a component is registered without higher order component, `hocs` will be
+-   `rawComponent` **ReactElement&lt;any>** Interchangeable/extendable component.
+-   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;ComponentRegistryHocItem>** The HOCs to compose with the raw component.Note: when a component is registered without higher order component, `hocs` will be
     an empty array, and it's ok!
     See <https://lodash.com/docs/4.17.4#flowRight>
 
-Returns **any** Structure of a component in the list:this.data.Foo = {
-   name: 'Foo',
-   hocs: [fn1, fn2],
-   rawComponent: React.Component,
-   call: () => compose(...hocs)(rawComponent),
-}
-
-### addHOCs
+### addHocs
 
 Adds higher order component to the registered component
 
 **Parameters**
 
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the registered component to whom hocs are to added
--   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>)>** The HOCs to compose with the raw component.
+-   `hocs` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;ComponentRegistryHocItem>** The HOCs to compose with the raw component.
 
 ### get
 
@@ -326,7 +319,7 @@ Its accepts multiple component names.It iterates arguments and returns first fou
 
 -   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
 
-Returns **ReactElement&lt;any>** 
+Returns **([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) | ReactElement&lt;any>)** A (wrapped) React component
 
 ### getRawComponent
 
@@ -337,7 +330,7 @@ without the possible HOCs wrapping it.
 
 -   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to get.
 
-Returns **ReactElement&lt;any>** 
+Returns **([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) | ReactElement&lt;any>)** An interchangeable/extendable React component
 
 ### replace
 
@@ -350,7 +343,12 @@ This function keeps track of the previous HOCs and wrap the new HOCs around prev
 -   `name` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the component to register.
 -   `newComponent` **ReactElement&lt;any>** 
 -   `newHocs` **...[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)>** 
+-   `rawComponent` **ReactElement&lt;any>** Interchangeable/extendable component.
 -   `hocs` **...[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The HOCs to compose with the raw component.
+
+Returns **([Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) | ReactElement&lt;any>)** A component callable with Components[name]Note: when a component is registered without higher order component, `hocs` will be
+an empty array, and it's ok!
+See <https://lodash.com/docs/4.17.4#flowRight>
 
 ## ConfigRegistry
 
@@ -397,7 +395,7 @@ Register many configs at once
 
 ## EventEmitter
 
-All system filters are stored in this registry.It is using [event emitter](https://github.com/primus/eventemitter3) to emit and add events.
+All system events are stored in this registry.It is using [event emitter](https://github.com/primus/eventemitter3) to emit and add events.
 
 ## FilterRegistry
 

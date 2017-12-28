@@ -3,6 +3,7 @@ import isNil from 'lodash.isnil';
 import { List } from 'immutable';
 
 import MapRegistry from './MapRegistry';
+import BR from '../index';
 
 export type FilterItem = {
 	name: string;
@@ -56,7 +57,7 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		if (isNil(filter)) {
-			throw new Error(`You have to provide a filter function to ${hook}.`);
+			throw new Error(`You have to provide a filter function while adding it to ${hook}.`);
 		}
 
 		let list = this.data.get(hook);
@@ -86,11 +87,11 @@ class FilterRegistry extends MapRegistry {
 	 */
 	remove(hook: string, name: string) {
 		if (isNil(hook)) {
-			throw new Error(`Hook cannot be ${hook}`);
+			throw new Error(`Hook cannot be ${hook}. Please provide valid hook while removing filter.`);
 		}
 
 		if (isNil(name)) {
-			throw new Error(`Filter name cannot be ${name}`);
+			throw new Error(`Filter name cannot be ${name}. Please provide valid function name while removing filter.`);
 		}
 
 		if (!this.data.has(hook)) {
@@ -126,7 +127,7 @@ class FilterRegistry extends MapRegistry {
 		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
-
+		args.push(BR);
 		const filters: List<FilterItem> = this.data.get(hook) || List();
 
 		if (isNil(filters) || filters.size === 0) {
@@ -134,7 +135,7 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		return filters.reduce((accumulator, item = {name:'', filter: () => 0 }) => {
-			const newArguments = [accumulator].concat(args);
+			const newArguments = accumulator ? [accumulator].concat(args) : args;
 			const result = item.filter.apply({}, newArguments);
 
 			if (typeof result === 'undefined') {

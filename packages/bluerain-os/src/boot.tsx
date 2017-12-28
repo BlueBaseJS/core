@@ -7,6 +7,7 @@ import BR, { Platform, App, Plugin } from './index';
 import registerComponents from './registerComponents';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
+import checkHooks from './checkHooks';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
@@ -41,6 +42,7 @@ export default function(
 	const apps = options.apps || [];
 	const plugins = options.plugins || [];
 	const config = options.config || [];
+	checkHooks();
 	// Server mode
 	Platform.setServerMode(serverMode);
 

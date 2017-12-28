@@ -30,8 +30,8 @@ class ComponentRegistry extends MapRegistry {
 	 * and one or more optional higher order components.To be deprecated in 2.0.0
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React Component} rawComponent Interchangeable/extendable component.
-	 * @param {Array<Function | Array<any>>} hocs The HOCs to compose with the raw component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
+	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 *
 	 */
 	register(name: string, rawComponent: ReactElement<any> | any, ...hocs: ComponentRegistryHocItem[]) {
@@ -44,30 +44,22 @@ class ComponentRegistry extends MapRegistry {
 	 * and one or more optional higher order components.
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React Component} rawComponent Interchangeable/extendable component.
-	 * @param {Array<Function | Array<any>>} hocs The HOCs to compose with the raw component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
+	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 *
-	 * @returns Structure of a component in the list:
-	 *
-	 * this.data.Foo = {
-	 *    name: 'Foo',
-	 *    hocs: [fn1, fn2],
-	 *    rawComponent: React.Component,
-	 *    call: () => compose(...hocs)(rawComponent),
-	 * }
 	 *
 	 */
 	set(name: string, rawComponent: ReactElement<any> | any, ...hocs: ComponentRegistryHocItem[]) {
 		if (isNil(name)) {
-			throw new Error(`Component name cannot be ${name}`);
+			throw new Error(`Component name cannot be ${name}. Please provide valid name while adding component`);
 		}
 
 		if (isNil(rawComponent)) {
-			throw new Error('rawComponent is required to register a component.');
+			throw new Error('rawComponent is required to register a component.Please provide valid component while adding component');
 		}
 
 		super.set(name, { rawComponent, hocs });
@@ -76,15 +68,15 @@ class ComponentRegistry extends MapRegistry {
 	/**
 	 * Adds higher order component to the registered component
 	 * @param {string} name The name of the registered component to whom hocs are to added
-	 * @param {Array<Function | Array<any>>} hocs The HOCs to compose with the raw component.
+	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 */
-	addHOCs(name: string, ...hocs: ComponentRegistryHocItem[]) {
+	addHocs(name: string, ...hocs: ComponentRegistryHocItem[]) {
 		if (isNil(name)) {
-			throw new Error(`Component name cannot be ${name}`);
+			throw new Error(`Component name cannot be ${name}. Please provide valid name while adding Hocs`);
 		}
 
 		if (!this.has(name)) {
-			throw new Error(`Component ${name} not registered.`);
+			throw new Error(`Component ${name} not registered.Please register component before adding Hocs`);
 		}
 
 		const item:ComponentRegistryItem = super.get(name);
@@ -98,11 +90,11 @@ class ComponentRegistry extends MapRegistry {
 	 * Its accepts multiple component names.It iterates arguments and returns first found registered component.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React Component} A (wrapped) React component
+	 * @returns {Function|ReactElement<*>} A (wrapped) React component
 	 */
 	get(...name: string[]) : ReactElement<any> {
 		if (isNil(name)) {
-			throw new Error(`Component name cannot be ${name.toString()}`);
+			throw new Error(`Component name cannot be ${name.toString()}.Please provide valid name while getting component`);
 		}
 
 		let component;
@@ -116,15 +108,7 @@ class ComponentRegistry extends MapRegistry {
 			throw new Error(`None of components ${name.toString()} are registered.`);
 		}
 
-		const hocs = component.hocs.map((hoc) => {
-			if (Array.isArray(hoc)) {
-				let composedHoc = hoc[0](hoc[hoc.length - 1]);
-				for (let i = hoc.length - 2; i > 0; i -= 1) {
-					composedHoc = hoc[0](hoc[i])(composedHoc);
-				}
-				return composedHoc;
-			}  return hoc;
-		});
+		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 		return compose(...hocs)(component.rawComponent);
 	}
 
@@ -133,15 +117,15 @@ class ComponentRegistry extends MapRegistry {
 	 * without the possible HOCs wrapping it.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React Component} An interchangeable/extendable React component
+	 * @returns {Function|ReactElement<*>} An interchangeable/extendable React component
 	 */
 	getRawComponent(name: string): ReactElement<any> {
 		if (isNil(name)) {
-			throw new Error(`Component name cannot be ${name}`);
+			throw new Error(`Component name cannot be ${name}.Please provide valid name while getting raw component`);
 		}
 
 		if (!this.has(name)) {
-			throw new Error(`Component ${name} not registered.`);
+			throw new Error(`Component ${name} not registered. Please register component before getting raw component`);
 		}
 		const component: ComponentRegistryItem = super.get(name);
 		return component.rawComponent;
@@ -153,9 +137,9 @@ class ComponentRegistry extends MapRegistry {
 	 * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React Component} rawComponent Interchangeable/extendable component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
 	 * @param {...Function} hocs The HOCs to compose with the raw component.
-	 * @returns {Function|React Component} A component callable with Components[name]
+	 * @returns {Function|ReactElement<*>} A component callable with Components[name]
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
@@ -163,11 +147,11 @@ class ComponentRegistry extends MapRegistry {
 	 */
 	replace(name: string, newComponent: ReactElement<any>, ...newHocs: Function[]) {
 		if (isNil(name)) {
-			throw new Error(`Component name cannot be ${name}`);
+			throw new Error(`Component name cannot be ${name}.Please valid component name while replacing it`);
 		}
 
 		if (!this.has(name)) {
-			throw new Error(`Component ${name} not registered.`);
+			throw new Error(`Component ${name} not registered.Please register component before replacing it`);
 		}
 		const previousComponent:ComponentRegistryItem = super.get(name);
 		const hocs = [...newHocs, ...previousComponent.hocs];

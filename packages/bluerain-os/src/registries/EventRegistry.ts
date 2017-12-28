@@ -3,7 +3,9 @@
  * It is using [event emitter](https://github.com/primus/eventemitter3) to emit and add events.
  *
  */
-import { EventEmitter } from 'eventemitter3';
-export default class EventRegistry {
-	data= new EventEmitter();
-}
+// import { EventEmitter } from 'eventemitter3';
+// export default class EventRegistry {
+// 	data= new EventEmitter();
+// }
+import EventEmitter from 'eventemitter3';
+export default EventEmitter;
