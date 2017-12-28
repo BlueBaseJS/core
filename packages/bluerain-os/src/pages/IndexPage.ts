@@ -1,4 +1,4 @@
-/* @flow */
+
 import RX from 'reactxp';
 import React from 'react';
 import { parseJsonSchema,ComponentSchema } from '../utils/JsonSchemaToReact';

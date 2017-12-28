@@ -1,4 +1,4 @@
-/* @flow */
+
 import React, { ReactNode } from 'react';
 
 import BR from '../index';

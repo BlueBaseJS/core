@@ -1,4 +1,4 @@
-/* @flow */
+
 
 /**
  * Base class of a plugin which is to be extended.

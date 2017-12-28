@@ -1,4 +1,4 @@
-/* @flow */
+
 // Registries
 import AppRegistry from './registries/AppRegistry';
 import ComponentRegistry from './registries/ComponentRegistry';

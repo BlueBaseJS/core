@@ -1,4 +1,4 @@
-/* @flow */
+
 
 import RX from 'reactxp';
 import isElectron from 'is-electron';

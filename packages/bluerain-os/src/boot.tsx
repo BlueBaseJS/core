@@ -1,4 +1,4 @@
-/* @flow */
+
 
 import React, { ComponentType } from 'react';
 import RX from 'reactxp';
