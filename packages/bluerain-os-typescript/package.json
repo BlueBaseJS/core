@@ -21,7 +21,7 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc && rollup -c rollup.config.ts && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
+    "build": "tsc && rollup -c rollup.config.ts && rimraf compiled &&  bundlesize &&typedoc --out dist/docs --target es6 --theme minimal src",
     "start": "tsc -w & rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -73,6 +73,12 @@
     "collectCoverage": true,
     "mapCoverage": true
   },
+  "bundlesize": [
+    {
+      "path": "./dist/bluerain-os-typescript.es5.js",
+      "maxSize": "18 kB"
+    }
+  ],
   "dependencies": {
     "@blueeast/bluerain-plugin-react-router": "^0.4.2",
     "@blueeast/bluerain-plugin-redux": "^0.4.2",
@@ -103,7 +109,7 @@
     "@types/react": "^16.0.10",
     "@types/react-redux": "^5.0.10",
     "@types/redux": "^3.6.0",
-    "bundlesize": "^0.15.2",
+    "bundlesize": "^0.15.3",
     "codecov": "^2.3.1",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
@@ -125,6 +131,7 @@
     "rollup": "^0.50.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-sizes": "^0.4.2",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "semantic-release": "^8.0.0",
     "ts-jest": "^21.0.0",
