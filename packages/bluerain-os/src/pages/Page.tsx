@@ -3,13 +3,12 @@ import React from 'react';
 import RX from 'reactxp';
 import { withBlueRain } from '../Provider';
 
-const defaultStyle = RX.Styles.createViewStyle(
+const defaultStyle =[ RX.Styles.createViewStyle(
 	{
 		flex: 1,
-		// overflow: 'auto'
 	},
 	false
-);
+),{overflow: 'auto'}];
 export interface IPageProps {
 	style:{[key: string]: any};
 }
