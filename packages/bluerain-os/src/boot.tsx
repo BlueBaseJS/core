@@ -8,7 +8,6 @@ import registerComponents from './registerComponents';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
 import checkHooks from './checkHooks';
-import defaultPlugins from './plugins/defaultPlugins';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.
@@ -69,7 +68,7 @@ export default function(
 	BR.Filters.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
-	// const defaultPlugins = require('./plugins/defaultPlugins').default;
+	const defaultPlugins = require('./plugins/defaultPlugins').default;
 	BR.Plugins.registerMany(defaultPlugins);
 	BR.Plugins.registerMany(plugins);
 	BR.Filters.run('bluerain.system.plugins.registered');
