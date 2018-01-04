@@ -150,7 +150,7 @@ Returns **Component**
 
 #### injectIntl
 
-`reqact-intl`'s higher order component
+`react-intl`'s higher order component
 
 **Parameters**
 

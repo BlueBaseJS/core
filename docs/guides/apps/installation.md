@@ -9,9 +9,9 @@ npm i --save bluerain-app-hello-world
 Then import your apps in your apps.js file
 
 ```js
-const apollo = require('bluerain-app-hello-world');
+const helloWorld = require('bluerain-app-hello-world');
 
-module.exports = [apollo];
+module.exports = [helloWorld];
 ```
 For web and electron BluerainOs assumes that your main page will have a DOM element container called “app-container”. The root view of the app will be rendered within this container. Typically, this DOM element will be a `<div>` that covers the entire page.
 At last, boot your client with the app.:
