@@ -1,0 +1,9 @@
+{
+  "extends": [
+		"@blueeast/tslint-config-blueeast/react"
+	],
+	"rules": {
+		"ban-types": false,
+		"no-console": false
+	}
+}

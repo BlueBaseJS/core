@@ -12,6 +12,6 @@ console.log(BR.Platform.getType());
 
 ### Types
 ``` javascript
-type PlatformType = 'web' | 'server' | 'ios' | 'android' | 'windows' | 'electron';
+type PlatformType = 'web' | 'ios' | 'android' | 'windows' | 'electron';
 ```
 

@@ -10,7 +10,7 @@ BR.Apps
 For example, here's how you would add a app to the system. The app will be registered against app slug:
 
 ```js
-import App from './App
+import App from './App'
 import BR from '@blueeast/bluerain-os';
 
 BR.Apps.set(App);
@@ -22,9 +22,9 @@ If app slug is not given, it is generated through the plugin name
 Multiple apps can also be registered at once using `registerMany` function:
 
 ```js
-import App1 from './App1
-import App2 from './App2
-import App3 from './App3
+import App1 from './App1'
+import App2 from './App2'
+import App3 from './App3'
 import BR from '@blueeast/bluerain-os';
 
 BR.Apps.set([App1, App2, App3]);
