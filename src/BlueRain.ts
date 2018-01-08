@@ -12,21 +12,21 @@ import boot from './boot';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 export type BlueRainType = {
-	Apps: AppRegistry,
-	Components: ComponentRegistry,
-	Configs: ConfigRegistry,
-	Events: EventRegistry,
-	Filters: FilterRegistry,
-	Plugins: PluginRegistry,
-	Hooks: HooksRegistry,
-  Platform:PluginRegistry,
+	Apps: AppRegistry;
+	Components: ComponentRegistry;
+	Configs: ConfigRegistry;
+	Events: EventRegistry;
+	Filters: FilterRegistry;
+	Plugins: PluginRegistry;
+	Hooks: HooksRegistry;
+	Platform: PluginRegistry;
+	Dimensions?: any; // This will be added from platform
 
 	Utils: {
-		parseJsonSchema: Function,
-		setMainView:Function,
-		createStyleSheet:Function
-
-	},
+		parseJsonSchema: Function;
+		setMainView: Function;
+		createStyleSheet: Function;
+	};
 
 	refs: { [id: string]: {} };
 
@@ -66,7 +66,9 @@ const BlueRain: BlueRainType = {
 	Utils: {
 		parseJsonSchema,
 		createStyleSheet: styles => styles,
-		setMainView:  () => { throw  new Error('setMainView is not implemented by the platform.'); }
+		setMainView: () => {
+			throw new Error('setMainView is not implemented by the platform.');
+		}
 	},
 
 	// References

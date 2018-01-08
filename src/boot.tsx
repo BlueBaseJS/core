@@ -1,4 +1,4 @@
-/* @flow */
+
 import React, {  ComponentType } from 'react';
 import BR, { App, Plugin } from './index';
 import registerComponents from './registerComponents';
@@ -22,6 +22,7 @@ export type BootOptions = {
 	renderApp?: boolean;
 	plugins?: Plugin[];
 	serverMode?: boolean;
+	platform?: Plugin[];
 };
 
 /**
