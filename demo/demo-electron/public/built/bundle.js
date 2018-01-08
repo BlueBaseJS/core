@@ -5365,7 +5365,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 var canDefineProperty = false;
 if (process.env.NODE_ENV !== 'production') {
   try {
-    // $FlowFixMe https://github.com/facebook/flow/issues/285
+     https://github.com/facebook/flow/issues/285
     Object.defineProperty({}, 'x', { get: function () {} });
     canDefineProperty = true;
   } catch (x) {
@@ -18799,7 +18799,7 @@ var ReactNoopUpdateQueue_1 = ReactNoopUpdateQueue;
 var canDefineProperty$1 = false;
 {
   try {
-    // $FlowFixMe https://github.com/facebook/flow/issues/285
+     https://github.com/facebook/flow/issues/285
     Object.defineProperty({}, 'x', { get: function () {} });
     canDefineProperty$1 = true;
   } catch (x) {
@@ -32300,7 +32300,7 @@ var ReactDOMFiberComponent = {
             warnForPropDifference(propKey, serverHTML, expectedHTML);
           }
         } else if (propKey === STYLE) {
-          // $FlowFixMe - Should be inferred as not undefined.
+           - Should be inferred as not undefined.
           extraAttributeNames['delete'](propKey);
           var expectedStyle = CSSPropertyOperations_1.createDangerousStringForStyles(nextProp);
           serverValue = domElement.getAttribute('style');
@@ -32308,14 +32308,14 @@ var ReactDOMFiberComponent = {
             warnForPropDifference(propKey, serverValue, expectedStyle);
           }
         } else if (isCustomComponentTag || DOMProperty_1.isCustomAttribute(propKey)) {
-          // $FlowFixMe - Should be inferred as not undefined.
+           - Should be inferred as not undefined.
           extraAttributeNames['delete'](propKey);
           serverValue = DOMPropertyOperations_1.getValueForAttribute(domElement, propKey, nextProp);
           if (nextProp !== serverValue) {
             warnForPropDifference(propKey, serverValue, nextProp);
           }
         } else if (propertyInfo = DOMProperty_1.properties[propKey]) {
-          // $FlowFixMe - Should be inferred as not undefined.
+           - Should be inferred as not undefined.
           extraAttributeNames['delete'](propertyInfo.attributeName);
           serverValue = DOMPropertyOperations_1.getValueForProperty(domElement, propKey, nextProp);
           if (nextProp !== serverValue) {
@@ -32326,9 +32326,9 @@ var ReactDOMFiberComponent = {
     }
 
     {
-      // $FlowFixMe - Should be inferred as not undefined.
+       - Should be inferred as not undefined.
       if (extraAttributeNames.size > 0) {
-        // $FlowFixMe - Should be inferred as not undefined.
+         - Should be inferred as not undefined.
         warnForExtraAttributes(extraAttributeNames);
       }
     }

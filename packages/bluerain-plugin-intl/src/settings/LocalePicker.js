@@ -21,7 +21,7 @@ const LanguageDropDown = ({ options, intl, updateIntl }: Props) => {
 	const style = { marginLeft: 48 };
 
 	return (
-		// $FlowFixMe
+		
   <DropDownMenu style={style} value={intl.locale} onChange={(event, index, value) => updateIntl(value)} >
     {keys.map(key => (<MenuItem value={key} key={key} primaryText={options[key]} />))}
   </DropDownMenu>

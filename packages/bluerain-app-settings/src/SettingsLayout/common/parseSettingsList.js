@@ -43,7 +43,7 @@ function createSets(list) {
 
 	return sets;
 }
-// $FlowFixMe
+
 const parseSettingsList = (list, style) => {
 
 	const sets = createSets(list);
