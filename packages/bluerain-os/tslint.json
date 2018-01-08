@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "@blueeast/tslint-config-blueeast/react"
-  ]
-}
