@@ -18,6 +18,7 @@
   "lerna": "^2.1.2"
  },
  "dependencies": {
-  "immutable": "^3.8.1"
+  "immutable": "^3.8.1",
+  "prop-types": "^15.6.0"
  }
 }

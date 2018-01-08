@@ -1,9 +1,6 @@
-
-
-import React, { ComponentType } from 'react';
-import RX from 'reactxp';
-
-import BR, { Platform, App, Plugin } from './index';
+/* @flow */
+import React, {  ComponentType } from 'react';
+import BR, { App, Plugin } from './index';
 import registerComponents from './registerComponents';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
@@ -42,9 +39,10 @@ export default function(
 	const apps = options.apps || [];
 	const plugins = options.plugins || [];
 	const config = options.config || [];
+	const platform = options.platform || [];
 	checkHooks();
-	// Server mode
-	Platform.setServerMode(serverMode);
+	BR.Plugins.registerMany(platform);
+	BR.Filters.run('bluerain.system.platform.registered');
 
 	// =[ System Lifecycle Event ]= Boot Start
 	BR.Filters.run('bluerain.system.boot.start');
@@ -57,11 +55,9 @@ export default function(
 	BR.Filters.run('bluerain.system.configurations.loaded');
 
 	// Get Enviornment Options
-	const debug: boolean = BR.Configs.get('debug');
-	const development: boolean = BR.Configs.get('development');
+	// const debug  = BR.Configs.get('debug');
+	// const development = BR.Configs.get('development');
 
-	// Init System
-	RX.App.initialize(debug, development);
 
 	// =[ System Lifecycle Event ]= Components Registered
 	registerComponents();
@@ -69,6 +65,7 @@ export default function(
 
 	// =[ System Lifecycle Event ]= Plugins Registered
 	const defaultPlugins = require('./plugins/defaultPlugins').default;
+
 	BR.Plugins.registerMany(defaultPlugins);
 	BR.Plugins.registerMany(plugins);
 	BR.Filters.run('bluerain.system.plugins.registered');
@@ -76,6 +73,7 @@ export default function(
 	// =[ System Lifecycle Event ]= Plugins Initialized
 	BR.Plugins.initializeAll();
 	BR.Filters.run('bluerain.system.plugins.initialized');
+
 
 	// =[ System Lifecycle Event ]= Apps Registered
 	BR.Apps.registerMany(apps);
@@ -98,7 +96,8 @@ export default function(
 	);
 
 	if (renderApp !== false) {
-		RX.UserInterface.setMainView(<BluerainApp />);
+
+		BR.Utils.setMainView(BluerainApp);
 	}
 
 	// =[ System Lifecycle Event ]= Boot End

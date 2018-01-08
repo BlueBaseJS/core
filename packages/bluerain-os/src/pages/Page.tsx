@@ -1,22 +1,28 @@
-
-import React from 'react';
-import RX from 'reactxp';
+/* @flow */
+import React, { type Node } from 'react';
+import PropTypes from 'prop-types'; // ES6
 import { withBlueRain } from '../Provider';
+import BR from '../index';
+const defaultStyle = BR.utils.createStyleSheet({
+	flex: 1,
+	overflow: 'auto',
+}, 'View');
 
-const defaultStyle =[ RX.Styles.createViewStyle(
-	{
-		flex: 1,
-	},
-	false
-),{overflow: 'auto'}];
-export interface IPageProps {
-	style:{[key: string]: any};
-}
-class Page extends RX.Component<IPageProps, {}> {
-	render() {
-		const { children, style } = this.props;
-		return <RX.View style={[defaultStyle, style]}>{children}</RX.View>;
-	}
-}
+const  Page = (props) => {
+	const { children, style, bluerain } = props;
+	const View = bluerain.Components.get('View');
+	return (<View style={[defaultStyle, style]}>{children}</View>);
+};
+
+Page.propTypes = {
+	children:Node,
+	style:PropTypes.Object,
+	bluerain:PropTypes.Object
+
+};
+Page.defaultProps = {
+	children:[],
+	style:defaultStyle,
+	bluerain:{} };
 
 export default withBlueRain(Page);

@@ -1,34 +1,35 @@
 
 import React from 'react';
-import RX from 'reactxp';
 import BR from '../index';
 import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
-const defaultStyle = RX.Styles.createViewStyle(
-	{
-		flex: 1,
-		// overflow: 'auto',
-		flexDirection: 'row'
-	},
-	false
-);
+const defaultStyle = BR.Utils.createStyleSheet({
+	flex: 1,
+	overflow: 'auto',
+	flexDirection: 'row'
+}, 'View');
 export interface ISystemLayoutProps {
 	window: {width:number, height: number};
   setWindowDimentions: Function;
 	style:object;
 }
-class SystemLayout extends RX.Component<ISystemLayoutProps, {}> {
+
+class SystemLayout extends React.Component<ISystemLayoutProps, {}> {
 
 	constructor(props:ISystemLayoutProps) {
 		super(props);
 		this.onLayout = this.onLayout.bind(this);
 	}
 
+
 	/**
 	 * Whenever the screen/window size changes, notify redux to
 	 * update `state.bluerain.window` object.
 	 */
-	onLayout() {
+	//eslint-disable-next-line
+	 onLayout = () => {
+		// below  lint would  be resolved after systm Layout task
+		// eslint-disable-next-line
 		const newDimentions = RX.UserInterface.measureWindow();
 		const oldDimentions = this.props.window;
 

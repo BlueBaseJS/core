@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-why-did-you-update",
-  "version": "0.0.0",
+  "version": "0.5.0",
   "description": "A BlueRain Plugin to add why-did-you-update to test React performance",
   "main": "dist/index.js",
   "scripts": {
@@ -13,8 +13,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.0",
-    "react":"^16.0.0",
+    "@blueeast/bluerain-os": "^0.5.0",
     "why-did-you-update": "^0.0.8"
   },
   "devDependencies": {

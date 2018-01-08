@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-plugin-taskbar",
-  "version": "0.0.0",
+  "version": "0.5.0",
   "description": "A BlueRain Plugin that integrates taskbar into apps",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "author": "BlueEast Team",
   "license": "MIT",
   "dependencies": {
-    "@blueeast/bluerain-os": "^0.4.0",
+    "@blueeast/bluerain-os": "^0.5.0",
     "material-ui": "^0.19.3",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",

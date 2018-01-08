@@ -22,8 +22,11 @@ export type BlueRainType = {
 	Hooks: HooksRegistry,
 
 	Utils: {
-		parseJsonSchema: Function;
-	};
+		parseJsonSchema: Function,
+		setMainView:Function,
+		createStyleSheet:Function
+
+	},
 
 	refs: { [id: string]: {} };
 
@@ -59,7 +62,9 @@ const BlueRain: BlueRainType = {
 
 	// Miscellaneous
 	Utils: {
-		parseJsonSchema
+		parseJsonSchema,
+		createStyleSheet:styles => styles,
+		setMainView:  () => { throw  new Error('setMainView is not implemented by the platform.'); }
 	},
 
 	// References
