@@ -8,9 +8,9 @@ import ResponsiveLayout from './layouts/ResponsiveLayout';
 import Page from './pages/Page';
 import IndexPage from './pages/IndexPage';
 import NotFoundPage from './pages/NotFoundPage';
-import Column from '../src/Components/GridView/Column';
+import Column from './Components/GridView/Column';
 
-import Row from '../src/Components/GridView/Row';
+import Row from './Components/GridView/Row';
 import SystemApp from './SystemApp';
 
 export default () => {
