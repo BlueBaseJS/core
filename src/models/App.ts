@@ -1,4 +1,3 @@
-import RX from 'reactxp';
 
 /**
  * A BlueRain App base class
@@ -10,7 +9,9 @@ import RX from 'reactxp';
  * @property {String}	appRoutePrefix	Path that will be prepended before slug to build URL.
  * @property {String}	path	Path of the app's home page
  */
-class App extends RX.Component<any> {
+
+export default class App {
+
 	appName: string;
 	slug: string;
 	category: string;
@@ -20,4 +21,3 @@ class App extends RX.Component<any> {
 	path: string;
 }
 
-export default App;
