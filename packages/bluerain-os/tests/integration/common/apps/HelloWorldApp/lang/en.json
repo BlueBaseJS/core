@@ -1,9 +1,0 @@
-{
-    "hello.home":"Welcome to the home page!",
-    "hello.about": "The About Page",
-    "hello.contact":"Welcome to the contact page!",
-    "hello.header.title":"Welcome to the {appName} app!",
-    "hello.header.homeLinkText":"Home",
-    "hello.header.aboutLinkText":"About",
-    "hello.header.contactLinkText":"Contact"
-}

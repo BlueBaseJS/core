@@ -12,15 +12,19 @@ class HelloWorldPlugin extends Plugin {
 
 	static pluginName = HelloWorldPlugin;
 	static slug = 'hello-world';
-	
-    initialize(config, ctx) {
-
-        ctx.Callbacks.add('bluerain.routes', (routes) => {
+    const hooks = {
+        'bluerain.routes':(routes, ctx) => {
             routes.push({
                 path: '/hello-world',
                 component: HelloWorldComponent
             })
         });
+    }
+    const uses = {
+        hooks:['foo.bar']
+    }
+	
+    initialize(config, ctx) {
     }
 }
 
@@ -31,5 +35,9 @@ Notice that we also defined `pluginName ` and `slug` static properties.
 - `pluginName ` defines the name of the plugin. This is a required property and not providing one will throw error when you register the plugin. 
 
 - `slug` property defines the slug for your plugin. If you don't give one, then BlueRain will automatically create a slug by kebab casing the `pluginName` property. It's a good convention manually define the `slug`. This slug is used to get an app from the `PluginRegistry`.
+
+- `hooks` defines the hooks plugin would add when added to the system.
+
+- `uses` defines the hooks plugin is running .
 
 You can define even more Plugin properties. For a complete list, please refer to the [API Reference](../../api/reference.md).

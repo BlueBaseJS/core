@@ -9,11 +9,10 @@ For example, here's how you would add a filter to `posts.edit` to give posts an 
 ```js
 import BR from '@blueeast/bluerain-os';
 
-function setEditedAt (post, user) {
+BR.Filters.set('posts.edit', 'setEditedAt' , (post, user) => {
   post.editedAt = new Date();
   return post;
-}
-BR.Filters('posts.edit', setEditedAt);
+});
 ``` 
 
 ## Removing Filter Functions

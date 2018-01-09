@@ -42,9 +42,9 @@ This example wraps the System App with a Redux provider by using a `withRedux` h
 import BR from '@blueeast/bluerain-os';
 import withRedux from './withRedux';
 
-BR.Filters(
-	'bluerain.system.app', 
-	function AddReduxToSystemApp(App) {
+BR.Filters.set(
+	'bluerain.system.app','AddReduxToSystemApp', 
+	(App) => {
 		return withRedux(App);
 	}
 );
@@ -87,30 +87,30 @@ The following system lifecycle events are listed in the sequence of their execut
 
 
 ### bluerain.system.boot.start
-This Callback is executed at the start of the boot process.
+This hook is executed at the start of the boot process.
 
 ### bluerain.system.configurations.loaded
-This Callback is executed after all configurations are loaded.
+This hook is executed after all configurations are loaded.
 
 ### bluerain.system.components.registered
-This Callback is executed when all system react components are registered.
+This hook is executed when all system react components are registered.
 
 
 ### bluerain.system.plugins.registered
-This Callback is executed when all plugins are registered.
+This hook is executed when all plugins are registered.
 
 ### bluerain.system.plugins.initialized
-This Callback is executed when all plugins are initialized.
+This hook is executed when all plugins are initialized.
 
 
 ### bluerain.system.apps.registered
-This Callback is executed when all apps are registered.
+This hook is executed when all apps are registered.
 
 ### bluerain.system.apps.initialized
-This Callback is executed when all apps are initialized.
+This hook is executed when all apps are initialized.
 
 ### bluerain.system.initialized
-This Callback is executed when initialization process is complete.
+This hook is executed when initialization process is complete.
 
 ### bluerain.system.boot.end
-This Callback is executed at the end of the boot process.
+This hook is executed at the end of the boot process.
