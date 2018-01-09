@@ -26,8 +26,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
-		"deploy-docs": "ts-node tools/gh-pages-publish",
-		"docs": "documentation readme src/** --section=API",
+    "deploy-docs": "ts-node tools/gh-pages-publish",
+    "docs": "documentation readme src/** --section=API",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
@@ -65,10 +65,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 80,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
+        "branches": 70,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
       }
     },
     "collectCoverage": true,
@@ -83,6 +83,7 @@
   "dependencies": {
     "@blueeast/bluerain-plugin-react-router": "^0.4.2",
     "@blueeast/bluerain-plugin-redux": "^0.4.2",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eventemitter3": "^2.0.3",
     "history": "^4.6.3",
     "html-tags": "^2.0.0",
@@ -120,7 +121,7 @@
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.1",
     "cz-conventional-changelog": "^2.0.0",
-    "enzyme": "^3.1.0",
+    "enzyme": "^3.3.0",
     "husky": "^0.14.0",
     "jest": "^21.0.0",
     "jest-cli": "^21.2.1",
