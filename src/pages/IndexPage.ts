@@ -1,51 +1,49 @@
-import RX from 'reactxp';
 import React from 'react';
-import { parseJsonSchema, ComponentSchema } from '../utils/JsonSchemaToReact';
-
-const pageStyle = RX.Styles.createViewStyle(
-	{
-		justifyContent: 'center',
-		padding: 20
-	},
-	false
-);
-
-const titleStyle = [
-	RX.Styles.createViewStyle(
-		{
-			alignSelf: 'center',
-			backgroundColor: 'rgba(0,123,255,1)',
-			borderColor: 'rgba(0,123,255,1)',
-			borderRadius: 10,
-			borderWidth: 1,
-			marginBottom: 20,
-			padding: 20,
-			shadowOffset: { height: 5, width: 0 },
-			shadowRadius: 15,
-			shadowColor: 'rgba(0,0,0,.3)'
-		},
-		false
-	),
-	{ color: '#fff', textAlign: 'center', fontSize: 68 }
-];
-
-const subTitleStyle = [
-	RX.Styles.createViewStyle(
-		{
-			marginBottom: 20
-		},
-		false
-	),
-	{ color: 'rgb(150, 150, 150)', textAlign: 'center' }
-];
+import BR from '../index';
+import { parseJsonSchema } from '../utils/JsonSchemaToReact';
 
 /**
  * Returns the Index Page layout.
  *
  * @returns {React.Component} The layout react component
  */
-export default function IndexPage() {
-	const schema: ComponentSchema = {
+const IndexPage = props => {
+	const pageStyle = BR.Utils.createStyleSheet(
+		{
+			justifyContent: 'center',
+			padding: 20
+		},
+		'View'
+	);
+
+	const titleStyle = BR.Utils.createStyleSheet(
+		{
+			alignSelf: 'center',
+			backgroundColor: 'rgba(0,123,255,1)',
+			borderColor: 'rgba(0,123,255,1)',
+			borderRadius: 10,
+			borderWidth: 1,
+			color: '#fff',
+			textAlign: 'center',
+			fontSize: 68,
+			marginBottom: 20,
+			padding: 20,
+			shadowOffset: { height: 5, width: 0 },
+			shadowRadius: 15,
+			shadowColor: 'rgba(0,0,0,.3)'
+		},
+		'Text'
+	);
+
+	const subTitleStyle = BR.Utils.createStyleSheet(
+		{
+			color: 'rgb(150, 150, 150)',
+			marginBottom: 20,
+			textAlign: 'center'
+		},
+		'Text'
+	);
+	const schema = {
 		component: 'Page',
 		props: { style: pageStyle },
 		children: [
@@ -68,4 +66,6 @@ export default function IndexPage() {
 	};
 
 	return parseJsonSchema(schema);
-}
+};
+
+export default IndexPage;

@@ -36,7 +36,7 @@ function ResponsiveLayout(props: ResponsiveLayoutProps) {
 	if (!Component) {
 		throw new Error('Invalid Component.');
 	}
-	// $FlowFixMe
+
 	return <Component {...otherProps} />;
 }
 
