@@ -1,5 +1,5 @@
-import RX from 'reactxp';
 import getWindowSize from './getWindowSize';
+import BR from '../../index';
 
 /**
  * The state of current window or screen. Stored in `bluerain.window` in the redux store.
@@ -14,7 +14,7 @@ export type WindowState = {
 };
 
 export default function initialState(): WindowState {
-	const dimentions = RX.UserInterface.measureWindow();
+	const dimentions = BR.Dimensions;
 
 	const initState: WindowState = {
 		width: dimentions.width || 0,

@@ -19,9 +19,13 @@ export type BlueRainType = {
 	Filters: FilterRegistry;
 	Plugins: PluginRegistry;
 	Hooks: HooksRegistry;
+	Platform: PluginRegistry;
+	Dimensions?: any; // This will be added from platform
 
 	Utils: {
 		parseJsonSchema: Function;
+		setMainView: Function;
+		createStyleSheet: Function;
 	};
 
 	refs: { [id: string]: {} };
@@ -46,6 +50,7 @@ export type BlueRainType = {
  */
 const filtersObj = new FilterRegistry();
 const eventsObj = new EventRegistry();
+const pluginObj = new PluginRegistry();
 const BlueRain: BlueRainType = {
 	// BlueRain
 	Apps: new AppRegistry(),
@@ -53,12 +58,17 @@ const BlueRain: BlueRainType = {
 	Configs: new ConfigRegistry(),
 	Events: eventsObj,
 	Filters: filtersObj,
-	Plugins: new PluginRegistry(),
 	Hooks: new HooksRegistry(filtersObj, eventsObj),
+	Plugins: pluginObj,
+	Platform: pluginObj,
 
 	// Miscellaneous
 	Utils: {
-		parseJsonSchema
+		parseJsonSchema,
+		createStyleSheet: styles => styles,
+		setMainView: () => {
+			throw new Error('setMainView is not implemented by the platform.');
+		}
 	},
 
 	// References

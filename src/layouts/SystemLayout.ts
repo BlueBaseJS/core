@@ -1,63 +1,33 @@
 import React from 'react';
-import RX from 'reactxp';
 import BR from '../index';
-import { withWindowInfo } from '../plugins/WindowInfoPlugin';
 
-const defaultStyle = RX.Styles.createViewStyle(
-	{
-		flex: 1,
-		// overflow: 'auto',
-		flexDirection: 'row'
-	},
-	false
-);
-export interface ISystemLayoutProps {
-	window: { width: number; height: number };
-	setWindowDimentions: Function;
-	style: object;
-}
-class SystemLayout extends RX.Component<ISystemLayoutProps, {}> {
-	constructor(props: ISystemLayoutProps) {
-		super(props);
-		this.onLayout = this.onLayout.bind(this);
-	}
+const SystemLayout = props => {
+	const defaultStyle = BR.Utils.createStyleSheet(
+		{
+			flex: 1,
+			overflow: 'auto',
+			flexDirection: 'row'
+		},
+		'View'
+	);
+	const { children, style, Layout, ...other } = props;
+	const schema = {
+		component: 'View',
+		props: {
+			onLayout: Layout,
+			style: [defaultStyle, style],
+			...other
+		},
+		children: [
+			{
+				component: 'View', // System Content
+				text: children,
+				props: { style: { flexGrow: 1, flex: 1 } }
+			}
+		]
+	};
+	const layout = BR.Filters.run('bluerain.system.app.layout', schema);
+	return BR.Utils.parseJsonSchema(layout);
+};
 
-	/**
-	 * Whenever the screen/window size changes, notify redux to
-	 * update `state.bluerain.window` object.
-	 */
-	onLayout() {
-		const newDimentions = RX.UserInterface.measureWindow();
-		const oldDimentions = this.props.window;
-
-		if (
-			newDimentions.width !== oldDimentions.width ||
-			newDimentions.height !== oldDimentions.height
-		) {
-			this.props.setWindowDimentions(newDimentions.width, newDimentions.height);
-		}
-	}
-
-	render() {
-		const { children, style, ...other } = this.props;
-		const schema = {
-			component: 'View',
-			props: {
-				onLayout: this.onLayout,
-				style: [defaultStyle, style],
-				...other
-			},
-			children: [
-				{
-					component: 'View', // System Content
-					text: children,
-					props: { style: { flexGrow: 1, flex: 1 } }
-				}
-			]
-		};
-		const layout = BR.Filters.run('bluerain.system.app.layout', schema);
-		return BR.Utils.parseJsonSchema(layout);
-	}
-}
-
-export default withWindowInfo(SystemLayout);
+export default SystemLayout;

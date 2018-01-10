@@ -10,21 +10,21 @@ describe('BR.boot func tests', () => {
 		expect(() => BR.boot(null)).toThrow();
 	});
 	it('should not throw error b/c empty handled', () => {
-		expect(() => BR.boot()).not.toThrow();
+		expect(() => BR.boot({renderApp:false})).not.toThrow();
 	});
 	it('should throw with expected params and unexpected values', () => {
 		BR.Components.data = Map();
 		BR.Plugins.data = Map();
 		BR.Filters.data = Map();
 		expect(() =>
-			BR.boot({ apps: undefined, plugins: undefined, config: undefined })
+			BR.boot({ apps: undefined, plugins: undefined, config: undefined,renderApp:false })
 		).not.toThrow();
 	});
 	it('should throw with unexpected params', () => {
 		BR.Components.data = Map();
 		BR.Plugins.data = Map();
 		BR.Filters.data = Map();
-		expect(() => BR.boot({ Apps: {}, Plugin: {}, Config: {} })).not.toThrow();
+		expect(() => BR.boot({ Apps: {}, Plugin: {}, Config: {},renderApp:false })).not.toThrow();
 	});
 	it('should BR.boot with expected params and expected values', () => {
 		BR.Components.data = Map();
@@ -41,7 +41,7 @@ describe('BR.boot func tests', () => {
 			}
 		}
 		expect(() =>
-			BR.boot({ apps: [HelloWorld], config: { title: 'Hello OS!' } })
+			BR.boot({ apps: [HelloWorld], config: { title: 'Hello OS!' },renderApp:false })
 		).not.toThrow();
 	});
 
@@ -66,6 +66,6 @@ describe('BR.boot func tests', () => {
 				config: { title: 'Hello OS!' },
 				serverMode: true
 			})
-		).not.toThrow();
+		).toThrow();
 	});
 });
