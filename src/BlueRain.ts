@@ -25,7 +25,7 @@ export type BlueRainType = {
 	Utils: {
 		parseJsonSchema: Function;
 		setMainView: Function;
-		createStyleSheet: Function;
+		createStyleSheet: any;
 	};
 
 	refs: { [id: string]: {} };
