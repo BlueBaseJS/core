@@ -36,7 +36,6 @@ bower_components
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
-dist
 compiled
 .awcache
 # Dependency directories
