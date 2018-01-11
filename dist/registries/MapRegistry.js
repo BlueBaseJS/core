@@ -40,9 +40,12 @@ var Registry = /** @class */function () {
         if ((0, _lodash2.default)(item)) {
             throw new Error("No item provided in the add method of " + this.name + " registry.");
         }
-        if (this.data.has(key)) {
-            throw new Error("An item with " + key + " key already exists in the " + this.name + " registry." + " Try using the \"replace\" method instead.");
-        }
+        // if (this.data.has(key)) {
+        // 	throw new Error(
+        // 		`An item with ${key} key already exists in the ${this.name} registry.` +
+        // 			` Try using the "replace" method instead.`
+        // 	);
+        // }
         this.data = this.data.set(key, item);
     };
     /**
