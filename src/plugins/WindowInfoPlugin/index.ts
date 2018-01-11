@@ -10,6 +10,8 @@ import { withWindowInfo, withWindowSize } from './connect';
 export default class WindowInfoPlugin extends Plugin {
 	static pluginName = 'WindowInfoPlugin';
 	static slug = 'window-info';
+	static withWindowInfo = withWindowInfo;
+	static withWindowSize = withWindowSize;
 	static hooks = {
 		'bluerain.redux.initialState': (state, ctx) => ({
 			...state,
