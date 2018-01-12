@@ -8,7 +8,7 @@ import BR from '../index';
  * @returns {React.Component} The layout react component
  */
 export default () => {
-	const pageStyle = BR.Utils.createStyleSheet(
+	const pageStyle = BR.Utils.createStyleSheet.create(
 		{
 			justifyContent: 'center',
 			padding: 20
@@ -16,7 +16,7 @@ export default () => {
 		'View'
 	);
 
-	const titleStyle = BR.Utils.createStyleSheet(
+	const titleStyle = BR.Utils.createStyleSheet.create(
 		{
 			alignSelf: 'center',
 			textAlign: 'center',
@@ -35,7 +35,7 @@ export default () => {
 		'Text'
 	);
 
-	const subTitleStyle = BR.Utils.createStyleSheet(
+	const subTitleStyle = BR.Utils.createStyleSheet.create(
 		{
 			textAlign: 'center',
 			color: 'rgb(150, 150, 150)',

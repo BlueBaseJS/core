@@ -9,7 +9,7 @@ interface Iprops {
 	bluerain:BlueRainType
 }
 const  Page = (props:Iprops) => {
-	const defaultStyle = BR.Utils.createStyleSheet({
+	const defaultStyle = BR.Utils.createStyleSheet.create({
 		flex: 1,
 		overflow: 'auto',
 	}, 'View');

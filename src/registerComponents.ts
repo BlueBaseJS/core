@@ -5,7 +5,9 @@ import ResponsiveLayout from './layouts/ResponsiveLayout';
 import Page from './pages/Page';
 import IndexPage from './pages/IndexPage';
 import NotFoundPage from './pages/NotFoundPage';
+import Column from './Components/GridView/Column';
 
+import Row from './Components/GridView/Row';
 import SystemApp from './SystemApp';
 
 export default () => {
@@ -21,4 +23,8 @@ export default () => {
 
 	/* Main System Component */
 	BR.Components.register('BlueRainApp', SystemApp);
+
+	/* Grid Component */
+	BR.Components.register('Row', Row);
+	BR.Components.register('Column', Column);
 };

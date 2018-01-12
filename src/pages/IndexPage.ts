@@ -8,7 +8,7 @@ import { parseJsonSchema } from '../utils/JsonSchemaToReact';
  * @returns {React.Component} The layout react component
  */
 const IndexPage = props => {
-	const pageStyle = BR.Utils.createStyleSheet(
+	const pageStyle = BR.Utils.createStyleSheet.create(
 		{
 			justifyContent: 'center',
 			padding: 20
@@ -16,7 +16,7 @@ const IndexPage = props => {
 		'View'
 	);
 
-	const titleStyle = BR.Utils.createStyleSheet(
+	const titleStyle = BR.Utils.createStyleSheet.create(
 		{
 			alignSelf: 'center',
 			backgroundColor: 'rgba(0,123,255,1)',
@@ -35,7 +35,7 @@ const IndexPage = props => {
 		'Text'
 	);
 
-	const subTitleStyle = BR.Utils.createStyleSheet(
+	const subTitleStyle = BR.Utils.createStyleSheet.create(
 		{
 			color: 'rgb(150, 150, 150)',
 			marginBottom: 20,
