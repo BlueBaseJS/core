@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component ,ReactElement} from 'react';
- import { isHidden } from '../lib/helpers';
+ import { isHidden } from '../helpers';
  import BR  from '../../index';
 
  const cloneElements = (props) => {
