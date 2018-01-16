@@ -19,7 +19,7 @@ export default class Registry {
 
 	/**
 	 * Add an item to the Registry.
-	 *
+	 * Removed check from bluerain-OS  map registry
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
@@ -33,12 +33,12 @@ export default class Registry {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 
-		// if (this.data.has(key)) {
-		// 	throw new Error(
-		// 		`An item with ${key} key already exists in the ${this.name} registry.` +
-		// 			` Try using the "replace" method instead.`
-		// 	);
-		// }
+		if (this.data.has(key)) {
+			throw new Error(
+				`An item with ${key} key already exists in the ${this.name} registry.` +
+					` Try using the "replace" method instead.`
+			);
+		}
 
 		this.data = this.data.set(key, item);
 	}
