@@ -9,10 +9,10 @@ interface Iprops {
 	bluerain:BlueRainType
 }
 const  Page = (props:Iprops) => {
-	const defaultStyle = BR.Utils.createStyleSheet.create({
+	const defaultStyle = BR.Utils.createStyleSheet({
 		flex: 1,
 		overflow: 'auto',
-	}, 'View');
+	});
 
 	const { children, style, bluerain } = props;
 	const View = bluerain.Components.get('View');

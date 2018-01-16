@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { isHidden, getComponentWidth, getComponentOffset } from '../lib/helpers';
+import { isHidden, getComponentWidth, getComponentOffset } from '../helpers';
  import BR  from '../../index';
 
 const Column = (props) => {

@@ -5,13 +5,12 @@ import ResponsiveLayout from './layouts/ResponsiveLayout';
 import Page from './pages/Page';
 import IndexPage from './pages/IndexPage';
 import NotFoundPage from './pages/NotFoundPage';
-import Column from './Components/GridView/Column';
+import Column from './components/Column';
 
-import Row from './Components/GridView/Row';
+import Row from './components/Row';
 import SystemApp from './SystemApp';
 
 export default () => {
-
 	/* Register Layout Components */
 	BR.Components.register('SystemLayout', SystemLayout);
 	BR.Components.register('ResponsiveLayout', ResponsiveLayout);
