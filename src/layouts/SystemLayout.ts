@@ -2,14 +2,11 @@ import React from 'react';
 import BR from '../index';
 
 const SystemLayout = props => {
-	const defaultStyle = BR.Utils.createStyleSheet.create(
-		{
-			flex: 1,
-			overflow: 'auto',
-			flexDirection: 'row'
-		},
-		'View'
-	);
+	const defaultStyle = BR.Utils.createStyleSheet.create({
+		flex: 1,
+		overflow: 'auto',
+		flexDirection: 'row'
+	});
 	const { children, style, Layout, ...other } = props;
 	const schema = {
 		component: 'View',

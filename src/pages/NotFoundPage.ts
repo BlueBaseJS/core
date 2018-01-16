@@ -8,16 +8,12 @@ import BR from '../index';
  * @returns {React.Component} The layout react component
  */
 export default () => {
-	const pageStyle = BR.Utils.createStyleSheet.create(
-		{
+	const Style = BR.Utils.createStyleSheet.create({
+		pageStyle: {
 			justifyContent: 'center',
 			padding: 20
 		},
-		'View'
-	);
-
-	const titleStyle = BR.Utils.createStyleSheet.create(
-		{
+		titleStyle: {
 			alignSelf: 'center',
 			textAlign: 'center',
 			backgroundColor: 'rgb(220,53,69)',
@@ -32,28 +28,23 @@ export default () => {
 			shadowRadius: 15,
 			shadowColor: 'rgba(0,0,0,.3)'
 		},
-		'Text'
-	);
-
-	const subTitleStyle = BR.Utils.createStyleSheet.create(
-		{
+		subTitleStyle: {
 			textAlign: 'center',
 			color: 'rgb(150, 150, 150)',
 			marginBottom: 20,
 			overflow: 'initial'
-		},
-		'Text'
-	);
+		}
+	});
 
 	const schema = {
 		component: 'Page',
-		props: { style: pageStyle },
+		props: { style: Style.pageStyle },
 		children: [
 			{
 				component: 'View',
 				children: [
 					{
-						props: { style: titleStyle },
+						props: { style: Style.titleStyle },
 						component: 'Text',
 						text: '404'
 					}
@@ -61,7 +52,7 @@ export default () => {
 			},
 			{
 				component: 'Text',
-				props: { style: subTitleStyle },
+				props: { style: Style.subTitleStyle },
 				text: 'Page not found!'
 			}
 		]
