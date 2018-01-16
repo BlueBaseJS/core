@@ -19,7 +19,7 @@ export default class Registry {
 
 	/**
 	 * Add an item to the Registry.
-	 *
+	 * Removed check from bluerain-OS  map registry
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
