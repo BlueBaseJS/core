@@ -2,7 +2,7 @@ import React from 'react';
 import BR from '../index';
 
 const SystemLayout = props => {
-	const defaultStyle = BR.Utils.createStyleSheet.create({
+	const defaultStyle = BR.Utils.createStyleSheet({
 		flex: 1,
 		overflow: 'auto',
 		flexDirection: 'row'

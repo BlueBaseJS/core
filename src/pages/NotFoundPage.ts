@@ -8,7 +8,7 @@ import BR from '../index';
  * @returns {React.Component} The layout react component
  */
 export default () => {
-	const Style = BR.Utils.createStyleSheet.create({
+	const Style = BR.Utils.createStyleSheet({
 		pageStyle: {
 			justifyContent: 'center',
 			padding: 20

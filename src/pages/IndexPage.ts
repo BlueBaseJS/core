@@ -8,7 +8,7 @@ import { parseJsonSchema } from '../utils/JsonSchemaToReact';
  * @returns {React.Component} The layout react component
  */
 const IndexPage = props => {
-	const Style = BR.Utils.createStyleSheet.create({
+	const Style = BR.Utils.createStyleSheet({
 		pageStyle: {
 			justifyContent: 'center',
 			padding: 20
