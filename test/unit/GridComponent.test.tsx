@@ -1,7 +1,7 @@
 import React from 'react';
-import Col from '../../src/Components/GridView/Column';
-import Row from '../../src/Components/GridView/Row';
-import {getComponentWidth,getComponentOffset,isHidden} from '../../src/Components/lib/helpers';
+import Col  from '../../src/components/Column';
+import Row from '../../src/components/Row';
+import {getComponentWidth,getComponentOffset,isHidden} from '../../src/components/helpers';
 
 import BR, { App } from '../../src';
 import Adapter from 'enzyme-adapter-react-16';
