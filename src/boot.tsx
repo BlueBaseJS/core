@@ -35,13 +35,18 @@ export default function(
 		renderApp: true
 	}
 ): ComponentType<any> {
+
 	// Extract app, plugins and configs from options
 	const { serverMode, renderApp } = options;
 	const apps = options.apps || [];
 	const plugins = options.plugins || [];
 	const config = options.config || [];
 	const platform = options.platform || [];
+
+	// Check hooks
 	checkHooks();
+
+	// Register platform
 	BR.Plugins.registerMany(platform);
 	BR.Filters.run('bluerain.system.platform.registered');
 
@@ -55,26 +60,17 @@ export default function(
 	// =[ System Lifecycle Event ]= Configurations Loaded
 	BR.Filters.run('bluerain.system.configurations.loaded');
 
-	// Get Enviornment Options
-	// const debug  = BR.Configs.get('debug');
-	// const development = BR.Configs.get('development');
-
-
 	// =[ System Lifecycle Event ]= Components Registered
 	registerComponents();
 	BR.Filters.run('bluerain.system.components.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Registered
-	const defaultPlugins = require('./plugins/defaultPlugins').default;
-
-	BR.Plugins.registerMany(defaultPlugins);
 	BR.Plugins.registerMany(plugins);
 	BR.Filters.run('bluerain.system.plugins.registered');
 
 	// =[ System Lifecycle Event ]= Plugins Initialized
 	BR.Plugins.initializeAll();
 	BR.Filters.run('bluerain.system.plugins.initialized');
-
 
 	// =[ System Lifecycle Event ]= Apps Registered
 	BR.Apps.registerMany(apps);
@@ -97,7 +93,6 @@ export default function(
 	);
 
 	if (renderApp !== false) {
-
 		BR.Utils.setMainView(BluerainApp);
 	}
 
