@@ -41,7 +41,14 @@ export default function(
 	const plugins = options.plugins || [];
 	const config = options.config || [];
 	const platform = options.platform || [];
+
 	checkHooks();
+
+	// Register plaform
+	if (platform.length === 0) {
+		throw new Error(`No platform added to BlueRain. Check docs for more info: https://blueeast.gitbooks.io/bluerain-os/`);
+	}
+
 	BR.Plugins.registerMany(platform);
 	BR.Filters.run('bluerain.system.platform.registered');
 
@@ -54,11 +61,6 @@ export default function(
 
 	// =[ System Lifecycle Event ]= Configurations Loaded
 	BR.Filters.run('bluerain.system.configurations.loaded');
-
-	// Get Enviornment Options
-	// const debug  = BR.Configs.get('debug');
-	// const development = BR.Configs.get('development');
-
 
 	// =[ System Lifecycle Event ]= Components Registered
 	registerComponents();
