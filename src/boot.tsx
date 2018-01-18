@@ -42,7 +42,6 @@ export default function(
 	const config = options.config || [];
 	const platform = options.platform || [];
 
-	// Check hooks
 	checkHooks();
 
 	// Register plaform

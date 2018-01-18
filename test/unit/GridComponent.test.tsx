@@ -1,7 +1,7 @@
 import React from 'react';
-import Col  from '../../src/components/Column';
+import Col from '../../src/components/Column';
 import Row from '../../src/components/Row';
-import {getComponentWidth,getComponentOffset,isHidden} from '../../src/components/helpers';
+import {getComponentWidth,getComponentOffset,isHidden} from '../../src/components/helpers/';
 
 import BR, { App } from '../../src';
 import Adapter from 'enzyme-adapter-react-16';
@@ -10,6 +10,7 @@ import Index from '../../src/pages/IndexPage';
 import NotFound from '../../src/pages/NotFoundPage';
 import Page from '../../src/pages/Page';
 
+import platform from '@blueeast/bluerain-platform-reactxp';
 configure({ adapter: new Adapter() });
 
 
@@ -19,8 +20,7 @@ const View=()=>{
 
   };
 
-BR.boot({renderApp:false});
-BR.Components.register('View',View);
+BR.boot({platform:[platform], renderApp:false});
 
 describe('GridComponents tests', () => {
 
