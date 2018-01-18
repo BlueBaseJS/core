@@ -24,7 +24,7 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 
-	set(key: string, item: any) {
+	set(key: string, item: any, ...rest: any[]) {
 		if (isNil(key)) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
@@ -83,11 +83,11 @@ export default class Registry {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 
-		if (this.data.has(key)) {
+		if (this.has(key)) {
 			this.replace(key, item);
+		} else {
+			this.set(key, item);
 		}
-
-		this.set(key, item);
 	}
 
 	/**

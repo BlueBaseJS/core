@@ -36,6 +36,11 @@ export default class PluginRegistry extends MapRegistry {
 			throw new Error('No plugin provided');
 		}
 
+		// ES modules
+		if (plugin.default) {
+			plugin = plugin.default;
+		}
+
 		if (!plugin.pluginName) {
 			throw new Error('Plugin name not provided.');
 		}
