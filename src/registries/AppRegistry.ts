@@ -75,11 +75,21 @@ class AppRegistry extends MapRegistry {
 	 */
 	initializeAll() {
 		this.data.forEach(app => {
+			// Add hooks from the 'hooks' static property of plugin
 			if (app.hooks) {
 				Object.keys(app.hooks).forEach(hook => {
 					BR.Hooks.add(hook, `${app.slug}.${hook}`, app.hooks[hook]);
 				});
 			}
+
+			// Add components from the 'components' static property of plugin
+			if (app.components) {
+				Object.keys(app.components).forEach(component => {
+					BR.Components.setOrReplace(component, app.components[component]);
+				});
+			}
+
+			// If the plugin has an initialize methid, call it
 			if (app.initialize) {
 				const config = BR.Configs.get(`apps.${app.slug}`);
 				app.config = config;
