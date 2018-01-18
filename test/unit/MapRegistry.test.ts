@@ -33,10 +33,34 @@ describe('Map Registry Unit Tests', () => {
 		expect(mapRegistry.data.contains('apollo-config-item')).toThrowError();
 	});
 
+	it('should throw error if registry key is null or undefined', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		mapRegistry.set(null, 'apollo-config-item');
+		expect(mapRegistry.data.contains('apollo-config-item')).toThrowError();
+		mapRegistry.set(undefined, 'apollo-config-item');
+		expect(mapRegistry.data.contains('apollo-config-item')).toThrowError();
+	});
+
 	it('should throw error if registry item is empty', () => {
 		const mapRegistry = new MapRegistry('apollo-config');
 		mapRegistry.set('apollo-config', '');
 		// expect(mapRegistry.data.has('apollo-config')).toBeTruthy();
 		expect(mapRegistry.data.contains('')).toThrowError();
+	});
+
+	it('should throw error if registry item is null or undefined', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		mapRegistry.set('apollo-config', null);
+		expect(mapRegistry.data.contains(null)).toThrowError();
+		mapRegistry.set('apollo-config', undefined);
+		expect(mapRegistry.data.contains(undefined)).toThrowError();
+	});
+
+	it('should throw error if duplicate key is added in the data Map', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		mapRegistry.set('apollo-config-key', 'apollo-config-key-item-1');
+		expect(() => {
+			mapRegistry.set('apollo-config-key', 'apollo-config-key-item-2');
+		}).toThrowError();
 	});
 });
