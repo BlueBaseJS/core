@@ -7,31 +7,6 @@ import BR, { Plugin } from '../../src/index';
 describe('Plugin registry tests', () => {
 	// tests for registering plugin
 	describe('register plugin', () => {
-		it('With pluginName, Plugin should be created', () => {
-			class HelloPlugin extends Plugin {
-				static pluginName = 'HelloPlugin';
-				initialize() {}
-			}
-			BR.Plugins.set(HelloPlugin);
-			expect(BR.Plugins.data.size).toEqual(1);
-		});
-		it('Without pluginName, Plugin should throw error', () => {
-			class HelloPlugin extends Plugin {
-				initialize() {}
-			}
-			expect(() => BR.Plugins.set(HelloPlugin)).toThrow(
-				'Plugin name not provided.'
-			);
-		});
-		it('slug should be abc-plugin', () => {
-			class HelloPlugin extends Plugin {
-				static pluginName = 'WithSlugPlugin';
-				static slug = 'with-slug';
-				initialize() {}
-			}
-			BR.Plugins.set(HelloPlugin);
-			expect(BR.Plugins.get('with-slug').slug).toEqual('with-slug');
-		});
 		it('slug should be hello-world', () => {
 			class HelloWorldPlugin extends Plugin {
 				static pluginName = 'HelloWorldPlugin';
