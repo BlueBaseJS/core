@@ -43,10 +43,13 @@ export default function(
 	const config = options.config || [];
 	const platform = options.platform || [];
 
-	// Check hooks
 	checkHooks();
 
-	// Register platform
+	// Register plaform
+	if (platform.length === 0) {
+		throw new Error(`No platform added to BlueRain. Check docs for more info: https://blueeast.gitbooks.io/bluerain-os/`);
+	}
+
 	BR.Plugins.registerMany(platform);
 	BR.Filters.run('bluerain.system.platform.registered');
 

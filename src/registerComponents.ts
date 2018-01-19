@@ -12,18 +12,18 @@ import SystemApp from './SystemApp';
 
 export default () => {
 	/* Register Layout Components */
-	BR.Components.register('SystemLayout', SystemLayout);
-	BR.Components.register('ResponsiveLayout', ResponsiveLayout);
+	BR.Components.set('SystemLayout', SystemLayout);
+	BR.Components.set('ResponsiveLayout', ResponsiveLayout);
 
 	/* Register Pages */
-	BR.Components.register('Page', Page);
-	BR.Components.register('IndexPage', IndexPage);
-	BR.Components.register('NotFoundPage', NotFoundPage);
+	BR.Components.set('Page', Page);
+	BR.Components.set('IndexPage', IndexPage);
+	BR.Components.set('NotFoundPage', NotFoundPage);
 
 	/* Main System Component */
-	BR.Components.register('BlueRainApp', SystemApp);
+	BR.Components.set('BlueRainApp', SystemApp);
 
 	/* Grid Component */
-	BR.Components.register('Row', Row);
-	BR.Components.register('Column', Column);
+	BR.Components.set('Row', Row);
+	BR.Components.set('Column', Column);
 };
