@@ -26,11 +26,11 @@ export default class Registry {
 
 	set(key: string, item: any, ...rest: any[]) {
 		if (isNil(key)) {
-			throw new Error(`No key provided in the add method of ${this.name} registry.`);
+			throw new Error(`No  replace key provided in the add method of ${this.name} registry.`);
 		}
 
 		if (isNil(item)) {
-			throw new Error(`No item provided in the add method of ${this.name} registry.`);
+			throw new Error(`No   replace item provided in the add method of ${this.name} registry.`);
 		}
 
 		if (this.data.has(key)) {
@@ -75,11 +75,11 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 	setOrReplace(key: string, item: any) {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
-
-		if (isNil(item)) {
+		console.log('typeof', typeof item);
+		if (!item || typeof item === 'boolean') {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 

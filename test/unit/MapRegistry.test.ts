@@ -26,34 +26,13 @@ describe('Map Registry Unit Tests', () => {
 		expect(mapRegistry.data.contains('apollo-config-item')).toBeTruthy();
 	});
 
-	it('should throw error if registry key is empty', () => {
-		const mapRegistry = new MapRegistry('apollo-config');
-		mapRegistry.set('', 'apollo-config-item');
-		// expect(mapRegistry.data.has('apollo-config')).toBeTruthy();
-		expect(mapRegistry.data.contains('apollo-config-item')).toThrowError();
-	});
-
-	it('should throw error if registry key is null or undefined', () => {
-		const mapRegistry = new MapRegistry('apollo-config');
-		mapRegistry.set(null, 'apollo-config-item');
-		expect(mapRegistry.data.contains('apollo-config-item')).toThrowError();
-		mapRegistry.set(undefined, 'apollo-config-item');
-		expect(mapRegistry.data.contains('apollo-config-item')).toThrowError();
-	});
-
 	it('should throw error if registry item is empty', () => {
 		const mapRegistry = new MapRegistry('apollo-config');
 		mapRegistry.set('apollo-config', '');
-		// expect(mapRegistry.data.has('apollo-config')).toBeTruthy();
-		expect(mapRegistry.data.contains('')).toThrowError();
-	});
 
-	it('should throw error if registry item is null or undefined', () => {
-		const mapRegistry = new MapRegistry('apollo-config');
-		mapRegistry.set('apollo-config', null);
-		expect(mapRegistry.data.contains(null)).toThrowError();
-		mapRegistry.set('apollo-config', undefined);
-		expect(mapRegistry.data.contains(undefined)).toThrowError();
+		expect(() => {
+			mapRegistry.set('apollo-config', '');
+		}).toThrowError();
 	});
 
 	it('should throw error if duplicate key is added in the data Map', () => {
@@ -61,6 +40,54 @@ describe('Map Registry Unit Tests', () => {
 		mapRegistry.set('apollo-config-key', 'apollo-config-key-item-1');
 		expect(() => {
 			mapRegistry.set('apollo-config-key', 'apollo-config-key-item-2');
+		}).toThrowError();
+	});
+
+	it('should not  throw error if exisiting key is  replaced in the data Map', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		mapRegistry.set('apollo-config-key', 'apollo-config-key-item-1');
+		expect(() => {
+			mapRegistry.setOrReplace('apollo-config-key', 'replaced code');
+		}).not.toThrow();
+	});
+
+	it('should throw error if boolean item is added in the data Map', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		mapRegistry.set('apollo-config-key-item-2', 'data');
+
+		expect(() => {
+			mapRegistry.setOrReplace('apollo-config-key-item-2', false);
+		}).toThrowError();
+	});
+
+	it('should  throw error if   key is added to setOrReplace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		mapRegistry.set('apollo-config-key-item-2', 'data');
+
+		expect(() => {
+			mapRegistry.setOrReplace('apollo-config-key-item-2', true);
+		}).toThrowError();
+	});
+
+	it('should  throw error if  empty string item is added to setOrReplace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		mapRegistry.set('apollo-config-key-item-2', 'data');
+
+		expect(() => {
+			mapRegistry.setOrReplace('apollo-config-key-item-2', '');
+		}).toThrowError();
+	});
+	it('should  throw error if  undefined item is added to setOrReplace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.setOrReplace('apollo-config-key-item-2', undefined);
+		}).toThrowError();
+	});
+
+	it('should  throw error if  null item is added to setOrReplace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.setOrReplace('apollo-config-key-item-2', null);
 		}).toThrowError();
 	});
 });

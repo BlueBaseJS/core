@@ -20,13 +20,14 @@ const View=()=>{
 
   };
 
-BR.boot({platform:[platform], renderApp:false});
 
 describe('GridComponents tests', () => {
 
     document.body.innerHTML = '<div class="app-container"></div>';
 
 it('Component column', () => {
+  BR.boot({platform:[platform]});
+
   const wrapper = mount(<Col/>);
   expect(wrapper.find('Col'));
 });
