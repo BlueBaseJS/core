@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import isNil from 'lodash.isnil';
+// import isNil from 'lodash.isnil';
 
 /**
  * A generic Registry class in the BlueRain OS. Used to store data.
