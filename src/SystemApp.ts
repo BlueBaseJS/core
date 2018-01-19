@@ -4,7 +4,7 @@ import BR from './index';
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
 
 export const SystemRoutes = () => {
-	const appRoutes = BR.Apps.getComponentSchema();
+	const appRoutes = BR.Apps.getAllRoutes();
 
 	// Default Routes
 	let systemRoutes = [
@@ -32,7 +32,6 @@ export const SystemRoutes = () => {
 
 	return systemRoutes;
 };
-
 
 export default props => {
 	const routes = {

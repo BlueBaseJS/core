@@ -36,6 +36,11 @@ export default class PluginRegistry extends MapRegistry {
 			throw new Error('No plugin provided');
 		}
 
+		// ES modules
+		if (plugin.default) {
+			plugin = plugin.default;
+		}
+
 		if (!plugin.pluginName) {
 			throw new Error('Plugin name not provided.');
 		}
@@ -68,11 +73,21 @@ export default class PluginRegistry extends MapRegistry {
 	 */
 	initializeAll() {
 		this.data.forEach(plugin => {
+			// Add hooks from the 'hooks' static property of plugin
 			if (plugin.hooks) {
 				Object.keys(plugin.hooks).forEach(hook => {
 					BR.Hooks.add(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
 				});
 			}
+
+			// Add components from the 'components' static property of plugin
+			if (plugin.components) {
+				Object.keys(plugin.components).forEach(component => {
+					BR.Components.setOrReplace(component, plugin.components[component]);
+				});
+			}
+
+			// If the plugin has an initialize methid, call it
 			if (plugin.initialize) {
 				const config = BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;

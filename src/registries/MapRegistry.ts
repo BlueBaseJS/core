@@ -1,5 +1,4 @@
 import { Map } from 'immutable';
-import isNil from 'lodash.isnil';
 
 /**
  * A generic Registry class in the BlueRain OS. Used to store data.
@@ -25,12 +24,12 @@ export default class Registry {
 	 */
 
 	set(key: string, item: any, ...rest: any[]) {
-		if (isNil(key)) {
-			throw new Error(`No key provided in the add method of ${this.name} registry.`);
+		if (!key) {
+			throw new Error(`No  replace key provided in the add method of ${this.name} registry.`);
 		}
 
-		if (isNil(item)) {
-			throw new Error(`No item provided in the add method of ${this.name} registry.`);
+		if (!item || typeof item === 'boolean') {
+			throw new Error(`No   replace item provided in the add method of ${this.name} registry.`);
 		}
 
 		if (this.data.has(key)) {
@@ -50,11 +49,11 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 	replace(key: string, item: any) {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
 
-		if (isNil(item)) {
+		if (!item || typeof item === 'boolean') {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 
@@ -69,13 +68,34 @@ export default class Registry {
 	}
 
 	/**
+	 * Set or Replace an item in the Registry.
+	 *
+	 * @param {string} key The key of the item
+	 * @param {any} item  The item to add
+	 */
+	setOrReplace(key: string, item: any) {
+		if (!key) {
+			throw new Error(`No key provided in the add method of ${this.name} registry.`);
+		}
+		if (!item || typeof item === 'boolean') {
+			throw new Error(`No item provided in the add method of ${this.name} registry.`);
+		}
+
+		if (this.has(key)) {
+			this.replace(key, item);
+		} else {
+			this.set(key, item);
+		}
+	}
+
+	/**
 	 * Get an item from the Registry by its key.
 	 *
 	 * @param {string} key The key of the item
 	 * @returns {any}
 	 */
 	get(key: string): any {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No key provided in the get method of ${this.name} registry.`);
 		}
 
@@ -89,7 +109,7 @@ export default class Registry {
 	 * @returns {boolean}
 	 */
 	has(key: string): boolean {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No key provided in the has method of ${this.name} registry.`);
 		}
 
@@ -102,7 +122,7 @@ export default class Registry {
 	 */
 
 	remove(key: string, ...rest: any[]) {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);
 		}
 		if (!this.data.has(key)) {
@@ -110,5 +130,12 @@ export default class Registry {
 		}
 
 		this.data = this.data.delete(key);
+	}
+
+	/**
+	 * Shallowly converts data collection to an Object.
+	 */
+	toObject() {
+		return this.data.toObject();
 	}
 }
