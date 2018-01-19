@@ -133,4 +133,11 @@ export default class Registry {
 
 		this.data = this.data.delete(key);
 	}
+
+	/**
+	 * Shallowly converts data collection to an Object.
+	 */
+	toObject() {
+		return this.data.toObject();
+	}
 }

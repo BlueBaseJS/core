@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 
 /**
  * A BlueRain App base class
@@ -8,10 +9,11 @@
  * @property {String}	version	App version
  * @property {String}	appRoutePrefix	Path that will be prepended before slug to build URL.
  * @property {String}	path	Path of the app's home page
+ * @property {ReactNode}	icon	App's icon component
+ * @property {boolean}	hidden	If the app should be hidden in launcher listings
  */
 
 export default class App {
-
 	appName: string;
 	slug: string;
 	category: string;
@@ -19,5 +21,7 @@ export default class App {
 	version: string;
 	appRoutePrefix: string = '/app';
 	path: string;
-}
 
+	icon: ReactNode;
+	hidden: boolean;
+}

@@ -39,6 +39,11 @@ class AppRegistry extends MapRegistry {
 			throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
 		}
 
+		// ES modules
+		if (app.default) {
+			app = app.default;
+		}
+
 		if (!app.appName) {
 			throw new Error('App name not provided. Please provide "appName" while registering an app');
 		}
