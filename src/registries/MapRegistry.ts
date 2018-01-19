@@ -25,11 +25,11 @@ export default class Registry {
 	 */
 
 	set(key: string, item: any, ...rest: any[]) {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No  replace key provided in the add method of ${this.name} registry.`);
 		}
 
-		if (isNil(item)) {
+		if (!item || typeof item === 'boolean') {
 			throw new Error(`No   replace item provided in the add method of ${this.name} registry.`);
 		}
 
@@ -50,11 +50,11 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 	replace(key: string, item: any) {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
 
-		if (isNil(item)) {
+		if (!item || typeof item === 'boolean') {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
 
@@ -78,7 +78,6 @@ export default class Registry {
 		if (!key) {
 			throw new Error(`No key provided in the add method of ${this.name} registry.`);
 		}
-		console.log('typeof', typeof item);
 		if (!item || typeof item === 'boolean') {
 			throw new Error(`No item provided in the add method of ${this.name} registry.`);
 		}
@@ -97,7 +96,7 @@ export default class Registry {
 	 * @returns {any}
 	 */
 	get(key: string): any {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No key provided in the get method of ${this.name} registry.`);
 		}
 
@@ -111,7 +110,7 @@ export default class Registry {
 	 * @returns {boolean}
 	 */
 	has(key: string): boolean {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`No key provided in the has method of ${this.name} registry.`);
 		}
 
@@ -124,7 +123,7 @@ export default class Registry {
 	 */
 
 	remove(key: string, ...rest: any[]) {
-		if (isNil(key)) {
+		if (!key) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);
 		}
 		if (!this.data.has(key)) {
