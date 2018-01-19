@@ -26,15 +26,6 @@ describe('Map Registry Unit Tests', () => {
 		expect(mapRegistry.data.contains('apollo-config-item')).toBeTruthy();
 	});
 
-	it('should throw error if registry item is empty', () => {
-		const mapRegistry = new MapRegistry('apollo-config');
-		mapRegistry.set('apollo-config', '');
-
-		expect(() => {
-			mapRegistry.set('apollo-config', '');
-		}).toThrowError();
-	});
-
 	it('should throw error if duplicate key is added in the data Map', () => {
 		const mapRegistry = new MapRegistry('apollo-config');
 		mapRegistry.set('apollo-config-key', 'apollo-config-key-item-1');
