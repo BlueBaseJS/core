@@ -1,5 +1,5 @@
 import getWindowSize from './getWindowSize';
-import BR from '../../index';
+import BR from '../../../index';
 
 /**
  * The state of current window or screen. Stored in `bluerain.window` in the redux store.

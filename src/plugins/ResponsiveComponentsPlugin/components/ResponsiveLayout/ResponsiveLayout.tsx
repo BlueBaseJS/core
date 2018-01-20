@@ -1,8 +1,8 @@
 
 import React, { ReactNode } from 'react';
 
-import BR from '../index';
-import { withWindowSize } from '../plugins/WindowInfoPlugin';
+import BR from '../../../../index';
+import { withWindowSize } from '../../redux/connect';
 
 export type ResponsiveLayoutProps = {
 	windowSize: string;

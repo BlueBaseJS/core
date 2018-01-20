@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { isHidden, getComponentWidth, getComponentOffset } from '../helpers';
- import BR  from '../../index';
+import BR  from '../../../../index';
+import { withWindowSize } from '../../redux/connect';
 
 const Column = (props) => {
 	const {
@@ -18,9 +19,9 @@ const Column = (props) => {
       mdHidden,
       lg,
       lgOffset,
-      lgHidden,
+			lgHidden,
 			rowSize,
-			size,
+			windowSize,
       ...rest
     } = props;
 
@@ -40,31 +41,26 @@ const Column = (props) => {
 	 	lg,
 		lgOffset,
 		lgHidden,
-		rowSize
+		rowSize,
 	};
 
-	if (isHidden(size, gridProps)) {
+	// debugger;
+	if (isHidden(windowSize, gridProps)) {
 		return null;
 	}
+
 	const View = BR.Components.get('View');
+	const width = getComponentWidth(windowSize, gridProps);
+	const marginLeft = getComponentOffset(windowSize, gridProps);
 
-	return (
-  <View
-    {...rest}
-    // tslint:disable-next-line:jsx-no-multiline-js
-    style={[
-	props.style, {
-		width: getComponentWidth(size, gridProps),
+	const style = {
+		width,
 		flexDirection: 'column',
-		marginLeft: getComponentOffset(size, gridProps)
-	}]}
-  >
-    {rest.children}
-  </View>
-	);
+		marginLeft
+	};
 
+	const styleSheet = BR.Utils.createStyleSheet([props.style, style]);
+	return (<View {...rest} style={styleSheet} >{rest.children}</View>);
 };
 
-
-
-export default Column;
+export default withWindowSize(Column);

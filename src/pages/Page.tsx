@@ -4,9 +4,9 @@ import { withBlueRain } from '../Provider';
 import BR, {BlueRainType} from '../index';
 
 interface Iprops {
-	children:Node,
-	style:{},
-	bluerain:BlueRainType
+	children: Node,
+	style: {},
+	bluerain: BlueRainType
 }
 const  Page = (props:Iprops) => {
 	const defaultStyle = BR.Utils.createStyleSheet({

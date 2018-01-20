@@ -2,16 +2,32 @@ import React from 'react';
 import BR from '../../';
 import Plugin from '../../models/Plugin'; // BR.Plugin doesn't exist yet.
 
-import initialState from './initialState';
-import reducer from './reducer';
-import getWindowSize from './getWindowSize';
-import { withWindowInfo, withWindowSize } from './connect';
+import initialState from './redux/initialState';
+import reducer from './redux/reducer';
+import getWindowSize from './redux/getWindowSize';
+import { withWindowInfo, withWindowSize } from './redux/connect';
 
-export default class WindowInfoPlugin extends Plugin {
-	static pluginName = 'WindowInfoPlugin';
+import ResponsiveLayout from './components/ResponsiveLayout';
+import Container from './components/Container';
+import Row from './components/Row';
+import Column from './components/Column';
+
+export default class ResponsiveComponentsPlugin extends Plugin {
+	static pluginName = 'ResponsiveComponentsPlugin';
 	static slug = 'window-info';
+	// TODO: Change the slug, breaking change
+	// static slug = 'responsive-components';
+
 	static withWindowInfo = withWindowInfo;
 	static withWindowSize = withWindowSize;
+
+	static components = {
+		ResponsiveLayout,
+		Container,
+		Row,
+		Column
+	};
+
 	static hooks = {
 		'bluerain.redux.initialState': (state, ctx) => ({
 			...state,
@@ -27,6 +43,7 @@ export default class WindowInfoPlugin extends Plugin {
 				window: reducer
 			}
 		}),
+
 		'bluerain.redux.middlewares': (middlewares, ctx) => {
 			const middleware = store => next => action => {
 				if (action.type !== '@@BLUERAIN/SET_WINDOW_INFO') {
@@ -47,6 +64,7 @@ export default class WindowInfoPlugin extends Plugin {
 			return middlewares;
 		}
 	};
+
 	static uses = {
 		components: [],
 		hooks: []
