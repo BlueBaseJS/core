@@ -1,5 +1,5 @@
 import React, { Component ,ReactElement} from 'react';
-import BR  from '../../../../index';
+import BR from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
 
 const Container = (props) => {

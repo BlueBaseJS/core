@@ -37,23 +37,28 @@ export default () => {
 	});
 
 	const schema = {
-		component: 'Page',
-		props: { style: Style.pageStyle },
+		component: 'Wallpaper',
 		children: [
 			{
-				component: 'View',
+				component: 'Page',
+				props: { style: Style.pageStyle },
 				children: [
 					{
-						props: { style: Style.titleStyle },
+						component: 'View',
+						children: [
+							{
+								props: { style: Style.titleStyle },
+								component: 'Text',
+								text: '404'
+							}
+						]
+					},
+					{
 						component: 'Text',
-						text: '404'
+						props: { style: Style.subTitleStyle },
+						text: 'Page not found!'
 					}
 				]
-			},
-			{
-				component: 'Text',
-				props: { style: Style.subTitleStyle },
-				text: 'Page not found!'
 			}
 		]
 	};
