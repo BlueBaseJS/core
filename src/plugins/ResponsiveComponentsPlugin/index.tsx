@@ -14,9 +14,7 @@ import Column from './components/Column';
 
 export default class ResponsiveComponentsPlugin extends Plugin {
 	static pluginName = 'ResponsiveComponentsPlugin';
-	static slug = 'window-info';
-	// TODO: Change the slug, breaking change
-	// static slug = 'responsive-components';
+	static slug = 'responsive-components';
 
 	static withWindowInfo = withWindowInfo;
 	static withWindowSize = withWindowSize;
@@ -29,18 +27,22 @@ export default class ResponsiveComponentsPlugin extends Plugin {
 	};
 
 	static hooks = {
+
+		// Create state in redux store's bluerain property
+		'bluerain.redux.reducers.bluerain': (reducers, ctx) => ({
+			...reducers,
+			...{
+				window: reducer
+			}
+		}),
+
+		// Inject redux initial state
 		'bluerain.redux.initialState': (state, ctx) => ({
 			...state,
 			...{
 				bluerain: {
 					window: initialState()
 				}
-			}
-		}),
-		'bluerain.redux.reducers.bluerain': (reducers, ctx) => ({
-			...reducers,
-			...{
-				window: reducer
 			}
 		}),
 
@@ -62,6 +64,30 @@ export default class ResponsiveComponentsPlugin extends Plugin {
 			};
 			middlewares.push(middleware);
 			return middlewares;
+		},
+
+		// Wrap SystemLayout to subscribe to screen size changes.
+		'bluerain.system.plugins.initialized': (ctx) => {
+
+			const WithLayout = (Component) => {
+				const LayoutComponent = (props) => {
+					const onLayout = () => {
+						const newDimentions = ctx.Dimensions();
+						const oldDimentions = props.window;
+
+						if (newDimentions.width !== oldDimentions.width || newDimentions.height !== oldDimentions.height) {
+							props.setWindowDimentions(newDimentions.width? newDimentions.width: oldDimentions.width,
+								newDimentions.height ? newDimentions.height: oldDimentions.height);
+						}
+					};
+
+					return <Component Layout={onLayout} {...props}  />;
+				};
+
+				return withWindowInfo(LayoutComponent);
+			};
+
+			ctx.Components.addHocs('SystemLayout',WithLayout);
 		}
 	};
 
