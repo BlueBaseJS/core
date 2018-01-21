@@ -1,5 +1,6 @@
 import BR from './index';
 
+import ComponentState from './components/ComponentState';
 import ImageBackground from './components/ImageBackground';
 import Page from './components/Page';
 import Wallpaper from './components/Wallpaper';
@@ -12,6 +13,7 @@ import SystemApp from './SystemApp';
 
 export default () => {
 	/* Internal Components */
+	BR.Components.set('ComponentState', ComponentState);
 	BR.Components.set('ImageBackground', ImageBackground);
 	BR.Components.set('Page', Page);
 	BR.Components.set('Wallpaper', Wallpaper);
