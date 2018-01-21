@@ -1,6 +1,7 @@
-import React, { Component ,ReactElement} from 'react';
+import React, { ReactElement } from 'react';
+
 import { isHidden } from '../helpers';
-import BR  from '../../../../index';
+import { withBlueRain, BlueRainType } from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
 
 const cloneElements = (props) => {
@@ -11,6 +12,7 @@ const cloneElements = (props) => {
 
 const Row = (props) => {
 
+	const { bluerain: BR, ...others } = props;
 	const View = BR.Components.get('View');
 
 	if (isHidden(props.windowSize, props)) {
@@ -23,13 +25,13 @@ const Row = (props) => {
 		alignItems: props.alignItems,
 		justifyContent: props.justifyContent
 	};
-	const styleSheet = BR.Utils.createStyleSheet([props.style, style]);
+	const stylesheet = BR.Utils.createStyleSheet([props.style, style]);
 
 	return (
-  <View {...props} style={[props.style,style]} >
+  <View {...others} style={stylesheet} >
     {cloneElements(props)}
   </View>
 	);
 };
 
-export default withWindowSize(Row);
+export default withBlueRain(withWindowSize(Row));

@@ -1,17 +1,10 @@
 import React from 'react';
-import BR from '../index';
+import { withBlueRain, BlueRainType } from '../index';
 
 const SystemLayout = props => {
-	const { style, Layout, children, ...other } = props;
+	const { style, Layout, children, bluerain: BR, ...other } = props;
 
-	const stylesheet = BR.Utils.createStyleSheet([
-		{
-			flex: 1
-			// overflow: 'auto',
-			// flexDirection: 'row'
-		},
-		style
-	]);
+	const stylesheet = BR.Utils.createStyleSheet([{ flex: 1 }, style]);
 
 	const schema = {
 		component: 'View',
@@ -27,4 +20,4 @@ const SystemLayout = props => {
 	return BR.Utils.parseJsonSchema(layout);
 };
 
-export default SystemLayout;
+export default withBlueRain(SystemLayout);

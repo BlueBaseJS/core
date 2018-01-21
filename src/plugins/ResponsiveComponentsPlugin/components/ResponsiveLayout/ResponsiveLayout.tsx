@@ -1,7 +1,6 @@
+import React from 'react';
 
-import React, { ReactNode } from 'react';
-
-import BR from '../../../../index';
+import { withBlueRain, BlueRainType } from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
 
 export type ResponsiveLayoutProps = {
@@ -25,8 +24,19 @@ export type ResponsiveLayoutProps = {
  * @prop {React.Component} lg The component to render when the screen size is large.
  * @prop {React.Component} xl The component to render when the screen size is extra-large.
  */
-function ResponsiveLayout(props: ResponsiveLayoutProps) {
-	const { windowSize, default: def, xs, sm, md, lg, xl, ...otherProps } = props; // eslint-disable-line no-unused-vars
+function ResponsiveLayout(props: ResponsiveLayoutProps & { bluerain: BlueRainType }) {
+	const {
+		windowSize,
+		default: def,
+		xs,
+		sm,
+		md,
+		lg,
+		xl,
+		bluerain: BR,
+		...otherProps
+	} = props;
+
 	let Component = props[windowSize] ? props[windowSize] : def;
 
 	if (typeof Component === 'string') {
@@ -40,12 +50,4 @@ function ResponsiveLayout(props: ResponsiveLayoutProps) {
 	return <Component {...otherProps} />;
 }
 
-// ResponsiveLayout.defaultProps = {
-// 	xs: undefined,
-// 	sm: undefined,
-// 	md: undefined,
-// 	lg: undefined,
-// 	xl: undefined
-// };
-
-export default withWindowSize(ResponsiveLayout);
+export default withBlueRain(withWindowSize(ResponsiveLayout));

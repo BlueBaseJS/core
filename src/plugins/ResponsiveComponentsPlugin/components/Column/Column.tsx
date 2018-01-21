@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import { isHidden, getComponentWidth, getComponentOffset } from '../helpers';
-import BR  from '../../../../index';
+import { withBlueRain, BlueRainType } from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
 
 const Column = (props) => {
@@ -22,6 +23,7 @@ const Column = (props) => {
 			lgHidden,
 			rowSize,
 			windowSize,
+			bluerain: BR,
       ...rest
     } = props;
 
@@ -59,8 +61,8 @@ const Column = (props) => {
 		marginLeft
 	};
 
-	const styleSheet = BR.Utils.createStyleSheet([props.style, style]);
-	return (<View {...rest} style={styleSheet} >{rest.children}</View>);
+	const stylesheet = BR.Utils.createStyleSheet([props.style, style]);
+	return (<View {...rest} style={stylesheet} >{rest.children}</View>);
 };
 
-export default withWindowSize(Column);
+export default withBlueRain(withWindowSize(Column));

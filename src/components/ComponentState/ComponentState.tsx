@@ -120,11 +120,4 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 
 };
 
-// ComponentState.defaultProps = {
-// 	tag: 'div',
-// 	imageStyle: {
-// 		width: '100px'
-// 	},
-// };
-
 export default withBlueRain(ComponentState);

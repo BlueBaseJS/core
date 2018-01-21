@@ -1,6 +1,5 @@
 import React from 'react';
-import { parseJsonSchema } from '../utils/JsonSchemaToReact';
-import BR from '../index';
+import { withBlueRain, BlueRainType } from '../index';
 
 import Icon from '../components/Icon';
 
@@ -9,7 +8,10 @@ import Icon from '../components/Icon';
  *
  * @returns {React.Component} The layout react component
  */
-export default () => {
+const IndexPage = (props: { bluerain: BlueRainType }) => {
+
+	const BR = props.bluerain;
+
 	const pageStyle = BR.Utils.createStyleSheet({
 		justifyContent: 'center',
 		padding: 20
@@ -34,5 +36,7 @@ export default () => {
 		]
 	};
 
-	return parseJsonSchema(schema);
+	return BR.Utils.parseJsonSchema(schema);
 };
+
+export default withBlueRain(IndexPage);

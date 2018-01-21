@@ -1,9 +1,11 @@
-import React, { Component ,ReactElement} from 'react';
-import BR from '../../../../index';
+import React from 'react';
+
+import { withBlueRain, BlueRainType } from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
 
 const Container = (props) => {
 
+	const { bluerain: BR, ...others } = props;
 	const View = BR.Components.get('View');
 
 	let width;
@@ -29,9 +31,9 @@ const Container = (props) => {
 		width,
 		alignSelf: 'center'
 	};
-	const styleSheet = BR.Utils.createStyleSheet([props.style, style]);
+	const stylesheet = BR.Utils.createStyleSheet([props.style, style]);
 
-	return (<View {...props} style={[props.style, style]} />);
+	return (<View {...others} style={stylesheet} />);
 };
 
-export default withWindowSize(Container);
+export default withBlueRain(withWindowSize(Container));

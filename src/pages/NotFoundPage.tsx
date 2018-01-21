@@ -1,15 +1,17 @@
 import React from 'react';
-import { parseJsonSchema } from '../utils/JsonSchemaToReact';
-import BR from '../index';
+import { withBlueRain, BlueRainType } from '../index';
 
 import Icon from '../components/Icon';
 
 /**
- * Returns the 404 Page layout.
+ * Returns the Index Page layout.
  *
  * @returns {React.Component} The layout react component
  */
-export default () => {
+const NotFoundPage = (props: { bluerain: BlueRainType }) => {
+
+	const BR = props.bluerain;
+
 	const pageStyle = BR.Utils.createStyleSheet({
 		justifyContent: 'center',
 		padding: 20
@@ -35,5 +37,7 @@ export default () => {
 		]
 	};
 
-	return parseJsonSchema(schema);
+	return BR.Utils.parseJsonSchema(schema);
 };
+
+export default withBlueRain(NotFoundPage);
