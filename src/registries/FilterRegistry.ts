@@ -119,7 +119,7 @@ class FilterRegistry extends MapRegistry {
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
-	run(hook: string, item?: any) {
+	run(hook: string, item?: any, ...otherArgs: any[]) {
 		if (isNil(hook)) {
 			throw new Error(`Hook cannot be ${hook}`);
 		}

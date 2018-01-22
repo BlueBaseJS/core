@@ -39,7 +39,7 @@ export default props => {
 		props,
 		children: [
 			{
-				component: 'Switch',
+				component: 'RouterSwitch',
 				props: { style: { flex: 1, flexGrow: 1 } },
 				children: SystemRoutes()
 			}

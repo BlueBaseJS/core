@@ -7,6 +7,12 @@ export type ConfigType = {
 	plugins: {};
 	title: string;
 	theme?: {};
+
+	wallpaper?: {
+		source: string;
+		backgroundColor?: string;
+		resizeMode?: string;
+	};
 };
 
 /**
@@ -22,6 +28,11 @@ export type ConfigType = {
  * @property {Object}		plugins														Configurations for plugins
  * @property {string}		title [default: "BlueRain OS"]		Main title of the app
  * @property {string}		theme															Theme to customize styling
+ * @property {object}		wallpaper													The wallpaper object
+ * @property {string}		wallpaper.source									URL of the image source to display in the background
+ * @property {string}		wallpaper.backgroundColor					Background color of the wallpaper
+ * @property {string}		wallpaper.resizeMode							Determines how to resize the image when the frame doesn't
+ * match the raw image dimensions. Options: 'cover', 'contain', 'stretch', 'repeat', 'center'
  */
 const Config: ConfigType = {
 	apps: {},

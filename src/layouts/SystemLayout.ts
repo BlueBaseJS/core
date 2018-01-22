@@ -1,30 +1,23 @@
 import React from 'react';
-import BR from '../index';
+import { withBlueRain, BlueRainType } from '../index';
 
 const SystemLayout = props => {
-	const defaultStyle = BR.Utils.createStyleSheet({
-		flex: 1,
-		overflow: 'auto',
-		flexDirection: 'row'
-	});
-	const { children, style, Layout, ...other } = props;
+	const { style, Layout, children, bluerain: BR, ...other } = props;
+
+	const stylesheet = BR.Utils.createStyleSheet([{ flex: 1 }, style]);
+
 	const schema = {
 		component: 'View',
+		text: children,
 		props: {
 			onLayout: Layout,
-			style: [defaultStyle, style],
+			style: stylesheet,
 			...other
-		},
-		children: [
-			{
-				component: 'View', // System Content
-				text: children,
-				props: { style: { flexGrow: 1, flex: 1 } }
-			}
-		]
+		}
 	};
-	const layout = BR.Filters.run('bluerain.system.app.layout', schema);
+
+	const layout = BR.Filters.run('bluerain.system.app.layout', schema, props);
 	return BR.Utils.parseJsonSchema(layout);
 };
 
-export default SystemLayout;
+export default withBlueRain(SystemLayout);
