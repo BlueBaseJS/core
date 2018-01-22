@@ -98,7 +98,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "recompose": "^0.25.0",
-    "react-redux":"^5.0.6"
+    "react-redux": "^5.0.6"
   },
   "devDependencies": {
     "@blueeast/tslint-config-blueeast": "^0.3.0",
