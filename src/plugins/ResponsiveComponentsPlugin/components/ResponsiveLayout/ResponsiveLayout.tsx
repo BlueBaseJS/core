@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { withBlueRain, BlueRainType } from '../../../../index';
+import  { withBlueRain, BlueRainType } from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
 
 export type ResponsiveLayoutProps = {

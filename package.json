@@ -19,8 +19,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-		"lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
-		"prebuild": "rimraf dist",
+    "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
+    "prebuild": "rimraf dist",
     "build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled",
     "start": "tsc -w & rollup -c rollup.config.ts -w",
     "test": "jest",
@@ -65,10 +65,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 60,
-        "functions": 69,
-        "lines": 70,
-        "statements": 70
+        "branches": 45,
+        "functions": 45,
+        "lines": 45,
+        "statements": 45
       }
     },
     "collectCoverage": true,
@@ -101,6 +101,7 @@
   },
   "devDependencies": {
     "@blueeast/tslint-config-blueeast": "^0.3.0",
+    "@blueeast/bluerain-platform-reactxp": "^1.0.1",
     "@types/jest": "^21.1.0",
     "@types/node": "^8.0.45",
     "@types/react": "^16.0.10",
