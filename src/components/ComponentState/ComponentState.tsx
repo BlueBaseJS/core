@@ -1,5 +1,5 @@
 import React from 'react';
-import  { withBlueRain, BlueRainType } from '../../index';
+import { withBlueRain, BlueRainType } from '../../index';
 
 type ComponentStateProps = {
 	/**
@@ -62,10 +62,8 @@ type ComponentStateProps = {
 	 */
 	buttonOnPress?: Function
 };
-console.log('propsssss');
 
 const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType }) => {
-	console.log('propsssss',props.bluerain);
 
 	const {
 		image: ImageComponent,
@@ -77,7 +75,6 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 		buttonOnPress,
 		bluerain: BR
 	} = props;
-	console.log('propssssssssssssssssssssss',props);
 	const View = BR.Components.get('View');
 	const Text = BR.Components.get('Text');
 	const Image = BR.Components.get('Image');
