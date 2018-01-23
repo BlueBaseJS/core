@@ -50,7 +50,6 @@ const Column = (props) => {
 	if (isHidden(windowSize, gridProps)) {
 		return null;
 	}
-
 	const View = BR.Components.get('View');
 	const width = getComponentWidth(windowSize, gridProps);
 	const marginLeft = getComponentOffset(windowSize, gridProps);

@@ -24,6 +24,29 @@
     recompose "^0.25.0"
     redux "^3.7.2"
 
+"@blueeast/bluerain-os@^1.0.0-alpha-9":
+  version "1.0.0-alpha-9"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-1.0.0-alpha-9.tgz#39952ad91905bc05eb96eeeed3a9a9f3f0fea7c7"
+  dependencies:
+    "@blueeast/bluerain-plugin-react-router" "^0.4.2"
+    "@blueeast/bluerain-plugin-redux" "^0.4.2"
+    eventemitter3 "^2.0.3"
+    html-tags "^2.0.0"
+    immutable "^3.8.2"
+    is-electron "^2.1.0"
+    lodash.compose "^2.4.1"
+    lodash.get "^4.4.2"
+    lodash.isfunction "^3.0.8"
+    lodash.isnil "^4.0.0"
+    lodash.kebabcase "^4.1.1"
+    lodash.merge "^4.6.0"
+    lodash.reject "^4.6.0"
+    lodash.set "^4.3.2"
+    react "^16.2.0"
+    react-dom "^16.2.0"
+    react-redux "^5.0.6"
+    recompose "^0.25.0"
+
 "@blueeast/bluerain-plugin-react-router@^0.4.2", "@blueeast/bluerain-plugin-react-router@^0.4.8":
   version "0.4.8"
   resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-0.4.8.tgz#624daf5839758f779561c3f0f3f56c4656ef9b6a"
@@ -34,6 +57,20 @@
     react-router-dom "^4.2.2"
     react-router-native "^4.2.0"
     react-router-redux "^5.0.0-alpha.6"
+    redux "^3.7.2"
+
+"@blueeast/bluerain-plugin-react-router@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-1.0.1.tgz#aad2cc994afaebae8ecc45f3c321e8b4470e97aa"
+  dependencies:
+    "@blueeast/bluerain-os" "^1.0.0-alpha-9"
+    history "^4.7.2"
+    react "^16.2.0"
+    react-dom "^16.2.0"
+    react-redux "^5.0.6"
+    react-router-dom "^4.2.2"
+    react-router-native "^4.2.0"
+    react-router-redux "^5.0.0-alpha.8"
     redux "^3.7.2"
 
 "@blueeast/bluerain-plugin-redux@^0.4.2", "@blueeast/bluerain-plugin-redux@^0.4.8":
@@ -4791,7 +4828,7 @@ react-router-native@^4.2.0:
     prop-types "^15.5.4"
     react-router "^4.2.0"
 
-react-router-redux@^5.0.0-alpha.6:
+react-router-redux@^5.0.0-alpha.6, react-router-redux@^5.0.0-alpha.8:
   version "5.0.0-alpha.9"
   resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.9.tgz#825431516e0e6f1fd93b8807f6bd595e23ec3d10"
   dependencies:
