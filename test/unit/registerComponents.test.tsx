@@ -5,21 +5,13 @@ import Components from '../../src/registerComponents';
 configure({ adapter: new Adapter() });
 import BR,{Plugin} from '../../src/index';
 
-
-
-
 class Reactxp  extends Plugin {
-
     static pluginName = Reactxp;
     static slug = 'reactxp';
-
     static  initialize(config:{}, ctx:any) {
-
-     const Main=(App:any)=>{
-        ctx.Utils.setMainView(<App/>);
-
+        const Main=(App:any)=>{
+            ctx.Utils.setMainView(<App/>);
         };
-
     }
 }
 
