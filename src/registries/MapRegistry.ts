@@ -25,17 +25,17 @@ export default class Registry {
 
 	set(key: string, item: any, ...rest: any[]) {
 		if (!key) {
-			throw new Error(`No  replace key provided in the add method of ${this.name} registry.`);
+			throw new Error(`No key provided in the set method of ${this.name} registry.`);
 		}
 
 		if (!item || typeof item === 'boolean') {
-			throw new Error(`No   replace item provided in the add method of ${this.name} registry.`);
+			throw new Error(`No item provided in the set method of ${this.name} registry.`);
 		}
 
 		if (this.data.has(key)) {
 			throw new Error(
 				`An item with ${key} key already exists in the ${this.name} registry.` +
-					` Try using the "replace" method instead.`
+					` Try using the "setOrReplace" method instead.`
 			);
 		}
 
@@ -50,17 +50,17 @@ export default class Registry {
 	 */
 	replace(key: string, item: any) {
 		if (!key) {
-			throw new Error(`No key provided in the add method of ${this.name} registry.`);
+			throw new Error(`No key provided in the replace method of ${this.name} registry.`);
 		}
 
 		if (!item || typeof item === 'boolean') {
-			throw new Error(`No item provided in the add method of ${this.name} registry.`);
+			throw new Error(`No item provided in the replace method of ${this.name} registry.`);
 		}
 
 		if (!this.has(key)) {
 			throw new Error(
 				`An item with ${key} key does not exist in the ${this.name} registry.` +
-					` Try using the "add" method instead.`
+					` Try using the "setOrReplace" method instead.`
 			);
 		}
 
@@ -75,10 +75,10 @@ export default class Registry {
 	 */
 	setOrReplace(key: string, item: any) {
 		if (!key) {
-			throw new Error(`No key provided in the add method of ${this.name} registry.`);
+			throw new Error(`No key provided in the setOrReplace method of ${this.name} registry.`);
 		}
 		if (!item || typeof item === 'boolean') {
-			throw new Error(`No item provided in the add method of ${this.name} registry.`);
+			throw new Error(`No item provided in the setOrReplace method of ${this.name} registry.`);
 		}
 
 		if (this.has(key)) {
