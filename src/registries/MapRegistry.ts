@@ -25,11 +25,11 @@ export default class Registry {
 
 	set(key: string, item: any, ...rest: any[]) {
 		if (!key) {
-			throw new Error(`No  key provided in the set method of ${this.name} registry.`);
+			throw new Error(`No key provided in the set method of ${this.name} registry.`);
 		}
 
 		if (!item || typeof item === 'boolean') {
-			throw new Error(`No  item provided in the set method of ${this.name} registry.`);
+			throw new Error(`No item provided in the set method of ${this.name} registry.`);
 		}
 
 		if (this.data.has(key)) {
