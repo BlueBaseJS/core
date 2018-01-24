@@ -82,7 +82,7 @@
   ],
   "dependencies": {
     "@blueeast/bluerain-plugin-react-router": "^1.0.1",
-    "@blueeast/bluerain-plugin-redux": "^0.4.2",
+    "@blueeast/bluerain-plugin-redux": "^0.6.0",
     "eventemitter3": "^2.0.3",
     "html-tags": "^2.0.0",
     "immutable": "^3.8.2",
