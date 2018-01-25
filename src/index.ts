@@ -10,4 +10,4 @@ export { withBlueRain, BlueRainProvider } from './Provider';
 // This will have all registries as objects
 export default BlueRain;
 export { BlueRainType } from './BlueRain';
-export { BootConfigType } from './config';
+export { ConfigType } from './config';
