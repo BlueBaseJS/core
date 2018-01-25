@@ -4,7 +4,7 @@ import { withBlueRain, BlueRainType } from '../index';
 
 export interface SystemLayoutProperties extends ViewProperties {
 	children: React.ReactNode[];
-	style?: ViewStyles;
+	style: ViewStyles;
 }
 
 const SystemLayout = (props: SystemLayoutProperties & { bluerain: BlueRainType }) => {
