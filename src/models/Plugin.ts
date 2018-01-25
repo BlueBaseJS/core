@@ -20,5 +20,5 @@ export default class Plugin {
 
 	hooks?: { [id: string]: Function };
 	components?: { [id: string]: React.ComponentType<any> };
-	initialize?: (config: {}, ctx: BlueRainType) => {};
+	initialize?: (config: {}, ctx: BlueRainType) => void;
 }

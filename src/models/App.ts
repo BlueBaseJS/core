@@ -1,6 +1,5 @@
 import React from 'react';
 import { BlueRainType } from '../index';
-import { ConfigType } from '../config';
 
 /**
  * A BlueRain App base class
@@ -32,5 +31,5 @@ export default class App {
 
 	hooks?: { [id: string]: Function };
 	components?: { [id: string]: React.ComponentType<any> };
-	initialize?: (config: {}, ctx: BlueRainType) => {};
+	initialize?: (config: {}, ctx: BlueRainType) => void;
 }
