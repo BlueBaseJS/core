@@ -73,7 +73,6 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 		buttonOnPress,
 		bluerain: BR
 	} = props;
-
 	const View = BR.Components.get('View');
 	const Text = BR.Components.get('Text');
 	const Image = BR.Components.get('Image');
