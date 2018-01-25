@@ -2,7 +2,7 @@
 import React, {  ComponentType } from 'react';
 import BR, { App, Plugin } from './index';
 import registerComponents from './registerComponents';
-import defaultConfigs, { ConfigType } from './config';
+import defaultConfigs, { BootConfigType } from './config';
 import { BlueRainProvider } from './Provider';
 import checkHooks from './checkHooks';
 
@@ -18,7 +18,7 @@ import checkHooks from './checkHooks';
  */
 export type BootOptions = {
 	apps?: App[];
-	config?: ConfigType;
+	config?: BootConfigType;
 	renderApp?: boolean;
 	plugins?: Plugin[];
 	serverMode?: boolean;

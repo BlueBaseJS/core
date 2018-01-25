@@ -1,4 +1,4 @@
-export type ConfigType = {
+export type BootConfigType = {
 	apps: {};
 	appRoutePrefix: string;
 	debug: boolean;
@@ -34,7 +34,7 @@ export type ConfigType = {
  * @property {string}		wallpaper.resizeMode							Determines how to resize the image when the frame doesn't
  * match the raw image dimensions. Options: 'cover', 'contain', 'stretch', 'repeat', 'center'
  */
-const Config: ConfigType = {
+const Config: BootConfigType = {
 	apps: {},
 	appRoutePrefix: '/app',
 	debug: true,

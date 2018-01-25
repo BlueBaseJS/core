@@ -1,6 +1,5 @@
 import React from 'react';
 import { BlueRainType } from '../index';
-import { ConfigType } from '../config';
 
 /**
  * Base class of a plugin which is to be extended.
@@ -21,5 +20,5 @@ export default class Plugin {
 
 	hooks?: { [id: string]: Function };
 	components?: { [id: string]: React.ComponentType<any> };
-	initialize?: (ctx: BlueRainType, config: ConfigType) => {};
+	initialize?: (config: {}, ctx: BlueRainType) => {};
 }

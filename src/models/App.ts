@@ -32,5 +32,5 @@ export default class App {
 
 	hooks?: { [id: string]: Function };
 	components?: { [id: string]: React.ComponentType<any> };
-	initialize?: (ctx: BlueRainType, config: ConfigType) => {};
+	initialize?: (config: {}, ctx: BlueRainType) => {};
 }
