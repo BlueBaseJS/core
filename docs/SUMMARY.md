@@ -9,8 +9,8 @@
 ## Guides
 * [Apps](guides/apps/README.md)
   * [Installation](guides/apps/installation.md)
-  * [Configuration](guides/apps/configuration.md)
   * [Creating an App](guides/apps/creating-an-app.md)
+  * [Configuration](guides/apps/configuration.md)
 
 * [Components](guides/components/README.md)
 
