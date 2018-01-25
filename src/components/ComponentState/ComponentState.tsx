@@ -57,6 +57,7 @@ export interface ComponentStateProps extends ViewProperties {
 	 * Button onPress handler
 	 */
 	buttonOnPress?: Function;
+	style?:{}
 }
 
 const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType }) => {

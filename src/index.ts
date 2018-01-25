@@ -11,7 +11,3 @@ export { withBlueRain, BlueRainProvider } from './Provider';
 export default BlueRain;
 export { BlueRainType } from './BlueRain';
 export { BootConfigType } from './config';
-
-// Load default plugins
-import defaultPlugins from './plugins/defaultPlugins';
-BlueRain.Plugins.registerMany(defaultPlugins);
