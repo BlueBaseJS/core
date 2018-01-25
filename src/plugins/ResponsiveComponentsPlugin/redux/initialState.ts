@@ -1,16 +1,17 @@
-import getWindowSize from './getWindowSize';
+import getWindowSize from '../helpers/getWindowSize';
 import BR from '../../../index';
+import { WindowSize } from '../typings';
 
 /**
  * The state of current window or screen. Stored in `bluerain.window` in the redux store.
  * @property {number} width The window width
  * @property {number} height The window height
- * @property {"xs" | "sm" | "md" | "lg" | "xl"} size The window size i.e. (xs|sm|md|lg|xl)
+ * @property {WindowSize} size The window size i.e. (xs|sm|md|lg|xl)
  */
 export type WindowState = {
 	width: number;
 	height: number;
-	size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	size: WindowSize;
 };
 
 export default function initialState(): WindowState {

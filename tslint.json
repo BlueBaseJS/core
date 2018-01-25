@@ -4,6 +4,7 @@
 	],
 	"rules": {
 		"ban-types": false,
-		"no-console": false
+		"no-console": false,
+		"interface-name": false
 	}
 }

@@ -2,16 +2,21 @@ import React from 'react';
 
 import { withBlueRain, BlueRainType } from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
+import { WindowSize } from '../../typings';
 
-export type ResponsiveLayoutProps = {
-	windowSize: string;
-	default: Node | string;
-	xs?: Node;
-	sm?: Node;
-	md?: Node;
-	lg?: Node;
-	xl?: Node;
-};
+export interface ResponsiveLayoutProperties {
+	default: React.ComponentType;
+	xs?: React.ComponentType;
+	sm?: React.ComponentType;
+	md?: React.ComponentType;
+	lg?: React.ComponentType;
+	xl?: React.ComponentType;
+}
+
+interface AllProps extends ResponsiveLayoutProperties {
+	bluerain: BlueRainType;
+	windowSize: WindowSize
+}
 
 /**
  * ResponsiveLayout component to create responsive layouts.
@@ -24,7 +29,7 @@ export type ResponsiveLayoutProps = {
  * @prop {React.Component} lg The component to render when the screen size is large.
  * @prop {React.Component} xl The component to render when the screen size is extra-large.
  */
-function ResponsiveLayout(props: ResponsiveLayoutProps & { bluerain: BlueRainType }) {
+function ResponsiveLayout(props: AllProps) {
 	const {
 		windowSize,
 		default: def,

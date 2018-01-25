@@ -19,8 +19,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-		"lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
-		"prebuild": "rimraf dist",
+    "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
+    "prebuild": "rimraf dist",
     "build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled",
     "start": "tsc -w & rollup -c rollup.config.ts -w",
     "test": "jest",
@@ -97,6 +97,8 @@
     "lodash.set": "^4.3.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-native": "^0.52.1",
+    "react-redux": "^5.0.6",
     "recompose": "^0.25.0"
   },
   "devDependencies": {

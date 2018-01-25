@@ -1,5 +1,5 @@
 import { SET_WINDOW_INFO } from './actions';
-import getWindowSize from './getWindowSize';
+import getWindowSize from '../helpers/getWindowSize';
 import initialState from './initialState';
 
 export default (state = initialState(), action) => {

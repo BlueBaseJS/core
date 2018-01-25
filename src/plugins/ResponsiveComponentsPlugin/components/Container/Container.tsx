@@ -1,9 +1,16 @@
 import React from 'react';
+import { ViewProperties } from 'react-native';
 
 import { withBlueRain, BlueRainType } from '../../../../index';
 import { withWindowSize } from '../../redux/connect';
+import { WindowSize } from '../../typings';
 
-const Container = (props) => {
+interface Props extends ViewProperties {
+	bluerain: BlueRainType,
+	windowSize: WindowSize
+}
+
+const Container = (props: Props) => {
 
 	const { bluerain: BR, ...others } = props;
 	const View = BR.Components.get('View');

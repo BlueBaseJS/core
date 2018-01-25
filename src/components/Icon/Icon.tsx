@@ -1,10 +1,10 @@
 import React from 'react';
 import { withBlueRain, BlueRainType } from '../../index';
 
-export type IconProps = {
+export interface IconProps {
 	title: string,
 	color: string
-};
+}
 
 const Icon = (props: IconProps & { bluerain: BlueRainType }) => {
 

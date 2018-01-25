@@ -1,8 +1,13 @@
 import React from 'react';
+import { ViewProperties } from 'react-native';
 import { withBlueRain, BlueRainType } from '../index';
 
-const SystemLayout = props => {
-	const { style, Layout, children, bluerain: BR, ...other } = props;
+export interface SystemLayoutProperties extends ViewProperties {
+	children: React.ReactNode[];
+}
+
+const SystemLayout = (props: SystemLayoutProperties & { bluerain: BlueRainType }) => {
+	const { style, children, bluerain: BR, ...other } = props;
 
 	const stylesheet = BR.Utils.createStyleSheet([{ flex: 1 }, style]);
 
@@ -10,7 +15,6 @@ const SystemLayout = props => {
 		component: 'View',
 		text: children,
 		props: {
-			onLayout: Layout,
 			style: stylesheet,
 			...other
 		}
