@@ -1,10 +1,9 @@
 import React from 'react';
-import BR from '../../';
-import Plugin from '../../models/Plugin'; // BR.Plugin doesn't exist yet.
+import { BlueRainType, Plugin } from '../../';
 
 import initialState from './redux/initialState';
 import reducer from './redux/reducer';
-import getWindowSize from './redux/getWindowSize';
+import getWindowSize from './helpers/getWindowSize';
 import { withWindowInfo, withWindowSize } from './redux/connect';
 
 import ResponsiveLayout from './components/ResponsiveLayout';
@@ -29,7 +28,7 @@ export default class ResponsiveComponentsPlugin extends Plugin {
 	static hooks = {
 
 		// Create state in redux store's bluerain property
-		'bluerain.redux.reducers.bluerain': (reducers, ctx) => ({
+		'bluerain.redux.reducers.bluerain': (reducers, ctx: BlueRainType) => ({
 			...reducers,
 			...{
 				window: reducer
@@ -37,7 +36,7 @@ export default class ResponsiveComponentsPlugin extends Plugin {
 		}),
 
 		// Inject redux initial state
-		'bluerain.redux.initialState': (state, ctx) => ({
+		'bluerain.redux.initialState': (state, ctx: BlueRainType) => ({
 			...state,
 			...{
 				bluerain: {
@@ -46,7 +45,7 @@ export default class ResponsiveComponentsPlugin extends Plugin {
 			}
 		}),
 
-		'bluerain.redux.middlewares': (middlewares, ctx) => {
+		'bluerain.redux.middlewares': (middlewares, ctx: BlueRainType) => {
 			const middleware = store => next => action => {
 				if (action.type !== '@@BLUERAIN/SET_WINDOW_INFO') {
 					return next(action);
@@ -57,7 +56,7 @@ export default class ResponsiveComponentsPlugin extends Plugin {
 				const newSize = getWindowSize(action.width);
 
 				if (prevSize !== newSize) {
-					BR.Events.emit('plugin.window_info.resize', newSize, prevSize);
+					ctx.Events.emit('plugin.window_info.resize', newSize, prevSize);
 				}
 
 				next(action);
@@ -87,7 +86,7 @@ export default class ResponsiveComponentsPlugin extends Plugin {
 				return withWindowInfo(LayoutComponent);
 			};
 
-			ctx.Components.addHocs('SystemLayout',WithLayout);
+			ctx.Components.addHocs('SystemLayout', WithLayout);
 		}
 	};
 

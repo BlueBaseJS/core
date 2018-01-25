@@ -19,7 +19,7 @@ import { BlueRainType } from '../index';
  */
 export default class App {
 	appName: string;
-	slug: string;
+	slug?: string;
 	category?: string;
 	description?: string;
 	version?: string;
@@ -31,5 +31,6 @@ export default class App {
 
 	hooks?: { [id: string]: Function };
 	components?: { [id: string]: React.ComponentType<any> };
-	initialize?: (config: {}, ctx: BlueRainType) => void;
+
+	initialize?(config: {}, ctx: BlueRainType): void;
 }
