@@ -1,10 +1,10 @@
 import React from 'react';
-import { ViewProperties } from 'react-native';
+import { ViewProperties, ViewStyles } from 'react-native';
 import { withBlueRain, BlueRainType } from '../index';
 
 export interface SystemLayoutProperties extends ViewProperties {
 	children: React.ReactNode[];
-	style: {};
+	style?: ViewStyles;
 }
 
 const SystemLayout = (props: SystemLayoutProperties & { bluerain: BlueRainType }) => {
