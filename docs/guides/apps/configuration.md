@@ -1,16 +1,27 @@
 # Configuration
 
-Some times apps may need to have custom configurations for each differentusage. For example, a Hello World app may have the option to have a customizable hello message.
+Some times apps may need to have custom configurations for different projects. For example, a Hello World app may have the option to have a customizable hello message.
 
 ## Usage
-Apps can be configured in the `config.apps` object, where `config` is the object that is passed to the `boot` method.
+App configurations can be added to the `config` object int `bluerain.js` file. Continueing on our "Hello World" app example, this is what it's custom configurations will look like:
 
-So to configure the Hello World app create an object at `config.apps[${slug}]` where `slug` is the app's slug. 
+```javascript
+// bluerain.js
+{
+	// ...
+	config: {
+		apps: {
+			'hello-world': {
+				'helloMessage': 'Hi World!'
+			}
+		}
+	}
+	// ...
+}
+```
 
-To find out what configurations a app needs, please refer to the app documentation.
+To find out what configurations an app needs, please refer to the app documentation.
 
-## Context
-Plugin and App `initialize` functions get BlueRain context as second params.
 
 ## Accessing configurations inside App
 The app specific configurations are passed to the initialize method of the app class at system boot time.
@@ -24,39 +35,25 @@ class HelloWorldApp extends App {
 	static slug = 'hello-world';
 	
 	static initialize(config, ctx) {
-		// use config here
+		console.log(configs.helloMessage);
 	}
 }
 ```
-## Example Usage
-To use the Hello World app, first create a `apps` file (or edit your existing one), and import the app. This app's `slug` is `hello-world`.
+
+## Accessing App Configs via Context
+App configs can also be accessed anywhere in the project through BlueRain context:
 
 ```javascript
-const helloWorldApp = require('bluerain-app-hello-world');
+import { withBlueRain } from 'bluerain-os';
 
-module.exports = [helloWorldApp]
-```
-Now create a new `config.js` file (or edit your existing one) and put the following content in this file:
+const SomeComponent = (props) => {
 
-```javascript
-module.exports = {
-	apps: {
-		'hello-world': {
-			'helloMessage': 'Hi World!'
-		}
-	}
+	const BR = props.bluerain;
+	const Text = BR.Components.get('Text');
+	const config = BR.Configs.get('apps.hello-world');
+
+	return <Text>{config.helloMessage}</Text>
 }
+
+export default withBlueRain(SomeComponent);
 ```
-Note that we used the same custom key here to reference the app.
- 
-At last, boot your client with the app:
-
-```js
-import BR from '@blueeast/bluerain-os';
-
-const config = require('./config');
-const apps = require('./apps');
-
-BR.boot({ config, apps });
-```
- 

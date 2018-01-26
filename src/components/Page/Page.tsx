@@ -1,13 +1,8 @@
 import React from 'react';
+import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
 import { BlueRainType, withBlueRain } from '../../index';
 
-export type PageProps = {
-	children: Node,
-	style: {},
-	bluerain: BlueRainType
-};
-
-const  Page = (props: PageProps) => {
+const  Page = (props: ViewProperties & { bluerain: BlueRainType }) => {
 
 	const { style, bluerain: BR, ...others } = props;
 	const View = BR.Components.get('View');

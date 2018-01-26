@@ -1,11 +1,19 @@
 import React from 'react';
-import RX from 'reactxp';
 import { Map } from 'immutable';
 import BR, { App } from '../../src';
 
 describe('BR.boot func tests', () => {
 	document.body.innerHTML = '<div class="app-container"></div>';
 
+
+	class HelloWorld extends App {
+		static appName = 'Hello World';
+		render() {
+			return (
+				<div>Hello world</div>
+			);
+		}
+	}
 	it('should throw error b/c null', () => {
 		expect(() => BR.boot()).toThrow();
 	});
@@ -30,16 +38,7 @@ describe('BR.boot func tests', () => {
 		BR.Components.data = Map();
 		BR.Plugins.data = Map();
 		BR.Filters.data = Map();
-		class HelloWorld extends App {
-			static appName = 'Hello World';
-			render() {
-				return (
-					<RX.View>
-						<RX.Text>Hello world</RX.Text>
-					</RX.View>
-				);
-			}
-		}
+
 		expect(() =>
 			BR.boot({ apps: [HelloWorld], config: { title: 'Hello OS!' },renderApp:false })
 		).toThrow();
@@ -50,16 +49,7 @@ describe('BR.boot func tests', () => {
 		BR.Plugins.data = Map();
 		BR.Filters.data = Map();
 		BR.Apps.data = Map();
-		class HelloWorld extends App {
-			static appName = 'Hello World';
-			render() {
-				return (
-					<RX.View>
-						<RX.Text>Hello world</RX.Text>
-					</RX.View>
-				);
-			}
-		}
+
 		expect(() =>
 			BR.boot({
 				apps: [HelloWorld],

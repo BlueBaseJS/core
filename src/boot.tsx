@@ -1,5 +1,5 @@
 
-import React, {  ComponentType } from 'react';
+import React, { ComponentType } from 'react';
 import BR, { App, Plugin } from './index';
 import registerComponents from './registerComponents';
 import defaultConfigs, { ConfigType } from './config';

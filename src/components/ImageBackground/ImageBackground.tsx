@@ -1,15 +1,18 @@
 import React from 'react';
-// import ImageProperties from 'react-native';
-import { withBlueRain } from '../../index';
+import { ImageProperties, ImageStyle, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
+import { withBlueRain, BlueRainType } from '../../index';
 
-export type ImageBackgroundProps = {
-
-};
+export interface ImageBackgroundProperties extends ImageProperties {
+	style?: ViewStyle;
+	imageStyle?: ImageStyle;
+	children?: React.ReactNode[];
+	backgroundColor?: string;
+}
 
 /**
  * Very simple drop-in replacement for <Image> which supports nesting views.
  */
-const ImageBackground = (props) => {
+const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRainType }) => {
 
 	const { bluerain: BR, children, ...others } = props;
 	const style = props.style || {};
