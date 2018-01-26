@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-os",
-  "version": "1.0.0-aplha-11",
+  "version": "1.0.0-alpha-11",
   "description": "A browser based OS, made with React JS",
   "keywords": [],
   "main": "dist/index.js",
@@ -98,7 +98,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "recompose": "^0.25.0"
- },
+  },
   "devDependencies": {
     "@blueeast/tslint-config-blueeast": "^0.3.0",
     "babel": "^6.23.0",
