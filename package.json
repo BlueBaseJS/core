@@ -81,7 +81,8 @@
     }
   ],
   "dependencies": {
-   "eventemitter3": "^2.0.3",
+    "@blueeast/bluerain-ui-interfaces": "^1.0.2",
+    "eventemitter3": "^2.0.3",
     "html-tags": "^2.0.0",
     "immutable": "^3.8.2",
     "is-electron": "^2.1.0",
@@ -95,7 +96,6 @@
     "lodash.set": "^4.3.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-native": "^0.52.1",
     "react-redux": "^5.0.6",
     "recompose": "^0.25.0"
  },

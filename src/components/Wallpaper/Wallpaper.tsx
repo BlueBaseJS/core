@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewProperties } from 'react-native';
+import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
 import { withBlueRain, BlueRainType } from '../../index';
 import ImageBackground from '../ImageBackground';
 
