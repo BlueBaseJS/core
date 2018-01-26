@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-os",
-  "version": "1.0.0-alpha-12",
+  "version": "1.0.0-alpha-13",
   "description": "A browser based OS, made with React JS",
   "keywords": [],
   "main": "dist/index.js",
