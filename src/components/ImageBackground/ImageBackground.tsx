@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageProperties, ImageStyle, ViewStyle } from 'react-native';
+import { ImageProperties, ImageStyle, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import { withBlueRain, BlueRainType } from '../../index';
 
 export interface ImageBackgroundProperties extends ImageProperties {

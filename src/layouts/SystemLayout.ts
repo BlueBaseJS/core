@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewProperties, ViewStyles } from 'react-native';
+import { ViewProperties, ViewStyles } from '@blueeast/bluerain-ui-interfaces';
 import { withBlueRain, BlueRainType } from '../index';
 
 export interface SystemLayoutProperties extends ViewProperties {

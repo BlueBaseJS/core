@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewProperties } from 'react-native';
+import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
 import { BlueRainType, withBlueRain } from '../../index';
 
 const  Page = (props: ViewProperties & { bluerain: BlueRainType }) => {
