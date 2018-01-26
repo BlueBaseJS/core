@@ -1,21 +1,17 @@
 import React from 'react';
-// import ImageProperties from 'react-native';
-import { withBlueRain } from '../../index';
+import { ViewProperties } from 'react-native';
+import { withBlueRain, BlueRainType } from '../../index';
 import ImageBackground from '../ImageBackground';
-
-export type WallpaperProps = {
-
-};
 
 /**
  * BlueRain wallpaper, reads wallpaper configs from configs.wallpaper.
  */
-const Wallpaper = (props) => {
+const Wallpaper = (props: ViewProperties & { bluerain: BlueRainType }) => {
 
-	const { bluerain: BR, style, resizeMode, ...others } = props;
+	const { bluerain: BR, style, ...others } = props;
 	const wallpaper = BR.Configs.get('wallpaper');
 
-	const styles = { ...style, flex: 1 };
+	const styles = BR.Utils.createStyleSheet([style, { flex: 1 }]);
 
 	return (
 		<ImageBackground style={styles} {...wallpaper} {...others} />

@@ -9,10 +9,15 @@
 ## Guides
 * [Apps](guides/apps/README.md)
   * [Installation](guides/apps/installation.md)
-  * [Configuration](guides/apps/configuration.md)
   * [Creating an App](guides/apps/creating-an-app.md)
+  * [Configuration](guides/apps/configuration.md)
 
 * [Components](guides/components/README.md)
+  * [Registering Components](guides/components/registering-components.md)
+  * [Extending Components](guides/components/extending-components.md)
+  * [Replacing Components](guides/components/replacing-components.md)
+  * [Accessing Raw Components](guides/components/accessing-raw-components.md)
+  * [Components & HoCs](guides/components/components-and-hocs.md)
 
 * [Filters](guides/filters/README.md)
   * [Known Filters](guides/filters/known-filters.md)

@@ -1,67 +1,65 @@
 import React from 'react';
+import { ViewProperties, ImageStyle, ViewStyle, TextStyle } from 'react-native';
 import { withBlueRain, BlueRainType } from '../../index';
 
-type ComponentStateProps = {
+export interface ComponentStateProps extends ViewProperties {
 	/**
 	 * Image Component, if provided, imageSource will be ignored
 	 */
-	image?: React.ComponentType,
+	image?: React.ComponentType;
 
 	/**
 	 * Image styles
 	 */
-	imageStyle?: {},
+	imageStyle?: ImageStyle;
 
 	/**
 	 * Image source
 	 */
-	imageSource?: string,
+	imageSource?: string;
 
 	/**
 	 * Title text
 	 */
-	title: string,
+	title: string;
 
 	/**
 	 * Title style
 	 */
-	titleStyle?: {},
+	titleStyle?: TextStyle;
 
 	/**
 	 * Description Text
 	 */
-	description: string,
+	description: string;
 
 	/**
 	 * Description style
 	 */
-	descriptionStyle?: {},
-
-	/**
-	 * Styles
-	 */
-	style?: {},
+	descriptionStyle?: TextStyle;
 
 	/**
 	 * Button Component, if provided, other button props will be ignored
 	 */
-	button?: React.ComponentType,
+	button?: React.ComponentType;
 
 	/**
 	 * Button title
 	 */
-	buttonTitle?: string,
+	buttonTitle?: string;
 
 	/**
 	 * Button styles
 	 */
-	buttonStyle?: {},
+	buttonStyle?: ViewStyle;
 
 	/**
 	 * Button onPress handler
 	 */
-	buttonOnPress?: Function
-};
+	buttonOnPress?: Function;
+
+	style:ViewStyle
+}
 
 const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType }) => {
 
@@ -116,7 +114,6 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
     {(ButtonC) ? <ButtonC /> : null}
   </View>
 	);
-
 };
 
 export default withBlueRain(ComponentState);
