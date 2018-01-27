@@ -50,8 +50,13 @@ export default function(
 		throw new Error(`No platform added to BlueRain. Check docs for more info: https://blueeast.gitbooks.io/bluerain-os/`);
 	}
 
-	BR.Plugins.registerMany(platform);
+	// =[ System Lifecycle Event ]= Platform Registered
+	BR.Platform.registerMany(platform);
 	BR.Filters.run('bluerain.system.platform.registered');
+
+	// =[ System Lifecycle Event ]= Platform Initialized
+	BR.Platform.initializeAll();
+	BR.Filters.run('bluerain.system.platform.initialized');
 
 	// =[ System Lifecycle Event ]= Boot Start
 	BR.Filters.run('bluerain.system.boot.start');

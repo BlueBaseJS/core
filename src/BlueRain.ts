@@ -50,7 +50,6 @@ export type BlueRainType = {
  */
 const filtersObj = new FilterRegistry();
 const eventsObj = new EventRegistry();
-const pluginObj = new PluginRegistry();
 const BlueRain: BlueRainType = {
 	// BlueRain
 	Apps: new AppRegistry(),
@@ -59,8 +58,8 @@ const BlueRain: BlueRainType = {
 	Events: eventsObj,
 	Filters: filtersObj,
 	Hooks: new HooksRegistry(filtersObj, eventsObj),
-	Plugins: pluginObj,
-	Platform: pluginObj,
+	Plugins: new PluginRegistry(),
+	Platform: new PluginRegistry(),
 
 	// Miscellaneous
 	Utils: {
