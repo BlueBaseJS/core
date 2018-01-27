@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-os",
-  "version": "1.0.0-aplha-11",
+  "version": "1.0.0-alpha-13",
   "description": "A browser based OS, made with React JS",
   "keywords": [],
   "main": "dist/index.js",
@@ -20,8 +20,8 @@
   },
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
-    "prebuild": "rimraf dist",
-    "build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
+		"prebuild": "rimraf dist",
+		"build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
     "start": "tsc -w & rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -94,11 +94,12 @@
     "lodash.merge": "^4.6.0",
     "lodash.reject": "^4.6.0",
     "lodash.set": "^4.3.2",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "recompose": "^0.25.0"
- },
+  },
   "devDependencies": {
     "@blueeast/tslint-config-blueeast": "^0.3.0",
     "babel": "^6.23.0",
