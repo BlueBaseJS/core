@@ -1,6 +1,6 @@
 {
   "name": "@blueeast/bluerain-os",
-  "version": "1.0.0-alpha-13",
+  "version": "1.0.0-alpha-14",
   "description": "A browser based OS, made with React JS",
   "keywords": [],
   "main": "dist/index.js",
@@ -20,8 +20,8 @@
   },
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
-		"prebuild": "rimraf dist",
-		"build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
+    "prebuild": "rimraf dist",
+    "build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
     "start": "tsc -w & rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
