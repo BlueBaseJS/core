@@ -11,7 +11,7 @@ const Wallpaper = (props: ViewProperties & { bluerain: BlueRainType }) => {
 	const { bluerain: BR, style, ...others } = props;
 	const wallpaper = BR.Configs.get('wallpaper');
 
-	const styles = BR.Utils.createStyleSheet([style, { flex: 1 }]);
+	const styles = { ...style, flex: 1 };
 
 	return (
 		<ImageBackground style={styles} {...wallpaper} {...others} />

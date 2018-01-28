@@ -78,18 +78,24 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 	const Image = BR.Components.get('Image');
 	const Button = BR.Components.get('Button');
 
-	const style = BR.Utils.createStyleSheet([{
+	const style = {
 		alignItems: 'center',
 		padding: 16,
-	}, props.style]);
+	};
 
-	const titleStyle = BR.Utils.createStyleSheet([{}, props.titleStyle]);
-	const descriptionStyle = BR.Utils.createStyleSheet([{}, props.descriptionStyle]);
+	const stylesheet = [
+		BR.Utils.createStyleSheet(style),
+		BR.Utils.createStyleSheet(props.style || {})
+	];
+
+	const titleStyle = BR.Utils.createStyleSheet(props.titleStyle || {});
+	const descriptionStyle = BR.Utils.createStyleSheet(props.descriptionStyle || {});
 
 	// Image
-	const imageStyle = BR.Utils.createStyleSheet([{
-		width: 100
-	}, props.imageStyle]);
+	const imageStyle = [
+		BR.Utils.createStyleSheet({ width: 100 }),
+		BR.Utils.createStyleSheet(props.imageStyle || {}),
+	];
 
 	let ImageC = ImageComponent || null;
 	if (!ImageC && imageSource) {
@@ -97,17 +103,18 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 	}
 
 	// Button
-	const buttonStyle = BR.Utils.createStyleSheet([{
-		paddingTop: 16
-	}, props.buttonStyle]);
+	const buttonStyle = [
+		BR.Utils.createStyleSheet({ paddingTop: 16 }),
+		BR.Utils.createStyleSheet(props.buttonStyle || {}),
+	];
 
 	let ButtonC = ButtonComponent || null;
 	if (!ButtonC && buttonTitle) {
-		ButtonC = () => (<Button style={buttonStyle} onPress={buttonOnPress} title={buttonTitle} />);
+		ButtonC = () => (<Button style={buttonStyle} onPress={buttonOnPress}><Text>{buttonTitle}</Text></Button>);
 	}
 
 	return (
-  <View style={style}>
+  <View style={stylesheet}>
     {(ImageC) ? <ImageC /> : null}
     {(title) ? <Text style={titleStyle} >{title}</Text> : null}
     {(description) ? <Text style={descriptionStyle} >{description}</Text> : null}

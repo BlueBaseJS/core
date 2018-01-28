@@ -8,14 +8,15 @@ import Icon from '../components/Icon';
  *
  * @returns {React.Component} The layout react component
  */
-const IndexPage = (props: { bluerain: BlueRainType }) => {
+const IndexPage = (props: { bluerain: any }) => {
 
 	const BR = props.bluerain;
 
-	const pageStyle = BR.Utils.createStyleSheet({
+	const pageStyle = {
 		justifyContent: 'center',
+		alignItems: 'center',
 		padding: 20
-	});
+	};
 
 	const schema = {
 		component: 'Wallpaper',

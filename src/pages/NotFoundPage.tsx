@@ -12,10 +12,11 @@ const NotFoundPage = (props: { bluerain: BlueRainType }) => {
 
 	const BR = props.bluerain;
 
-	const pageStyle = BR.Utils.createStyleSheet({
+	const pageStyle = {
 		justifyContent: 'center',
+		alignItems: 'center',
 		padding: 20
-	});
+	};
 
 	const schema = {
 		component: 'Wallpaper',
