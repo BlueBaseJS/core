@@ -1,8 +1,5 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
-import {mount, shallow,  render, configure} from 'enzyme';
 import Components from '../../src/registerComponents';
-configure({ adapter: new Adapter() });
 import BR,{Plugin} from '../../src/index';
 
 class Reactxp  extends Plugin {
