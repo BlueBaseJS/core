@@ -12,7 +12,8 @@
   "author": "BlueEast Team <code@blueeast.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "http:git@github.com:BlueEastCode/bluerain-os.git",
+    "dry-run": false
   },
   "license": "MIT",
   "engines": {
