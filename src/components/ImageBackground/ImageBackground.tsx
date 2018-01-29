@@ -42,7 +42,10 @@ const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRain
 		style.backgroundColor = props.backgroundColor;
 	}
 
-	const imageStyleSheet = BR.Utils.createStyleSheet([imageStyle, props.imageStyle]);
+	const imageStyleSheet = [
+		BR.Utils.createStyleSheet(imageStyle),
+		BR.Utils.createStyleSheet(props.imageStyle || {})
+	];
 
 	return (
 		<View style={BR.Utils.createStyleSheet(style)}>
