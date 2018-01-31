@@ -1,0 +1,64 @@
+import React from 'react';
+import { ViewProperties, ImageStyle, ViewStyle, TextStyle } from '@blueeast/bluerain-ui-interfaces';
+import { BlueRainType } from '../../index';
+
+export interface ComponentStateButtonProps extends ViewProperties {
+	/**
+	 * Button Component, if provided, other button props will be ignored
+	 */
+	button?: React.ComponentType;
+
+	/**
+	 * Button title
+	 */
+	buttonTitle?: string;
+
+	/**
+	 * Button styles
+	 */
+	buttonStyle?: ViewStyle;
+
+	/**
+	 * Button onPress handler
+	 */
+	buttonOnPress?: Function;
+
+	bluerain: BlueRainType;
+}
+
+const ComponentStateButton = (props: ComponentStateButtonProps) => {
+
+	const {
+		button: ButtonComponent,
+		buttonTitle,
+		buttonOnPress,
+		buttonStyle,
+		bluerain: BR
+	} = props;
+
+	if (ButtonComponent) {
+
+		return (<ButtonComponent />);
+
+	} else if (buttonTitle) {
+
+		const Button = BR.Components.get('Button');
+		const Text = BR.Components.get('Text');
+
+		const stylesheet = {
+			marginTop: 10,
+			...buttonStyle
+		};
+
+		return (
+			<Button onPress={buttonOnPress} style={BR.Utils.createStyleSheet(stylesheet)}>
+				<Text>{buttonTitle}</Text>
+			</Button>
+		);
+
+	} else {
+		return null;
+	}
+};
+
+export default ComponentStateButton;

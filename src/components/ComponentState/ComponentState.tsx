@@ -2,6 +2,10 @@ import React from 'react';
 import { ViewProperties, ImageStyle, ViewStyle, TextStyle } from '@blueeast/bluerain-ui-interfaces';
 import { withBlueRain, BlueRainType } from '../../index';
 
+import ComponentStateImage from './ComponentStateImage';
+import ComponentStateButton from './ComponentStateButton';
+import ComponentStateText from './ComponentStateText';
+
 export interface ComponentStateProps extends ViewProperties {
 	/**
 	 * Image Component, if provided, imageSource will be ignored
@@ -58,69 +62,39 @@ export interface ComponentStateProps extends ViewProperties {
 	 */
 	buttonOnPress?: Function;
 
-	style:ViewStyle
+	style?: ViewStyle
 }
 
 const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType }) => {
 	const {
-		image: ImageComponent,
-		imageSource,
 		title,
+		titleStyle,
 		description,
-		button: ButtonComponent,
-		buttonTitle,
-		buttonOnPress,
+		descriptionStyle,
 		bluerain: BR
 	} = props;
+
 	const View = BR.Components.get('View');
 	const Text = BR.Components.get('Text');
-	const Image = BR.Components.get('Image');
-	const Button = BR.Components.get('Button');
 
 	const style = {
 		alignItems: 'center',
 		padding: 16,
+		...props.style
 	};
 
-	const stylesheet = [
-		BR.Utils.createStyleSheet(style),
-		BR.Utils.createStyleSheet(props.style || {})
-	];
-
-	const titleStyle = BR.Utils.createStyleSheet(props.titleStyle || {});
-	const descriptionStyle = BR.Utils.createStyleSheet(props.descriptionStyle || {});
-
-	// Image
-	const imageStyle = [
-		BR.Utils.createStyleSheet({ width: 100 }),
-		BR.Utils.createStyleSheet(props.imageStyle || {}),
-	];
-
-	let ImageC = ImageComponent || null;
-	console.log(ImageC,imageSource);
-
-	if (!ImageC && imageSource) {
-		console.log('aaakakakakakakkkkakakakakakkkakakak');
-		ImageC = () => (<Image style={imageStyle} source={imageSource} />);
-	}
-
-	// Button
-	const buttonStyle = [
-		BR.Utils.createStyleSheet({ paddingTop: 16 }),
-		BR.Utils.createStyleSheet(props.buttonStyle || {}),
-	];
-
-	let ButtonC = ButtonComponent || null;
-	if (!ButtonC && buttonTitle) {
-		ButtonC = () => (<Button style={buttonStyle} onPress={buttonOnPress}><Text>{buttonTitle}</Text></Button>);
-	}
+	const titleStylesheet = {
+		fontSize: 18,
+		fontWeight: 600,
+		...titleStyle
+ 	};
 
 	return (
-  <View style={stylesheet}>
-    {(ImageC) ? <ImageC /> : null}
-    {(title) ? <Text style={titleStyle} >{title}</Text> : null}
-    {(description) ? <Text style={descriptionStyle} >{description}</Text> : null}
-    {(ButtonC) ? <ButtonC /> : null}
+  <View style={BR.Utils.createStyleSheet(style)}>
+    <ComponentStateImage {...props} />
+    <ComponentStateText text={title} style={titleStylesheet} bluerain={BR} />
+    <ComponentStateText text={description} style={descriptionStyle} bluerain={BR} />
+    <ComponentStateButton {...props} />
   </View>
 	);
 };
