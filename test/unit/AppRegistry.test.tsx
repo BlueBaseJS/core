@@ -156,11 +156,23 @@ describe('App registry tests', () => {
 	});
 	describe('initialize apps', () => {
 		it('should initialize all apps', () => {
+
+			class DefaultApps extends App {
+				static appName = 'Hello React World';
+				render() {
+					return <div>hello world</div>;
+				}
+				static hooks=['New'];
+				// static default=[DefaultApps];
+				static initialize() {}
+			}
 			class HelloReactApp extends App {
 				static appName = 'Hello React World';
 				render() {
 					return <div>hello world</div>;
 				}
+				static hooks=['New'];
+				static components=['component'];
 				static initialize() {}
 			}
 			BR.Apps.replace('hello-react-world', HelloReactApp);
@@ -168,6 +180,11 @@ describe('App registry tests', () => {
 		});
 	});
 	describe('remove app', () => {
+
+		it('should throw error b/c name is undefined', () => {
+			expect(() => BR.Apps.remove(undefined)).toThrow();
+		});
+
 		it('should throw error b/c name is undefined', () => {
 			expect(() => BR.Apps.remove(undefined)).toThrow();
 		});
@@ -189,9 +206,8 @@ describe('App registry tests', () => {
 	});
 
 	describe('register many app', () => {
-		it('should throw error b/c app is not array', () => {
-			expect(() => BR.Apps.registerMany({})).toThrow();
-		});
+
+
 		it('should be empty', () => {
 			BR.Apps.registerMany();
 			expect(BR.Apps.data.count()).toEqual(0);
@@ -200,6 +216,10 @@ describe('App registry tests', () => {
 			expect(() => BR.Apps.registerMany(['string', {}])).toThrow(
 				'App name not provided.'
 			);
+		});
+
+		it('should throw error Apps type is not Array apps', () => {
+			expect(() => BR.Apps.registerMany('New')).toThrow();
 		});
 		it('should have hello world app', () => {
 			class TestApp extends React.Component {

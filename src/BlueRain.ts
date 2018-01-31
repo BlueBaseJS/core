@@ -28,7 +28,7 @@ export type BlueRainType = {
 		createStyleSheet: any;
 	};
 
-	refs: { [id: string]: {} };
+	refs: { [id: string]: any };
 
 	boot: Function;
 };
