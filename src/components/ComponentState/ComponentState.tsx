@@ -62,7 +62,6 @@ export interface ComponentStateProps extends ViewProperties {
 }
 
 const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType }) => {
-
 	const {
 		image: ImageComponent,
 		imageSource,
@@ -98,7 +97,10 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 	];
 
 	let ImageC = ImageComponent || null;
+	console.log(ImageC,imageSource);
+
 	if (!ImageC && imageSource) {
+		console.log('aaakakakakakakkkkakakakakakkkakakak');
 		ImageC = () => (<Image style={imageStyle} source={imageSource} />);
 	}
 

@@ -1,24 +1,23 @@
-import React from 'react';
+import { ComponentType as ReactElement } from 'react';
 import compose from 'lodash.compose';
 import isNil from 'lodash.isnil';
 
 import MapRegistry from './MapRegistry';
 
-export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
+export type ComponentRegistryHocItem = () => void | any[];
 
 export type ComponentRegistryItem = {
-	rawComponent: React.ComponentType<any>;
+	rawComponent: ReactElement<any>;
 	hocs: ComponentRegistryHocItem[];
 };
 
 /**
  * All system components are stored in this registry
- * @property {Map<string, {rawComponent: React.ComponentType<*>, hocs: Array<Function | Array<any>>}>} data Storage
- * of all components
+ * @property {Map<string, {rawComponent: ReactElement<*>, hocs: Array<Function | Array<any>>}>} data Storage of all
+ *  components
  */
 class ComponentRegistry extends MapRegistry {
 	// data: Map<string, ComponentRegistryItem>;
-
 	constructor() {
 		super('ComponentRegistry');
 	}
@@ -27,13 +26,13 @@ class ComponentRegistry extends MapRegistry {
 	 * and one or more optional higher order components.To be deprecated in 2.0.0
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React.ComponentType<*>} rawComponent Interchangeable/extendable component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 *
 	 */
 	register(
 		name: string,
-		rawComponent: React.ComponentType<any> | any,
+		rawComponent: ReactElement<any> | any,
 		...hocs: ComponentRegistryHocItem[]
 	) {
 		console.warn(
@@ -47,7 +46,7 @@ class ComponentRegistry extends MapRegistry {
 	 * and one or more optional higher order components.
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React.ComponentType<*>} rawComponent Interchangeable/extendable component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
@@ -56,17 +55,7 @@ class ComponentRegistry extends MapRegistry {
 	 *
 	 *
 	 */
-	set(
-		name: string,
-		rawComponent: React.ComponentType<any> | any,
-		...hocs: ComponentRegistryHocItem[]
-	) {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}. Please provide valid name while adding component`
-			);
-		}
-
+	set(name: string, rawComponent: ReactElement<any> | any, ...hocs: ComponentRegistryHocItem[]) {
 		if (isNil(rawComponent)) {
 			throw new Error(
 				'rawComponent is required to register a component.' +
@@ -106,15 +95,14 @@ class ComponentRegistry extends MapRegistry {
 	 * Its accepts multiple component names.It iterates arguments and returns first found registered component.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React.ComponentType<*>} A (wrapped) React component
+	 * @returns {Function|ReactElement<*>} A (wrapped) React component
 	 */
-	get(...name: string[]): React.ComponentType<any> {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name.toString()}.Please provide valid name while getting component`
-			);
-		}
-
+	get(...name: string[]): ReactElement<any> {
+		// if (isNil(name)) {
+		// 	throw new Error(
+		// 		`Component name cannot be ${name.toString()}.Please provide valid name while getting component`
+		// 	);
+		// }
 		let component;
 		for (const componentName of name) {
 			if (this.has(componentName)) {
@@ -135,15 +123,14 @@ class ComponentRegistry extends MapRegistry {
 	 * without the possible HOCs wrapping it.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React.ComponentType<*>} An interchangeable/extendable React component
+	 * @returns {Function|ReactElement<*>} An interchangeable/extendable React component
 	 */
-	getRawComponent(name: string): React.ComponentType<any> {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}.Please provide valid name while getting raw component`
-			);
-		}
-
+	getRawComponent(name: string): ReactElement<any> {
+		// if (isNil(name)) {
+		// 	throw new Error(
+		// 		`Component name cannot be ${name}.Please provide valid name while getting raw component`
+		// 	);
+		// }
 		if (!this.has(name)) {
 			throw new Error(
 				`Component ${name} not registered. Please register component before getting raw component`
@@ -159,21 +146,20 @@ class ComponentRegistry extends MapRegistry {
 	 * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React.ComponentType<*>} rawComponent Interchangeable/extendable component.
+	 * @param {ReactElement<*>} rawComponent Interchangeable/extendable component.
 	 * @param {...Function} hocs The HOCs to compose with the raw component.
-	 * @returns {Function|React.ComponentType<*>} A component callable with Components[name]
+	 * @returns {Function|ReactElement<*>} A component callable with Components[name]
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
-	replace(name: string, newComponent: React.ComponentType<any>, ...newHocs: Function[]) {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}.Please valid component name while replacing it`
-			);
-		}
-
+	replace(name: string, newComponent: ReactElement<any>, ...newHocs: Function[]) {
+		// if (isNil(name)) {
+		// 	throw new Error(
+		// 		`Component name cannot be ${name}.Please valid component name while replacing it`
+		// 	);
+		// }
 		if (!this.has(name)) {
 			throw new Error(
 				`Component ${name} not registered.Please register component before replacing it`

@@ -12,14 +12,18 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'HelloWorldPlugin';
 				initialize() {}
 			}
+
+
 			BR.Plugins.set(HelloWorldPlugin);
 			expect(BR.Plugins.data.has('hello-world-plugin')).toEqual(true);
 		});
-		it('should throw error b/c name is undefined', () => {
-			expect(() => BR.Plugins.set(undefined)).toThrow();
-		});
+
 		it('should throw error b/c name is null', () => {
-			expect(() => BR.Plugins.set(null)).toThrow();
+			class NewPlugin extends Plugin {
+				static pluginName = 'NewPlugin';
+				initialize() {}
+			}
+			expect(() => BR.Plugins.register(NewPlugin,'dummy')).not.toThrow();
 		});
 		it('slug Create other recognized static properties', () => {
 			const plugin = BR.Plugins.data.get('hello-world-plugin');
@@ -113,6 +117,8 @@ describe('Plugin registry tests', () => {
 			class HelloPlugin extends Plugin {
 				static pluginName = 'WithSlugPlugin';
 				static slug = 'with-slug-1';
+				static hooks=['plugins'];
+
 				initialize() {}
 			}
 			expect(() =>
@@ -137,7 +143,17 @@ describe('Plugin registry tests', () => {
 	describe('initialize plugins', () => {
 		it('should initialize all plugins', () => {
 			BR.Configs.set('plugins.hello-react-world', '3');
+
+
 			class HelloReactplugin extends Plugin {
+
+			static hooks=[
+				'bluerain.system.dummy'
+			];
+
+			// static default=[DefaultPlugin];
+
+			   static components=['New'];
 				static pluginName = 'Hello React World';
 				render() {
 					return <div>hello world</div>;
