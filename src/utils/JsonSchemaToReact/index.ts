@@ -9,15 +9,15 @@ import set from 'lodash.set';
 import DOM from './dom';
 import BR from '../../index';
 
-export type ComponentSchema = {
+export interface JsonComponentSchema {
 	component: string | ReactElement<any>;
 	text?: string;
 	props?: { [key: string]: any };
-	children?: ComponentSchema[];
-};
+	children?: JsonComponentSchema[];
+}
 
 export default class JsonToReact {
-	resolveComponent(schema: ComponentSchema): any | string {
+	resolveComponent(schema: JsonComponentSchema): any | string {
 		if (Object.prototype.hasOwnProperty.call(schema, 'component')) {
 			if (schema.component === Object(schema.component)) {
 				return schema.component;
@@ -41,7 +41,7 @@ export default class JsonToReact {
 	}
 
 	parseSchema(
-		schema: ComponentSchema | ComponentSchema[]
+		schema: JsonComponentSchema | JsonComponentSchema[]
 	): ReactElement<any> | Array<ReactElement<any>> | null {
 		if (schema === undefined || schema === null) {
 			throw new Error(`schema cannot be ${schema}`);
@@ -56,7 +56,7 @@ export default class JsonToReact {
 		return element || elements;
 	}
 
-	parseSubSchemas(subSchemas: ComponentSchema[] = []): any[] /* cheated here */ {
+	parseSubSchemas(subSchemas: JsonComponentSchema[] = []): any[] /* cheated here */ {
 		const Components: any[] = [];
 		let index = 0;
 		for (const subSchema of subSchemas) {
@@ -76,7 +76,7 @@ export default class JsonToReact {
 		return Components;
 	}
 
-	createComponent(schema: ComponentSchema): ReactElement<any> {
+	createComponent(schema: JsonComponentSchema): ReactElement<any> {
 		const { text, props } = schema;
 		if (
 			Object.prototype.hasOwnProperty.call(schema, 'component') &&
@@ -90,7 +90,7 @@ export default class JsonToReact {
 		return createElement(Component, props, Children);
 	}
 
-	resolveComponentChildren(schema: ComponentSchema) {
+	resolveComponentChildren(schema: JsonComponentSchema) {
 		return schema.children ? this.parseSchema(schema.children) : undefined;
 	}
 }
@@ -100,7 +100,7 @@ export default class JsonToReact {
  * @param {*} schema
  */
 export const parseJsonSchema = (
-	schema: ComponentSchema
+	schema: JsonComponentSchema
 ): ReactElement<any> | Array<ReactElement<any>> | null => {
 	const obj = new JsonToReact();
 	return obj.parseSchema(schema);
