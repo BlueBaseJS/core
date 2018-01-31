@@ -5,7 +5,9 @@ import ImageBackground from './components/ImageBackground';
 import Page from './components/Page';
 import Wallpaper from './components/Wallpaper';
 
+import CenterLayout from './layouts/CenterLayout';
 import SystemLayout from './layouts/SystemLayout';
+
 import IndexPage from './pages/IndexPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -19,6 +21,7 @@ export default () => {
 	BR.Components.set('Wallpaper', Wallpaper);
 
 	/* Register Layout Components */
+	BR.Components.set('CenterLayout', CenterLayout);
 	BR.Components.set('SystemLayout', SystemLayout);
 
 	/* Register Pages */
