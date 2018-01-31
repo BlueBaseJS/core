@@ -9,9 +9,9 @@ export { withBlueRain, BlueRainProvider } from './Provider';
 
 // This will have all registries as objects
 export default BlueRain;
-export { ConfigType } from './config';
 
 // Typings
+export { ConfigType } from './config';
 export { BlueRainType } from './BlueRain';
 export { JsonComponentSchema } from './utils/JsonSchemaToReact';
 export { ComponentRegistryItem, ComponentRegistryHocItem } from './registries/ComponentRegistry';

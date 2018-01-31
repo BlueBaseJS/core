@@ -1,29 +1,28 @@
 import React from 'react';
 import { withBlueRain, BlueRainType } from '../index';
-import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
+import { ViewProperties, ViewStyles } from '@blueeast/bluerain-ui-interfaces';
 
 export interface CenterLayoutProperties extends ViewProperties {
-	children: React.ReactNode[];
-	bluerain: BlueRainType;
+	children: React.ReactNode[],
+	style: ViewStyles
 }
 
-const CenterLayout = (props: CenterLayoutProperties) => {
+const CenterLayout = (props: CenterLayoutProperties & { bluerain: BlueRainType }) => {
 
-	const { children, bluerain: BR, ...other } = props;
-	const Page = BR.Components.get('Page');
-	const Wallpaper = BR.Components.get('Wallpaper');
+	const { bluerain: BR, style, ...other } = props;
+	const View = BR.Components.get('View');
 
-	const pageStyle = {
-		justifyContent: 'center',
+	const defaultStyle = {
 		alignItems: 'center',
-		padding: 20
+		justifyContent: 'center',
+		flex: 1,
 	};
 
-	return (
-		<Wallpaper {...other}>
-			<Page style={pageStyle}>{children}</Page>
-		</Wallpaper>
-	);
+	const stylesheet = [
+		BR.Utils.createStyleSheet(defaultStyle),
+		BR.Utils.createStyleSheet(style || {})
+	];
+	return (<View style={defaultStyle} {...other} />);
 };
 
-export default CenterLayout;
+export default withBlueRain(CenterLayout);
