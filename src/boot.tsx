@@ -43,7 +43,7 @@ export default function(
 	const config = options.config || [];
 	const platform = options.platform || [];
 
-	checkHooks();
+	// checkHooks();
 
 	// Register plaform
 	if (platform.length === 0) {
