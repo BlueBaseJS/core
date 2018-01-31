@@ -35,11 +35,4 @@ describe('BR.boot func tests', () => {
 		const value = BR.Hooks.run('bluerain.hook', 'both', 1);
 		expect(value).toEqual(1);
 	});
-	it('should run bluerain.hook hook syncronously', () => {
-		const value = BR.Hooks.run('bluerain.hook', 'sync', 1);
-		expect(value).toEqual(1);
-	});
-	it('should run test.hook hook asyncronusly', () => {
-		BR.Hooks.run('test.hook', 'async');
-	});
 });
