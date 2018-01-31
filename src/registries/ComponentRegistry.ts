@@ -4,7 +4,7 @@ import isNil from 'lodash.isnil';
 
 import MapRegistry from './MapRegistry';
 
-export type ComponentRegistryHocItem = () => React.ComponentType<any>;
+export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
 
 export type ComponentRegistryItem = {
 	rawComponent: React.ComponentType<any>;
