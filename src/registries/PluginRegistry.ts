@@ -32,9 +32,9 @@ export default class PluginRegistry extends MapRegistry {
 	// cheated here to remove ts error: set(plugin: Plugin) is not compatible with
 	// set(key: string, item: any, ...rest: any[])
 	set(plugin: Plugin | any) {
-		if (isNil(plugin)) {
-			throw new Error('No plugin provided');
-		}
+		// if (isNil(plugin)) {
+		// 	throw new Error('No plugin provided');
+		// }
 
 		// ES modules
 		if (plugin.default) {
