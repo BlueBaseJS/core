@@ -6,10 +6,10 @@ import MapRegistry from './MapRegistry';
 
 export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
 
-export type ComponentRegistryItem = {
+export interface ComponentRegistryItem {
 	rawComponent: React.ComponentType<any>;
 	hocs: ComponentRegistryHocItem[];
-};
+}
 
 /**
  * All system components are stored in this registry

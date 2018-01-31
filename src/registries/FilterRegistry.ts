@@ -5,7 +5,7 @@ import { List } from 'immutable';
 import MapRegistry from './MapRegistry';
 import BR from '../index';
 
-export type FilterItem = {
+export type FilterRegistryItem = {
 	name: string;
 	filter: Function;
 };
@@ -16,7 +16,7 @@ export type FilterItem = {
  * filters and their respective functions
  */
 class FilterRegistry extends MapRegistry {
-	// data: Map<string, List<FilterItem>>;
+	// data: Map<string, List<FilterRegistryItem>>;
 
 	constructor() {
 		super('FilterRegistry');
@@ -98,7 +98,7 @@ class FilterRegistry extends MapRegistry {
 			throw new Error(`${hook} filter is not added. First add filter to remove it.`);
 		}
 
-		let list: List<FilterItem> = this.data.get(hook) || List();
+		let list: List<FilterRegistryItem> = this.data.get(hook) || List();
 		const index = list.findIndex((item = { name: '', filter: () => 1 }) => item.name === name);
 
 		if (index === -1) {
@@ -126,7 +126,7 @@ class FilterRegistry extends MapRegistry {
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
 		args.push(BR);
-		const filters: List<FilterItem> = this.data.get(hook) || List();
+		const filters: List<FilterRegistryItem> = this.data.get(hook) || List();
 
 		if (isNil(filters) || filters.size === 0) {
 			return item;
