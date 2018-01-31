@@ -17,6 +17,7 @@ describe('BR.boot func tests', () => {
 	it('should throw error b/c null', () => {
 		expect(() => BR.boot()).toThrow();
 	});
+
 	it('should not throw error b/c empty handled', () => {
 		expect(() => BR.boot().toThrow());
 	});

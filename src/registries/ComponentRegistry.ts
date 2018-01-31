@@ -57,11 +57,11 @@ class ComponentRegistry extends MapRegistry {
 	 *
 	 */
 	set(name: string, rawComponent: ReactElement<any> | any, ...hocs: ComponentRegistryHocItem[]) {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}. Please provide valid name while adding component`
-			);
-		}
+		// if (isNil(name)) {
+		// 	throw new Error(
+		// 		`Component name cannot be ${name}. Please provide valid name while adding component`
+		// 	);
+		// }
 
 		if (isNil(rawComponent)) {
 			throw new Error(
@@ -105,11 +105,11 @@ class ComponentRegistry extends MapRegistry {
 	 * @returns {Function|ReactElement<*>} A (wrapped) React component
 	 */
 	get(...name: string[]): ReactElement<any> {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name.toString()}.Please provide valid name while getting component`
-			);
-		}
+		// if (isNil(name)) {
+		// 	throw new Error(
+		// 		`Component name cannot be ${name.toString()}.Please provide valid name while getting component`
+		// 	);
+		// }
 
 		let component;
 		for (const componentName of name) {
@@ -134,11 +134,11 @@ class ComponentRegistry extends MapRegistry {
 	 * @returns {Function|ReactElement<*>} An interchangeable/extendable React component
 	 */
 	getRawComponent(name: string): ReactElement<any> {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}.Please provide valid name while getting raw component`
-			);
-		}
+		// if (isNil(name)) {
+		// 	throw new Error(
+		// 		`Component name cannot be ${name}.Please provide valid name while getting raw component`
+		// 	);
+		// }
 
 		if (!this.has(name)) {
 			throw new Error(
@@ -164,11 +164,11 @@ class ComponentRegistry extends MapRegistry {
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
 	replace(name: string, newComponent: ReactElement<any>, ...newHocs: Function[]) {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}.Please valid component name while replacing it`
-			);
-		}
+		// if (isNil(name)) {
+		// 	throw new Error(
+		// 		`Component name cannot be ${name}.Please valid component name while replacing it`
+		// 	);
+		// }
 
 		if (!this.has(name)) {
 			throw new Error(

@@ -30,6 +30,10 @@ describe('Map Registry Unit Tests', () => {
 		const mapRegistry = new MapRegistry('apollo-config');
 		mapRegistry.set('apollo-config-key', 'apollo-config-key-item-1');
 		expect(() => {
+			mapRegistry.set('apollo-config-key', 'item');
+		}).toThrowError();
+
+		expect(() => {
 			mapRegistry.set('apollo-config-key', 'apollo-config-key-item-2');
 		}).toThrowError();
 	});
@@ -40,6 +44,21 @@ describe('Map Registry Unit Tests', () => {
 		expect(() => {
 			mapRegistry.setOrReplace('apollo-config-key', 'replaced code');
 		}).not.toThrow();
+	});
+
+	it('should throw error  if empty item is passed', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+
+		expect(() => {
+			mapRegistry.set('comp', false);
+		}).toThrowError();
+	});
+	it('should throw error  if empty key is passed', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+
+		expect(() => {
+			mapRegistry.setOrReplace('', 'item');
+		}).toThrowError();
 	});
 
 	it('should throw error if boolean item is added in the data Map', () => {
@@ -75,6 +94,46 @@ describe('Map Registry Unit Tests', () => {
 		}).toThrowError();
 	});
 
+	it('should  throw error if  empty key is passed to has method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.has('');
+		}).toThrowError();
+	});
+
+	it('should  throw error if non registered component is passed to Replace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.replace('apollo', 'item');
+		}).toThrowError();
+	});
+
+	it('should  throw error unregistered component is passed to Replace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.toObject();
+		}).not.toThrowError();
+	});
+	it('should  throw error unregistered component is passed to Replace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.replace('Unregistered', 'item');
+		}).toThrowError();
+	});
+
+	it('should  throw error if key is empty is passed to Replace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.replace('', 'item');
+		}).toThrowError();
+	});
+
+	it('should  throw error if key is empty is passed to Replace method', () => {
+		const mapRegistry = new MapRegistry('apollo-config');
+		expect(() => {
+			mapRegistry.replace('item', '');
+		}).toThrowError();
+	});
 	it('should  throw error if  null item is added to setOrReplace method', () => {
 		const mapRegistry = new MapRegistry('apollo-config');
 		expect(() => {

@@ -66,6 +66,10 @@ describe('Filters test specifications', () => {
 			const expectedNumber = 8;
 			expect(value).toEqual(expectedNumber);
 		});
+		it('should remove hook successfully', () => {
+			BR.Filters.set('New-hook', 'Name', () => 'hoook');
+			expect(() => BR.Filters.remove('New-hook', 'Name')).not.toThrow();
+		});
 		it('should be undefined b/c hook undefined', () => {
 			expect(() => BR.Filters.run(undefined)).toThrow();
 		});
