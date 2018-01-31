@@ -55,7 +55,11 @@ class ComponentRegistry extends MapRegistry {
 	 *
 	 *
 	 */
-	set(name: string, rawComponent: ReactElement<any> | any, ...hocs: ComponentRegistryHocItem[]) {
+	set(
+		name: string,
+		rawComponent: React.ComponentType<any> | any,
+		...hocs: ComponentRegistryHocItem[]
+	) {
 		if (isNil(rawComponent)) {
 			throw new Error(
 				'rawComponent is required to register a component.' +
@@ -97,12 +101,7 @@ class ComponentRegistry extends MapRegistry {
 	 * @param {String} name The name of the component to get.
 	 * @returns {Function|ReactElement<*>} A (wrapped) React component
 	 */
-	get(...name: string[]): ReactElement<any> {
-		// if (isNil(name)) {
-		// 	throw new Error(
-		// 		`Component name cannot be ${name.toString()}.Please provide valid name while getting component`
-		// 	);
-		// }
+	get(...name: string[]): React.ComponentType<any> {
 		let component;
 		for (const componentName of name) {
 			if (this.has(componentName)) {
@@ -125,12 +124,8 @@ class ComponentRegistry extends MapRegistry {
 	 * @param {String} name The name of the component to get.
 	 * @returns {Function|ReactElement<*>} An interchangeable/extendable React component
 	 */
-	getRawComponent(name: string): ReactElement<any> {
-		// if (isNil(name)) {
-		// 	throw new Error(
-		// 		`Component name cannot be ${name}.Please provide valid name while getting raw component`
-		// 	);
-		// }
+
+	getRawComponent(name: string): React.ComponentType<any> {
 		if (!this.has(name)) {
 			throw new Error(
 				`Component ${name} not registered. Please register component before getting raw component`
@@ -154,12 +149,8 @@ class ComponentRegistry extends MapRegistry {
 	 * an empty array, and it's ok!
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
-	replace(name: string, newComponent: ReactElement<any>, ...newHocs: Function[]) {
-		// if (isNil(name)) {
-		// 	throw new Error(
-		// 		`Component name cannot be ${name}.Please valid component name while replacing it`
-		// 	);
-		// }
+
+	replace(name: string, newComponent: React.ComponentType<any>, ...newHocs: Function[]) {
 		if (!this.has(name)) {
 			throw new Error(
 				`Component ${name} not registered.Please register component before replacing it`
