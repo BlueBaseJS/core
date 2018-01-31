@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BR,{BlueRainProvider} from '../../src/index';
 import {mount, shallow,  render, configure} from 'enzyme';
 import Component from '../../src/components/ComponentState/ComponentState';
-import Icon from '../../src/components/Icon/Icon';
+import Icon from '../../src/pages/Icon/Icon';
 import ImageBackground from '../../src/components/ImageBackground/ImageBackground';
 import Page from '../../src/components/Page/Page';
 import Wallpaper from '../../src/components/Wallpaper/Wallpaper';
