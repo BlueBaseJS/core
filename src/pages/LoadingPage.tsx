@@ -2,11 +2,11 @@ import React from 'react';
 import { withBlueRain, BlueRainType } from '../index';
 
 /**
- * Returns the Error Page.
+ * Returns the Loading Page.
  *
  * @returns {React.Component} The layout react component
  */
-const ErrorPage = (props: { bluerain: BlueRainType }) => {
+const LoadingPage = (props: { bluerain: BlueRainType }) => {
 
 	const BR = props.bluerain;
 
@@ -14,17 +14,15 @@ const ErrorPage = (props: { bluerain: BlueRainType }) => {
 	const ComponentState = BR.Components.get('ComponentState');
 	const Page = BR.Components.get('Page');
 	const Wallpaper = BR.Components.get('Wallpaper');
-	const ErrorState = BR.Components.get('ErrorState');
+	const LoadingState = BR.Components.get('LoadingState');
 
 	return (
-		<Wallpaper>
-			<Page>
-				<CenterLayout style={{ padding: 20 }}>
-					<ErrorState />
-				</CenterLayout>
-			</Page>
-		</Wallpaper>
+		<Page>
+			<CenterLayout style={{ padding: 20 }}>
+				<LoadingState />
+			</CenterLayout>
+		</Page>
 	);
 };
 
-export default withBlueRain(ErrorPage);
+export default withBlueRain(LoadingPage);

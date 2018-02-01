@@ -2,7 +2,7 @@ import React from 'react';
 import { withBlueRain, BlueRainType } from '../index';
 
 // Components
-import Icon from './Icon';
+import Icon from '../components/Icon';
 
 // Custom Components
 const BRIcon = () => <Icon title="BR" color="rgba(0,123,255,1)" />;

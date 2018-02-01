@@ -88,6 +88,7 @@
     "immutable": "^3.8.2",
     "lodash.compose": "^2.4.1",
     "lodash.get": "^4.4.2",
+    "lodash.isboolean": "^3.0.3",
     "lodash.isnil": "^4.0.0",
     "lodash.kebabcase": "^4.1.1",
     "lodash.merge": "^4.6.0",

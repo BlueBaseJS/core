@@ -16,3 +16,4 @@ export { BlueRainType } from './BlueRain';
 export { JsonComponentSchema } from './utils/JsonSchemaToReact';
 export { ComponentRegistryItem, ComponentRegistryHocItem } from './registries/ComponentRegistry';
 // export { FilterRegistryItem } from './registries/FilterRegistry';
+export { StatefulComponentProperties } from './components/StatefulComponent';
