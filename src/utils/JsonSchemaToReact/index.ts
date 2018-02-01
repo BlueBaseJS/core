@@ -95,13 +95,15 @@ export default class JsonToReact {
 	}
 }
 
+export type parseJsonSchemaFunction = (
+	schema: JsonComponentSchema
+) => ReactElement<any> | Array<ReactElement<any>> | null;
+
 /*
  * Helper method to convert a json object to React Component
  * @param {*} schema
  */
-export const parseJsonSchema = (
-	schema: JsonComponentSchema
-): ReactElement<any> | Array<ReactElement<any>> | null => {
+export const parseJsonSchema: parseJsonSchemaFunction = schema => {
 	const obj = new JsonToReact();
 	return obj.parseSchema(schema);
 };

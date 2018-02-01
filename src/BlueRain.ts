@@ -1,3 +1,5 @@
+import React from 'react';
+
 // Registries
 import AppRegistry from './registries/AppRegistry';
 import ComponentRegistry from './registries/ComponentRegistry';
@@ -8,8 +10,14 @@ import PluginRegistry from './registries/PluginRegistry';
 import HooksRegistry from './registries/HooksRegistry';
 
 // Others
+import API, { BlueRainAPI } from './apis';
 import boot from './boot';
-import { parseJsonSchema } from './utils/JsonSchemaToReact';
+import { parseJsonSchema, parseJsonSchemaFunction } from './utils/JsonSchemaToReact';
+
+/**
+ * Functions
+ */
+export type setMainViewFunction = (App: React.ComponentType<any>) => void;
 
 export type BlueRainType = {
 	Apps: AppRegistry;
@@ -20,11 +28,12 @@ export type BlueRainType = {
 	Plugins: PluginRegistry;
 	Hooks: HooksRegistry;
 	Platform: PluginRegistry;
-	Dimensions?: any; // This will be added from platform
+
+	API: BlueRainAPI;
 
 	Utils: {
-		parseJsonSchema: Function;
-		setMainView: Function;
+		parseJsonSchema: parseJsonSchemaFunction;
+		setMainView: setMainViewFunction;
 		createStyleSheet: any;
 	};
 
@@ -32,6 +41,9 @@ export type BlueRainType = {
 
 	boot: Function;
 };
+
+const filtersObj = new FilterRegistry();
+const eventsObj = new EventRegistry();
 
 /**
  * This is the main BlueRain context. Works as a backbone of whole system.
@@ -48,8 +60,6 @@ export type BlueRainType = {
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
  * @prop {Function} 					boot 				Function to boot the OS.
  */
-const filtersObj = new FilterRegistry();
-const eventsObj = new EventRegistry();
 const BlueRain: BlueRainType = {
 	// BlueRain
 	Apps: new AppRegistry(),
@@ -60,6 +70,8 @@ const BlueRain: BlueRainType = {
 	Hooks: new HooksRegistry(filtersObj, eventsObj),
 	Plugins: new PluginRegistry(),
 	Platform: new PluginRegistry(),
+
+	API,
 
 	// Miscellaneous
 	Utils: {
