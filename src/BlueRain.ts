@@ -11,7 +11,7 @@ import HooksRegistry from './registries/HooksRegistry';
 
 // Others
 import API, { BlueRainAPI } from './apis';
-import boot from './boot';
+import boot, { BootFunction } from './boot';
 import { parseJsonSchema, parseJsonSchemaFunction } from './utils/JsonSchemaToReact';
 
 /**
@@ -39,7 +39,7 @@ export type BlueRainType = {
 
 	refs: { [id: string]: any };
 
-	boot: Function;
+	boot: BootFunction;
 };
 
 const filtersObj = new FilterRegistry();

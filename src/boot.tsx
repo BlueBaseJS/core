@@ -25,16 +25,18 @@ export type BootOptions = {
 	platform?: Plugin[];
 };
 
+export type BootFunction = (options: BootOptions) => ComponentType<any>;
+
 /**
  * Boots the OS and renders the main UI. Use it on the client side
  */
-export default function(
-	options: BootOptions = {
+const boot: BootFunction = (
+	options = {
 		apps:[],
 		serverMode: false,
 		renderApp: true
 	}
-): ComponentType<any> {
+) => {
 
 	// Extract app, plugins and configs from options
 	const { serverMode, renderApp } = options;
@@ -108,4 +110,6 @@ export default function(
 	BR.Filters.run('bluerain.system.boot.end');
 
 	return BluerainApp;
-}
+};
+
+export default boot;
