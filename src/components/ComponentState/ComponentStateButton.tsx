@@ -1,5 +1,5 @@
+import { BlueRainType,withBlueRain } from '../../index';
 import { ImageStyle, TextStyle,ViewProperties,ViewStyle } from '@blueeast/bluerain-ui-interfaces';
-import { BlueRainType } from '../../index';
 import React from 'react';
 
 export interface ComponentStateButtonProps extends ViewProperties {
@@ -41,8 +41,7 @@ const ComponentStateButton = (props: ComponentStateButtonProps) => {
 		return (<ButtonComponent />);
 
 	} else if (buttonTitle) {
-
-		console.log('BRAHAHAHAHAHAHAHHHAAH',BR);
+     	console.log(BR);
 		const Button = BR.Components.get('Button');
 		const Text = BR.Components.get('Text');
 
@@ -62,4 +61,4 @@ const ComponentStateButton = (props: ComponentStateButtonProps) => {
 	}
 };
 
-export default ComponentStateButton;
+export default withBlueRain(ComponentStateButton);

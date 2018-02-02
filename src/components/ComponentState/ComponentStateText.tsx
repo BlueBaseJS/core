@@ -1,6 +1,6 @@
+import { BlueRainType ,withBlueRain } from '../../index';
+import { ImageStyle,TextStyle,ViewProperties, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import React from 'react';
-import { ViewProperties, ImageStyle, ViewStyle, TextStyle } from '@blueeast/bluerain-ui-interfaces';
-import { BlueRainType } from '../../index';
 
 export interface ComponentStateTextProps extends ViewProperties {
 	/**
@@ -39,4 +39,4 @@ const ComponentStateText = (props: ComponentStateTextProps) => {
 	}
 };
 
-export default ComponentStateText;
+export default withBlueRain(ComponentStateText);
