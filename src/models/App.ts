@@ -1,5 +1,5 @@
-import React from 'react';
 import { BlueRainType } from '../index';
+import React from 'react';
 
 /**
  * A BlueRain App base class

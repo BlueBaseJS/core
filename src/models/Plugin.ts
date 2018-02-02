@@ -1,5 +1,5 @@
-import React from 'react';
 import { BlueRainType } from '../index';
+import React from 'react';
 
 /**
  * Base class of a plugin which is to be extended.

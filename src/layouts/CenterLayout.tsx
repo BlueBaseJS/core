@@ -1,10 +1,10 @@
+import { BlueRainType,withBlueRain } from '../index';
+import { ViewProperties,ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import React from 'react';
-import { withBlueRain, BlueRainType } from '../index';
-import { ViewProperties, ViewStyles } from '@blueeast/bluerain-ui-interfaces';
 
 export interface CenterLayoutProperties extends ViewProperties {
 	children: React.ReactNode[],
-	style: ViewStyles
+	style: ViewStyle
 }
 
 const CenterLayout = (props: CenterLayoutProperties & { bluerain: BlueRainType }) => {

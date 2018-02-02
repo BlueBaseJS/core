@@ -1,6 +1,6 @@
-import React from 'react';
-import { ViewProperties, ImageStyle, ViewStyle, TextStyle } from '@blueeast/bluerain-ui-interfaces';
+import { ImageStyle, TextStyle,ViewProperties,ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import { BlueRainType } from '../../index';
+import React from 'react';
 
 export interface ComponentStateButtonProps extends ViewProperties {
 	/**
