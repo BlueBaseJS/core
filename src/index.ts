@@ -1,9 +1,9 @@
 import BlueRain from './BlueRain';
 
 // Models
-import App from './models/App';
+export * from './models/App';
 import Plugin from './models/Plugin';
-export { App, Plugin };
+export { Plugin };
 
 export { withBlueRain, BlueRainProvider } from './Provider';
 
