@@ -41,8 +41,7 @@ const ComponentStateButton = (props: ComponentStateButtonProps) => {
 		return (<ButtonComponent />);
 
 	} else if (buttonTitle) {
-     	console.log(BR);
-		const Button = BR.Components.get('Button');
+    	const Button = BR.Components.get('Button');
 		const Text = BR.Components.get('Text');
 
 		const stylesheet = {

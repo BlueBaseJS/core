@@ -24,12 +24,10 @@ export interface StatefulComponentProperties {
 }
 
 export type StatefulComponentState = {
-
 	// Check
 	isLoading: boolean;
 	isEmpty: boolean;
 	hasError: boolean;
-
 	// Data
 	error?: any;
 };
@@ -49,10 +47,10 @@ class StatefulComponent extends React.Component<
 	};
 
 	state: StatefulComponentState = {
-		isLoading: props.isLoading(this.props),
-		isEmpty: this.props.isEmpty(this.props),
-		hasError: this.props.checkError(this.props) ? true : false,
-		error: this.props.checkError(this.props)
+		isLoading: this.props.isLoading? true : false,
+		isEmpty: this.props.isEmpty? true : false,
+		hasError: this.props.hasError ? true : false,
+		error: this.props.checkError
 	};
 
 	componentWillReceiveProps(props: StatefulComponentProperties) {

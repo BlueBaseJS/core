@@ -64,7 +64,7 @@ describe('Component Registry test specifications', () => {
 	    });
 it('should return component CompentStateButton ', () => {
 	const wrapper=mount(<BlueRainProvider><CompentStateButton buttonTitle="Button"  /></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('Component')).toBeDefined();
 });
 
 it('should return component ErrorPage ', () => {
@@ -75,10 +75,10 @@ it('should return component ErrorPage ', () => {
 
 
 
-it('should return component CreateApp ', () => {
-
-	const wrapper=mount(<BlueRainProvider><App   /></BlueRainProvider>);
-		 expect(wrapper.find('Component')).toBeDefined();
+it('It should  CreateApp ', () => {
+	const AppComponent=() => 'Component';
+	const options ={ appName:'BluerainApp' };
+	 expect(App(AppComponent,options)).toBeDefined();
 });
 it('should return component LoadingPage ', () => {
 	const wrapper=mount(<BlueRainProvider><LoadingPage   /></BlueRainProvider>);

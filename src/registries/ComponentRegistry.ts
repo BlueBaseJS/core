@@ -60,12 +60,6 @@ class ComponentRegistry extends MapRegistry {
 		rawComponent: React.ComponentType<any> | any,
 		...hocs: ComponentRegistryHocItem[]
 	) {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}. Please provide valid name while adding component`
-			);
-		}
-
 		if (isNil(rawComponent)) {
 			throw new Error(
 				'rawComponent is required to register a component.' +
@@ -108,12 +102,6 @@ class ComponentRegistry extends MapRegistry {
 	 * @returns {Function|React.ComponentType<*>} A (wrapped) React component
 	 */
 	get(...name: string[]): React.ComponentType<any> {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name.toString()}.Please provide valid name while getting component`
-			);
-		}
-
 		let component;
 		for (const componentName of name) {
 			if (this.has(componentName)) {
@@ -167,12 +155,6 @@ class ComponentRegistry extends MapRegistry {
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
 	replace(name: string, newComponent: React.ComponentType<any>, ...newHocs: Function[]) {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}.Please valid component name while replacing it`
-			);
-		}
-
 		if (!this.has(name)) {
 			throw new Error(
 				`Component ${name} not registered.Please register component before replacing it`

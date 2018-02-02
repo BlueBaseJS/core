@@ -22,7 +22,7 @@ const CenterLayout = (props: CenterLayoutProperties & { bluerain: BlueRainType }
 		BR.Utils.createStyleSheet(defaultStyle),
 		BR.Utils.createStyleSheet(style || {})
 	];
-	return (<View style={defaultStyle} {...other} />);
+	return (<View style={stylesheet} {...other} />);
 };
 
 export default withBlueRain(CenterLayout);
