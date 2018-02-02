@@ -25,7 +25,6 @@ import StatefulComponent from '../../src/components/StatefulComponent/StatefulCo
 import SystemApp from '../../src/SystemApp';
 import SystemLayout from '../../src/layouts/SystemLayout';
 import Wallpaper from '../../src/components/Wallpaper/Wallpaper';
-import checkHooks from '../../src/checkHooks';
 
 configure({ adapter: new Adapter() });
 
@@ -64,13 +63,13 @@ describe('Component Registry test specifications', () => {
 	    });
 it('should return component CompentStateButton ', () => {
 	const wrapper=mount(<BlueRainProvider><CompentStateButton buttonTitle="Button"  /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('CompentStateButton')).toBeDefined();
 });
 
 it('should return component ErrorPage ', () => {
 
 	const wrapper=mount(<BlueRainProvider><ErrorPage   /></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('ErrorPage')).toBeDefined();
 });
 
 
@@ -82,76 +81,76 @@ it('It should  CreateApp ', () => {
 });
 it('should return component LoadingPage ', () => {
 	const wrapper=mount(<BlueRainProvider><LoadingPage   /></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('LoadingPage')).toBeDefined();
 });
 it('should return component Icon ', () => {
 	const wrapper=mount(<BlueRainProvider><Icon  /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('Icon')).toBeDefined();
 });
 
 it('should return component CenterLayout', () => {
 	const wrapper=mount(<BlueRainProvider><CenterLayout  /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('CenterLayout')).toBeDefined();
 });
 
 
 it('should return component StatefulComponent ', () => {
 	const wrapper=mount(<BlueRainProvider><StatefulComponent  /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
 
 it('should return component StatefulComponent with isEmpty prop ', () => {
 	const wrapper=mount(<BlueRainProvider><StatefulComponent  isEmpty={true} /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
 
 it('should return component StatefulComponent with isLoading prop ', () => {
 	const wrapper=mount(<BlueRainProvider><StatefulComponent  isLoading={true} /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
 
 
 it('should return component EmptyState ', () => {
 	const wrapper=mount(<BlueRainProvider><EmptyState  /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('EmptyState')).toBeDefined();
 });
 it('should return component Loading State ', () => {
 	const wrapper=mount(<BlueRainProvider><LoadingState  /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('LoadingState')).toBeDefined();
 });
 
 it('should return component Erorr State ', () => {
 	const wrapper=mount(<BlueRainProvider><ErrorState  /></BlueRainProvider>);
-	expect(wrapper.find('Component')).toBeDefined();
+	expect(wrapper.find('ErrorState')).toBeDefined();
 });
 	  it('should return component CompentStateButton with title ', () => {
 		const wrapper=mount(<BlueRainProvider><CompentStateButton  /></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('CompentStateButton')).toBeDefined();
 	});
 
 	  it('should return component ComponentStatImage ', () => {
 		const wrapper=mount(<BlueRainProvider><ComponeStateImage/></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('ComponeStateImage')).toBeDefined();
 	});
 
 it('should return component ComponentStatImage with source prop ', () => {
 	const wrapper=mount(<BlueRainProvider><ComponeStateImage  imageSource="https://www.gifs.com" /></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('ComponeStateImage')).toBeDefined();
 });
 
 it('should return component ComponentStateText ', () => {
 	const wrapper=mount(<BlueRainProvider><ComponentStateText/></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 
 
 it('should return component ComponentStateText ', () => {
 	const wrapper=mount(<BlueRainProvider><ComponentStateText  text="title"  /></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 it('should return component ComponentState ', () => {
 	const wrapper=mount(<BlueRainProvider><ComponentState/></BlueRainProvider>);
-	 expect(wrapper.find('Component')).toBeDefined();
+	 expect(wrapper.find('ComponentState')).toBeDefined();
 });
 it('should return component default  State ', () => {
 		 // tslint:disable-next-line:max-line-length
@@ -214,10 +213,4 @@ it('should return SystemApp Component', () => {
 	const wrapper=mount(<BlueRainProvider><SystemApp/></BlueRainProvider>);
 	expect(wrapper.find('SystemApp')).toBeDefined();
 });
-
-it('should return checkHooks Component', () => {
-        	const wrapper=mount(<BlueRainProvider><checkHooks/></BlueRainProvider>);
-	expect(wrapper.find('checkHooks')).toBeDefined();
 });
-
-})
