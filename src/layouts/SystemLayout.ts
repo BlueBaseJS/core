@@ -1,10 +1,10 @@
+import { BlueRainType, withBlueRain } from '../index';
+import { ViewProperties, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import React from 'react';
-import { ViewProperties, ViewStyles } from '@blueeast/bluerain-ui-interfaces';
-import { withBlueRain, BlueRainType } from '../index';
 
 export interface SystemLayoutProperties extends ViewProperties {
 	children: React.ReactNode[];
-	style: ViewStyles;
+	style: ViewStyle;
 }
 
 const SystemLayout = (props: SystemLayoutProperties & { bluerain: BlueRainType }) => {

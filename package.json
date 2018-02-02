@@ -82,7 +82,7 @@
     }
   ],
   "dependencies": {
-    "@blueeast/bluerain-ui-interfaces": "^1.0.2",
+    "@blueeast/bluerain-ui-interfaces": "https://github.com/BlueEastCode/bluerain-ui-interfaces.git#fix/removal-of-Api",
     "eventemitter3": "^2.0.3",
     "html-tags": "^2.0.0",
     "immutable": "^3.8.2",
@@ -98,7 +98,7 @@
     "recompose": "^0.25.0"
   },
   "devDependencies": {
-    "@blueeast/tslint-config-blueeast": "^0.3.0",
+    "@blueeast/tslint-config-blueeast": "^0.5.5",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",

@@ -1,7 +1,7 @@
+import { withBlueRain, BlueRainType } from '../../index';
 import React from 'react';
 import isnil from 'lodash.isnil';
 import isboolean from 'lodash.isboolean';
-import { withBlueRain, BlueRainType } from '../../index';
 
 const MISSING_ERROR = 'An unknown error occured.';
 
@@ -26,7 +26,7 @@ export interface StatefulComponentProperties {
 export type StatefulComponentState = {
 
 	// Check
-  isLoading: boolean;
+	isLoading: boolean;
 	isEmpty: boolean;
 	hasError: boolean;
 
@@ -38,12 +38,12 @@ class StatefulComponent extends React.Component<
 	StatefulComponentProperties & { bluerain: BlueRainType },
 	StatefulComponentState> {
 
+
 	static defaultProps: StatefulComponentProperties = {
 		component: () => null,
 
 		loading: false,
-
-    isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
+		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
 		isEmpty: (props) => (!isnil(props.data)) ? true : false,
 		checkError: (props) => (!isnil(props.error)) ? true : false,
 	};
@@ -82,7 +82,7 @@ class StatefulComponent extends React.Component<
 		});
 	}
 
-  render() {
+	render() {
 
 		const {
 			component: Component,
@@ -98,7 +98,7 @@ class StatefulComponent extends React.Component<
 			...other
 		} = this.props;
 
-    const { isLoading, isEmpty, hasError, error } = this.state;
+		const { isLoading, isEmpty, hasError, error } = this.state;
 
 		const Error = errorComponent || BR.Components.get('ErrorState');
 		const Empty = emptyComponent || BR.Components.get('EmptyState');
