@@ -17,7 +17,8 @@ export interface NetInfo {
 
 	/**
 	 * Available on Android. Detect if the current active connection is metered or not.
-	 *  A network is classified as metered when the user is sensitive to heavy data usage on that connection due to monetary costs,
+	 *  A network is classified as metered
+	 * when the user is sensitive to heavy data usage on that connection due to monetary costs,
 	 *  data limitations or battery/performance issues.
 	 */
 
@@ -34,7 +35,9 @@ export interface NetInfo {
 	 * connectionChange: Fires when the network status changes. The argument to the event handler is an object with keys:
 	 * type: A ConnectionType (listed above)
 	 * effectiveType: An EffectiveConnectionType (listed above)change:
-	 * This event is deprecated. Listen to connectionChange instead. Fires when the network status changes. The argument to the event handler is one of the deprecated connectivity types listed above.
+	 * This event is deprecated. Listen to connectionChange instead.
+	 *  Fires when the network status changes.
+	 * The argument to the event handler is one of the deprecated connectivity types listed above.
 	 */
 
 	addEventListener: (eventName: string, handler: () => void) => void;

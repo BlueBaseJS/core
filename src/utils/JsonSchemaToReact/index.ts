@@ -1,13 +1,7 @@
-import {
-	// DOM,
-	createElement,
-	isValidElement,
-	ReactElement
-} from 'react';
-import set from 'lodash.set';
-
-import DOM from './dom';
+import { ReactElement, createElement, isValidElement } from 'react';
 import BR from '../../index';
+import DOM from './dom';
+import set from 'lodash.set';
 
 export interface JsonComponentSchema {
 	component: string | ReactElement<any>;

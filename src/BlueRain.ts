@@ -1,4 +1,7 @@
-import React from 'react';
+// Others
+import API, { BlueRainAPI } from './apis';
+import boot, { BootFunction } from './boot';
+import { parseJsonSchema, parseJsonSchemaFunction } from './utils/JsonSchemaToReact';
 
 // Registries
 import AppRegistry from './registries/AppRegistry';
@@ -6,13 +9,9 @@ import ComponentRegistry from './registries/ComponentRegistry';
 import ConfigRegistry from './registries/ConfigRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
-import PluginRegistry from './registries/PluginRegistry';
 import HooksRegistry from './registries/HooksRegistry';
-
-// Others
-import API, { BlueRainAPI } from './apis';
-import boot, { BootFunction } from './boot';
-import { parseJsonSchema, parseJsonSchemaFunction } from './utils/JsonSchemaToReact';
+import PluginRegistry from './registries/PluginRegistry';
+import React from 'react';
 
 /**
  * Functions

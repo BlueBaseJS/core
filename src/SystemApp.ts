@@ -1,7 +1,6 @@
-import React from 'react';
-import BR from './index';
-
 import { parseJsonSchema } from './utils/JsonSchemaToReact';
+import BR from './index';
+import React from 'react';
 
 export const SystemRoutes = () => {
 	const appRoutes = BR.Apps.getAllRoutes();

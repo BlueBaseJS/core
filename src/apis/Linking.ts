@@ -17,7 +17,8 @@ export interface Linking {
 
 	/**
 	 * Try to open the given url with any of the installed apps.
-	 *  The method returns a Promise object. If the user confirms the open dialog or the url automatically opens, the promise is resolved.
+	 *  The method returns a Promise object.
+	 *  If the user confirms the open dialog or the url automatically opens, the promise is resolved.
 	 * If the user cancels the open dialog or there are no registered applications for the url, the promise is rejected.
 	 * It is supported in react-native only
 	 */

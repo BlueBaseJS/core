@@ -1,8 +1,7 @@
-import kebabCase from 'lodash.kebabcase';
-import isNil from 'lodash.isnil';
-
-import MapRegistry from './MapRegistry';
 import BR, { Plugin } from '../index';
+import MapRegistry from './MapRegistry';
+import isNil from 'lodash.isnil';
+import kebabCase from 'lodash.kebabcase';
 
 /**
  * All system plugins are stored in this registry

@@ -1,7 +1,6 @@
-import React from 'react';
-import { withBlueRain, BlueRainType } from '../../index';
-
+import { BlueRainType,withBlueRain } from '../../index';
 import Icon from '../Icon';
+import React from 'react';
 
 const ErrorIcon = () => <Icon title="Error" />;
 

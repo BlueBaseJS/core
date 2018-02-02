@@ -1,8 +1,7 @@
+import MapRegistry from './MapRegistry';
 import React from 'react';
 import compose from 'lodash.compose';
 import isNil from 'lodash.isnil';
-
-import MapRegistry from './MapRegistry';
 
 export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
 

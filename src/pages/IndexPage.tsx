@@ -1,8 +1,10 @@
-import React from 'react';
-import { withBlueRain, BlueRainType } from '../index';
+import { BlueRainType, withBlueRain, } from '../index';
 
 // Components
 import Icon from '../components/Icon';
+
+import React from 'react';
+
 
 // Custom Components
 const BRIcon = () => <Icon title="BR" color="rgba(0,123,255,1)" />;

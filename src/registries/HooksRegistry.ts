@@ -1,8 +1,7 @@
-import isNil from 'lodash.isnil';
-
-import FilterRegistry from './FilterRegistry';
-import EventRegistry from './EventRegistry';
 import BR from '../index';
+import EventRegistry from './EventRegistry';
+import FilterRegistry from './FilterRegistry';
+import isNil from 'lodash.isnil';
 /**
  * All system hooks are stored in this registry
  *

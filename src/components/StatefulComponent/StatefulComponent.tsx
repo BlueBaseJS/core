@@ -1,7 +1,7 @@
-import { withBlueRain, BlueRainType } from '../../index';
+import { BlueRainType, withBlueRain } from '../../index';
 import React from 'react';
-import isnil from 'lodash.isnil';
 import isboolean from 'lodash.isboolean';
+import isnil from 'lodash.isnil';
 
 const MISSING_ERROR = 'An unknown error occured.';
 

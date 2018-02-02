@@ -1,24 +1,23 @@
-import BR from './index';
-
-import ComponentState from './components/ComponentState';
-import ImageBackground from './components/ImageBackground';
-import Page from './components/Page';
-import Wallpaper from './components/Wallpaper';
 import StatefulComponent, {
 	EmptyState,
 	ErrorState,
 	LoadingState
 } from './components/StatefulComponent';
 
+import BR from './index';
 import CenterLayout from './layouts/CenterLayout';
-import SystemLayout from './layouts/SystemLayout';
-
+import ComponentState from './components/ComponentState';
 import ErrorPage from './pages/ErrorPage';
+
+import ImageBackground from './components/ImageBackground';
 import IndexPage from './pages/IndexPage';
 import LoadingPage from './pages/LoadingPage';
 import NotFoundPage from './pages/NotFoundPage';
 
+import Page from './components/Page';
 import SystemApp from './SystemApp';
+import SystemLayout from './layouts/SystemLayout';
+import Wallpaper from './components/Wallpaper';
 
 export default () => {
 	/* Internal Components */

@@ -1,9 +1,7 @@
-import isNil from 'lodash.isnil';
-
 import { List } from 'immutable';
-
-import MapRegistry from './MapRegistry';
 import BR from '../index';
+import MapRegistry from './MapRegistry';
+import isNil from 'lodash.isnil';
 
 export type FilterRegistryItem = {
 	name: string;

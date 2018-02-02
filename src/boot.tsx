@@ -1,10 +1,10 @@
 
-import React, { ComponentType } from 'react';
 import BR, { App, Plugin } from './index';
-import registerComponents from './registerComponents';
+import React, { ComponentType } from 'react';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
 import checkHooks from './checkHooks';
+import registerComponents from './registerComponents';
 
 /**
  * Options object that `boot` and `bootOnServer` methods expect.

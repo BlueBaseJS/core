@@ -36,7 +36,8 @@ export interface GeoLocation {
 	/**
 	 * useSignificantChanges
 	 *  Invokes the success callback whenever the location changes.
-	 *  Supported options: timeout (ms), maximumAge (ms), enableHighAccuracy (bool), distanceFilter(m), useSignificantChanges (bool)
+	 *  Supported options: timeout (ms), maximumAge (ms), enableHighAccuracy (bool), distanceFilter(m),
+	 *  useSignificantChanges (bool)
 	 */
 
 	watchPosition(

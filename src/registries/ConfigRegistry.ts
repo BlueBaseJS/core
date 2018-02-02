@@ -1,7 +1,7 @@
-import set from 'lodash.set';
 import get from 'lodash.get';
-import merge from 'lodash.merge';
 import isNil from 'lodash.isnil';
+import merge from 'lodash.merge';
+import set from 'lodash.set';
 
 /**
  * All system configs are stored in this registry
