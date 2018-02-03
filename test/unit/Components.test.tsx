@@ -99,16 +99,6 @@ it('should return component StatefulComponent ', () => {
 	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
 
-it('should return component StatefulComponent with isEmpty prop ', () => {
-	const wrapper=mount(<BlueRainProvider><StatefulComponent  isEmpty={true} /></BlueRainProvider>);
-	expect(wrapper.find('StatefulComponent')).toBeDefined();
-});
-
-it('should return component StatefulComponent with isLoading prop ', () => {
-	const wrapper=mount(<BlueRainProvider><StatefulComponent  isLoading={true} /></BlueRainProvider>);
-	expect(wrapper.find('StatefulComponent')).toBeDefined();
-});
-
 
 it('should return component EmptyState ', () => {
 	const wrapper=mount(<BlueRainProvider><EmptyState  /></BlueRainProvider>);
@@ -213,4 +203,4 @@ it('should return SystemApp Component', () => {
 	const wrapper=mount(<BlueRainProvider><SystemApp/></BlueRainProvider>);
 	expect(wrapper.find('SystemApp')).toBeDefined();
 });
-});
+})

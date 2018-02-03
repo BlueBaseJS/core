@@ -2,7 +2,6 @@ import { BlueRainType, withBlueRain } from '../../index';
 import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
-
 const MISSING_ERROR = 'An unknown error occured.';
 
 export interface StatefulComponentProperties {
@@ -24,10 +23,12 @@ export interface StatefulComponentProperties {
 }
 
 export type StatefulComponentState = {
+
 	// Check
 	isLoading: boolean;
 	isEmpty: boolean;
 	hasError: boolean;
+
 	// Data
 	error?: any;
 };
@@ -36,21 +37,21 @@ class StatefulComponent extends React.Component<
 	StatefulComponentProperties & { bluerain: BlueRainType },
 	StatefulComponentState> {
 
-
 	static defaultProps: StatefulComponentProperties = {
 		component: () => null,
 
 		loading: false,
+
 		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
 		isEmpty: (props) => (!isnil(props.data)) ? true : false,
 		checkError: (props) => (!isnil(props.error)) ? true : false,
 	};
 
 	state: StatefulComponentState = {
-		isLoading: this.props.isLoading? true : false,
-		isEmpty: this.props.isEmpty? true : false,
-		hasError: this.props.hasError ? true : false,
-		error: this.props.checkError
+		isLoading: this.props.isLoading(this.props),
+		isEmpty: this.props.isEmpty(this.props),
+		hasError: this.props.checkError(this.props) ? true : false,
+		error: this.props.checkError(this.props)
 	};
 
 	componentWillReceiveProps(props: StatefulComponentProperties) {
