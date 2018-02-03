@@ -20,6 +20,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
     "prebuild": "rimraf dist",
     "build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
@@ -82,7 +83,9 @@
     }
   ],
   "dependencies": {
+    "@blueeast/bluerain-platform-reactxp": "^1.1.8",
     "@blueeast/bluerain-ui-interfaces": "https://github.com/BlueEastCode/bluerain-ui-interfaces.git#fix/removal-of-Api",
+    "awesome-typescript-loader": "^3.4.1",
     "eventemitter3": "^2.0.3",
     "html-tags": "^2.0.0",
     "immutable": "^3.8.2",
@@ -99,8 +102,10 @@
   },
   "devDependencies": {
     "@blueeast/tslint-config-blueeast": "^0.5.5",
+    "@storybook/react": "^3.3.12",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",

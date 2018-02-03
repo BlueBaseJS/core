@@ -1,6 +1,6 @@
 
 import { BlueRainType,withBlueRain } from '../../index';
-import { ButtonProperties, ImageStyle,TextStyle,ViewProperties,ViewStyle } from '@blueeast/bluerain-ui-interfaces';
+import {  ImageStyle,TextStyle,ViewProperties,ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import ComponentStateButton from './ComponentStateButton';
 import ComponentStateImage from './ComponentStateImage';
 import ComponentStateText from './ComponentStateText';
