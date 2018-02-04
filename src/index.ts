@@ -1,20 +1,19 @@
-import BlueRain from './BlueRain';
-
 // Models
 export * from './models/App';
-import Plugin from './models/Plugin';
-export { Plugin };
+export * from './models/Plugin';
 
-export { withBlueRain, BlueRainProvider } from './Provider';
-
-// This will have all registries as objects
-export default BlueRain;
+// Provider
+export * from './Provider';
 
 // Typings
 export { ConfigType } from './config';
-export { BlueRainType } from './BlueRain';
 export { JsonComponentSchema } from './utils/JsonSchemaToReact';
 export { ComponentRegistryItem, ComponentRegistryHocItem } from './registries/ComponentRegistry';
-// export { FilterRegistryItem } from './registries/FilterRegistry';
 export { StatefulComponentProperties } from './components/StatefulComponent';
 export * from './apis';
+// export { FilterRegistryItem } from './registries/FilterRegistry';
+
+// BlueRain
+import BlueRain from './BlueRain';
+export default BlueRain;
+export { BlueRainType } from './BlueRain';

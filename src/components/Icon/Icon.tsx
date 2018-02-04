@@ -1,4 +1,4 @@
-import { BlueRainType,withBlueRain } from '../../index';
+import { BlueRainType, withBlueRain } from '../../index';
 import React from 'react';
 
 export interface IconProps {

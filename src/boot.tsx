@@ -48,7 +48,7 @@ const boot: BootFunction = (
 	// checkHooks();
 
 	// Register plaform
-	if (platform.length === 0) {
+	if (platform.length === 0 && BR.Platform.data.size === 0) {
 		throw new Error(`No platform added to BlueRain. Check docs for more info: https://blueeast.gitbooks.io/bluerain-os/`);
 	}
 
