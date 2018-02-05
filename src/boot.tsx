@@ -71,8 +71,11 @@ const boot: BootFunction = (
 	BR.Filters.run('bluerain.system.configurations.loaded');
 
 	// =[ System Lifecycle Event ]= Components Registered
-	registerComponents();
-	BR.Filters.run('bluerain.system.components.registered');
+	// Only runs on first boot
+	if (!BR.booted) {
+		registerComponents();
+		BR.Filters.run('bluerain.system.components.registered');
+	}
 
 	// =[ System Lifecycle Event ]= Plugins Registered
 	BR.Plugins.registerMany(plugins);
@@ -109,6 +112,7 @@ const boot: BootFunction = (
 	// =[ System Lifecycle Event ]= Boot End
 	BR.Filters.run('bluerain.system.boot.end');
 
+	BR.booted = true;
 	return BluerainApp;
 };
 

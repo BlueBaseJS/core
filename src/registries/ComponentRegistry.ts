@@ -1,3 +1,4 @@
+import { BlueRain } from '../index';
 import MapRegistry from './MapRegistry';
 import React from 'react';
 import compose from 'lodash.compose';
@@ -17,8 +18,11 @@ export interface ComponentRegistryItem {
  */
 class ComponentRegistry extends MapRegistry {
 	// data: Map<string, ComponentRegistryItem>;
-	constructor() {
+	BR: BlueRain;
+
+	constructor(ctx: BlueRain) {
 		super('ComponentRegistry');
+		this.BR = ctx;
 	}
 	/**
 	 * Register a component with a name, a raw component than can be extended

@@ -1,4 +1,4 @@
-import BR, { App } from '../index';
+import BR, { App, BlueRain } from '../index';
 import MapRegistry from './MapRegistry';
 import isNil from 'lodash.isnil';
 import kebabCase from 'lodash.kebabcase';
@@ -12,9 +12,11 @@ const defaultAppRoutePrefix = '/app';
 
 class AppRegistry extends MapRegistry {
 	// data: Map<string, App>;
+	BR: BlueRain;
 
-	constructor() {
+	constructor(ctx: BlueRain) {
 		super('AppRegistry');
+		this.BR = ctx;
 	}
 	/**
 	 * Register an App To be deprecated in 2.0.0

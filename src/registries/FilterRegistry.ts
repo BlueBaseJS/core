@@ -1,5 +1,5 @@
+import { BlueRain } from '../index';
 import { List } from 'immutable';
-import BR from '../index';
 import MapRegistry from './MapRegistry';
 import isNil from 'lodash.isnil';
 
@@ -15,10 +15,13 @@ export type FilterRegistryItem = {
  */
 class FilterRegistry extends MapRegistry {
 	// data: Map<string, List<FilterRegistryItem>>;
+	BR: BlueRain;
 
-	constructor() {
+	constructor(ctx: BlueRain) {
 		super('FilterRegistry');
+		this.BR = ctx;
 	}
+
 	/**
 	 * Add a filter function to a hook.To be deprecated in 2.0.0
 	 * @param {String} hook - The name of the hook
@@ -123,7 +126,7 @@ class FilterRegistry extends MapRegistry {
 		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
-		args.push(BR);
+		args.push(this.BR);
 		const filters: List<FilterRegistryItem> = this.data.get(hook) || List();
 
 		if (isNil(filters) || filters.size === 0) {

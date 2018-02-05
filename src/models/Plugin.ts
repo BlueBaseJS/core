@@ -10,7 +10,7 @@ import React from 'react';
  * @property {String}	description	App description
  * @property {String}	version	App version
  */
-export default class Plugin {
+export class Plugin {
 	pluginName?: string;
 	slug?: string;
 	config?: {};

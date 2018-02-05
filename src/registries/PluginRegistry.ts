@@ -1,4 +1,4 @@
-import BR, { Plugin } from '../index';
+import { BlueRain, Plugin } from '../index';
 import MapRegistry from './MapRegistry';
 import isNil from 'lodash.isnil';
 import kebabCase from 'lodash.kebabcase';
@@ -9,9 +9,11 @@ import kebabCase from 'lodash.kebabcase';
  */
 export default class PluginRegistry extends MapRegistry {
 	// data: Map<string, Plugin>;
+	BR: BlueRain;
 
-	constructor() {
+	constructor(ctx: BlueRain) {
 		super('PluginRegistry');
+		this.BR = ctx;
 	}
 
 	/**
@@ -75,22 +77,22 @@ export default class PluginRegistry extends MapRegistry {
 			// Add hooks from the 'hooks' static property of plugin
 			if (plugin.hooks) {
 				Object.keys(plugin.hooks).forEach(hook => {
-					BR.Hooks.add(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
+					this.BR.Hooks.add(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
 				});
 			}
 
 			// Add components from the 'components' static property of plugin
 			if (plugin.components) {
 				Object.keys(plugin.components).forEach(component => {
-					BR.Components.setOrReplace(component, plugin.components[component]);
+					this.BR.Components.setOrReplace(component, plugin.components[component]);
 				});
 			}
 
 			// If the plugin has an initialize methid, call it
 			if (plugin.initialize) {
-				const config = BR.Configs.get(`plugins.${plugin.slug}`);
+				const config = this.BR.Configs.get(`plugins.${plugin.slug}`);
 				plugin.config = config;
-				plugin.initialize(config, BR);
+				plugin.initialize(config, this.BR);
 			}
 		});
 	}

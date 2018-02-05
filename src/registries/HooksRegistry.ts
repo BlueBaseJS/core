@@ -1,19 +1,18 @@
-import BR from '../index';
+import { BlueRain } from '../index';
 import EventRegistry from './EventRegistry';
 import FilterRegistry from './FilterRegistry';
 import isNil from 'lodash.isnil';
+
 /**
  * All system hooks are stored in this registry
- *
  */
 export default class HookRegistry {
-	filters: FilterRegistry;
-	events: EventRegistry;
+	BR: BlueRain;
 
-	constructor(filters: FilterRegistry, events: EventRegistry) {
-		this.filters = filters || new FilterRegistry();
-		this.events = events || new EventRegistry();
+	constructor(ctx: BlueRain) {
+		this.BR = ctx;
 	}
+
 	/**
 	 * Add a filter function to a hook.
 	 * @param {String} hook - The name of the hook
@@ -30,8 +29,8 @@ export default class HookRegistry {
 		if (isNil(filter)) {
 			throw new Error(`You have to provide a filter function while adding it to ${hook}.`);
 		}
-		this.filters.set(hook, name, filter);
-		this.events.on(hook, filter);
+		this.BR.Filters.set(hook, name, filter);
+		this.BR.Events.on(hook, filter);
 	}
 	/**
 	 * Successively run all of a hook's functions on an item
@@ -49,12 +48,12 @@ export default class HookRegistry {
 			throw new Error('Invalid mode is entered. Please enter valid mode while running hooks');
 		}
 		if (mode === 'both') {
-			this.events.emit(hook, ...args, BR);
-			return this.filters.run(hook, ...args);
+			this.BR.Events.emit(hook, ...args, this);
+			return this.BR.Filters.run(hook, ...args);
 		} else if (mode === 'sync') {
-			return this.filters.run(hook, ...args);
+			return this.BR.Filters.run(hook, ...args);
 		} else if (mode === 'async') {
-			this.events.emit(hook, ...args, BR);
+			this.BR.Events.emit(hook, ...args, this);
 		}
 	}
 }
