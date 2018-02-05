@@ -4,6 +4,7 @@ import { App, Plugin } from './index';
 import defaultConfigs, { ConfigType } from './config';
 import { parseJsonSchema, parseJsonSchemaFunction } from './utils/JsonSchemaToReact';
 import { BlueRainProvider } from './Provider';
+import { registerComponents } from './boot';
 
 // Registries
 import AppRegistry from './registries/AppRegistry';
@@ -15,7 +16,6 @@ import HooksRegistry from './registries/HooksRegistry';
 import PluginRegistry from './registries/PluginRegistry';
 
 import React from 'react';
-import registerComponents from './registerComponents';
 
 /**
  * Functions
@@ -158,7 +158,7 @@ export class BlueRain implements BlueRainType {
 		// =[ System Lifecycle Event ]= Components Registered
 		// Only runs on first boot
 		if (!this.booted) {
-			registerComponents();
+			registerComponents(this);
 			this.Filters.run('bluerain.system.components.registered');
 		}
 

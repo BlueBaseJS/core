@@ -1,4 +1,5 @@
 import { BlueRain, Plugin } from '../index';
+import { EsModule, MaybeEsModule } from '../typings';
 import MapRegistry from './MapRegistry';
 import isNil from 'lodash.isnil';
 import kebabCase from 'lodash.kebabcase';
@@ -7,7 +8,7 @@ import kebabCase from 'lodash.kebabcase';
  * All system plugins are stored in this registry
  * @property {Map<string, Plugin>} data Storage Map of all plugins
  */
-export default class PluginRegistry extends MapRegistry {
+export default class PluginRegistry extends MapRegistry<Plugin> {
 	// data: Map<string, Plugin>;
 	BR: BlueRain;
 
@@ -17,56 +18,99 @@ export default class PluginRegistry extends MapRegistry {
 	}
 
 	/**
-	 * Register a Plugin To be deprecated in 2.0.0
-	 * @param {Plugin} plugin The plugin to register
+	 * Register an Plugin
+	 * @param {Plugin} plugin The BlueRain plugin to register
 	 */
-	register(plugin: Plugin) {
-		console.warn(
-			'Deprecation Warning: "register" method of PluginRegistry has been deprecated. Please use "set" method instead.'
-		);
-		this.set(plugin);
+	set(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
+		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
+		super.set(k, a);
 	}
+
 	/**
-	 * Register a Plugin
-	 * @param {Plugin} plugin The plugin to register
+	 * Replace an item in the Registry.
+	 *
+	 * @param {string} key The key of the item
+	 * @param {any} item  The item to add
 	 */
-	// cheated here to remove ts error: set(plugin: Plugin) is not compatible with
-	// set(key: string, item: any, ...rest: any[])
-	set(plugin: Plugin | any) {
-		// if (isNil(plugin)) {
-		// 	throw new Error('No plugin provided');
-		// }
+	replace(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
+		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
+
+		if (!this.has(k)) {
+			throw new Error(
+				`An item with ${key} key does not exist in the ${this.name} registry.` +
+					` Try using the "setOrReplace" method instead.`
+			);
+		}
+
+		this.data = this.data.set(k, a);
+	}
+
+	/**
+	 * Set or Replace an item in the Registry.
+	 *
+	 * @param {string} key The key of the item
+	 * @param {any} item  The item to add
+	 */
+	setOrReplace(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
+		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
+
+		if (this.has(k)) {
+			this.replace(k, a);
+		} else {
+			this.set(k, a);
+		}
+	}
+
+	/**
+	 * Register many plugins at once
+	 * @param {Array<Plugin>} plugins The BlueRain plugins to register
+	 */
+	registerMany(plugins: Array<MaybeEsModule<Plugin>>) {
+		plugins = plugins || [];
+
+		if (!Array.isArray(plugins)) {
+			throw new Error(
+				'Plugins parameter while registering via "registerMany" method must be an array'
+			);
+		}
+
+		plugins.forEach(plugin => this.setOrReplace(plugin));
+	}
+
+	/**
+	 * Takes an plugin, adds necessary fields and returns the processed plugin with a key
+	 * @param key
+	 * @param plugin
+	 */
+	getKeyAndItem(
+		key: string | MaybeEsModule<Plugin>,
+		plugin?: MaybeEsModule<Plugin>
+	): { key: string; plugin: Plugin } {
+		if (typeof key !== 'string' && !isNil(key)) {
+			plugin = key as Plugin;
+			key = '';
+		}
+
+		if (!plugin) {
+			throw new Error('No plugin provided');
+		}
 
 		// ES modules
-		if (plugin.default) {
-			plugin = plugin.default;
-		}
+		plugin = (plugin as EsModule<Plugin>).default ? (plugin as EsModule<Plugin>).default : plugin;
+
+		// Casting, to remove possiblity of undefined value is TS.
+		plugin = plugin as Plugin;
 
 		if (!plugin.pluginName) {
 			throw new Error('Plugin name not provided.');
 		}
 
-		if (!plugin.slug) {
-			plugin.slug = plugin.pluginName;
-		}
+		const slug = kebabCase(plugin.slug ? plugin.slug : plugin.pluginName);
 
-		plugin.slug = kebabCase(plugin.slug);
+		plugin.slug = slug;
 
-		super.set(plugin.slug, plugin);
-	}
-
-	/**
-	 * Register many plugins at once
-	 * @param {Array<Plugin>} plugins The array of plugins to register
-	 */
-	registerMany(plugins: Plugin[]) {
-		plugins = plugins || [];
-
-		if (!Array.isArray(plugins)) {
-			throw new Error('Plugins parameter must be an Array');
-		}
-
-		plugins.forEach((plugin: Plugin) => this.set(plugin));
+		const strKey = key && typeof key === 'string' ? key : slug;
+		return { key: strKey, plugin };
 	}
 
 	/**
@@ -74,9 +118,19 @@ export default class PluginRegistry extends MapRegistry {
 	 */
 	initializeAll() {
 		this.data.forEach(plugin => {
+			if (!plugin) {
+				return;
+			}
+
 			// Add hooks from the 'hooks' static property of plugin
 			if (plugin.hooks) {
+				const foo = plugin.hooks;
 				Object.keys(plugin.hooks).forEach(hook => {
+					// Satisfy TS
+					if (!plugin || !plugin.hooks || !plugin.hooks[hook]) {
+						return;
+					}
+
 					this.BR.Hooks.add(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
 				});
 			}
@@ -84,6 +138,12 @@ export default class PluginRegistry extends MapRegistry {
 			// Add components from the 'components' static property of plugin
 			if (plugin.components) {
 				Object.keys(plugin.components).forEach(component => {
+					// Satisfy TS
+					if (!plugin || !plugin.components || !plugin.components[component]) {
+						return;
+					}
+
+					const Comp = plugin.components[component];
 					this.BR.Components.setOrReplace(component, plugin.components[component]);
 				});
 			}

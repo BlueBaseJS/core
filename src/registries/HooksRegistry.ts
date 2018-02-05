@@ -3,6 +3,8 @@ import EventRegistry from './EventRegistry';
 import FilterRegistry from './FilterRegistry';
 import isNil from 'lodash.isnil';
 
+export type hookFn = (...args: any[]) => any;
+
 /**
  * All system hooks are stored in this registry
  */
@@ -18,7 +20,7 @@ export default class HookRegistry {
 	 * @param {String} hook - The name of the hook
 	 * @param {Function} filter - The filter function
 	 */
-	add(hook: string, name: string, filter: () => void) {
+	add(hook: string, name: string, filter: hookFn) {
 		if (isNil(hook)) {
 			throw new Error(`You are adding an invalid hook:${hook}.`);
 		}
@@ -32,6 +34,7 @@ export default class HookRegistry {
 		this.BR.Filters.set(hook, name, filter);
 		this.BR.Events.on(hook, filter);
 	}
+
 	/**
 	 * Successively run all of a hook's functions on an item
 	 * @param {String} hook - First argument: the name of the hook
