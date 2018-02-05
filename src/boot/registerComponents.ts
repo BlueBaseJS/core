@@ -41,5 +41,5 @@ export const registerComponents = BR => {
 	BR.Components.set('NotFoundPage', NotFoundPage);
 
 	/* Main System Component */
-	BR.Components.set('BlueRainApp', SystemApp);
+	BR.Components.set('SystemApp', SystemApp);
 };

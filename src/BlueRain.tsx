@@ -182,7 +182,7 @@ export class BlueRain implements BlueRainType {
 		this.Filters.run('bluerain.system.initialized');
 
 		// Set View
-		let SystemApp = this.Components.get('BlueRainApp');
+		let SystemApp = this.Components.get('SystemApp');
 		SystemApp = this.Filters.run('bluerain.system.app', SystemApp);
 		const BluerainApp = () => (
 			<BlueRainProvider>
