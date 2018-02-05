@@ -10,7 +10,7 @@ const BlueRainDecorator = (storyFn) => {
 
 	const Component = () => storyFn();
 
-	// if (!BluerainApp) {
+	if (!BluerainApp) {
 		const Plugin = {
 			pluginName: 'Storybook Plugin',
 			slug: 'storybook',
@@ -21,14 +21,14 @@ const BlueRainDecorator = (storyFn) => {
 			}
 		};
 
-	if (!BR.Plugins.has('storybook')) {
-		BR.Plugins.set(Plugin);
-	}
+		if (!BR.Plugins.has('storybook')) {
+			BR.Plugins.set(Plugin);
+		}
 		// BRConfigs.plugins.push(Plugin);
 		BluerainApp = BR.boot(BRConfigs);
-	// } else {
-	// 	BluerainApp = BR.boot();
-	// }
+	} else {
+		BluerainApp = BR.boot();
+	}
 
 	return <BluerainApp />;
 };

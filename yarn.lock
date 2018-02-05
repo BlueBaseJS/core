@@ -607,9 +607,9 @@
     react "^16.2.0"
     recompose "^0.25.0"
 
-"@blueeast/bluerain-platform-reactxp@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-platform-reactxp/-/bluerain-platform-reactxp-1.1.8.tgz#d3487eafce923f6a826128c8fcd34997bf312162"
+"@blueeast/bluerain-platform-reactxp@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-platform-reactxp/-/bluerain-platform-reactxp-2.0.0.tgz#69ab78068623737fd240fff7ba6fe41367244732"
   dependencies:
     "@blueeast/bluerain-os" "^1.0.1"
     "@blueeast/bluerain-plugin-react-router" "^1.0.6"
