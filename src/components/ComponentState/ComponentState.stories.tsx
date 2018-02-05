@@ -17,16 +17,16 @@ storiesOf('ComponentState', module)
 	})
 	.add('Only description', () => {
 
-	const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+		const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
 
-		const BR = props.bluerain;
-		const ComponentState = BR.Components.get('ComponentState');
+			const BR = props.bluerain;
+			const ComponentState = BR.Components.get('ComponentState');
 
-		return <ComponentState description="A simple description" />;
+			return <ComponentState description="A simple description" />;
+		});
+
+		return <Story />;
 	});
-
-	return <Story />;
-});
 
 
 // storiesOf('ComponentState', module).add('Simple', () => <div>hello </div>);
