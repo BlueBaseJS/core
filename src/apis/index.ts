@@ -1,5 +1,7 @@
+import { JsonToReact, JsonToReactClass } from './JsonToReact';
 import { Accessibility } from './Accessibility';
 import { AppState } from './AppState';
+import { BlueRain } from '../';
 import { Clipboard } from './Clipboard';
 import { Dimensions } from './Dimensions';
 import { GeoLocation } from './GeoLocation';
@@ -14,14 +16,19 @@ export type BlueRainAPI = {
 	Clipboard?: Clipboard;
 	Dimensions?: Dimensions;
 	GeoLocation?: GeoLocation;
+	JsonToReact: JsonToReact;
 	Linking?: Linking;
 	NetInfo?: NetInfo;
 	Platform?: Platform;
 	UserPresence?: UserPresence;
 };
 
-const API: BlueRainAPI = {};
-export default API;
+export const createApis = (ctx: BlueRain): BlueRainAPI => {
+	const API: BlueRainAPI = {};
+
+	API.JsonToReact = new JsonToReactClass(ctx);
+	return API;
+};
 
 export {
 	Accessibility,
@@ -34,3 +41,4 @@ export {
 	Platform,
 	UserPresence
 };
+export * from './JsonToReact';

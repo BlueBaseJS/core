@@ -47,7 +47,7 @@ const SystemApp = (props: { bluerain: BlueRain }) => {
 	};
 
 	routes = BR.Filters.run('bluerain.system.app.schema', routes);
-	return BR.Utils.parseJsonSchema(routes);
+	return BR.API.JsonToReact.parse(routes);
 };
 
 export default withBlueRain(SystemApp);

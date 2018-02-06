@@ -25,7 +25,7 @@ const SystemLayout = (props: SystemLayoutProperties & { bluerain: BlueRainType }
 	};
 
 	const layout = BR.Filters.run('bluerain.system.app.layout', schema, props);
-	return BR.Utils.parseJsonSchema(layout);
+	return BR.API.JsonToReact.parse(layout);
 };
 
 export default withBlueRain(SystemLayout);

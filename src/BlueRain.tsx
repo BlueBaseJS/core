@@ -1,8 +1,7 @@
 // Others
 import { App, Plugin } from './index';
+import { BlueRainAPI, JsonComponentSchema, createApis } from './apis';
 import defaultConfigs, { ConfigType } from './config';
-import { parseJsonSchema, parseJsonSchemaFunction } from './utils/JsonSchemaToReact';
-import { BlueRainAPI } from './apis';
 import { BlueRainProvider } from './Provider';
 import { registerComponents } from './boot';
 
@@ -35,7 +34,7 @@ export interface BlueRainType {
 	API: BlueRainAPI;
 
 	Utils: {
-		parseJsonSchema: parseJsonSchemaFunction;
+		parseJsonSchema: (schema: JsonComponentSchema) => React.ReactElement<any> | null;
 		setMainView: setMainViewFunction;
 		createStyleSheet: any;
 	};
@@ -68,7 +67,6 @@ export type BootOptions = {
 
 export type BootFunction = (options: BootOptions) => React.ComponentType;
 
-
 /**
  * This is the main BlueRain context. Works as a backbone of whole system.
  *
@@ -95,12 +93,17 @@ export class BlueRain implements BlueRainType {
 	Plugins = new PluginRegistry(this);
 	Platform = new PluginRegistry(this);
 
-	API = {
-	};
+	API = createApis(this);
 
 	Utils = {
-		parseJsonSchema,
+
+		parseJsonSchema: (schema: JsonComponentSchema) : React.ReactElement<any> | null => {
+			console.warn('BR.Utils.parseJsonSchema method has been deprecated, use BR.API.JsonToReact.parse method instead.');
+			return this.API.JsonToReact.parse(schema);
+		},
+
 		createStyleSheet: (styles: object, ...other: any[]) => styles,
+
 		setMainView: (MainView: React.ComponentType<any>) => {
 			console.log('Trying to set MainView', MainView);
 			throw new Error('setMainView is not implemented by the platform.');

@@ -98,7 +98,6 @@
   "dependencies": {
     "@blueeast/bluerain-ui-interfaces": "https://github.com/BlueEastCode/bluerain-ui-interfaces.git#fix/removal-of-Api",
     "eventemitter3": "^2.0.3",
-    "html-tags": "^2.0.0",
     "immutable": "^3.8.2",
     "lodash.flowright": "^3.5.0",
     "lodash.get": "^4.4.2",
@@ -109,6 +108,7 @@
     "lodash.set": "^4.3.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-dom-factories": "^1.0.2",
     "recompose": "^0.25.0"
   },
   "devDependencies": {
