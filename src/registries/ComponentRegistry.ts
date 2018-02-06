@@ -37,7 +37,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * an empty array, and it's ok!
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
-	set(name: string, rawComponent: React.ComponentType, ...hocs: ComponentRegistryHocItem[]) {
+	add(name: string, rawComponent: React.ComponentType, ...hocs: ComponentRegistryHocItem[]) {
 		if (isNil(rawComponent)) {
 			throw new Error(
 				'rawComponent is required to register a component.' +
@@ -70,7 +70,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 		}
 		const previousComponent: ComponentRegistryItem = super.get(name);
 		const hocs = [...newHocs, ...previousComponent.hocs];
-		super.replace(name, { rawComponent: newComponent, hocs });
+		super.set(name, { rawComponent: newComponent, hocs });
 	}
 
 	/**
@@ -79,11 +79,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * @param {string} key The key of the item
 	 * @param {React.ComponentType} item  The item to add
 	 */
-	setOrReplace(
-		key: string,
-		rawComponent: React.ComponentType,
-		...hocs: ComponentRegistryHocItem[]
-	) {
+	set(key: string, rawComponent: React.ComponentType, ...hocs: ComponentRegistryHocItem[]) {
 		if (!key) {
 			throw new Error(`No key provided in the setOrReplace method of ${this.name} registry.`);
 		}
@@ -94,7 +90,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 		if (this.has(key)) {
 			this.replace(key, rawComponent, ...hocs);
 		} else {
-			this.set(key, rawComponent, ...hocs);
+			this.add(key, rawComponent, ...hocs);
 		}
 	}
 

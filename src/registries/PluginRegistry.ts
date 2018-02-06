@@ -21,9 +21,9 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 	 * Register an Plugin
 	 * @param {Plugin} plugin The BlueRain plugin to register
 	 */
-	set(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
-		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
-		super.set(k, a);
+	add(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
+		const { key: k, plugin: a } = getKeyAndItem(key, plugin);
+		super.add(k, a);
 	}
 
 	/**
@@ -32,33 +32,9 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	replace(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
-		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
-
-		if (!this.has(k)) {
-			throw new Error(
-				`An item with ${key} key does not exist in the ${this.name} registry.` +
-					` Try using the "setOrReplace" method instead.`
-			);
-		}
-
+	set(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
+		const { key: k, plugin: a } = getKeyAndItem(key, plugin);
 		this.data = this.data.set(k, a);
-	}
-
-	/**
-	 * Set or Replace an item in the Registry.
-	 *
-	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
-	 */
-	setOrReplace(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
-		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
-
-		if (this.has(k)) {
-			this.replace(k, a);
-		} else {
-			this.set(k, a);
-		}
 	}
 
 	/**
@@ -74,43 +50,7 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 			);
 		}
 
-		plugins.forEach(plugin => this.setOrReplace(plugin));
-	}
-
-	/**
-	 * Takes an plugin, adds necessary fields and returns the processed plugin with a key
-	 * @param key
-	 * @param plugin
-	 */
-	getKeyAndItem(
-		key: string | MaybeEsModule<Plugin>,
-		plugin?: MaybeEsModule<Plugin>
-	): { key: string; plugin: Plugin } {
-		if (typeof key !== 'string' && !isNil(key)) {
-			plugin = key as Plugin;
-			key = '';
-		}
-
-		if (!plugin) {
-			throw new Error('No plugin provided');
-		}
-
-		// ES modules
-		plugin = (plugin as EsModule<Plugin>).default ? (plugin as EsModule<Plugin>).default : plugin;
-
-		// Casting, to remove possiblity of undefined value is TS.
-		plugin = plugin as Plugin;
-
-		if (!plugin.pluginName) {
-			throw new Error('Plugin name not provided.');
-		}
-
-		const slug = kebabCase(plugin.slug ? plugin.slug : plugin.pluginName);
-
-		plugin.slug = slug;
-
-		const strKey = key && typeof key === 'string' ? key : slug;
-		return { key: strKey, plugin };
+		plugins.forEach(plugin => this.set(plugin));
 	}
 
 	/**
@@ -142,7 +82,7 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 						return;
 					}
 
-					this.BR.Components.setOrReplace(component, plugin.components[component]);
+					this.BR.Components.set(component, plugin.components[component]);
 				});
 			}
 
@@ -155,3 +95,39 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 		});
 	}
 }
+
+/**
+ * Takes an plugin, adds necessary fields and returns the processed plugin with a key
+ * @param key
+ * @param plugin
+ */
+const getKeyAndItem = (
+	key: string | MaybeEsModule<Plugin>,
+	plugin?: MaybeEsModule<Plugin>
+): { key: string; plugin: Plugin } => {
+	if (typeof key !== 'string' && !isNil(key)) {
+		plugin = key as Plugin;
+		key = '';
+	}
+
+	if (!plugin) {
+		throw new Error('No plugin provided');
+	}
+
+	// ES modules
+	plugin = (plugin as EsModule<Plugin>).default ? (plugin as EsModule<Plugin>).default : plugin;
+
+	// Casting, to remove possiblity of undefined value is TS.
+	plugin = plugin as Plugin;
+
+	if (!plugin.pluginName) {
+		throw new Error('Plugin name not provided.');
+	}
+
+	const slug = kebabCase(plugin.slug ? plugin.slug : plugin.pluginName);
+
+	plugin.slug = slug;
+
+	const strKey = key && typeof key === 'string' ? key : slug;
+	return { key: strKey, plugin };
+};
