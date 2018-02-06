@@ -50,4 +50,4 @@ const SystemApp = (props: { bluerain: BlueRain }) => {
 	return BR.API.JsonToReact.parse(routes);
 };
 
-export default withBlueRain(SystemApp);
+export default withBlueRain(SystemApp) as React.ComponentType<any>;

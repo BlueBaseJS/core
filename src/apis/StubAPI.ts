@@ -1,5 +1,5 @@
 const myObj = {};
-export const StubAPI = apiName => {
+export const StubAPI = (apiName: string) => {
 	return new Proxy(myObj, {
 		get: () => {
 			return () => {

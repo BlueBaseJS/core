@@ -1,7 +1,7 @@
 import { BlueRain } from '../index';
 import MapRegistry from './MapRegistry';
 import React from 'react';
-import compose from 'lodash.flowright';
+import flowright from 'lodash.flowright';
 import isNil from 'lodash.isnil';
 
 export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
@@ -140,7 +140,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		// TS Error: https://github.com/Microsoft/TypeScript/issues/4130
-		return compose(...hocs)(component.rawComponent);
+		return flowright([], ...hocs)(component.rawComponent);
 	}
 
 	/**

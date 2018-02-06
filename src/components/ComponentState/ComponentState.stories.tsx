@@ -104,7 +104,7 @@ storiesOf('ComponentState', module)
 			const Button=() =>  <button>ButtonComponent</button>;
 			const BR = props.bluerain;
 			const ComponentState = BR.Components.get('ComponentState');
-			const Style={ color:'white',backgroundColor:'red',width:100,height:50,borderRadius:8, textAlign:'center' };
+			// const Style={ color:'white',backgroundColor:'red',width:100,height:50,borderRadius:8, textAlign:'center' };
 
 			return <ComponentState  button={Button}  />;
 		});
@@ -135,7 +135,7 @@ storiesOf('ComponentState', module)
 		const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
 
 			const BR = props.bluerain;
-			const Image = BR.Components.get('Image');
+			// const Image = BR.Components.get('Image');
 			const Style={ width:200,height:200 };
 			const ComponentState = BR.Components.get('ComponentState');
 			// tslint:disable-next-line:max-line-length
