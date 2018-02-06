@@ -59,7 +59,7 @@ class AppRegistry extends MapRegistry<App> {
 			);
 		}
 
-		apps.forEach(app => this.setOrReplace(app));
+		apps.forEach(app => this.set(app));
 	}
 
 	/**
@@ -141,8 +141,7 @@ export default AppRegistry;
  */
 const getKeyAndItem = (
 	key: string | MaybeEsModule<App>,
-	app?: MaybeEsModule<App>,
-	BR?: BlueRain
+	app?: MaybeEsModule<App>
 ): { key: string; app: App } => {
 	if (typeof key !== 'string' && !isNil(key)) {
 		app = key as App;
@@ -166,8 +165,8 @@ const getKeyAndItem = (
 	const slug = kebabCase(app.slug ? app.slug : app.appName);
 
 	app.slug = slug;
-	app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
-	app.path = `${app.appRoutePrefix}/${app.slug}`;
+	// app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
+	// app.path = `${app.appRoutePrefix}/${app.slug}`;
 
 	const strKey = key && typeof key === 'string' ? key : slug;
 	return { key: strKey, app };

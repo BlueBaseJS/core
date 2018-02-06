@@ -32,11 +32,7 @@ class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
 	add(hook: string, name: string | hookFn, listener: hookFn, index?: number) {
-		const { hook: _hook, name: _name, listener: _listener, item } = this.checkParams(
-			hook,
-			name,
-			listener
-		);
+		const { hook: _hook, name: _name, item } = checkParams(hook, name, listener);
 
 		let list = this.data.get(_hook);
 
@@ -63,11 +59,7 @@ class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
 	set(hook: string, name: string | hookFn, listener: hookFn, index?: number) {
-		const { hook: _hook, name: _name, listener: _listener, item } = this.checkParams(
-			hook,
-			name,
-			listener
-		);
+		const { hook: _hook, name: _name, item } = checkParams(hook, name, listener);
 
 		let list = this.data.get(_hook);
 
@@ -88,27 +80,6 @@ class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 		this.data = this.data.set(_hook, list);
 	}
 
-	checkParams(hook: string, name: string | hookFn, listener: hookFn) {
-		if (isnil(hook)) {
-			throw new Error(`Hook cannot be ${hook}`);
-		}
-
-		// If a plugin is using an old system of sending named functions
-		if (typeof name === 'function') {
-			listener = name;
-			name = listener.name;
-		}
-
-		if (isnil(name)) {
-			throw new Error(`You are adding an unnamed listener to ${hook}.`);
-		}
-
-		if (isnil(listener)) {
-			throw new Error(`You have to provide a listener function while adding it to ${hook}.`);
-		}
-
-		return { hook, name, listener, item: { hook, name, listener } };
-	}
 	/**
 	 * Remove a listener from a hook
 	 * @param {string} hook - The name of the hook
@@ -183,3 +154,25 @@ class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 }
 
 export default FilterRegistry;
+
+const checkParams = (hook: string, name: string | hookFn, listener: hookFn) => {
+	if (isnil(hook)) {
+		throw new Error(`Hook cannot be ${hook}`);
+	}
+
+	// If a plugin is using an old system of sending named functions
+	if (typeof name === 'function') {
+		listener = name;
+		name = listener.name;
+	}
+
+	if (isnil(name)) {
+		throw new Error(`You are adding an unnamed listener to ${hook}.`);
+	}
+
+	if (isnil(listener)) {
+		throw new Error(`You have to provide a listener function while adding it to ${hook}.`);
+	}
+
+	return { hook, name, listener, item: { hook, name, listener } };
+};

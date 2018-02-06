@@ -103,7 +103,7 @@ export class BlueRain implements BlueRainType {
 			return this.API.JsonToReact.parse(schema);
 		},
 
-		createStyleSheet: (styles: object, ...other: any[]) => styles,
+		createStyleSheet: (styles: object) => styles,
 
 		setMainView: (MainView: React.ComponentType<any>) => {
 			console.log('Trying to set MainView', MainView);
