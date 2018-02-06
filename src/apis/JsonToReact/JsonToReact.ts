@@ -22,9 +22,9 @@ export class JsonToReactClass implements JsonToReact {
 	/**
 	 * Parses a JSON based schema to React Component tree
 	 */
-	parse(schema: JsonComponentSchema): React.ReactElement<any> | null {
+	parse(schema: JsonComponentSchema): React.ReactElement<any> {
 		if (!schema) {
-			return null;
+			throw new Error(`Schema in BR.API.JsonToReact.parse method cannot be ${schema}.`);
 		}
 
 		return this.parser.parseSchema(schema) as React.ReactElement<any>;
