@@ -34,6 +34,8 @@ export interface AppOptions {
 	components?: { [id: string]: React.ComponentType<any> };
 
 	initialize?(config: {}, ctx: BlueRainType): void;
+
+	[key: string]: any;
 }
 
 export interface StatelessComponentApp<P = {}> extends React.StatelessComponent<P>, AppOptions {}

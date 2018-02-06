@@ -24,10 +24,10 @@ export type BlueRainAPI = {
 };
 
 export const createApis = (ctx: BlueRain): BlueRainAPI => {
-	const API: BlueRainAPI = {};
-
+	const API: any = {};
 	API.JsonToReact = new JsonToReactClass(ctx);
-	return API;
+
+	return API as BlueRainAPI;
 };
 
 export {

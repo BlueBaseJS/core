@@ -130,7 +130,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * @returns {Function|React.ComponentType<*>} A (wrapped) React component
 	 */
 	get(...name: string[]): React.ComponentType<any> {
-		let component;
+		let component: ComponentRegistryItem | null = null;
 		for (const componentName of name) {
 			if (this.has(componentName)) {
 				component = this.data.get(componentName);
@@ -142,6 +142,8 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 		}
 
 		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
+
+		// TS Error: https://github.com/Microsoft/TypeScript/issues/4130
 		return compose(...hocs)(component.rawComponent);
 	}
 
