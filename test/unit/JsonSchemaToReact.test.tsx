@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import BR from '../../src/index';
+
 class Paragraph extends React.Component {
 	render() {
 		return <p>{this.props.paragraph}</p>;
@@ -10,7 +11,7 @@ class Heading extends React.Component {
 		return <h1>{this.props.text}</h1>;
 	}
 }
-BR.Components.register('Heading', Heading);
+BR.Components.set('Heading', Heading);
 describe('Json to react tests', () => {
 	it('should throw error for null schema', () => {
 		expect(() => BR.Utils.parseJsonSchema(null)).toThrow();

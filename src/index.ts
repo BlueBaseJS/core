@@ -11,9 +11,11 @@ export { JsonComponentSchema } from './utils/JsonSchemaToReact';
 export { ComponentRegistryItem, ComponentRegistryHocItem } from './registries/ComponentRegistry';
 export { StatefulComponentProperties } from './components/StatefulComponent';
 export * from './apis';
-// export { FilterRegistryItem } from './registries/FilterRegistry';
 
 // BlueRain
-import BlueRain from './BlueRain';
-export default BlueRain;
-export { BlueRainType } from './BlueRain';
+export * from './BlueRain';
+import { BlueRain } from './BlueRain';
+
+// Backwards Compat
+const BR = new BlueRain();
+export default BR;

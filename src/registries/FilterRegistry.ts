@@ -1,24 +1,30 @@
+import { BlueRain } from '../index';
 import { List } from 'immutable';
-import BR from '../index';
+import { hookFn } from './HooksRegistry';
 import MapRegistry from './MapRegistry';
 import isNil from 'lodash.isnil';
 
-export type FilterRegistryItem = {
+export type FilterRegistryListItem = {
 	name: string;
-	filter: Function;
+	filter: hookFn;
 };
+
+export type FilterRegistryItem = List<FilterRegistryListItem>;
 
 /**
  * All system filters are stored in this registry
  * @property {Map<string, List<{name:string, filter:Function}>>} data Storage of all
  * filters and their respective functions
  */
-class FilterRegistry extends MapRegistry {
+class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 	// data: Map<string, List<FilterRegistryItem>>;
+	BR: BlueRain;
 
-	constructor() {
+	constructor(ctx: BlueRain) {
 		super('FilterRegistry');
+		this.BR = ctx;
 	}
+
 	/**
 	 * Add a filter function to a hook.To be deprecated in 2.0.0
 	 * @param {String} hook - The name of the hook
@@ -26,7 +32,7 @@ class FilterRegistry extends MapRegistry {
 	 * @param {Function} filter - The filter function
 	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
-	add(hook: string, name: string | Function, filter: Function, index?: number) {
+	add(hook: string, name: string | hookFn, filter: hookFn, index?: number) {
 		console.warn(
 			'Deprecation Warning: "add" method of FilterRegistry has been deprecated. Please use "set" method instead.'
 		);
@@ -39,7 +45,7 @@ class FilterRegistry extends MapRegistry {
 	 * @param {Function} filter - The filter function
 	 * @param {number} index - The index where function should be placed in array of functions against the hook
 	 */
-	set(hook: string, name: string | Function, filter: Function, index?: number) {
+	set(hook: string, name: string | hookFn, filter: hookFn, index?: number) {
 		if (isNil(hook)) {
 			throw new Error(`Hook cannot be ${hook}`);
 		}
@@ -65,13 +71,13 @@ class FilterRegistry extends MapRegistry {
 		}
 
 		// Check if this filter already exists
-		if (list.findIndex(listItem => listItem.name === name) > -1) {
+		if (list.findIndex(listItem => !!(listItem && listItem.name === name)) > -1) {
 			throw new Error(`Filter ${name.toString()} already exists in ${hook} hook.`);
 		}
 
 		const item = { name, filter };
 
-		list = isNil(index) ? list.push(item) : list.insert(index, item);
+		list = index === undefined ? list.push(item) : list.insert(index, item);
 
 		this.data = this.data.set(hook, list);
 	}
@@ -96,8 +102,8 @@ class FilterRegistry extends MapRegistry {
 			throw new Error(`${hook} filter is not added. First add filter to remove it.`);
 		}
 
-		let list: List<FilterRegistryItem> = this.data.get(hook) || List();
-		const index = list.findIndex((item = { name: '', filter: () => 1 }) => item.name === name);
+		let list: FilterRegistryItem = this.data.get(hook) || List();
+		const index = list.findIndex(item => !!(item && item.name === name));
 
 		if (index === -1) {
 			throw new Error(
@@ -123,8 +129,8 @@ class FilterRegistry extends MapRegistry {
 		}
 		const sliceNumber = 2;
 		const args = Array.prototype.slice.call(arguments).slice(sliceNumber); // eslint-disable-line prefer-rest-params
-		args.push(BR);
-		const filters: List<FilterRegistryItem> = this.data.get(hook) || List();
+		args.push(this.BR);
+		const filters: FilterRegistryItem = this.data.get(hook) || List();
 
 		if (isNil(filters) || filters.size === 0) {
 			return item;

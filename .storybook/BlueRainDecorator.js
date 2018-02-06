@@ -19,6 +19,7 @@ const BlueRainDecorator = (storyFn) => {
 					ctx.Components.replace('SystemLayout', Component);
 				}
 			}
+
 		};
 
 		if (!BR.Plugins.has('storybook')) {

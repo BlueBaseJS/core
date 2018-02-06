@@ -1,4 +1,5 @@
 import { BlueRainType } from '../index';
+import { hookFn } from '../registries/HooksRegistry';
 import React from 'react';
 
 /**
@@ -18,7 +19,7 @@ export class Plugin {
 	description?: string;
 	version?: string;
 
-	hooks?: { [id: string]: Function };
+	hooks?: { [id: string]: hookFn };
 	components?: { [id: string]: React.ComponentType<any> };
 
 	initialize?(config: {}, ctx: BlueRainType): void;

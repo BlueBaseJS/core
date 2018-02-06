@@ -1,3 +1,4 @@
+import { BlueRain } from '../index';
 import get from 'lodash.get';
 import isNil from 'lodash.isnil';
 import merge from 'lodash.merge';
@@ -9,6 +10,11 @@ import set from 'lodash.set';
  */
 class ConfigRegistry {
 	ConfigsTable: {} = {};
+	BR: BlueRain;
+
+	constructor(ctx: BlueRain) {
+		this.BR = ctx;
+	}
 
 	/**
 	 * Set a Config

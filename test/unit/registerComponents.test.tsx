@@ -23,5 +23,5 @@ expect(BR.Components.has('Wallpaper')).toBe(true);
 expect(BR.Components.has('SystemLayout')).toBe(true);
 expect(BR.Components.has('IndexPage')).toBe(true);
 expect(BR.Components.has('NotFoundPage')).toBe(true);
-expect(BR.Components.has('BlueRainApp')).toBe(true);
+expect(BR.Components.has('SystemApp')).toBe(true);
 });

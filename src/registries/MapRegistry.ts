@@ -3,9 +3,9 @@ import { Map } from 'immutable';
 /**
  * A generic Registry class in the BlueRain OS. Used to store data.
  */
-export default class Registry {
+export default class MapRegistry<T> {
 	name: string;
-	data: Map<string, any>;
+	data: Map<string, T>;
 
 	constructor(name: string) {
 		if (!name) {
@@ -23,7 +23,7 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 
-	set(key: string, item: any, ...rest: any[]) {
+	set(key: string, item: T | any, ...rest: any[]) {
 		if (!key) {
 			throw new Error(`No key provided in the set method of ${this.name} registry.`);
 		}
@@ -48,7 +48,7 @@ export default class Registry {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	replace(key: string, item: any) {
+	replace(key: string, item: T | any, ...rest: any[]) {
 		if (!key) {
 			throw new Error(`No key provided in the replace method of ${this.name} registry.`);
 		}
@@ -72,7 +72,7 @@ export default class Registry {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	setOrReplace(key: string, item: any) {
+	setOrReplace(key: string, item: T | any, ...rest: any[]) {
 		if (!key) {
 			throw new Error(`No key provided in the setOrReplace method of ${this.name} registry.`);
 		}
@@ -119,7 +119,6 @@ export default class Registry {
 	 * Remove a plugin from the registry
 	 * @param {string} key The key plugin to remove
 	 */
-
 	remove(key: string, ...rest: any[]) {
 		if (!key) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);

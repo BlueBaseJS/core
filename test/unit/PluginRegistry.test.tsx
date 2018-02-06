@@ -23,7 +23,7 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'NewPlugin';
 				initialize() {}
 			}
-			expect(() => BR.Plugins.register(NewPlugin,'dummy')).not.toThrow();
+			expect(() => BR.Plugins.set(NewPlugin,'dummy')).not.toThrow();
 		});
 		it('slug Create other recognized static properties', () => {
 			const plugin = BR.Plugins.data.get('hello-world-plugin');
@@ -123,7 +123,7 @@ describe('Plugin registry tests', () => {
 			}
 			expect(() =>
 				BR.Plugins.registerMany([HelloPlugin, 'string', {}])
-			).toThrow('Plugin name not provided.');
+			).toThrow('No plugin provided');
 		});
 		it('should have hello world plugin', () => {
 			BR.Plugins.PluginsTable = {};
@@ -159,7 +159,7 @@ describe('Plugin registry tests', () => {
 					return <div>hello world</div>;
 				}
 				static initialize(config) {
-					BR.Filters.add('plugin.test.initialize.hook', function abc() {
+					BR.Filters.set('plugin.test.initialize.hook', function abc() {
 						return config + 34;
 					});
 				}

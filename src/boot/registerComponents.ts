@@ -2,24 +2,23 @@ import StatefulComponent, {
 	EmptyState,
 	ErrorState,
 	LoadingState
-} from './components/StatefulComponent';
+} from '../components/StatefulComponent';
 
-import BR from './index';
-import CenterLayout from './layouts/CenterLayout';
-import ComponentState from './components/ComponentState';
-import ErrorPage from './pages/ErrorPage';
+import CenterLayout from '../layouts/CenterLayout';
+import ComponentState from '../components/ComponentState';
+import ErrorPage from '../pages/ErrorPage';
 
-import ImageBackground from './components/ImageBackground';
-import IndexPage from './pages/IndexPage';
-import LoadingPage from './pages/LoadingPage';
-import NotFoundPage from './pages/NotFoundPage';
+import ImageBackground from '../components/ImageBackground';
+import IndexPage from '../pages/IndexPage';
+import LoadingPage from '../pages/LoadingPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
-import Page from './components/Page';
-import SystemApp from './SystemApp';
-import SystemLayout from './layouts/SystemLayout';
-import Wallpaper from './components/Wallpaper';
+import Page from '../components/Page';
+import SystemApp from '../SystemApp';
+import SystemLayout from '../layouts/SystemLayout';
+import Wallpaper from '../components/Wallpaper';
 
-export default () => {
+export const registerComponents = BR => {
 	/* Internal Components */
 	BR.Components.set('ComponentState', ComponentState);
 	BR.Components.set('ImageBackground', ImageBackground);
@@ -42,5 +41,5 @@ export default () => {
 	BR.Components.set('NotFoundPage', NotFoundPage);
 
 	/* Main System Component */
-	BR.Components.set('BlueRainApp', SystemApp);
+	BR.Components.set('SystemApp', SystemApp);
 };
