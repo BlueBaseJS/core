@@ -1,8 +1,8 @@
 const myObj = {};
 export const StubAPI = apiName => {
 	return new Proxy(myObj, {
-		get: function get() {
-			return function wrapper() {
+		get: () => {
+			return () => {
 				// var args = Array.prototype.slice.call(arguments);
 				// console.log(args[0]);
 				throw new Error(`${apiName} API is not implemented in BlueRain!
