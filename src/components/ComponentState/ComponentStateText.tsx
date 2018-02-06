@@ -1,4 +1,4 @@
-import { BlueRain } from '../../index';
+import { BlueRain,withBlueRain } from '../../index';
 import { TextStyle } from '@blueeast/bluerain-ui-interfaces';
 import React from 'react';
 
@@ -25,7 +25,6 @@ const ComponentStateText = (props: ComponentStateTextProps) => {
 	} = props;
 
 	if (text) {
-
 		const Text = BR.Components.get('Text');
 
 		return (
@@ -39,4 +38,4 @@ const ComponentStateText = (props: ComponentStateTextProps) => {
 	}
 };
 
-export default ComponentStateText;
+export default withBlueRain(ComponentStateText);

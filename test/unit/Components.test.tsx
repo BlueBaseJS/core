@@ -95,6 +95,11 @@ it('should return component CenterLayout', () => {
 
 
 it('should return component StatefulComponent ', () => {
+	const wrapper=mount(<BlueRainProvider><StatefulComponent   /></BlueRainProvider>);
+	expect(wrapper.find('StatefulComponent')).toBeDefined();
+});
+
+it('should return component StatefulComponent ', () => {
 	const wrapper=mount(<BlueRainProvider><StatefulComponent  /></BlueRainProvider>);
 	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
@@ -129,22 +134,25 @@ it('should return component ComponentStatImage with source prop ', () => {
 });
 
 it('should return component ComponentStateText ', () => {
-	const wrapper=mount(<BlueRainProvider><ComponentStateText/></BlueRainProvider>);
+	const wrapper=mount(<BlueRainProvider><ComponentStateText  /></BlueRainProvider>);
 	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 
-
-it('should return component ComponentStateText ', () => {
-	const wrapper=mount(<BlueRainProvider><ComponentStateText  text="title"  /></BlueRainProvider>);
+it('should return component ComponentStateText  with text prop', () => {
+const wrapper=mount(<BlueRainProvider><ComponentStateText text="title"  /></BlueRainProvider>);
 	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
+
 it('should return component ComponentState ', () => {
 	const wrapper=mount(<BlueRainProvider><ComponentState/></BlueRainProvider>);
 	 expect(wrapper.find('ComponentState')).toBeDefined();
 });
+
+
+
 it('should return component default  State ', () => {
 		 // tslint:disable-next-line:max-line-length
-		 const wrapper=mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
+	 const wrapper=mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
 	  expect(wrapper.find('Component')).toBeDefined();
 	 });
 
