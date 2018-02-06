@@ -91,7 +91,7 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 
 	return (
   <View style={BR.Utils.createStyleSheet(style)}>
-    <ComponentStateImage {...props} />
+    <ComponentStateImage  {...props}  />
     <ComponentStateText text={title} style={titleStylesheet} bluerain={BR} />
     <ComponentStateText text={description} style={descriptionStyle} bluerain={BR} />
     <ComponentStateButton {...props} />

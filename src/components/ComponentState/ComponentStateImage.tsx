@@ -39,6 +39,7 @@ const ComponentStateImage = (props: ComponentStateImageProps) => {
 
 	if (ImageComponent || imageSource) {
 		ImageC = ImageComponent || Image;
+
 	} else {
 		return null;
 	}
