@@ -44,6 +44,7 @@ export interface BlueRainType {
 	boot: BootFunction;
 
 	booted: boolean;
+	bootOptions?: BootOptions;
 }
 
 /**
@@ -113,25 +114,32 @@ export class BlueRain implements BlueRainType {
 	refs = {};
 
 	booted = false;
+	bootOptions: BootOptions = {
+		apps: [],
+		config: {},
+		platform: [],
+		plugins: [],
+		// serverMode: false,
+		renderApp: true
+	};
 
 	// constructor() {
 	// 	this.Hooks = new HooksRegistry(this.Filters, this.Events);
 	// }
 
 	boot: BootFunction = (
-		options = {
-			apps: [],
-			// serverMode: false,
-			renderApp: true
-		}
+		options = {}
 	) => {
 
 		// Extract app, plugins and configs from options
-		const { renderApp } = options;
-		const apps = options.apps || [];
-		const plugins = options.plugins || [];
-		const config = options.config || [];
-		const platform = options.platform || [];
+		this.bootOptions = { ...this.bootOptions, ...options };
+		const {
+			apps = [],
+			config = {},
+			platform = [],
+			plugins = [],
+			renderApp
+		} = this.bootOptions;
 
 		// checkHooks();
 
@@ -161,10 +169,8 @@ export class BlueRain implements BlueRainType {
 
 		// =[ System Lifecycle Event ]= Components Registered
 		// Only runs on first boot
-		if (!this.booted) {
-			registerComponents(this);
-			this.Filters.run('bluerain.system.components.registered');
-		}
+		registerComponents(this);
+		this.Filters.run('bluerain.system.components.registered');
 
 		// =[ System Lifecycle Event ]= Plugins Registered
 		this.Plugins.registerMany(plugins);
@@ -188,6 +194,7 @@ export class BlueRain implements BlueRainType {
 		// Set View
 		let SystemApp = this.Components.get('SystemApp');
 		SystemApp = this.Filters.run('bluerain.system.app', SystemApp);
+
 		const BluerainApp = () => (
 			<BlueRainProvider>
 				<SystemApp />
