@@ -70,7 +70,7 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 						return;
 					}
 
-					this.BR.Hooks.add(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
+					this.BR.Hooks.set(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
 				});
 			}
 

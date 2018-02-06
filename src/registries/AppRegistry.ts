@@ -79,7 +79,7 @@ class AppRegistry extends MapRegistry<App> {
 						return;
 					}
 
-					this.BR.Hooks.add(hook, `${app.slug}.${hook}`, app.hooks[hook]);
+					this.BR.Hooks.set(hook, `${app.slug}.${hook}`, app.hooks[hook]);
 				});
 			}
 
