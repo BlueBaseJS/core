@@ -123,7 +123,10 @@ class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
-	run(hook: string, item?: any, ...otherArgs: any[]) {
+	run(...allArgs: any[]) {
+		const hook = allArgs[0];
+		const item = allArgs[1];
+
 		if (isNil(hook)) {
 			throw new Error(`Hook cannot be ${hook}`);
 		}

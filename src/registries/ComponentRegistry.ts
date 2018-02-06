@@ -1,7 +1,7 @@
 import { BlueRain } from '../index';
 import MapRegistry from './MapRegistry';
 import React from 'react';
-import compose from 'lodash.compose';
+import compose from 'lodash.flowright';
 import isNil from 'lodash.isnil';
 
 export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;

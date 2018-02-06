@@ -1,12 +1,11 @@
-import { parseJsonSchema } from './utils/JsonSchemaToReact';
-import BR from './index';
+import { BlueRain, JsonComponentSchema, withBlueRain } from './index';
 import React from 'react';
 
-export const SystemRoutes = () => {
+export const SystemRoutes = (BR: BlueRain) => {
 	const appRoutes = BR.Apps.getAllRoutes();
 
 	// Default Routes
-	let systemRoutes = [
+	let systemRoutes: JsonComponentSchema[] = [
 		{
 			component: 'Route',
 			props: {
@@ -32,18 +31,23 @@ export const SystemRoutes = () => {
 	return systemRoutes;
 };
 
-export default props => {
-	const routes = {
+const SystemApp = (props: { bluerain: BlueRain }) => {
+	const BR = props.bluerain;
+
+	let routes: JsonComponentSchema = {
 		component: 'SystemLayout',
 		props,
 		children: [
 			{
 				component: 'RouterSwitch',
 				props: { style: { flex: 1, flexGrow: 1 } },
-				children: SystemRoutes()
+				children: SystemRoutes(BR)
 			}
 		]
 	};
 
-	return parseJsonSchema(BR.Filters.run('bluerain.system.app.schema', routes));
+	routes = BR.Filters.run('bluerain.system.app.schema', routes);
+	return BR.Utils.parseJsonSchema(routes);
 };
+
+export default withBlueRain(SystemApp);

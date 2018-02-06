@@ -19,7 +19,7 @@ import React from 'react';
  * @property {Function} initialize	Initialize function called during the app initialization phase.
  */
 export interface AppOptions {
-	appName?: string;
+	appName: string;
 	slug?: string;
 	category?: string;
 	description?: string;
@@ -47,7 +47,7 @@ export type App<P = {}> = ComponentClassApp<P> | StatelessComponentApp<P>;
  * @param options {AppOptions}
  */
 export const createApp = (AppComponent: React.ComponentType<any>, options: AppOptions): App => {
-	const NewComponent: App = AppComponent;
+	const NewComponent = AppComponent as App;
 
 	if (!options.appName) {
 		throw new Error('appName property is required to create a new App');

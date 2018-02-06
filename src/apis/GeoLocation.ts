@@ -40,7 +40,7 @@ export interface GeoLocation {
 	 *  useSignificantChanges (bool)
 	 */
 
-	watchPosition(
+	watchPosition: (
 		success: () => void,
 		error?: () => void,
 		options?: {
@@ -50,7 +50,7 @@ export interface GeoLocation {
 			distanceFilter: any;
 			useSignificantChanges: any;
 		}
-	);
+	) => void;
 
 	/**
 	 * It is used in reactxp

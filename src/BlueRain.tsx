@@ -1,8 +1,8 @@
 // Others
-import API, { BlueRainAPI } from './apis';
 import { App, Plugin } from './index';
 import defaultConfigs, { ConfigType } from './config';
 import { parseJsonSchema, parseJsonSchemaFunction } from './utils/JsonSchemaToReact';
+import { BlueRainAPI } from './apis';
 import { BlueRainProvider } from './Provider';
 import { registerComponents } from './boot';
 
@@ -100,8 +100,9 @@ export class BlueRain implements BlueRainType {
 
 	Utils = {
 		parseJsonSchema,
-		createStyleSheet: (styles: object, ...args: any[]) => styles,
-		setMainView: (View: React.ComponentType) => {
+		createStyleSheet: (styles: object, ...other: any[]) => styles,
+		setMainView: (MainView: React.ComponentType<any>) => {
+			console.log('Trying to set MainView', MainView);
 			throw new Error('setMainView is not implemented by the platform.');
 		}
 	};
@@ -117,13 +118,13 @@ export class BlueRain implements BlueRainType {
 	boot: BootFunction = (
 		options = {
 			apps: [],
-			serverMode: false,
+			// serverMode: false,
 			renderApp: true
 		}
 	) => {
 
 		// Extract app, plugins and configs from options
-		const { serverMode, renderApp } = options;
+		const { renderApp } = options;
 		const apps = options.apps || [];
 		const plugins = options.plugins || [];
 		const config = options.config || [];

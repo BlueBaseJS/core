@@ -5,6 +5,7 @@ import set from 'lodash.set';
 
 export interface JsonComponentSchema {
 	component: string | ReactElement<any>;
+	key?: string;
 	text?: string;
 	props?: { [key: string]: any };
 	children?: JsonComponentSchema[];

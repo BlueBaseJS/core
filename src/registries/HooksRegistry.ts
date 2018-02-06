@@ -1,6 +1,4 @@
 import { BlueRain } from '../index';
-import EventRegistry from './EventRegistry';
-import FilterRegistry from './FilterRegistry';
 import isNil from 'lodash.isnil';
 
 export type hookFn = (...args: any[]) => any;
