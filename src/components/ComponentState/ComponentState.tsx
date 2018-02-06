@@ -1,5 +1,5 @@
 
-import { BlueRainType,withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import {  ImageStyle,TextStyle,ViewProperties,ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import ComponentStateButton from './ComponentStateButton';
 import ComponentStateImage from './ComponentStateImage';
@@ -65,7 +65,7 @@ export interface ComponentStateProps extends ViewProperties {
 	style?: ViewStyle
 }
 
-const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType }) => {
+const ComponentState = (props: ComponentStateProps & { bluerain: BlueRain }) => {
 	const {
 		title,
 		titleStyle,
@@ -75,7 +75,6 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 	} = props;
 
 	const View = BR.Components.get('View');
-	const Text = BR.Components.get('Text');
 
 	const style = {
 		alignItems: 'center',
@@ -85,7 +84,7 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRainType })
 
 	const titleStylesheet = {
 		fontSize: 18,
-		fontWeight: 600,
+		// fontWeight: 'bold',
 		...titleStyle
  	};
 

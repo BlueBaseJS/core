@@ -7,7 +7,6 @@ export * from './Provider';
 
 // Typings
 export { ConfigType } from './config';
-export { JsonComponentSchema } from './utils/JsonSchemaToReact';
 export { ComponentRegistryItem, ComponentRegistryHocItem } from './registries/ComponentRegistry';
 export { StatefulComponentProperties } from './components/StatefulComponent';
 export * from './apis';

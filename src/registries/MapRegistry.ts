@@ -1,9 +1,15 @@
 import { Map } from 'immutable';
 
+export interface IMapRegistry<T> {
+	set: (key: string, item: T | any, ...rest: any[]) => void;
+	replace: (key: string, item: T | any, ...rest: any[]) => void;
+	setOrReplace: (key: string, item: T | any, ...rest: any[]) => void;
+}
+
 /**
  * A generic Registry class in the BlueRain OS. Used to store data.
  */
-export default class MapRegistry<T> {
+export default class MapRegistry<T> implements IMapRegistry<T> {
 	name: string;
 	data: Map<string, T>;
 
@@ -23,7 +29,11 @@ export default class MapRegistry<T> {
 	 * @param {any} item  The item to add
 	 */
 
-	set(key: string, item: T | any, ...rest: any[]) {
+	// set(key: string, item: T | any) {
+	set(...args: any[]) {
+		const key = args[0];
+		const item = args[1];
+
 		if (!key) {
 			throw new Error(`No key provided in the set method of ${this.name} registry.`);
 		}
@@ -48,7 +58,10 @@ export default class MapRegistry<T> {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	replace(key: string, item: T | any, ...rest: any[]) {
+	replace(...args: any[]) {
+		const key = args[0];
+		const item = args[1];
+
 		if (!key) {
 			throw new Error(`No key provided in the replace method of ${this.name} registry.`);
 		}
@@ -72,7 +85,10 @@ export default class MapRegistry<T> {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	setOrReplace(key: string, item: T | any, ...rest: any[]) {
+	setOrReplace(...args: any[]) {
+		const key = args[0];
+		const item = args[1];
+
 		if (!key) {
 			throw new Error(`No key provided in the setOrReplace method of ${this.name} registry.`);
 		}
@@ -119,7 +135,9 @@ export default class MapRegistry<T> {
 	 * Remove a plugin from the registry
 	 * @param {string} key The key plugin to remove
 	 */
-	remove(key: string, ...rest: any[]) {
+	remove(...args: any[]) {
+		const key = args[0];
+
 		if (!key) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);
 		}

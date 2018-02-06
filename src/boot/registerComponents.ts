@@ -3,6 +3,7 @@ import StatefulComponent, {
 	ErrorState,
 	LoadingState
 } from '../components/StatefulComponent';
+import { BlueRain } from '../index';
 
 import CenterLayout from '../layouts/CenterLayout';
 import ComponentState from '../components/ComponentState';
@@ -18,7 +19,7 @@ import SystemApp from '../SystemApp';
 import SystemLayout from '../layouts/SystemLayout';
 import Wallpaper from '../components/Wallpaper';
 
-export const registerComponents = BR => {
+export const registerComponents = (BR: BlueRain) => {
 	/* Internal Components */
 	BR.Components.set('ComponentState', ComponentState);
 	BR.Components.set('ImageBackground', ImageBackground);

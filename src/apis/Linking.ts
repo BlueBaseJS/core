@@ -39,5 +39,5 @@ export interface Linking {
 	 * It is supported in react-native only
 	 */
 
-	getInitialURL();
+	getInitialURL: () => string | null;
 }

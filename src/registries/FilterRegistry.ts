@@ -17,7 +17,6 @@ export type FilterRegistryItem = List<FilterRegistryListItem>;
  * filters and their respective functions
  */
 class FilterRegistry extends MapRegistry<FilterRegistryItem> {
-	// data: Map<string, List<FilterRegistryItem>>;
 	BR: BlueRain;
 
 	constructor(ctx: BlueRain) {
@@ -38,6 +37,7 @@ class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 		);
 		this.set(hook, name, filter, index);
 	}
+
 	/**
 	 * Add a filter function to a hook.
 	 * @param {String} hook - The name of the hook
@@ -123,7 +123,10 @@ class FilterRegistry extends MapRegistry<FilterRegistryItem> {
 	 * @param {Any} args - Other arguments will be passed to each successive iteration
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
-	run(hook: string, item?: any, ...otherArgs: any[]) {
+	run(...allArgs: any[]) {
+		const hook = allArgs[0];
+		const item = allArgs[1];
+
 		if (isNil(hook)) {
 			throw new Error(`Hook cannot be ${hook}`);
 		}

@@ -124,7 +124,6 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 
 			// Add hooks from the 'hooks' static property of plugin
 			if (plugin.hooks) {
-				const foo = plugin.hooks;
 				Object.keys(plugin.hooks).forEach(hook => {
 					// Satisfy TS
 					if (!plugin || !plugin.hooks || !plugin.hooks[hook]) {
@@ -143,7 +142,6 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 						return;
 					}
 
-					const Comp = plugin.components[component];
 					this.BR.Components.setOrReplace(component, plugin.components[component]);
 				});
 			}
