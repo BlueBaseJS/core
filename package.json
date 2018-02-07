@@ -27,7 +27,7 @@
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
     "prebuild": "rimraf dist",
     "build": "tsc && babel src --ignore src/**/__tests__ --out-dir dist --extensions '.ts,.tsx'",
-		"postbuild": "rimraf compiled",
+    "postbuild": "rimraf compiled",
     "start": "tsc -w & rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -97,7 +97,7 @@
     "babel-core": "^7.0.0-bridge.0"
   },
   "dependencies": {
-    "@blueeast/bluerain-ui-interfaces": "https://github.com/BlueEastCode/bluerain-ui-interfaces.git#fix/removal-of-Api",
+    "@blueeast/bluerain-ui-interfaces": "^2.0.2",
     "eventemitter3": "^2.0.3",
     "immutable": "^3.8.2",
     "lodash.flowright": "^3.5.0",

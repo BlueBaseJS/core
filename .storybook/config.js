@@ -1,6 +1,6 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import BlueRainDecorator from './BlueRainDecorator';
+import { BlueRainDecorator } from '../storybook/bluerain';
 
 // Add BlueRain
 const BRConfigs = require('../bluerain');
