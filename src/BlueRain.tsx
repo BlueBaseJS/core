@@ -103,7 +103,10 @@ export class BlueRain implements BlueRainType {
 			return this.API.JsonToReact.parse(schema);
 		},
 
-		createStyleSheet: (styles: object) => styles,
+		createStyleSheet: (styles: object) => {
+			console.warn('BR.Utils.createStyleSheet method has been deprecated.');
+			return styles;
+		},
 
 		setMainView: (MainView: React.ComponentType<any>) => {
 			console.log('Trying to set MainView', MainView);

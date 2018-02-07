@@ -38,4 +38,4 @@ const ComponentStateText = (props: ComponentStateTextProps) => {
 	}
 };
 
-export default withBlueRain(ComponentStateText);
+export default withBlueRain(ComponentStateText) as React.ComponentType<any>;
