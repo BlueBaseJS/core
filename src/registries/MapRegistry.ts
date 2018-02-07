@@ -122,4 +122,11 @@ export default class MapRegistry<T> implements IMapRegistry<T> {
 	toObject() {
 		return this.data.toObject();
 	}
+
+	/**
+	 * Clear registry contents
+	 */
+	clear() {
+		this.data = this.data.clear();
+	}
 }

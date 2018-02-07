@@ -41,7 +41,9 @@ export interface BlueRainType {
 
 	refs?: { [id: string]: any };
 
-	boot: BootFunction;
+	boot: (options?: BootOptions) => React.ComponentType<any>;
+	reboot: (options?: BootOptions) => React.ComponentType<any>;
+	reset: (hard?: boolean) => void;
 
 	booted: boolean;
 	bootOptions?: BootOptions;
@@ -66,8 +68,6 @@ export type BootOptions = {
 	platform?: Plugin[];
 };
 
-export type BootFunction = (options: BootOptions) => React.ComponentType;
-
 /**
  * This is the main BlueRain context. Works as a backbone of whole system.
  *
@@ -79,9 +79,10 @@ export type BootFunction = (options: BootOptions) => React.ComponentType;
  * @prop {FilterRegistry} 		Filters 		Instance object of FilterRegistry.
  * @prop {PluginRegistry} 		Plugins 		Instance object of PluginRegistry.
  * @prop {Object} 						Utils 			Contains utility methods.
- * @prop {Function} 					Utils.parseJsonSchema 			Converts JSON schema to React Component tree
+ * @prop {Function} 					Utils.setMainView 			Set BlueRain component as the main view of the app
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
- * @prop {Function} 					boot 				Function to boot the OS.
+ * @prop {boolean} 						booted 			true if the OS has already booted
+ * @prop {Object}							booleanOptions 			Cache of initial boot options provided at boot time
  */
 export class BlueRain implements BlueRainType {
 
@@ -122,17 +123,10 @@ export class BlueRain implements BlueRainType {
 		config: {},
 		platform: [],
 		plugins: [],
-		// serverMode: false,
 		renderApp: true
 	};
 
-	// constructor() {
-	// 	this.Hooks = new HooksRegistry(this.Filters, this.Events);
-	// }
-
-	boot: BootFunction = (
-		options = {}
-	) => {
+	boot(options?: BootOptions) : React.ComponentType<any> {
 
 		// Extract app, plugins and configs from options
 		this.bootOptions = { ...this.bootOptions, ...options };
@@ -213,6 +207,35 @@ export class BlueRain implements BlueRainType {
 
 		this.booted = true;
 		return BluerainApp;
+	}
+
+	/**
+	 * Reset (clear) BlueRain registries
+	 * @param {boolean} hard Flag to do a hard reset. This will erase initial boot options as well.
+	 */
+	reset(hard?: boolean) {
+
+		// =[ System Lifecycle Event ]= Reset
+		this.Filters.run('bluerain.system.reset');
+
+		this.Apps.clear();
+		this.Components.clear();
+		this.Configs.clear();
+		this.Events.removeAllListeners();
+		this.Filters.clear();
+		this.Plugins.clear();
+
+		if (hard === true) {
+			this.bootOptions = {};
+		}
+	}
+
+	/**
+	 * Performs a reset and boot.
+	 */
+	reboot(options?: BootOptions) {
+		this.reset();
+		return this.boot(options);
 	}
 }
 
