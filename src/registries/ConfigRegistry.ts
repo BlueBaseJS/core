@@ -6,10 +6,10 @@ import set from 'lodash.set';
 
 /**
  * All system configs are stored in this registry
- * @property {Object} ConfigsTable Storage table of all configs
+ * @property {Object} data Storage table of all configs
  */
 class ConfigRegistry {
-	ConfigsTable: {} = {};
+	data: {} = {};
 	BR: BlueRain;
 
 	constructor(ctx: BlueRain) {
@@ -28,7 +28,7 @@ class ConfigRegistry {
 			throw new Error('No config value provided. Please provide valid value while adding config.');
 		}
 
-		set(this.ConfigsTable, key, value);
+		set(this.data, key, value);
 	}
 
 	/**
@@ -39,8 +39,9 @@ class ConfigRegistry {
 			throw new Error('No config key provided. Please provide valid key while getting config.');
 		}
 
-		return get(this.ConfigsTable, key);
+		return get(this.data, key);
 	}
+
 	/**
 	 * Register a Config To be deprecated in 2.0.0
 	 */
@@ -51,11 +52,19 @@ class ConfigRegistry {
 		);
 		this.registerMany(configs);
 	}
+
 	/**
 	 * Register many configs at once
 	 */
 	registerMany(configs: {}) {
-		this.ConfigsTable = merge(this.ConfigsTable, configs);
+		this.data = merge(this.data, configs);
+	}
+
+	/**
+	 * Clear Configs
+	 */
+	clear() {
+		this.data = {};
 	}
 }
 

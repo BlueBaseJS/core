@@ -1,11 +1,11 @@
 export type ConfigType = {
-	apps: { [key: string]: any };
-	appRoutePrefix: string;
-	debug: boolean;
-	development: boolean;
+	apps?: { [key: string]: any };
+	appRoutePrefix?: string;
+	debug?: boolean;
+	development?: boolean;
 	locale?: string;
-	plugins: { [key: string]: any };
-	title: string;
+	plugins?: { [key: string]: any };
+	title?: string;
 	theme?: { [key: string]: any };
 
 	wallpaper?: {

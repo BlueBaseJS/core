@@ -36,24 +36,24 @@ beforeAll(() => {
 
 describe('Component Registry test specifications', () => {
 	it('should return conditional  component State ', () => {
-		BR.Components.set('ErrorState',() => 'ErrorState');
-		BR.Components.set('EmptyState',() => 'EmptyState');
+		BR.Components.add('ErrorState',() => 'ErrorState');
+		BR.Components.add('EmptyState',() => 'EmptyState');
 
-		BR.Components.set('LoadingState',() => 'LoadingState');
-		BR.Components.set('Image',() => 'Image');
-	    BR.Components.set('Button',() => 'Button');
-	    BR.Components.set('View',() => 'View');
-		BR.Components.set('Text',() => 'Text');
-		BR.Components.set('Page',() => 'Page');
-		BR.Components.set('Wallpaper',() => 'Wallpaper');
-		BR.Components.set('ComponentState',() => 'ComponentState');
-		BR.Components.set('IndexPage',() => 'IndexPage');
-		BR.Components.set('NotFoundPage',() => 'NotFoundPage');
-		BR.Components.set('SystemLayout',() => 'SystemLayout');
-		BR.Components.set('RouterSwitch',() => 'RouterSwitch');
-		BR.Components.set('Route',() => 'Route');
-		BR.Components.set('ActivityIndicator',() => 'ActivityIndicator');
-		BR.Components.set('CenterLayout',() => 'CenterLayout');
+		BR.Components.add('LoadingState',() => 'LoadingState');
+		BR.Components.add('Image',() => 'Image');
+	    BR.Components.add('Button',() => 'Button');
+	    BR.Components.add('View',() => 'View');
+		BR.Components.add('Text',() => 'Text');
+		BR.Components.add('Page',() => 'Page');
+		BR.Components.add('Wallpaper',() => 'Wallpaper');
+		BR.Components.add('ComponentState',() => 'ComponentState');
+		BR.Components.add('IndexPage',() => 'IndexPage');
+		BR.Components.add('NotFoundPage',() => 'NotFoundPage');
+		BR.Components.add('SystemLayout',() => 'SystemLayout');
+		BR.Components.add('RouterSwitch',() => 'RouterSwitch');
+		BR.Components.add('Route',() => 'Route');
+		BR.Components.add('ActivityIndicator',() => 'ActivityIndicator');
+		BR.Components.add('CenterLayout',() => 'CenterLayout');
 		// tslint:disable-next-line:max-line-length
     	const wrapper=mount(<BlueRainProvider><Component image="" imageSource="https://www.gifs.com"   buttonTitle="App"/></BlueRainProvider>);
 		expect(wrapper.find('Component')).toBeDefined();
@@ -95,6 +95,11 @@ it('should return component CenterLayout', () => {
 
 
 it('should return component StatefulComponent ', () => {
+	const wrapper=mount(<BlueRainProvider><StatefulComponent   /></BlueRainProvider>);
+	expect(wrapper.find('StatefulComponent')).toBeDefined();
+});
+
+it('should return component StatefulComponent ', () => {
 	const wrapper=mount(<BlueRainProvider><StatefulComponent  /></BlueRainProvider>);
 	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
@@ -129,22 +134,25 @@ it('should return component ComponentStatImage with source prop ', () => {
 });
 
 it('should return component ComponentStateText ', () => {
-	const wrapper=mount(<BlueRainProvider><ComponentStateText/></BlueRainProvider>);
+	const wrapper=mount(<BlueRainProvider><ComponentStateText  /></BlueRainProvider>);
 	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 
-
-it('should return component ComponentStateText ', () => {
-	const wrapper=mount(<BlueRainProvider><ComponentStateText  text="title"  /></BlueRainProvider>);
+it('should return component ComponentStateText  with text prop', () => {
+const wrapper=mount(<BlueRainProvider><ComponentStateText text="title"  /></BlueRainProvider>);
 	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
+
 it('should return component ComponentState ', () => {
 	const wrapper=mount(<BlueRainProvider><ComponentState/></BlueRainProvider>);
 	 expect(wrapper.find('ComponentState')).toBeDefined();
 });
+
+
+
 it('should return component default  State ', () => {
 		 // tslint:disable-next-line:max-line-length
-		 const wrapper=mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
+	 const wrapper=mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
 	  expect(wrapper.find('Component')).toBeDefined();
 	 });
 

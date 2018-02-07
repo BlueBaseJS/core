@@ -76,12 +76,14 @@ export default class JsonToReact {
 			} else if (DOM.hasOwnProperty(schema.component as string)) {
 				Component = schema.component;
 			}
-		} else {
-			throw new Error(
-				'ReactJsonSchema could not resolve a component due to a missing component attribute in the schema.'
-			);
+
+			if (Component) {
+				return Component as React.ComponentType<any>;
+			}
 		}
-		return Component;
+		throw new Error(
+			'BR.API.JsonToReact.parse method could not resolve a component due to a missing component attribute in the schema.'
+		);
 	}
 
 	resolveComponentChildren(

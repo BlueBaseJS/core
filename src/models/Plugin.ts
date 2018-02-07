@@ -12,7 +12,7 @@ import React from 'react';
  * @property {String}	version	App version
  */
 export class Plugin {
-	pluginName?: string;
+	pluginName: string;
 	slug?: string;
 	config?: {};
 	category?: string;

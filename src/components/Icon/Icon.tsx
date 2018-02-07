@@ -31,4 +31,5 @@ const Icon = (props: IconProps & { bluerain: BlueRainType }) => {
 	return <Text style={titleStyle}>{title}</Text>;
 };
 
-export default withBlueRain(Icon);
+// export default Icon;
+export default withBlueRain(Icon) as React.ComponentType<any>;

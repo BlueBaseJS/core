@@ -17,25 +17,18 @@ class AppRegistry extends MapRegistry<App> {
 		super('AppRegistry');
 		this.BR = ctx;
 	}
-	/**
-	 * Register an App To be deprecated in 2.0.0
-	 * @param {App} app The BlueRain app to register
-	 */
-	register(app: App) {
-		console.warn(
-			'Deprecation Warning: "register" method of AppRegistry has been deprecated.' +
-				' Please use "set" method instead.'
-		);
-		this.set(app);
-	}
 
 	/**
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	set(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
-		const { key: k, app: a } = this.getKeyAndItem(key, app);
-		super.set(k, a);
+	add(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
+		const { key: k, app: a } = getKeyAndItem(key, app);
+
+		a.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
+		a.path = `${a.appRoutePrefix}/${a.slug}`;
+
+		super.add(k, a);
 	}
 
 	/**
@@ -44,33 +37,13 @@ class AppRegistry extends MapRegistry<App> {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	replace(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
-		const { key: k, app: a } = this.getKeyAndItem(key, app);
+	set(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
+		const { key: k, app: a } = getKeyAndItem(key, app);
 
-		if (!this.has(k)) {
-			throw new Error(
-				`An item with ${key} key does not exist in the ${this.name} registry.` +
-					` Try using the "setOrReplace" method instead.`
-			);
-		}
+		a.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
+		a.path = `${a.appRoutePrefix}/${a.slug}`;
 
 		this.data = this.data.set(k, a);
-	}
-
-	/**
-	 * Set or Replace an item in the Registry.
-	 *
-	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
-	 */
-	setOrReplace(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
-		const { key: k, app: a } = this.getKeyAndItem(key, app);
-
-		if (this.has(k)) {
-			this.replace(k, a);
-		} else {
-			this.set(k, a);
-		}
 	}
 
 	/**
@@ -86,45 +59,7 @@ class AppRegistry extends MapRegistry<App> {
 			);
 		}
 
-		apps.forEach(app => this.setOrReplace(app));
-	}
-
-	/**
-	 * Takes an app, adds necessary fields and returns the processed app with a key
-	 * @param key
-	 * @param app
-	 */
-	getKeyAndItem(
-		key: string | MaybeEsModule<App>,
-		app?: MaybeEsModule<App>
-	): { key: string; app: App } {
-		if (typeof key !== 'string' && !isNil(key)) {
-			app = key as App;
-			key = '';
-		}
-
-		if (isNil(app)) {
-			throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
-		}
-
-		// ES modules
-		app = (app as EsModule<App>).__esModule ? (app as EsModule<App>).default : app;
-
-		// Casting, to remove possiblity of undefined value is TS.
-		app = app as App;
-
-		if (!app.appName) {
-			throw new Error('App name not provided. Please provide "appName" while registering an app');
-		}
-
-		const slug = kebabCase(app.slug ? app.slug : app.appName);
-
-		app.slug = slug;
-		app.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
-		app.path = `${app.appRoutePrefix}/${app.slug}`;
-
-		const strKey = key && typeof key === 'string' ? key : slug;
-		return { key: strKey, app };
+		apps.forEach(app => this.set(app));
 	}
 
 	/**
@@ -136,7 +71,7 @@ class AppRegistry extends MapRegistry<App> {
 				return;
 			}
 
-			// Add hooks from the 'hooks' static property of plugin
+			// Add hooks from the 'hooks' static property of app
 			if (app.hooks) {
 				Object.keys(app.hooks).forEach(hook => {
 					// Satisfy TS
@@ -144,11 +79,11 @@ class AppRegistry extends MapRegistry<App> {
 						return;
 					}
 
-					this.BR.Hooks.add(hook, `${app.slug}.${hook}`, app.hooks[hook]);
+					this.BR.Hooks.set(hook, `${app.slug}.${hook}`, app.hooks[hook]);
 				});
 			}
 
-			// Add components from the 'components' static property of plugin
+			// Add components from the 'components' static property of app
 			if (app.components) {
 				Object.keys(app.components).forEach(component => {
 					// Satisfy TS
@@ -156,11 +91,11 @@ class AppRegistry extends MapRegistry<App> {
 						return;
 					}
 
-					this.BR.Components.setOrReplace(component, app.components[component]);
+					this.BR.Components.set(component, app.components[component]);
 				});
 			}
 
-			// If the plugin has an initialize methid, call it
+			// If the app has an initialize methid, call it
 			if (app.initialize) {
 				const config = this.BR.Configs.get(`apps.${app.slug}`);
 				// app.config = config;
@@ -198,3 +133,41 @@ class AppRegistry extends MapRegistry<App> {
 }
 
 export default AppRegistry;
+
+/**
+ * Takes an app, adds necessary fields and returns the processed app with a key
+ * @param key
+ * @param app
+ */
+const getKeyAndItem = (
+	key: string | MaybeEsModule<App>,
+	app?: MaybeEsModule<App>
+): { key: string; app: App } => {
+	if (typeof key !== 'string' && !isNil(key)) {
+		app = key as App;
+		key = '';
+	}
+
+	if (isNil(app)) {
+		throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
+	}
+
+	// ES modules
+	app = (app as EsModule<App>).__esModule ? (app as EsModule<App>).default : app;
+
+	// Casting, to remove possiblity of undefined value is TS.
+	app = app as App;
+
+	if (!app.appName) {
+		throw new Error('App name not provided. Please provide "appName" while registering an app');
+	}
+
+	const slug = kebabCase(app.slug ? app.slug : app.appName);
+
+	app.slug = slug;
+	// app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
+	// app.path = `${app.appRoutePrefix}/${app.slug}`;
+
+	const strKey = key && typeof key === 'string' ? key : slug;
+	return { key: strKey, app };
+};

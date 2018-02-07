@@ -660,9 +660,9 @@
     react "^16.2.0"
     typedoc "^0.9.0"
 
-"@blueeast/bluerain-ui-interfaces@https://github.com/BlueEastCode/bluerain-ui-interfaces.git#fix/removal-of-Api":
-  version "1.0.0"
-  resolved "https://github.com/BlueEastCode/bluerain-ui-interfaces.git#6d4c3e4ac6cad0cdc0a2bfda815980eae74ce202"
+"@blueeast/bluerain-ui-interfaces@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-ui-interfaces/-/bluerain-ui-interfaces-2.0.2.tgz#1bac0fcf4624d9c7b30210cbfc642d9088b688f9"
   dependencies:
     react "^16.2.0"
 

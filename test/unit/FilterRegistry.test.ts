@@ -4,14 +4,14 @@ describe('Filters test specifications', () => {
 	describe('add filter', () => {
 		it('should run fine', () => {
 			const func = () => undefined;
-			BR.Filters.set('test.hook', func);
+			BR.Filters.add('test.hook', func);
 			expect(BR.Filters.data.has('test.hook')).toEqual(true);
 		});
 		it('should have length 2 of test.hook', () => {
 			const two = 2;
 			const func1 = prevVal => prevVal + two;
 
-			BR.Filters.set('test.hook', func1, null, 1);
+			BR.Filters.add('test.hook', func1, null, 1);
 
 			expect(BR.Filters.data.get('test.hook').size).toEqual(two);
 		});
@@ -20,32 +20,32 @@ describe('Filters test specifications', () => {
 				throw new Error('error occured');
 			};
 
-			BR.Filters.set('error.hook', func);
+			BR.Filters.add('error.hook', func);
 
 			expect(BR.Filters.get('error.hook').size).toEqual(1);
 		});
 		it('should not throw error b/c unnamed function ', () => {
 			expect(() =>
-				BR.Filters.set('test.hook', prevVal => {
+				BR.Filters.add('test.hook', prevVal => {
 					const number = 2;
 					return prevVal + number;
 				})
 			).not.toThrow();
 		});
 		it('should throw error b/c function null', () => {
-			expect(() => BR.Filters.set('', null)).toThrow();
+			expect(() => BR.Filters.add('', null)).toThrow();
 		});
 		it('should throw error b/c name in not given', () => {
-			expect(() => BR.Filters.set('', null, value => value + 2)).toThrow();
+			expect(() => BR.Filters.add('', null, value => value + 2)).toThrow();
 		});
 		it('should throw error b/c  function in not given', () => {
-			expect(() => BR.Filters.set('', 'null', null)).toThrow();
+			expect(() => BR.Filters.add('', 'null', null)).toThrow();
 		});
 		it('should throw error b/c  function with same name is already available', () => {
-			expect(() => BR.Filters.set('test.hook', function func() {})).toThrow();
+			expect(() => BR.Filters.add('test.hook', function func() {})).toThrow();
 		});
 		it('should throw error b/c function undefined', () => {
-			expect(() => BR.Filters.set('', undefined)).toThrow();
+			expect(() => BR.Filters.add('', undefined)).toThrow();
 		});
 		it('should throw error b/c hook undefined', () => {
 			expect(() =>
@@ -67,7 +67,7 @@ describe('Filters test specifications', () => {
 			expect(value).toEqual(expectedNumber);
 		});
 		it('should remove hook successfully', () => {
-			BR.Filters.set('New-hook', 'Name', () => 'hoook');
+			BR.Filters.add('New-hook', 'Name', () => 'hoook');
 			expect(() => BR.Filters.remove('New-hook', 'Name')).not.toThrow();
 		});
 		it('should be undefined b/c hook undefined', () => {

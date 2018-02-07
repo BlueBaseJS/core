@@ -13,7 +13,7 @@ class Heading extends React.Component {
 }
 BR.Components.set('Heading', Heading);
 describe('Json to react tests', () => {
-	it('should throw error for null schema', () => {
+	it('should not throw error for null schema', () => {
 		expect(() => BR.API.JsonToReact.parse(null)).toThrow();
 	});
 	it('should throw error for undefined schema', () => {
