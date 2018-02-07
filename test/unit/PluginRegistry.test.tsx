@@ -1,8 +1,5 @@
-/**
- * Created by umair on 8/24/17.
- */
-import { Map } from 'immutable';
 import BR, { Plugin } from '../../src/index';
+import { Map } from 'immutable';
 
 describe('Plugin registry tests', () => {
 	// tests for registering plugin
@@ -14,7 +11,7 @@ describe('Plugin registry tests', () => {
 			}
 
 
-			BR.Plugins.set(HelloWorldPlugin);
+			BR.Plugins.add(HelloWorldPlugin);
 			expect(BR.Plugins.data.has('hello-world-plugin')).toEqual(true);
 		});
 
@@ -23,7 +20,7 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'NewPlugin';
 				initialize() {}
 			}
-			expect(() => BR.Plugins.register(NewPlugin,'dummy')).not.toThrow();
+			expect(() => BR.Plugins.add(NewPlugin,'dummy')).not.toThrow();
 		});
 		it('slug Create other recognized static properties', () => {
 			const plugin = BR.Plugins.data.get('hello-world-plugin');
@@ -39,14 +36,14 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'HelloPlugin';
 				initialize() {}
 			}
-			BR.Plugins.set(HelloPlugin);
+			BR.Plugins.add(HelloPlugin);
 			expect(BR.Plugins.data.size).toEqual(1);
 		});
 		it('Without pluginName, Plugin should throw error', () => {
 			class HelloPlugin {
 				initialize() {}
 			}
-			expect(() => BR.Plugins.set(HelloPlugin)).toThrow(
+			expect(() => BR.Plugins.add(HelloPlugin)).toThrow(
 				'Plugin name not provided.'
 			);
 		});
@@ -56,7 +53,7 @@ describe('Plugin registry tests', () => {
 				static slug = 'with-slug';
 				initialize() {}
 			}
-			BR.Plugins.set(HelloPlugin);
+			BR.Plugins.add(HelloPlugin);
 			expect(BR.Plugins.get('with-slug').slug).toEqual('with-slug');
 		});
 		it('slug should be hello-world', () => {
@@ -64,7 +61,7 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'HelloWorldPlugin';
 				initialize() {}
 			}
-			BR.Plugins.set(HelloWorldPlugin);
+			BR.Plugins.add(HelloWorldPlugin);
 			expect(BR.Plugins.data.has('hello-world-plugin')).toEqual(true);
 		});
 		it('slug Create other recognized static properties', () => {
@@ -123,7 +120,7 @@ describe('Plugin registry tests', () => {
 			}
 			expect(() =>
 				BR.Plugins.registerMany([HelloPlugin, 'string', {}])
-			).toThrow('Plugin name not provided.');
+			).toThrow('No plugin provided');
 		});
 		it('should have hello world plugin', () => {
 			BR.Plugins.PluginsTable = {};
@@ -159,12 +156,12 @@ describe('Plugin registry tests', () => {
 					return <div>hello world</div>;
 				}
 				static initialize(config) {
-					BR.Filters.add('plugin.test.initialize.hook', function abc() {
+					BR.Filters.set('plugin.test.initialize.hook', function abc() {
 						return config + 34;
 					});
 				}
 			}
-			BR.Plugins.set(HelloReactplugin);
+			BR.Plugins.add(HelloReactplugin);
 			BR.Plugins.initializeAll();
 			expect(BR.Filters.run('plugin.test.initialize.hook')).toEqual('334');
 		});

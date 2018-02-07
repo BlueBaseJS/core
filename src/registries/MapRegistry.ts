@@ -1,11 +1,16 @@
 import { Map } from 'immutable';
 
+export interface IMapRegistry<T> {
+	add: (key: string, item: T | any, ...rest: any[]) => void;
+	set: (key: string, item: T | any, ...rest: any[]) => void;
+}
+
 /**
  * A generic Registry class in the BlueRain OS. Used to store data.
  */
-export default class Registry {
+export default class MapRegistry<T> implements IMapRegistry<T> {
 	name: string;
-	data: Map<string, any>;
+	data: Map<string, T>;
 
 	constructor(name: string) {
 		if (!name) {
@@ -23,7 +28,11 @@ export default class Registry {
 	 * @param {any} item  The item to add
 	 */
 
-	set(key: string, item: any, ...rest: any[]) {
+	// set(key: string, item: T | any) {
+	add(...args: any[]) {
+		const key = args[0];
+		const item = args[1];
+
 		if (!key) {
 			throw new Error(`No key provided in the set method of ${this.name} registry.`);
 		}
@@ -48,7 +57,10 @@ export default class Registry {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
-	replace(key: string, item: any) {
+	set(...args: any[]) {
+		const key = args[0];
+		const item = args[1];
+
 		if (!key) {
 			throw new Error(`No key provided in the replace method of ${this.name} registry.`);
 		}
@@ -56,35 +68,7 @@ export default class Registry {
 			throw new Error(`No item provided in the replace method of ${this.name} registry.`);
 		}
 
-		if (!this.has(key)) {
-			throw new Error(
-				`An item with ${key} key does not exist in the ${this.name} registry.` +
-					` Try using the "setOrReplace" method instead.`
-			);
-		}
-
 		this.data = this.data.set(key, item);
-	}
-
-	/**
-	 * Set or Replace an item in the Registry.
-	 *
-	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
-	 */
-	setOrReplace(key: string, item: any) {
-		if (!key) {
-			throw new Error(`No key provided in the setOrReplace method of ${this.name} registry.`);
-		}
-		if (!item || typeof item === 'boolean') {
-			throw new Error(`No item provided in the setOrReplace method of ${this.name} registry.`);
-		}
-
-		if (this.has(key)) {
-			this.replace(key, item);
-		} else {
-			this.set(key, item);
-		}
 	}
 
 	/**
@@ -119,8 +103,9 @@ export default class Registry {
 	 * Remove a plugin from the registry
 	 * @param {string} key The key plugin to remove
 	 */
+	remove(...args: any[]) {
+		const key = args[0];
 
-	remove(key: string, ...rest: any[]) {
 		if (!key) {
 			throw new Error(`key cannot be ${key} in the remove method of ${this.name} registry.`);
 		}
@@ -136,5 +121,12 @@ export default class Registry {
 	 */
 	toObject() {
 		return this.data.toObject();
+	}
+
+	/**
+	 * Clear registry contents
+	 */
+	clear() {
+		this.data = this.data.clear();
 	}
 }
