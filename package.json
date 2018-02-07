@@ -20,9 +20,14 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "storybook-native": "storybook start -p 7007",
+    "prestorybook-native": "rnstl",
+    "build-storybook": "build-storybook",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
     "prebuild": "rimraf dist",
-    "build": "tsc && babel -D compiled --out-dir dist  && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
+    "build": "tsc && babel src --ignore src/**/__tests__ --out-dir dist --extensions '.ts,.tsx'",
+    "postbuild": "rimraf compiled",
     "start": "tsc -w & rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -48,6 +53,13 @@
     "validate-commit-msg": {
       "types": "conventional-commit-types",
       "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    },
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./src"
+      ],
+      "pattern": "**/*.stories.tsx",
+      "outputFile": "./storybook/storyLoader.tsx"
     }
   },
   "jest": {
@@ -66,10 +78,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 87,
-        "functions": 84,
-        "lines": 92,
-        "statements": 90
+        "branches": 71,
+        "functions": 78,
+        "lines": 80,
+        "statements": 80
       }
     },
     "collectCoverage": true,
@@ -81,28 +93,54 @@
       "maxSize": "18 kB"
     }
   ],
+  "resolutions": {
+    "babel-core": "^7.0.0-bridge.0"
+  },
   "dependencies": {
-    "@blueeast/bluerain-ui-interfaces": "^1.0.2",
+    "@blueeast/bluerain-ui-interfaces": "^2.0.2",
     "eventemitter3": "^2.0.3",
-    "html-tags": "^2.0.0",
     "immutable": "^3.8.2",
-    "lodash.compose": "^2.4.1",
+    "lodash.flowright": "^3.5.0",
     "lodash.get": "^4.4.2",
+    "lodash.isboolean": "^3.0.3",
     "lodash.isnil": "^4.0.0",
     "lodash.kebabcase": "^4.1.1",
     "lodash.merge": "^4.6.0",
     "lodash.set": "^4.3.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-dom-factories": "^1.0.2",
     "recompose": "^0.25.0"
   },
   "devDependencies": {
-    "@blueeast/tslint-config-blueeast": "^0.3.0",
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "@babel/cli": "^7.0.0-beta.32",
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/node": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/preset-react": "^7.0.0-beta.32",
+    "@babel/preset-stage-3": "^7.0.0-beta.32",
+    "@babel/preset-typescript": "^7.0.0-beta.32",
+    "@babel/register": "^7.0.0-beta.32",
+    "@blueeast/bluerain-platform-reactxp": "^2.0.0",
+    "@blueeast/tslint-config-blueeast": "^0.5.5",
+    "@storybook/addon-actions": "^3.3.12",
+    "@storybook/addon-links": "^3.3.12",
+    "@storybook/react": "^3.3.12",
+    "@storybook/react-native": "^3.3.12",
+    "@types/lodash.flowright": "^3.5.3",
+    "@types/lodash.get": "^4.4.3",
+    "@types/lodash.isboolean": "^3.0.3",
+    "@types/lodash.isnil": "^4.0.3",
+    "@types/lodash.kebabcase": "^4.1.3",
+    "@types/lodash.merge": "^4.6.3",
+    "@types/lodash.set": "^4.3.3",
+    "@types/prop-types": "^15.5.2",
+    "@types/react-dom-factories": "^1.0.0",
+    "@types/recompose": "^0.24.4",
+    "@types/storybook__react": "^3.0.6",
+    "awesome-typescript-loader": "^3.4.1",
+    "babel-loader": "8.0.0-beta.0",
+    "babel-plugin-module-resolver": "^3.0.0",
     "bundlesize": "^0.15.3",
     "codecov": "^2.3.1",
     "colors": "^1.1.2",
@@ -121,6 +159,7 @@
     "prompt": "^1.0.0",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.2.0",
+    "react-native-storybook-loader": "^1.7.0",
     "react-test-render": "^1.1.1",
     "redux-mock-store": "^1.3.0",
     "replace-in-file": "^3.0.0-beta.2",

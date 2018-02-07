@@ -1,6 +1,6 @@
-import React from 'react';
-import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
 import { BlueRainType, withBlueRain } from '../../index';
+import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
+import React from 'react';
 import defaultStyles from './stylesheet';
 
 const  Page = (props: ViewProperties & { bluerain: BlueRainType }) => {

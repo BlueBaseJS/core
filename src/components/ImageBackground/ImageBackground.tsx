@@ -1,6 +1,6 @@
-import React from 'react';
+import { BlueRainType,withBlueRain } from '../../index';
 import { ImageProperties, ImageStyle, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
-import { withBlueRain, BlueRainType } from '../../index';
+import React from 'react';
 
 export interface ImageBackgroundProperties extends ImageProperties {
 	style?: ViewStyle;

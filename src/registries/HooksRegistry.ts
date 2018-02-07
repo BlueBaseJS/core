@@ -1,38 +1,63 @@
-import isNil from 'lodash.isnil';
+import { BlueRain } from '../index';
+import isnil from 'lodash.isnil';
 
-import FilterRegistry from './FilterRegistry';
-import EventRegistry from './EventRegistry';
-import BR from '../index';
+export type hookFn = (...args: any[]) => any;
+
 /**
  * All system hooks are stored in this registry
- *
  */
 export default class HookRegistry {
-	filters: FilterRegistry;
-	events: EventRegistry;
+	BR: BlueRain;
 
-	constructor(filters: FilterRegistry, events: EventRegistry) {
-		this.filters = filters || new FilterRegistry();
-		this.events = events || new EventRegistry();
+	constructor(ctx: BlueRain) {
+		this.BR = ctx;
 	}
+
 	/**
-	 * Add a filter function to a hook.
-	 * @param {String} hook - The name of the hook
-	 * @param {Function} filter - The filter function
+	 * Add a filter function to a hook. If the listener already exists, it will throw an Error.
+	 * @param {string} hook Name of hook (filter/event) to subscribe to
+	 * @param {string} name Name of the listener function
+	 * @param {Function} filter Listener function
 	 */
-	add(hook: string, name: string, filter: () => void) {
-		if (isNil(hook)) {
-			throw new Error(`You are adding an invalid hook:${hook}.`);
+	add(hook: string, name: string, listener: hookFn) {
+		const params = this.checkParams(hook, name, listener);
+		this.BR.Filters.add(params.hook, params.name, params.listener);
+		this.BR.Events.on(params.hook, params.listener);
+	}
+
+	/**
+	 * Sets a filter function to a hook. If the listener already exists, it will be replaced.
+	 * @param {string} hook Name of hook (filter/event) to subscribe to
+	 * @param {string} name Name of the listener function
+	 * @param {Function} filter Listener function
+	 */
+	set(hook: string, name: string, listener: hookFn) {
+		const params = this.checkParams(hook, name, listener);
+		this.BR.Filters.set(params.hook, params.name, params.listener);
+		this.BR.Events.on(params.hook, params.listener);
+	}
+
+	/**
+	 * Checks the params for the `set` and `add` functions
+	 * @param {string} hook Name of hook (filter/event) to subscribe to
+	 * @param {string} name Name of the listener function
+	 * @param {Function} listener Listener function
+	 */
+	checkParams(hook: string, name: string, listener: hookFn) {
+		if (isnil(hook)) {
+			throw new Error(`You are adding an invalid hook: ${hook}.`);
 		}
+
 		if (typeof name === 'function') {
-			filter = name;
-			name = filter.name;
+			listener = name;
+			name = listener.name;
 		}
-		if (isNil(filter)) {
-			throw new Error(`You have to provide a filter function while adding it to ${hook}.`);
+
+		if (isnil(listener)) {
+			throw new Error(`Filter function is required to add or set a hook to ${hook}.`);
 		}
-		this.filters.set(hook, name, filter);
-		this.events.on(hook, filter);
+
+		return { hook, name, listener };
 	}
 	/**
 	 * Successively run all of a hook's functions on an item
@@ -43,19 +68,19 @@ export default class HookRegistry {
 	 * @returns {Object} Returns the item after it's been through all the filters for this hook
 	 */
 	run(hook: string, mode: 'async' | 'sync' | 'both' = 'sync', ...args: any[]) {
-		if (isNil(hook)) {
+		if (isnil(hook)) {
 			throw new Error(`Hook cannot be ${hook}. Please provide valid hook while running it.`);
 		}
 		if (mode && (mode !== 'both' && mode !== 'sync' && mode !== 'async')) {
 			throw new Error('Invalid mode is entered. Please enter valid mode while running hooks');
 		}
 		if (mode === 'both') {
-			this.events.emit(hook, ...args, BR);
-			return this.filters.run(hook, ...args);
+			this.BR.Events.emit(hook, ...args, this);
+			return this.BR.Filters.run(hook, ...args);
 		} else if (mode === 'sync') {
-			return this.filters.run(hook, ...args);
+			return this.BR.Filters.run(hook, ...args);
 		} else if (mode === 'async') {
-			this.events.emit(hook, ...args, BR);
+			this.BR.Events.emit(hook, ...args, this);
 		}
 	}
 }
