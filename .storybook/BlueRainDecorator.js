@@ -1,18 +1,17 @@
 import React from 'react';
-import BR, { BlueRainProvider } from '../src';
+import BR from '../src';
 
-const BRConfigs = require('../bluerain');
-BRConfigs.renderApp = false;
+const defaultConfigs = {
+	renderApp: false,
+	plugins: []
+}
 
-let BluerainApp;
-
-const BlueRainDecorator = (storyFn) => {
+const BlueRainDecorator = (configs) => (storyFn) => {
 
 	const Component = () => storyFn();
 
-	const Plugin = {
+	const StorybookPlugin = {
 		pluginName: 'Storybook Plugin',
-		slug: 'storybook',
 		hooks: {
 			'bluerain.system.initialized': (ctx) => {
 				ctx.Components.replace('SystemLayout', Component);
@@ -20,9 +19,10 @@ const BlueRainDecorator = (storyFn) => {
 		}
 	};
 
-	BR.Plugins.set(Plugin);
-	BluerainApp = BR.boot(BRConfigs);
+	configs = Object.assign(defaultConfigs, configs);
+	configs.plugins.push(StorybookPlugin)
 
+	const BluerainApp = BR.boot(configs);
 	return <BluerainApp />;
 };
 
