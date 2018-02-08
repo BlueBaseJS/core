@@ -1,7 +1,7 @@
-import { BlueRainType, withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import React from 'react';
 
-const EmptyState = (props: { bluerain: BlueRainType }) => {
+const EmptyState = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 

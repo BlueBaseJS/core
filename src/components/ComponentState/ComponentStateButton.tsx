@@ -1,4 +1,4 @@
-import { BlueRainType,withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import { ViewProperties, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import React from 'react';
 
@@ -23,7 +23,7 @@ export interface ComponentStateButtonProps extends ViewProperties {
 	 */
 	buttonOnPress?: Function;
 
-	bluerain: BlueRainType;
+	bluerain: BlueRain;
 }
 
 const ComponentStateButton = (props: ComponentStateButtonProps) => {

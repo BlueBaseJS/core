@@ -1,11 +1,11 @@
-import { BlueRainType, withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import React from 'react';
 import storiesOf from '../../../storybook/storiesOf';
 
 storiesOf('StatefulComponent', module)
 	.add('Only loading Component', () => {
 
-		const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+		const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 			const BR = props.bluerain;
 			const LoadingState = BR.Components.get('LoadingState');
 
@@ -17,7 +17,7 @@ storiesOf('StatefulComponent', module)
 
     .add('Only EmptyState Component', () => {
 
-	const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+	const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 		const BR = props.bluerain;
 		const EmptyState = BR.Components.get('EmptyState');
 
@@ -29,7 +29,7 @@ storiesOf('StatefulComponent', module)
 
 .add('Only ErrorState Component', () => {
 
-	const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+	const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 		const BR = props.bluerain;
 		const ErrorState = BR.Components.get('ErrorState');
 

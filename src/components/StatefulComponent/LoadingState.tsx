@@ -1,7 +1,7 @@
-import { BlueRainType,withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import React from 'react';
 
-const LoadingState = (props: { bluerain: BlueRainType }) => {
+const LoadingState = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 

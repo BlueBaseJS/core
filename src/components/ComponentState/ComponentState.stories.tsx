@@ -1,17 +1,17 @@
-import { BlueRainType } from '../../index';
+import { BlueRain } from '../../index';
 import { bluerainStory } from '../../../storybook/bluerain';
 import React from 'react';
 import storiesOf from '../../../storybook/storiesOf';
 
 storiesOf('ComponentState', module)
-	.add('Only title', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('Only title', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const ComponentState = BR.Components.get('ComponentState');
 
 		return <ComponentState title="A simple state" />;
 	}))
-	.add('title with titleStyle prop', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('title with titleStyle prop', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const ComponentState = BR.Components.get('ComponentState');
@@ -19,14 +19,14 @@ storiesOf('ComponentState', module)
 
 		return <ComponentState title="A simple state" titleStyle={BR.Utils.createStyleSheet(Style)} />;
 	}))
-	.add('Only description', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('Only description', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const ComponentState = BR.Components.get('ComponentState');
 
 		return <ComponentState description="A simple description" />;
 	}))
-	.add('description with Styles ', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('description with Styles ', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const ComponentState = BR.Components.get('ComponentState');
@@ -34,14 +34,14 @@ storiesOf('ComponentState', module)
 
 		return <ComponentState description="A simple description"  descriptionStyle={Style} />;
 	}))
-	.add('Only buttonTitle', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('Only buttonTitle', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const ComponentState = BR.Components.get('ComponentState');
 
 		return <ComponentState buttonTitle="Bluerain"  />;
 	}))
-	.add('Button with buttonOnPress Prop', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('Button with buttonOnPress Prop', bluerainStory((props: { bluerain: BlueRain }) => {
 		const Handler=() => console.log('clicked');
 
 		const BR = props.bluerain;
@@ -49,7 +49,7 @@ storiesOf('ComponentState', module)
 
 		return <ComponentState   buttonTitle="Bluerain" buttonOnPress={Handler}  />;
 	}))
-	.add('Button with buttonStyle prop', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('Button with buttonStyle prop', bluerainStory((props: { bluerain: BlueRain }) => {
 		const BR = props.bluerain;
 		const ComponentState = BR.Components.get('ComponentState');
 		const Style={ color:'white',backgroundColor:'red',width:100,height:50,borderRadius:8, textAlign:'center' };
@@ -57,7 +57,7 @@ storiesOf('ComponentState', module)
 		return <ComponentState  buttonTitle="Bluerain"  buttonStyle={BR.Utils.createStyleSheet(Style)}  />;
 
 	}))
-	.add('Button Component', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('Button Component', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const Button=() =>  <button>ButtonComponent</button>;
 		const BR = props.bluerain;
@@ -66,7 +66,7 @@ storiesOf('ComponentState', module)
 
 		return <ComponentState  button={Button}  />;
 	}))
-	.add('imageComponent prop', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('imageComponent prop', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const Image = BR.Components.get('Image');
@@ -77,7 +77,7 @@ storiesOf('ComponentState', module)
 		return <ComponentState image={ImageComponent} />;
 	}))
 
-	.add('imageSource prop', bluerainStory((props: { bluerain: BlueRainType }) => {
+	.add('imageSource prop', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		// const Image = BR.Components.get('Image');

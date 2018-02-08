@@ -1,4 +1,4 @@
-import { BlueRainType, withBlueRain } from '../index';
+import { BlueRain, withBlueRain } from '../index';
 import { ViewProperties, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import React from 'react';
 
@@ -7,7 +7,7 @@ export interface SystemLayoutProperties extends ViewProperties {
 	style: ViewStyle;
 }
 
-const SystemLayout = (props: SystemLayoutProperties & { bluerain: BlueRainType }) => {
+const SystemLayout = (props: SystemLayoutProperties & { bluerain: BlueRain }) => {
 	const { style, children, bluerain: BR, ...other } = props;
 
 	const stylesheet = [

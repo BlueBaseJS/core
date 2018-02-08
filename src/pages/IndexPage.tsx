@@ -1,4 +1,4 @@
-import { BlueRainType, withBlueRain, } from '../index';
+import { BlueRain, withBlueRain, } from '../index';
 
 // Components
 import Icon from '../components/Icon';
@@ -14,7 +14,7 @@ const BRIcon = () => <Icon title="BR" color="rgba(0,123,255,1)" />;
  *
  * @returns {React.Component} The layout react component
  */
-const IndexPage = (props: { bluerain: BlueRainType }) => {
+const IndexPage = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 
