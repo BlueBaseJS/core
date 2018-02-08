@@ -1,4 +1,4 @@
-import { BlueRainType, withBlueRain } from '../index';
+import { BlueRain, withBlueRain } from '../index';
 import Icon from '../components/Icon';
 import React from 'react';
 
@@ -12,7 +12,7 @@ const FOFIcon = () => <Icon title="404" />;
  *
  * @returns {React.Component} The layout react component
  */
-const NotFoundPage = (props: { bluerain: BlueRainType }) => {
+const NotFoundPage = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 

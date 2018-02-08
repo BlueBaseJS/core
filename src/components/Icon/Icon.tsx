@@ -1,4 +1,4 @@
-import { BlueRainType, withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import React from 'react';
 
 export interface IconProps {
@@ -6,7 +6,7 @@ export interface IconProps {
 	color: string
 }
 
-const Icon = (props: IconProps & { bluerain: BlueRainType }) => {
+const Icon = (props: IconProps & { bluerain: BlueRain }) => {
 
 	const { bluerain: BR, title, color } = props;
 
@@ -26,7 +26,7 @@ const Icon = (props: IconProps & { bluerain: BlueRainType }) => {
 		shadowOffset: { height: 5, width: 0 },
 		shadowRadius: 15,
 		shadowColor: 'rgba(0,0,0,.3)'
-	}, 'Text');
+	});
 
 	return <Text style={titleStyle}>{title}</Text>;
 };

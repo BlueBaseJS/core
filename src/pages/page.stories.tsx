@@ -1,11 +1,11 @@
-import { BlueRainType, withBlueRain } from '../../src/index';
+import { BlueRain, withBlueRain } from '../../src/index';
 import React from 'react';
 import storiesOf from '../../storybook/storiesOf';
 
 storiesOf('Page', module)
     .add('Only IndexPage', () => {
 
-	const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+	const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const IndexPage = BR.Components.get('IndexPage');
@@ -17,7 +17,7 @@ storiesOf('Page', module)
 })
    .add('Only ErrorPage', () => {
 
-	const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+	const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const ErrorPage = BR.Components.get('ErrorPage');
@@ -30,7 +30,7 @@ storiesOf('Page', module)
 
 .add('Only  LoadingPage', () => {
 
-	const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+	const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const LoadingPage = BR.Components.get('LoadingPage');
@@ -44,7 +44,7 @@ storiesOf('Page', module)
 
 .add('only  NotFoundPage', () => {
 
-	const Story = withBlueRain((props: { bluerain: BlueRainType }) => {
+	const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
 		const NotFoundPage = BR.Components.get('NotFoundPage');

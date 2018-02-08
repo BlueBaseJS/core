@@ -1,4 +1,4 @@
-import { BlueRainType,withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import { ImageProperties, ImageStyle, ViewStyle } from '@blueeast/bluerain-ui-interfaces';
 import React from 'react';
 
@@ -12,7 +12,7 @@ export interface ImageBackgroundProperties extends ImageProperties {
 /**
  * Very simple drop-in replacement for <Image> which supports nesting views.
  */
-const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRainType }) => {
+const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRain }) => {
 
 	const { bluerain: BR, children, ...others } = props;
 	const style = props.style || {};
