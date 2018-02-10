@@ -1,6 +1,7 @@
 import { App, BlueRain } from '../index';
 import { EsModule, MaybeEsModule } from '../typings';
 import MapRegistry from './MapRegistry';
+import React from 'react';
 import isNil from 'lodash.isnil';
 import kebabCase from 'lodash.kebabcase';
 
@@ -123,7 +124,9 @@ class AppRegistry extends MapRegistry<App> {
 				props: {
 					path: app.path,
 					key: app.slug,
-					component: app
+					component: React.createElement(app as React.ComponentType<{ bluerain: BlueRain }>, {
+						bluerain: this.BR
+					})
 				}
 			});
 		});
