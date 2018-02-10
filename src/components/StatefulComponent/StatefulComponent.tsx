@@ -100,9 +100,9 @@ class StatefulComponent extends React.Component<
 
 		const { isLoading, isEmpty, hasError, error } = this.state;
 
-		const Error = errorComponent || BR.Components.get('ErrorState');
-		const Empty = emptyComponent || BR.Components.get('EmptyState');
-		const Loading = loadingComponent || BR.Components.get('LoadingState');
+		const Error = errorComponent || BR.Components.ErrorState;
+		const Empty = emptyComponent || BR.Components.EmptyState;
+		const Loading = loadingComponent || BR.Components.LoadingState;
 
 		if (hasError) {
 			return <Error error={error} />;

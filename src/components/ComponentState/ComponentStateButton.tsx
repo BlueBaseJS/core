@@ -41,8 +41,6 @@ const ComponentStateButton = (props: ComponentStateButtonProps) => {
 		return (<ButtonComponent />);
 
 	} else if (buttonTitle) {
-    	const Button = BR.Components.get('Button');
-		const Text = BR.Components.get('Text');
 
 		const stylesheet = {
 			marginTop: 10,
@@ -50,9 +48,11 @@ const ComponentStateButton = (props: ComponentStateButtonProps) => {
 		};
 
 		return (
-			<Button onPress={buttonOnPress} style={BR.Utils.createStyleSheet(stylesheet)}>
-				<Text>{buttonTitle}</Text>
-			</Button>
+			<BR.Components.Button onPress={buttonOnPress} style={BR.Utils.createStyleSheet(stylesheet)}>
+				<BR.Components.Text>
+					{buttonTitle}
+				</BR.Components.Text>
+			</BR.Components.Button>
 		);
 
 	} else {

@@ -74,8 +74,6 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRain }) => 
 		bluerain: BR
 	} = props;
 
-	const View = BR.Components.get('View');
-
 	const style = {
 		alignItems: 'center',
 		padding: 16,
@@ -89,12 +87,12 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRain }) => 
  	};
 
 	return (
-  <View style={BR.Utils.createStyleSheet(style)}>
+  <BR.Components.View style={BR.Utils.createStyleSheet(style)}>
     <ComponentStateImage  {...props}  />
     <ComponentStateText text={title} style={titleStylesheet} bluerain={BR} />
     <ComponentStateText text={description} style={descriptionStyle} bluerain={BR} />
     <ComponentStateButton {...props} />
-  </View>
+  </BR.Components.View>
 	);
 };
 

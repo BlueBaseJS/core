@@ -1,6 +1,5 @@
 import { BlueRain, withBlueRain } from '../../index';
 import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
-import ImageBackground from '../ImageBackground';
 import React from 'react';
 
 /**
@@ -14,7 +13,7 @@ const Wallpaper = (props: ViewProperties & { bluerain: BlueRain }) => {
 	const styles = { style, flex: 1 };
 
 	return (
-		<ImageBackground style={styles} {...wallpaper} {...others} />
+		<BR.Components.ImageBackground style={styles} {...wallpaper} {...others} />
 	);
 };
 

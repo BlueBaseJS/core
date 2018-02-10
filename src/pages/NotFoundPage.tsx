@@ -12,28 +12,18 @@ const FOFIcon = () => <Icon title="404" />;
  *
  * @returns {React.Component} The layout react component
  */
-const NotFoundPage = (props: { bluerain: BlueRain }) => {
-
-	const BR = props.bluerain;
-
-	const CenterLayout = BR.Components.get('CenterLayout');
-	const ComponentState = BR.Components.get('ComponentState');
-	const Page = BR.Components.get('Page');
-	const Wallpaper = BR.Components.get('Wallpaper');
-
-	return (
-		<Wallpaper>
-			<Page>
-				<CenterLayout style={{ padding: 20 }}>
-					<ComponentState
-						title="Page not found!"
-						description="This is a bit embarassing, but we seem to have misplaced your page. 😢"
-						image={FOFIcon}
-					/>
-				</CenterLayout>
-			</Page>
-		</Wallpaper>
-	);
-};
+const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => (
+	<BR.Components.Wallpaper>
+		<BR.Components.Page>
+			<BR.Components.CenterLayout style={{ padding: 20 }}>
+				<BR.Components.ComponentState
+					title="Page not found!"
+					description="This is a bit embarassing, but we seem to have misplaced your page. 😢"
+					image={FOFIcon}
+				/>
+			</BR.Components.CenterLayout>
+		</BR.Components.Page>
+	</BR.Components.Wallpaper>
+);
 
 export default withBlueRain(NotFoundPage);

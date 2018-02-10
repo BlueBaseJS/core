@@ -11,7 +11,7 @@ export const SystemRoutes = (BR: BlueRain) => {
 			props: {
 				path: '/',
 				exact: true,
-				component: BR.Components.get('IndexPage')
+				component: BR.Components.IndexPage
 			}
 		},
 		...appRoutes
@@ -24,7 +24,7 @@ export const SystemRoutes = (BR: BlueRain) => {
 	systemRoutes.push({
 		component: 'Route',
 		props: {
-			component: BR.Components.get('NotFoundPage')
+			component: BR.Components.NotFoundPage
 		}
 	});
 

@@ -8,10 +8,8 @@ const ErrorState = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 
-	const ComponentState = BR.Components.get('ComponentState');
-
 	return (
-		<ComponentState
+		<BR.Components.ComponentState
 			title="Something broke!"
 			description="An unknown error has occured. Please try again later."
 			image={ErrorIcon}
