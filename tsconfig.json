@@ -28,5 +28,11 @@
 	},
 	"include": [
 			"src"
+	],
+	"exclude": [
+			"node_modules",
+			"storybook",
+			"**/*.stories.ts",
+			"**/*.test.ts"
 	]
 }

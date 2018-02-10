@@ -22,5 +22,9 @@ export class Plugin {
 	hooks?: { [id: string]: hookFn };
 	components?: { [id: string]: React.ComponentType<any> };
 
+	constructor(pluginName: string) {
+		this.pluginName = pluginName;
+	}
+
 	initialize?(config: {}, ctx: BlueRain): void;
 }
