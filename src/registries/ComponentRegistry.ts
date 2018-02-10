@@ -17,12 +17,27 @@ export interface ComponentRegistryItem {
  * of all components
  */
 class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
-	// data: Map<string, ComponentRegistryItem>;
 	BR: BlueRain;
+
+	// For proxy methods
+	[key: string]: any;
 
 	constructor(ctx: BlueRain) {
 		super('ComponentRegistry');
 		this.BR = ctx;
+
+		// Create proxy to enable BR.Components.Name method
+		return new Proxy(this, {
+			get: (target, name, value) => {
+				if (!this.hasOwnProperty(name)) {
+					if (typeof name === 'string' && this.has(name)) {
+						return this.get(name);
+					}
+				}
+
+				return Reflect.get(target, name, value);
+			}
+		});
 	}
 
 	/**
