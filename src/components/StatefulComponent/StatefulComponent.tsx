@@ -1,7 +1,8 @@
-import { BlueRainType, withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
+
 const MISSING_ERROR = 'An unknown error occured.';
 
 export interface StatefulComponentProperties {
@@ -34,7 +35,7 @@ export type StatefulComponentState = {
 };
 
 class StatefulComponent extends React.Component<
-	StatefulComponentProperties & { bluerain: BlueRainType },
+	StatefulComponentProperties & { bluerain: BlueRain },
 	StatefulComponentState> {
 
 	static defaultProps: StatefulComponentProperties = {

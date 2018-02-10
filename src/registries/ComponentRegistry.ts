@@ -140,7 +140,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		// TS Error: https://github.com/Microsoft/TypeScript/issues/4130
-		return flowright([], ...hocs)(component.rawComponent);
+		return flowright([...hocs])(component.rawComponent);
 	}
 
 	/**

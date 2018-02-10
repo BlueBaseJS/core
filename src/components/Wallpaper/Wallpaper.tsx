@@ -1,4 +1,4 @@
-import { BlueRainType, withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import { ViewProperties } from '@blueeast/bluerain-ui-interfaces';
 import ImageBackground from '../ImageBackground';
 import React from 'react';
@@ -6,7 +6,7 @@ import React from 'react';
 /**
  * BlueRain wallpaper, reads wallpaper configs from configs.wallpaper.
  */
-const Wallpaper = (props: ViewProperties & { bluerain: BlueRainType }) => {
+const Wallpaper = (props: ViewProperties & { bluerain: BlueRain }) => {
 
 	const { bluerain: BR, style, ...others } = props;
 	const wallpaper = BR.Configs.get('wallpaper');

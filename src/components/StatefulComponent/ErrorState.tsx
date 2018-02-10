@@ -1,10 +1,10 @@
-import { BlueRainType,withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../index';
 import Icon from '../Icon';
 import React from 'react';
 
 const ErrorIcon = () => <Icon title="Error" />;
 
-const ErrorState = (props: { bluerain: BlueRainType }) => {
+const ErrorState = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 

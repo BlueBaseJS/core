@@ -1,4 +1,4 @@
-import { BlueRainType, withBlueRain } from '../index';
+import { BlueRain, withBlueRain } from '../index';
 import React from 'react';
 
 /**
@@ -6,7 +6,7 @@ import React from 'react';
  *
  * @returns {React.Component} The layout react component
  */
-const ErrorPage = (props: { bluerain: BlueRainType }) => {
+const ErrorPage = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 

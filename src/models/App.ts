@@ -1,4 +1,4 @@
-import { BlueRainType } from '../index';
+import { BlueRain } from '../index';
 import { hookFn } from '../registries/HooksRegistry';
 import React from 'react';
 
@@ -33,7 +33,7 @@ export interface AppOptions {
 	hooks?: { [id: string]: hookFn };
 	components?: { [id: string]: React.ComponentType<any> };
 
-	initialize?(config: {}, ctx: BlueRainType): void;
+	initialize?(config: {}, ctx: BlueRain): void;
 
 	[key: string]: any;
 }

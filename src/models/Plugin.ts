@@ -1,4 +1,4 @@
-import { BlueRainType } from '../index';
+import { BlueRain } from '../index';
 import { hookFn } from '../registries/HooksRegistry';
 import React from 'react';
 
@@ -22,5 +22,9 @@ export class Plugin {
 	hooks?: { [id: string]: hookFn };
 	components?: { [id: string]: React.ComponentType<any> };
 
-	initialize?(config: {}, ctx: BlueRainType): void;
+	constructor(pluginName: string) {
+		this.pluginName = pluginName;
+	}
+
+	initialize?(config: {}, ctx: BlueRain): void;
 }

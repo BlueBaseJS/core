@@ -10,6 +10,12 @@ class Heading extends React.Component {
 		return <h1>{this.props.heading}</h1>;
 	}
 }
+const Logo = (props) => {
+	return(<h1>{props.logo}</h1>);
+};
+const Card = (props) => {
+	return(<h1>{props.card}</h1>);
+};
 
 const HocItem = [Heading];
 describe('Component Registry test specifications', () => {
@@ -19,6 +25,21 @@ describe('Component Registry test specifications', () => {
 			BR.Components.get('heading');
 		}).not.toThrow();
 	});
+	it('should add logo component to registry', () => {
+		BR.Components.add('logo', Logo);
+		expect(() => {
+			BR.Components.get('logo');
+			console.log('Logo', BR.Components.get('logo'));
+		}).not.toThrow();
+	});
+
+	it('should add logo component to registry', () => {
+		BR.Components.add('card', Card);
+		expect(() => {
+			BR.Components.get('card');
+		}).not.toThrow();
+	});
+
 	it('replace method throw error as component is not registered', () => {
 		expect(() => BR.Components.replace('New','data')).toThrow();
 	});
@@ -42,11 +63,26 @@ describe('Component Registry test specifications', () => {
 	it(' addHocs method should  throw error as component is not registered', () => {
 		expect(() => BR.Components.addHocs('component',() => HocItem)).toThrow();
 	});
+
 	it(' addHocs method  should  not throw error as component is  registered', () => {
+	expect(() => {
+			BR.Components.addHocs('heading',() => HocItem, () => HocItem, () => HocItem);
+		}).not.toThrow();
+	BR.Components.get('heading');
+
+});
+
+	it(' addHocs method  should  not throw error as logo component is registered', () => {
 		expect(() => {
-			BR.Components.addHocs('heading',() => HocItem);
+			BR.Components.addHocs('logo',() => HocItem);
 		}).not.toThrow();
 	});
+	it(' addHocs method  should  not throw error as card component is registered', () => {
+		expect(() => {
+			BR.Components.addHocs('card',() => HocItem);
+		}).not.toThrow();
+	});
+
 	it(' addHocs method should  throw error as key is empty', () => {
 		expect(() => BR.Components.addHocs(null,() => HocItem)).toThrow();
 	});
