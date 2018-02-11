@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import BR from '../../src/index';
+
 class Paragraph extends React.Component {
 	render() {
 		return <p>{this.props.paragraph}</p>;
@@ -10,16 +11,16 @@ class Heading extends React.Component {
 		return <h1>{this.props.text}</h1>;
 	}
 }
-BR.Components.register('Heading', Heading);
+BR.Components.set('Heading', Heading);
 describe('Json to react tests', () => {
-	it('should throw error for null schema', () => {
-		expect(() => BR.Utils.parseJsonSchema(null)).toThrow();
+	it('should not throw error for null schema', () => {
+		expect(() => BR.API.JsonToReact.parse(null)).toThrow();
 	});
 	it('should throw error for undefined schema', () => {
-		expect(() => BR.Utils.parseJsonSchema(undefined)).toThrow();
+		expect(() => BR.API.JsonToReact.parse(undefined)).toThrow();
 	});
 	it('should throw error for empty schema', () => {
-		expect(() => BR.Utils.parseJsonSchema({})).toThrow();
+		expect(() => BR.API.JsonToReact.parse({})).toThrow();
 	});
 	it('should render heading', () => {
 		const schema = {
@@ -32,7 +33,7 @@ describe('Json to react tests', () => {
 				}
 			]
 		};
-		const value = BR.Utils.parseJsonSchema(schema);
+		const value = BR.API.JsonToReact.parse(schema);
 		expect(value.type).toEqual('h1');
 		expect(value.props.children[0].type).toEqual('h2');
 		expect(value.props.children[0].props.children).toEqual('Bye World!');
@@ -49,7 +50,7 @@ describe('Json to react tests', () => {
 				}
 			]
 		};
-		const value = BR.Utils.parseJsonSchema(schema);
+		const value = BR.API.JsonToReact.parse(schema);
 		expect(value.type).toEqual('div');
 		expect(value.props.children[0].type).toEqual('h2');
 		expect(value.props.children[0].props.children).toEqual('Bye World!');
@@ -61,7 +62,7 @@ describe('Json to react tests', () => {
 				paragraph: 'this is a pragraph'
 			}
 		};
-		const value = BR.Utils.parseJsonSchema(schema);
+		const value = BR.API.JsonToReact.parse(schema);
 		expect(value.props.paragraph).toEqual('this is a pragraph');
 	});
 	it('should throw error', () => {
@@ -72,7 +73,7 @@ describe('Json to react tests', () => {
 			}
 		};
 
-		expect(() => BR.Utils.parseJsonSchema(schema)).toThrow();
+		expect(() => BR.API.JsonToReact.parse(schema)).toThrow();
 	});
 	it('should render heading component', () => {
 		const schema = {
@@ -81,7 +82,7 @@ describe('Json to react tests', () => {
 				text: 'this is a heading'
 			}
 		};
-		const value = BR.Utils.parseJsonSchema(schema);
+		const value = BR.API.JsonToReact.parse(schema);
 		expect(value.props.text).toEqual('this is a heading');
 	});
 });

@@ -1,5 +1,6 @@
+import { BlueRain } from '../index';
+import { hookFn } from '../registries/HooksRegistry';
 import React from 'react';
-import { BlueRainType } from '../index';
 
 /**
  * Base class of a plugin which is to be extended.
@@ -10,7 +11,7 @@ import { BlueRainType } from '../index';
  * @property {String}	description	App description
  * @property {String}	version	App version
  */
-export default class Plugin {
+export class Plugin {
 	pluginName: string;
 	slug?: string;
 	config?: {};
@@ -18,8 +19,12 @@ export default class Plugin {
 	description?: string;
 	version?: string;
 
-	hooks?: { [id: string]: Function };
+	hooks?: { [id: string]: hookFn };
 	components?: { [id: string]: React.ComponentType<any> };
 
-	initialize?(config: {}, ctx: BlueRainType): void;
+	constructor(pluginName: string) {
+		this.pluginName = pluginName;
+	}
+
+	initialize?(config: {}, ctx: BlueRain): void;
 }

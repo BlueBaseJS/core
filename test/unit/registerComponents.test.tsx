@@ -1,8 +1,5 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
-import {mount, shallow,  render, configure} from 'enzyme';
 import Components from '../../src/registerComponents';
-configure({ adapter: new Adapter() });
 import BR,{Plugin} from '../../src/index';
 
 class Reactxp  extends Plugin {
@@ -26,5 +23,5 @@ expect(BR.Components.has('Wallpaper')).toBe(true);
 expect(BR.Components.has('SystemLayout')).toBe(true);
 expect(BR.Components.has('IndexPage')).toBe(true);
 expect(BR.Components.has('NotFoundPage')).toBe(true);
-expect(BR.Components.has('BlueRainApp')).toBe(true);
+expect(BR.Components.has('SystemApp')).toBe(true);
 });
