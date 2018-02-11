@@ -14,9 +14,7 @@ describe('BR.boot func tests', () => {
 		expect(() => BR.Hooks.add('null.hook', null)).toThrow();
 	});
 	it('should add hook', () => {
-		BR.Hooks.add('test.hook', function testHook() {
-			console.log('testHook');
-		});
+		BR.Hooks.add('test.hook', function testHook() {});
 		expect(BR.Filters.get('test.hook')).toBeDefined();
 	});
 	it('should add hook', () => {

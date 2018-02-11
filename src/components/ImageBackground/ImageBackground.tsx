@@ -17,9 +17,6 @@ const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRain
 	const { bluerain: BR, children, ...others } = props;
 	const style = props.style || {};
 
-	const View = BR.Components.get('View');
-	const Image = BR.Components.get('Image');
-
 	const imageStyle = {
 		position: 'absolute',
 		left: 0,
@@ -48,10 +45,10 @@ const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRain
 	];
 
 	return (
-		<View style={BR.Utils.createStyleSheet(style)}>
-			<Image {...others} style={imageStyleSheet} />
+		<BR.Components.View style={BR.Utils.createStyleSheet(style)}>
+			<BR.Components.Image {...others} style={imageStyleSheet} />
 			{children}
-		</View>
+		</BR.Components.View>
 	);
 };
 

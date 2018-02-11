@@ -31,14 +31,11 @@ const ComponentStateImage = (props: ComponentStateImageProps) => {
 		bluerain: BR
 	} = props;
 
-	const View = BR.Components.get('View');
-	const Image = BR.Components.get('Image');
-
 	// Image
 	let ImageC;
 
 	if (ImageComponent || imageSource) {
-		ImageC = ImageComponent || Image;
+		ImageC = ImageComponent || BR.Components.Image;
 
 	} else {
 		return null;
@@ -48,12 +45,12 @@ const ComponentStateImage = (props: ComponentStateImageProps) => {
 	const stylesheet = { marginBottom: 10, maxWidth: 200 };
 
 	return (
-  <View style={BR.Utils.createStyleSheet(stylesheet)}>
+  <BR.Components.View style={BR.Utils.createStyleSheet(stylesheet)}>
 		<ImageC
 			style={imageStyle ? BR.Utils.createStyleSheet(imageStyle) : {}}
 			source={imageSource}
 		/>
-  </View>
+  </BR.Components.View>
 	);
 };
 

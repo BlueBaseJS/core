@@ -14,27 +14,14 @@ const BRIcon = () => <Icon title="BR" color="rgba(0,123,255,1)" />;
  *
  * @returns {React.Component} The layout react component
  */
-const IndexPage = (props: { bluerain: BlueRain }) => {
-
-	const BR = props.bluerain;
-
-	const CenterLayout = BR.Components.get('CenterLayout');
-	const ComponentState = BR.Components.get('ComponentState');
-	const Page = BR.Components.get('Page');
-	const Wallpaper = BR.Components.get('Wallpaper');
-
-	return (
-		<Wallpaper>
-			<Page>
-				<CenterLayout style={{ padding: 20 }}>
-					<ComponentState
-						title="Welcome to BlueRain OS!"
-						image={BRIcon}
-					/>
-				</CenterLayout>
-			</Page>
-		</Wallpaper>
-	);
-};
+const IndexPage = ({ bluerain: BR }: { bluerain: BlueRain }) => (
+	<BR.Components.Wallpaper>
+		<BR.Components.Page>
+			<BR.Components.CenterLayout style={{ padding: 20 }}>
+				<BR.Components.ComponentState title="Welcome to BlueRain OS!" image={BRIcon} />
+			</BR.Components.CenterLayout>
+		</BR.Components.Page>
+	</BR.Components.Wallpaper>
+);
 
 export default withBlueRain(IndexPage);
