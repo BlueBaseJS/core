@@ -114,23 +114,21 @@ class AppRegistry extends MapRegistry<App> {
 	getAllRoutes(): any[] {
 		const appRoutes: object[] = [];
 
-		this.data.forEach(app => {
-			if (!app) {
+		this.data.forEach(BRApp => {
+			if (!BRApp) {
 				return;
 			}
+
+			const configs = this.BR.Configs.get(`apps.${BRApp.slug}`) || {};
 
 			appRoutes.push({
 				component: 'Route',
 				props: {
-					path: app.path,
-					key: app.slug,
-					component: React.createElement(
-						app as React.ComponentType<{ bluerain: BlueRain; config: any }>,
-						{
-							bluerain: this.BR,
-							config: this.BR.Configs.get(`apps.${app.slug}`)
-						}
-					)
+					path: BRApp.path,
+					key: BRApp.slug,
+					component: (props: any) => {
+						return <BRApp bluerain={this.BR} configs={configs} {...props} />;
+					}
 				}
 			});
 		});
