@@ -124,9 +124,13 @@ class AppRegistry extends MapRegistry<App> {
 				props: {
 					path: app.path,
 					key: app.slug,
-					component: React.createElement(app as React.ComponentType<{ bluerain: BlueRain }>, {
-						bluerain: this.BR
-					})
+					component: React.createElement(
+						app as React.ComponentType<{ bluerain: BlueRain; config: any }>,
+						{
+							bluerain: this.BR,
+							config: this.BR.Configs.get(`apps.${app.slug}`)
+						}
+					)
 				}
 			});
 		});
