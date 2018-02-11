@@ -6,7 +6,7 @@ import DOM from 'react-dom-factories';
 import React from 'react';
 
 export interface JsonComponentSchema {
-	component: string | React.ReactElement<any>;
+	component: string | React.ComponentType<any>;
 	text?: string;
 	props?: {
 		key?: string;
