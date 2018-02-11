@@ -1,6 +1,7 @@
 import { App, BlueRain } from '../index';
 import { EsModule, MaybeEsModule } from '../typings';
 import MapRegistry from './MapRegistry';
+import React from 'react';
 import isNil from 'lodash.isnil';
 import kebabCase from 'lodash.kebabcase';
 
@@ -113,17 +114,21 @@ class AppRegistry extends MapRegistry<App> {
 	getAllRoutes(): any[] {
 		const appRoutes: object[] = [];
 
-		this.data.forEach(app => {
-			if (!app) {
+		this.data.forEach(BRApp => {
+			if (!BRApp) {
 				return;
 			}
+
+			const configs = this.BR.Configs.get(`apps.${BRApp.slug}`) || {};
 
 			appRoutes.push({
 				component: 'Route',
 				props: {
-					path: app.path,
-					key: app.slug,
-					component: app
+					path: BRApp.path,
+					key: BRApp.slug,
+					component: (props: any) => {
+						return <BRApp bluerain={this.BR} configs={configs} {...props} />;
+					}
 				}
 			});
 		});
