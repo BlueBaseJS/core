@@ -29,7 +29,6 @@ describe('Component Registry test specifications', () => {
 		BR.Components.add('logo', Logo);
 		expect(() => {
 			BR.Components.get('logo');
-			console.log('Logo', BR.Components.get('logo'));
 		}).not.toThrow();
 	});
 

@@ -10,7 +10,6 @@ const Icon = (props: IconProps & { bluerain: BlueRain }) => {
 
 	const { bluerain: BR, title, color } = props;
 
-	const Text = BR.Components.get('Text');
 	const backgroundColor = color || 'rgb(220,53,69)';
 
 	const titleStyle = BR.Utils.createStyleSheet({
@@ -28,7 +27,7 @@ const Icon = (props: IconProps & { bluerain: BlueRain }) => {
 		shadowColor: 'rgba(0,0,0,.3)'
 	});
 
-	return <Text style={titleStyle}>{title}</Text>;
+	return <BR.Components.Text style={titleStyle}>{title}</BR.Components.Text>;
 };
 
 // export default Icon;

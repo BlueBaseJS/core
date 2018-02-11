@@ -80,11 +80,12 @@ storiesOf('ComponentState', module)
 	.add('imageSource prop', bluerainStory((props: { bluerain: BlueRain }) => {
 
 		const BR = props.bluerain;
-		// const Image = BR.Components.get('Image');
 		const Style={ width:200,height:200 };
-		const ComponentState = BR.Components.get('ComponentState');
-		// tslint:disable-next-line:max-line-length
-		return <ComponentState  imageSource="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264"  imageStyle={BR.Utils.createStyleSheet(Style)} />;
+		return (
+			<BR.Components.ComponentState
+				// tslint:disable-next-line:max-line-length
+				imageSource="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264"
+				imageStyle={BR.Utils.createStyleSheet(Style)}
+			/>
+		);
 	}));
-
-// storiesOf('ComponentState', module).add('Simple', () => <div>hello </div>);

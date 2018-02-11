@@ -6,14 +6,13 @@ import defaultStyles from './stylesheet';
 const  Page = (props: ViewProperties & { bluerain: BlueRain }) => {
 
 	const { style, bluerain: BR, ...others } = props;
-	const View = BR.Components.get('View');
 
 	const stylesheet = [
 		BR.Utils.createStyleSheet(defaultStyles),
 		BR.Utils.createStyleSheet(style || {})
 	];
 
-	return (<View style={stylesheet} {...others} />);
+	return <BR.Components.View style={stylesheet} {...others} />;
 };
 
 export default withBlueRain(Page);

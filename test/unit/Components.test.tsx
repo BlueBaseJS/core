@@ -41,6 +41,7 @@ describe('Component Registry test specifications', () => {
 
 		BR.Components.add('LoadingState',() => 'LoadingState');
 		BR.Components.add('Image',() => 'Image');
+		BR.Components.add('ImageBackground', ImageBackground);
 	    BR.Components.add('Button',() => 'Button');
 	    BR.Components.add('View',() => 'View');
 		BR.Components.add('Text',() => 'Text');

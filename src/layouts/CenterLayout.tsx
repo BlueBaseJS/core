@@ -10,7 +10,6 @@ export interface CenterLayoutProperties extends ViewProperties {
 const CenterLayout = (props: CenterLayoutProperties & { bluerain: BlueRain }) => {
 
 	const { bluerain: BR, style, ...other } = props;
-	const View = BR.Components.get('View');
 
 	const defaultStyle = {
 		alignItems: 'center',
@@ -22,7 +21,7 @@ const CenterLayout = (props: CenterLayoutProperties & { bluerain: BlueRain }) =>
 		BR.Utils.createStyleSheet(defaultStyle),
 		BR.Utils.createStyleSheet(style || {})
 	];
-	return (<View style={stylesheet} {...other} />);
+	return <BR.Components.View style={stylesheet} {...other} />;
 };
 
 export default withBlueRain(CenterLayout);

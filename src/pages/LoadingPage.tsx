@@ -6,21 +6,12 @@ import React from 'react';
  *
  * @returns {React.Component} The layout react component
  */
-const LoadingPage = (props: { bluerain: BlueRain }) => {
-
-	const BR = props.bluerain;
-
-	const CenterLayout = BR.Components.get('CenterLayout');
-	const Page = BR.Components.get('Page');
-	const LoadingState = BR.Components.get('LoadingState');
-
-	return (
-		<Page>
-			<CenterLayout style={{ padding: 20 }}>
-				<LoadingState />
-			</CenterLayout>
-		</Page>
-	);
-};
+const LoadingPage = ({ bluerain: BR }: { bluerain: BlueRain }) => (
+	<BR.Components.Page>
+		<BR.Components.CenterLayout style={{ padding: 20 }}>
+			<BR.Components.LoadingState />
+		</BR.Components.CenterLayout>
+	</BR.Components.Page>
+);
 
 export default withBlueRain(LoadingPage);

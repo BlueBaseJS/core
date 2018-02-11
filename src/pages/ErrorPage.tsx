@@ -6,24 +6,14 @@ import React from 'react';
  *
  * @returns {React.Component} The layout react component
  */
-const ErrorPage = (props: { bluerain: BlueRain }) => {
-
-	const BR = props.bluerain;
-
-	const CenterLayout = BR.Components.get('CenterLayout');
-	const Page = BR.Components.get('Page');
-	const Wallpaper = BR.Components.get('Wallpaper');
-	const ErrorState = BR.Components.get('ErrorState');
-
-	return (
-		<Wallpaper>
-			<Page>
-				<CenterLayout style={{ padding: 20 }}>
-					<ErrorState />
-				</CenterLayout>
-			</Page>
-		</Wallpaper>
-	);
-};
+const ErrorPage = ({ bluerain: BR }: { bluerain: BlueRain }) => (
+	<BR.Components.Wallpaper>
+		<BR.Components.Page>
+			<BR.Components.CenterLayout style={{ padding: 20 }}>
+				<BR.Components.ErrorState />
+			</BR.Components.CenterLayout>
+		</BR.Components.Page>
+	</BR.Components.Wallpaper>
+);
 
 export default withBlueRain(ErrorPage);
