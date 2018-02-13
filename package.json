@@ -3,9 +3,9 @@
   "version": "0.0.0-development",
   "description": "A browser based OS, made with React JS",
   "keywords": [],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "typings": "dist/types/src/index.d.ts",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
+  "typings": "types/src/index.d.ts",
   "files": [
     "dist"
   ],
@@ -30,8 +30,8 @@
     "build-storybook": "build-storybook",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
     "prebuild": "rimraf dist",
-    "build": "tsc && babel src --ignore src/**/__tests__ --out-dir dist --extensions '.ts,.tsx'",
-    "postbuild": "rimraf compiled",
+    "build": "tsc && babel -D compiled --out-dir dist --copy-files",
+    "postbuild": "typedoc --out dist/docs --target es6 --theme minimal src && rimraf compiled",
     "start": "tsc -w",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -97,9 +97,6 @@
       "maxSize": "18 kB"
     }
   ],
-  "resolutions": {
-    "babel-core": "^7.0.0-bridge.0"
-  },
   "dependencies": {
     "@blueeast/bluerain-ui-interfaces": "^2.0.2",
     "deepmerge": "^2.0.1",
@@ -119,14 +116,6 @@
     "recompose": "^0.25.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.32",
-    "@babel/core": "^7.0.0-beta.32",
-    "@babel/node": "^7.0.0-beta.32",
-    "@babel/preset-env": "^7.0.0-beta.32",
-    "@babel/preset-react": "^7.0.0-beta.32",
-    "@babel/preset-stage-3": "^7.0.0-beta.32",
-    "@babel/preset-typescript": "^7.0.0-beta.32",
-    "@babel/register": "^7.0.0-beta.32",
     "@blueeast/bluerain-platform-reactxp": "^2.0.0",
     "@blueeast/tslint-config-blueeast": "^0.5.5",
     "@storybook/addon-actions": "^3.3.12",
@@ -144,11 +133,14 @@
     "@types/prop-types": "^15.5.2",
     "@types/react": "^16.0.37",
     "@types/react-dom-factories": "^1.0.0",
-    "@types/recompose": "^0.24.4",
+    "@types/recompose": "^0.24.5",
     "@types/storybook__react": "^3.0.6",
     "awesome-typescript-loader": "^3.4.1",
-    "babel-loader": "8.0.0-beta.0",
-    "babel-plugin-module-resolver": "^3.0.0",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "bundlesize": "^0.15.3",
     "codecov": "^2.3.1",
     "colors": "^1.1.2",
@@ -177,7 +169,7 @@
     "ts-jest": "^21.0.0",
     "ts-node": "^3.0.6",
     "tslint": "^5.4.3",
-    "typedoc": "^0.9.0",
+    "typedoc": "^0.10.0",
     "typescript": "^2.5.3",
     "validate-commit-msg": "^2.12.2"
   }
