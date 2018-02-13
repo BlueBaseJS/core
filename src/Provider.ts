@@ -12,9 +12,9 @@ const BlueRainProvider = withContext(
 	(props: ProviderProperties) => ({
 		bluerain: props.bluerain || BR
 	})
-)(props => React.Children.only(props.children));
+)(props => React.Children.only(props.children)) as React.ComponentType<any>;
 
 const withBlueRain = (Component: React.ComponentType<any>) =>
-	getContext({ bluerain: PropTypes.object })(Component);
+	getContext({ bluerain: PropTypes.object })(Component) as React.ComponentType<any>;
 
 export { BlueRainProvider, withBlueRain };
