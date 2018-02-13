@@ -1,6 +1,7 @@
 import { JsonToReact, JsonToReactClass } from './JsonToReact';
 import { Accessibility } from './Accessibility';
 import { AppState } from './AppState';
+import { AsyncStorage } from './AsyncStorage';
 import { BlueRain } from '../';
 import { Clipboard } from './Clipboard';
 import { Dimensions } from './Dimensions';
@@ -22,6 +23,7 @@ export type BlueRainAPI = {
 	NetInfo: NetInfo;
 	Platform: Platform;
 	UserPresence: UserPresence;
+	AsyncStorage: AsyncStorage;
 };
 
 export const createApis = (ctx: BlueRain): BlueRainAPI => {
@@ -49,6 +51,7 @@ export {
 	Linking,
 	NetInfo,
 	Platform,
-	UserPresence
+	UserPresence,
+	AsyncStorage
 };
 export * from './JsonToReact';

@@ -1,21 +1,10 @@
+export type PlatformOSType = 'ios' | 'android' | 'macos' | 'windows' | 'web' | 'electron';
 export interface Platform {
 	/**
-	 * List of Platforms
-	 * Supported in reactxp
-	 */
-	PlatformType: 'web' | 'ios' | 'android' | 'windows';
-
-	/**
 	 * Returns the platform type
-	 * Supported in reactxp
-	 */
-	getType: () => void;
-
-	/**
-	 * Platform.OS will be ios when running on iOS and android when running on Android.
 	 * Supported in react-native
 	 */
-	OS: string;
+	OS: () => PlatformOSType;
 
 	/**
 	 * There is also a Platform.select method available, that given an object containing Platform.OS as keys,

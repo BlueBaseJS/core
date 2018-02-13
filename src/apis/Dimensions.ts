@@ -12,7 +12,7 @@ export interface Dimensions {
 	 * It is supported in react-native only
 	 */
 
-	get: (dim: string) => void;
+	get: (dim: 'window' | 'screen') => ScaledSize;
 
 	/**
 	 * Add an event handler. Supported events:change
@@ -27,4 +27,11 @@ export interface Dimensions {
 	 */
 
 	removeEventListener: (type: string, handler: () => void) => void;
+}
+
+export interface ScaledSize {
+	width: number;
+	height: number;
+	scale: number;
+	fontScale: number;
 }

@@ -1,5 +1,5 @@
 export interface GeoLocation {
-	clearWatch: () => void;
+	clearWatch: (watchID: number) => void;
 
 	stopObserving: () => void;
 
