@@ -2,7 +2,7 @@ export type PlatformOSType = 'ios' | 'android' | 'macos' | 'windows' | 'web' | '
 export interface Platform {
 	/**
 	 * Returns the platform type
-	 * Supported in reactxp
+	 * Supported in react-native
 	 */
 	OS: () => PlatformOSType;
 
