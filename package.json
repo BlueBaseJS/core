@@ -102,6 +102,7 @@
   },
   "dependencies": {
     "@blueeast/bluerain-ui-interfaces": "^2.0.2",
+    "deepmerge": "^2.0.1",
     "eventemitter3": "^2.0.3",
     "harmony-reflect": "^1.5.1",
     "immutable": "^3.8.2",
@@ -110,7 +111,6 @@
     "lodash.isboolean": "^3.0.3",
     "lodash.isnil": "^4.0.0",
     "lodash.kebabcase": "^4.1.1",
-    "deepmerge": "^2.0.1",
     "lodash.set": "^4.3.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
