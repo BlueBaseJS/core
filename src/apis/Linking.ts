@@ -1,6 +1,4 @@
 export interface Linking {
-	constructor: () => void;
-
 	/**
 	 * Add a handler to AppState changes by listening to the change event type and providing the handler
 	 * It is supported in react-native only

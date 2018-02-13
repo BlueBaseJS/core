@@ -4,7 +4,7 @@ export interface Platform {
 	 * Returns the platform type
 	 * Supported in react-native
 	 */
-	OS: () => PlatformOSType;
+	OS: PlatformOSType;
 
 	/**
 	 * There is also a Platform.select method available, that given an object containing Platform.OS as keys,
