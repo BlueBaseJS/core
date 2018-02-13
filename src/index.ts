@@ -1,3 +1,6 @@
+// Polyfills
+import './polyfills';
+
 // Models
 export * from './models/App';
 export * from './models/Plugin';
