@@ -13,6 +13,7 @@ export interface JsonComponentSchema {
 		[key: string]: any;
 	};
 	children?: JsonComponentSchema[];
+	name?: string;
 }
 
 export default class JsonToReact {
