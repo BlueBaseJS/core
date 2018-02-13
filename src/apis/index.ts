@@ -51,6 +51,7 @@ export {
 	Linking,
 	NetInfo,
 	Platform,
-	UserPresence
+	UserPresence,
+	AsyncStorage
 };
 export * from './JsonToReact';
