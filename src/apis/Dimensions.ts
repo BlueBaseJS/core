@@ -28,10 +28,3 @@ export interface Dimensions {
 
 	get: (dim: 'window' | 'screen') => object;
 }
-
-export interface ScaledSize {
-	width: number;
-	height: number;
-	scale: 1;
-	fontScale: 1;
-}
