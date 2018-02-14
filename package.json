@@ -167,7 +167,7 @@
     "react-test-render": "^1.1.1",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
-    "semantic-release": "^13.3.0",
+    "semantic-release": "^14.0.0",
     "travis-deploy-once": "^4.3.4",
     "ts-jest": "^21.0.0",
     "ts-node": "^3.0.6",
