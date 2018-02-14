@@ -5,6 +5,11 @@ import CenterLayout from '../../src/layouts/CenterLayout';
 import CompentStateButton from '../../src/components/ComponentState/ComponentStateButton';
 import ComponeStateImage from '../../src/components/ComponentState/ComponentStateImage';
 import ComponentStateText from '../../src/components/ComponentState/ComponentStateText';
+import SystemAp,{} from '../../src/components/SystemApp/SystemApp';
+import SystemContent from '../../src/components/SystemContent/SystemContent';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+
 import { createApp as App } from '../../src/models/App';
 
 import Component from '../../src/components/ComponentState/ComponentState';
@@ -25,7 +30,7 @@ import StatefulComponent from '../../src/components/StatefulComponent/StatefulCo
 import SystemApp from '../../src/SystemApp';
 import SystemLayout from '../../src/layouts/SystemLayout';
 import Wallpaper from '../../src/components/Wallpaper/Wallpaper';
-
+import Platform from '../Platform';
 configure({ adapter: new Adapter() });
 
 beforeAll(() => {
@@ -140,7 +145,7 @@ it('should return component ComponentStateText ', () => {
 });
 
 it('should return component ComponentStateText  with text prop', () => {
-const wrapper=mount(<BlueRainProvider><ComponentStateText text="title"  /></BlueRainProvider>);
+	const wrapper=mount(<BlueRainProvider><ComponentStateText text="title"  /></BlueRainProvider>);
 	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 
@@ -212,4 +217,35 @@ it('should return SystemApp Component', () => {
 	const wrapper=mount(<BlueRainProvider><SystemApp/></BlueRainProvider>);
 	expect(wrapper.find('SystemApp')).toBeDefined();
 });
-})
+
+it('should return SystemAp Component', () => {
+
+	const RouterSwitch=() => 'RouterSwitch';
+	BR.boot({ platform:[Platform],renderApp:false });
+
+	BR.Components.replace('RouterSwitch',RouterSwitch);
+
+	const mockStore = configureMockStore(
+        []
+    );
+	const mockStoreInitialized = mockStore({
+		bluerain: {
+			intl:{
+				locale:'en'
+			}
+		}
+	});
+
+	const options=[];
+        // tslint:disable-next-line:max-line-length
+
+	const wrapper=mount(<BlueRainProvider><Provider store={mockStoreInitialized}><SystemAp/></BlueRainProvider></Provider>);
+	expect(wrapper.find('SystemAp')).toBeDefined();
+
+});
+
+it('should return SystemContent Component', () => {
+	const wrapper=mount(<BlueRainProvider><SystemContent/></BlueRainProvider>);
+	expect(wrapper.find('SystemContent')).toBeDefined();
+});
+

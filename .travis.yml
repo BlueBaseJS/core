@@ -18,6 +18,6 @@ before_script:
 after_script:
   - greenkeeper-lockfile-upload
 after_success:
-  - npm run report-coverage
+  # - npm run report-coverage
   - test $TRAVIS_BRANCH = "master" && npm run deploy-docs
   - npx semantic-release
