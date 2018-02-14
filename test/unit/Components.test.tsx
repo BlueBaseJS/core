@@ -7,6 +7,8 @@ import ComponeStateImage from '../../src/components/ComponentState/ComponentStat
 import ComponentStateText from '../../src/components/ComponentState/ComponentStateText';
 import SystemAp,{} from '../../src/components/SystemApp/SystemApp';
 import SystemContent from '../../src/components/SystemContent/SystemContent';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
 
 import { createApp as App } from '../../src/models/App';
 
@@ -143,7 +145,7 @@ it('should return component ComponentStateText ', () => {
 });
 
 it('should return component ComponentStateText  with text prop', () => {
-const wrapper=mount(<BlueRainProvider><ComponentStateText text="title"  /></BlueRainProvider>);
+	const wrapper=mount(<BlueRainProvider><ComponentStateText text="title"  /></BlueRainProvider>);
 	 expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 
@@ -217,15 +219,33 @@ it('should return SystemApp Component', () => {
 });
 
 it('should return SystemAp Component', () => {
+
+	const RouterSwitch=() => 'RouterSwitch';
 	BR.boot({ platform:[Platform],renderApp:false });
 
-	const wrapper=shallow(<BlueRainProvider><SystemAp/></BlueRainProvider>);
+	BR.Components.replace('RouterSwitch',RouterSwitch);
+
+	const mockStore = configureMockStore(
+        []
+    );
+	const mockStoreInitialized = mockStore({
+		bluerain: {
+			intl:{
+				locale:'en'
+			}
+		}
+	});
+
+	const options=[];
+        // tslint:disable-next-line:max-line-length
+
+	const wrapper=mount(<BlueRainProvider><Provider store={mockStoreInitialized}><SystemAp/></BlueRainProvider></Provider>);
 	expect(wrapper.find('SystemAp')).toBeDefined();
+
 });
 
-
 it('should return SystemContent Component', () => {
-	const wrapper=shallow(<BlueRainProvider><SystemContent/></BlueRainProvider>);
+	const wrapper=mount(<BlueRainProvider><SystemContent/></BlueRainProvider>);
 	expect(wrapper.find('SystemContent')).toBeDefined();
 });
 

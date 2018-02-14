@@ -20,6 +20,7 @@ const SystemApp = ({ bluerain: BR, ...others }: { bluerain: BlueRain }) => {
 			}
 		]
 	};
+	console.log('BR', BR);
 
 	routes = BR.Filters.run('bluerain.system.app.schema', routes);
 	return BR.API.JsonToReact.parse(routes);

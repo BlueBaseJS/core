@@ -83,7 +83,7 @@
     "coverageThreshold": {
       "global": {
         "branches": 71,
-        "functions": 76,
+        "functions": 78,
         "lines": 80,
         "statements": 80
       }
@@ -116,6 +116,8 @@
     "recompose": "^0.25.0"
   },
   "devDependencies": {
+    "redux-mock-store": "^1.3.0",
+    "react-redux": "^5.0.6",
     "@blueeast/bluerain-platform-reactxp": "^2.0.0",
     "@blueeast/tslint-config-blueeast": "^0.5.5",
     "@storybook/addon-actions": "^3.3.12",
@@ -162,7 +164,6 @@
     "react-native-storybook-loader": "^1.7.0",
     "react-native-typescript-transformer": "^1.2.3",
     "react-test-render": "^1.1.1",
-    "redux-mock-store": "^1.3.0",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
     "semantic-release": "^13.3.0",

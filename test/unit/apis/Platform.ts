@@ -2,7 +2,7 @@ import { Platform as IPlatform } from '../apis/';
 import RX from 'reactxp';
 import isElectron from 'is-electron';
 
-export type PlatformType = 'web' | 'ios' | 'android' | 'windows' | 'electron';
+export type PlatformType = 'web' | 'ios' | 'android' | 'windows';
 
 /**
  * This interface provides information about the OS or runtime platform on which the app is running.

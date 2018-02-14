@@ -7,3 +7,5 @@ export * from './Network';
 export * from './UserPresence';
 export * from './Accessibility';
 export * from './Platform';
+export * from './AppState';
+export * from './Platform';
