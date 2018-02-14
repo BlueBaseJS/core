@@ -28,7 +28,7 @@ import StatefulComponent from '../../src/components/StatefulComponent/StatefulCo
 import SystemApp from '../../src/SystemApp';
 import SystemLayout from '../../src/layouts/SystemLayout';
 import Wallpaper from '../../src/components/Wallpaper/Wallpaper';
-import Platform from '../Platform'
+import Platform from '../Platform';
 configure({ adapter: new Adapter() });
 
 beforeAll(() => {
@@ -211,21 +211,21 @@ it('should return NotFoundPage Component', () => {
 });
 
 it('should return SystemApp Component', () => {
-	
+
 	const wrapper=mount(<BlueRainProvider><SystemApp/></BlueRainProvider>);
 	expect(wrapper.find('SystemApp')).toBeDefined();
 });
 
 it('should return SystemAp Component', () => {
-	BR.boot({platform:[Platform],renderApp:false});
-	
-	const wrapper=mount(<BlueRainProvider><SystemAp/></BlueRainProvider>);
+	BR.boot({ platform:[Platform],renderApp:false });
+
+	const wrapper=shallow(<BlueRainProvider><SystemAp/></BlueRainProvider>);
 	expect(wrapper.find('SystemAp')).toBeDefined();
 });
-	
+
 
 it('should return SystemContent Component', () => {
-	const wrapper=mount(<BlueRainProvider><SystemContent/></BlueRainProvider>);
+	const wrapper=shallow(<BlueRainProvider><SystemContent/></BlueRainProvider>);
 	expect(wrapper.find('SystemContent')).toBeDefined();
 });
 
