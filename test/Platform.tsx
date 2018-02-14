@@ -32,7 +32,7 @@ class ReactXPPlugin extends Plugin {
 		ctx.API.UserPresence = new UserPresence();
 
 		//  default Plugin Registered
-//		ctx.Plugins.registerMany([ReactRouterPlugin, ReduxPlugin, ResponsiveComponentsPlugin]);
+		ctx.Plugins.registerMany([ReactRouterPlugin, ReduxPlugin, ResponsiveComponentsPlugin]);
 
 		// setMainView in Bluerain
 		ctx.Utils.setMainView = App => {
