@@ -25,4 +25,13 @@ export interface Dimensions {
 	 *  so they should be available before any other require's are run, but may be updated later.
 	 * It is supported in react-native only
 	 */
+
+	get: (dim: 'window' | 'screen') => object;
+}
+
+export interface ScaledSize {
+	width: number;
+	height: number;
+	scale: 1;
+	fontScale: 1;
 }
