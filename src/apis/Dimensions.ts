@@ -26,12 +26,5 @@ export interface Dimensions {
 	 * It is supported in react-native only
 	 */
 
-	get(dim: 'window' | 'screen'): ScaledSize;
-}
-
-export interface ScaledSize {
-	width: number;
-	height: number;
-	scale: number;
-	fontScale: number;
+	get: (dim: 'window' | 'screen') => object;
 }

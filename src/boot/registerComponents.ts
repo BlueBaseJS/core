@@ -15,7 +15,10 @@ import LoadingPage from '../pages/LoadingPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
 import Page from '../components/Page';
-import SystemApp from '../SystemApp';
+import SystemApp from '../components/SystemApp';
+import SystemContent from '../components/SystemContent';
+import SystemFooter from '../components/SystemFooter';
+import SystemHeader from '../components/SystemHeader';
 import SystemLayout from '../layouts/SystemLayout';
 import Wallpaper from '../components/Wallpaper';
 
@@ -42,5 +45,8 @@ export const registerComponents = (BR: BlueRain) => {
 	BR.Components.set('NotFoundPage', NotFoundPage);
 
 	/* Main System Component */
+	BR.Components.set('SystemHeader', SystemHeader);
+	BR.Components.set('SystemContent', SystemContent);
+	BR.Components.set('SystemFooter', SystemFooter);
 	BR.Components.set('SystemApp', SystemApp);
 };
