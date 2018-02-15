@@ -3,6 +3,23 @@ import React from 'react';
 import storiesOf from '../../../storybook/storiesOf';
 
 storiesOf('StatefulComponent', module)
+	.add('StatefulComponent children function prop', () => {
+
+		const Story = withBlueRain((props: { bluerain: BlueRain }) => {
+			const BR = props.bluerain;
+
+			return (
+				<BR.Components.StatefulComponent>
+				{() =>{
+					return <BR.Components.Text>Render prop pattern</BR.Components.Text>
+				}}
+				</BR.Components.StatefulComponent>
+			);
+		});
+
+		return <Story />;
+	})
+
 	.add('StatefulComponent children prop', () => {
 
 		const Story = withBlueRain((props: { bluerain: BlueRain }) => {
@@ -17,6 +34,24 @@ storiesOf('StatefulComponent', module)
 
 		return <Story />;
 	})
+
+	.add('StatefulComponent throw error', () => {
+
+		const Story = withBlueRain((props: { bluerain: BlueRain }) => {
+			const BR = props.bluerain;
+
+			return (
+				<BR.Components.StatefulComponent>
+					{() => {
+						throw new Error('Boom!');
+					}}
+				</BR.Components.StatefulComponent>
+			);
+		});
+
+		return <Story />;
+	})
+
 
 	.add('Only loading Component', () => {
 
