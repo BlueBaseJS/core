@@ -7,10 +7,11 @@ const MISSING_ERROR = 'An unknown error occured.';
 
 export interface StatefulComponentProperties {
 	// Components
-	component: React.ComponentType<any>;
+	component?: React.ComponentType<any>;
 	loadingComponent?: React.ComponentType<any>;
 	emptyComponent?: React.ComponentType<any>;
 	errorComponent?: React.ComponentType<any>;
+	children?: React.ReactNode;
 
 	// Checks
 	isLoading: (props: StatefulComponentProperties) => boolean;
@@ -39,7 +40,7 @@ class StatefulComponent extends React.Component<
 	StatefulComponentState> {
 
 	static defaultProps: StatefulComponentProperties = {
-		component: () => null,
+		children: null,
 
 		loading: false,
 
@@ -89,6 +90,7 @@ class StatefulComponent extends React.Component<
 			loadingComponent,
 			emptyComponent,
 			errorComponent,
+			children,
 
 			isLoading: isLoadingFunc,
 			isEmpty: isEmptyFunc,
@@ -110,9 +112,10 @@ class StatefulComponent extends React.Component<
 			return <Loading />;
 		} else if (isEmpty) {
 			return <Empty />;
-		} else {
+		} else if (Component) {
 			return <Component {...other} />;
 		}
+		return children;
 	}
 }
 
