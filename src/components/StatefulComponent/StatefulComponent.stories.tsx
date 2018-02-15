@@ -52,6 +52,19 @@ storiesOf('StatefulComponent', module)
 		return <Story />;
 	})
 
+	.add('StatefulComponent Component prop', () => {
+
+		const Story = withBlueRain((props: { bluerain: BlueRain }) => {
+			const BR = props.bluerain;
+			const Comp = () => <BR.Components.Text>Hello</BR.Components.Text>;
+
+			return (
+				<BR.Components.StatefulComponent component={Comp} />
+			);
+		});
+
+		return <Story />;
+	})
 
 	.add('Only loading Component', () => {
 
