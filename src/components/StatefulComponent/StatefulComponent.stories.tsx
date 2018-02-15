@@ -3,13 +3,28 @@ import React from 'react';
 import storiesOf from '../../../storybook/storiesOf';
 
 storiesOf('StatefulComponent', module)
+	.add('StatefulComponent children prop', () => {
+
+		const Story = withBlueRain((props: { bluerain: BlueRain }) => {
+			const BR = props.bluerain;
+
+			return (
+				<BR.Components.StatefulComponent>
+					<BR.Components.Text>This this a child!</BR.Components.Text>
+				</BR.Components.StatefulComponent>
+			);
+		});
+
+		return <Story />;
+	})
+
 	.add('Only loading Component', () => {
 
 		const Story = withBlueRain((props: { bluerain: BlueRain }) => {
 			const BR = props.bluerain;
 			const LoadingState = BR.Components.get('LoadingState');
 
-			return <LoadingState  />;
+			return <LoadingState />;
 		});
 
 		return <Story />;
