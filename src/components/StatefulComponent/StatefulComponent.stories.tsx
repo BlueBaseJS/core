@@ -10,8 +10,8 @@ storiesOf('StatefulComponent', module)
 
 			return (
 				<BR.Components.StatefulComponent>
-				{() =>{
-					return <BR.Components.Text>Render prop pattern</BR.Components.Text>
+				{() => {
+					return <BR.Components.Text>Render prop pattern</BR.Components.Text>;
 				}}
 				</BR.Components.StatefulComponent>
 			);

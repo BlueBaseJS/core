@@ -108,19 +108,19 @@ class StatefulComponent extends React.Component<
 		///// Results /////
 
 		// Error State
-		if (hasError) return React.createElement(Error, { error });
+		if (hasError) { return React.createElement(Error, { error }); }
 
 		// Loading State
-		if (isLoading) return React.createElement(Loading, other);
+		if (isLoading) { return React.createElement(Loading, other); }
 
 		// Empty State
-		if (isEmpty) return React.createElement(Empty, other);
+		if (isEmpty) { return React.createElement(Empty, other); }
 
 		// Render 'component' prop
-		if (Component) return React.createElement(Component, other);
+		if (Component) { return React.createElement(Component, other); }
 
 		// 'children' as a function, 'render prop' pattern
-		if (typeof children === "function") {
+		if (typeof children === 'function') {
 
 			// componentDidCatch doesn't catch it's own errors
 			try {
