@@ -1,4 +1,8 @@
 // tslint:disable-next-line:no-var-requires
-require('harmony-reflect');
+// require('harmony-reflect');
 // tslint:disable-next-line:no-var-requires
-require('react-native-browser-polyfill');
+// require('react-native-browser-polyfill');
+// tslint:disable-next-line
+require('babel-polyfill');
+// tslint:disable-next-line
+require('proxy-polyfill');
