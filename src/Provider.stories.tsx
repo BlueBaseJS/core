@@ -1,4 +1,4 @@
-import { BlueRainConsumer, BlueRain } from './index';
+import { BlueRain,BlueRainConsumer } from './index';
 import React from 'react';
 import storiesOf from '../storybook/storiesOf';
 
