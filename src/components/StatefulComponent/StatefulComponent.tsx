@@ -11,7 +11,7 @@ export interface StatefulComponentProperties {
 	loadingComponent?: React.ComponentType<any>;
 	emptyComponent?: React.ComponentType<any>;
 	errorComponent?: React.ComponentType<any>;
-	children?: React.ReactNode;
+	children?: (...args: any[]) => any | React.ReactNode;
 
 	// Checks
 	isLoading: (props: StatefulComponentProperties) => boolean;
@@ -40,7 +40,6 @@ class StatefulComponent extends React.Component<
 	StatefulComponentState> {
 
 	static defaultProps: StatefulComponentProperties = {
-		children: null,
 
 		loading: false,
 
@@ -106,15 +105,33 @@ class StatefulComponent extends React.Component<
 		const Empty = emptyComponent || BR.Components.EmptyState;
 		const Loading = loadingComponent || BR.Components.LoadingState;
 
-		if (hasError) {
-			return <Error error={error} />;
-		} else if (isLoading) {
-			return <Loading />;
-		} else if (isEmpty) {
-			return <Empty />;
-		} else if (Component) {
-			return <Component {...other} />;
+		///// Results /////
+
+		// Error State
+		if (hasError) { return React.createElement(Error, { error }); }
+
+		// Loading State
+		if (isLoading) { return React.createElement(Loading, other); }
+
+		// Empty State
+		if (isEmpty) { return React.createElement(Empty, other); }
+
+		// Render 'component' prop
+		if (Component) { return React.createElement(Component, other); }
+
+		// 'children' as a function, 'render prop' pattern
+		if (typeof children === 'function') {
+
+			// componentDidCatch doesn't catch it's own errors
+			try {
+				return children(other);
+			} catch (error) {
+				this.setState({ hasError: true, error });
+				return null;
+			}
 		}
+
+		// children
 		return children;
 	}
 }
