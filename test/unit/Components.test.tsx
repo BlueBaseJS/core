@@ -85,32 +85,23 @@ it('It should  CreateApp ', () => {
 	const options ={ appName:'BluerainApp' };
 	 expect(App(AppComponent,options)).toBeDefined();
 });
-it('should return component LoadingPage ', () => {
-	const wrapper=mount(<BlueRainProvider><LoadingPage   /></BlueRainProvider>);
-	 expect(wrapper.find('LoadingPage')).toBeDefined();
-});
-it('should return component Icon ', () => {
-	const wrapper=mount(<BlueRainProvider><Icon  /></BlueRainProvider>);
-	expect(wrapper.find('Icon')).toBeDefined();
-});
+
 
 it('should return component CenterLayout', () => {
 	const wrapper=mount(<BlueRainProvider><CenterLayout  /></BlueRainProvider>);
 	expect(wrapper.find('CenterLayout')).toBeDefined();
 });
-
-
 it('should return component StatefulComponent ', () => {
-	const wrapper=mount(<BlueRainProvider><StatefulComponent   /></BlueRainProvider>);
+	const wrapper=mount(<BlueRainProvider>
+		<StatefulComponent>
+		{() => {
+			throw new Error('Boom!');
+		}}
+		</StatefulComponent>
+
+		</BlueRainProvider>);
 	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
-
-it('should return component StatefulComponent ', () => {
-	const wrapper=mount(<BlueRainProvider><StatefulComponent  /></BlueRainProvider>);
-	expect(wrapper.find('StatefulComponent')).toBeDefined();
-});
-
-
 it('should return component EmptyState ', () => {
 	const wrapper=mount(<BlueRainProvider><EmptyState  /></BlueRainProvider>);
 	expect(wrapper.find('EmptyState')).toBeDefined();
@@ -221,6 +212,14 @@ it('should return SystemApp Component', () => {
 it('should return SystemAp Component', () => {
 
 	const RouterSwitch=() => 'RouterSwitch';
+	const ReactRouterConfig={
+		androidBackButton: true,
+		deepLinking: true,
+		forceMemoryHistory:false,
+		historyConfigs: {},
+	};
+	BR.Configs.set('plugins.router',ReactRouterConfig);
+
 	BR.boot({ platform:[Platform],renderApp:false });
 
 	BR.Components.replace('RouterSwitch',RouterSwitch);
