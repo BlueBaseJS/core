@@ -17,4 +17,14 @@ const BlueRainProvider = withContext(
 const withBlueRain = (Component: React.ComponentType<any>) =>
 	getContext({ bluerain: PropTypes.object })(Component) as React.ComponentType<any>;
 
-export { BlueRainProvider, withBlueRain };
+//////// Consumer with children as a func (render prop) pattern
+const RenderComp = ({
+	children,
+	bluerain
+}: {
+	children: (...args: any[]) => React.ReactElement<any>;
+	bluerain: BlueRain;
+}) => children(bluerain);
+const BlueRainConsumer = withBlueRain(RenderComp);
+
+export { BlueRainProvider, withBlueRain, BlueRainConsumer };

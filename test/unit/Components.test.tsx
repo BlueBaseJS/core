@@ -212,6 +212,14 @@ it('should return SystemApp Component', () => {
 it('should return SystemAp Component', () => {
 
 	const RouterSwitch=() => 'RouterSwitch';
+	const ReactRouterConfig={
+		androidBackButton: true,
+		deepLinking: true,
+		forceMemoryHistory:false,
+		historyConfigs: {},
+	};
+	BR.Configs.set('plugins.router',ReactRouterConfig);
+
 	BR.boot({ platform:[Platform],renderApp:false });
 
 	BR.Components.replace('RouterSwitch',RouterSwitch);
