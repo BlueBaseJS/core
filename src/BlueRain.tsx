@@ -109,9 +109,10 @@ export class BlueRain implements BlueRainType {
 			return styles;
 		},
 
-		setMainView: (MainView: React.ComponentType<any>) => {
+		setMainView: (MainView: React.ComponentType<any>):void => {
 			console.log('Trying to set MainView', MainView);
 			throw new Error('setMainView is not implemented by the platform.');
+		// 	return ;
 		}
 	};
 
