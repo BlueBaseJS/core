@@ -108,11 +108,15 @@
   dependencies:
     react "^16.2.0"
 
-"@blueeast/bluerain-ui-interfaces@^2.0.2":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-ui-interfaces/-/bluerain-ui-interfaces-2.0.4.tgz#972f82916245360f23ea1b41f857a1ebf1dbe210"
+"@blueeast/bluerain-ui-interfaces@^3.0.0":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-ui-interfaces/-/bluerain-ui-interfaces-3.1.1.tgz#d8fecb2f375b91e763e7feeeb2d97e85df543ea2"
   dependencies:
     react "^16.2.0"
+
+"@blueeast/proxy-polyfill@^0.1.9":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@blueeast/proxy-polyfill/-/proxy-polyfill-0.1.10.tgz#19dab15e66fd730c0cddc8c30318b0e9e68389f0"
 
 "@blueeast/tslint-config-blueeast@^0.5.2", "@blueeast/tslint-config-blueeast@^0.5.5":
   version "0.5.5"
