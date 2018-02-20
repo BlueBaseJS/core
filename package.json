@@ -98,7 +98,7 @@
     }
   ],
   "dependencies": {
-    "@blueeast/bluerain-ui-interfaces": "^2.0.2",
+    "@blueeast/bluerain-ui-interfaces": "^3.0.0",
     "@blueeast/proxy-polyfill": "^0.1.9",
     "deepmerge": "^2.0.1",
     "eventemitter3": "^2.0.3",
