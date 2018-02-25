@@ -47,6 +47,8 @@ export interface BlueRainType {
 
 	booted: boolean;
 	bootOptions?: BootOptions;
+
+	isSsrMode: boolean;
 }
 
 /**
@@ -57,14 +59,12 @@ export interface BlueRainType {
  * @property {boolean} 	renderApp	If set to false, BlueRain will not render the main app,
  *  instead it is up to the developer to render it. The App is returned from the boot function.
  * @property {Array<BR.Plugin>} plugins		An array of plugins to load
- * @property {boolean} 	serverMode	Set this flag to true when rendering during Server Side Rendering
  */
 export type BootOptions = {
 	apps?: App[];
 	config?: ConfigType;
 	renderApp?: boolean;
 	plugins?: Plugin[];
-	serverMode?: boolean;
 	platform?: Plugin[];
 };
 
@@ -83,6 +83,7 @@ export type BootOptions = {
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
  * @prop {boolean} 						booted 			true if the OS has already booted
  * @prop {Object}							booleanOptions 			Cache of initial boot options provided at boot time
+ * @prop {boolean}						isSsrMode 			Flag to identify if the system is currently running during Server Side Rendering
  */
 export class BlueRain implements BlueRainType {
 
@@ -126,6 +127,8 @@ export class BlueRain implements BlueRainType {
 		plugins: [],
 		renderApp: true
 	};
+
+	isSsrMode = false;
 
 	boot(options?: BootOptions) : React.ComponentType<any> {
 
@@ -237,6 +240,20 @@ export class BlueRain implements BlueRainType {
 	reboot(options?: BootOptions) {
 		this.reset();
 		return this.boot(options);
+	}
+
+	/**
+	 * Enables server side rendering mode
+	 */
+	enableSsrMode = () => {
+		this.isSsrMode = true;
+	}
+
+	/**
+	 * Disables server side rendering mode
+	 */
+	disableSsrMode = () => {
+		this.isSsrMode = false;
 	}
 }
 
