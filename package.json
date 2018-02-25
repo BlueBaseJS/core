@@ -117,7 +117,9 @@
     "recompose": "^0.25.0"
   },
   "devDependencies": {
-    "@blueeast/bluerain-platform-reactxp": "^2.0.0",
+    "@blueeast/bluerain-platform-reactxp": "^3.0.3",
+    "@blueeast/bluerain-plugin-react-router": "^1.1.0",
+    "@blueeast/bluerain-plugin-redux": "^0.6.2",
     "@blueeast/tslint-config-blueeast": "^0.5.5",
     "@storybook/addon-actions": "^3.3.12",
     "@storybook/addon-links": "^3.3.12",

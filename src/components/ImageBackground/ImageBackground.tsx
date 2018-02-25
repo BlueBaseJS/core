@@ -38,14 +38,10 @@ const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRain
 	if (props.backgroundColor) {
 		style.backgroundColor = props.backgroundColor;
 	}
-
-	const imageStyleSheet = [
-		BR.Utils.createStyleSheet(imageStyle),
-		BR.Utils.createStyleSheet(props.imageStyle || {})
-	];
+	const imageStyleSheet = [imageStyle, props.imageStyle || {}];
 
 	return (
-		<BR.Components.View style={BR.Utils.createStyleSheet(style)}>
+		<BR.Components.View style={style}>
 			<BR.Components.Image {...others} style={imageStyleSheet} />
 			{children}
 		</BR.Components.View>

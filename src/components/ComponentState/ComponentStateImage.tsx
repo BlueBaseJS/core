@@ -45,9 +45,9 @@ const ComponentStateImage = (props: ComponentStateImageProps) => {
 	const stylesheet = { marginBottom: 10, maxWidth: 200 };
 
 	return (
-  <BR.Components.View style={BR.Utils.createStyleSheet(stylesheet)}>
+  <BR.Components.View style={stylesheet}>
 		<ImageC
-			style={imageStyle ? BR.Utils.createStyleSheet(imageStyle) : {}}
+			style={imageStyle}
 			source={imageSource}
 		/>
   </BR.Components.View>
