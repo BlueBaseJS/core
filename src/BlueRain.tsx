@@ -48,7 +48,7 @@ export interface BlueRainType {
 	booted: boolean;
 	bootOptions?: BootOptions;
 
-	isSsrMode: boolean;
+	_isSsrMode: boolean;
 }
 
 /**
@@ -83,7 +83,7 @@ export type BootOptions = {
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
  * @prop {boolean} 						booted 			true if the OS has already booted
  * @prop {Object}							booleanOptions 			Cache of initial boot options provided at boot time
- * @prop {boolean}						isSsrMode 			Flag to identify if the system is currently running during Server Side Rendering
+ * @prop {boolean}						_isSsrMode 			Flag to identify if the system is currently running during Server Side Rendering
  */
 export class BlueRain implements BlueRainType {
 
@@ -128,7 +128,7 @@ export class BlueRain implements BlueRainType {
 		renderApp: true
 	};
 
-	isSsrMode = false;
+	_isSsrMode = false;
 
 	boot(options?: BootOptions) : React.ComponentType<any> {
 
@@ -245,15 +245,22 @@ export class BlueRain implements BlueRainType {
 	/**
 	 * Enables server side rendering mode
 	 */
-	enableSsrMode = () => {
-		this.isSsrMode = true;
+	enableSsrMode() {
+		this._isSsrMode = true;
 	}
 
 	/**
 	 * Disables server side rendering mode
 	 */
-	disableSsrMode = () => {
-		this.isSsrMode = false;
+	disableSsrMode() {
+		this._isSsrMode = false;
+	}
+
+	/**
+	 * Checks if SSR mode is enabled.
+	 */
+	isSsrMode() {
+		return this._isSsrMode;
 	}
 }
 
