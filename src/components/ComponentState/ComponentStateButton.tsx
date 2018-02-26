@@ -48,7 +48,7 @@ const ComponentStateButton = (props: ComponentStateButtonProps) => {
 		};
 
 		return (
-			<BR.Components.Button onPress={buttonOnPress} style={BR.Utils.createStyleSheet(stylesheet)}>
+			<BR.Components.Button onPress={buttonOnPress} style={stylesheet}>
 				<BR.Components.Text>
 					{buttonTitle}
 				</BR.Components.Text>
