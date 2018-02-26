@@ -16,30 +16,7 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@blueeast/bluerain-os@1.0.0-alpha-14":
-  version "1.0.0-alpha-14"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-1.0.0-alpha-14.tgz#2b1e852337eabcd54056ad18c1ff9067e8a26e58"
-  dependencies:
-    "@blueeast/bluerain-ui-interfaces" "^1.0.2"
-    eventemitter3 "^2.0.3"
-    html-tags "^2.0.0"
-    immutable "^3.8.2"
-    is-electron "^2.1.0"
-    lodash.compose "^2.4.1"
-    lodash.get "^4.4.2"
-    lodash.isfunction "^3.0.8"
-    lodash.isnil "^4.0.0"
-    lodash.kebabcase "^4.1.1"
-    lodash.merge "^4.6.0"
-    lodash.reject "^4.6.0"
-    lodash.set "^4.3.2"
-    prop-types "^15.6.0"
-    react "^16.2.0"
-    react-dom "^16.2.0"
-    react-redux "^5.0.6"
-    recompose "^0.25.0"
-
-"@blueeast/bluerain-os@^1.0.0-alpha-13", "@blueeast/bluerain-os@^1.0.0-alpha-14", "@blueeast/bluerain-os@^1.1.1":
+"@blueeast/bluerain-os@^1.0.0-alpha-13":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-1.1.1.tgz#94bf5f392d5b2d1130b3a7b2962a3ed7924ecf94"
   dependencies:
@@ -57,27 +34,48 @@
     react "^16.2.0"
     recompose "^0.25.0"
 
-"@blueeast/bluerain-platform-reactxp@^2.0.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-platform-reactxp/-/bluerain-platform-reactxp-2.1.0.tgz#d9bab64a60824ac26fc2b9be9408efd97337cca6"
+"@blueeast/bluerain-os@^3.2.3", "@blueeast/bluerain-os@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-os/-/bluerain-os-3.5.3.tgz#c358f8d4338ba19a22e32d269c51954a572f42dd"
   dependencies:
-    "@blueeast/bluerain-os" "^1.1.1"
-    "@blueeast/bluerain-plugin-react-router" "^1.0.6"
-    "@blueeast/bluerain-plugin-redux" "^0.6.2"
-    "@blueeast/bluerain-plugin-responsive-components" "^1.0.6"
-    is-electron "^2.1.0"
+    "@blueeast/bluerain-ui-interfaces" "^2.0.2"
+    "@blueeast/proxy-polyfill" "^0.1.9"
+    deepmerge "^2.0.1"
+    eventemitter3 "^2.0.3"
+    harmony-reflect "^1.5.1"
+    immutable "^3.8.2"
+    lodash.flowright "^3.5.0"
+    lodash.get "^4.4.2"
+    lodash.isboolean "^3.0.3"
+    lodash.isnil "^4.0.0"
+    lodash.kebabcase "^4.1.1"
+    lodash.set "^4.3.2"
+    prop-types "^15.6.0"
     react "^16.2.0"
-    reactxp "^0.51.1"
+    react-dom-factories "^1.0.2"
+    react-native-browser-polyfill "^0.1.2"
+    recompose "^0.25.0"
 
-"@blueeast/bluerain-plugin-react-router@^1.0.6":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-1.0.7.tgz#5b09f9b2f6b286c2c570d25daeb5e06e9d9ae526"
+"@blueeast/bluerain-platform-reactxp@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-platform-reactxp/-/bluerain-platform-reactxp-3.0.3.tgz#ebbb8d9c37be4d9701fdf7fce3c53e96b39c5e60"
   dependencies:
-    "@blueeast/bluerain-os" "1.0.0-alpha-14"
+    "@blueeast/bluerain-os" "^3.5.3"
+    is-electron "^2.1.0"
+    react "^16.0.0"
+    reactxp "^0.51.8"
+    synctasks "^0.3.1"
+
+"@blueeast/bluerain-plugin-react-router@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-react-router/-/bluerain-plugin-react-router-1.1.0.tgz#a45b1994d9311cd90dfb78597c299defbaecb1f9"
+  dependencies:
+    "@blueeast/bluerain-os" "^3.2.3"
     history "^4.7.2"
     react "^16.2.0"
     react-dom "^16.2.0"
     react-redux "^5.0.6"
+    react-router "4.2.0"
     react-router-dom "^4.2.2"
     react-router-native "^4.2.0"
     react-router-redux "^5.0.0-alpha.8"
@@ -92,15 +90,15 @@
     react-redux "^5.0.6"
     redux "^3.7.2"
 
-"@blueeast/bluerain-plugin-responsive-components@^1.0.6":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-responsive-components/-/bluerain-plugin-responsive-components-1.1.0.tgz#25980f4300dc32f7ca324b547c212f0fd8778a64"
+"@blueeast/bluerain-plugin-responsive-components@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-plugin-responsive-components/-/bluerain-plugin-responsive-components-1.1.1.tgz#5077073ced04b25121aafa48f7970b1b27d8497a"
   dependencies:
-    "@blueeast/bluerain-os" "^1.0.0-alpha-14"
-    "@blueeast/bluerain-ui-interfaces" "^1.0.2"
-    "@blueeast/tslint-config-blueeast" "^0.5.2"
+    "@blueeast/bluerain-os" "^3.5.3"
+    "@blueeast/bluerain-ui-interfaces" "^3.1.2"
+    "@blueeast/tslint-config-blueeast" "^0.5.6"
     react "^16.2.0"
-    react-redux "^5.0.6"
+    react-redux "^5.0.7"
 
 "@blueeast/bluerain-ui-interfaces@^1.0.2":
   version "1.0.5"
@@ -114,9 +112,30 @@
   dependencies:
     react "^16.2.0"
 
-"@blueeast/tslint-config-blueeast@^0.5.2", "@blueeast/tslint-config-blueeast@^0.5.5":
+"@blueeast/bluerain-ui-interfaces@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-ui-interfaces/-/bluerain-ui-interfaces-3.1.2.tgz#f3ff0a6ae3183edbb7d3ccb5e073a356b8032fe2"
+  dependencies:
+    react "^16.2.0"
+
+"@blueeast/proxy-polyfill@^0.1.9":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@blueeast/proxy-polyfill/-/proxy-polyfill-0.1.10.tgz#19dab15e66fd730c0cddc8c30318b0e9e68389f0"
+
+"@blueeast/tslint-config-blueeast@^0.5.5":
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/@blueeast/tslint-config-blueeast/-/tslint-config-blueeast-0.5.5.tgz#2ab2e1ccad66674176bf94418a76e229618198e3"
+  dependencies:
+    tslint "^5.7.0"
+    tslint-config-airbnb "^5.3.0"
+    tslint-config-prettier "^1.5.0"
+    tslint-eslint-rules "^4.1.1"
+    tslint-react "^3.2.0"
+    typescript "^2.5.3"
+
+"@blueeast/tslint-config-blueeast@^0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@blueeast/tslint-config-blueeast/-/tslint-config-blueeast-0.5.6.tgz#9efb0acbe0bd1ba45588d511fbef8cec29768758"
   dependencies:
     tslint "^5.7.0"
     tslint-config-airbnb "^5.3.0"
@@ -4782,6 +4801,10 @@ hoist-non-react-statics@^2.2.1, hoist-non-react-statics@^2.3.0, hoist-non-react-
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
+hoist-non-react-statics@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
+
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -4962,9 +4985,9 @@ iferr@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
 
-ifvisible.js@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/ifvisible.js/-/ifvisible.js-1.0.6.tgz#52eb151ce89c56f15316226462e892d1f8451261"
+ifvisible@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ifvisible/-/ifvisible-1.1.0.tgz#a47768028c7c256368b16eaf3312e6898280215c"
 
 ignore@^3.3.5:
   version "3.3.7"
@@ -6286,7 +6309,7 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.2.0, lodash-es@^4.2.1:
+lodash-es@^4.17.5, lodash-es@^4.2.0, lodash-es@^4.2.1:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.5.tgz#9fc6e737b1c4d151d8f9cae2247305d552ce748f"
 
@@ -6336,10 +6359,6 @@ lodash.isboolean@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/lodash.isboolean/-/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
 
-lodash.isfunction@^3.0.8:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
-
 lodash.isfunction@~2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-2.4.1.tgz#2cfd575c73e498ab57e319b77fa02adef13a94d1"
@@ -6380,10 +6399,6 @@ lodash.pick@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
 
-lodash.reject@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.reject/-/lodash.reject-4.6.0.tgz#80d6492dc1470864bbf583533b651f42a9f52415"
-
 lodash.set@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
@@ -6412,7 +6427,7 @@ lodash@4.17.2:
   version "4.17.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
-lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.0, lodash@^4.17.1, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.0, lodash@^4.17.1, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
@@ -8160,6 +8175,17 @@ react-redux@^5.0.6:
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
 
+react-redux@^5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
+  dependencies:
+    hoist-non-react-statics "^2.5.0"
+    invariant "^2.0.0"
+    lodash "^4.17.5"
+    lodash-es "^4.17.5"
+    loose-envify "^1.1.0"
+    prop-types "^15.6.0"
+
 react-router-dom@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"
@@ -8186,7 +8212,7 @@ react-router-redux@^5.0.0-alpha.8:
     prop-types "^15.6.0"
     react-router "^4.2.0"
 
-react-router@^4.2.0:
+react-router@4.2.0, react-router@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.2.0.tgz#61f7b3e3770daeb24062dae3eedef1b054155986"
   dependencies:
@@ -8253,7 +8279,7 @@ react-treebeard@^2.1.0:
     shallowequal "^0.2.2"
     velocity-react "^1.3.1"
 
-react@^16.2.0:
+react@^16.0.0, react@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
   dependencies:
@@ -8262,15 +8288,15 @@ react@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-reactxp@^0.51.1:
-  version "0.51.7"
-  resolved "https://registry.yarnpkg.com/reactxp/-/reactxp-0.51.7.tgz#adbf8c215cda0e0ffc4fc8e4513c287af52ab364"
+reactxp@^0.51.8:
+  version "0.51.9"
+  resolved "https://registry.yarnpkg.com/reactxp/-/reactxp-0.51.9.tgz#df10b298ef3793fc8bbe21580dc29e8424c74467"
   dependencies:
     "@types/lodash" "^4.14.78"
     "@types/react" "^16.0.36"
     "@types/react-dom" "^16.0.3"
     assert "^1.3.0"
-    ifvisible.js "^1.0.6"
+    ifvisible "^1.1.0"
     lodash "^4.17.1"
     prop-types "^15.5.9"
     rebound "^0.0.13"
@@ -9476,7 +9502,7 @@ symbol-tree@^3.2.1, symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
-synctasks@^0.3.0:
+synctasks@^0.3.0, synctasks@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/synctasks/-/synctasks-0.3.1.tgz#1f9012b23792ad775ba2693e0cafcfcd65b80d97"
 

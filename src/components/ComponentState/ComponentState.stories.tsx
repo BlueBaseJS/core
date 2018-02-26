@@ -17,7 +17,7 @@ storiesOf('ComponentState', module)
 		const ComponentState = BR.Components.get('ComponentState');
 		const Style = { color: 'green', fontSize: 20 };
 
-		return <ComponentState title="A simple state" titleStyle={BR.Utils.createStyleSheet(Style)} />;
+		return <ComponentState title="A simple state" titleStyle={Style} />;
 	}))
 	.add('Only description', bluerainStory((props: { bluerain: BlueRain }) => {
 
@@ -54,7 +54,7 @@ storiesOf('ComponentState', module)
 		const ComponentState = BR.Components.get('ComponentState');
 		const Style={ color:'white',backgroundColor:'red',width:100,height:50,borderRadius:8, textAlign:'center' };
 
-		return <ComponentState  buttonTitle="Bluerain"  buttonStyle={BR.Utils.createStyleSheet(Style)}  />;
+		return <ComponentState  buttonTitle="Bluerain"  buttonStyle={Style}  />;
 
 	}))
 	.add('Button Component', bluerainStory((props: { bluerain: BlueRain }) => {
@@ -72,7 +72,7 @@ storiesOf('ComponentState', module)
 		const Image = BR.Components.get('Image');
 		const Style = { width: 200, height: 200 };
 		// tslint:disable-next-line:max-line-length
-		const ImageComponent = () => <Image source="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264" imageStyle={BR.Utils.createStyleSheet(Style)} />;
+		const ImageComponent = () => <Image source="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264" imageStyle={Style} />;
 		const ComponentState = BR.Components.get('ComponentState');
 		return <ComponentState image={ImageComponent} />;
 	}))
@@ -85,7 +85,7 @@ storiesOf('ComponentState', module)
 			<BR.Components.ComponentState
 				// tslint:disable-next-line:max-line-length
 				imageSource="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264"
-				imageStyle={BR.Utils.createStyleSheet(Style)}
+				imageStyle={Style}
 			/>
 		);
 	}));
