@@ -94,7 +94,10 @@ it('It should  CreateApp ', () => {
 	const options ={ appName:'BluerainApp' };
 	 expect(App(AppComponent,options)).toBeDefined();
 });
-
+it('should return Icon  Component', () => {
+	const wrapper=mount(<BlueRainProvider><Icon/></BlueRainProvider>);
+	expect(wrapper.find('Icon')).toBeDefined();
+});
 
 it('should return component CenterLayout', () => {
 	const wrapper=mount(<BlueRainProvider><CenterLayout  /></BlueRainProvider>);
