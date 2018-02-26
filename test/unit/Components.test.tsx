@@ -79,6 +79,15 @@ it('should return component ErrorPage ', () => {
 });
 
 
+it('disable SSR-Mode', () => {
+	BR.disableSsrMode();
+	expect(BR._isSsrMode).toBeDefined();
+});
+
+it('Enable SSR-Mode', () => {
+	BR.enableSsrMode();
+ 	 expect(BR._isSsrMode).toBe(true);
+});
 
 it('It should  CreateApp ', () => {
 	const AppComponent=() => 'Component';
@@ -245,6 +254,12 @@ it('should return SystemAp Component', () => {
 
 it('should return SystemContent Component', () => {
 	const wrapper=mount(<BlueRainProvider><SystemContent/></BlueRainProvider>);
+	expect(wrapper.find('SystemContent')).toBeDefined();
+});
+
+
+it('should return Icon  Component', () => {
+	const wrapper=mount(<BlueRainProvider><Icon/></BlueRainProvider>);
 	expect(wrapper.find('SystemContent')).toBeDefined();
 });
 
