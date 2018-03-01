@@ -1,5 +1,5 @@
 // Others
-import { App, Plugin } from './index';
+import { App, Debugger, Plugin } from './index';
 import { BlueRainAPI, JsonComponentSchema, createApis } from './apis';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
@@ -9,6 +9,7 @@ import { registerComponents } from './boot';
 import AppRegistry from './registries/AppRegistry';
 import ComponentRegistry from './registries/ComponentRegistry';
 import ConfigRegistry from './registries/ConfigRegistry';
+import DebuggerRegistry from './registries/DebuggerRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import HooksRegistry from './registries/HooksRegistry';
@@ -29,6 +30,7 @@ export interface BlueRainType {
 	Filters: FilterRegistry;
 	Plugins: PluginRegistry;
 	Hooks: HooksRegistry;
+	Debuggers: DebuggerRegistry;
 	Platform: PluginRegistry;
 
 	API: BlueRainAPI;
@@ -66,6 +68,7 @@ export type BootOptions = {
 	renderApp?: boolean;
 	plugins?: Plugin[];
 	platform?: Plugin[];
+	debuggers?: Debugger[];
 };
 
 /**
@@ -93,6 +96,7 @@ export class BlueRain implements BlueRainType {
 	Events = new EventRegistry();
 	Filters = new FilterRegistry(this);
 	Hooks = new HooksRegistry(this);
+	Debuggers = new DebuggerRegistry(this);
 	Plugins = new PluginRegistry(this);
 	Platform = new PluginRegistry(this);
 
@@ -123,6 +127,7 @@ export class BlueRain implements BlueRainType {
 	bootOptions: BootOptions = {
 		apps: [],
 		config: {},
+		debuggers: [],
 		platform: [],
 		plugins: [],
 		renderApp: true
@@ -137,6 +142,7 @@ export class BlueRain implements BlueRainType {
 		const {
 			apps = [],
 			config = {},
+			debuggers = [],
 			platform = [],
 			plugins = [],
 			renderApp
@@ -164,6 +170,14 @@ export class BlueRain implements BlueRainType {
 		// Initialize all configs
 		this.Configs.registerMany(defaultConfigs);
 		this.Configs.registerMany(config);
+
+		// =[ System Lifecycle Event ]= Debuggers Registered
+		this.Debuggers.registerMany(debuggers);
+		this.Filters.run('bluerain.system.debuggers.registered');
+
+		// =[ System Lifecycle Event ]= Plugins Initialized
+		this.Debuggers.initializeAll();
+		this.Filters.run('bluerain.system.debuggers.initialized');
 
 		// =[ System Lifecycle Event ]= Configurations Loaded
 		this.Filters.run('bluerain.system.configurations.loaded');
@@ -205,6 +219,8 @@ export class BlueRain implements BlueRainType {
 		if (renderApp !== false) {
 			this.Utils.setMainView(BluerainApp);
 		}
+
+		this.Filters.run('bluerain.system.debug.log');
 
 		// =[ System Lifecycle Event ]= Boot End
 		this.Filters.run('bluerain.system.boot.end');

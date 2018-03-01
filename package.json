@@ -179,6 +179,8 @@
     "tslint": "^5.4.3",
     "typedoc": "^0.10.0",
     "typescript": "^2.5.3",
-    "validate-commit-msg": "^2.12.2"
+    "validate-commit-msg": "^2.12.2",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.0.0"
   }
 }
