@@ -1,26 +1,55 @@
-### Issue details
+<!--
+Please fill the informations requested or use one of the following url:
+  - Bug report: https://github.com/BlueEastCode/bluerain-os/issues/new?template=bug-report.md
+  - Feature request: https://github.com/BlueEastCode/bluerain-os/issues/new?template=feature-request.md
+  - New plugin request: https://github.com/BlueEastCode/bluerain-os/issues/new?template=plugin-request.md
+-->
 
-_Please provide issue details here - What did you expect to happen? What happened instead?_ 
+<!--------------------- FOR BUG REPORT ONLY --------------------->
 
-### Steps to reproduce
+# Bug report
 
-_Please provide necessary steps for reproduction of this issue. Describe the exact steps a maintainer has to take to make the problem occur. If the problem is non-trivial to reproduce, please link a repository or provide some code snippets._
+## Current behavior
 
-_(A screencast can be useful for visual bugs, but it is not a substitute for a textual description.)_
+<!-- Describe how the issue manifests. -->
 
-### Please specify which version of bluerain-os and optionally any affected bluerain plugins that you're running
+## Expected behavior
 
-- @blueeast/bluerain-os x.x.x
-- @blueeast/bluerain-plugin-something x.x.x
+<!-- Describe what the desired behavior would be. -->
 
-### Affected platforms 
+## Environment
 
-- _If UI related, please indicate browser, OS, and version_
-- _If dependency related, please include relevant version numbers_
-- _If developer tooling related, please include the platform information_
+- **bluerain-os** version: 
+- **bluerain-cli** version: 
 
-### Screenshots / Screencast / Code Snippets (Optional)
+- CI environment: <!-- CI service name -->
+- Plugins used: <!-- List bluerain plugins used if any with version -->
+- CI logs: <!-- link to your CI logs or semantic-release logs -->
 
-```js
-// code here
-```
+<!--------------------- FOR FEATURE REQUEST ONLY --------------------->
+
+# Feature request
+
+## New feature motivation
+
+<!-- Describe the context, the use-case and the advantages of the feature request. -->
+
+## New feature description
+
+<!-- Describe the functional changes that would have to be made in semantic-release or its plugins. -->
+
+## New feature implementation
+
+<!-- Optionally describe the technical changes to be made in semantic-release or its plugins. -->
+
+<!--------------------- FOR NEW PLUGIN REQUEST ONLY --------------------->
+
+# New plugin request
+
+## New plugin motivation
+
+<!-- Describe the reasons to create a new plugin and why it's not covered by the existing ones. -->
+
+## Third-party documentation
+
+<!-- Provide explanation and documentation links for the platform to integrate with. -->
