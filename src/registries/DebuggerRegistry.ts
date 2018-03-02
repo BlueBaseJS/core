@@ -62,7 +62,7 @@ export default class DebuggerRegistry extends MapRegistry<Debugger> {
 				return;
 			}
 
-			// If the debugger has an initialize methid, call it
+			// If the debugger has an initialize method, call it
 			if (_debugger.initialize) {
 				const config = this.BR.Configs.get(`debuggers.${_debugger.slug}`);
 				_debugger.config = config;

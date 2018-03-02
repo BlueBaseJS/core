@@ -1,13 +1,13 @@
 import { BlueRain } from '../index';
 
 /**
- * Base class of a logger which is to be extended.
- * @property {String}	loggerName	Name of the logger
- * @property {String}	slug	App's slug, used in to build URL
- * @property {object}	config	logger configurations
- * @property {String}	category	Category the App belongs to
- * @property {String}	description	Logger description
- * @property {String}	version	Logger version
+ * Base class of a debugger which is to be extended.
+ * @property {String}	loggerName	Name of the debugger
+ * @property {String}	slug	Debugger's slug, used in to build URL
+ * @property {object}	config	debugger configurations
+ * @property {String}	category	Category the Debugger belongs to
+ * @property {String}	description	Debugger description
+ * @property {String}	version	Debugger version
  */
 export class Debugger {
 	debuggerName: string;

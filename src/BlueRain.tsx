@@ -220,8 +220,6 @@ export class BlueRain implements BlueRainType {
 			this.Utils.setMainView(BluerainApp);
 		}
 
-		this.Filters.run('bluerain.system.debug.log');
-
 		// =[ System Lifecycle Event ]= Boot End
 		this.Filters.run('bluerain.system.boot.end');
 
