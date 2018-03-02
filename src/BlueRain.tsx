@@ -30,7 +30,7 @@ export interface BlueRainType {
 	Filters: FilterRegistry;
 	Plugins: PluginRegistry;
 	Hooks: HooksRegistry;
-	Debuggers: DebuggerRegistry;
+	Debug: DebuggerRegistry;
 	Platform: PluginRegistry;
 
 	API: BlueRainAPI;
@@ -96,7 +96,7 @@ export class BlueRain implements BlueRainType {
 	Events = new EventRegistry();
 	Filters = new FilterRegistry(this);
 	Hooks = new HooksRegistry(this);
-	Debuggers = new DebuggerRegistry(this);
+	Debug = new DebuggerRegistry(this);
 	Plugins = new PluginRegistry(this);
 	Platform = new PluginRegistry(this);
 
@@ -172,11 +172,11 @@ export class BlueRain implements BlueRainType {
 		this.Configs.registerMany(config);
 
 		// =[ System Lifecycle Event ]= Debuggers Registered
-		this.Debuggers.registerMany(debuggers);
+		this.Debug.registerMany(debuggers);
 		this.Filters.run('bluerain.system.debuggers.registered');
 
 		// =[ System Lifecycle Event ]= Plugins Initialized
-		this.Debuggers.initializeAll();
+		this.Debug.initializeAll();
 		this.Filters.run('bluerain.system.debuggers.initialized');
 
 		// =[ System Lifecycle Event ]= Configurations Loaded
@@ -239,6 +239,7 @@ export class BlueRain implements BlueRainType {
 		this.Apps.clear();
 		this.Components.clear();
 		this.Configs.clear();
+		this.Debug.clear();
 		this.Events.removeAllListeners();
 		this.Filters.clear();
 		this.Plugins.clear();

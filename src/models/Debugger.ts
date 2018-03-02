@@ -2,7 +2,7 @@ import { BlueRain } from '../index';
 
 /**
  * Base class of a debugger which is to be extended.
- * @property {String}	loggerName	Name of the debugger
+ * @property {String}	debuggerName	Name of the debugger
  * @property {String}	slug	Debugger's slug, used in to build URL
  * @property {object}	config	debugger configurations
  * @property {String}	category	Category the Debugger belongs to
