@@ -4,6 +4,7 @@ import './polyfills';
 // Models
 export * from './models/App';
 export * from './models/Plugin';
+export * from './models/Debugger';
 
 // Provider
 export * from './Provider';

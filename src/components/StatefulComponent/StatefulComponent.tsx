@@ -80,6 +80,9 @@ class StatefulComponent extends React.Component<
 			hasError: true,
 			error: error || new Error(MISSING_ERROR)
 		});
+		// Send logs to registerd debuggers.
+		const { bluerain: BR } = this.props;
+		BR.Debug.log('Error:', error);
 	}
 
 	render() {
