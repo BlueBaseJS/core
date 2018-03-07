@@ -44,7 +44,7 @@ class StatefulComponent extends React.Component<
 		loading: false,
 
 		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
-		isEmpty: (props) => (!isnil(props.data)) ? true : false,
+		isEmpty: (props) => (!isnil(props.data)) ? false : true,
 		checkError: (props) => (!isnil(props.error)) ? true : false,
 	};
 
