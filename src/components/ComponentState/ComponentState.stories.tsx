@@ -1,7 +1,6 @@
+import storiesOf, { bluerainStory } from '@blueeast/bluerain-storybook-addon';
 import { BlueRain } from '../../index';
-import { bluerainStory } from '../../../storybook/bluerain';
 import React from 'react';
-import storiesOf from '../../../storybook/storiesOf';
 
 storiesOf('ComponentState', module)
 	.add('Only title', bluerainStory((props: { bluerain: BlueRain }) => {

@@ -1,6 +1,6 @@
 import { BlueRain, withBlueRain } from '../../src/index';
 import React from 'react';
-import storiesOf from '../../storybook/storiesOf';
+import storiesOf from '@blueeast/bluerain-storybook-addon';
 
 storiesOf('Page', module)
     .add('Only IndexPage', () => {

@@ -5,6 +5,7 @@
 	"rules": {
 		"ban-types": false,
 		"no-console": false,
-		"interface-name": false
+		"interface-name": false,
+		"no-implicit-dependencies": false
 	}
 }
