@@ -3,6 +3,7 @@ import { App, Debugger, Plugin } from './index';
 import { BlueRainAPI, JsonComponentSchema, createApis } from './apis';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
+import { ComponentRegistry as IComponentRegistry } from './typings/registries/ComponentRegistry';
 import { registerComponents } from './boot';
 
 // Registries
@@ -15,6 +16,7 @@ import FilterRegistry from './registries/FilterRegistry';
 import HooksRegistry from './registries/HooksRegistry';
 import PluginRegistry from './registries/PluginRegistry';
 
+
 import React from 'react';
 
 /**
@@ -24,7 +26,7 @@ export type setMainViewFunction = (App: React.ComponentType<any>) => void;
 
 export interface BlueRainType {
 	Apps: AppRegistry;
-	Components: ComponentRegistry;
+	Components: IComponentRegistry;
 	Configs: ConfigRegistry;
 	Events: EventRegistry;
 	Filters: FilterRegistry;
@@ -91,7 +93,7 @@ export type BootOptions = {
 export class BlueRain implements BlueRainType {
 
 	Apps = new AppRegistry(this);
-	Components = new ComponentRegistry(this);
+	Components = new ComponentRegistry(this) as IComponentRegistry;
 	Configs = new ConfigRegistry(this);
 	Events = new EventRegistry();
 	Filters = new FilterRegistry(this);
