@@ -5,6 +5,8 @@ import React from 'react';
 const BlueRainContext: Context<BlueRain> = createReactContext(BR);
 
 export const BlueRainConsumer = BlueRainContext.Consumer;
+BlueRainConsumer.displayName = 'BlueRainConsumer';
+
 export const BlueRainProvider = ({ value = BR, children }: { value?: BlueRain, children: React.ReactNode }) => (
 	<BlueRainContext.Provider value={value} children={children} />
 );
