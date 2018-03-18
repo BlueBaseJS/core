@@ -72,6 +72,7 @@ storiesOf('StatefulComponent', module)
 			const BR = props.bluerain;
 			const LoadingState = BR.Components.get('LoadingState');
 
+			BR.Components.StatefulComponent;
 			return <LoadingState />;
 		});
 
