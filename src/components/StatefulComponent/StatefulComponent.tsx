@@ -39,7 +39,9 @@ export type StatefulComponentState = {
 /**
  * A Component to manage all states of a component with data
  */
-class StatefulComponent extends React.Component<
+export type StatefulComponent = React.ComponentType<StatefulComponentProperties>;
+
+class StatefulComponentClass extends React.Component<
 	StatefulComponentProperties & { bluerain: BlueRain },
 	StatefulComponentState> {
 
@@ -155,4 +157,4 @@ class StatefulComponent extends React.Component<
 	}
 }
 
-export default withBlueRain(StatefulComponent) as React.ComponentType<StatefulComponentProperties>;
+export default withBlueRain(StatefulComponentClass) as StatefulComponent;
