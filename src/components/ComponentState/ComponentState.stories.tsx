@@ -102,7 +102,7 @@ storiesOf('ComponentState', module)
 		<BlueRainConsumer>
 			{(BR: BlueRain) => {
 				// tslint:disable-next-line:max-line-length
-				const ImageComponent = () => <BR.Components.Image source="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264" imageStyle={{ width: 200, height: 200 }} />;
+				const ImageComponent = () => <BR.Components.Image source="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264" style={{ width: 200, height: 200 }} />;
 				return (
 					<BR.Components.ComponentState
 						image={ImageComponent}
