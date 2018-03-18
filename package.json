@@ -103,7 +103,6 @@
     "create-react-context": "^0.2.1",
     "deepmerge": "^2.0.1",
     "eventemitter3": "^2.0.3",
-    "harmony-reflect": "^1.5.1",
     "immutable": "^3.8.2",
     "lodash.flowright": "^3.5.0",
     "lodash.get": "^4.4.2",
@@ -181,8 +180,6 @@
     "tslint": "^5.4.3",
     "typedoc": "^0.10.0",
     "typescript": "^2.5.3",
-    "validate-commit-msg": "^2.12.2",
-    "webpack-cli": "^2.0.9",
-    "webpack-dev-server": "^3.0.0"
+    "validate-commit-msg": "^2.12.2"
   }
 }
