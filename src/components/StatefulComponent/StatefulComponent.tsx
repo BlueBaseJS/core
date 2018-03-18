@@ -69,7 +69,7 @@ class StatefulComponentClass extends React.Component<
 	state: StatefulComponentState = {
 		isLoading: (this.props.isLoading) ? this.props.isLoading(this.props) : false,
 		isEmpty: (this.props.isEmpty) ? this.props.isEmpty(this.props) : false,
-		hasError: (this.props.checkError) ? true : false,
+		hasError: (this.props.checkError && this.props.checkError(this.props)) ? true : false,
 		error: (this.props.checkError) ? this.props.checkError(this.props): null,
 	};
 

@@ -9,7 +9,7 @@ storiesOf('StatefulComponent', module)
 			const BR = props.bluerain;
 
 			return (
-				<BR.Components.StatefulComponent>
+				<BR.Components.StatefulComponent data="foo">
 				{() => {
 					return <BR.Components.Text>Render prop pattern</BR.Components.Text>;
 				}}
@@ -26,7 +26,7 @@ storiesOf('StatefulComponent', module)
 			const BR = props.bluerain;
 
 			return (
-				<BR.Components.StatefulComponent>
+				<BR.Components.StatefulComponent data="foo">
 					<BR.Components.Text>This this a child!</BR.Components.Text>
 				</BR.Components.StatefulComponent>
 			);
@@ -41,7 +41,7 @@ storiesOf('StatefulComponent', module)
 			const BR = props.bluerain;
 
 			return (
-				<BR.Components.StatefulComponent>
+				<BR.Components.StatefulComponent data="foo">
 					{() => {
 						throw new Error('Boom!');
 					}}
@@ -59,7 +59,7 @@ storiesOf('StatefulComponent', module)
 			const Comp = () => <BR.Components.Text>Hello</BR.Components.Text>;
 
 			return (
-				<BR.Components.StatefulComponent component={Comp} />
+				<BR.Components.StatefulComponent data="foo" component={Comp} />
 			);
 		});
 
@@ -72,7 +72,6 @@ storiesOf('StatefulComponent', module)
 			const BR = props.bluerain;
 			const LoadingState = BR.Components.get('LoadingState');
 
-			BR.Components.StatefulComponent;
 			return <LoadingState />;
 		});
 
