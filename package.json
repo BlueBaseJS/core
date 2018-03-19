@@ -6,7 +6,8 @@
   "main": "dist/index.js",
   "typings": "types/index.d.ts",
   "files": [
-    "dist"
+		"dist",
+		"types"
   ],
   "author": "BlueEast Team <code@blueeast.com>",
   "release": {
