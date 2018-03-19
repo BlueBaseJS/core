@@ -37,6 +37,9 @@ export interface BlueRainType {
 
 	API: BlueRainAPI;
 
+	// Attach other registrys
+	[key: string]: any;
+
 	Utils: {
 		parseJsonSchema: (schema: JsonComponentSchema) => React.ReactElement<any> | null;
 		setMainView: setMainViewFunction;
@@ -104,7 +107,7 @@ export class BlueRain implements BlueRainType {
 
 	Utils = {
 
-		parseJsonSchema: (schema: JsonComponentSchema) : React.ReactElement<any> | null => {
+		parseJsonSchema: (schema: JsonComponentSchema): React.ReactElement<any> | null => {
 			console.warn('BR.Utils.parseJsonSchema method has been deprecated, use BR.API.JsonToReact.parse method instead.');
 			return this.API.JsonToReact.parse(schema);
 		},
@@ -114,10 +117,10 @@ export class BlueRain implements BlueRainType {
 			return styles;
 		},
 
-		setMainView: (MainView: React.ComponentType<any>):void => {
+		setMainView: (MainView: React.ComponentType<any>): void => {
 			console.log('Trying to set MainView', MainView);
 			throw new Error('setMainView is not implemented by the platform.');
-		// 	return ;
+			// 	return ;
 		}
 	};
 
@@ -135,7 +138,7 @@ export class BlueRain implements BlueRainType {
 
 	private _isSsrMode = false;
 
-	boot(options?: BootOptions) : React.ComponentType<any> {
+	boot(options?: BootOptions): React.ComponentType<any> {
 
 		// Extract app, plugins and configs from options
 		this.bootOptions = { ...this.bootOptions, ...options };
