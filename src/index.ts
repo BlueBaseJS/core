@@ -15,6 +15,9 @@ export { ComponentRegistryItem, ComponentRegistryHocItem } from './registries/Co
 export { StatefulComponentProperties } from './components/StatefulComponent';
 export * from './apis';
 
+// Registrys
+export { default as MapRegistry } from './registries/MapRegistry';
+
 // BlueRain
 export * from './BlueRain';
 import { BlueRain } from './BlueRain';
