@@ -60,7 +60,7 @@ class AppRegistry extends MapRegistry<App> {
 			);
 		}
 
-		apps.forEach(app => this.set(app));
+		apps.forEach(app => { this.set(app)});
 	}
 
 	/**
@@ -68,6 +68,7 @@ class AppRegistry extends MapRegistry<App> {
 	 */
 	initializeAll() {
 		this.data.forEach(app => {
+
 			if (!app) {
 				return;
 			}
@@ -76,7 +77,7 @@ class AppRegistry extends MapRegistry<App> {
 			if (app.hooks) {
 				Object.keys(app.hooks).forEach(hook => {
 					// Satisfy TS
-					if (!app || !app.hooks || !app.hooks[hook]) {
+					if (!app.hooks || !app.hooks[hook]) {
 						return;
 					}
 
@@ -88,7 +89,7 @@ class AppRegistry extends MapRegistry<App> {
 			if (app.components) {
 				Object.keys(app.components).forEach(component => {
 					// Satisfy TS
-					if (!app || !app.components || !app.components[component]) {
+					if (!app.components || !app.components[component]) {
 						return;
 					}
 
