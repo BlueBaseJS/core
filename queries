@@ -1,0 +1,70 @@
+===================== SignUp =======================
+
+gql`mutation ($data:JSON) {
+  Account {
+    AccountCreate (input:{data: $data}){
+      obj{
+        id
+        username
+        email
+      }
+      clientMutationId
+    }
+  }
+}`;
+
+===================== LoginIn =======================
+
+gql`mutation($credentials: JSON)  {
+ Account{
+   AccountLogin (input:{credentials: $credentials}){
+     obj
+     clientMutationId
+   }
+  
+ }
+}`;
+
+====================== Forget Password ====================
+
+gql`mutation ($options: JSON) {
+  Account {
+    AccountResetPassword (input: { options: $options}) {
+      obj
+    }
+  }
+}`;
+
+
+======================= Get Profile Info =======================
+
+gql`{
+    viewer{
+        me{
+            id
+            firstName
+            lastName
+            image
+            username
+            email
+
+        }
+    }
+}`;
+
+==================== Change Password ================================
+
+`mutation($where:JSON, $data:JSON){
+    Account{
+        AccountUpsertWithWhere(input:{where:$where, data: $data}){
+            obj{
+                firstName
+                lastName
+                image
+                username
+                email
+            }
+        }
+    }
+}`;
+

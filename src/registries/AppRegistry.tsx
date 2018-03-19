@@ -60,7 +60,7 @@ class AppRegistry extends MapRegistry<App> {
 			);
 		}
 
-		apps.forEach(app => { this.set(app)});
+		apps.forEach(app => { this.set(app);});
 	}
 
 	/**
