@@ -51,8 +51,6 @@ export interface BlueRainType {
 
 	booted: boolean;
 	bootOptions?: BootOptions;
-
-	_isSsrMode: boolean;
 }
 
 /**
@@ -135,7 +133,7 @@ export class BlueRain implements BlueRainType {
 		renderApp: true
 	};
 
-	_isSsrMode = false;
+	private _isSsrMode = false;
 
 	boot(options?: BootOptions) : React.ComponentType<any> {
 
