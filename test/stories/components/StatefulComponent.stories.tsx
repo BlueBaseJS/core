@@ -1,4 +1,4 @@
-import { BlueRain, BlueRainConsumer, withBlueRain } from '../../index';
+import { BlueRain, BlueRainConsumer, withBlueRain } from '../../../src';
 import React from 'react';
 import storiesOf from '@blueeast/bluerain-storybook-addon';
 
