@@ -3,9 +3,8 @@
   "version": "0.0.0-development",
   "description": "A browser based OS, made with React JS",
   "keywords": [],
-  "main": "dist/src/index.js",
-  "module": "dist/src/index.js",
-  "typings": "dist/types/src/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "types/index.d.ts",
   "files": [
     "dist"
   ],
@@ -29,11 +28,13 @@
     "prestorybook-native": "rnstl",
     "build-storybook": "build-storybook",
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
-    "prebuild": "rimraf dist",
-    "build": "tsc && babel -D compiled --out-dir dist --copy-files",
-    "postbuild": "typedoc --out dist/docs --target es6 --theme minimal src && rimraf compiled",
-    "start": "bluerain run web",
-    "watch": "tsc -w",
+		"prebuild": "rimraf dist",
+		"build": "tsc && babel -D compiled --out-dir dist --copy-files",
+		"postbuild": "rimraf compiled && yarn run size",
+		"build:prod:exclude": "ts-node tools/production-package-exclude",
+		"size": "size-limit",
+		"watch": "tsc -w",
+		"start": "bluerain run web",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache --maxWorkers=4",
@@ -92,12 +93,13 @@
     "collectCoverage": true,
     "mapCoverage": true
   },
-  "bundlesize": [
-    {
-      "path": "./dist/bluerain-os.es5.js",
-      "maxSize": "18 kB"
-    }
-  ],
+	"size-limit": [
+		{
+			"limit": "5.1 KB",
+			"webpack": false,
+			"path": "dist/*.js"
+		}
+	],
   "dependencies": {
     "@blueeast/proxy-polyfill": "^0.1.9",
     "create-react-context": "^0.2.1",
@@ -147,7 +149,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "bundlesize": "^0.15.3",
     "codecov": "^3.0.0",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
@@ -174,7 +175,8 @@
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
     "semantic-release": "^14.0.0",
-    "travis-deploy-once": "^4.3.4",
+		"size-limit": "^0.17.0",
+		"travis-deploy-once": "^4.3.4",
     "ts-jest": "^21.0.0",
     "ts-node": "^3.0.6",
     "tslint": "^5.4.3",
