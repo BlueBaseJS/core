@@ -1,5 +1,6 @@
 import { BlueRain, withBlueRain } from '../../index';
 import React from 'react';
+import isarray from 'lodash.isarray';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
 
@@ -11,15 +12,15 @@ export interface StatefulComponentProperties {
 	loadingComponent?: React.ComponentType<any>;
 	emptyComponent?: React.ComponentType<any>;
 	errorComponent?: React.ComponentType<any>;
-	children?: (...args: any[]) => any | React.ReactNode;
+	children?: ( (...args: any[]) => any) | React.ReactNode;
 
 	// Checks
-	isLoading: (props: StatefulComponentProperties) => boolean;
-	isEmpty: (props: StatefulComponentProperties) => boolean;
-	checkError: (props: StatefulComponentProperties) => any;
+	isLoading?: (props: StatefulComponentProperties) => boolean;
+	isEmpty?: (props: StatefulComponentProperties) => boolean;
+	checkError?: (props: StatefulComponentProperties) => any;
 
 	// Data Points
-	loading: boolean;
+	loading?: boolean;
 	data?: any;
 	error?: any;
 }
@@ -35,7 +36,12 @@ export type StatefulComponentState = {
 	error?: any;
 };
 
-class StatefulComponent extends React.Component<
+/**
+ * A Component to manage all states of a component with data
+ */
+export type StatefulComponent = React.ComponentType<StatefulComponentProperties>;
+
+class StatefulComponentClass extends React.Component<
 	StatefulComponentProperties & { bluerain: BlueRain },
 	StatefulComponentState> {
 
@@ -44,15 +50,27 @@ class StatefulComponent extends React.Component<
 		loading: false,
 
 		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
-		isEmpty: (props) => (!isnil(props.data)) ? false : true,
+		isEmpty: (props) => {
+			// If its null or undefined
+			if (isnil(props.data)) {
+				return true;
+			}
+
+			// If its an empty array
+			if (isarray(props.data) && props.data.length === 0) {
+				return true;
+			}
+
+			return false;
+		},
 		checkError: (props) => (!isnil(props.error)) ? true : false,
 	};
 
 	state: StatefulComponentState = {
-		isLoading: this.props.isLoading(this.props),
-		isEmpty: this.props.isEmpty(this.props),
-		hasError: this.props.checkError(this.props) ? true : false,
-		error: this.props.checkError(this.props)
+		isLoading: (this.props.isLoading) ? this.props.isLoading(this.props) : false,
+		isEmpty: (this.props.isEmpty) ? this.props.isEmpty(this.props) : false,
+		hasError: (this.props.checkError && this.props.checkError(this.props)) ? true : false,
+		error: (this.props.checkError) ? this.props.checkError(this.props): null,
 	};
 
 	componentWillReceiveProps(props: StatefulComponentProperties) {
@@ -61,11 +79,11 @@ class StatefulComponent extends React.Component<
 			return;
 		}
 
-		const error = props.checkError(props);
+		const error = (props.checkError) ? props.checkError(props) : null;
 		const hasError = error ? true : false;
 
-		const isLoading = props.isLoading(props);
-		const isEmpty = props.isEmpty(props);
+		const isLoading = (props.isLoading) ? props.isLoading(props) : false;
+		const isEmpty = (props.isEmpty) ? props.isEmpty(props) : false;
 
 		this.setState({
 			isLoading,
@@ -139,4 +157,4 @@ class StatefulComponent extends React.Component<
 	}
 }
 
-export default withBlueRain(StatefulComponent);
+export default withBlueRain(StatefulComponentClass) as StatefulComponent;
