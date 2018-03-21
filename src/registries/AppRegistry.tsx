@@ -23,7 +23,10 @@ class AppRegistry extends MapRegistry<App> {
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	add(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
+	add(app: MaybeEsModule<App>): void; 
+	add(key: string, app: MaybeEsModule<App>): void; 
+		
+	add(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>): void {
 		const { key: k, app: a } = getKeyAndItem(key, app);
 
 		a.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
