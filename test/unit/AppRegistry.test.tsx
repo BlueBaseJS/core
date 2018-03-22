@@ -7,7 +7,7 @@ import { App } from '../../src/models/App';
 describe('AppRegistry Unit tests', () => {
 	let appRegistry;
 	beforeAll(() => {
-		appRegistry = new AppRegistry(BR)
+		appRegistry = new AppRegistry(BR);
 	});
 	class HelloWorldApp  {
 		static appName = HelloWorldApp;
@@ -27,21 +27,40 @@ describe('AppRegistry Unit tests', () => {
 			appRegistry.set('HelloWorldApp', HelloWorldApp);
 			expect(appRegistry.get('HelloWorldApp')).toBe(HelloWorldApp);
 		});
+		it('- overload method when only app is passed', () => {
+			class TestApp  {
+				static appName = TestApp;
+				static slug = 'testApp'; // it will be test-app after kebabcase
+				render() {
+					return (<div><h1>Test App!</h1></div>);
+				}
+			}
+			appRegistry.set(TestApp);
+			expect(appRegistry.get('test-app')).toBe(TestApp);
+		});
 	});
-	
+
 	describe('- Add Method', () => {
-	
+
 		it('should successfully add an App into app registry', () => {
 			appRegistry.add('HelloWorldAppliction', HelloWorldApp);
 			expect(appRegistry.get('HelloWorldAppliction')).toBe(HelloWorldApp);
 		});
+		it('- overload method when only app is passed', () => {
+			appRegistry.add(HelloWorldApp);
+			// its slug will be used as key
+			expect(appRegistry.get('hello-world')).toBe(HelloWorldApp);
+		});
 		it('should throw an error on adding an App into app registry, with the same key', () => {
-			expect(() => { appRegistry.add('HelloWorldApp', HelloWorldApp) }).toThrowError('An item with HelloWorldApp key already exists in the AppRegistry registry. Try using the "setOrReplace" method instead.');
+			expect(() => { appRegistry.add('HelloWorldApp', HelloWorldApp); })
+			.toThrowError(
+				'An item with HelloWorldApp key already exists in the AppRegistry registry. Try using the "setOrReplace" method instead.'
+			);
 		});
 	});
 
 	describe('- RegisterMany Method', () => {
-	
+
 		it('should successfully register many apps', () => {
 			class HelloWorldApp2  {
 				static appName = HelloWorldApp2;
@@ -59,10 +78,10 @@ describe('AppRegistry Unit tests', () => {
 			}
 			const apps = [ HelloWorldApp2, HelloWorldApp3];
 			appRegistry.registerMany(apps);
-			expect(appRegistry.data.get("hello-world-2")).toBe(HelloWorldApp2);
-			expect(appRegistry.data.get("hello-world-3")).toBe(HelloWorldApp3);
+			expect(appRegistry.data.get('hello-world-2')).toBe(HelloWorldApp2);
+			expect(appRegistry.data.get('hello-world-3')).toBe(HelloWorldApp3);
 		});
-	
+
 		it('should throw an error if non-array is not passed to registerMany `method`', () => {
 			class HelloWorldApp2  {
 				static appName = HelloWorldApp2;
@@ -79,7 +98,7 @@ describe('AppRegistry Unit tests', () => {
 				}
 			}
 			const apps = { HelloWorldApp2, HelloWorldApp3 };
-			
+
 			expect(() => {
 				appRegistry.registerMany(apps);
 			}).toThrowError();
@@ -105,17 +124,17 @@ describe('AppRegistry Unit tests', () => {
 			const apps = [ TestApp, XyzApp ];
 			appRegistry.registerMany(apps);
 			appRegistry.initializeAll();
-			expect(appRegistry.data.get("xyz-app")).toBe(XyzApp);
-			expect(appRegistry.data.get("test-app")).toBe(TestApp);
+			expect(appRegistry.data.get('xyz-app')).toBe(XyzApp);
+			expect(appRegistry.data.get('test-app')).toBe(TestApp);
 		});
-		
+
 		it('should return nothing on passing an array with undefined to initializeAll method', () => {
 			const applicationRegistry = new AppRegistry(BR);
 			console.log('applicationRegistry.data', applicationRegistry.data);
-			applicationRegistry.data = [ undefined ]
+			applicationRegistry.data = [ undefined ];
 			expect(applicationRegistry.initializeAll()).toBeUndefined();
 		});
-	});	
+	});
 });
 
 describe('Integration testing with boot function of BR', () =>  {
@@ -130,7 +149,7 @@ describe('Integration testing with boot function of BR', () =>  {
 
 			static appName = HelloWorldApp;
 			static slug = 'hello-world';
-	
+
 			render() {
 				const { appName,BR } = this.constructor;
 				return (
@@ -142,7 +161,7 @@ describe('Integration testing with boot function of BR', () =>  {
 			}
 		}
 
-		bootOptions = { platform:[Platform],renderApp:false, apps:[HelloWorldApp]  }
+		bootOptions = { platform:[Platform],renderApp:false, apps:[HelloWorldApp]  };
 		BR.boot(bootOptions);
 		expect(BR.Apps.data.get('hello-world')).toBe(HelloWorldApp);
 	});
@@ -152,7 +171,7 @@ describe('Integration testing with boot function of BR', () =>  {
 
 			static appName = HelloWorldApp;
 			static slug = 'hello-world';
-	
+
 			render() {
 				const { appName,BR } = this.constructor;
 				return (
@@ -164,9 +183,9 @@ describe('Integration testing with boot function of BR', () =>  {
 			}
 		}
 
-		bootOptions = { platform:[Platform],renderApp:false, apps:[HelloWorldApp]  }
+		bootOptions = { platform:[Platform],renderApp:false, apps:[HelloWorldApp]  };
 		BR.boot(bootOptions);
 		const routes = BR.Apps.getAllRoutes();
 		expect(routes).toHaveLength(1);
 	});
-}); 
+});
