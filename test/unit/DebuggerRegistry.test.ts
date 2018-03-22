@@ -13,12 +13,26 @@ describe('Debugger registry tests', () => {
 			expect(BR.Debug.data.has('hello-world-debugger')).toEqual(true);
 		});
 
-		it('should throw error b/c name is null', () => {
+		it('should not throw error b/c name is null', () => {
 			class NewDebugger extends Debugger {
 				static debuggerName = 'NewDebugger';
 				initialize() {}
 			}
-			expect(() => BR.Debug.add(NewDebugger, 'dummy')).not.toThrow();
+			expect(() => BR.Debug.add(NewDebugger)).not.toThrow();
+		});
+		it('- test overloading method with only app param', () => {
+			class TestDebugger extends Debugger {
+				static debuggerName = 'TestDebugger';
+				initialize() {}
+			}
+			expect(() => BR.Debug.add(TestDebugger)).not.toThrow();
+		});
+		it('- test overloading method with key and app params', () => {
+			class DummyDebugger extends Debugger {
+				static debuggerName = 'DummyDebugger';
+				initialize() {}
+			}
+			expect(() => BR.Debug.add('dummy', DummyDebugger)).not.toThrow();
 		});
 
 		it('slug Create other recognized static properties', () => {
@@ -53,6 +67,30 @@ describe('Debugger registry tests', () => {
 				initialize() {}
 			}
 			expect(() => BR.Debug.add(HelloDebugger)).toThrow('Debugger name not provided.');
+		});
+	});
+
+	describe('- Set method', () => {
+		it('should not throw error b/c name is null', () => {
+			class NewDebugger extends Debugger {
+				static debuggerName = 'NewDebugger';
+				initialize() {}
+			}
+			expect(() => BR.Debug.set(NewDebugger)).not.toThrow();
+		});
+		it('- test overloading method with only app param', () => {
+			class TestDebugger extends Debugger {
+				static debuggerName = 'TestDebugger';
+				initialize() {}
+			}
+			expect(() => BR.Debug.set(TestDebugger)).not.toThrow();
+		});
+		it('- test overloading method with key and app params', () => {
+			class DummyDebugger extends Debugger {
+				static debuggerName = 'DummyDebugger';
+				initialize() {}
+			}
+			expect(() => BR.Debug.set('dummy', DummyDebugger)).not.toThrow();
 		});
 	});
 
@@ -106,7 +144,7 @@ describe('Debugger registry tests', () => {
 				log() {}
 			}
 			BR.Debug.registerMany([SentryDebugger, ConsoleDebugger]);
-			expect(BR.Debug.data.size).toEqual(2);
+			expect(BR.Debug.data.size).toEqual(5);
 		});
 
 		it('Without debugger, Debugger should throw error', () => {

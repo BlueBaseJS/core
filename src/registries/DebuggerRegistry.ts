@@ -21,6 +21,8 @@ export default class DebuggerRegistry extends MapRegistry<Debugger> {
 	 * Register an Debugger
 	 * @param {Debugger} debugger The BlueRain debugger to register
 	 */
+	add(_debugger: MaybeEsModule<Debugger>): void;
+	add(key: string, _debugger: MaybeEsModule<Debugger>): void;
 	add(key: string | MaybeEsModule<Debugger>, _debugger?: MaybeEsModule<Debugger>) {
 		const { key: k, _debugger: a } = getKeyAndItem(key, _debugger);
 		super.add(k, a);
@@ -32,6 +34,8 @@ export default class DebuggerRegistry extends MapRegistry<Debugger> {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
+	set(_debugger: MaybeEsModule<Debugger>): void;
+	set(key: string, _debugger: MaybeEsModule<Debugger>): void;
 	set(key: string | MaybeEsModule<Debugger>, _debugger?: MaybeEsModule<Debugger>) {
 		const { key: k, _debugger: a } = getKeyAndItem(key, _debugger);
 		this.data = this.data.set(k, a);

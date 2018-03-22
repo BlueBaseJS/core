@@ -23,9 +23,9 @@ class AppRegistry extends MapRegistry<App> {
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	add(app: MaybeEsModule<App>): void; 
-	add(key: string, app: MaybeEsModule<App>): void; 
-		
+	add(app: MaybeEsModule<App>): void;
+	add(key: string, app: MaybeEsModule<App>): void;
+
 	add(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>): void {
 		const { key: k, app: a } = getKeyAndItem(key, app);
 
@@ -39,8 +39,10 @@ class AppRegistry extends MapRegistry<App> {
 	 * Replace an item in the Registry.
 	 *
 	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
+	 * @param {App} app  The app to add
 	 */
+	set(app: MaybeEsModule<App>): void;
+	set(key: string, app: MaybeEsModule<App>): void;
 	set(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
 		const { key: k, app: a } = getKeyAndItem(key, app);
 
@@ -56,7 +58,6 @@ class AppRegistry extends MapRegistry<App> {
 	 */
 	registerMany(apps: Array<MaybeEsModule<App>>) {
 		apps = apps || [];
-
 		if (!Array.isArray(apps)) {
 			throw new Error(
 				'Apps parameter while registering via "registerMany" method must be an array'
@@ -178,5 +179,6 @@ const getKeyAndItem = (
 	// app.path = `${app.appRoutePrefix}/${app.slug}`;
 
 	const strKey = key && typeof key === 'string' ? key : slug;
+
 	return { key: strKey, app };
 };

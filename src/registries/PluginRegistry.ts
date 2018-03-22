@@ -21,6 +21,8 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 	 * Register an Plugin
 	 * @param {Plugin} plugin The BlueRain plugin to register
 	 */
+	add(key: string, plugin: MaybeEsModule<Plugin>): void;
+	add(plugin: MaybeEsModule<Plugin>): void;
 	add(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
 		const { key: k, plugin: a } = getKeyAndItem(key, plugin);
 		super.add(k, a);
@@ -32,6 +34,8 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 	 * @param {string} key The key of the item
 	 * @param {any} item  The item to add
 	 */
+	set(key: string, plugin: MaybeEsModule<Plugin>): void;
+	set(plugin: MaybeEsModule<Plugin>): void;
 	set(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
 		const { key: k, plugin: a } = getKeyAndItem(key, plugin);
 		this.data = this.data.set(k, a);
@@ -43,7 +47,6 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 	 */
 	registerMany(plugins: Array<MaybeEsModule<Plugin>>) {
 		plugins = plugins || [];
-
 		if (!Array.isArray(plugins)) {
 			throw new Error(
 				'Plugins parameter while registering via "registerMany" method must be an array'
