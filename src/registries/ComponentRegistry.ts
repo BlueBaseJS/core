@@ -6,9 +6,15 @@ import isNil from 'lodash.isnil';
 
 export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
 
+export interface ComponentSource {
+	type: 'plugin' | 'app' | 'custom';
+	slug: string;
+}
+
 export interface ComponentRegistryItem {
 	rawComponent: React.ComponentType;
 	hocs: ComponentRegistryHocItem[];
+	source?: ComponentSource;
 }
 
 /**
@@ -179,6 +185,30 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 		}
 		const component: ComponentRegistryItem = super.get(name);
 		return component.rawComponent;
+	}
+
+	setSource(key: string, source: ComponentSource): void {
+		if (!this.has(key)) {
+			throw new Error(`No component registered with the key: "${key}"`);
+		}
+
+		if (!source || !source.type || !source.slug) {
+			throw new Error('Invalid source provided to setSource method of ComponentRegistry');
+		}
+
+		const componentItem: ComponentRegistryItem = this.data.get(key);
+		componentItem.source = source;
+
+		super.set(key, componentItem);
+	}
+
+	getSource(key: string): ComponentSource | undefined {
+		if (!this.has(key)) {
+			throw new Error(`No component registered with the key: "${key}"`);
+		}
+
+		const componentItem: ComponentRegistryItem = this.data.get(key);
+		return componentItem.source;
 	}
 }
 

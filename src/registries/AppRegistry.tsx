@@ -25,7 +25,7 @@ class AppRegistry extends MapRegistry<App> {
 	add(key: string, app: MaybeEsModule<App>): void;
 
 	add(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>): void {
-		const { key: k, app: a } = getKeyAndItem(key, app);
+		const { key: k, app: a } = this.getKeyAndItem(key, app);
 
 		a.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 		a.path = `${a.appRoutePrefix}/${a.slug}`;
@@ -42,7 +42,7 @@ class AppRegistry extends MapRegistry<App> {
 	set(app: MaybeEsModule<App>): void;
 	set(key: string, app: MaybeEsModule<App>): void;
 	set(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
-		const { key: k, app: a } = getKeyAndItem(key, app);
+		const { key: k, app: a } = this.getKeyAndItem(key, app);
 
 		a.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 		a.path = `${a.appRoutePrefix}/${a.slug}`;
@@ -96,6 +96,12 @@ class AppRegistry extends MapRegistry<App> {
 					}
 
 					this.BR.Components.set(component, app.components[component]);
+					this.BR.Components.setSource(component, {
+						type: 'app',
+						slug: this.createSlug(app)
+					});
+
+					console.log(`${component} Component registered by `, this.BR.Components.getSource(component));
 				});
 			}
 
@@ -193,45 +199,56 @@ class AppRegistry extends MapRegistry<App> {
 
 		return React.createElement(component, props);
 	}
+
+	/**
+	 * Returns a plugin slug, or generates one
+	 *
+	 * @param {Plugin} plugin
+	 * @returns {string}
+	 */
+	createSlug(app: App): string {
+		return kebabCase(app.slug ? app.slug : app.appName);
+	}
+
+	/**
+	 * Takes an app, adds necessary fields and returns the processed app with a key
+	 * @param key
+	 * @param app
+	 */
+	private getKeyAndItem (
+		key: string | MaybeEsModule<App>,
+		app?: MaybeEsModule<App>
+	): { key: string; app: App } {
+
+		if (typeof key !== 'string' && !isNil(key)) {
+			app = key as App;
+			key = '';
+		}
+
+		if (isNil(app)) {
+			throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
+		}
+
+		// ES modules
+		app = (app as EsModule<App>).__esModule ? (app as EsModule<App>).default : app;
+
+		// Casting, to remove possiblity of undefined value is TS.
+		app = app as App;
+
+		if (!app.appName) {
+			throw new Error('App name not provided. Please provide "appName" while registering an app');
+		}
+
+		const slug = this.createSlug(app);
+
+		app.slug = slug;
+		// app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
+		// app.path = `${app.appRoutePrefix}/${app.slug}`;
+
+		const strKey = key && typeof key === 'string' ? key : slug;
+
+		return { key: strKey, app };
+	}
 }
 
 export default AppRegistry;
-
-/**
- * Takes an app, adds necessary fields and returns the processed app with a key
- * @param key
- * @param app
- */
-const getKeyAndItem = (
-	key: string | MaybeEsModule<App>,
-	app?: MaybeEsModule<App>
-): { key: string; app: App } => {
-	if (typeof key !== 'string' && !isNil(key)) {
-		app = key as App;
-		key = '';
-	}
-
-	if (isNil(app)) {
-		throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
-	}
-
-	// ES modules
-	app = (app as EsModule<App>).__esModule ? (app as EsModule<App>).default : app;
-
-	// Casting, to remove possiblity of undefined value is TS.
-	app = app as App;
-
-	if (!app.appName) {
-		throw new Error('App name not provided. Please provide "appName" while registering an app');
-	}
-
-	const slug = kebabCase(app.slug ? app.slug : app.appName);
-
-	app.slug = slug;
-	// app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
-	// app.path = `${app.appRoutePrefix}/${app.slug}`;
-
-	const strKey = key && typeof key === 'string' ? key : slug;
-
-	return { key: strKey, app };
-};
