@@ -100,8 +100,6 @@ class AppRegistry extends MapRegistry<App> {
 						type: 'app',
 						slug: this.createSlug(app)
 					});
-
-					console.log(`${component} Component registered by `, this.BR.Components.getSource(component));
 				});
 			}
 

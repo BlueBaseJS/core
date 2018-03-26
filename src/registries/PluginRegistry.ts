@@ -86,11 +86,6 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 						type: 'plugin',
 						slug: this.createSlug(plugin)
 					});
-
-					console.log(
-						`${component} Component registered by `,
-						this.BR.Components.getSource(component)
-					);
 				});
 			}
 
