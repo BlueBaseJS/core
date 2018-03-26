@@ -9,12 +9,8 @@ import kebabCase from 'lodash.kebabcase';
  * @property {Map<string, Plugin>} data Storage Map of all plugins
  */
 export default class PluginRegistry extends MapRegistry<Plugin> {
-	// data: Map<string, Plugin>;
-	BR: BlueRain;
-
-	constructor(ctx: BlueRain) {
+	constructor(private BR: BlueRain) {
 		super('PluginRegistry');
-		this.BR = ctx;
 	}
 
 	/**
