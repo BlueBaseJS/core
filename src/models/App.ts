@@ -37,6 +37,8 @@ export interface AppIconImage extends AppIconBase {
 	source: string;
 }
 
+export type AppIcon = AppIconComponent | AppIconImage | AppIconName;
+
 /** A BlueRain App options interface */
 export interface AppOptions {
 	/** Name of the app */
@@ -61,7 +63,7 @@ export interface AppOptions {
 	path?: string;
 
 	/** App's icon definition */
-	icon?: AppIconComponent | AppIconImage | AppIconName;
+	icon?: AppIcon | ((app: App, BR: BlueRain) => AppIcon);
 
 	/** If the app should be hidden in launcher listings */
 	hidden?: boolean;

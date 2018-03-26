@@ -164,7 +164,7 @@ class AppRegistry extends MapRegistry<App> {
 			throw new Error(`There's no app registered with "${name}" key in the registry.`);
 		}
 
-		const icon = app.icon;
+		const icon = (typeof app.icon === 'function') ? app.icon(app, this.BR) : app.icon;
 
 		if (!icon) {
 			return null;
