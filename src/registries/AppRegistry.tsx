@@ -12,11 +12,9 @@ const defaultAppRoutePrefix = '/app';
  * @property {Map<string, App>} data  Map(immutablejs) of all apps
  */
 class AppRegistry extends MapRegistry<App> {
-	private BR: BlueRain;
 
-	constructor(ctx: BlueRain) {
+	constructor(private BR: BlueRain) {
 		super('AppRegistry');
-		this.BR = ctx;
 	}
 
 	/**

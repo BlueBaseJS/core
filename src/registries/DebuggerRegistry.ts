@@ -9,12 +9,8 @@ import kebabCase from 'lodash.kebabcase';
  * @property {Map<string, Debugger>} data Storage Map of all debuggers
  */
 export default class DebuggerRegistry extends MapRegistry<Debugger> {
-	// data: Map<string, Debugger>;
-	BR: BlueRain;
-
-	constructor(ctx: BlueRain) {
+	constructor(private BR: BlueRain) {
 		super('DebuggerRegistry');
-		this.BR = ctx;
 	}
 
 	/**
