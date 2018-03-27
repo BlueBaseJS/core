@@ -20,7 +20,7 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 	add(key: string, plugin: MaybeEsModule<Plugin>): void;
 	add(plugin: MaybeEsModule<Plugin>): void;
 	add(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
-		const { key: k, plugin: a } = getKeyAndItem(key, plugin);
+		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
 		super.add(k, a);
 	}
 
@@ -33,7 +33,7 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 	set(key: string, plugin: MaybeEsModule<Plugin>): void;
 	set(plugin: MaybeEsModule<Plugin>): void;
 	set(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
-		const { key: k, plugin: a } = getKeyAndItem(key, plugin);
+		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
 		this.data = this.data.set(k, a);
 	}
 
@@ -82,6 +82,10 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 					}
 
 					this.BR.Components.set(component, plugin.components[component]);
+					this.BR.Components.setSource(component, {
+						type: 'plugin',
+						slug: this.createSlug(plugin)
+					});
 				});
 			}
 
@@ -93,40 +97,50 @@ export default class PluginRegistry extends MapRegistry<Plugin> {
 			}
 		});
 	}
+
+	/**
+	 * Returns a plugin slug, or generates one
+	 *
+	 * @param {Plugin} plugin
+	 * @returns {string}
+	 */
+	createSlug(plugin: Plugin): string {
+		return kebabCase(plugin.slug ? plugin.slug : plugin.pluginName);
+	}
+
+	/**
+	 * Takes an plugin, adds necessary fields and returns the processed plugin with a key
+	 * @param key
+	 * @param plugin
+	 */
+	private getKeyAndItem(
+		key: string | MaybeEsModule<Plugin>,
+		plugin?: MaybeEsModule<Plugin>
+	): { key: string; plugin: Plugin } {
+		if (typeof key !== 'string' && !isNil(key)) {
+			plugin = key as Plugin;
+			key = '';
+		}
+
+		if (!plugin) {
+			throw new Error('No plugin provided');
+		}
+
+		// ES modules
+		plugin = (plugin as EsModule<Plugin>).default ? (plugin as EsModule<Plugin>).default : plugin;
+
+		// Casting, to remove possiblity of undefined value is TS.
+		plugin = plugin as Plugin;
+
+		if (!plugin.pluginName) {
+			throw new Error('Plugin name not provided.');
+		}
+
+		const slug = this.createSlug(plugin);
+
+		plugin.slug = slug;
+
+		const strKey = key && typeof key === 'string' ? key : slug;
+		return { key: strKey, plugin };
+	}
 }
-
-/**
- * Takes an plugin, adds necessary fields and returns the processed plugin with a key
- * @param key
- * @param plugin
- */
-const getKeyAndItem = (
-	key: string | MaybeEsModule<Plugin>,
-	plugin?: MaybeEsModule<Plugin>
-): { key: string; plugin: Plugin } => {
-	if (typeof key !== 'string' && !isNil(key)) {
-		plugin = key as Plugin;
-		key = '';
-	}
-
-	if (!plugin) {
-		throw new Error('No plugin provided');
-	}
-
-	// ES modules
-	plugin = (plugin as EsModule<Plugin>).default ? (plugin as EsModule<Plugin>).default : plugin;
-
-	// Casting, to remove possiblity of undefined value is TS.
-	plugin = plugin as Plugin;
-
-	if (!plugin.pluginName) {
-		throw new Error('Plugin name not provided.');
-	}
-
-	const slug = kebabCase(plugin.slug ? plugin.slug : plugin.pluginName);
-
-	plugin.slug = slug;
-
-	const strKey = key && typeof key === 'string' ? key : slug;
-	return { key: strKey, plugin };
-};
