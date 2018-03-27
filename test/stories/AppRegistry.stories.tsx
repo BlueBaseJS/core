@@ -14,4 +14,10 @@ storiesOf('AppRegistry', module)
 		<BlueRainConsumer>
 			{(BR: BlueRain) => BR.Apps.getIconElement('android', { size: 150 })}
 		</BlueRainConsumer>
+	))
+
+	.add('getIconElement (thunk)', () => (
+		<BlueRainConsumer>
+			{(BR: BlueRain) => BR.Apps.getIconElement('apps', { size: 150 })}
+		</BlueRainConsumer>
 	));
