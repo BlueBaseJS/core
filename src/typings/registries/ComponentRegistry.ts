@@ -1,7 +1,44 @@
 import { StatefulComponent } from '../../components/StatefulComponent';
 import Registry from '../../registries/ComponentRegistry';
+import * as Components from '@blueeast/bluerain-ui-interfaces';
 // import React from 'react';
 
 export interface ComponentRegistry extends Registry {
 	StatefulComponent: StatefulComponent;
+	ActivityIndicator: Components.ActivityIndicatorProperties;
+	AppBar: Components.AppBarProperties;
+	Avatar: Components.AvatarProperties;
+	Badge: Components.BadgeProperties;
+	Breadcrumb: Components.BreadcrumbProperties;
+	Button: Components.ButtonProperties;
+	Card: Components.CardProperties;
+	Carousel: Components.CarouselProperties;
+	Checkbox: Components.CheckboxProperties;
+	Chip: Components.ChipProperties;
+	Color: Components.ColorProperties;
+	Divider: Components.DividerProperties;
+	DocumentSelectionState: Components.DocumentSelectionStateProperties;
+	Drawer: Components.DrawerProperties;
+	FormControl: Components.FormControlProperties;
+	Icon: Components.IconProperties;
+	Image: Components.ImageProperties;
+	List: Components.ListProperties;
+	Map: Components.MapProperties;
+	Modal: Components.ModalProperties;
+	Picker: Components.PickerProperties;
+	Pregressbar: Components.ProgressbarProperties;
+	SectionList: Components.SectionListProperties;
+	Slider: Components.SliderProperties;
+	StatusBar: Components.StatusBarProperties;
+	Switch: Components.SwitchProperties;
+	Tab: Components.TabProperties;
+	TabBar: Components.TabBarProperties;
+	Tabs: Components.TabsViewProperties;
+	Text: Components.TextProperties;
+	TextInput: Components.TextInputProperties;
+	TouchableHighlight: Components.TouchableHighlightProperties;
+	TouchableOpacity: Components.TouchableOpacityProperties;
+	TouchableWithoutFeedback: Components.TouchableWithoutFeedbackProperties;
+	View: Components.DocumentSelectionStateProperties;
+	WebView: Components.WebViewProperties;
 }
