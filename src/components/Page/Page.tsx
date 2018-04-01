@@ -11,4 +11,4 @@ const  Page = (props: ViewProperties & { bluerain: BlueRain }) => {
 	return <BR.Components.View style={stylesheet} {...others} />;
 };
 
-export default withBlueRain(Page);
+export default withBlueRain(Page) as React.ComponentType<ViewProperties>;

@@ -5,7 +5,7 @@ import React from 'react';
 export interface ImageBackgroundProperties extends ImageProperties {
 	style?: ViewStyle;
 	imageStyle?: ImageStyle;
-	children?: React.ReactNode[];
+	children?: React.ReactNode;
 	backgroundColor?: string;
 }
 
@@ -48,4 +48,4 @@ const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRain
 	);
 };
 
-export default withBlueRain(ImageBackground);
+export default withBlueRain(ImageBackground) as React.ComponentType<ImageBackgroundProperties>;
