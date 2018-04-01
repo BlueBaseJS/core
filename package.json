@@ -131,7 +131,6 @@
     "@types/jest": "^22.1.2",
     "@types/lodash.flowright": "^3.5.3",
     "@types/lodash.get": "^4.4.3",
-    "@types/lodash.isarray": "^4.0.3",
     "@types/lodash.isboolean": "^3.0.3",
     "@types/lodash.isnil": "^4.0.3",
     "@types/lodash.kebabcase": "^4.1.3",
