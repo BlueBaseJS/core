@@ -1,7 +1,7 @@
-import { StatefulComponent } from '../../components/StatefulComponent';
-import Registry from '../../registries/ComponentRegistry';
 import * as Components from '@blueeast/bluerain-ui-interfaces';
+import { StatefulComponent } from '../../components/StatefulComponent';
 import React from 'react';
+import Registry from '../../registries/ComponentRegistry';
 
 export interface ComponentRegistry extends Registry {
 	StatefulComponent: StatefulComponent;

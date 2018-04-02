@@ -5,7 +5,7 @@ const LoadingState = (props: { bluerain: BlueRain }) => {
 
 	const BR = props.bluerain;
 
-	const Indicator = () => <BR.Components.ActivityIndicator color={{rgb: ('#eeeeee')}} size="large" />;
+	const Indicator = () => <BR.Components.ActivityIndicator color={{ rgb: ('#eeeeee') }} size="large" />;
 	return <BR.Components.ComponentState title="Loading, Please wait." image={Indicator} />;
 };
 
