@@ -21,7 +21,7 @@ export interface ComponentStateButtonProps extends ViewProperties {
 	/**
 	 * Button onPress handler
 	 */
-	buttonOnPress?: Function;
+	buttonOnPress?: () => void;
 
 	bluerain: BlueRain;
 }
