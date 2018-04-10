@@ -1,5 +1,6 @@
 import { StatefulComponent } from '../../components/StatefulComponent';
 import ComponentState from '../../components/ComponentState';
+import IconEnhanced from '../../components/IconEnhanced';
 import ImageBackground from '../../components/ImageBackground';
 import Page from '../../components/Page';
 import Registry from '../../registries/ComponentRegistry';
@@ -8,6 +9,7 @@ import Wallpaper from '../../components/Wallpaper';
 
 export interface ComponentRegistry extends Registry {
 	ComponentState: typeof ComponentState;
+	IconEnhanced: typeof IconEnhanced;
 	ImageBackground: typeof ImageBackground;
 	Page: typeof Page;
 	StatefulComponent: StatefulComponent;

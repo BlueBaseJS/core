@@ -9,6 +9,7 @@ import CenterLayout from '../layouts/CenterLayout';
 import ComponentState from '../components/ComponentState';
 import ErrorPage from '../pages/ErrorPage';
 
+import IconEnhanced from '../components/IconEnhanced';
 import ImageBackground from '../components/ImageBackground';
 import IndexPage from '../pages/IndexPage';
 import LoadingPage from '../pages/LoadingPage';
@@ -25,6 +26,7 @@ import Wallpaper from '../components/Wallpaper';
 export const registerComponents = (BR: BlueRain) => {
 	/* Internal Components */
 	BR.Components.set('ComponentState', ComponentState);
+	BR.Components.set('IconEnhanced', IconEnhanced);
 	BR.Components.set('ImageBackground', ImageBackground);
 	BR.Components.set('Page', Page);
 	BR.Components.set('Wallpaper', Wallpaper);
