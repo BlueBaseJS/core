@@ -1,6 +1,5 @@
 import { BlueRain, withBlueRain } from '../../index';
 import React from 'react';
-import isarray from 'lodash.isarray';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
 
@@ -57,7 +56,7 @@ class StatefulComponentClass extends React.Component<
 			}
 
 			// If its an empty array
-			if (isarray(props.data) && props.data.length === 0) {
+			if (Array.isArray(props.data) && props.data.length === 0) {
 				return true;
 			}
 

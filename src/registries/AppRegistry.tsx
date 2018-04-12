@@ -155,7 +155,6 @@ class AppRegistry extends MapRegistry<App> {
 		props: { size?: number, [key: string]: any } = {}
 	) : React.ReactElement<any> | null {
 
-		props = { size: 100, ...props };
 		const app: App = this.get(slug);
 
 		if (!app) {
@@ -168,34 +167,8 @@ class AppRegistry extends MapRegistry<App> {
 			return null;
 		}
 
-		let component: React.ComponentType<any>;
-
-		if (icon.type === 'component') {
-			component = (typeof icon.component === 'string')
-				? this.BR.Components.get(icon.component)
-				: component = icon.component;
-
-		} else if (icon.type === 'name') {
-			component = this.BR.Components.get('Icon');
-			props.name = icon.name;
-
-		} else if (icon.type === 'image') {
-			component = this.BR.Components.get('Image');
-			props.source = icon.source;
-
-			if (!props.style) {
-				props.style = {};
-			}
-
-			if (props.size) {
-				props.style.width = props.size;
-				props.style.height = props.size;
-			}
-		} else {
-			return null;
-		}
-
-		return React.createElement(component, props);
+		const Component = this.BR.Components.get('IconEnhanced');
+		return <Component {...icon} {...props} />;
 	}
 
 	/**

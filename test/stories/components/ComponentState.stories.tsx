@@ -73,12 +73,12 @@ storiesOf('ComponentState', module)
 				<BR.Components.ComponentState
 					buttonTitle="Bluerain"
 					buttonStyle={{
-						color: 'white',
+						// color: 'white',
 						backgroundColor: 'red',
 						width: 100,
 						height: 50,
 						borderRadius: 8,
-						textAlign: 'center'
+						// textAlign: 'center'
 					}}
 				/>
 			)}

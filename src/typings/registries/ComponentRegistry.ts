@@ -1,10 +1,20 @@
 import * as Components from '@blueeast/bluerain-ui-interfaces';
 import { StatefulComponent } from '../../components/StatefulComponent';
-import React from 'react';
+import ComponentState from '../../components/ComponentState';
+import IconEnhanced from '../../components/IconEnhanced';
+import ImageBackground from '../../components/ImageBackground';
+import Page from '../../components/Page';
 import Registry from '../../registries/ComponentRegistry';
+import Wallpaper from '../../components/Wallpaper';
 
 export interface ComponentRegistry extends Registry {
+	ComponentState: typeof ComponentState;
+	IconEnhanced: typeof IconEnhanced;
+	ImageBackground: typeof ImageBackground;
+	Page: typeof Page;
 	StatefulComponent: StatefulComponent;
+
+	Wallpaper: typeof Wallpaper;
 	ActivityIndicator: React.ComponentType<Components.ActivityIndicatorProperties>;
 	AppBar: React.ComponentType<Components.AppBarProperties>;
 	Avatar: React.ComponentType<Components.AvatarProperties>;
@@ -26,7 +36,7 @@ export interface ComponentRegistry extends Registry {
 	Map: React.ComponentType<Components.MapProperties>;
 	Modal: React.ComponentType<Components.ModalProperties>;
 	Picker: React.ComponentType<Components.PickerProperties>;
-	Pregressbar: React.ComponentType<Components.ProgressbarProperties>;
+	Pregressbar: React.ComponentType<Components.ProgressBarProperties>;
 	SectionList: React.ComponentType<Components.SectionListProperties>;
 	Slider: React.ComponentType<Components.SliderProperties>;
 	StatusBar: React.ComponentType<Components.StatusBarProperties>;
