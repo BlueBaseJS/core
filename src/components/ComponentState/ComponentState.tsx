@@ -6,7 +6,7 @@ import ComponentStateImage from './ComponentStateImage';
 import ComponentStateText from './ComponentStateText';
 import React from 'react';
 
-export interface ComponentStateProps extends ViewProperties {
+export interface ComponentStateProperties extends ViewProperties {
 	/**
 	 * Image Component, if provided, imageSource will be ignored
 	 */
@@ -25,7 +25,7 @@ export interface ComponentStateProps extends ViewProperties {
 	/**
 	 * Title text
 	 */
-	title: string;
+	title?: string;
 
 	/**
 	 * Title style
@@ -35,7 +35,7 @@ export interface ComponentStateProps extends ViewProperties {
 	/**
 	 * Description Text
 	 */
-	description: string;
+	description?: string;
 
 	/**
 	 * Description style
@@ -65,7 +65,7 @@ export interface ComponentStateProps extends ViewProperties {
 	style?: ViewStyle
 }
 
-const ComponentState = (props: ComponentStateProps & { bluerain: BlueRain }) => {
+const ComponentState = (props: ComponentStateProperties & { bluerain: BlueRain }) => {
 	const {
 		title,
 		titleStyle,
@@ -96,4 +96,4 @@ const ComponentState = (props: ComponentStateProps & { bluerain: BlueRain }) => 
 	);
 };
 
-export default withBlueRain(ComponentState);
+export default withBlueRain(ComponentState) as React.ComponentType<ComponentStateProperties>;

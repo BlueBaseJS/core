@@ -12,14 +12,14 @@ export interface ComponentSource {
 }
 
 export interface ComponentRegistryItem {
-	rawComponent: React.ComponentType;
+	rawComponent: React.ComponentType<any>;
 	hocs: ComponentRegistryHocItem[];
 	source?: ComponentSource;
 }
 
 /**
  * All system components are stored in this registry
- * @property {Map<string, {rawComponent: React.ComponentType<*>, hocs: Array<Function | Array<any>>}>} data Storage
+ * @property {Map<string, {rawComponent: React.ComponentType<any>, hocs: Array<Function | Array<any>>}>} data Storage
  * of all components
  */
 class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
@@ -51,14 +51,14 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * and one or more optional higher order components.
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React.ComponentType<*>} rawComponent Interchangeable/extendable component.
+	 * @param {React.ComponentType<any>} rawComponent Interchangeable/extendable component.
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
-	add(name: string, rawComponent: React.ComponentType, ...hocs: ComponentRegistryHocItem[]) {
+	add(name: string, rawComponent: React.ComponentType<any>, ...hocs: ComponentRegistryHocItem[]) {
 		if (isNil(rawComponent)) {
 			throw new Error(
 				'rawComponent is required to register a component.' +
@@ -75,15 +75,19 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
 	 *
 	 * @param {String} name The name of the component to register.
-	 * @param {React.ComponentType<*>} rawComponent Interchangeable/extendable component.
+	 * @param {React.ComponentType<any>} rawComponent Interchangeable/extendable component.
 	 * @param {...Function} hocs The HOCs to compose with the raw component.
-	 * @returns {Function|React.ComponentType<*>} A component callable with Components[name]
+	 * @returns {Function|React.ComponentType<any>} A component callable with Components[name]
 	 *
 	 * Note: when a component is registered without higher order component, `hocs` will be
 	 * an empty array, and it's ok!
 	 * See https://lodash.com/docs/4.17.4#flowRight
 	 */
-	replace(name: string, newComponent: React.ComponentType, ...newHocs: ComponentRegistryHocItem[]) {
+	replace(
+		name: string,
+		newComponent: React.ComponentType<any>,
+		...newHocs: ComponentRegistryHocItem[]
+	) {
 		if (!this.has(name)) {
 			throw new Error(
 				`Component ${name} not registered.Please register component before replacing it`
@@ -98,9 +102,9 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * Set or Replace an item in the Registry.
 	 *
 	 * @param {string} key The key of the item
-	 * @param {React.ComponentType} item  The item to add
+	 * @param {React.ComponentType<any>} item  The item to add
 	 */
-	set(key: string, rawComponent: React.ComponentType, ...hocs: ComponentRegistryHocItem[]) {
+	set(key: string, rawComponent: React.ComponentType<any>, ...hocs: ComponentRegistryHocItem[]) {
 		if (!key) {
 			throw new Error(`No key provided in the setOrReplace method of ${this.name} registry.`);
 		}
@@ -144,7 +148,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * Its accepts multiple component names.It iterates arguments and returns first found registered component.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React.ComponentType<*>} A (wrapped) React component
+	 * @returns {Function|React.ComponentType<any>} A (wrapped) React component
 	 */
 	get(...name: string[]): React.ComponentType<any> {
 		let component: ComponentRegistryItem | null = null;
@@ -169,7 +173,7 @@ class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
 	 * without the possible HOCs wrapping it.
 	 *
 	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React.ComponentType<*>} An interchangeable/extendable React component
+	 * @returns {Function|React.ComponentType<any>} An interchangeable/extendable React component
 	 */
 	getRawComponent(name: string): React.ComponentType<any> {
 		if (isNil(name)) {
