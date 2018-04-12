@@ -87,13 +87,19 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@blueeast/bluerain-storybook-addon/-/bluerain-storybook-addon-1.1.0.tgz#5228ab9375bb34ecf1b8f8ed8ef4e2f0e3f72caf"
 
+"@blueeast/bluerain-ui-interfaces@3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-ui-interfaces/-/bluerain-ui-interfaces-3.3.1.tgz#4b689136e5ab40fc0ef0302d5d448547f5aaa076"
+  dependencies:
+    react "^16.2.0"
+
 "@blueeast/bluerain-ui-interfaces@^2.0.2":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@blueeast/bluerain-ui-interfaces/-/bluerain-ui-interfaces-2.0.6.tgz#84422b73b9350dfc99c74d37a60fe2a00fa0cb39"
   dependencies:
     react "^16.2.0"
 
-"@blueeast/bluerain-ui-interfaces@^3.1.3", "@blueeast/bluerain-ui-interfaces@^3.2.1":
+"@blueeast/bluerain-ui-interfaces@^3.1.3":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@blueeast/bluerain-ui-interfaces/-/bluerain-ui-interfaces-3.2.1.tgz#80d4b153f6789b3b0cb82b48864c35136e04d870"
   dependencies:

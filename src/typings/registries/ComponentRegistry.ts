@@ -36,7 +36,7 @@ export interface ComponentRegistry extends Registry {
 	Map: React.ComponentType<Components.MapProperties>;
 	Modal: React.ComponentType<Components.ModalProperties>;
 	Picker: React.ComponentType<Components.PickerProperties>;
-	Pregressbar: React.ComponentType<Components.ProgressbarProperties>;
+	Pregressbar: React.ComponentType<Components.ProgressBarProperties>;
 	SectionList: React.ComponentType<Components.SectionListProperties>;
 	Slider: React.ComponentType<Components.SliderProperties>;
 	StatusBar: React.ComponentType<Components.StatusBarProperties>;
