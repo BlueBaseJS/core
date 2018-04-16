@@ -1,20 +1,18 @@
 import * as Components from '@blueeast/bluerain-ui-interfaces';
-import { StatefulComponent } from '../../components/StatefulComponent';
-import ComponentState from '../../components/ComponentState';
-import IconEnhanced from '../../components/IconEnhanced';
-import ImageBackground from '../../components/ImageBackground';
-import Page from '../../components/Page';
+import { ComponentStateProperties } from '../../components/ComponentState';
+import { IconEnhancedProperties } from '../../components/IconEnhanced';
+import { ImageBackgroundProperties } from '../../components/ImageBackground';
+import { StatefulComponentProperties } from '../../components/StatefulComponent';
+import { WallpaperProperties } from '../../components/Wallpaper';
 import Registry from '../../registries/ComponentRegistry';
-import Wallpaper from '../../components/Wallpaper';
 
 export interface ComponentRegistry extends Registry {
-	ComponentState: typeof ComponentState;
-	IconEnhanced: typeof IconEnhanced;
-	ImageBackground: typeof ImageBackground;
-	Page: typeof Page;
-	StatefulComponent: StatefulComponent;
-
-	Wallpaper: typeof Wallpaper;
+	ComponentState: React.ComponentType<ComponentStateProperties>;
+	IconEnhanced: React.ComponentType<IconEnhancedProperties>;
+	ImageBackground: React.ComponentType<ImageBackgroundProperties>;
+	Page: React.ComponentType<Components.ViewProperties>;
+	StatefulComponent: React.ComponentType<StatefulComponentProperties>;
+	Wallpaper: React.ComponentType<WallpaperProperties>;
 	ActivityIndicator: React.ComponentType<Components.ActivityIndicatorProperties>;
 	AppBar: React.ComponentType<Components.AppBarProperties>;
 	Avatar: React.ComponentType<Components.AvatarProperties>;
@@ -36,7 +34,7 @@ export interface ComponentRegistry extends Registry {
 	Map: React.ComponentType<Components.MapProperties>;
 	Modal: React.ComponentType<Components.ModalProperties>;
 	Picker: React.ComponentType<Components.PickerProperties>;
-	Pregressbar: React.ComponentType<Components.ProgressBarProperties>;
+	ProgressBar: React.ComponentType<Components.ProgressBarProperties>;
 	SectionList: React.ComponentType<Components.SectionListProperties>;
 	Slider: React.ComponentType<Components.SliderProperties>;
 	StatusBar: React.ComponentType<Components.StatusBarProperties>;
@@ -44,11 +42,11 @@ export interface ComponentRegistry extends Registry {
 	Tab: React.ComponentType<Components.TabProperties>;
 	TabBar: React.ComponentType<Components.TabBarProperties>;
 	Tabs: React.ComponentType<Components.TabsViewProperties>;
-	// Text:React.ComponentType<Components.TextProperties>;
+	Text: React.ComponentType<Components.TextProperties>;
 	TextInput: React.ComponentType<Components.TextInputProperties>;
 	TouchableHighlight: React.ComponentType<Components.TouchableHighlightProperties>;
 	TouchableOpacity: React.ComponentType<Components.TouchableOpacityProperties>;
 	TouchableWithoutFeedback: React.ComponentType<Components.TouchableWithoutFeedbackProperties>;
-	// View: React.ComponentType<Components.ViewProperties>;
+	View: React.ComponentType<Components.ViewProperties>;
 	WebView: React.ComponentType<Components.WebViewProperties>;
 }
