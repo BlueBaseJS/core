@@ -177,7 +177,7 @@
     "size-limit": "^0.17.0",
     "travis-deploy-once": "^4.3.4",
     "ts-jest": "^21.0.0",
-    "ts-node": "^3.0.6",
+    "ts-node": "^5.0.0",
     "tslint": "^5.4.3",
     "typedoc": "^0.10.0",
     "typescript": "^2.5.3",
