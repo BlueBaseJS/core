@@ -21,7 +21,7 @@ export interface ComponentStateButtonProps extends ViewProperties {
 	/**
 	 * Button onPress handler
 	 */
-	buttonOnPress?: Function;
+	buttonOnPress?: () => void;
 
 	bluerain: BlueRain;
 }
@@ -48,7 +48,7 @@ const ComponentStateButton = (props: ComponentStateButtonProps) => {
 		};
 
 		return (
-			<BR.Components.Button onPress={buttonOnPress} style={BR.Utils.createStyleSheet(stylesheet)}>
+			<BR.Components.Button onPress={buttonOnPress} style={stylesheet}>
 				<BR.Components.Text>
 					{buttonTitle}
 				</BR.Components.Text>

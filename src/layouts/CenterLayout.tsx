@@ -17,10 +17,8 @@ const CenterLayout = (props: CenterLayoutProperties & { bluerain: BlueRain }) =>
 		flex: 1,
 	};
 
-	const stylesheet = [
-		BR.Utils.createStyleSheet(defaultStyle),
-		BR.Utils.createStyleSheet(style || {})
-	];
+	const stylesheet = [defaultStyle, style || {}];
+
 	return <BR.Components.View style={stylesheet} {...other} />;
 };
 

@@ -5,10 +5,10 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/BlueEastCode/bluerain-os.svg)](https://greenkeeper.io/)
 
-
 A modular, pluggable and cross-platform app framework. It is built on top of [ReactXP](https://microsoft.github.io/reactxp/) (which utilizes [ReactDOM](https://facebook.github.io/react/docs/react-dom.html) for web and [React Native](https://facebook.github.io/react-native/) for mobile).
 
-## 🎊 Status 
+## 🎊 Status
+
 [![npm version](https://badge.fury.io/js/%40blueeast%2Fbluerain-os.svg)](https://github.com/BlueEastCode/bluerain-os) [![Build Status](https://travis-ci.org/BlueEastCode/bluerain-os.svg?branch=master)](https://travis-ci.org/BlueEastCode/bluerain-os) [![bitHound Overall Score](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/score.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os) [![bitHound Dependencies](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/dependencies.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os/develop/dependencies/npm) [![bitHound Dev Dependencies](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/devDependencies.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os/develop/dependencies/npm) [![bitHound Code](https://www.bithound.io/github/BlueEastCode/bluerain-os/badges/code.svg)](https://www.bithound.io/github/BlueEastCode/bluerain-os) [![Known Vulnerabilities](https://snyk.io/test/npm/@blueeast/bluerain-os/badge.svg)](https://snyk.io/test/npm/@blueeast/bluerain-os)
 
 

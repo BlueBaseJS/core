@@ -1,18 +1,21 @@
 // Others
-import { App, Plugin } from './index';
+import { App, Debugger, Plugin } from './index';
 import { BlueRainAPI, JsonComponentSchema, createApis } from './apis';
 import defaultConfigs, { ConfigType } from './config';
 import { BlueRainProvider } from './Provider';
+import { ComponentRegistry as IComponentRegistry } from './typings/registries/ComponentRegistry';
 import { registerComponents } from './boot';
 
 // Registries
 import AppRegistry from './registries/AppRegistry';
 import ComponentRegistry from './registries/ComponentRegistry';
 import ConfigRegistry from './registries/ConfigRegistry';
+import DebuggerRegistry from './registries/DebuggerRegistry';
 import EventRegistry from './registries/EventRegistry';
 import FilterRegistry from './registries/FilterRegistry';
 import HooksRegistry from './registries/HooksRegistry';
 import PluginRegistry from './registries/PluginRegistry';
+
 
 import React from 'react';
 
@@ -23,15 +26,19 @@ export type setMainViewFunction = (App: React.ComponentType<any>) => void;
 
 export interface BlueRainType {
 	Apps: AppRegistry;
-	Components: ComponentRegistry;
+	Components: IComponentRegistry;
 	Configs: ConfigRegistry;
 	Events: EventRegistry;
 	Filters: FilterRegistry;
 	Plugins: PluginRegistry;
 	Hooks: HooksRegistry;
+	Debug: DebuggerRegistry;
 	Platform: PluginRegistry;
 
 	API: BlueRainAPI;
+
+	// Attach other registrys
+	[key: string]: any;
 
 	Utils: {
 		parseJsonSchema: (schema: JsonComponentSchema) => React.ReactElement<any> | null;
@@ -57,15 +64,14 @@ export interface BlueRainType {
  * @property {boolean} 	renderApp	If set to false, BlueRain will not render the main app,
  *  instead it is up to the developer to render it. The App is returned from the boot function.
  * @property {Array<BR.Plugin>} plugins		An array of plugins to load
- * @property {boolean} 	serverMode	Set this flag to true when rendering during Server Side Rendering
  */
 export type BootOptions = {
 	apps?: App[];
 	config?: ConfigType;
 	renderApp?: boolean;
 	plugins?: Plugin[];
-	serverMode?: boolean;
 	platform?: Plugin[];
+	debuggers?: Debugger[];
 };
 
 /**
@@ -83,15 +89,17 @@ export type BootOptions = {
  * @prop {Object} 						refs 				Contains references of objects created by different apps and plugins
  * @prop {boolean} 						booted 			true if the OS has already booted
  * @prop {Object}							booleanOptions 			Cache of initial boot options provided at boot time
+ * @prop {boolean}						_isSsrMode 			Flag to identify if the system is currently running during Server Side Rendering
  */
 export class BlueRain implements BlueRainType {
 
 	Apps = new AppRegistry(this);
-	Components = new ComponentRegistry(this);
+	Components = new ComponentRegistry(this) as IComponentRegistry;
 	Configs = new ConfigRegistry(this);
 	Events = new EventRegistry();
 	Filters = new FilterRegistry(this);
 	Hooks = new HooksRegistry(this);
+	Debug = new DebuggerRegistry(this);
 	Plugins = new PluginRegistry(this);
 	Platform = new PluginRegistry(this);
 
@@ -99,7 +107,7 @@ export class BlueRain implements BlueRainType {
 
 	Utils = {
 
-		parseJsonSchema: (schema: JsonComponentSchema) : React.ReactElement<any> | null => {
+		parseJsonSchema: (schema: JsonComponentSchema): React.ReactElement<any> | null => {
 			console.warn('BR.Utils.parseJsonSchema method has been deprecated, use BR.API.JsonToReact.parse method instead.');
 			return this.API.JsonToReact.parse(schema);
 		},
@@ -109,9 +117,10 @@ export class BlueRain implements BlueRainType {
 			return styles;
 		},
 
-		setMainView: (MainView: React.ComponentType<any>) => {
+		setMainView: (MainView: React.ComponentType<any>): void => {
 			console.log('Trying to set MainView', MainView);
 			throw new Error('setMainView is not implemented by the platform.');
+			// 	return ;
 		}
 	};
 
@@ -121,18 +130,22 @@ export class BlueRain implements BlueRainType {
 	bootOptions: BootOptions = {
 		apps: [],
 		config: {},
+		debuggers: [],
 		platform: [],
 		plugins: [],
 		renderApp: true
 	};
 
-	boot(options?: BootOptions) : React.ComponentType<any> {
+	private _isSsrMode = false;
+
+	boot(options?: BootOptions): React.ComponentType<any> {
 
 		// Extract app, plugins and configs from options
 		this.bootOptions = { ...this.bootOptions, ...options };
 		const {
 			apps = [],
 			config = {},
+			debuggers = [],
 			platform = [],
 			plugins = [],
 			renderApp
@@ -160,6 +173,14 @@ export class BlueRain implements BlueRainType {
 		// Initialize all configs
 		this.Configs.registerMany(defaultConfigs);
 		this.Configs.registerMany(config);
+
+		// =[ System Lifecycle Event ]= Debuggers Registered
+		this.Debug.registerMany(debuggers);
+		this.Filters.run('bluerain.system.debuggers.registered');
+
+		// =[ System Lifecycle Event ]= Plugins Initialized
+		this.Debug.initializeAll();
+		this.Filters.run('bluerain.system.debuggers.initialized');
 
 		// =[ System Lifecycle Event ]= Configurations Loaded
 		this.Filters.run('bluerain.system.configurations.loaded');
@@ -221,6 +242,7 @@ export class BlueRain implements BlueRainType {
 		this.Apps.clear();
 		this.Components.clear();
 		this.Configs.clear();
+		this.Debug.clear();
 		this.Events.removeAllListeners();
 		this.Filters.clear();
 		this.Plugins.clear();
@@ -236,6 +258,27 @@ export class BlueRain implements BlueRainType {
 	reboot(options?: BootOptions) {
 		this.reset();
 		return this.boot(options);
+	}
+
+	/**
+	 * Enables server side rendering mode
+	 */
+	enableSsrMode() {
+		this._isSsrMode = true;
+	}
+
+	/**
+	 * Disables server side rendering mode
+	 */
+	disableSsrMode() {
+		this._isSsrMode = false;
+	}
+
+	/**
+	 * Checks if SSR mode is enabled.
+	 */
+	isSsrMode() {
+		return this._isSsrMode;
 	}
 }
 

@@ -17,11 +17,8 @@ export type FilterRegistryItem = List<FilterRegistryListItem>;
  * filters and their respective functions
  */
 class FilterRegistry extends MapRegistry<FilterRegistryItem> {
-	BR: BlueRain;
-
-	constructor(ctx: BlueRain) {
+	constructor(private BR: BlueRain) {
 		super('FilterRegistry');
-		this.BR = ctx;
 	}
 
 	/**

@@ -7,11 +7,7 @@ export type hookFn = (...args: any[]) => any;
  * All system hooks are stored in this registry
  */
 export default class HookRegistry {
-	BR: BlueRain;
-
-	constructor(ctx: BlueRain) {
-		this.BR = ctx;
-	}
+	constructor(private BR: BlueRain) {}
 
 	/**
 	 * Add a filter function to a hook. If the listener already exists, it will throw an Error.
