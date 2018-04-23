@@ -1,6 +1,6 @@
-import { BlueRain, withBlueRain } from '../../index';
+import { BlueRain, withBlueRain } from '../../../src';
 import React from 'react';
-import storiesOf from '../../../storybook/storiesOf';
+import storiesOf from '@blueeast/bluerain-storybook-addon';
 
 storiesOf('ImageBackground', module)
 	.add('Only title', () => {
@@ -15,7 +15,7 @@ storiesOf('ImageBackground', module)
 			const ImageComponent=() =>
 
 			// tslint:disable-next-line:max-line-length
-			<Image source="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264" style={BR.Utils.createStyleSheet(Style)}/>;
+			<Image source="https://lh3.googleusercontent.com/0-BzaWtxoAnsBjQ_wzUcKxyF07XE7v2Kkg1ogPVUdzmQpvaz118uHQEGU6BdtzJuzfo=h1264" style={Style}/>;
 
 			return <ImageBackground  backgroundColor="green" ><ImageComponent/></ImageBackground>;
 		});

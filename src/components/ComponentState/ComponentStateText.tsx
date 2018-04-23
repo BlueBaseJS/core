@@ -27,7 +27,7 @@ const ComponentStateText = (props: ComponentStateTextProps) => {
 	if (text) {
 
 		return (
-			<BR.Components.Text style={style ? BR.Utils.createStyleSheet(style) : {}} >
+			<BR.Components.Text style={style} >
 				{text}
 			</BR.Components.Text>
 		);

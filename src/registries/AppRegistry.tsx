@@ -12,19 +12,20 @@ const defaultAppRoutePrefix = '/app';
  * @property {Map<string, App>} data  Map(immutablejs) of all apps
  */
 class AppRegistry extends MapRegistry<App> {
-	BR: BlueRain;
 
-	constructor(ctx: BlueRain) {
+	constructor(private BR: BlueRain) {
 		super('AppRegistry');
-		this.BR = ctx;
 	}
 
 	/**
 	 * Register an App
 	 * @param {App} app The BlueRain app to register
 	 */
-	add(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
-		const { key: k, app: a } = getKeyAndItem(key, app);
+	add(app: MaybeEsModule<App>): void;
+	add(key: string, app: MaybeEsModule<App>): void;
+
+	add(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>): void {
+		const { key: k, app: a } = this.getKeyAndItem(key, app);
 
 		a.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 		a.path = `${a.appRoutePrefix}/${a.slug}`;
@@ -36,10 +37,12 @@ class AppRegistry extends MapRegistry<App> {
 	 * Replace an item in the Registry.
 	 *
 	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
+	 * @param {App} app  The app to add
 	 */
+	set(app: MaybeEsModule<App>): void;
+	set(key: string, app: MaybeEsModule<App>): void;
 	set(key: string | MaybeEsModule<App>, app?: MaybeEsModule<App>) {
-		const { key: k, app: a } = getKeyAndItem(key, app);
+		const { key: k, app: a } = this.getKeyAndItem(key, app);
 
 		a.appRoutePrefix = this.BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
 		a.path = `${a.appRoutePrefix}/${a.slug}`;
@@ -53,14 +56,13 @@ class AppRegistry extends MapRegistry<App> {
 	 */
 	registerMany(apps: Array<MaybeEsModule<App>>) {
 		apps = apps || [];
-
 		if (!Array.isArray(apps)) {
 			throw new Error(
 				'Apps parameter while registering via "registerMany" method must be an array'
 			);
 		}
 
-		apps.forEach(app => this.set(app));
+		apps.forEach(app => { this.set(app);});
 	}
 
 	/**
@@ -68,6 +70,7 @@ class AppRegistry extends MapRegistry<App> {
 	 */
 	initializeAll() {
 		this.data.forEach(app => {
+
 			if (!app) {
 				return;
 			}
@@ -76,7 +79,7 @@ class AppRegistry extends MapRegistry<App> {
 			if (app.hooks) {
 				Object.keys(app.hooks).forEach(hook => {
 					// Satisfy TS
-					if (!app || !app.hooks || !app.hooks[hook]) {
+					if (!app.hooks || !app.hooks[hook]) {
 						return;
 					}
 
@@ -88,11 +91,15 @@ class AppRegistry extends MapRegistry<App> {
 			if (app.components) {
 				Object.keys(app.components).forEach(component => {
 					// Satisfy TS
-					if (!app || !app.components || !app.components[component]) {
+					if (!app.components || !app.components[component]) {
 						return;
 					}
 
 					this.BR.Components.set(component, app.components[component]);
+					this.BR.Components.setSource(component, {
+						type: 'app',
+						slug: this.createSlug(app)
+					});
 				});
 			}
 
@@ -135,44 +142,84 @@ class AppRegistry extends MapRegistry<App> {
 
 		return appRoutes;
 	}
+
+	/**
+	 * Returns a React Element of an app's icon
+	 * @param {string} slug The slug of the app with which it is registered
+	 * @param {object} props The props that are passed to the element
+	 *
+	 * @returns {React.ReactElement<any> | null}
+	 */
+	getIconElement(
+		slug: string,
+		props: { size?: number, [key: string]: any } = {}
+	) : React.ReactElement<any> | null {
+
+		const app: App = this.get(slug);
+
+		if (!app) {
+			throw new Error(`There's no app registered with "${name}" key in the registry.`);
+		}
+
+		const icon = (typeof app.icon === 'function') ? app.icon(app, this.BR) : app.icon;
+
+		if (!icon) {
+			return null;
+		}
+
+		const Component = this.BR.Components.get('IconEnhanced');
+		return <Component {...icon} {...props} />;
+	}
+
+	/**
+	 * Returns a plugin slug, or generates one
+	 *
+	 * @param {Plugin} plugin
+	 * @returns {string}
+	 */
+	createSlug(app: App): string {
+		return kebabCase(app.slug ? app.slug : app.appName);
+	}
+
+	/**
+	 * Takes an app, adds necessary fields and returns the processed app with a key
+	 * @param key
+	 * @param app
+	 */
+	private getKeyAndItem (
+		key: string | MaybeEsModule<App>,
+		app?: MaybeEsModule<App>
+	): { key: string; app: App } {
+
+		if (typeof key !== 'string' && !isNil(key)) {
+			app = key as App;
+			key = '';
+		}
+
+		if (isNil(app)) {
+			throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
+		}
+
+		// ES modules
+		app = (app as EsModule<App>).__esModule ? (app as EsModule<App>).default : app;
+
+		// Casting, to remove possiblity of undefined value is TS.
+		app = app as App;
+
+		if (!app.appName) {
+			throw new Error('App name not provided. Please provide "appName" while registering an app');
+		}
+
+		const slug = this.createSlug(app);
+
+		app.slug = slug;
+		// app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
+		// app.path = `${app.appRoutePrefix}/${app.slug}`;
+
+		const strKey = key && typeof key === 'string' ? key : slug;
+
+		return { key: strKey, app };
+	}
 }
 
 export default AppRegistry;
-
-/**
- * Takes an app, adds necessary fields and returns the processed app with a key
- * @param key
- * @param app
- */
-const getKeyAndItem = (
-	key: string | MaybeEsModule<App>,
-	app?: MaybeEsModule<App>
-): { key: string; app: App } => {
-	if (typeof key !== 'string' && !isNil(key)) {
-		app = key as App;
-		key = '';
-	}
-
-	if (isNil(app)) {
-		throw new Error(`App cannot be ${app}.Please provide valid app while registering an app.`);
-	}
-
-	// ES modules
-	app = (app as EsModule<App>).__esModule ? (app as EsModule<App>).default : app;
-
-	// Casting, to remove possiblity of undefined value is TS.
-	app = app as App;
-
-	if (!app.appName) {
-		throw new Error('App name not provided. Please provide "appName" while registering an app');
-	}
-
-	const slug = kebabCase(app.slug ? app.slug : app.appName);
-
-	app.slug = slug;
-	// app.appRoutePrefix = BR.Configs.get('appRoutePrefix') || defaultAppRoutePrefix;
-	// app.path = `${app.appRoutePrefix}/${app.slug}`;
-
-	const strKey = key && typeof key === 'string' ? key : slug;
-	return { key: strKey, app };
-};
