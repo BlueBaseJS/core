@@ -5,4 +5,4 @@
 // tslint:disable-next-line
 require('babel-polyfill');
 // tslint:disable-next-line
-require('proxy-polyfill');
+require('@blueeast/proxy-polyfill');

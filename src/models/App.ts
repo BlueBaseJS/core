@@ -2,37 +2,82 @@ import { BlueRain } from '../index';
 import { hookFn } from '../registries/HooksRegistry';
 import React from 'react';
 
-/**
- * A BlueRain App options interface
- * @property {String}	appName	Name of the app
- * @property {String}	slug	App's slug, used in to build URL
- * @property {String}	category	Category the App belongs to
- * @property {String}	description	App description
- * @property {String}	version	App version
- * @property {String}	appRoutePrefix	Path that will be prepended before slug to build URL.
- * @property {String}	path	Path of the app's home page
- * @property {ReactNode} icon	App's icon component
- * @property {boolean} hidden	If the app should be hidden in launcher listings
- * @property {object} hooks	Hooks object to subscrible all hooks (filters & events)
- * @property {object} components	Components object to register components in the system.
- * 									Internally it uses the `setOrReplace` method of the registry.
- * @property {Function} initialize	Initialize function called during the app initialization phase.
- */
+/** Possible values of AppIcon type field. */
+export type AppIconType = 'component' | 'name' | 'image';
+
+/** Base model of AppIcon */
+export interface AppIconBase {
+	type: AppIconType;
+}
+
+/** AppIcon as a custom component */
+export interface AppIconComponent extends AppIconBase {
+	type: 'component';
+
+	/**
+	 * Either a component or a component name (string).
+	 * In case of string, it will be fetched from Component Registry.
+	 */
+	component: React.ComponentType<any> | string;
+}
+
+/** AppIcon as a BR.Components.Icon component */
+export interface AppIconName extends AppIconBase {
+	type: 'name';
+
+	/** The name prop of the BR.Components.Icon component */
+	name: string;
+}
+
+/** AppIcon as an image */
+export interface AppIconImage extends AppIconBase {
+	type: 'image';
+
+	/** The image source */
+	source: string;
+}
+
+export type AppIcon = AppIconComponent | AppIconImage | AppIconName;
+
+/** A BlueRain App options interface */
 export interface AppOptions {
+	/** Name of the app */
 	appName: string;
+
+	/** App's slug, used in to build URL */
 	slug?: string;
+
+	/** Category the App belongs to */
 	category?: string;
+
+	/** App description */
 	description?: string;
+
+	/** App version */
 	version?: string;
+
+	/** Path that will be prepended before slug to build URL */
 	appRoutePrefix?: string;
+
+	/** Path of the app's home page */
 	path?: string;
 
-	icon?: React.ComponentType<any>;
+	/** App's icon definition */
+	icon?: AppIcon | ((app: App, BR: BlueRain) => AppIcon);
+
+	/** If the app should be hidden in launcher listings */
 	hidden?: boolean;
 
+	/** Hooks object to subscrible all hooks (filters & events) */
 	hooks?: { [id: string]: hookFn };
+
+	/**
+	 * Components object to register components in the system.
+	 * Internally it uses the `setOrReplace` method of the registry.
+	 */
 	components?: { [id: string]: React.ComponentType<any> };
 
+	/** Initialize function called during the app initialization phase. */
 	initialize?(config: {}, ctx: BlueRain): void;
 
 	[key: string]: any;

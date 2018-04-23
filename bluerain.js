@@ -2,13 +2,21 @@
 // for booting bluerain-os. see https://blueeast.gitbooks.io/bluerain-os/
 module.exports = {
 	platform: [
-		require('@blueeast/bluerain-platform-reactxp')
+		require('@blueeast/bluerain-platform-reactxp'),
 	],
 	apps: [
 		// All bluerain apps will also be added in this array
+		// require('./test/apps/Alarm'),
+		// require('./test/apps/Android'),
+		// require('./test/apps/Apps'),
+		// require('./test/apps/LightBulb'),
+		// require('./test/apps/NoIcon'),
+		// require('./test/apps/Sites'),
 	],
 	plugins: [
 		// All bluerain plugins will be added here
+		require('@blueeast/bluerain-plugin-react-router'),
+		require('@blueeast/bluerain-plugin-redux'),
 	],
 	config: {
 		// Configurations for bluerain-os will be added here

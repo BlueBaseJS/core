@@ -5,7 +5,7 @@ import React from 'react';
 export interface ImageBackgroundProperties extends ImageProperties {
 	style?: ViewStyle;
 	imageStyle?: ImageStyle;
-	children?: React.ReactNode[];
+	children?: React.ReactNode;
 	backgroundColor?: string;
 }
 
@@ -38,18 +38,14 @@ const ImageBackground = (props: ImageBackgroundProperties & { bluerain: BlueRain
 	if (props.backgroundColor) {
 		style.backgroundColor = props.backgroundColor;
 	}
-
-	const imageStyleSheet = [
-		BR.Utils.createStyleSheet(imageStyle),
-		BR.Utils.createStyleSheet(props.imageStyle || {})
-	];
+	const imageStyleSheet = [imageStyle, props.imageStyle || {}];
 
 	return (
-		<BR.Components.View style={BR.Utils.createStyleSheet(style)}>
+		<BR.Components.View style={style}>
 			<BR.Components.Image {...others} style={imageStyleSheet} />
 			{children}
 		</BR.Components.View>
 	);
 };
 
-export default withBlueRain(ImageBackground);
+export default withBlueRain(ImageBackground) as React.ComponentType<ImageBackgroundProperties>;

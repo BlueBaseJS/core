@@ -1,7 +1,8 @@
-import { withBlueRain } from '../../index';
-import Icon from '../Icon/Icon';
+import { withBlueRain } from '../../../src';
+import Icon from '../../../src/components/Icon/Icon';
 import React from 'react';
-import storiesOf from '../../../storybook/storiesOf';
+import storiesOf from '@blueeast/bluerain-storybook-addon';
+
 storiesOf('Icon', module)
 	.add('Only title', () => {
 

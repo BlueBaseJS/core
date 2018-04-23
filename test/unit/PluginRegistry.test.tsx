@@ -10,9 +10,26 @@ describe('Plugin registry tests', () => {
 				initialize() {}
 			}
 
-
 			BR.Plugins.add(HelloWorldPlugin);
 			expect(BR.Plugins.data.has('hello-world-plugin')).toEqual(true);
+		});
+
+		it('- test overload Add method with only plugin param', () => {
+			class HelloTestPlugin extends Plugin {
+				static pluginName = 'HelloTestPlugin';
+				initialize() {}
+			}
+
+			BR.Plugins.add(HelloTestPlugin);
+			expect(BR.Plugins.data.has('hello-test-plugin')).toEqual(true);
+		});
+		it('- test overload Add method with key and plugin param', () => {
+			class DummyPlugin extends Plugin {
+				static pluginName = 'DummyPlugin';
+				initialize() {}
+			}
+			BR.Plugins.add('DummyPlugin', DummyPlugin);
+			expect(BR.Plugins.data.has('DummyPlugin')).toEqual(true);
 		});
 
 		it('should throw error b/c name is null', () => {
@@ -20,7 +37,9 @@ describe('Plugin registry tests', () => {
 				static pluginName = 'NewPlugin';
 				initialize() {}
 			}
-			expect(() => BR.Plugins.add(NewPlugin,'dummy')).not.toThrow();
+			// it will not throw error because first param type is not string.
+			// It will be used as plugin. Second param will be ignored in  this case.
+			expect(() => BR.Plugins.add(NewPlugin,'dummy')).not.toThrow(); 
 		});
 		it('slug Create other recognized static properties', () => {
 			const plugin = BR.Plugins.data.get('hello-world-plugin');
@@ -28,6 +47,25 @@ describe('Plugin registry tests', () => {
 			expect(plugin.pluginName).toEqual('HelloWorldPlugin');
 		});
 	});
+	describe('- Set method', () =>  {
+		it('test overload method when only plugin is passed', () =>  {
+			class SetPlugin extends Plugin {
+				static pluginName = 'SetPlugin';
+				initialize() {}
+			}
+
+			BR.Plugins.add(SetPlugin);
+			expect(BR.Plugins.data.has('set-plugin')).toEqual(true);
+		});
+		it('- test overload Add method when key and plugin both are passed', () => {
+			class MockPlugin extends Plugin {
+				static pluginName = 'MockPlugin';
+				initialize() {}
+			}
+			BR.Plugins.add('MockPlugin', MockPlugin);
+			expect(BR.Plugins.data.has('MockPlugin')).toEqual(true);
+		});
+	})
 	// plugin without extending BlueRain's Plugin component
 	describe('register plugin without extending BlueRain Plugin component', () => {
 		it('With pluginName, Plugin should be created', () => {
@@ -47,7 +85,7 @@ describe('Plugin registry tests', () => {
 				'Plugin name not provided.'
 			);
 		});
-		it('slug should be abc-plugin', () => {
+		it('slug should be with-slug', () => {
 			class HelloPlugin {
 				static pluginName = 'WithSlugPlugin';
 				static slug = 'with-slug';
@@ -106,8 +144,8 @@ describe('Plugin registry tests', () => {
 		it('should throw error b/c plugin is string', () => {
 			expect(() => BR.Plugins.registerMany('string')).toThrow();
 		});
-		it('should throw error b/c plugin is empty', () => {
-			BR.Plugins.registerMany();
+		it('should not throw error when empty array of plugins is passed to registerMany method', () => {
+			BR.Plugins.registerMany([]);
 			expect(BR.Plugins.data.size).toEqual(2);
 		});
 		it('should throw error b/c errornous plugins', () => {
@@ -123,7 +161,6 @@ describe('Plugin registry tests', () => {
 			).toThrow('No plugin provided');
 		});
 		it('should have hello world plugin', () => {
-			BR.Plugins.PluginsTable = {};
 			class HelloPlugin extends Plugin {
 				static pluginName = 'WithSlugPlugin';
 				static slug = 'with-slug-2';
@@ -144,19 +181,17 @@ describe('Plugin registry tests', () => {
 
 			class HelloReactplugin extends Plugin {
 
-			static hooks=[
-				'bluerain.system.dummy'
-			];
-
-			// static default=[DefaultPlugin];
-
-			   static components=['New'];
+				static hooks=[
+					'bluerain.system.dummy'
+				];
+				static components=['New'];
 				static pluginName = 'Hello React World';
+				static slug = 'Hello React World';
 				render() {
 					return <div>hello world</div>;
 				}
 				static initialize(config) {
-					BR.Filters.set('plugin.test.initialize.hook', function abc() {
+					BR.Filters.set('plugin.test.initialize.hook', 'plugin.test.initialize.hook', function abc() {
 						return config + 34;
 					});
 				}
