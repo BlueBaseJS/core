@@ -1,18 +1,30 @@
 import BR, { BlueRain } from './index';
-import createReactContext, { Context } from 'create-react-context';
+import { getContext, withContext } from 'recompose';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-const BlueRainContext: Context<BlueRain> = createReactContext(BR);
+export interface ProviderProperties {
+	bluerain: BlueRain;
+}
 
-export const BlueRainConsumer = BlueRainContext.Consumer;
-BlueRainConsumer.displayName = 'BlueRainConsumer';
+const BlueRainProvider = withContext(
+    { bluerain: PropTypes.object },
+    (props: ProviderProperties) => ({
+	bluerain: props.bluerain || BR
+})
+)(props => React.Children.only(props.children)) as React.ComponentType<any>;
 
-export const BlueRainProvider = ({ value = BR, children }: { value?: BlueRain, children: React.ReactNode }) => (
-	<BlueRainContext.Provider value={value} children={children} />
-);
+const withBlueRain = (Component: React.ComponentType<any>) =>
+    getContext({ bluerain: PropTypes.object })(Component) as React.ComponentType<any>;
 
-export const withBlueRain = (Component: React.ComponentType<any>) => (props: any) => (
-	<BlueRainConsumer>
-		{(_BR: BlueRain) => (<Component bluerain={_BR} {...props} />)}
-	</BlueRainConsumer>
-);
+//////// Consumer with children as a func (render prop) pattern
+const RenderComp = ({
+    children,
+    bluerain
+}: {
+	children: (...args: any[]) => React.ReactElement<any>;
+	bluerain: BlueRain;
+}) => children(bluerain);
+const BlueRainConsumer = withBlueRain(RenderComp);
+
+export { BlueRainProvider, withBlueRain, BlueRainConsumer };
