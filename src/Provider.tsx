@@ -17,7 +17,7 @@ const BlueRainProvider = withContext(
 const withBlueRain = (Component: React.ComponentType<any>) =>
     getContext({ bluerain: PropTypes.object })(Component) as React.ComponentType<any>;
 
-//////// Consumer with children as a func (render prop) pattern
+////// Consumer with children as a func (render prop) pattern
 const RenderComp = ({
     children,
     bluerain
