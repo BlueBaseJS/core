@@ -44,3 +44,13 @@ React Router (v4) | [React Router V4](https://github.com/ReactTraining/react-rou
 Redux | Predictable state container for JavaScript apps. Based on [Redux](http://redux.js.org/) & [React Redux](https://github.com/reactjs/react-redux).
 Redux DevTools | [DevTools](https://github.com/gaearon/redux-devtools) for Redux with hot reloading, action replay, and customizable UI.  | Redux
 Sentry (Coming Soon) | [Sentry](https://sentry.io/) is a cross-platform crash reporting and aggregation platform. 
+
+## Badge
+
+Let people know that your app is build using **bluerain-os** by including this badge in your readme.
+
+[![bluerain-os](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/blueeastcode/bluerain-os)
+
+```md
+[![bluerain-os](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/blueeastcode/bluerain-os)
+```
