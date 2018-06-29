@@ -1,11 +1,11 @@
 
-> ⚠️ This is a work in progress and the API is not stable. May not be fit for use in production.
+> ⚠️ This is a work in progress and the API is not stable. May not be fit for use in production. 
 
 # BlueRain OS
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/BlueEastCode/bluerain-os.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/BlueEastCode/bluerain-os.svg)](https://greenkeeper.io/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/BlueEastCode/bluerain-os/blob/master/CONTRIBUTING.md)
 
-A modular, pluggable and cross-platform app framework. It is built on top of [ReactXP](https://microsoft.github.io/reactxp/) (which utilizes [ReactDOM](https://facebook.github.io/react/docs/react-dom.html) for web and [React Native](https://facebook.github.io/react-native/) for mobile) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/BlueEastCode/bluerain-os/blob/master/CONTRIBUTING.md).
+A modular, pluggable and cross-platform app framework. It is built on top of [ReactXP](https://microsoft.github.io/reactxp/) (which utilizes [ReactDOM](https://facebook.github.io/react/docs/react-dom.html) for web and [React Native](https://facebook.github.io/react-native/) for mobile).
 
 ## 🎊 Status
 
