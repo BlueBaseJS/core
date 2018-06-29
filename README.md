@@ -5,7 +5,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/BlueEastCode/bluerain-os.svg)](https://greenkeeper.io/)
 
-A modular, pluggable and cross-platform app framework. It is built on top of [ReactXP](https://microsoft.github.io/reactxp/) (which utilizes [ReactDOM](https://facebook.github.io/react/docs/react-dom.html) for web and [React Native](https://facebook.github.io/react-native/) for mobile) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/BlueEastCode/bluerain-os/compare).
+A modular, pluggable and cross-platform app framework. It is built on top of [ReactXP](https://microsoft.github.io/reactxp/) (which utilizes [ReactDOM](https://facebook.github.io/react/docs/react-dom.html) for web and [React Native](https://facebook.github.io/react-native/) for mobile) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/BlueEastCode/bluerain-os/blob/master/CONTRIBUTING.md).
 
 ## 🎊 Status
 
