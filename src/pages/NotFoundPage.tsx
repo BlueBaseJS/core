@@ -1,11 +1,11 @@
 import { BlueRain, withBlueRain } from '../index';
-import Icon from '../components/Icon';
+// import Icon from '../components/Icon';
 import React from 'react';
 
 // Components
 
 // Custom Components
-const FOFIcon = () => <Icon title="404" />;
+// const FOFIcon = () => <Icon title="404" />;
 
 /**
  * Returns the 404 Page.
@@ -13,19 +13,18 @@ const FOFIcon = () => <Icon title="404" />;
  * @returns {React.Component} The layout react component
  */
 const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
-	console.log('saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-	return(
-	<BR.Components.Wallpaper style={{ height:100+'vh' }}>
+	return (
 		<BR.Components.Page >
-			<BR.Components.CenterLayout style={{ padding: 20 }}>
+			<BR.Components.CenterLayout style={{ padding: 174 }}>
 				<BR.Components.ComponentState
-					title="Page not found!"
-					description="This is a bit embarassing, but we seem to have misplaced your page. 😢"
-					image={FOFIcon}
+					title="Oooop's!"
+					description="Things you are looking for aren't here!"
+					imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
+				// 	image={FOFIcon}
 				/>
 			</BR.Components.CenterLayout>
 		</BR.Components.Page>
-	</BR.Components.Wallpaper>);
+	);
 };
 
 export default withBlueRain(NotFoundPage);
