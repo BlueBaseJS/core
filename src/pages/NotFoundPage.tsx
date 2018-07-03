@@ -17,9 +17,9 @@ const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
 		<BR.Components.Page >
 			<BR.Components.CenterLayout style={{ padding: 174 }}>
 				<BR.Components.ComponentState
-					title="Oooop's!"
-					description="Things you are looking for aren't here!"
-					imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
+				 	title="Oooop's!"
+				 	description="Things you are looking for aren't here!"
+					 imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
 				// 	image={FOFIcon}
 				/>
 			</BR.Components.CenterLayout>
