@@ -17,10 +17,11 @@ const descriptionStyle = {
 };
 const ButtonStyle = {
 	backgroundColor: '#5c6ac4',
-	color:'#fff'
+	color: '#fff'
 
 };
 const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
+
 	const buttonOnPress = () => {
 		const route: any = BR.refs ? BR.refs : {};
 		if (route) {
@@ -30,7 +31,7 @@ const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
 	};
 	return (
 		<BR.Components.Page >
-			<BR.Components.CenterLayout style={{ padding: 174 }}>
+			<BR.Components.CenterLayout style={{ height:100 +'vh' }}>
 				<BR.Components.ComponentState
 					title="Oooop's!"
 					description="Things you are looking for aren't here!"
@@ -39,10 +40,7 @@ const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
 					descriptionStyle={descriptionStyle}
 					buttonTitle="goBack"
 					buttonStyle={ButtonStyle}
-
 				/>
-
-
 			</BR.Components.CenterLayout>
 		</BR.Components.Page>
 	);
