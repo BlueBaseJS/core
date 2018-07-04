@@ -15,7 +15,19 @@ import React from 'react';
 const descriptionStyle = {
 	marginTop: 10
 };
+const ButtonStyle = {
+	backgroundColor: '#5c6ac4',
+	color:'#fff'
+
+};
 const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
+	const buttonOnPress = () => {
+		const route: any = BR.refs ? BR.refs : {};
+		if (route) {
+			return route.router.history.goBack();
+
+		} else { return null; }
+	};
 	return (
 		<BR.Components.Page >
 			<BR.Components.CenterLayout style={{ padding: 174 }}>
@@ -23,9 +35,14 @@ const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
 					title="Oooop's!"
 					description="Things you are looking for aren't here!"
 					imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
-					// 	image={FOFIcon}
+					buttonOnPress={buttonOnPress}
 					descriptionStyle={descriptionStyle}
+					buttonTitle="goBack"
+					buttonStyle={ButtonStyle}
+
 				/>
+
+
 			</BR.Components.CenterLayout>
 		</BR.Components.Page>
 	);
