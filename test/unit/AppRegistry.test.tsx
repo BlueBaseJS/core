@@ -8,6 +8,7 @@ describe('AppRegistry Unit tests', () => {
 	let appRegistry;
 	beforeAll(() => {
 		appRegistry = new AppRegistry(BR);
+
 	});
 	class HelloWorldApp  {
 		static appName = HelloWorldApp;
@@ -22,6 +23,14 @@ describe('AppRegistry Unit tests', () => {
 			expect(() => {
 				appRegistry.set('APP', () => 'APP');
 			}).toThrowError();
+		});
+
+		it('should throw an error on setting an App into app registry without appName', () => {
+			expect(() => {
+				const Components:any=() => '';
+				BR.Components.add('IconEnhanced',Components) ;
+
+			}).toBeDefined();
 		});
 		it('should successfully set an App into app registry', () => {
 			appRegistry.set('HelloWorldApp', HelloWorldApp);

@@ -21,6 +21,7 @@ import ErrorState from '../../src/components/StatefulComponent/ErrorState';
 import Icon from '../../src/components/Icon/Icon';
 import ImageBackground from '../../src/components/ImageBackground/ImageBackground';
 import IndexPage from '../../src/pages/IndexPage';
+import IconEnhanced  from  '../../src/components/IconEnhanced/IconEnhanced';
 import LoadingState from '../../src/components/StatefulComponent/LoadingState';
 import NotFoundPage from '../../src/pages/NotFoundPage';
 import Page from '../../src/components/Page/Page';
@@ -60,22 +61,33 @@ describe('Component Registry test specifications', () => {
 		BR.Components.add('Route',() => 'Route');
 		BR.Components.add('ActivityIndicator',() => 'ActivityIndicator');
 		BR.Components.add('CenterLayout',() => 'CenterLayout');
+		BR.Components.add('IconEnhanced',IconEnhanced);
+
 		// tslint:disable-next-line:max-line-length
     	const wrapper=mount(<BlueRainProvider><Component image="" imageSource="https://www.gifs.com"   buttonTitle="App"/></BlueRainProvider>);
 		expect(wrapper.find('Component')).toBeDefined();
 
 	});
 
-	    });
+});
+
+
 it('should return component CompentStateButton ', () => {
 	const wrapper=mount(<BlueRainProvider><CompentStateButton buttonTitle="Button"  /></BlueRainProvider>);
+	expect(wrapper.find('CompentStateButton')).toBeDefined();
+});
+
+it('should return component CompentStateButton ', () => {
+	const wrapper=mount(<BlueRainProvider><IconEnhanced   type="component" /></BlueRainProvider>);
 	expect(wrapper.find('CompentStateButton')).toBeDefined();
 });
 
 it('should return component ErrorPage ', () => {
 
 	const wrapper=mount(<BlueRainProvider><ErrorPage   /></BlueRainProvider>);
-	 expect(wrapper.find('ErrorPage')).toBeDefined();
+
+	wrapper.simulate('click');
+	expect(wrapper.find('ErrorPage')).toBeDefined();
 });
 
 
@@ -131,6 +143,11 @@ it('should return component Erorr State ', () => {
 		const wrapper=mount(<BlueRainProvider><CompentStateButton  /></BlueRainProvider>);
 	 expect(wrapper.find('CompentStateButton')).toBeDefined();
 	});
+
+it('should return component CompentStateButton with title ', () => {
+	const wrapper=mount(<BlueRainProvider><CompentStateButton  /></BlueRainProvider>);
+	 expect(wrapper.find('CompentStateButton')).toBeDefined();
+});
 
 	  it('should return component ComponentStatImage ', () => {
 		const wrapper=mount(<BlueRainProvider><ComponeStateImage/></BlueRainProvider>);
