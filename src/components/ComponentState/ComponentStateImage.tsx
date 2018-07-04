@@ -48,8 +48,8 @@ const ComponentStateImage = (props: ComponentStateImageProps) => {
   <BR.Components.View style={stylesheet}>
 		<ImageC
 			style={{
-				width: 150,
-				height: 150,
+				width: 327,
+				height: 250,
 				...imageStyle
 			}}
 			source={imageSource}

@@ -64,7 +64,6 @@ class AppRegistry extends MapRegistry<App> {
 
 		apps.forEach(app => { this.set(app);});
 	}
-
 	/**
 	 * Initialize all the registered apps
 	 */
