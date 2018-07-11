@@ -94,11 +94,13 @@
 		"collectCoverage": true,
 		"mapCoverage": true
 	},
-	"size-limit": [{
-		"limit": "4.8 KB",
-		"webpack": false,
-		"path": "dist/*.js"
-	}],
+	"size-limit": [
+		{
+			"limit": "4.8 KB",
+			"webpack": false,
+			"path": "dist/*.js"
+		}
+	],
 	"dependencies": {
 		"@blueeast/proxy-polyfill": "^0.1.9",
 		"create-react-context": "^0.2.1",
