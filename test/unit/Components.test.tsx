@@ -1,11 +1,11 @@
-import BR,{ BlueRainProvider } from '../../src/index';
-import { configure, mount,render,shallow  } from 'enzyme';
+import BR, { BlueRainProvider } from '../../src/index';
+import { configure, mount, render, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import CenterLayout from '../../src/layouts/CenterLayout';
 import CompentStateButton from '../../src/components/ComponentState/ComponentStateButton';
 import ComponeStateImage from '../../src/components/ComponentState/ComponentStateImage';
 import ComponentStateText from '../../src/components/ComponentState/ComponentStateText';
-import SystemAp,{} from '../../src/components/SystemApp/SystemApp';
+import SystemAp, { } from '../../src/components/SystemApp/SystemApp';
 import SystemContent from '../../src/components/SystemContent/SystemContent';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -21,7 +21,7 @@ import ErrorState from '../../src/components/StatefulComponent/ErrorState';
 import Icon from '../../src/components/Icon/Icon';
 import ImageBackground from '../../src/components/ImageBackground/ImageBackground';
 import IndexPage from '../../src/pages/IndexPage';
-import IconEnhanced  from  '../../src/components/IconEnhanced/IconEnhanced';
+import IconEnhanced from '../../src/components/IconEnhanced/IconEnhanced';
 import LoadingState from '../../src/components/StatefulComponent/LoadingState';
 import NotFoundPage from '../../src/pages/NotFoundPage';
 import Page from '../../src/components/Page/Page';
@@ -42,29 +42,30 @@ beforeAll(() => {
 
 describe('Component Registry test specifications', () => {
 	it('should return conditional  component State ', () => {
-		BR.Components.add('ErrorState',() => 'ErrorState');
-		BR.Components.add('EmptyState',() => 'EmptyState');
+		BR.Components.add('ErrorState', () => 'ErrorState');
+		BR.Components.add('EmptyState', () => 'EmptyState');
 
-		BR.Components.add('LoadingState',() => 'LoadingState');
-		BR.Components.add('Image',() => 'Image');
+		BR.Components.add('LoadingState', () => 'LoadingState');
+		BR.Components.add('Image', () => 'Image');
 		BR.Components.add('ImageBackground', ImageBackground);
-	    BR.Components.add('Button',() => 'Button');
-	    BR.Components.add('View',() => 'View');
-		BR.Components.add('Text',() => 'Text');
-		BR.Components.add('Page',() => 'Page');
-		BR.Components.add('Wallpaper',() => 'Wallpaper');
-		BR.Components.add('ComponentState',() => 'ComponentState');
-		BR.Components.add('IndexPage',() => 'IndexPage');
-		BR.Components.add('NotFoundPage',() => 'NotFoundPage');
-		BR.Components.add('SystemLayout',() => 'SystemLayout');
-		BR.Components.add('RouterSwitch',() => 'RouterSwitch');
-		BR.Components.add('Route',() => 'Route');
-		BR.Components.add('ActivityIndicator',() => 'ActivityIndicator');
-		BR.Components.add('CenterLayout',() => 'CenterLayout');
-		BR.Components.add('IconEnhanced',IconEnhanced);
+		BR.Components.add('Button', () => 'Button');
+		BR.Components.add('View', () => 'View');
+		BR.Components.add('Text', () => 'Text');
+		BR.Components.add('Page', () => 'Page');
+		BR.Components.add('Wallpaper', () => 'Wallpaper');
+		BR.Components.add('ComponentState', () => 'ComponentState');
+		BR.Components.add('IndexPage', () => 'IndexPage');
+		BR.Components.add('SystemNavSupplier', () => 'SystemNavSupplier');
+		BR.Components.add('NotFoundPage', NotFoundPage);
+		BR.Components.add('SystemLayout', () => 'SystemLayout');
+		BR.Components.add('RouterSwitch', () => 'RouterSwitch');
+		BR.Components.add('Route', () => 'Route');
+		BR.Components.add('ActivityIndicator', () => 'ActivityIndicator');
+		BR.Components.add('CenterLayout', () => 'CenterLayout');
+		BR.Components.add('IconEnhanced', IconEnhanced);
 
 		// tslint:disable-next-line:max-line-length
-    	const wrapper=mount(<BlueRainProvider><Component image="" imageSource="https://www.gifs.com"   buttonTitle="App"/></BlueRainProvider>);
+		const wrapper = mount(<BlueRainProvider><Component image="" imageSource="https://www.gifs.com" buttonTitle="App" /></BlueRainProvider>);
 		expect(wrapper.find('Component')).toBeDefined();
 
 	});
@@ -73,18 +74,18 @@ describe('Component Registry test specifications', () => {
 
 
 it('should return component CompentStateButton ', () => {
-	const wrapper=mount(<BlueRainProvider><CompentStateButton buttonTitle="Button"  /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><CompentStateButton buttonTitle="Button" /></BlueRainProvider>);
 	expect(wrapper.find('CompentStateButton')).toBeDefined();
 });
 
 it('should return component CompentStateButton ', () => {
-	const wrapper=mount(<BlueRainProvider><IconEnhanced   type="component" /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><IconEnhanced type="component" /></BlueRainProvider>);
 	expect(wrapper.find('CompentStateButton')).toBeDefined();
 });
 
 it('should return component ErrorPage ', () => {
 
-	const wrapper=mount(<BlueRainProvider><ErrorPage   /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><ErrorPage /></BlueRainProvider>);
 
 	wrapper.simulate('click');
 	expect(wrapper.find('ErrorPage')).toBeDefined();
@@ -98,188 +99,194 @@ it('disable SSR-Mode', () => {
 
 it('Enable SSR-Mode', () => {
 	BR.enableSsrMode();
- 	 expect(BR._isSsrMode).toBe(true);
+	expect(BR._isSsrMode).toBe(true);
 });
 
 it('It should  CreateApp ', () => {
-	const AppComponent=() => 'Component';
-	const options ={ appName:'BluerainApp' };
-	 expect(App(AppComponent,options)).toBeDefined();
+	const AppComponent = () => 'Component';
+	const options = { appName: 'BluerainApp' };
+	expect(App(AppComponent, options)).toBeDefined();
 });
 it('should return Icon  Component', () => {
-	const wrapper=mount(<BlueRainProvider><Icon/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><Icon /></BlueRainProvider>);
 	expect(wrapper.find('Icon')).toBeDefined();
 });
 
 it('should return component CenterLayout', () => {
-	const wrapper=mount(<BlueRainProvider><CenterLayout  /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><CenterLayout /></BlueRainProvider>);
 	expect(wrapper.find('CenterLayout')).toBeDefined();
 });
 it('should return component StatefulComponent ', () => {
-	const wrapper=mount(<BlueRainProvider>
+	const wrapper = mount(<BlueRainProvider>
 		<StatefulComponent>
-		{() => {
-			throw new Error('Boom!');
-		}}
+			{() => {
+				throw new Error('Boom!');
+			}}
 		</StatefulComponent>
 
-		</BlueRainProvider>);
+	</BlueRainProvider>);
 	expect(wrapper.find('StatefulComponent')).toBeDefined();
 });
 it('should return component EmptyState ', () => {
-	const wrapper=mount(<BlueRainProvider><EmptyState  /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><EmptyState /></BlueRainProvider>);
 	expect(wrapper.find('EmptyState')).toBeDefined();
 });
 it('should return component Loading State ', () => {
-	const wrapper=mount(<BlueRainProvider><LoadingState  /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><LoadingState /></BlueRainProvider>);
 	expect(wrapper.find('LoadingState')).toBeDefined();
 });
 
 it('should return component Erorr State ', () => {
-	const wrapper=mount(<BlueRainProvider><ErrorState  /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><ErrorState /></BlueRainProvider>);
 	expect(wrapper.find('ErrorState')).toBeDefined();
 });
-	  it('should return component CompentStateButton with title ', () => {
-		const wrapper=mount(<BlueRainProvider><CompentStateButton  /></BlueRainProvider>);
-	 expect(wrapper.find('CompentStateButton')).toBeDefined();
-	});
-
-it('should return component CompentStateButton with title ', () => {
-	const wrapper=mount(<BlueRainProvider><CompentStateButton  /></BlueRainProvider>);
-	 expect(wrapper.find('CompentStateButton')).toBeDefined();
+it('should return component CompentStaIndexPageteButton with title ', () => {
+	const wrapper = mount(<BlueRainProvider><CompentStateButton /></BlueRainProvider>);
+	expect(wrapper.find('CompentStateButton')).toBeDefined();
 });
 
-	  it('should return component ComponentStatImage ', () => {
-		const wrapper=mount(<BlueRainProvider><ComponeStateImage/></BlueRainProvider>);
-	 expect(wrapper.find('ComponeStateImage')).toBeDefined();
-	});
+it('should return component CompentStateButton with title ', () => {
+	const wrapper = mount(<BlueRainProvider><CompentStateButton /></BlueRainProvider>);
+	expect(wrapper.find('CompentStateButton')).toBeDefined();
+});
+
+it('should return component ComponentStatImage ', () => {
+	const wrapper = mount(<BlueRainProvider><ComponeStateImage /></BlueRainProvider>);
+	expect(wrapper.find('ComponeStateImage')).toBeDefined();
+});
 
 it('should return component ComponentStatImage with source prop ', () => {
-	const wrapper=mount(<BlueRainProvider><ComponeStateImage  imageSource="https://www.gifs.com" /></BlueRainProvider>);
-	 expect(wrapper.find('ComponeStateImage')).toBeDefined();
+	const wrapper = mount(<BlueRainProvider><ComponeStateImage imageSource="https://www.gifs.com" /></BlueRainProvider>);
+	expect(wrapper.find('ComponeStateImage')).toBeDefined();
 });
 
 it('should return component ComponentStateText ', () => {
-	const wrapper=mount(<BlueRainProvider><ComponentStateText  /></BlueRainProvider>);
-	 expect(wrapper.find('ComponentStateText')).toBeDefined();
+	const wrapper = mount(<BlueRainProvider><ComponentStateText /></BlueRainProvider>);
+	expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 
 it('should return component ComponentStateText  with text prop', () => {
-	const wrapper=mount(<BlueRainProvider><ComponentStateText text="title"  /></BlueRainProvider>);
-	 expect(wrapper.find('ComponentStateText')).toBeDefined();
+	const wrapper = mount(<BlueRainProvider><ComponentStateText text="title" /></BlueRainProvider>);
+	expect(wrapper.find('ComponentStateText')).toBeDefined();
 });
 
 it('should return component ComponentState ', () => {
-	const wrapper=mount(<BlueRainProvider><ComponentState/></BlueRainProvider>);
-	 expect(wrapper.find('ComponentState')).toBeDefined();
+	const wrapper = mount(<BlueRainProvider><ComponentState /></BlueRainProvider>);
+	expect(wrapper.find('ComponentState')).toBeDefined();
 });
 
 
 
 it('should return component default  State ', () => {
-		 // tslint:disable-next-line:max-line-length
-	 const wrapper=mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
-	  expect(wrapper.find('Component')).toBeDefined();
-	 });
+	// tslint:disable-next-line:max-line-length
+	const wrapper = mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
+	expect(wrapper.find('Component')).toBeDefined();
+});
 
-	  it('should return component default  State ', () => {
-       	// tslint:disable-next-line:max-line-length
-       	const wrapper=mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
-		expect(wrapper.find('Component')).toBeDefined();
-	   });
+it('should return component default  State ', () => {
+	// tslint:disable-next-line:max-line-length
+	const wrapper = mount(<BlueRainProvider><Component title="component" description="App of Components" /></BlueRainProvider>);
+	expect(wrapper.find('Component')).toBeDefined();
+});
 
 
 
 it('should return ImageBackground Component', () => {
 
-	const wrapper=mount(<BlueRainProvider><ImageBackground/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><ImageBackground /></BlueRainProvider>);
 	expect(wrapper.find('ImageBackground')).toBeDefined();
 });
 
 it('should return ImageBackground Component with backgroundColor prop', () => {
 
-	const wrapper=mount(<BlueRainProvider><ImageBackground  backgroundColor="red"/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><ImageBackground backgroundColor="red" /></BlueRainProvider>);
 	expect(wrapper.find('ImageBackground')).toBeDefined();
 });
 it('should return Page Component', () => {
 
-	const wrapper=mount(<BlueRainProvider><Page/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><Page /></BlueRainProvider>);
 	expect(wrapper.find('Page')).toBeDefined();
 });
 
 it('should return SystemLayout Component', () => {
 
-	const wrapper=mount(<BlueRainProvider><SystemLayout/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><SystemLayout /></BlueRainProvider>);
 	expect(wrapper.find('SystemLayout')).toBeDefined();
 });
 
 
 it('should return Wallpaper Component', () => {
 
-	const wrapper=mount(<BlueRainProvider><Wallpaper /></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><Wallpaper /></BlueRainProvider>);
 	expect(wrapper.find('Wallpaper')).toBeDefined();
 });
 
 
 it('should return IndexPage Component', () => {
 
-	const wrapper=mount(<BlueRainProvider><IndexPage/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><IndexPage /></BlueRainProvider>);
 	expect(wrapper.find('IndexPage')).toBeDefined();
 });
-it('should return NotFoundPage Component', () => {
 
-	const wrapper=mount(<BlueRainProvider><NotFoundPage/></BlueRainProvider>);
-	expect(wrapper.find('NotFoundPage')).toBeDefined();
+it('should return NotFoundPage Component', () => {
+	const wrapper = mount(<BlueRainProvider><NotFoundPage /></BlueRainProvider>);
+	expect(wrapper.find(NotFoundPage)).toBeDefined();
 });
 
 it('should return SystemApp Component', () => {
 
-	const wrapper=mount(<BlueRainProvider><SystemApp/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><SystemApp /></BlueRainProvider>);
 	expect(wrapper.find('SystemApp')).toBeDefined();
+});
+
+it('should return LoadingPage Component', () => {
+
+	const wrapper = mount(<BlueRainProvider><LoadingPage /></BlueRainProvider>);
+	expect(wrapper.find('LoadingPage')).toBeDefined();
 });
 
 it('should return SystemAp Component', () => {
 
-	const RouterSwitch=() => 'RouterSwitch';
-	const ReactRouterConfig={
+	const RouterSwitch = () => 'RouterSwitch';
+	const ReactRouterConfig = {
 		androidBackButton: true,
 		deepLinking: true,
-		forceMemoryHistory:false,
+		forceMemoryHistory: false,
 		historyConfigs: {},
 	};
-	BR.Configs.set('plugins.router',ReactRouterConfig);
+	BR.Configs.set('plugins.router', ReactRouterConfig);
 
-	BR.boot({ platform:[Platform],renderApp:false });
+	BR.boot({ platform: [Platform], renderApp: false });
 
-	BR.Components.replace('RouterSwitch',RouterSwitch);
+	BR.Components.replace('RouterSwitch', RouterSwitch);
 
 	const mockStore = configureMockStore(
-        []
-    );
+		[]
+	);
 	const mockStoreInitialized = mockStore({
 		bluerain: {
-			intl:{
-				locale:'en'
+			intl: {
+				locale: 'en'
 			}
 		}
 	});
 
-	const options=[];
-        // tslint:disable-next-line:max-line-length
+	const options = [];
+	// tslint:disable-next-line:max-line-length
 
-	const wrapper=mount(<BlueRainProvider><Provider store={mockStoreInitialized}><SystemAp/></BlueRainProvider></Provider>);
+	const wrapper = mount(<BlueRainProvider><Provider store={mockStoreInitialized}><SystemAp /></BlueRainProvider></Provider>);
 	expect(wrapper.find('SystemAp')).toBeDefined();
 
 });
 
 it('should return SystemContent Component', () => {
-	const wrapper=mount(<BlueRainProvider><SystemContent/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><SystemContent /></BlueRainProvider>);
 	expect(wrapper.find('SystemContent')).toBeDefined();
 });
 
 
 it('should return Icon  Component', () => {
-	const wrapper=mount(<BlueRainProvider><Icon/></BlueRainProvider>);
+	const wrapper = mount(<BlueRainProvider><Icon /></BlueRainProvider>);
 	expect(wrapper.find('SystemContent')).toBeDefined();
 });
 
