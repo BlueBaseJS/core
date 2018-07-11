@@ -1,5 +1,4 @@
-import { BlueRain, withBlueRain } from '../index';
-// import Icon from '../components/Icon';
+import { BlueRain, BlueRainConsumer } from '../index';
 import React from 'react';
 
 // Components
@@ -20,30 +19,50 @@ const ButtonStyle = {
 	color: '#fff'
 
 };
-const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
-
-	const buttonOnPress = () => {
-		const route: any = BR.refs ? BR.refs : {};
-		if (route) {
-			return route.router.history.goBack();
-
-		} else { return null; }
-	};
+export class NotFoundPage extends React.Component<{ systemNavActions: any, systemNav: any, BR: BlueRain }, null> {
+	componentWillMount() {
+		if (!this.props.systemNav.disabled) {
+			this.props.systemNavActions.disable();
+		}
+	}
+	componentWillUnmount() {
+		if (this.props.systemNav.disabled) {
+			this.props.systemNavActions.enable();
+		}
+	}
+	render() {
+		const { BR } = this.props;
+		const buttonOnPress = () => {
+			const route: any = BR.refs ? BR.refs : {};
+			if (route) {
+				return route.router.history.goBack();
+			} else { return null; }
+		};
+		return (
+			<BR.Components.Page >
+				<BR.Components.CenterLayout style={{ height: 100 + 'vh' }}>
+					<BR.Components.ComponentState
+						title="Oooop's!"
+						description="Things you are looking for aren't here!"
+						imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
+						buttonOnPress={buttonOnPress}
+						descriptionStyle={descriptionStyle}
+						buttonTitle="go Back"
+						buttonStyle={ButtonStyle}
+					/>
+				</BR.Components.CenterLayout>
+			</BR.Components.Page >
+		);
+	}
+}
+const NotFoundPageWithSystemNav = (props: any) => {
 	return (
-		<BR.Components.Page >
-			<BR.Components.CenterLayout style={{ height:100 +'vh' }}>
-				<BR.Components.ComponentState
-					title="Oooop's!"
-					description="Things you are looking for aren't here!"
-					imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
-					buttonOnPress={buttonOnPress}
-					descriptionStyle={descriptionStyle}
-					buttonTitle="goBack"
-					buttonStyle={ButtonStyle}
-				/>
-			</BR.Components.CenterLayout>
-		</BR.Components.Page>
+		<BlueRainConsumer>
+			{(BR: BlueRain) => (
+				<BR.Components.SystemNavSupplier Component={NotFoundPage} otherProps={{ ...props, BR }} />
+			)}
+		</BlueRainConsumer>
 	);
 };
 
-export default withBlueRain(NotFoundPage);
+export default NotFoundPageWithSystemNav;
