@@ -16,8 +16,7 @@ module.exports = {
 	plugins: [
 		// All bluerain plugins will be added here
 		require('@blueeast/bluerain-plugin-react-router'),
-		require('@blueeast/bluerain-plugin-redux'),
-		require('@blueeast/bluerain-plugin-taskbar')
+		require('@blueeast/bluerain-plugin-redux')
 
 	],
 	config: {
