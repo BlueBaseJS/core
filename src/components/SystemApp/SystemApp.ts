@@ -6,7 +6,6 @@ import moize from 'moize';
  * Shows system content
  */
 const SystemApp = ({ bluerain: BR, ...others }: { bluerain: BlueRain }) => {
-	console.log('SystemApp             in OS');
 	let routes: JsonComponentSchema = {
 		component: 'SystemLayout',
 		props: others,

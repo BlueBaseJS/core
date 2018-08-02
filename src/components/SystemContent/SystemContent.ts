@@ -7,7 +7,6 @@ import moize from 'moize';
  */
 const SystemContent = ({ bluerain: BR }: { bluerain: BlueRain }) => {
 	const appRoutes = BR.Apps.getAllRoutes();
-	console.log('SystemContent             in OS');
 	// Default Routes
 	let systemRoutes: JsonComponentSchema[] = [
 		{
