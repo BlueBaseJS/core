@@ -103,6 +103,7 @@
 		}
 	],
 	"dependencies": {
+		"@blueeast/bluerain-ui-interfaces": "^3.2.12",
 		"@blueeast/proxy-polyfill": "^0.1.9",
 		"create-react-context": "^0.2.1",
 		"deepmerge": "^2.0.1",
