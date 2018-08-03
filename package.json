@@ -36,7 +36,7 @@
 		"size": "size-limit",
 		"watch": "tsc -w",
 		"start": "bluerain run web",
-		"test": "jest --u",
+		"test": "jest",
 		"test:watch": "jest --watch",
 		"test:prod": "npm run lint && npm run test -- --coverage --no-cache --maxWorkers=4",
 		"deploy-docs": "ts-node tools/gh-pages-publish",
