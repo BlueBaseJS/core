@@ -1,6 +1,5 @@
 import { BlueRain, JsonComponentSchema, withBlueRain } from '../../index';
 import React from 'react';
-import moize from 'moize';
 
 /**
  * Shows system content
@@ -39,6 +38,5 @@ const SystemContent = ({ bluerain: BR }: { bluerain: BlueRain }) => {
 
 	return BR.API.JsonToReact.parse(schema);
 };
-const MoisedSystemContent = moize.react(SystemContent);
 
-export default withBlueRain(MoisedSystemContent) as React.ComponentType<any>;
+export default withBlueRain(SystemContent) as React.ComponentType<any>;
