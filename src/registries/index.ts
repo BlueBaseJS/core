@@ -1,21 +1,7 @@
-import AppRegistry from './AppRegistry';
-import ComponentRegistry from './ComponentRegistry';
-import ConfigRegistry from './ConfigRegistry';
-import DebuggerRegistry from './DebuggerRegistry';
-import EventRegistry from './EventRegistry';
-import FilterRegistry from './FilterRegistry';
-import HooksRegistry from './HooksRegistry';
-import MapRegistry from './MapRegistry';
-import PluginRegistry from './PluginRegistry';
+import * as HookRegistry from './HookRegistry';
+import * as Registry from './Registry';
 
 export {
-	AppRegistry,
-	ComponentRegistry,
-	ConfigRegistry,
-	DebuggerRegistry,
-	EventRegistry,
-	FilterRegistry,
-	HooksRegistry,
-	MapRegistry,
-	PluginRegistry
-};
+	HookRegistry,
+	Registry,
+}
