@@ -16,7 +16,7 @@ export { StatefulComponentProperties } from './components/StatefulComponent';
 export * from './apis';
 
 // Registrys
-export { default as MapRegistry } from './registries/MapRegistry';
+export * from './registries';
 
 // BlueRain
 export * from './BlueRain';
