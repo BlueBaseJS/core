@@ -22,20 +22,20 @@ export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem
 	public tap(hookName: string, listenerName: string, listener: HookFn<Parent>, index?: number) {
 
 		const item: HookItem<Parent> = {
-			name: listenerName,
 			listener,
+			name: listenerName,
 		};
 
 		const hookItems = this.get(hookName);
 
-		// If there are no items of this hookName yet, 
+		// If there are no items of this hookName yet,
 		// Initialize new array
 		if (isnil(hookItems) || hookItems.length === 0) {
 			this.set(hookName, [item]);
 			return;
 		}
-		
-		const found = hookItems.find(item => item.name === listenerName);
+
+		const found = hookItems.find(lookupItem => lookupItem.name === listenerName);
 		if (!isnil(found)) {
 			throw new Error(`Hook Listener ${listenerName} already exists in ${hookName} hook.`);
 		}
@@ -73,7 +73,7 @@ export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem
 			);
 		}
 
-		list = list.splice(index, 1);;
+		list = list.splice(index, 1);
 		this.set(hookName, list);
 	}
 
@@ -83,11 +83,11 @@ export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem
 	 * 	- value
 	 * 	- args
 	 * 	- context
-	 * 
+	 *
 	 * Each listener function is expected to return a value.
-	 * 
+	 *
 	 * Example Usage: BR.Hooks.run('hook-name', val, args);
-	 * 
+	 *
 	 * @param hookName Name of the hook
 	 * @param value Initial value to send to the hook
 	 * @param args Any extra arguments to pass to the hook
@@ -120,6 +120,7 @@ export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem
 			if (typeof result === 'undefined') {
 
 				// if result of current iteration is undefined, don't pass it on
+				// tslint:disable-next-line:no-console TODO: use bluerain logger, when it shis
 				console.warn(`Warning: Sync filter [${hookItem.name}] in hook [${hookName}] didn't return a result!`);
 				return hookValue;
 			}

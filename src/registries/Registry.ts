@@ -1,5 +1,5 @@
 /**
- * A Base Registry 
+ * A Base Registry
  */
 export default class Registry<RegistryItemType, Parent = {}> {
 
@@ -14,10 +14,10 @@ export default class Registry<RegistryItemType, Parent = {}> {
 	}
 
 	/**
-	 * The set() method adds or updates an element with a specified 
+	 * The set() method adds or updates an element with a specified
 	 * key and value to a Registry object.
 	 * @param key
-	 * @param value 
+	 * @param value
 	 */
 	public set(key: string, value: RegistryItemType) {
 		this.data.set(key, value);
@@ -25,16 +25,16 @@ export default class Registry<RegistryItemType, Parent = {}> {
 
 	/**
 	 * The get() method returns a specified element from a Registry object.
-	 * @param key 
+	 * @param key
 	 */
 	public get(key: string) {
 		return this.data.get(key);
 	}
 
 	/**
-	 * The has() method returns a boolean indicating whether an element 
+	 * The has() method returns a boolean indicating whether an element
 	 * with the specified key exists or not.
-	 * @param key 
+	 * @param key
 	 */
 	public has(key: string) {
 		return this.data.has(key);
@@ -42,7 +42,7 @@ export default class Registry<RegistryItemType, Parent = {}> {
 
 	/**
 	 * The delete() method removes the specified element from a Registry object.
-	 * @param key 
+	 * @param key
 	 */
 	public delete(key: string) {
 		return this.data.delete(key);
@@ -65,17 +65,18 @@ export default class Registry<RegistryItemType, Parent = {}> {
 	}
 
 	/**
-	 * The forEach() method executes a provided function once per 
+	 * The forEach() method executes a provided function once per
 	 * each key/value pair in the Registry object, in insertion order.
-	 * @param callbackfn 
-	 * @param thisArg 
+	 * @param callbackfn
+	 * @param thisArg
 	 */
-	public forEach(callbackfn: (value: RegistryItemType, key: string, map: Map<string, RegistryItemType>) => void, thisArg?: any) {
+	public forEach
+		(callbackfn: (value: RegistryItemType, key: string, map: Map<string, RegistryItemType>) => void, thisArg?: any) {
 		this.data.forEach(callbackfn, thisArg);
 	}
 
 	/**
-	 * The keys() method returns a new Iterator object that contains 
+	 * The keys() method returns a new Iterator object that contains
 	 * the keys for each element in the Registry object in insertion order.
 	 */
 	public keys() {
@@ -83,7 +84,7 @@ export default class Registry<RegistryItemType, Parent = {}> {
 	}
 
 	/**
-	 * The values() method returns a new Iterator object that contains 
+	 * The values() method returns a new Iterator object that contains
 	 * the values for each element in the Registry object in insertion order.
 	 */
 	public values() {
