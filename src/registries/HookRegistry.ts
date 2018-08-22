@@ -1,16 +1,16 @@
-import Registry from './Registry';
+import { Registry, RegistryContext } from './Registry';
 import isnil from 'lodash.isnil';
 
-export type HookFn<Context = {}> = (value: any, args: { [key: string]: any }, ctx: Context) => any | Promise<any>;
+export type HookFn<Context> = (value: any, args: { [key: string]: Context }, ctx: any) => any | Promise<any>;
 
-export type HookItem<Context = {}> = {
+export type HookItem<Context> = {
 	name: string;
 	listener: HookFn<Context>;
 };
 
-export type HookRegistryItem<Context = {}> = Array<HookItem<Context>>;
+export type HookRegistryItem<Context> = Array<HookItem<Context>>;
 
-export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem<Parent>, Parent> {
+export class HookRegistry<Parent extends RegistryContext> extends Registry<HookRegistryItem<Parent>, Parent> {
 
 	/**
 	 * Add a hook listener. If the hook listener already exists, it will throw and Error.
@@ -88,6 +88,7 @@ export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem
 	 *
 	 * Example Usage: BR.Hooks.run('hook-name', val, args);
 	 *
+	 * TODO: document migration, each hook now gets 3 fixed args
 	 * @param hookName Name of the hook
 	 * @param value Initial value to send to the hook
 	 * @param args Any extra arguments to pass to the hook
@@ -108,7 +109,7 @@ export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem
 		// }
 
 		// Run waterfall
-		return hookItems.reduce(async (accumulator, hookItem) => {
+		const res = await hookItems.reduce(async (accumulator: any, hookItem) => {
 
 			// Resolve value before sending forward
 			const hookValue = await accumulator;
@@ -117,16 +118,20 @@ export default class HookRegistry<Parent = {}> extends Registry<HookRegistryItem
 			const result = await hookItem.listener(hookValue, args, this.ctx);
 
 			// If the hook didn't return any value, return previous accumulator
-			if (typeof result === 'undefined') {
+			if (typeof result === 'undefined' && !isnil(this.ctx.Logger)) {
 
 				// if result of current iteration is undefined, don't pass it on
-				// tslint:disable-next-line:no-console TODO: use bluerain logger, when it shis
-				console.warn(`Warning: Sync filter [${hookItem.name}] in hook [${hookName}] didn't return a result!`);
+				this.ctx.Logger.warn(
+					`Warning: Sync filter [${hookItem.name}] in hook [${hookName}] didn't return a result!`,
+					hookItem
+				);
 				return hookValue;
 			}
 
 			return result;
 
 		}, Promise.resolve(initialValue));
+
+		return res;
 	}
 }

@@ -1,12 +1,12 @@
 {
   "name": "@blueeast/bluerain",
-  "description": "A new BlueRain",
+  "description": "🚀 A modular, pluggable and cross platform app framework.",
   "author": "BlueEast Team <code@blueeast.com>",
   "version": "4.0.0-aplha.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.js",
-  "repository": "https://github.com/BlueEastCode/bluerain-cli",
+  "repository": "https://github.com/BlueEastCode/bluerain",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -80,8 +80,8 @@
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
     "tslint-immutable": "^4.5.4",
-    "typedoc": "^0.11.1",
-    "typescript": "2.7.1"
+    "typedoc": "^0.12.0",
+    "typescript": "3.0.1"
   },
   "peerDependencies": {
     "react": "^16.*"

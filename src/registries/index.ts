@@ -1,7 +1,2 @@
-import * as HookRegistry from './HookRegistry';
-import * as Registry from './Registry';
-
-export {
-	HookRegistry,
-	Registry,
-}
+export * from './HookRegistry';
+export * from './Registry';

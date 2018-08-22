@@ -1,7 +1,13 @@
+export interface RegistryContext {
+	Logger: any;
+
+	[key: string]: any;
+}
+
 /**
  * A Base Registry
  */
-export default class Registry<RegistryItemType, Parent = {}> {
+export class Registry<RegistryItemType, Parent = RegistryContext> {
 
 	/** Internal data */
 	protected data: Map<string, RegistryItemType> = new Map();
@@ -10,7 +16,7 @@ export default class Registry<RegistryItemType, Parent = {}> {
 	protected ctx: Parent;
 
 	constructor(ctx: Parent) {
-		this.ctx = ctx || this;
+		this.ctx = ctx;
 	}
 
 	/**
