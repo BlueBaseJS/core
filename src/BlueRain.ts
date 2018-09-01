@@ -7,5 +7,5 @@ export class BlueRain {
 	public Logger = new Logger(this);
 
 	// Registries
-	public Hooks: HookRegistry<BlueRain> = new HookRegistry(this as BlueRain);
+	public Hooks: HookRegistry = new HookRegistry(this);
 }

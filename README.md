@@ -9,3 +9,4 @@
 ## 🏆 Features
 
 - 🎣 Lifecycle events and hooks
+- 📔 Logging API

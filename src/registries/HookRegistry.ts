@@ -1,16 +1,18 @@
-import { Registry, RegistryContext } from './Registry';
-import isnil from 'lodash.isnil';
+import { BlueRain } from '../BlueRain';
+import { Registry } from './Registry';
+import isNil from 'lodash.isnil';
 
-export type HookFn<Context> = (value: any, args: { [key: string]: Context }, ctx: any) => any | Promise<any>;
+export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BR: BlueRain) => T | Promise<T>;
 
-export type HookItem<Context> = {
-	name: string;
-	listener: HookFn<Context>;
-};
+export interface HookListener {
+	name: string,
+	priority: number,
+	handler: HookHandlerFn,
+}
 
-export type HookRegistryItem<Context> = Array<HookItem<Context>>;
+export const DEFAULT_PRIORITY = 10;
 
-export class HookRegistry<Parent extends RegistryContext> extends Registry<HookRegistryItem<Parent>, Parent> {
+export class HookRegistry extends Registry<HookListener[]> {
 
 	/**
 	 * Add a hook listener. If the hook listener already exists, it will throw and Error.
@@ -19,32 +21,30 @@ export class HookRegistry<Parent extends RegistryContext> extends Registry<HookR
 	 * @param listener Listener function
 	 * @param index Position to insert this hook at
 	 */
-	public tap(hookName: string, listenerName: string, listener: HookFn<Parent>, index?: number) {
+	public register(hookName: string, listenerName: string, handler: HookHandlerFn, priority?: number) {
 
-		const item: HookItem<Parent> = {
-			listener,
+		const item: HookListener = {
+			handler,
 			name: listenerName,
+			priority: !isNil(priority) ? priority : DEFAULT_PRIORITY,
 		};
 
-		const hookItems = this.get(hookName);
+		const hookItems = this.get(hookName) || [];
 
 		// If there are no items of this hookName yet,
 		// Initialize new array
-		if (isnil(hookItems) || hookItems.length === 0) {
+		if (hookItems.length === 0) {
 			this.set(hookName, [item]);
 			return;
 		}
 
+		// Check if listener already exists
 		const found = hookItems.find(lookupItem => lookupItem.name === listenerName);
-		if (!isnil(found)) {
-			throw new Error(`Hook Listener ${listenerName} already exists in ${hookName} hook.`);
+		if (!isNil(found)) {
+			throw new Error(`Hook Listener "${listenerName}" already exists in "${hookName}" hook.`);
 		}
 
-		if (isnil(index)) {
-			this.set(hookName, [...hookItems, item]);
-		} else {
-			this.set(hookName, [...hookItems].splice(index, 0, item));
-		}
+		this.set(hookName, [...hookItems, item]);
 	}
 
 	/**
@@ -52,28 +52,20 @@ export class HookRegistry<Parent extends RegistryContext> extends Registry<HookR
 	 * @param hookName Name to the hook to subscribe to
 	 * @param listenerName Name of the lister or the source of the listener
 	 */
-	public untap(hookName: string, listenerName: string) {
+	public unregister(hookName: string, listenerName: string) {
 
 		if (!this.has(hookName)) {
 			throw Error(`${hookName} hook does not exist.`);
 		}
 
-		if (isnil(listenerName)) {
-			throw Error(
-				`Hook name cannot be ${listenerName}. Please provide valid function name while removing filter.`
-			);
-		}
-
-		let list = this.get(hookName) || [];
+		const list = this.get(hookName) || [];
 		const index = list.findIndex(item => !!(item && item.name === listenerName));
 
 		if (index === -1) {
-			throw new Error(
-				`${listenerName} listener is not added in ${hookName} hook.`
-			);
+			throw Error(`${listenerName} listener is not added in ${hookName} hook.`);
 		}
 
-		list = list.splice(index, 1);
+		list.splice(index, 1);
 		this.set(hookName, list);
 	}
 
@@ -89,24 +81,26 @@ export class HookRegistry<Parent extends RegistryContext> extends Registry<HookR
 	 * Example Usage: BR.Hooks.run('hook-name', val, args);
 	 *
 	 * TODO: document migration, each hook now gets 3 fixed args
+	 * TODO: run now returns a promise, not value
+	 * TODO: add, remove method replaced by register, unregister
+	 * TODO: set and remove work differently
+	 * TODO: there are no filters or events
+	 * TODO: test and add example of running parallel hooks
 	 * @param hookName Name of the hook
 	 * @param value Initial value to send to the hook
 	 * @param args Any extra arguments to pass to the hook
 	 */
-	public async run(hookName: string, initialValue: any, args: { [key: string]: any } = {}) {
+	public async run<T = any>(hookName: string, initialValue: T, args: { [key: string]: any } = {}): Promise<T> {
 
 		// Get all hook items registered for hookName
-		const hookItems: HookRegistryItem<Parent> = this.data.get(hookName) || [];
+		const hookItems = this.data.get(hookName) || [];
 
 		// If there are no hook items registered for this hook
-		if (isnil(hookItems) || hookItems.length === 0) {
+		if (isNil(hookItems) || hookItems.length === 0) {
 			return initialValue;
 		}
 
-		// // If there is only one item
-		// if (hookItems.length === 1) {
-		// 	return Promise.resolve(hookItems[0].listener(initialValue, args, this.ctx));
-		// }
+		hookItems.sort((a, b) => a.priority - b.priority);
 
 		// Run waterfall
 		const res = await hookItems.reduce(async (accumulator: any, hookItem) => {
@@ -115,14 +109,14 @@ export class HookRegistry<Parent extends RegistryContext> extends Registry<HookR
 			const hookValue = await accumulator;
 
 			// Execute hook function
-			const result = await hookItem.listener(hookValue, args, this.ctx);
+			const result = await hookItem.handler(hookValue, { ...args } , this.BR);
 
 			// If the hook didn't return any value, return previous accumulator
-			if (typeof result === 'undefined' && !isnil(this.ctx.Logger)) {
+			if (typeof result === 'undefined' && typeof initialValue !== 'undefined') {
 
 				// if result of current iteration is undefined, don't pass it on
-				this.ctx.Logger.warn(
-					`Warning: Sync filter [${hookItem.name}] in hook [${hookName}] didn't return a result!`,
+				this.BR.Logger.warn(
+					`Hook Listener "${hookItem.name}" in hook "${hookName}" did not return a result.`,
 					hookItem
 				);
 				return hookValue;

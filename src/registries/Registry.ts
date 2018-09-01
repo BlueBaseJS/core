@@ -1,23 +1,14 @@
-export interface RegistryContext {
-	Logger: any;
-
-	[key: string]: any;
-}
+import { BlueRain } from '../BlueRain';
 
 /**
  * A Base Registry
  */
-export class Registry<RegistryItemType, Parent = RegistryContext> {
+export class Registry<RegistryItemType> {
 
 	/** Internal data */
 	protected data: Map<string, RegistryItemType> = new Map();
 
-	/** Parent context */
-	protected ctx: Parent;
-
-	constructor(ctx: Parent) {
-		this.ctx = ctx;
-	}
+	constructor(protected BR: BlueRain) {}
 
 	/**
 	 * The set() method adds or updates an element with a specified

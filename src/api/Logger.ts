@@ -2,7 +2,9 @@ import { BlueRain } from '../BlueRain';
 
 export class Logger {
 
-	constructor(private BR: BlueRain) { }
+	constructor(private BR: BlueRain) {
+		//
+	}
 
 	public log(message: string, meta: any) {
 		this.BR.Hooks.run('bluerain.logger.log', message, meta).then();
