@@ -1,11 +1,10 @@
-import { BlueRain, BlueRainConsumer } from '../index';
+import { BlueRain, withBlueRain } from '../index';
+// import Icon from '../components/Icon';
 import React from 'react';
 
 // Components
-
 // Custom Components
 // const FOFIcon = () => <Icon title="404" />;
-
 /**
  * Returns the 404 Page.
  *
@@ -19,50 +18,30 @@ const ButtonStyle = {
 	color: '#fff'
 
 };
-export class NotFoundPage extends React.Component<{ systemNavActions: any, systemNav: any, BR: BlueRain }, null> {
-	componentWillMount() {
-		if (!this.props.systemNav.disabled) {
-			this.props.systemNavActions.disable();
-		}
-	}
-	componentWillUnmount() {
-		if (this.props.systemNav.disabled) {
-			this.props.systemNavActions.enable();
-		}
-	}
-	render() {
-		const { BR } = this.props;
-		const buttonOnPress = () => {
-			const route: any = BR.refs ? BR.refs : {};
-			if (route) {
-				return route.router.history.goBack();
-			} else { return null; }
-		};
-		return (
-			<BR.Components.Page >
-				<BR.Components.CenterLayout style={{ height: 100 + 'vh' }}>
-					<BR.Components.ComponentState
-						title="Oooop's!"
-						description="Things you are looking for aren't here!"
-						imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
-						buttonOnPress={buttonOnPress}
-						descriptionStyle={descriptionStyle}
-						buttonTitle="go Back"
-						buttonStyle={ButtonStyle}
-					/>
-				</BR.Components.CenterLayout>
-			</BR.Components.Page >
-		);
-	}
-}
-const NotFoundPageWithSystemNav = (props: any) => {
+const NotFoundPage = ({ bluerain: BR }: { bluerain: BlueRain }) => {
+
+	const buttonOnPress = () => {
+		const route: any = BR.refs ? BR.refs : {};
+		if (route) {
+			return route.router.history.goBack();
+
+		} else { return null; }
+	};
 	return (
-		<BlueRainConsumer>
-			{(BR: BlueRain) => (
-				<BR.Components.SystemNavSupplier Component={NotFoundPage} otherProps={{ ...props, BR }} />
-			)}
-		</BlueRainConsumer>
+		<BR.Components.Page >
+			<BR.Components.CenterLayout style={{ height:100 +'vh' }}>
+				<BR.Components.ComponentState
+					title="Oooop's!"
+					description="Things you are looking for aren't here!"
+					imageSource="https://s3-us-west-2.amazonaws.com/bluerainimages/not-found.svg"
+					buttonOnPress={buttonOnPress}
+					descriptionStyle={descriptionStyle}
+					buttonTitle="goBack"
+					buttonStyle={ButtonStyle}
+				/>
+			</BR.Components.CenterLayout>
+		</BR.Components.Page>
 	);
 };
 
-export default NotFoundPageWithSystemNav;
+export default withBlueRain(NotFoundPage);
