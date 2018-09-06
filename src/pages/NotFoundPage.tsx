@@ -2,9 +2,6 @@ import { BlueRain, withBlueRain } from '../index';
 // import Icon from '../components/Icon';
 import React from 'react';
 
-// Components
-// Custom Components
-// const FOFIcon = () => <Icon title="404" />;
 /**
  * Returns the 404 Page.
  *
