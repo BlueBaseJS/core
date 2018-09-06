@@ -8,7 +8,9 @@ export class Registry<RegistryItemType> {
 	/** Internal data */
 	protected data: Map<string, RegistryItemType> = new Map();
 
-	constructor(protected BR: BlueRain) {}
+	constructor(protected BR: BlueRain) {
+		//
+	}
 
 	/**
 	 * The set() method adds or updates an element with a specified

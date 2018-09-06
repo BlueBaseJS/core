@@ -1,13 +1,18 @@
 import { BlueRain } from '../BlueRain';
 import { Registry } from './Registry';
 import isNil from 'lodash.isnil';
+import { BlueRainModule } from '../utils/BlueRainModule';
 
 export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BR: BlueRain) => T | Promise<T>;
 
 export interface HookListener {
 	name: string,
 	priority: number,
-	handler: HookHandlerFn,
+	handler: BlueRainModule<HookHandlerFn>,
+}
+
+function instanceOfHookListener(object: any): object is HookListener {
+	return 'handler' in object;
 }
 
 export const DEFAULT_PRIORITY = 10;
@@ -16,17 +21,31 @@ export class HookRegistry extends Registry<HookListener[]> {
 
 	/**
 	 * Add a hook listener. If the hook listener already exists, it will throw and Error.
+	 *
+	 * - If whole listener is a BlueRainModule, it is resolved immidiately
+	 * - If the handler function is a BlueRainModule, it will be resolve at run time
+	 *
+	 * TODO: Add array support
+	 * 
 	 * @param hookName Name to the hook to subscribe to
 	 * @param listenerName Name of the lister or the source of the listener
 	 * @param listener Listener function
 	 * @param index Position to insert this hook at
 	 */
-	public register(hookName: string, listenerName: string, handler: HookHandlerFn, priority?: number) {
+	public async register(hookName: string, listener: HookListener | BlueRainModule<HookListener>) {
 
+		// If the listener is not a BlueRain module, covert it into one
+		if (!(listener instanceof BlueRainModule)) {
+			listener = new BlueRainModule(listener);
+		}
+
+		// Resolve listener
+		listener = await listener.promise;
+
+		// Add defaults
 		const item: HookListener = {
-			handler,
-			name: listenerName,
-			priority: !isNil(priority) ? priority : DEFAULT_PRIORITY,
+			priority: DEFAULT_PRIORITY,
+			...listener,
 		};
 
 		const hookItems = this.get(hookName) || [];
@@ -34,14 +53,14 @@ export class HookRegistry extends Registry<HookListener[]> {
 		// If there are no items of this hookName yet,
 		// Initialize new array
 		if (hookItems.length === 0) {
-			this.set(hookName, [item]);
+			this.set(hookName, []);
 			return;
 		}
 
 		// Check if listener already exists
-		const found = hookItems.find(lookupItem => lookupItem.name === listenerName);
+		const found = hookItems.find(lookupItem => lookupItem.name === listener.name);
 		if (!isNil(found)) {
-			throw new Error(`Hook Listener "${listenerName}" already exists in "${hookName}" hook.`);
+			throw new Error(`Hook Listener "${listener.name}" already exists in "${hookName}" hook.`);
 		}
 
 		this.set(hookName, [...hookItems, item]);
@@ -102,8 +121,11 @@ export class HookRegistry extends Registry<HookListener[]> {
 			// Resolve value before sending forward
 			const hookValue = await accumulator;
 
+			// Handler
+			const handler: HookHandlerFn<T> = await hookItem.handler.promise;
+
 			// Execute hook function
-			const result = await hookItem.handler(hookValue, { ...args } , this.BR);
+			const result = await handler(hookValue, { ...args } , this.BR);
 
 			// If the hook didn't return any value, return previous accumulator
 			if (typeof result === 'undefined' && typeof initialValue !== 'undefined') {
