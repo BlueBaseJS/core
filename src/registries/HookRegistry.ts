@@ -1,33 +1,61 @@
+import { MaybeEsModule, MaybePromise } from '../utils';
 import { BlueRain } from '../BlueRain';
+import { BlueRainModule } from '../api/BlueRainModule';
 import { Registry } from './Registry';
+import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 
 export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BR: BlueRain) => T | Promise<T>;
 
+/**
+ * HookListener interface
+ */
 export interface HookListener {
+	/** Name of the listener, used as an ID */
 	name: string,
+
+	/** Priority of exeuction */
+	priority?: number,
+
+	/** Handler function */
+	handler: MaybePromise<MaybeEsModule<HookHandlerFn>> | BlueRainModule<HookHandlerFn>,
+}
+
+/**
+ * Format of the HookListener that is saved in the Registry after convertion
+ */
+export interface HookListenerInternal extends HookListener {
 	priority: number,
-	handler: HookHandlerFn,
+	handler: BlueRainModule<HookHandlerFn>,
+}
+
+/**
+ * Type guard to check if an object is a HookListener
+ * @param item
+ */
+export function isHookListener(item: HookListener | BlueRainModule<HookListener>): item is HookListener {
+	return (item as HookListener).handler !== undefined;
 }
 
 export const DEFAULT_PRIORITY = 10;
 
-export class HookRegistry extends Registry<HookListener[]> {
+/**
+ * Stores all Hooks in BlueRain
+ */
+export class HookRegistry extends Registry<HookListenerInternal[]> {
 
 	/**
 	 * Add a hook listener. If the hook listener already exists, it will throw and Error.
+	 *
+	 * - If whole listener is a BlueRainModule, it is resolved immidiately
+	 * - If the handler function is a BlueRainModule, it will be resolve at run time
+	 *
 	 * @param hookName Name to the hook to subscribe to
-	 * @param listenerName Name of the lister or the source of the listener
-	 * @param listener Listener function
-	 * @param index Position to insert this hook at
+	 * @param listener Listener object
 	 */
-	public register(hookName: string, listenerName: string, handler: HookHandlerFn, priority?: number) {
+	public async register(hookName: string, listener: HookListener | BlueRainModule<HookListener>) {
 
-		const item: HookListener = {
-			handler,
-			name: listenerName,
-			priority: !isNil(priority) ? priority : DEFAULT_PRIORITY,
-		};
+		const item = await this.buildHookListenerInternal(listener);
 
 		const hookItems = this.get(hookName) || [];
 
@@ -39,9 +67,9 @@ export class HookRegistry extends Registry<HookListener[]> {
 		}
 
 		// Check if listener already exists
-		const found = hookItems.find(lookupItem => lookupItem.name === listenerName);
+		const found = hookItems.find(lookupItem => lookupItem.name === item.name);
 		if (!isNil(found)) {
-			throw new Error(`Hook Listener "${listenerName}" already exists in "${hookName}" hook.`);
+			throw new Error(`Hook Listener "${item.name}" already exists in "${hookName}" hook.`);
 		}
 
 		this.set(hookName, [...hookItems, item]);
@@ -54,11 +82,12 @@ export class HookRegistry extends Registry<HookListener[]> {
 	 */
 	public unregister(hookName: string, listenerName: string) {
 
-		if (!this.has(hookName)) {
+		const list = this.get(hookName);
+
+		if (!this.has(hookName) || !list) {
 			throw Error(`${hookName} hook does not exist.`);
 		}
 
-		const list = this.get(hookName) || [];
 		const index = list.findIndex(item => !!(item && item.name === listenerName));
 
 		if (index === -1) {
@@ -102,15 +131,22 @@ export class HookRegistry extends Registry<HookListener[]> {
 			// Resolve value before sending forward
 			const hookValue = await accumulator;
 
+			// Handler
+			const handler: HookHandlerFn<T> = await hookItem.handler.promise;
+
+			if (!isFunction(handler)) {
+				throw Error(`Handler of HookListener "${hookItem.name}" in hook "${hookName}" is not a function.`);
+			}
+
 			// Execute hook function
-			const result = await hookItem.handler(hookValue, { ...args } , this.BR);
+			const result = await handler(hookValue, { ...args } , this.BR);
 
 			// If the hook didn't return any value, return previous accumulator
 			if (typeof result === 'undefined' && typeof initialValue !== 'undefined') {
 
 				// if result of current iteration is undefined, don't pass it on
 				this.BR.Logger.warn(
-					`Hook Listener "${hookItem.name}" in hook "${hookName}" did not return a result.`,
+					`HookListener "${hookItem.name}" in hook "${hookName}" did not return a result.`,
 					hookItem
 				);
 				return hookValue;
@@ -122,4 +158,36 @@ export class HookRegistry extends Registry<HookListener[]> {
 
 		return res;
 	}
+
+	/**
+	 * Convert a HookListener object to HookListenerInternal object
+	 * @param listener
+	 */
+	private async buildHookListenerInternal
+		(listener: HookListener | BlueRainModule<HookListener>): Promise<HookListenerInternal> {
+
+		// If the listener is not a BlueRain module, covert it into one
+		if (isHookListener(listener)) {
+			listener = new BlueRainModule(listener);
+		}
+
+		// Resolve listener
+		listener = await listener.promise;
+
+		let handler = listener.handler;
+
+		if (!(handler instanceof BlueRainModule)) {
+			handler = new BlueRainModule(handler);
+		}
+
+		// Add defaults
+		const item: HookListenerInternal = {
+			priority: DEFAULT_PRIORITY,
+			...listener,
+			handler,
+		};
+
+		return item;
+	}
+
 }

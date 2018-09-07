@@ -12,3 +12,6 @@ export function getModule<T = any>(object: MaybeEsModule<T>): T {
 		: object as T;
 }
 
+export function isEsModule<T>(a: any): a is EsModule<T> {
+	return a.default !== undefined;
+}

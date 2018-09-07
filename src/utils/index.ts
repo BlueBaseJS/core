@@ -1,2 +1,2 @@
-export * from './getModule';
-export * from './getPromise';
+export * from './modules';
+export * from './promises';

@@ -7,6 +7,6 @@ export function getPromise<T = any>(object: MaybePromise<T>): Promise<T> {
 		: object as Promise<T>;
 }
 
-export function isPromise<T>(object: MaybePromise<T>) {
+export function isPromise<T>(object: any): object is MaybePromise<T> {
 	return !!object && 'function' === typeof (object as Promise<T>).then;
 }

@@ -1,4 +1,4 @@
-import { BlueRainModule } from '../utils/BlueRainModule';
+import { BlueRainModule } from '../api/BlueRainModule';
 
 export class ModuleRegistry<T> {
 

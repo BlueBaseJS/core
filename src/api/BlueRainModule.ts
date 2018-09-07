@@ -1,5 +1,5 @@
-import { getModule } from './getModule';
-import { getPromise, isPromise } from './getPromise';
+import { MaybeEsModule, getModule, isEsModule } from '../utils/modules';
+import { MaybePromise, getPromise, isPromise } from '../utils/promises';
 
 /**
  * BlueRain module
@@ -14,7 +14,7 @@ export class BlueRainModule<T> {
 	 * be a Promise. Also, the promise itself may or may not
 	 * resolve an ES module.
 	 */
-	public module: T | Promise<T>;
+	public module: MaybePromise<MaybeEsModule<T>>;
 
 	/**
 	 * The module is converted into promise. This promise
@@ -34,21 +34,18 @@ export class BlueRainModule<T> {
 	 */
 	public isAsync: boolean = false;
 
-	constructor(module: T) {
+	constructor(module: MaybeEsModule<MaybePromise<MaybeEsModule<T>>> ) {
 
-		this.module = getModule(module);
+		this.module = (isEsModule(module)) ? getModule(module) : module;
 
 		if (isPromise(this.module)) {
 			this.isAsync = true;
 		}
 
 		this.promise = new Promise((resolve, reject) => {
-
 			getPromise(this.module)
-				.then(m => resolve(getModule(m)))
+				.then((m: MaybeEsModule<T>) => resolve(getModule(m)))
 				.catch(reject);
 		});
 	}
-
-	// public resolve = async () => (getModule(await getPromise(this.module)));
 }
