@@ -1,6 +1,6 @@
 import { DEFAULT_PRIORITY, HookListener, HookRegistry } from '../HookRegistry';
-import { BlueRain } from '../../BlueRain';
-import { BlueRainModule } from '../../api/BlueRainModule';
+import { BlueRain } from '../../../BlueRain';
+import { BlueRainModule } from '../../../api/BlueRainModule';
 
 const BR = new BlueRain();
 

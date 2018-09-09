@@ -5,7 +5,7 @@ export type EsModule<T> = {
 
 export type MaybeEsModule<T> = T | EsModule<T>;
 
-export function getModule<T = any>(object: MaybeEsModule<T>): T {
+export function getDefiniteModule<T = any>(object: MaybeEsModule<T>): T {
 
 	return (object as EsModule<T>).default
 		? ((object as EsModule<T>).default as T)

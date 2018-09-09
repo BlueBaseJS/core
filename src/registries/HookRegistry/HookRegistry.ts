@@ -1,7 +1,7 @@
-import { MaybeEsModule, MaybePromise } from '../utils';
-import { BlueRain } from '../BlueRain';
-import { BlueRainModule } from '../api/BlueRainModule';
-import { Registry } from './Registry';
+import { MaybeEsModule, MaybePromise } from '../../utils';
+import { BlueRain } from '../../BlueRain';
+import { BlueRainModule } from '../../api/BlueRainModule';
+import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 
@@ -176,6 +176,7 @@ export class HookRegistry extends Registry<HookListenerInternal[]> {
 
 		let handler = listener.handler;
 
+		// Is handler an imported module?
 		if (!(handler instanceof BlueRainModule)) {
 			handler = new BlueRainModule(handler);
 		}

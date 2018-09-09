@@ -1,6 +1,6 @@
 export type MaybePromise<T> = T | Promise<T>;
 
-export function getPromise<T = any>(object: MaybePromise<T>): Promise<T> {
+export function getDefinitePromise<T = any>(object: MaybePromise<T>): Promise<T> {
 
 	return !isPromise<T>(object)
 		? Promise.resolve(object)

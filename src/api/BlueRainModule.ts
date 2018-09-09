@@ -1,5 +1,19 @@
-import { MaybeEsModule, getModule, isEsModule } from '../utils/modules';
-import { MaybePromise, getPromise, isPromise } from '../utils/promises';
+import { MaybeEsModule, getDefiniteModule, isEsModule } from '../utils/modules';
+import { MaybePromise, getDefinitePromise, isPromise } from '../utils/promises';
+
+export type BlueRainModuleInput<T> = MaybeEsModule<MaybePromise<MaybeEsModule<T>>>;
+
+// export type MaybeBlueRainModule<T> = T | BlueRainModule<T>;
+export type MaybeBlueRainModule<T> = BlueRainModuleInput<T | BlueRainModule<T>>;
+
+export function getDefiniteBlueRainModule<T>(module: MaybeBlueRainModule<T>): BlueRainModule<T> {
+
+	if (!(module instanceof BlueRainModule)) {
+		module = (new BlueRainModule(module)) as BlueRainModule<T>;
+	}
+
+	return module;
+}
 
 /**
  * BlueRain module
@@ -34,17 +48,17 @@ export class BlueRainModule<T> {
 	 */
 	public isAsync: boolean = false;
 
-	constructor(module: MaybeEsModule<MaybePromise<MaybeEsModule<T>>> ) {
+	constructor(module: BlueRainModuleInput<T> ) {
 
-		this.module = (isEsModule(module)) ? getModule(module) : module;
+		this.module = (isEsModule(module)) ? getDefiniteModule(module) : module;
 
 		if (isPromise(this.module)) {
 			this.isAsync = true;
 		}
 
 		this.promise = new Promise((resolve, reject) => {
-			getPromise(this.module)
-				.then((m: MaybeEsModule<T>) => resolve(getModule(m)))
+			getDefinitePromise(this.module)
+				.then((m: MaybeEsModule<T>) => resolve(getDefiniteModule(m)))
 				.catch(reject);
 		});
 	}
