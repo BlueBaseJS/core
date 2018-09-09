@@ -4,7 +4,7 @@ import { BlueRainModule } from '../../../api/BlueRainModule';
 
 const BR = new BlueRain();
 
-describe('Hook Registry', () => {
+describe('HookRegistry', () => {
 
 	describe('.register method', () => {
 

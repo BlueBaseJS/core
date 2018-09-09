@@ -89,4 +89,11 @@ export class Registry<RegistryItemType> {
 	public values() {
 		return this.data.values();
 	}
+
+	/**
+	 * Returns the number of items in the Registry.
+	 */
+	public size() {
+		return this.data.size;
+	}
 }

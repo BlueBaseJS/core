@@ -1,13 +1,13 @@
 import { HookHandlerFn, HookListener } from '..';
 import { BlueRain } from '../../BlueRain';
 import { MaybeArray } from '../../utils';
-import { MaybeBlueRainModule } from '../../api/BlueRainModule';
+import { MaybeBlueRainModuleOrInput } from '../../api/BlueRainModule';
 import kebabCase from 'lodash.kebabcase';
 
 export type PluginCategory = 'app' | 'store' | 'router' | 'logger' | 'theme' | string;
 
 export type HookListenerOrHandler = HookListener | HookHandlerFn;
-export type PluginHookItem = MaybeArray<MaybeBlueRainModule<HookListenerOrHandler>>;
+export type PluginHookItem = MaybeArray<MaybeBlueRainModuleOrInput<HookListenerOrHandler>>;
 
 export type PluginHooks = {
 	[hookName: string]: PluginHookItem

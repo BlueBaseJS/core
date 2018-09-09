@@ -1,4 +1,4 @@
-import { HookRegistry } from './registries';
+import { HookRegistry, PluginRegistry } from './registries';
 import { Logger } from './api';
 
 export class BlueRain {
@@ -8,4 +8,5 @@ export class BlueRain {
 
 	// Registries
 	public Hooks: HookRegistry = new HookRegistry(this);
+	public Plugins: PluginRegistry = new PluginRegistry(this);
 }

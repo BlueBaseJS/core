@@ -1,13 +1,12 @@
-import { Plugin, PluginHooks } from './Plugin';
-import { BlueRainModule } from '../../api';
+import { BlueRainModule, BlueRainModuleInput } from '../../api';
+import { Plugin, PluginHooks, PluginInternal, createPlugin } from './Plugin';
 import { Registry } from '../Registry';
 import { parsePluginHook } from './hook.helpers';
 import isFunction from 'lodash.isfunction';
-import kebabCase from 'lodash.kebabcase';
 
-export class PluginRegistry extends Registry<Plugin> {
+export class PluginRegistry extends Registry<PluginInternal> {
 
-	public async register(plugin: Plugin | BlueRainModule<Plugin>): Promise<void> {
+	public async register(plugin: Plugin | BlueRainModuleInput<Plugin> | BlueRainModule<Plugin>): Promise<void> {
 
 		if (!plugin) {
 			throw Error(`No plugin provided in PluginRegistry's register method.`);
@@ -19,64 +18,45 @@ export class PluginRegistry extends Registry<Plugin> {
 
 		plugin = await plugin.promise;
 
-		if (!plugin.pluginName) {
-			throw Error('Plugin name not provided.');
-		}
+		const finalPlugin = createPlugin(plugin);
 
-		const slug = kebabCase(plugin.slug ? plugin.slug : plugin.pluginName);
-
-		plugin.slug = slug;
-
-		this.set(slug, plugin);
+		this.set(finalPlugin.slug, finalPlugin);
 	}
 
 	public unregister(slug: string) {
 		this.delete(slug);
 	}
 
-	// public initialize = (slug: string) => {
+	/**
+	 * Initializes all "enabled" plugins
+	 */
+	public async initialize() {
 
-	// 	const plugin = this.get(slug);
-
-	// 	if (!plugin) {
-	// 		throw Error(`Plugin "${slug}" does not exist.`);
-	// 	}
-
-	// 	if (plugin.enable === true) {
-	// 		this.enable(plugin.slug);
-	// 	}
-
-	// }
-
-	public isEnabled(slug: string) {
-
-		const plugin = this.get(slug);
-
-		if (!plugin) {
-			throw Error(`Cannot check if plugin ${slug} is enabled, not found.`);
+		for (const entry of this.data) {
+			if (this.isEnabled(entry['1'])) {
+				await this.enable(entry['1']);
+			}
 		}
-
-		return plugin.enabled;
 	}
 
-	public async enable(slug: string) {
+	public isEnabled(plugin: string | PluginInternal) {
+		return this.resolveSlugOrPlugin(plugin).enabled;
+	}
+
+	public async enable(plugin: string | PluginInternal) {
 
 		// Fetch plugin
-		const plugin = this.get(slug);
+		plugin = this.resolveSlugOrPlugin(plugin);
 
-		if (!plugin) {
-			throw Error(`Cannot enable plugin ${slug}, not found.`);
-		}
-
-		// If the plugin is already enabled, throw
-		if (plugin.enabled === true) {
-			// TODO: Do we really need to throw here?
-			throw Error(`Cannot enable plugin ${slug}, it is already enabled.`);
-		}
+		// // If the plugin is already enabled, throw
+		// if (this.isEnabled(plugin)) {
+		// 	// TODO: Do we really need to throw here?
+		// 	throw Error(`Cannot enable plugin ${plugin.slug}, it is already enabled.`);
+		// }
 
 		// Set plugin flag
 		plugin.enabled = true;
-		this.set(slug, plugin);
+		this.set(plugin.slug, plugin);
 
 		// Register plugin hooks
 		await this.registerPluginHooks(plugin);
@@ -88,50 +68,51 @@ export class PluginRegistry extends Registry<Plugin> {
 		await this.registerPluginRoutes(plugin);
 
 		// Call onEnable event hook
-		if (plugin.onEnable) {
-			await plugin.onEnable(this.BR);
-		}
+		await plugin.onEnable(this.BR);
 
 		// Initialize plugin
-		if (plugin.initialize) {
-			// TODO: Fix configs injection
-			await plugin.initialize({}, this.BR);
-		}
+		// TODO: Fix configs injection
+		await plugin.initialize({}, this.BR);
 	}
 
-	public async disablePlugin(slug: string): Promise<void> {
+	public async disablePlugin(plugin: string | PluginInternal) {
 
 		// Fetch plugin
-		const plugin = this.get(slug);
-
-		if (!plugin) {
-			throw Error(`Cannot enable plugin ${slug}, not found.`);
-		}
-
-		// If the plugin is already enabled, throw
-		if (plugin.enabled === false) {
-			// TODO: Do we really need to throw here?
-			throw Error(`Cannot disable plugin ${slug}, it is already disabled.`);
-		}
+		plugin = this.resolveSlugOrPlugin(plugin);
 
 		// Set plugin flag
 		plugin.enabled = false;
-		this.set(slug, plugin);
+		this.set(plugin.slug, plugin);
+
+		// TODO: unregister hooks, etc. Or just re-render take care of it?
 	}
 
-	private async registerPluginHooks(plugin: Plugin) {
+	/**
+	 * Takes a string or a PluginInternal object. If the input is
+	 * a string, it is treated as a slug, and a corresponding PluginInternal
+	 * object is fetched from the Registry.
+	 *
+	 * @param plugin
+	 */
+	private resolveSlugOrPlugin(plugin: string | PluginInternal) {
 
-		if (!plugin.hooks) {
-			return;
+		if (typeof plugin === 'string') {
+			const fetched = this.get(plugin);
+
+			if (!fetched) {
+				throw Error(`Plugin with slug "${plugin}" not found.`);
+			}
+
+			plugin = fetched;
 		}
+
+		return plugin;
+	}
+
+	private async registerPluginHooks(plugin: PluginInternal) {
 
 		// If hooks field is a thunk, then call the thunk function
-		let hooks: PluginHooks = isFunction(plugin.hooks) ? await plugin.hooks(this.BR) : plugin.hooks;
-
-		// Is the hooks property a thunk?
-		if (isFunction(hooks)) {
-			hooks = hooks(this.BR);
-		}
+		const hooks: PluginHooks = isFunction(plugin.hooks) ? await plugin.hooks(this.BR) : plugin.hooks;
 
 		// Extract hook names. These are events that are being subscribed to
 		const hookNames = Object.keys(hooks);
@@ -147,34 +128,6 @@ export class PluginRegistry extends Registry<Plugin> {
 				// Register this listener
 				await this.BR.Hooks.register(hookName, listener);
 			}
-			// // Each hookField maybe an array, we create one if its not
-			// // We've done this to allow multiple listeners against each hook
-			// const hookFieldArr = Array.isArray(hookField) ? hookField : [hookField];
-
-			// let index = 0;
-
-			// // Iterate over each item of hookField
-			// for (let hookItem of hookFieldArr) {
-
-			// 	// Each hookField maybe a BlueRainModule, we create one if its not
-			// 	hookItem = getBlueRainModule(hookItem);
-
-			// 	// Resolve listener, so if its another bundle, gets loaded here
-			// 	hookItem = await hookItem.promise;
-
-			// 	// Final listener object
-			// 	const listener = !isFunction(hookItem)
-			// 		? hookItem as HookListener
-			// 		: { handler: hookItem, name: `${plugin.slug}.${hookName}.${index}` };
-
-			// 	// Get listener name
-			// 	// const listenerName = listener.name;
-			// 	index++;
-
-			// 	// Register this listener
-			// 	await this.BR.Hooks.register(hookName, listener);
-			// }
-
 		}
 
 
