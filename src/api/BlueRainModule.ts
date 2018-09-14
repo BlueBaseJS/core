@@ -1,7 +1,8 @@
 import { MaybeEsModule, getDefiniteModule, isEsModule } from '../utils/modules';
 import { MaybePromise, getDefinitePromise, isPromise } from '../utils/promises';
 
-export type BlueRainModuleInput<T> = MaybeEsModule<MaybePromise<MaybeEsModule<T>>>;
+export type BlueRainModuleInput<T> = MaybePromise<MaybeEsModule<T>>;
+// export type BlueRainModuleInput<T> = MaybeEsModule<MaybePromise<MaybeEsModule<T>>>;
 
 // export type MaybeBlueRainModule<T> = T | BlueRainModule<T>;
 export type MaybeBlueRainModule<T> = T | BlueRainModule<T>;
@@ -10,11 +11,15 @@ export type MaybeBlueRainModuleOrInput<T> = BlueRainModuleInput<T> | MaybeBlueRa
 
 export function getDefiniteBlueRainModule<T>(module: MaybeBlueRainModuleOrInput<T>): BlueRainModule<T> {
 
-	if (!(module instanceof BlueRainModule)) {
-		module = (new BlueRainModule(module)) as BlueRainModule<T>;
+	if (!isBlueRainModule(module)) {
+		module = new BlueRainModule(module as BlueRainModuleInput<T>);
 	}
 
-	return module;
+	return module as BlueRainModule<T>;
+}
+
+export function isBlueRainModule<T>(input: T) {
+	return (input instanceof BlueRainModule);
 }
 
 /**

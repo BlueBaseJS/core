@@ -1,5 +1,5 @@
 export type EsModule<T> = {
-	__esModule: boolean;
+	__esModule?: boolean;
 	default: T;
 };
 

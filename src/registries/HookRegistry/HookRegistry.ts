@@ -53,6 +53,7 @@ export class HookRegistry extends Registry<HookListenerInternal[]> {
 	 * @param hookName Name to the hook to subscribe to
 	 * @param listener Listener object
 	 */
+	// TODO: Add BlueRainModuleInput<HookListener> support to params
 	public async register(hookName: string, listener: HookListener | BlueRainModule<HookListener>) {
 
 		const item = await this.buildHookListenerInternal(listener);
