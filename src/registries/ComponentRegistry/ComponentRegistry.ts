@@ -1,5 +1,6 @@
-import { ComponentInput, ComponentRegistryItem } from './types';
+import { ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
 import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
+import { getDefiniteModule, isPromise } from '../../utils';
 import { BlueRain } from '../../BlueRain';
 import { Registry } from '../Registry';
 import { getAsyncComponent } from './getAsyncComponent';
@@ -17,13 +18,10 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		return new Proxy(this, {
 			get: (target, name, value) => {
 				if (typeof name === 'string' && typeof (this[name]) === 'undefined') {
-					if (typeof name === 'string') {
-
-						if (this.has(name)) {
-							return this.resolve(name);
-						}
-						throw Error(`Could not find "${name}" component. Did you forget to register it?`);
+					if (this.has(name)) {
+						return this.resolve(name);
 					}
+					throw Error(`Could not find "${name}" component. Did you forget to register it?`);
 				}
 
 				return Reflect.get(target, name, value);
@@ -65,9 +63,18 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		}
 
 		// (Point 2) If the input component react component
+
+		// We make sure to strip off ES Module here
+		component = getDefiniteModule(component as any);
+
+		if (typeof component === 'object' && !isPromise(component)) {
+			throw Error(`Cound not register "${name}", unknown component type.`);
+		}
+
 		this.set(name, createComponentRegistryItem({
 			rawComponent: component as React.ComponentType<any>
 		}));
+
 	}
 
 
@@ -84,5 +91,26 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		const hocs = registryItem.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		return flowRight([...hocs])(rawComponent);
+	}
+
+
+	/**
+	 * Adds higher order component to the registered component
+	 * @param {string} name The name of the registered component to whom hocs are to added
+	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
+	 */
+	addHocs(name: string, ...hocs: ComponentRegistryHocItem[]) {
+
+		const item = super.get(name);
+
+		if (!item) {
+			throw Error(
+				`Count not add hocs for "${name}" component. Reason: Component not found.`
+			);
+		}
+
+		item.hocs.push(...hocs);
+
+		this.data = this.data.set(name, item);
 	}
 }
