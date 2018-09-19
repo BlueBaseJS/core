@@ -52,11 +52,20 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 	 */
 	public async register(name: string, component: ComponentInput) {
 
+		const existing = this.get(name);
+
 		// (Point 1) If the input component is an object of RegistryItem
 		if (isComponentRegistryItem(component)) {
 
+			// Merge HOCs
+			const hocs = !!(existing)
+				? [...existing.hocs, ...component.hocs]
+				: component.hocs || [];
+
 			this.set(name, createComponentRegistryItem({
+				...existing,
 				...component,
+				hocs,
 				rawComponent: component.rawComponent,
 			}));
 			return;
@@ -68,10 +77,11 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		component = getDefiniteModule(component as any);
 
 		if (typeof component === 'object' && !isPromise(component)) {
-			throw Error(`Cound not register "${name}", unknown component type.`);
+			throw Error(`Cound not register "${name}". Reason: Unknown component type.`);
 		}
 
 		this.set(name, createComponentRegistryItem({
+			...existing,
 			rawComponent: component as React.ComponentType<any>
 		}));
 
@@ -83,10 +93,12 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		const registryItem = super.get(name);
 
 		if (!registryItem) {
-			throw new Error(`Component "${name}" is registered.`);
+			throw new Error(`Could not resolve component "${name}". Reason: Component not registered.`);
 		}
 
-		const rawComponent = getAsyncComponent(registryItem.rawComponent.promise);
+		const rawComponent = registryItem.rawComponent.isAsync
+			? getAsyncComponent(registryItem.rawComponent.promise)
+			: registryItem.rawComponent.module;
 
 		const hocs = registryItem.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 

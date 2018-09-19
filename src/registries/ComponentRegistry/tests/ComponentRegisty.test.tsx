@@ -28,6 +28,23 @@ describe('ComponentRegistry', () => {
 
 	});
 
+	describe('.resolve method', () => {
+
+		it('should throw for unknown components', async () => {
+			const BR = new BlueRain();
+
+			let message = false;
+
+			try {
+				BR.Components.resolve('Foo');
+			} catch (e) {
+				message = e.message;
+			}
+
+			expect(message).toBe('Could not resolve component "Foo". Reason: Component not registered.');
+		});
+
+	});
 
 	describe('.register method', () => {
 
@@ -139,10 +156,27 @@ describe('ComponentRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Cound not register "Button", unknown component type.');
+			expect(message).toBe('Cound not register "Button". Reason: Unknown component type.');
 		});
 
 
+		////// Overrides
+
+		it('should merge a ComponentRegistryItem with an existing one', async () => {
+			const BR = new BlueRain();
+			await BR.Components.register('Button', {
+				hocs: [() => Button],
+				preload: true,
+				rawComponent: Button,
+			});
+			await BR.Components.register('Button', {
+				hocs: [() => Button, () => Button],
+				rawComponent: Button,
+			});
+
+			expect(BR.Components.get('Button').hocs).toHaveLength(3);
+			expect(BR.Components.get('Button').preload).toBe(true);
+		});
 	});
 
 
