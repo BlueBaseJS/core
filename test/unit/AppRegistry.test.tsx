@@ -1,8 +1,8 @@
 import AppRegistry from '../../src/registries/AppRegistry';
-import Platform from '../Platform';
 import BR from '../../src/index';
+import Platform from '../Platform';
 
-import { App } from '../../src/models/App';
+// import { App } from '../../src/models/App';
 // just only to test my code.These are not final tests
 describe('AppRegistry Unit tests', () => {
 	let appRegistry;
