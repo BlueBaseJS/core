@@ -88,7 +88,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 	}
 
 
-	public resolve(name: string) {
+	public resolve(name: string): React.ComponentType<any> {
 
 		const registryItem = super.get(name);
 
