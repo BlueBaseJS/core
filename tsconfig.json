@@ -2,11 +2,11 @@
 	"compilerOptions": {
 		"target": "es2017",
 		"outDir": "dist",
-		"rootDir": "src",
+		"rootDir": ".",
 		"moduleResolution": "node",
 		"module": "commonjs",
 		"declaration": true,
-		"inlineSourceMap": true,
+		// "inlineSourceMap": true,
 		"esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */ ,
 		"allowSyntheticDefaultImports": true,
 
@@ -45,6 +45,8 @@
 		"typeRoots": ["node_modules/@types"],
 		"baseUrl": ".",
 		"paths": {
+			"@blueeast/bluerain": ["src"],
+			"@blueeast/bluerain-os": ["src"],
 			"*": ["typings/*"]
 		}
 	},
