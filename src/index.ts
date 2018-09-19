@@ -20,8 +20,9 @@ export * from './registries';
 
 // BlueRain
 export * from './BlueRain';
-import { BlueRain } from './BlueRain';
+export * from './BlueRainApp';
 
 // Backwards Compat
+import { BlueRain } from './BlueRain';
 const BR = new BlueRain();
 export default BR;
