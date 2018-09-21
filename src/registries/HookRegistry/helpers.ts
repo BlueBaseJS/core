@@ -1,8 +1,13 @@
-import { HookCollectionItem, HookListener } from '../HookRegistry';
-import { Plugin } from './Plugin';
+import { HookListener } from '.';
 import { getDefiniteArray } from '../../utils';
 import { getDefiniteBlueRainModule } from '../../api';
 import isFunction from 'lodash.isfunction';
+import { HookCollectionItem } from './HookRegistry';
+
+
+export type HookNameGeneratorFn = (hookName: string, index: number) => string;
+
+const DEFAULT_HOOK_NAME_GENERATOR_FN = (hookName: string, index: number) => `unknown.${hookName}.${index}`;
 
 /**
  * Parses a single hook event of a plugin, and returns an array of listeners objects.
@@ -10,8 +15,11 @@ import isFunction from 'lodash.isfunction';
  * @param hookName
  * @param plugin
  */
-export async function parsePluginHook
-	(hookField: HookCollectionItem, hookName: string, plugin: Plugin) {
+export async function parseHookCollectionItem(
+	hookField: HookCollectionItem,
+	hookName: string,
+	nameGenerator: HookNameGeneratorFn = DEFAULT_HOOK_NAME_GENERATOR_FN
+) {
 
 	const listeners: HookListener[] = [];
 
@@ -33,7 +41,7 @@ export async function parsePluginHook
 		// Final listener object
 		const listener = !isFunction(handlerOrListener)
 			? handlerOrListener as HookListener
-			: { handler: handlerOrListener, name: `${plugin.slug}.${hookName}.${index}` };
+			: { handler: handlerOrListener, name: nameGenerator(hookName, index) };
 
 		// Get listener name
 		// const listenerName = listener.name;

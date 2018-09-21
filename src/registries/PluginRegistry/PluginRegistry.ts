@@ -1,8 +1,8 @@
 import { BlueRainModule, BlueRainModuleInput } from '../../api';
-import { Plugin, PluginHooks, PluginInternal, createPlugin } from './Plugin';
+import { Plugin, PluginInternal, createPlugin } from './Plugin';
 import { Registry } from '../Registry';
-import { parsePluginHook } from './hook.helpers';
 import isFunction from 'lodash.isfunction';
+import { HookCollection } from '../HookRegistry';
 
 export class PluginRegistry extends Registry<PluginInternal> {
 
@@ -112,23 +112,28 @@ export class PluginRegistry extends Registry<PluginInternal> {
 	private async registerPluginHooks(plugin: PluginInternal) {
 
 		// If hooks field is a thunk, then call the thunk function
-		const hooks: PluginHooks = isFunction(plugin.hooks) ? await plugin.hooks(this.BR) : plugin.hooks;
+		const hooks: HookCollection = isFunction(plugin.hooks) ? await plugin.hooks(this.BR) : plugin.hooks;
 
-		// Extract hook names. These are events that are being subscribed to
-		const hookNames = Object.keys(hooks);
+		await this.BR.Hooks.registerMany(
+			hooks,
+			(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
+		);
 
-		// Iterate over each hook name
-		for (const hookName of hookNames) {
+		// // Extract hook names. These are events that are being subscribed to
+		// const hookNames = Object.keys(hooks);
 
-			const hookField = hooks[hookName];
-			const hookListeners = await parsePluginHook(hookField, hookName, plugin);
+		// // Iterate over each hook name
+		// for (const hookName of hookNames) {
 
-			for (const listener of hookListeners) {
+		// 	const hookField = hooks[hookName];
+		// 	const hookListeners = await parsePluginHook(hookField, hookName, plugin);
 
-				// Register this listener
-				await this.BR.Hooks.register(hookName, listener);
-			}
-		}
+		// 	for (const listener of hookListeners) {
+
+		// 		// Register this listener
+		// 		await this.BR.Hooks.register(hookName, listener);
+		// 	}
+		// }
 
 
 	}

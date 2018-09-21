@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-export class SystemApp extends React.PureComponent {
+export interface SystemAppProperties {
+	children: ReactNode
+}
+
+export class SystemApp extends React.PureComponent<SystemAppProperties> {
 
 	render() {
-		return 'BlueRain System App!';
+		return (
+			<div>
+				💧 BlueRain System App!
+				{this.props.children}
+			</div>
+		);
 	}
 }

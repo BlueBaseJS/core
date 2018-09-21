@@ -1,10 +1,8 @@
 import { BR } from './instance';
+import { BootOptions } from './BlueRain';
 import React from 'react';
 
-export interface BlueRainAppProperties {
-
-	// plugins: Plugin[]
-}
+export interface BlueRainAppProperties extends BootOptions {}
 
 interface BlueRainAppState {
 

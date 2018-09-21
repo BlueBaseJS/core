@@ -2,7 +2,6 @@ import { BlueRain } from '../../../BlueRain';
 import { BlueRainModule } from '../../../api';
 import { createPlugin } from '../Plugin';
 
-
 describe('PluginRegistry', () => {
 
 	describe('.register method', () => {

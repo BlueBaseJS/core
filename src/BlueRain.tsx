@@ -1,8 +1,17 @@
-import { ComponentRegistry, HookRegistry, PluginRegistry } from './registries';
+import { ComponentRegistry, HookCollection, HookRegistry, PluginRegistry } from './registries';
 import { BlueRainProvider } from './Context';
 import { Logger } from './api';
-import { register as registerInternalComponents } from './components';
 import React from 'react';
+import systemHooks from './hooks';
+
+export interface BootOptions {
+
+	// plugins: Plugin[]
+	// components: Plugin[]
+	hooks: HookCollection
+	// routes: Plugin[]
+	// configs: Plugin[]
+}
 
 export class BlueRain {
 
@@ -17,9 +26,20 @@ export class BlueRain {
 	// Flags
 	public booted = false;
 
-	public async boot() {
+	private bootOptions: BootOptions = {
+		// config: {},
+		hooks: {},
+		// plugins: [],
+	};
 
-		await registerInternalComponents(this);
+	public async boot(options?: BootOptions) {
+
+		this.bootOptions = { ...this.bootOptions, ...options };
+
+		await this.Hooks.registerMany(systemHooks);
+		await this.Hooks.registerMany(this.bootOptions.hooks);
+
+		await this.Hooks.run('bluerain.boot', this.bootOptions);
 
 		// Set View
 		// const SystemApp = this.Components.resolve('SystemApp');

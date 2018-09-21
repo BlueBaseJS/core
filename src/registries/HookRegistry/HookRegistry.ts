@@ -1,9 +1,10 @@
-import { MaybeEsModule, MaybePromise } from '../../utils';
+import { MaybeEsModule, MaybePromise, MaybeArray } from '../../utils';
 import { BlueRain } from '../../BlueRain';
-import { BlueRainModule } from '../../api/BlueRainModule';
+import { BlueRainModule, MaybeBlueRainModuleOrInput } from '../../api/BlueRainModule';
 import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
+import { parseHookCollectionItem, HookNameGeneratorFn } from './helpers';
 
 export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BR: BlueRain) => T | Promise<T>;
 
@@ -28,6 +29,15 @@ export interface HookListenerInternal extends HookListener {
 	priority: number,
 	handler: BlueRainModule<HookHandlerFn>,
 }
+
+
+export type HookListenerOrHandler = HookListener | HookHandlerFn;
+
+export type HookCollectionItem = MaybeArray<MaybeBlueRainModuleOrInput<HookListenerOrHandler>>;
+
+export type HookCollection = {
+	[hookName: string]: HookCollectionItem
+};
 
 /**
  * Type guard to check if an object is a HookListener
@@ -74,6 +84,25 @@ export class HookRegistry extends Registry<HookListenerInternal[]> {
 		}
 
 		this.set(hookName, [...hookItems, item]);
+	}
+
+	public async registerMany(hooks: HookCollection, nameGenerator?: HookNameGeneratorFn) {
+
+		// Extract hook names. These are events that are being subscribed to
+		const hookNames = Object.keys(hooks);
+
+		// Iterate over each hook name
+		for (const hookName of hookNames) {
+
+			const hookField = hooks[hookName];
+			const hookListeners = await parseHookCollectionItem(hookField, hookName, nameGenerator);
+
+			for (const listener of hookListeners) {
+
+				// Register this listener
+				await this.BR.Hooks.register(hookName, listener);
+			}
+		}
 	}
 
 	/**

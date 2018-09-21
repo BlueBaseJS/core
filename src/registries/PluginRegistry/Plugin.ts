@@ -1,17 +1,8 @@
-import { HookHandlerFn, HookListener } from '..';
 import { BlueRain } from '../../BlueRain';
-import { MaybeArray } from '../../utils';
-import { MaybeBlueRainModuleOrInput } from '../../api/BlueRainModule';
 import kebabCase from 'lodash.kebabcase';
+import { HookCollection } from '../HookRegistry';
 
 export type PluginCategory = 'app' | 'store' | 'router' | 'logger' | 'theme' | string;
-
-export type HookListenerOrHandler = HookListener | HookHandlerFn;
-export type PluginHookItem = MaybeArray<MaybeBlueRainModuleOrInput<HookListenerOrHandler>>;
-
-export type PluginHooks = {
-	[hookName: string]: PluginHookItem
-};
 
 export interface Plugin extends Partial<PluginInternal> {
 
@@ -19,8 +10,6 @@ export interface Plugin extends Partial<PluginInternal> {
 	pluginName: string,
 
 }
-
-
 
 export interface PluginInternal {
 
@@ -34,7 +23,7 @@ export interface PluginInternal {
 
 	enabled: boolean,
 
-	hooks: PluginHooks | ((BR: BlueRain) => PluginHooks);
+	hooks: HookCollection | ((BR: BlueRain) => HookCollection);
 	// components: any;
 	// routes: any;
 
