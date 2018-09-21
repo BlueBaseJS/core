@@ -142,7 +142,12 @@ describe('ComponentRegistry', () => {
 				rawComponent: Button,
 			});
 
-			expect(BR.Components.get('Button').preload).toBe(true);
+			const Component = BR.Components.get('Button');
+
+			if (!Component) {
+				throw Error();
+			}
+			expect(Component.preload).toBe(true);
 		});
 
 		it('should throw an Error for empty object', async () => {
@@ -174,8 +179,13 @@ describe('ComponentRegistry', () => {
 				rawComponent: Button,
 			});
 
-			expect(BR.Components.get('Button').hocs).toHaveLength(3);
-			expect(BR.Components.get('Button').preload).toBe(true);
+			const Component = BR.Components.get('Button');
+
+			if (!Component) {
+				throw Error();
+			}
+			expect(Component.hocs).toHaveLength(3);
+			expect(Component.preload).toBe(true);
 		});
 	});
 
@@ -187,7 +197,12 @@ describe('ComponentRegistry', () => {
 			await BR.Components.register('Button', Button);
 			BR.Components.addHocs('Button', () => Button);
 
-			expect(BR.Components.get('Button').hocs).toHaveLength(1);
+			const Component = BR.Components.get('Button');
+
+			if (!Component) {
+				throw Error();
+			}
+			expect(Component.hocs).toHaveLength(1);
 		});
 
 		it('should add multiple HOCs', async () => {
@@ -197,7 +212,12 @@ describe('ComponentRegistry', () => {
 			BR.Components.addHocs('Button', () => Button);
 			BR.Components.addHocs('Button', () => Button);
 
-			expect(BR.Components.get('Button').hocs).toHaveLength(3);
+			const Component = BR.Components.get('Button');
+
+			if (!Component) {
+				throw Error();
+			}
+			expect(Component.hocs).toHaveLength(3);
 		});
 
 		it('should not override existing HOCs', async () => {
@@ -208,7 +228,12 @@ describe('ComponentRegistry', () => {
 			});
 			BR.Components.addHocs('Button', () => Button);
 
-			expect(BR.Components.get('Button').hocs).toHaveLength(2);
+			const Component = BR.Components.get('Button');
+
+			if (!Component) {
+				throw Error();
+			}
+			expect(Component.hocs).toHaveLength(2);
 		});
 
 		it('should throw an Error for unregistered components', async () => {
