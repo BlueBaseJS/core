@@ -36,8 +36,8 @@ export class BlueRain {
 
 		this.bootOptions = { ...this.bootOptions, ...options };
 
-		await this.Hooks.registerMany(systemHooks);
-		await this.Hooks.registerMany(this.bootOptions.hooks);
+		await this.Hooks.registerCollection(systemHooks);
+		await this.Hooks.registerCollection(this.bootOptions.hooks);
 
 		await this.Hooks.run('bluerain.boot', this.bootOptions);
 

@@ -1,31 +1,43 @@
-import { HookListener } from '.';
-import { getDefiniteArray } from '../../utils';
+import { HookCollectionItem, HookInput, ListenerNameGeneratorFn } from './types';
 import { getDefiniteBlueRainModule } from '../../api';
+import { getDefiniteArray } from '../../utils';
+import { DEFAULT_HOOK_NAME_GENERATOR_FN } from './defaults';
+import { Hook } from '../../models/Hook';
 import isFunction from 'lodash.isfunction';
-import { HookCollectionItem } from './HookRegistry';
-
-
-export type HookNameGeneratorFn = (hookName: string, index: number) => string;
-
-const DEFAULT_HOOK_NAME_GENERATOR_FN = (hookName: string, index: number) => `unknown.${hookName}.${index}`;
 
 /**
- * Parses a single hook event of a plugin, and returns an array of listeners objects.
- * @param hookField
- * @param hookName
+ * Type guard to check if an object is a Hook
+ * @param item
+ */
+export function isHook(item: any): item is Hook {
+	return (item instanceof Hook);
+}
+
+/**
+ * Type guard to check if an object is a HookInput
+ * @param item
+ */
+export function isHookInput(item: any): item is HookInput {
+	return item.handler !== undefined;
+}
+
+/**
+ * Parses a single hook event of collection, and returns an array of listeners objects.
+ * @param collectionItem
+ * @param eventName
  * @param plugin
  */
 export async function parseHookCollectionItem(
-	hookField: HookCollectionItem,
-	hookName: string,
-	nameGenerator: HookNameGeneratorFn = DEFAULT_HOOK_NAME_GENERATOR_FN
+	collectionItem: HookCollectionItem,
+	eventName: string,
+	nameGenerator: ListenerNameGeneratorFn = DEFAULT_HOOK_NAME_GENERATOR_FN
 ) {
 
-	const listeners: HookListener[] = [];
+	const hookArr: Hook[] = [];
 
 	// Each hookField maybe an array, we create one if its not
 	// We've done this to allow multiple listeners against each hook
-	const hookFieldArr = getDefiniteArray(hookField);
+	const hookFieldArr = getDefiniteArray(collectionItem);
 
 	let index = 0;
 
@@ -38,17 +50,28 @@ export async function parseHookCollectionItem(
 		// Resolve listener, so if its another bundle, gets loaded here
 		const handlerOrListener = await item.promise;
 
-		// Final listener object
-		const listener = !isFunction(handlerOrListener)
-			? handlerOrListener as HookListener
-			: { handler: handlerOrListener, name: nameGenerator(hookName, index) };
+		let hook: Hook;
 
-		// Get listener name
-		// const listenerName = listener.name;
+		// If the object is an instance of Hook class, we push it and move on
+		if (isHook(handlerOrListener)) {
+			hook = handlerOrListener;
+		}
+		// It must be an hook input object with hook props
+		else if (isHookInput(handlerOrListener)) {
+			hook = new Hook(handlerOrListener);
+		}
+		// It must only be a handler function
+		else if (isFunction(handlerOrListener)) {
+			hook = new Hook({ handler: handlerOrListener, name: nameGenerator(eventName, index) });
+		}
+		// Unkown Input type
+		else {
+			throw Error('Could not create Hook. Reason: Unrecognized hook format.');
+		}
+
+		hookArr.push(hook);
 		index++;
-
-		listeners.push(listener);
 	}
 
-	return listeners;
+	return hookArr;
 }

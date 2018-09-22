@@ -114,27 +114,10 @@ export class PluginRegistry extends Registry<PluginInternal> {
 		// If hooks field is a thunk, then call the thunk function
 		const hooks: HookCollection = isFunction(plugin.hooks) ? await plugin.hooks(this.BR) : plugin.hooks;
 
-		await this.BR.Hooks.registerMany(
+		await this.BR.Hooks.registerCollection(
 			hooks,
 			(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
 		);
-
-		// // Extract hook names. These are events that are being subscribed to
-		// const hookNames = Object.keys(hooks);
-
-		// // Iterate over each hook name
-		// for (const hookName of hookNames) {
-
-		// 	const hookField = hooks[hookName];
-		// 	const hookListeners = await parsePluginHook(hookField, hookName, plugin);
-
-		// 	for (const listener of hookListeners) {
-
-		// 		// Register this listener
-		// 		await this.BR.Hooks.register(hookName, listener);
-		// 	}
-		// }
-
 
 	}
 

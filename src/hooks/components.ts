@@ -1,8 +1,8 @@
-import { HookListener } from '../registries';
 import { BlueRain, BootOptions } from '../BlueRain';
 import { SystemApp } from '../components/SystemApp';
+import { HookInput } from '../registries';
 
-export const components: { [key: string]: HookListener[] } = {
+export const components: { [key: string]: HookInput[] } = {
 
 	'bluerain.internal.components.register': [{
 		handler: async (bootOptions: BootOptions, _ctx: {}, BR: BlueRain) => {

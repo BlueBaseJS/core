@@ -1,8 +1,8 @@
 		// tslint:disable:object-literal-sort-keys
-import { HookListener } from '../registries';
+import { HookInput } from '../registries';
 import { BlueRain, BootOptions } from '../BlueRain';
 
-export const boot: { [key: string]: HookListener[] } = {
+export const boot: { [key: string]: HookInput[] } = {
 
 	'bluerain.boot': [{
 		name: 'bluerain-boot-default',
