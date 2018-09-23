@@ -1,4 +1,4 @@
-import { HookCollectionItem, HookInput, ListenerNameGeneratorFn } from './types';
+import { HookCollectionItem, HookInput, HookNameGeneratorFn } from './types';
 import { getDefiniteBlueRainModule } from '../../api';
 import { getDefiniteArray } from '../../utils';
 import { DEFAULT_HOOK_NAME_GENERATOR_FN } from './defaults';
@@ -22,7 +22,7 @@ export function isHookInput(item: any): item is HookInput {
 }
 
 /**
- * Parses a single hook event of collection, and returns an array of listeners objects.
+ * Parses a single hook event of collection, and returns an array of hook objects.
  * @param collectionItem
  * @param eventName
  * @param plugin
@@ -30,7 +30,7 @@ export function isHookInput(item: any): item is HookInput {
 export async function parseHookCollectionItem(
 	collectionItem: HookCollectionItem,
 	eventName: string,
-	nameGenerator: ListenerNameGeneratorFn = DEFAULT_HOOK_NAME_GENERATOR_FN
+	nameGenerator: HookNameGeneratorFn = DEFAULT_HOOK_NAME_GENERATOR_FN
 ) {
 
 	const hookArr: Hook[] = [];

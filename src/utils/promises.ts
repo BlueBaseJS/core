@@ -7,6 +7,7 @@ export function getDefinitePromise<T = any>(object: MaybePromise<T>): Promise<T>
 		: object as Promise<T>;
 }
 
+// FIXME: object is Promise?
 export function isPromise<T>(object: any): object is MaybePromise<T> {
 	return !!object && 'function' === typeof (object as Promise<T>).then;
 }

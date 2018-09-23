@@ -5,25 +5,28 @@ import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 import { Hook } from '../../models/Hook';
+import { resolveThunk } from '../../utils/Thunk';
 
 /**
- * Stores all Hooks in BlueRain
+ * 🎣 This is where are BlueRain hooks are stored.
  */
 export class HookRegistry extends Registry<Hook[]> {
 
 	/**
-	 * Add a hook listener. If the hook listener already exists, it will throw and Error.
+	 * Add a hook. If the hook already exists, it will throw and Error.
 	 *
-	 * - If whole listener is a BlueRainModule, it is resolved immidiately
+	 * BlueRainModule Resolution:
+	 *
+	 * - If the hook is a BlueRainModule, it is resolved immidiately.
 	 * - If the handler function is a BlueRainModule, it will be resolve at run time
 	 *
 	 * @param eventName Name to the hook to subscribe to
-	 * @param listener Listener object
+	 * @param hook Hook object
 	 */
-	public async register(eventName: string, listener: MaybeBlueRainModuleOrInput<TYPES.HookInput>) {
+	public async register(eventName: string, hook: MaybeBlueRainModuleOrInput<TYPES.HookInput>) {
 
 		// const item = await this.buildHookListenerInternal(listener);
-		const input = await getDefiniteBlueRainModule(listener).promise;
+		const input = await getDefiniteBlueRainModule(hook).promise;
 		const item = new Hook(input);
 
 		const hookItems = this.get(eventName) || [];
@@ -44,7 +47,16 @@ export class HookRegistry extends Registry<Hook[]> {
 		this.set(eventName, [...hookItems, item]);
 	}
 
-	public async registerCollection(collection: TYPES.HookCollection, nameGenerator?: TYPES.ListenerNameGeneratorFn) {
+	/**
+	 * Register a collection of hooks.
+	 *
+	 * @param collection HookCollection object
+	 * @param nameGenerator A function that is used to generate hook name, when one is not given
+	 */
+	public async registerCollection(collection: TYPES.HookCollectionInput, nameGenerator?: TYPES.HookNameGeneratorFn) {
+
+		// If hooks field is a thunk, then call the thunk function
+		collection = resolveThunk(collection, this.BR);
 
 		// Extract hook names. These are events that are being subscribed to
 		const eventNames = Object.keys(collection);
@@ -64,11 +76,12 @@ export class HookRegistry extends Registry<Hook[]> {
 	}
 
 	/**
-	 * Remove a hook listener.
+	 * Unregister a hook.
+	 *
 	 * @param eventName Name to the hook to subscribe to
-	 * @param listenerName Name of the lister or the source of the listener
+	 * @param hookName Name of the lister or the source of the listener
 	 */
-	public unregister(eventName: string, listenerName: string) {
+	public unregister(eventName: string, hookName: string) {
 
 		const list = this.get(eventName);
 
@@ -76,10 +89,10 @@ export class HookRegistry extends Registry<Hook[]> {
 			throw Error(`${eventName} hook does not exist.`);
 		}
 
-		const index = list.findIndex(item => !!(item && item.name === listenerName));
+		const index = list.findIndex(item => !!(item && item.name === hookName));
 
 		if (index === -1) {
-			throw Error(`${listenerName} listener is not added in ${eventName} hook.`);
+			throw Error(`${hookName} listener is not added in ${eventName} hook.`);
 		}
 
 		list.splice(index, 1);
@@ -153,5 +166,4 @@ export class HookRegistry extends Registry<Hook[]> {
 
 		return result;
 	}
-
 }

@@ -1,8 +1,6 @@
 import { BlueRainModule, BlueRainModuleInput } from '../../api';
 import { Plugin, PluginInternal, createPlugin } from './Plugin';
 import { Registry } from '../Registry';
-import isFunction from 'lodash.isfunction';
-import { HookCollection } from '../HookRegistry';
 
 export class PluginRegistry extends Registry<PluginInternal> {
 
@@ -111,11 +109,8 @@ export class PluginRegistry extends Registry<PluginInternal> {
 
 	private async registerPluginHooks(plugin: PluginInternal) {
 
-		// If hooks field is a thunk, then call the thunk function
-		const hooks: HookCollection = isFunction(plugin.hooks) ? await plugin.hooks(this.BR) : plugin.hooks;
-
 		await this.BR.Hooks.registerCollection(
-			hooks,
+			plugin.hooks,
 			(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
 		);
 
