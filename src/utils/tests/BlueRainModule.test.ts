@@ -1,6 +1,6 @@
 import { BlueRainModule, getDefiniteBlueRainModule } from '../BlueRainModule';
 
-describe('API', () => {
+describe('Utils', () => {
 
 	describe('BlueRainModule', () => {
 

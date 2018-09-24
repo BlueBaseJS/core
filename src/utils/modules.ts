@@ -18,16 +18,15 @@ export type MaybeEsModule<T> = T | EsModule<T>;
  */
 export function getDefiniteModule<T = any>(object: MaybeEsModule<T>): T {
 
-	return (object as EsModule<T>).default
-		? ((object as EsModule<T>).default as T)
-		: object as T;
+	return isEsModule(object)
+		? (object.default)
+		: object;
 }
 
 /**
  * Checks if an object is an ES module.
  * @param object Input object
  */
-// FIXME: Explore better typings
-export function isEsModule<T>(object: any): object is EsModule<T> {
-	return object.default !== undefined;
+export function isEsModule<T>(object: MaybeEsModule<T>): object is EsModule<T> {
+	return (object as EsModule<T>).default !== undefined;
 }

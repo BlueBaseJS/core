@@ -74,9 +74,11 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		// (Point 2) If the input component react component
 
 		// We make sure to strip off ES Module here
+		// FIXME: Remove any type casting
 		component = getDefiniteModule(component as any);
 
-		if (typeof component === 'object' && !isPromise(component)) {
+		// FIXME: Remove any type casting
+		if (typeof component === 'object' && !isPromise(component as any)) {
 			throw Error(`Cound not register "${name}". Reason: Unknown component type.`);
 		}
 
