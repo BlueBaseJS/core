@@ -1,6 +1,6 @@
 import { HookHandlerFn, HookInput } from '../registries/HookRegistry/types';
 import { DEFAULT_HOOK_PRIORITY } from '../registries/HookRegistry/defaults';
-import { BlueRainModule, getDefiniteBlueRainModule } from '../api';
+import { BlueRainModule, getDefiniteBlueRainModule } from '../utils';
 import isNil from 'lodash.isnil';
 
 export class Hook {

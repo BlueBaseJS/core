@@ -1,5 +1,5 @@
 import { BlueRain } from '../../../BlueRain';
-import { BlueRainModule } from '../../../api';
+import { BlueRainModule } from '../../../utils';
 import { createPlugin } from '../Plugin';
 
 describe('PluginRegistry', () => {

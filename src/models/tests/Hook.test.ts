@@ -1,5 +1,5 @@
 import { Hook } from '../Hook';
-import { isBlueRainModule } from '../../api';
+import { isBlueRainModule } from '../../utils';
 import { DEFAULT_HOOK_PRIORITY } from '../../registries/HookRegistry/defaults';
 
 describe('Models', () => {

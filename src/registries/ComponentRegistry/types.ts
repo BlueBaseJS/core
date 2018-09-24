@@ -1,4 +1,4 @@
-import { BlueRainModule, MaybeBlueRainModuleOrInput } from '../../api';
+import { BlueRainModule, MaybeBlueRainModuleOrInput } from '../../utils';
 import React from 'react';
 
 /////////////////////////////////////

@@ -1,6 +1,6 @@
 import { HookRegistry } from '../HookRegistry';
 import { BlueRain } from '../../../BlueRain';
-import { BlueRainModule } from '../../../api/BlueRainModule';
+import { BlueRainModule } from '../../../utils';
 import { DEFAULT_HOOK_PRIORITY } from '../defaults';
 import { Hook } from '../../../models/Hook';
 

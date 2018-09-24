@@ -1,6 +1,6 @@
 import * as TYPES from './types';
 import { parseHookCollectionItem } from './helpers';
-import { MaybeBlueRainModuleOrInput, getDefiniteBlueRainModule } from '../../api/BlueRainModule';
+import { MaybeBlueRainModuleOrInput, getDefiniteBlueRainModule } from '../../utils';
 import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';

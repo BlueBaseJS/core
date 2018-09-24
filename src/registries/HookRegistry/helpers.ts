@@ -1,6 +1,5 @@
 import { HookCollectionItem, HookInput, HookNameGeneratorFn } from './types';
-import { getDefiniteBlueRainModule } from '../../api';
-import { getDefiniteArray } from '../../utils';
+import { getDefiniteArray, getDefiniteBlueRainModule } from '../../utils';
 import { DEFAULT_HOOK_NAME_GENERATOR_FN } from './defaults';
 import { Hook } from '../../models/Hook';
 import isFunction from 'lodash.isfunction';

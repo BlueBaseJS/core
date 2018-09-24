@@ -1,4 +1,4 @@
-import { BlueRainModule, BlueRainModuleInput } from '../../api';
+import { BlueRainModule, BlueRainModuleInput } from '../../utils';
 import { Plugin, PluginInternal, createPlugin } from './Plugin';
 import { Registry } from '../Registry';
 

@@ -1,29 +1,47 @@
-import { MaybeEsModule, getDefiniteModule, isEsModule } from '../utils/modules';
-import { MaybePromise, getDefinitePromise, isPromise } from '../utils/promises';
+import { MaybeEsModule, getDefiniteModule, isEsModule } from '../utils/Modules';
+import { MaybePromise, getDefinitePromise, isPromise } from '../utils/Promises';
 
-export type BlueRainModuleInput<T> = MaybePromise<MaybeEsModule<T>>;
-// export type BlueRainModuleInput<T> = MaybeEsModule<MaybePromise<MaybeEsModule<T>>>;
+/**
+ * Structure of an input acceptable to create a BlueRainModule
+ */
+// export type BlueRainModuleInput<T> = MaybePromise<MaybeEsModule<T>>;
+export type BlueRainModuleInput<T> = MaybeEsModule<MaybePromise<MaybeEsModule<T>>>;
 
-// export type MaybeBlueRainModule<T> = T | BlueRainModule<T>;
+/**
+ * An object that may or may not be an instance of BlueRainModule
+ */
 export type MaybeBlueRainModule<T> = T | BlueRainModule<T>;
 
+/**
+ * An object that maybe an instance of BlueRainModule, or a BlueRainModuleInput object, or neiter.
+ */
 export type MaybeBlueRainModuleOrInput<T> = BlueRainModuleInput<T> | MaybeBlueRainModule<T>;
 
-export function getDefiniteBlueRainModule<T>(module: MaybeBlueRainModuleOrInput<T>): BlueRainModule<T> {
+/**
+ * Checks if an input object is a BlueRainModule. Returns as is if true, otherwise,
+ * wraps the input into a BlueRainModule and returns.
+ *
+ * @param input Input object
+ */
+export function getDefiniteBlueRainModule<T>(input: MaybeBlueRainModuleOrInput<T>): BlueRainModule<T> {
 
-	if (!isBlueRainModule(module)) {
-		module = new BlueRainModule(module as BlueRainModuleInput<T>);
+	if (isBlueRainModule(input)) {
+		return input;
 	}
 
-	return module as BlueRainModule<T>;
+	return new BlueRainModule(input) as BlueRainModule<T>;
 }
 
-export function isBlueRainModule<T>(input: T) {
+/**
+ * Check if an input object is an instance of BlueRainModule
+ * @param input Input object
+ */
+export function isBlueRainModule<T>(input: MaybeBlueRainModuleOrInput<T>): input is BlueRainModule<T> {
 	return (input instanceof BlueRainModule);
 }
 
 /**
- * BlueRain module
+ * 📦 BlueRain Module
  */
 export class BlueRainModule<T> {
 
@@ -55,9 +73,9 @@ export class BlueRainModule<T> {
 	 */
 	public isAsync: boolean = false;
 
-	constructor(module: BlueRainModuleInput<T> ) {
+	constructor(input: BlueRainModuleInput<T> ) {
 
-		this.module = (isEsModule(module)) ? getDefiniteModule(module) : module;
+		this.module = (isEsModule(input)) ? getDefiniteModule(input) : input;
 
 		if (isPromise(this.module)) {
 			this.isAsync = true;

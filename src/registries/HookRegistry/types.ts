@@ -1,8 +1,6 @@
-import { MaybeArray } from '../../utils';
+import { MaybeArray, MaybeBlueRainModuleOrInput, MaybeThunk } from '../../utils';
 import { BlueRain } from '../../BlueRain';
-import { MaybeBlueRainModuleOrInput } from '../../api/BlueRainModule';
 import { Hook } from '../../models/Hook';
-import { MaybeThunk } from '../../utils/Thunk';
 
 /**
  * This function is used to dynamically generate hook name, if one is not

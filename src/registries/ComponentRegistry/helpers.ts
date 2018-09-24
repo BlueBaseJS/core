@@ -1,5 +1,5 @@
 import { ComponentRegistryItem, ComponentRegistryItemInternal } from './types';
-import { getDefiniteBlueRainModule } from '../../api';
+import { getDefiniteBlueRainModule } from '../../utils';
 
 export function createComponentRegistryItem(input: ComponentRegistryItemInternal): ComponentRegistryItem {
 
