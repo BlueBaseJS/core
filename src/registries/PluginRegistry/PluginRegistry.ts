@@ -1,24 +1,26 @@
-import { BlueRainModule, BlueRainModuleInput } from '../../utils';
-import { Plugin, PluginInternal, createPlugin } from './Plugin';
+import { MaybeBlueRainModuleOrInput, getDefiniteBlueRainModule } from '../../utils';
 import { Registry } from '../Registry';
+import { Plugin } from '../../models/Plugin';
+import { PluginInput } from './types';
 
-export class PluginRegistry extends Registry<PluginInternal> {
+export class PluginRegistry extends Registry<Plugin> {
 
-	public async register(plugin: Plugin | BlueRainModuleInput<Plugin> | BlueRainModule<Plugin>): Promise<void> {
+	public async register(plugin: MaybeBlueRainModuleOrInput<Plugin | PluginInput>): Promise<void> {
 
 		if (!plugin) {
 			throw Error(`No plugin provided in PluginRegistry's register method.`);
 		}
 
-		if (!(plugin instanceof BlueRainModule)) {
-			plugin = new BlueRainModule(plugin);
-		}
+		plugin = getDefiniteBlueRainModule(plugin);
 
 		plugin = await plugin.promise;
 
-		const finalPlugin = createPlugin(plugin);
-
-		this.set(finalPlugin.slug, finalPlugin);
+		if (plugin instanceof Plugin) {
+			this.set(plugin.slug, plugin);
+		} else {
+			const finalPlugin = new Plugin(plugin);
+			this.set(finalPlugin.slug, finalPlugin);
+		}
 	}
 
 	public unregister(slug: string) {
@@ -37,11 +39,11 @@ export class PluginRegistry extends Registry<PluginInternal> {
 		}
 	}
 
-	public isEnabled(plugin: string | PluginInternal) {
-		return this.resolveSlugOrPlugin(plugin).enabled;
+	public isEnabled(plugin: string | Plugin) {
+		return this.resolveSlugOrPlugin(plugin).isEnabled();
 	}
 
-	public async enable(plugin: string | PluginInternal) {
+	public async enable(plugin: string | Plugin) {
 
 		// Fetch plugin
 		plugin = this.resolveSlugOrPlugin(plugin);
@@ -53,7 +55,7 @@ export class PluginRegistry extends Registry<PluginInternal> {
 		// }
 
 		// Set plugin flag
-		plugin.enabled = true;
+		// plugin.isEnabled = true;
 		this.set(plugin.slug, plugin);
 
 		// Register plugin hooks
@@ -65,34 +67,34 @@ export class PluginRegistry extends Registry<PluginInternal> {
 		// Register plugin routes
 		await this.registerPluginRoutes(plugin);
 
-		// Call onEnable event hook
-		await plugin.onEnable(this.BR);
+		// // Call onEnable event hook
+		// await plugin.onEnable(this.BR);
 
 		// Initialize plugin
 		// TODO: Fix configs injection
 		await plugin.initialize({}, this.BR);
 	}
 
-	public async disablePlugin(plugin: string | PluginInternal) {
+	public async disablePlugin(plugin: string | Plugin) {
 
 		// Fetch plugin
 		plugin = this.resolveSlugOrPlugin(plugin);
 
 		// Set plugin flag
-		plugin.enabled = false;
+		plugin.disable();
 		this.set(plugin.slug, plugin);
 
 		// TODO: unregister hooks, etc. Or just re-render take care of it?
 	}
 
 	/**
-	 * Takes a string or a PluginInternal object. If the input is
-	 * a string, it is treated as a slug, and a corresponding PluginInternal
+	 * Takes a string or a Plugin object. If the input is
+	 * a string, it is treated as a slug, and a corresponding Plugin
 	 * object is fetched from the Registry.
 	 *
 	 * @param plugin
 	 */
-	private resolveSlugOrPlugin(plugin: string | PluginInternal) {
+	private resolveSlugOrPlugin(plugin: string | Plugin) {
 
 		if (typeof plugin === 'string') {
 			const fetched = this.get(plugin);
@@ -107,7 +109,7 @@ export class PluginRegistry extends Registry<PluginInternal> {
 		return plugin;
 	}
 
-	private async registerPluginHooks(plugin: PluginInternal) {
+	private async registerPluginHooks(plugin: Plugin) {
 
 		await this.BR.Hooks.registerCollection(
 			plugin.hooks,

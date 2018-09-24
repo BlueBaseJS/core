@@ -1,6 +1,7 @@
 import { BlueRain } from '../../../BlueRain';
 import { BlueRainModule } from '../../../utils';
-import { createPlugin } from '../Plugin';
+import { Plugin } from '../../../models/Plugin';
+
 
 describe('PluginRegistry', () => {
 
@@ -11,7 +12,7 @@ describe('PluginRegistry', () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({ pluginName: 'DummyPlugin', slug: 'plugin-slug' });
+			await BR.Plugins.register({ name: 'DummyPlugin', slug: 'plugin-slug' });
 
 			const plugin = BR.Plugins.get('plugin-slug');
 
@@ -19,7 +20,7 @@ describe('PluginRegistry', () => {
 				throw Error();
 			}
 
-			expect(plugin.pluginName).toBe('DummyPlugin');
+			expect(plugin.name).toBe('DummyPlugin');
 		});
 
 		it('should register a Plugin with auto generated slug', async () => {
@@ -27,7 +28,7 @@ describe('PluginRegistry', () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({ pluginName: 'DummyPlugin' });
+			await BR.Plugins.register(new Plugin({ name: 'DummyPlugin' }));
 
 			const plugin = BR.Plugins.get('dummy-plugin');
 
@@ -35,14 +36,14 @@ describe('PluginRegistry', () => {
 				throw Error();
 			}
 
-			expect(plugin.pluginName).toBe('DummyPlugin');
+			expect(plugin.name).toBe('DummyPlugin');
 		});
 
 		it('should register a Plugin from an ES Module', async () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({ __esModule: true, default: { pluginName: 'DummyPlugin' } });
+			await BR.Plugins.register({ __esModule: true, default: { name: 'DummyPlugin' } });
 
 			const plugin = BR.Plugins.get('dummy-plugin');
 
@@ -50,14 +51,14 @@ describe('PluginRegistry', () => {
 				throw Error();
 			}
 
-			expect(plugin.pluginName).toBe('DummyPlugin');
+			expect(plugin.name).toBe('DummyPlugin');
 		});
 
 		it('should register a Plugin from a Promised ES Module', async () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register(Promise.resolve({ __esModule: true, default: { pluginName: 'DummyPlugin' } }));
+			await BR.Plugins.register(Promise.resolve({ __esModule: true, default: { name: 'DummyPlugin' } }));
 
 			const plugin = BR.Plugins.get('dummy-plugin');
 
@@ -65,14 +66,14 @@ describe('PluginRegistry', () => {
 				throw Error();
 			}
 
-			expect(plugin.pluginName).toBe('DummyPlugin');
+			expect(plugin.name).toBe('DummyPlugin');
 		});
 
 		it('should register a Plugin from an ES Module in a BlueRainModule', async () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register(new BlueRainModule({ __esModule: true, default: { pluginName: 'DummyPlugin' } }));
+			await BR.Plugins.register(new BlueRainModule({ __esModule: true, default: { name: 'DummyPlugin' } }));
 
 			const plugin = BR.Plugins.get('dummy-plugin');
 
@@ -80,14 +81,14 @@ describe('PluginRegistry', () => {
 				throw Error();
 			}
 
-			expect(plugin.pluginName).toBe('DummyPlugin');
+			expect(plugin.name).toBe('DummyPlugin');
 		});
 
 		it('should register a Plugin from a Promise', async () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register(Promise.resolve({ pluginName: 'DummyPlugin' }));
+			await BR.Plugins.register(Promise.resolve({ name: 'DummyPlugin' }));
 
 			const plugin = BR.Plugins.get('dummy-plugin');
 
@@ -95,7 +96,7 @@ describe('PluginRegistry', () => {
 				throw Error();
 			}
 
-			expect(plugin.pluginName).toBe('DummyPlugin');
+			expect(plugin.name).toBe('DummyPlugin');
 		});
 
 		it('should throw an error if plugin is not provided', async () => {
@@ -111,7 +112,7 @@ describe('PluginRegistry', () => {
 			expect(message).toBeTruthy();
 		});
 
-		it('should throw an error if pluginName is not provided', async () => {
+		it('should throw an error if name is not provided', async () => {
 			const BR = new BlueRain();
 			let message = false;
 
@@ -133,7 +134,7 @@ describe('PluginRegistry', () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({ pluginName: 'DummyPlugin', slug: 'plugin-slug' });
+			await BR.Plugins.register({ name: 'DummyPlugin', slug: 'plugin-slug' });
 
 			let plugin = BR.Plugins.get('plugin-slug');
 
@@ -141,7 +142,7 @@ describe('PluginRegistry', () => {
 				throw Error();
 			}
 
-			expect(plugin.pluginName).toBe('DummyPlugin');
+			expect(plugin.name).toBe('DummyPlugin');
 
 			BR.Plugins.unregister(plugin.slug);
 
@@ -163,7 +164,7 @@ describe('PluginRegistry', () => {
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
 				},
-				pluginName: 'DummyPlugin',
+				name: 'DummyPlugin',
 			});
 
 			// const Plugins = new PluginRegistry(BR);
@@ -171,7 +172,7 @@ describe('PluginRegistry', () => {
 				hooks: {
 					'an.event': (val: number) => val,
 				},
-				pluginName: 'DummyPlugin2',
+				name: 'DummyPlugin2',
 			});
 
 			expect(BR.Hooks.size()).toBe(0);
@@ -191,7 +192,7 @@ describe('PluginRegistry', () => {
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
 				},
-				pluginName: 'DummyPlugin',
+				name: 'DummyPlugin',
 			});
 
 			// const Plugins = new PluginRegistry(BR);
@@ -199,7 +200,7 @@ describe('PluginRegistry', () => {
 				hooks: {
 					'an.event': (val: number) => val,
 				},
-				pluginName: 'DummyPlugin2',
+				name: 'DummyPlugin2',
 			});
 
 			expect(BR.Hooks.size()).toBe(0);
@@ -218,7 +219,7 @@ describe('PluginRegistry', () => {
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
 				}),
-				pluginName: 'DummyPlugin',
+				name: 'DummyPlugin',
 			});
 
 			// const Plugins = new PluginRegistry(BR);
@@ -226,7 +227,7 @@ describe('PluginRegistry', () => {
 				hooks: () => ({
 					'an.event': (val: number) => val,
 				}),
-				pluginName: 'DummyPlugin2',
+				name: 'DummyPlugin2',
 			});
 
 			expect(BR.Hooks.size()).toBe(0);
@@ -250,7 +251,7 @@ describe('PluginRegistry', () => {
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
 				},
-				pluginName: 'DummyPlugin',
+				name: 'DummyPlugin',
 			});
 
 			expect(BR.Plugins.isEnabled('dummy-plugin')).toBe(true);
@@ -270,7 +271,7 @@ describe('PluginRegistry', () => {
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
 				},
-				pluginName: 'DummyPlugin',
+				name: 'DummyPlugin',
 			});
 
 			// const Plugins = new PluginRegistry(BR);
@@ -278,7 +279,7 @@ describe('PluginRegistry', () => {
 				hooks: {
 					'an.event': (val: number) => val,
 				},
-				pluginName: 'DummyPlugin2',
+				name: 'DummyPlugin2',
 			});
 
 			expect(BR.Hooks.size()).toBe(0);
@@ -300,18 +301,18 @@ describe('PluginRegistry', () => {
 
 			// const Plugins = new PluginRegistry(BR);
 			await BR.Plugins.register({
-				pluginName: 'DummyPlugin',
+				name: 'DummyPlugin',
 			});
 
-			expect((BR.Plugins as any).resolveSlugOrPlugin('dummy-plugin').pluginName).toBe('DummyPlugin');
+			expect((BR.Plugins as any).resolveSlugOrPlugin('dummy-plugin').name).toBe('DummyPlugin');
 		});
 
 		it('should return a Plugin  object as is', async () => {
 			const BR = new BlueRain();
 
 			// const Plugins = new PluginRegistry(BR);
-			const plugin = createPlugin({
-				pluginName: 'DummyPlugin',
+			const plugin = new Plugin({
+				name: 'DummyPlugin',
 			});
 
 			expect((BR.Plugins as any).resolveSlugOrPlugin(plugin).slug).toBe('dummy-plugin');
