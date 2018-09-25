@@ -6,6 +6,17 @@ import { isPluginInput } from './helpers';
 
 export class PluginRegistry extends Registry<Plugin> {
 
+	/**
+	 * Registers a Plugin. Input can be any of the following:
+	 *
+	 * - A Plugin Class
+	 * - An instance of Plugin Class
+	 * - An object that has similar properties to a Plugin object (PluginInput)
+	 *
+	 * Moreover all of these can be split into BlueRainModules
+	 *
+	 * @param plugin Input
+	 */
 	public async register(plugin: MaybeBlueRainModuleOrInput<typeof Plugin | Plugin | PluginInput>): Promise<void> {
 
 		if (!plugin) {
@@ -16,37 +27,60 @@ export class PluginRegistry extends Registry<Plugin> {
 
 		let finalPlugin;
 
+		// If pluign is an instance of Plugin class
 		if (plugin instanceof Plugin) {
 			finalPlugin = plugin;
 		}
+
+		// If plugin is an object
 		else if (isPluginInput(plugin)) {
 			finalPlugin = (new Plugin(plugin));
 		}
+
+		// If plugin is a Class
 		else if (isClass(plugin)) {
 			const classObj = (new (plugin as typeof Plugin)());
 
+			// If this object is not an instance of Plugin,
+			// it means its no a Plugin at all.
 			if (classObj instanceof Plugin) {
 				finalPlugin = classObj;
 			}
 		}
 
+		// If none of the above
 		if(!finalPlugin) {
 			throw Error('Could not register plugin. Reason: Input variable is not a plugin.');
 		}
 
+		// Run setup
 		finalPlugin = finalPlugin.setup();
+
+		// Save
 		this.set(finalPlugin.slug, finalPlugin);
 	}
 
+	/**
+	 * Unregisters a plugin
+	 * @param slug Plugin slug
+	 */
 	public unregister(slug: string) {
 		this.delete(slug);
 		// TODO: Do we force rerender/reboot?
 	}
 
+	/**
+	 * Checks if a plugin is enabled
+	 * @param plugin Plugin slug or the plugin object itself
+	 */
 	public isEnabled(plugin: string | Plugin) {
 		return this.getFromSlugOrPlugin(plugin).isEnabled();
 	}
 
+	/**
+	 * Enable a plugin
+	 * @param plugin Plugin slug or the plugin object itself
+	 */
 	public async enable(plugin: string | Plugin) {
 		// TODO: Do we force rerender/reboot?
 
@@ -58,6 +92,10 @@ export class PluginRegistry extends Registry<Plugin> {
 		this.set(plugin.slug, plugin);
 	}
 
+	/**
+	 * Disable a plugin
+	 * @param plugin Plugin slug or the plugin object itself
+	 */
 	public async disable(plugin: string | Plugin) {
 		// TODO: Do we force rerender/reboot?
 
