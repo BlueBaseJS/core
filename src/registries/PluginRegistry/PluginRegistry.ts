@@ -1,84 +1,68 @@
-import { MaybeBlueRainModuleOrInput, getDefiniteBlueRainModule } from '../../utils';
+import { MaybeBlueRainModuleOrInput, getDefiniteBlueRainModule, isClass } from '../../utils';
 import { Registry } from '../Registry';
 import { Plugin } from '../../models/Plugin';
 import { PluginInput } from './types';
+import { isPluginInput } from './helpers';
 
 export class PluginRegistry extends Registry<Plugin> {
 
-	public async register(plugin: MaybeBlueRainModuleOrInput<Plugin | PluginInput>): Promise<void> {
+	public async register(plugin: MaybeBlueRainModuleOrInput<typeof Plugin | Plugin | PluginInput>): Promise<void> {
 
 		if (!plugin) {
-			throw Error(`No plugin provided in PluginRegistry's register method.`);
+			throw Error(`Could not register plugin. Reason: No plugin provided in PluginRegistry's register method.`);
 		}
 
-		plugin = getDefiniteBlueRainModule(plugin);
+		plugin = await getDefiniteBlueRainModule(plugin).promise;
 
-		plugin = await plugin.promise;
+		let finalPlugin;
 
 		if (plugin instanceof Plugin) {
-			this.set(plugin.slug, plugin);
-		} else {
-			const finalPlugin = new Plugin(plugin);
-			this.set(finalPlugin.slug, finalPlugin);
+			finalPlugin = plugin;
 		}
+		else if (isPluginInput(plugin)) {
+			finalPlugin = (new Plugin(plugin));
+		}
+		else if (isClass(plugin)) {
+			const classObj = (new (plugin as typeof Plugin)());
+
+			if (classObj instanceof Plugin) {
+				finalPlugin = classObj;
+			}
+		}
+
+		if(!finalPlugin) {
+			throw Error('Could not register plugin. Reason: Input variable is not a plugin.');
+		}
+
+		finalPlugin = finalPlugin.setup();
+		this.set(finalPlugin.slug, finalPlugin);
 	}
 
 	public unregister(slug: string) {
 		this.delete(slug);
-	}
-
-	/**
-	 * Initializes all "enabled" plugins
-	 */
-	public async initialize() {
-
-		for (const entry of this.data) {
-			if (this.isEnabled(entry['1'])) {
-				await this.enable(entry['1']);
-			}
-		}
+		// TODO: Do we force rerender/reboot?
 	}
 
 	public isEnabled(plugin: string | Plugin) {
-		return this.resolveSlugOrPlugin(plugin).isEnabled();
+		return this.getFromSlugOrPlugin(plugin).isEnabled();
 	}
 
 	public async enable(plugin: string | Plugin) {
+		// TODO: Do we force rerender/reboot?
 
 		// Fetch plugin
-		plugin = this.resolveSlugOrPlugin(plugin);
-
-		// // If the plugin is already enabled, throw
-		// if (this.isEnabled(plugin)) {
-		// 	// TODO: Do we really need to throw here?
-		// 	throw Error(`Cannot enable plugin ${plugin.slug}, it is already enabled.`);
-		// }
+		plugin = this.getFromSlugOrPlugin(plugin);
 
 		// Set plugin flag
-		// plugin.isEnabled = true;
+		plugin.enable();
 		this.set(plugin.slug, plugin);
-
-		// Register plugin hooks
-		await this.registerPluginHooks(plugin);
-
-		// Register plugin components
-		await this.registerPluginComponents(plugin);
-
-		// Register plugin routes
-		await this.registerPluginRoutes(plugin);
-
-		// // Call onEnable event hook
-		// await plugin.onEnable(this.BR);
-
-		// Initialize plugin
-		// TODO: Fix configs injection
-		await plugin.initialize({}, this.BR);
 	}
 
-	public async disablePlugin(plugin: string | Plugin) {
+	public async disable(plugin: string | Plugin) {
+		// TODO: Do we force rerender/reboot?
 
 		// Fetch plugin
-		plugin = this.resolveSlugOrPlugin(plugin);
+		plugin = this.getFromSlugOrPlugin(plugin);
 
 		// Set plugin flag
 		plugin.disable();
@@ -94,7 +78,7 @@ export class PluginRegistry extends Registry<Plugin> {
 	 *
 	 * @param plugin
 	 */
-	private resolveSlugOrPlugin(plugin: string | Plugin) {
+	private getFromSlugOrPlugin(plugin: string | Plugin) {
 
 		if (typeof plugin === 'string') {
 			const fetched = this.get(plugin);
@@ -107,22 +91,5 @@ export class PluginRegistry extends Registry<Plugin> {
 		}
 
 		return plugin;
-	}
-
-	private async registerPluginHooks(plugin: Plugin) {
-
-		await this.BR.Hooks.registerCollection(
-			plugin.hooks,
-			(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
-		);
-
-	}
-
-	private registerPluginComponents = (_plugin: Plugin) => {
-		// do something
-	}
-
-	private registerPluginRoutes = (_plugin: Plugin) => {
-		// do something
 	}
 }

@@ -60,7 +60,7 @@ export class Registry<RegistryItemType> {
 	 * object in insertion order.
 	 */
 	public entries() {
-		return this.data.entries;
+		return this.data.entries();
 	}
 
 	/**

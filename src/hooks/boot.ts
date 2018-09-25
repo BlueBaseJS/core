@@ -18,7 +18,7 @@ export const boot: { [key: string]: HookInput[] } = {
 			await BR.Hooks.run('bluerain.routes.register', bootOptions);
 			await BR.Hooks.run('bluerain.plugins.register', bootOptions);
 
-			await BR.Hooks.run('bluerain.plugins.initialize', bootOptions);
+			await BR.Hooks.run('bluerain.plugins.initialize.all', bootOptions);
 
 			await BR.Hooks.run('bluerain.boot.end', bootOptions);
 

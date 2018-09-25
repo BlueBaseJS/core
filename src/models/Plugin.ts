@@ -8,17 +8,17 @@ export type PluginCategory = 'app' | 'store' | 'router' | 'logger' | 'theme' | s
 export class Plugin {
 
 	/** Name of the plugin */
-	readonly name!: string;
+	public name!: string;
 
-	readonly slug!: string;
+	public slug!: string;
 
-	readonly description?: string;
+	public description?: string;
 
-	readonly version?: string;
+	public version?: string;
 
-	readonly categories: PluginCategory | PluginCategory[] = [];
+	public categories: PluginCategory | PluginCategory[] = [];
 
-	readonly hooks: HookCollectionInput = {};
+	public hooks: HookCollectionInput = {};
 
 	protected enabled: boolean = true;
 
@@ -27,15 +27,33 @@ export class Plugin {
 
 	// // defaultConfigs: any;
 
-	constructor(options: PluginInput) {
+	constructor(options: PluginInput = {}) {
 
+		// TODO: write some tests for different scenarios
 		Object.assign(this, options);
+
+		// this.setup();
+	}
+
+	/**
+	 * It is mandatory to call this method after creating a new plugin instance.
+	 * This is because we want to support values through extended class properties,
+	 * but unfortunately, they're not accessible in constructor.
+	 *
+	 * This is feels dirty, ugly and bad. But we couldn't find a cleaner way around it.
+	 *
+	 * More info:
+	 * - [Github](https://github.com/Microsoft/TypeScript/issues/1617)
+	 */
+	public setup() {
 
 		if (!this.name) {
 			throw Error('Could not create Plugin. Reason: name property is required.');
 		}
 
 		this.slug = kebabCase(this.slug ? this.slug : this.name);
+
+		return this;
 	}
 
 	public initialize: (configs: { [key: string]: any }, BR: BlueRain) => Promise<void> | void = () => { return; };
