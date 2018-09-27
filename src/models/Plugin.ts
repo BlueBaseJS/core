@@ -4,6 +4,7 @@ import kebabCase from 'lodash.kebabcase';
 import { PluginInput } from '../registries/PluginRegistry/types';
 import { DynamicIconProperties } from '../components/DynamicIcon';
 import { MaybeThunk } from '../utils';
+import { ComponentInput } from '../registries/ComponentRegistry/types';
 
 export type PluginCategory = 'app' | 'store' | 'router' | 'logger' | 'theme' | string;
 
@@ -22,11 +23,12 @@ export class Plugin {
 
 	public hooks: HookCollectionInput = {};
 
+	public components: { [key: string]: ComponentInput } = {};
+
 	public icon?: MaybeThunk<DynamicIconProperties>;
 
 	protected enabled: boolean = true;
 
-	// // components: any;
 	// // routes: any;
 
 	// // defaultConfigs: any;

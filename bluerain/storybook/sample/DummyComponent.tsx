@@ -3,7 +3,7 @@ import React from 'react';
 
 const DummyComponent = () => (
 	<BlueRainConsumer>
-		{(BR: BlueRain) => (<BR.Components.Text>I'm a dummy! 🤪 😎 👍 💯</BR.Components.Text>)}
+		{(_BR: BlueRain) => (<div>I'm a dummy! 🤪 😎 👍 💯</div>)}
 	</BlueRainConsumer>
 );
 

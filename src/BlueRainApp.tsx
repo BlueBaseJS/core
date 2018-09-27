@@ -21,7 +21,7 @@ export class BlueRainApp extends React.Component<BlueRainAppProperties, BlueRain
 
 	async componentDidMount() {
 		try {
-			const Component = await BR.boot();
+			const Component = await BR.boot(this.props);
 			this.setState({
 				Component,
 				booted: BR.booted,

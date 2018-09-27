@@ -8,11 +8,11 @@ const BlueRainDecorator = (maybeEsConfigs, BR = _BR) => (storyFn) => {
 	const Component = () => storyFn();
 
 	const StorybookPlugin = {
-		pluginName: 'Storybook Plugin',
+		name: 'Storybook Plugin',
 		hooks: {
-			'bluerain.system.initialized': (ctx: BlueRain) => {
-				ctx.Components.replace('SystemLayout', Component);
-				return ctx;
+			'bluerain.boot.end': (bootOpts: any, _args: any, ctx: BlueRain) => {
+				ctx.Components.replace('SystemApp', Component);
+				return bootOpts;
 			}
 		}
 	};

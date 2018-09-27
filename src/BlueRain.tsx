@@ -3,12 +3,15 @@ import { BlueRainProvider } from './Context';
 import { Logger } from './api';
 import React from 'react';
 import systemHooks from './hooks';
+import { Plugin } from './models/Plugin';
+import { ComponentInput } from './registries/ComponentRegistry/types';
+import { MaybeBlueRainModuleOrInput } from './utils';
 
 export interface BootOptions {
 
-	// plugins: Plugin[]
-	// components: Plugin[]
-	hooks: HookCollection
+	plugins: Array<MaybeBlueRainModuleOrInput<Plugin>>;
+	components: { [key: string]: ComponentInput };
+	hooks: HookCollection;
 	// routes: Plugin[]
 	// configs: Plugin[]
 }
@@ -27,9 +30,10 @@ export class BlueRain {
 	public booted = false;
 
 	private bootOptions: BootOptions = {
+		components: {},
 		// config: {},
 		hooks: {},
-		// plugins: [],
+		plugins: [],
 	};
 
 	public async boot(options?: BootOptions) {

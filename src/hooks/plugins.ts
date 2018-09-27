@@ -1,9 +1,28 @@
 // tslint:disable:object-literal-sort-keys
 import { Plugin } from '../models/Plugin';
-import { BlueRain } from '../BlueRain';
+import { BlueRain, BootOptions } from '../BlueRain';
 import { HookInput } from '../registries';
 
 export const plugins: { [key: string]: HookInput[] } = {
+
+	/**
+	 * Registers given list of plugins
+	 */
+	'bluerain.plugins.register': [
+		{
+			name: 'bluerain.plugins.register.default',
+			priority: 5,
+			handler: async (pluginsArr: BootOptions['plugins'], _args: any, BR: BlueRain) => {
+
+				for (const plugin of pluginsArr) {
+					await BR.Plugins.register(plugin);
+				}
+
+				// return
+				return plugins;
+			}
+		}
+	],
 
 	/**
 	 * Initializes all ENABLED plugins in BlueRain
@@ -37,13 +56,18 @@ export const plugins: { [key: string]: HookInput[] } = {
 			priority: 5,
 			handler: async (plugin: Plugin, _args: any, BR: BlueRain) => {
 
-				// Register plugin hook
+				// Register plugin hooks
 				await BR.Hooks.registerCollection(
 					plugin.hooks,
 					(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
 				);
 
-				// TODO: Register components
+				// Register components
+				const componentKeys = Object.keys(plugin.components);
+				for (const key of componentKeys) {
+					await BR.Components.register(key, plugin.components[key]);
+				}
+
 				// TODO: Register routes
 
 				// Initialize plugin

@@ -1,17 +1,21 @@
-import React, { ReactNode } from 'react';
+import { BlueRain } from '../../BlueRain';
+import { BlueRainConsumer } from '../../Context';
+import React from 'react';
 
-export interface SystemAppProperties {
-	children: ReactNode
-}
-
-export class SystemApp extends React.PureComponent<SystemAppProperties> {
+export class SystemApp extends React.PureComponent {
 
 	render() {
+
 		return (
-			<div>
-				💧 BlueRain System App!
-				{this.props.children}
-			</div>
+			<BlueRainConsumer>
+				{(BR: BlueRain) => (
+					<div {...this.props}>
+						<BR.Components.SystemHeader />
+						<BR.Components.SystemContent />
+						<BR.Components.SystemFooter />
+					</div>
+				)}
+			</BlueRainConsumer>
 		);
 	}
 }

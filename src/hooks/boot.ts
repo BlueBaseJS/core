@@ -14,9 +14,9 @@ export const boot: { [key: string]: HookInput[] } = {
 			await BR.Hooks.run('bluerain.configs.load', bootOptions);
 
 			await BR.Hooks.run('bluerain.components.register', bootOptions);
-			await BR.Hooks.run('bluerain.hooks.register', bootOptions);
+			await BR.Hooks.run('bluerain.hooks.register', bootOptions.hooks);
 			await BR.Hooks.run('bluerain.routes.register', bootOptions);
-			await BR.Hooks.run('bluerain.plugins.register', bootOptions);
+			await BR.Hooks.run('bluerain.plugins.register', bootOptions.plugins);
 
 			await BR.Hooks.run('bluerain.plugins.initialize.all', bootOptions);
 
@@ -31,7 +31,7 @@ export const boot: { [key: string]: HookInput[] } = {
 		priority: 5,
 		handler: async (bootOptions: BootOptions, _ctx: {}, BR: BlueRain) => {
 
-			await BR.Hooks.run('bluerain.internal.components.register', bootOptions);
+			await BR.Hooks.run('bluerain.components.register.internal', bootOptions);
 
 			return bootOptions;
 		}

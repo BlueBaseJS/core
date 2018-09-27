@@ -1,6 +1,6 @@
 import { ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
 import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
-import { getDefiniteModule, isPromise } from '../../utils';
+import { MaybeBlueRainModuleOrInput, getDefiniteBlueRainModule, getDefiniteModule, isPromise } from '../../utils';
 import { BlueRain } from '../../BlueRain';
 import { Registry } from '../Registry';
 import { getAsyncComponent } from './getAsyncComponent';
@@ -21,7 +21,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 					if (this.has(name)) {
 						return this.resolve(name);
 					}
-					throw Error(`Could not find "${name}" component. Did you forget to register it?`);
+					throw Error(`BlueRain could not find "${name}" component. Did you forget to register it?`);
 				}
 
 				return Reflect.get(target, name, value);
@@ -89,6 +89,17 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 	}
 
+	public replace(slug: string, component: MaybeBlueRainModuleOrInput<React.ComponentType<any>>) {
+
+		const registryItem = this.get(slug);
+
+		if (!registryItem) {
+			throw Error(`Could not replace raw component. Reason: No component registered with slug ${slug}.`);
+		}
+
+		registryItem.rawComponent = getDefiniteBlueRainModule(component);
+		this.set(slug, registryItem);
+	}
 
 	public resolve(name: string): React.ComponentType<any> {
 
