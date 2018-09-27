@@ -1,4 +1,4 @@
-		// tslint:disable:object-literal-sort-keys
+// tslint:disable:object-literal-sort-keys
 import { HookInput } from '../registries';
 import { BlueRain, BootOptions } from '../BlueRain';
 

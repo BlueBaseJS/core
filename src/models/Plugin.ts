@@ -2,6 +2,8 @@ import { BlueRain } from '../BlueRain';
 import { HookCollectionInput } from '../registries';
 import kebabCase from 'lodash.kebabcase';
 import { PluginInput } from '../registries/PluginRegistry/types';
+import { DynamicIconProperties } from '../components/DynamicIcon';
+import { MaybeThunk } from '../utils';
 
 export type PluginCategory = 'app' | 'store' | 'router' | 'logger' | 'theme' | string;
 
@@ -20,6 +22,8 @@ export class Plugin {
 
 	public hooks: HookCollectionInput = {};
 
+	public icon?: MaybeThunk<DynamicIconProperties>;
+
 	protected enabled: boolean = true;
 
 	// // components: any;
@@ -27,10 +31,10 @@ export class Plugin {
 
 	// // defaultConfigs: any;
 
-	constructor(options: PluginInput = {}) {
+	constructor(options?: PluginInput) {
 
 		// TODO: write some tests for different scenarios
-		Object.assign(this, options);
+		Object.assign(this, options || {});
 
 		// this.setup();
 	}
