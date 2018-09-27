@@ -9,11 +9,11 @@ export class SystemApp extends React.PureComponent {
 		return (
 			<BlueRainConsumer>
 				{(BR: BlueRain) => (
-					<div {...this.props}>
+					<BR.Components.View {...this.props}>
 						<BR.Components.SystemHeader />
 						<BR.Components.SystemContent />
 						<BR.Components.SystemFooter />
-					</div>
+					</BR.Components.View>
 				)}
 			</BlueRainConsumer>
 		);

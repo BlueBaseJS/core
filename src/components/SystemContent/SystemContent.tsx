@@ -1,4 +1,6 @@
 import React, { ReactNode } from 'react';
+import { BlueRain } from '../../BlueRain';
+import { BlueRainConsumer } from '../../Context';
 
 export interface SystemContentProperties {
 	children: ReactNode
@@ -7,11 +9,18 @@ export interface SystemContentProperties {
 export class SystemContent extends React.PureComponent<SystemContentProperties> {
 
 	render() {
+
 		return (
-			<div>
-				💧 BlueRain System Content!
-				{this.props.children}
-			</div>
+			<BlueRainConsumer>
+				{(BR: BlueRain) => (
+					<BR.Components.View {...this.props}>
+						<BR.Components.Text>
+							💧 BlueRain System Content!
+						</BR.Components.Text>
+						{this.props.children}
+					</BR.Components.View>
+				)}
+			</BlueRainConsumer>
 		);
 	}
 }

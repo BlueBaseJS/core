@@ -2,6 +2,9 @@ import { BR } from './instance';
 import { BootOptions } from './BlueRain';
 import React from 'react';
 
+// tslint:disable-next-line:no-var-requires
+const { Text } = require('react-native');
+
 export interface BlueRainAppProperties extends BootOptions {}
 
 interface BlueRainAppState {
@@ -16,7 +19,7 @@ export class BlueRainApp extends React.Component<BlueRainAppProperties, BlueRain
 	state = {
 		booted: BR.booted,
 
-		Component: () => <div>Loading</div>
+		Component: () => <Text>Loading</Text>
 	};
 
 	async componentDidMount() {

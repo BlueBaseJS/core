@@ -527,14 +527,14 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@blueeast/bluerain-cli-essentials@^4.0.0-beta.1":
-  version "4.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-cli-essentials/-/bluerain-cli-essentials-4.0.0-beta.1.tgz#b66b43a193f44982e62f2674bfef6c17059ec3bf"
+"@blueeast/bluerain-cli-essentials@^4.0.0-beta.2":
+  version "4.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-cli-essentials/-/bluerain-cli-essentials-4.0.0-beta.2.tgz#aea1e938ef3d95b9abac84396e029f37d4bca93e"
   dependencies:
     awesome-typescript-loader "^4.0.0"
     react-art "^16.4.2"
     react-docgen-typescript-webpack-plugin "^1.1.0"
-    react-native-web "^0.8.9"
+    react-native-web "^0.9.0"
     webpack "^4.17.1"
 
 "@blueeast/bluerain-storybook-addon@^1.1.4":
@@ -8488,9 +8488,9 @@ react-modal@^3.3.2:
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
 
-react-native-web@^0.8.9:
-  version "0.8.11"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.8.11.tgz#e569af7076527af40ae7b4e6ce81e0544913a7c7"
+react-native-web@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.9.0.tgz#293bcc109165b62e2f8f1796208b0b8f8eb8751f"
   dependencies:
     array-find-index "^1.0.2"
     create-react-class "^15.6.2"

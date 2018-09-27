@@ -3,7 +3,7 @@ import { HookInput } from '../registries';
 import { DynamicIcon, Noop, PluginIcon, SystemApp, SystemContent } from '../components';
 
 // tslint:disable-next-line:no-var-requires
-// const { View } = require('react-native');
+const { Text, View } = require('react-native');
 
 export const components: { [key: string]: HookInput[] } = {
 
@@ -19,7 +19,8 @@ export const components: { [key: string]: HookInput[] } = {
 			await BR.Components.register('SystemFooter', Noop);
 			await BR.Components.register('SystemHeader', Noop);
 
-			// await BR.Components.register('View', View);
+			await BR.Components.register('Text', Text);
+			await BR.Components.register('View', View);
 
 			return bootOptions;
 		},

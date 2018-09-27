@@ -1,4 +1,5 @@
-import { BlueRain, BlueRainConsumer } from '../../index';
+import { BlueRain } from '../../BlueRain';
+import { BlueRainConsumer } from '../../Context';
 import React from 'react';
 
 export interface DynamicIconProperties {
