@@ -1,5 +1,6 @@
 import { BlueRain, JsonComponentSchema, withBlueRain } from '../../index';
 import React from 'react';
+import withGlobal from './withGlobal';
 
 /**
  * Shows system content
@@ -25,4 +26,9 @@ const SystemApp = ({ bluerain: BR, ...others }: { bluerain: BlueRain }) => {
 	return BR.API.JsonToReact.parse(routes);
 };
 
-export default withBlueRain(SystemApp) as React.ComponentType<any>;
+const withBluerainComponent = withBlueRain(SystemApp) as React.ComponentType<any>;
+
+const _SystemApp =
+	process.env.NODE_ENV === 'production' ? withBluerainComponent : withGlobal(withBluerainComponent);
+
+export default _SystemApp;
