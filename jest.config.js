@@ -1,4 +1,5 @@
 module.exports = {
+  preset: "react-native",
   testEnvironment: 'node',
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
@@ -17,7 +18,7 @@ module.exports = {
     '^.+\\.(css|less|scss)$': 'identity-obj-proxy'
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!ui-components).+\\.js$'
+    '/node_modules/(?!ui-components|react-native).+\\.js$',
   ],
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
