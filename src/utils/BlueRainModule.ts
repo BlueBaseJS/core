@@ -1,5 +1,5 @@
-import { MaybeEsModule, getDefiniteModule } from '../utils/Modules';
-import { MaybePromise, getDefinitePromise, isPromise } from '../utils/Promises';
+import { MaybeEsModule, getDefiniteModule } from '../utils/modules';
+import { MaybePromise, getDefinitePromise, isPromise } from '../utils/promises';
 
 /**
  * Structure of an input acceptable to create a BlueRainModule
@@ -73,7 +73,7 @@ export class BlueRainModule<T> {
 	 */
 	public isAsync: boolean = false;
 
-	constructor(input: BlueRainModuleInput<T> ) {
+	constructor(input: BlueRainModuleInput<T>) {
 
 		this.module = getDefiniteModule(input);
 
