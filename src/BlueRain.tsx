@@ -36,7 +36,7 @@ export class BlueRain {
 		plugins: [],
 	};
 
-	public async boot(options?: BootOptions) {
+	public async boot(options?: Partial<BootOptions>) {
 
 		this.bootOptions = { ...this.bootOptions, ...options };
 

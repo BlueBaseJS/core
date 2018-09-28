@@ -1,3 +1,4 @@
+export * from './BlueRainApp';
 export * from './DynamicIcon';
 export * from './Noop';
 export * from './PluginIcon';

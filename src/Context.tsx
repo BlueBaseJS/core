@@ -1,4 +1,3 @@
-// import { BR } from './instance';
 import { createContext } from 'react';
 import { BlueRain } from './BlueRain';
 
