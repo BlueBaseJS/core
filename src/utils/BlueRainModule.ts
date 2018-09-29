@@ -1,5 +1,5 @@
-import { MaybeEsModule, getDefiniteModule } from '../utils/modules';
-import { MaybePromise, getDefinitePromise, isPromise } from '../utils/promises';
+import { MaybeEsModule, getDefiniteModule } from '../utils/Modules';
+import { MaybePromise, getDefinitePromise, isPromise } from '../utils/Promises';
 
 /**
  * Structure of an input acceptable to create a BlueRainModule

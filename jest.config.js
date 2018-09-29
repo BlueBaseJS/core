@@ -1,5 +1,5 @@
 module.exports = {
-  preset: "react-native",
+  preset: 'react-native',
   testEnvironment: 'node',
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
@@ -23,6 +23,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
     'src/**/*.{ts,tsx,js,jsx}',
+    '!src/**/*.stories.{ts,tsx,js,jsx}',
     '!src/**/*.d.ts',
   ],
   coverageThreshold: {
@@ -33,7 +34,10 @@ module.exports = {
       statements: 85
     }
   },
-  // coveragePathIgnorePatterns: [".*\\.d\\.ts", "<rootDir>/node_modules/"],
+  coveragePathIgnorePatterns: [
+    '.*\\.d\\.ts', 
+    '<rootDir>/node_modules/'
+  ],
   watchPathIgnorePatterns: [
     // 'src/*/output/**',
     // 'output/'
