@@ -16,6 +16,9 @@ export interface BlueRainHookProperties<T = any> {
 	children: ((value: any) => React.ReactNode);
 }
 
+/**
+ * 🎣 BlueRainHook Component
+ */
 export class BlueRainHook extends React.PureComponent<BlueRainHookProperties> {
 
 	public static defaultProps = {
