@@ -4,7 +4,9 @@ Emoji reference of Commitizen scopes for this repo:
 📦 BlueRainModule
 🎁 ComponentRegistry
 🎣 HookRegistry
+🎣 BlueRainHook Component
 🗿 Icons
+🍱 JSON Schema
 🔌 PluginRegistry
 📖 README
 📕 Storybook
