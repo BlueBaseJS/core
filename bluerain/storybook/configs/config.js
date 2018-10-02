@@ -2,6 +2,8 @@ import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import BlueRainDecorator from './BlueRainDecorator';
 
+import '@storybook/addon-console';
+
 // Add BlueRain
 const BRConfigs = require('../bluerain');
 addDecorator(BlueRainDecorator(BRConfigs));

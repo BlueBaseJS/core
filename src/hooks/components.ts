@@ -1,9 +1,18 @@
 import { BlueRain, BootOptions } from '../BlueRain';
 import { HookInput } from '../registries';
-import { DynamicIcon, Noop, PluginIcon, SystemApp, SystemContent } from '../components';
+import {
+	BlueRainHook,
+	ComponentState,
+	DynamicIcon,
+	JsonSchema,
+	Noop,
+	PluginIcon,
+	SystemApp,
+	SystemContent
+} from '../components';
 
 // tslint:disable-next-line:no-var-requires
-const { Text, View } = require('react-native');
+const { Button, Image, Text, View } = require('react-native');
 
 export const components: { [key: string]: HookInput[] } = {
 
@@ -11,7 +20,10 @@ export const components: { [key: string]: HookInput[] } = {
 		handler: async (bootOptions: BootOptions, _ctx: {}, BR: BlueRain) => {
 
 			// await BR.Components.register('DynamicIcon', import('../components/DynamicIcon'));
+			await BR.Components.register('BlueRainHook', BlueRainHook);
+			await BR.Components.register('ComponentState', ComponentState);
 			await BR.Components.register('DynamicIcon', DynamicIcon);
+			await BR.Components.register('JsonSchema', JsonSchema);
 			await BR.Components.register('Noop', Noop);
 			await BR.Components.register('PluginIcon', PluginIcon);
 			await BR.Components.register('SystemApp', SystemApp);
@@ -19,6 +31,8 @@ export const components: { [key: string]: HookInput[] } = {
 			await BR.Components.register('SystemFooter', Noop);
 			await BR.Components.register('SystemHeader', Noop);
 
+			await BR.Components.register('Button', Button);
+			await BR.Components.register('Image', Image);
 			await BR.Components.register('Text', Text);
 			await BR.Components.register('View', View);
 

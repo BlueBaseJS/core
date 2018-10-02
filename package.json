@@ -71,6 +71,7 @@
 		"@blueeast/bluerain-storybook-addon": "^1.1.4",
 		"@blueeast/tslint-config-blueeast": "^0.5.6",
 		"@storybook/addon-actions": "^3.4.11",
+		"@storybook/addon-console": "^1.0.4",
 		"@storybook/addon-links": "^3.4.11",
 		"@storybook/react": "^3.4.11",
 		"@types/deepmerge": "^2.1.0",
@@ -110,9 +111,6 @@
 	},
 	"peerDependencies": {
 		"react": "^16.*"
-	},
-	"optionalDependencies": {
-		"react-dom": "^16.*"
 	},
 	"prettier": {
 		"singleQuote": true,
