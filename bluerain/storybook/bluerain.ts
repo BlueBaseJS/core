@@ -2,9 +2,6 @@
 // import commonBootOptions from '../common/bluerain';
 // import deepmerge from 'deepmerge';
 
-// TODO: Only for evaluation, remove this
-import DummyPlugin from './sample';
-
 /**
  * Add your platform specific configs here. 
  * We keep all the universal (cross platform) configs in 
@@ -14,7 +11,6 @@ const bootOptions = {
 
 	plugins: [
 		// TODO: Only for evaluation, remove this
-		DummyPlugin
 	],
 	config: {
 
