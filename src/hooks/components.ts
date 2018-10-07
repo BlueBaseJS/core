@@ -14,7 +14,7 @@ import {
 	SystemContent,
 } from '../components';
 
-import { Button, Image, Text, View } from '../native';
+import { ActivityIndicator, Button, Image, Text, View } from '../native';
 
 export const components: { [key: string]: HookInput[] } = {
 
@@ -36,6 +36,7 @@ export const components: { [key: string]: HookInput[] } = {
 			await BR.Components.register('SystemFooter', Noop);
 			await BR.Components.register('SystemHeader', Noop);
 
+			await BR.Components.register('ActivityIndicator', ActivityIndicator);
 			await BR.Components.register('Button', Button);
 			await BR.Components.register('Image', Image);
 			await BR.Components.register('Text', Text);

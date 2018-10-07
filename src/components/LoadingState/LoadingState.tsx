@@ -8,9 +8,7 @@ export class LoadingState extends React.PureComponent {
 
 		return (
 			<BlueRainConsumer children={(BR: BlueRain) => (
-				<BR.Components.ComponentState
-					title="Loading, Please wait..."
-				/>
+				<BR.Components.ActivityIndicator />
 			)} />
 		);
 	}
