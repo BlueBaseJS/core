@@ -4,11 +4,14 @@ import {
 	BlueRainHook,
 	ComponentState,
 	DynamicIcon,
+	EmptyState,
+	ErrorState,
 	JsonSchema,
+	LoadingState,
 	Noop,
 	PluginIcon,
 	SystemApp,
-	SystemContent
+	SystemContent,
 } from '../components';
 
 import { Button, Image, Text, View } from '../native';
@@ -22,7 +25,10 @@ export const components: { [key: string]: HookInput[] } = {
 			await BR.Components.register('BlueRainHook', BlueRainHook);
 			await BR.Components.register('ComponentState', ComponentState);
 			await BR.Components.register('DynamicIcon', DynamicIcon);
+			await BR.Components.register('EmptyState', EmptyState);
+			await BR.Components.register('ErrorState', ErrorState);
 			await BR.Components.register('JsonSchema', JsonSchema);
+			await BR.Components.register('LoadingState', LoadingState);
 			await BR.Components.register('Noop', Noop);
 			await BR.Components.register('PluginIcon', PluginIcon);
 			await BR.Components.register('SystemApp', SystemApp);

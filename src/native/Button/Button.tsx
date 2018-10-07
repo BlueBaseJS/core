@@ -133,6 +133,10 @@ const styles = StyleSheet.create({
 			// Material design blue from https://material.google.com/style/color.html#color-color-palette
 			backgroundColor: '#2196F3',
 			borderRadius: 2,
+			color: 'white',
+			textAlign: 'center',
+			padding: 8,
+			fontWeight: '500',
 		},
 	}),
 	text: Platform.select({
