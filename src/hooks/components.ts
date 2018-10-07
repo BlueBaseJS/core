@@ -11,8 +11,7 @@ import {
 	SystemContent
 } from '../components';
 
-// tslint:disable-next-line:no-var-requires
-const { Button, Image, Text, View } = require('react-native');
+import { Button, Image, Text, View } from '../native';
 
 export const components: { [key: string]: HookInput[] } = {
 
