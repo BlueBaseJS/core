@@ -49,7 +49,7 @@ export function objectMapper(obj: any, fields: Fields) {
 
 		const dest = processedFields[srcKey];
 
-		newObj[dest.key] = dest.transform ? dest.transform(value) : value;
+		newObj[dest.key] = dest.transform ? dest.transform(value, obj, fields) : value;
 	});
 
 	return newObj;
