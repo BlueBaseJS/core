@@ -1,6 +1,6 @@
 import React from 'react';
-import { BlueRain } from '../../BlueRain';
-import { BlueRainConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 
 export interface ComponentStateProperties {
 
@@ -80,19 +80,19 @@ export class ComponentState extends React.PureComponent<ComponentStateProperties
 		};
 
 		return (
-			<BlueRainConsumer children={(BR: BlueRain) => (
-				<BR.Components.View>
-					{image ? image : (imageSource ? <BR.Components.Image style={imgStyle} source={imageSource} /> : null)}
-					{title ? <BR.Components.Text style={titleStyle} children={title} /> : null}
-					{description ? <BR.Components.Text style={descriptionStyle} children={description} /> : null}
+			<BlueBaseConsumer children={(BB: BlueBase) => (
+				<BB.Components.View>
+					{image ? image : (imageSource ? <BB.Components.Image style={imgStyle} source={imageSource} /> : null)}
+					{title ? <BB.Components.Text style={titleStyle} children={title} /> : null}
+					{description ? <BB.Components.Text style={descriptionStyle} children={description} /> : null}
 					{actionTitle
 						? (
-							<BR.Components.Button style={actionStyle} onPress={actionOnPress}>
-								<BR.Components.Text>{actionTitle}</BR.Components.Text>
-							</BR.Components.Button>
+							<BB.Components.Button style={actionStyle} onPress={actionOnPress}>
+								<BB.Components.Text>{actionTitle}</BB.Components.Text>
+							</BB.Components.Button>
 						)
 						: null}
-				</BR.Components.View>
+				</BB.Components.View>
 			)} />
 		);
 	}

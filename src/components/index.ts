@@ -1,5 +1,5 @@
-export * from './BlueRainApp';
-export * from './BlueRainHook';
+export * from './BlueBaseApp';
+export * from './BlueBaseHook';
 export * from './ComponentState';
 export * from './DynamicIcon';
 export * from './EmptyState';

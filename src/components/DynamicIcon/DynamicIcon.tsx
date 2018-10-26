@@ -1,5 +1,5 @@
-import { BlueRain } from '../../BlueRain';
-import { BlueRainConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 import React from 'react';
 
 export interface DynamicIconProperties {
@@ -8,8 +8,8 @@ export interface DynamicIconProperties {
 	 * If value is:
 	 *
 	 * - component: Icon is a custom component, and looks for 'component' prop
-	 * - name: Icon is an instance of BR.Components.Icon and looks for 'name' prop
-	 * - image: Icon is an instance of BR.Components.Image and looks for 'source' prop
+	 * - name: Icon is an instance of BB.Components.Icon and looks for 'name' prop
+	 * - image: Icon is an instance of BB.Components.Image and looks for 'source' prop
 	 */
 	type: 'component' | 'name' | 'image';
 
@@ -22,7 +22,7 @@ export interface DynamicIconProperties {
 
 	/**
 	 * Used when type is 'name'.
-	 * The name prop of the BR.Components.Icon component
+	 * The name prop of the BB.Components.Icon component
 	 */
 	name?: string;
 
@@ -42,29 +42,29 @@ export interface DynamicIconProperties {
 
 /**
  * An enhanced Icon that can render any of the following:
- * - BR.Components.Icon
- * - BR.Components.Image
+ * - BB.Components.Icon
+ * - BB.Components.Image
  * - A custom component
  */
 const DynamicIcon: React.ComponentType<DynamicIconProperties> = (props) => {
 	const { type, component: Component, name, source, ...rest } = props;
 
 	return (
-		<BlueRainConsumer>
-			{(BR: BlueRain) => {
+		<BlueBaseConsumer>
+			{(BB: BlueBase) => {
 				let component: React.ComponentType<any>;
 
 				if (type === 'component' && Component) {
 					component = (typeof Component === 'string')
-						? BR.Components.resolve(Component)
+						? BB.Components.resolve(Component)
 						: component = Component;
 
 				} else if (type === 'name' && name) {
-					component = BR.Components.resolve('Icon');
+					component = BB.Components.resolve('Icon');
 					rest.name = name;
 
 				} else if (type === 'image' && source) {
-					component = BR.Components.resolve('Image');
+					component = BB.Components.resolve('Image');
 					rest.source = source;
 
 					if (!rest.style) {
@@ -81,7 +81,7 @@ const DynamicIcon: React.ComponentType<DynamicIconProperties> = (props) => {
 
 				return React.createElement(component, rest);
 			}}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	);
 };
 

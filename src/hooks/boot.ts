@@ -1,37 +1,37 @@
 // tslint:disable:object-literal-sort-keys
 import { HookInput } from '../registries';
-import { BlueRain, BootOptions } from '../BlueRain';
+import { BlueBase, BootOptions } from '../BlueBase';
 
 export const boot: { [key: string]: HookInput[] } = {
 
-	'bluerain.boot': [{
-		name: 'bluerain-boot-default',
+	'bluebase.boot': [{
+		name: 'bluebase-boot-default',
 		priority: 5,
-		handler: async (bootOptions: BootOptions, _ctx: {}, BR: BlueRain) => {
+		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
-			await BR.Hooks.run('bluerain.boot.start', bootOptions);
+			await BB.Hooks.run('bluebase.boot.start', bootOptions);
 
-			await BR.Hooks.run('bluerain.configs.load', bootOptions);
+			await BB.Hooks.run('bluebase.configs.load', bootOptions);
 
-			await BR.Hooks.run('bluerain.components.register', bootOptions);
-			await BR.Hooks.run('bluerain.hooks.register', bootOptions.hooks);
-			await BR.Hooks.run('bluerain.routes.register', bootOptions);
-			await BR.Hooks.run('bluerain.plugins.register', bootOptions.plugins);
+			await BB.Hooks.run('bluebase.components.register', bootOptions);
+			await BB.Hooks.run('bluebase.hooks.register', bootOptions.hooks);
+			await BB.Hooks.run('bluebase.routes.register', bootOptions);
+			await BB.Hooks.run('bluebase.plugins.register', bootOptions.plugins);
 
-			await BR.Hooks.run('bluerain.plugins.initialize.all', bootOptions);
+			await BB.Hooks.run('bluebase.plugins.initialize.all', bootOptions);
 
-			await BR.Hooks.run('bluerain.boot.end', bootOptions);
+			await BB.Hooks.run('bluebase.boot.end', bootOptions);
 
 			return bootOptions;
 		}
 	}],
 
-	'bluerain.boot.start': [{
+	'bluebase.boot.start': [{
 		name: 'system-initialize-default',
 		priority: 5,
-		handler: async (bootOptions: BootOptions, _ctx: {}, BR: BlueRain) => {
+		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
-			await BR.Hooks.run('bluerain.components.register.internal', bootOptions);
+			await BB.Hooks.run('bluebase.components.register.internal', bootOptions);
 
 			return bootOptions;
 		}

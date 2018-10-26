@@ -1,14 +1,14 @@
 import React from 'react';
-import { BlueRain } from '../../BlueRain';
-import { BlueRainConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 
 export class ErrorState extends React.PureComponent {
 
 	render() {
 
 		return (
-			<BlueRainConsumer children={(BR: BlueRain) => (
-				<BR.Components.ComponentState
+			<BlueBaseConsumer children={(BB: BlueBase) => (
+				<BB.Components.ComponentState
 					title="Something broke!"
 					description="An unknown error has occured. Please try again later."
 				/>

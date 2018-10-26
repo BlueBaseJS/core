@@ -1,6 +1,6 @@
 import { HookHandlerFn, HookInput } from '../registries/HookRegistry/types';
 import { DEFAULT_HOOK_PRIORITY } from '../registries/HookRegistry/defaults';
-import { BlueRainModule, getDefiniteBlueRainModule } from '../utils';
+import { BlueBaseModule, getDefiniteBlueBaseModule } from '../utils';
 import isNil from 'lodash.isnil';
 
 export class Hook {
@@ -16,7 +16,7 @@ export class Hook {
 	public priority: number;
 
 	/** Handler function */
-	public handler: BlueRainModule<HookHandlerFn>;
+	public handler: BlueBaseModule<HookHandlerFn>;
 
 	constructor({ name, priority, handler }: HookInput) {
 
@@ -30,6 +30,6 @@ export class Hook {
 
 		this.name = name;
 		this.priority = !isNil(priority) ? priority : DEFAULT_HOOK_PRIORITY;
-		this.handler = getDefiniteBlueRainModule(handler);
+		this.handler = getDefiniteBlueBaseModule(handler);
 	}
 }

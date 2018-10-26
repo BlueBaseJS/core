@@ -1,6 +1,6 @@
 // tslint:disable:max-classes-per-file
-import { BlueRain } from '../../../BlueRain';
-import { BlueRainModule } from '../../../utils';
+import { BlueBase } from '../../../BlueBase';
+import { BlueBaseModule } from '../../../utils';
 import { Plugin } from '../../../models/Plugin';
 
 describe('PluginRegistry', () => {
@@ -9,12 +9,12 @@ describe('PluginRegistry', () => {
 
 		it('should register a Plugin', async () => {
 
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({ name: 'DummyPlugin', slug: 'plugin-slug' });
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({ name: 'DummyPlugin', slug: 'plugin-slug' });
 
-			const plugin = BR.Plugins.get('plugin-slug');
+			const plugin = BB.Plugins.get('plugin-slug');
 
 			if (!plugin) {
 				throw Error();
@@ -25,12 +25,12 @@ describe('PluginRegistry', () => {
 
 		it('should register a Plugin with auto generated slug', async () => {
 
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register(new Plugin({ name: 'DummyPlugin' }));
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register(new Plugin({ name: 'DummyPlugin' }));
 
-			const plugin = BR.Plugins.get('dummy-plugin');
+			const plugin = BB.Plugins.get('dummy-plugin');
 
 			if (!plugin) {
 				throw Error();
@@ -40,12 +40,12 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should register a Plugin from an ES Module', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({ __esModule: true, default: { name: 'DummyPlugin' } });
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({ __esModule: true, default: { name: 'DummyPlugin' } });
 
-			const plugin = BR.Plugins.get('dummy-plugin');
+			const plugin = BB.Plugins.get('dummy-plugin');
 
 			if (!plugin) {
 				throw Error();
@@ -55,12 +55,12 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should register a Plugin from a Promised ES Module', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register(Promise.resolve({ __esModule: true, default: { name: 'DummyPlugin' } }));
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register(Promise.resolve({ __esModule: true, default: { name: 'DummyPlugin' } }));
 
-			const plugin = BR.Plugins.get('dummy-plugin');
+			const plugin = BB.Plugins.get('dummy-plugin');
 
 			if (!plugin) {
 				throw Error();
@@ -69,13 +69,13 @@ describe('PluginRegistry', () => {
 			expect(plugin.name).toBe('DummyPlugin');
 		});
 
-		it('should register a Plugin from an ES Module in a BlueRainModule', async () => {
-			const BR = new BlueRain();
+		it('should register a Plugin from an ES Module in a BlueBaseModule', async () => {
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register(new BlueRainModule({ __esModule: true, default: { name: 'DummyPlugin' } }));
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register(new BlueBaseModule({ __esModule: true, default: { name: 'DummyPlugin' } }));
 
-			const plugin = BR.Plugins.get('dummy-plugin');
+			const plugin = BB.Plugins.get('dummy-plugin');
 
 			if (!plugin) {
 				throw Error();
@@ -85,12 +85,12 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should register a Plugin from a Promise', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register(Promise.resolve({ name: 'DummyPlugin' }));
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register(Promise.resolve({ name: 'DummyPlugin' }));
 
-			const plugin = BR.Plugins.get('dummy-plugin');
+			const plugin = BB.Plugins.get('dummy-plugin');
 
 			if (!plugin) {
 				throw Error();
@@ -106,11 +106,11 @@ describe('PluginRegistry', () => {
 				public foo = 'bar';
 			}
 
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			await BR.Plugins.register(FooPlugin);
+			await BB.Plugins.register(FooPlugin);
 
-			const plugin = BR.Plugins.get('dummy-plugin') as FooPlugin;
+			const plugin = BB.Plugins.get('dummy-plugin') as FooPlugin;
 
 			if (!plugin) {
 				throw Error();
@@ -120,7 +120,7 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should throw an error if unknown class is registered', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 			let message = false;
 
 			class Foo {
@@ -128,7 +128,7 @@ describe('PluginRegistry', () => {
 			}
 
 			try {
-				await BR.Plugins.register(Foo as any);
+				await BB.Plugins.register(Foo as any);
 			} catch (e) {
 				message = e.message;
 			}
@@ -137,11 +137,11 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should throw an error if plugin is not provided', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 			let message = false;
 
 			try {
-				await BR.Plugins.register(undefined as any);
+				await BB.Plugins.register(undefined as any);
 			} catch (e) {
 				message = e.message;
 			}
@@ -151,11 +151,11 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should throw an error if empty object is registered', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 			let message = false;
 
 			try {
-				await BR.Plugins.register({} as any);
+				await BB.Plugins.register({} as any);
 			} catch (e) {
 				message = e.message;
 			}
@@ -164,11 +164,11 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should throw an error if unknown data type is registered', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 			let message = false;
 
 			try {
-				await BR.Plugins.register('foo' as any);
+				await BB.Plugins.register('foo' as any);
 			} catch (e) {
 				message = e.message;
 			}
@@ -177,11 +177,11 @@ describe('PluginRegistry', () => {
 		});
 
 		it('should throw an error if name is not provided', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 			let message = false;
 
 			try {
-				await BR.Plugins.register({} as any);
+				await BB.Plugins.register({} as any);
 			} catch (e) {
 				message = e.message;
 			}
@@ -195,12 +195,12 @@ describe('PluginRegistry', () => {
 	describe('.unregister method', () => {
 
 		it('should unregister a Plugin', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({ name: 'DummyPlugin', slug: 'plugin-slug' });
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({ name: 'DummyPlugin', slug: 'plugin-slug' });
 
-			let plugin = BR.Plugins.get('plugin-slug');
+			let plugin = BB.Plugins.get('plugin-slug');
 
 			if (!plugin) {
 				throw Error();
@@ -208,9 +208,9 @@ describe('PluginRegistry', () => {
 
 			expect(plugin.name).toBe('DummyPlugin');
 
-			BR.Plugins.unregister(plugin.slug);
+			BB.Plugins.unregister(plugin.slug);
 
-			plugin = BR.Plugins.get('plugin-slug');
+			plugin = BB.Plugins.get('plugin-slug');
 			expect(plugin).toBe(undefined);
 		});
 
@@ -220,10 +220,10 @@ describe('PluginRegistry', () => {
 	describe('Initialization', () => {
 
 		it('should initialize plugins', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				hooks: {
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
@@ -231,27 +231,27 @@ describe('PluginRegistry', () => {
 				name: 'DummyPlugin',
 			});
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				hooks: {
 					'an.event': (val: number) => val,
 				},
 				name: 'DummyPlugin2',
 			});
 
-			expect(BR.Hooks.size()).toBe(0);
+			expect(BB.Hooks.size()).toBe(0);
 
-			await BR.boot();
+			await BB.boot();
 
-			expect(BR.Hooks.get('an.event')).toHaveLength(2);
-			expect(BR.Hooks.get('another.event')).toHaveLength(1);
+			expect(BB.Hooks.get('an.event')).toHaveLength(2);
+			expect(BB.Hooks.get('another.event')).toHaveLength(1);
 		});
 
 		it('should not initialize disabled plugins', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				enabled: false,
 				hooks: {
 					'an.event': (val: number) => val,
@@ -260,27 +260,27 @@ describe('PluginRegistry', () => {
 				name: 'DummyPlugin',
 			});
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				hooks: {
 					'an.event': (val: number) => val,
 				},
 				name: 'DummyPlugin2',
 			});
 
-			expect(BR.Hooks.size()).toBe(0);
+			expect(BB.Hooks.size()).toBe(0);
 
-			await BR.boot();
+			await BB.boot();
 
-			expect(BR.Hooks.get('an.event')).toHaveLength(1);
-			expect(BR.Hooks.get('another.event')).toBe(undefined);
+			expect(BB.Hooks.get('an.event')).toHaveLength(1);
+			expect(BB.Hooks.get('another.event')).toBe(undefined);
 		});
 
 		it('should not initialize plugins with hooks in a thunk', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				hooks: () => ({
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
@@ -288,20 +288,20 @@ describe('PluginRegistry', () => {
 				name: 'DummyPlugin',
 			});
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				hooks: () => ({
 					'an.event': (val: number) => val,
 				}),
 				name: 'DummyPlugin2',
 			});
 
-			expect(BR.Hooks.size()).toBe(0);
+			expect(BB.Hooks.size()).toBe(0);
 
-			await BR.boot();
+			await BB.boot();
 
-			expect(BR.Hooks.get('an.event')).toHaveLength(2);
-			expect(BR.Hooks.get('another.event')).toHaveLength(1);
+			expect(BB.Hooks.get('an.event')).toHaveLength(2);
+			expect(BB.Hooks.get('another.event')).toHaveLength(1);
 		});
 
 	});
@@ -310,10 +310,10 @@ describe('PluginRegistry', () => {
 	describe('.disable method', () => {
 
 		it('should disable plugin', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				hooks: {
 					'an.event': (val: number) => val,
 					'another.event': (val: number) => val,
@@ -321,11 +321,11 @@ describe('PluginRegistry', () => {
 				name: 'DummyPlugin',
 			});
 
-			expect(BR.Plugins.isEnabled('dummy-plugin')).toBe(true);
+			expect(BB.Plugins.isEnabled('dummy-plugin')).toBe(true);
 
-			await BR.Plugins.disable('dummy-plugin');
+			await BB.Plugins.disable('dummy-plugin');
 
-			expect(BR.Plugins.isEnabled('dummy-plugin')).toBe(false);
+			expect(BB.Plugins.isEnabled('dummy-plugin')).toBe(false);
 		});
 
 	});
@@ -334,10 +334,10 @@ describe('PluginRegistry', () => {
 	describe('.enable method', () => {
 
 		it('should enable plugin', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				enabled: false,
 				hooks: {
 					'an.event': (val: number) => val,
@@ -346,11 +346,11 @@ describe('PluginRegistry', () => {
 				name: 'DummyPlugin',
 			});
 
-			expect(BR.Plugins.isEnabled('dummy-plugin')).toBe(false);
+			expect(BB.Plugins.isEnabled('dummy-plugin')).toBe(false);
 
-			await BR.Plugins.enable('dummy-plugin');
+			await BB.Plugins.enable('dummy-plugin');
 
-			expect(BR.Plugins.isEnabled('dummy-plugin')).toBe(true);
+			expect(BB.Plugins.isEnabled('dummy-plugin')).toBe(true);
 		});
 
 	});
@@ -361,30 +361,30 @@ describe('PluginRegistry', () => {
 	describe('.getFromSlugOrPlugin method', () => {
 
 		it('should return a plugin from a string', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
-			await BR.Plugins.register({
+			// const Plugins = new PluginRegistry(BB);
+			await BB.Plugins.register({
 				name: 'DummyPlugin',
 			});
 
-			expect((BR.Plugins as any).getFromSlugOrPlugin('dummy-plugin').name).toBe('DummyPlugin');
+			expect((BB.Plugins as any).getFromSlugOrPlugin('dummy-plugin').name).toBe('DummyPlugin');
 		});
 
 		it('should return a Plugin  object as is', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
-			// const Plugins = new PluginRegistry(BR);
+			// const Plugins = new PluginRegistry(BB);
 			const plugin = (new Plugin({
 				name: 'DummyPlugin',
 			})).setup();
 
-			expect((BR.Plugins as any).getFromSlugOrPlugin(plugin).slug).toBe('dummy-plugin');
+			expect((BB.Plugins as any).getFromSlugOrPlugin(plugin).slug).toBe('dummy-plugin');
 		});
 
 		it('should throw an error for unknown Plugins', async () => {
-			const BR = new BlueRain();
-			expect(() => (BR.Plugins as any).getFromSlugOrPlugin('foo')).toThrow();
+			const BB = new BlueBase();
+			expect(() => (BB.Plugins as any).getFromSlugOrPlugin('foo')).toThrow();
 		});
 
 	});

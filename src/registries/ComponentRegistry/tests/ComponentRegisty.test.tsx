@@ -1,4 +1,4 @@
-import { BlueRain } from '../../../BlueRain';
+import { BlueBase } from '../../../BlueBase';
 import React from 'react';
 
 const Button: React.StatelessComponent<{}> = () => <div>A Button</div>;
@@ -15,15 +15,15 @@ describe('ComponentRegistry', () => {
 	describe('Proxy', () => {
 
 		it('should register a Plugin', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', Button);
+			const BB = new BlueBase();
+			await BB.Components.register('Button', Button);
 
-			expect(BR.Components.Button).toBeTruthy();
+			expect(BB.Components.Button).toBeTruthy();
 		});
 
 		it('should throw for unknown components', async () => {
-			const BR = new BlueRain();
-			expect(() => BR.Components.Foo).toThrow();
+			const BB = new BlueBase();
+			expect(() => BB.Components.Foo).toThrow();
 		});
 
 	});
@@ -31,12 +31,12 @@ describe('ComponentRegistry', () => {
 	describe('.resolve method', () => {
 
 		it('should throw for unknown components', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
 			let message = false;
 
 			try {
-				BR.Components.resolve('Foo');
+				BB.Components.resolve('Foo');
 			} catch (e) {
 				message = e.message;
 			}
@@ -53,51 +53,51 @@ describe('ComponentRegistry', () => {
 		/////////////////////////////////
 
 		it('should register a React Functional Component', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', Button);
+			const BB = new BlueBase();
+			await BB.Components.register('Button', Button);
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Button).toBeTruthy();
+			expect(BB.Components.Button).toBeTruthy();
 		});
 
 		it('should register a React Functional Component in an ES Module', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', { default: Button });
+			const BB = new BlueBase();
+			await BB.Components.register('Button', { default: Button });
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Button).toBeTruthy();
+			expect(BB.Components.Button).toBeTruthy();
 		});
 
 		it('should register a React Functional Component in an Promised ES Module', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', Promise.resolve({ default: Button }));
+			const BB = new BlueBase();
+			await BB.Components.register('Button', Promise.resolve({ default: Button }));
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Button).toBeTruthy();
+			expect(BB.Components.Button).toBeTruthy();
 		});
 
 		it('should register a React Class Component', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Welcome', Welcome);
+			const BB = new BlueBase();
+			await BB.Components.register('Welcome', Welcome);
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Welcome).toBeTruthy();
+			expect(BB.Components.Welcome).toBeTruthy();
 		});
 
 		it('should register a React Class Component in an ES Module', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Welcome', { default: Welcome });
+			const BB = new BlueBase();
+			await BB.Components.register('Welcome', { default: Welcome });
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Welcome).toBeTruthy();
+			expect(BB.Components.Welcome).toBeTruthy();
 		});
 
 		it('should register a React Class Component in an Promised ES Module', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Welcome', Promise.resolve({ default: Welcome }));
+			const BB = new BlueBase();
+			await BB.Components.register('Welcome', Promise.resolve({ default: Welcome }));
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Welcome).toBeTruthy();
+			expect(BB.Components.Welcome).toBeTruthy();
 		});
 
 		///////////////////////////////////////
@@ -105,44 +105,44 @@ describe('ComponentRegistry', () => {
 		///////////////////////////////////////
 
 		it('should register a ComponentRegistryItem', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', {
+			const BB = new BlueBase();
+			await BB.Components.register('Button', {
 				rawComponent: Button
 			});
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Button).toBeTruthy();
+			expect(BB.Components.Button).toBeTruthy();
 		});
 
 		it('should register a ComponentRegistryItem, with rawComponent in an ES Module', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', {
+			const BB = new BlueBase();
+			await BB.Components.register('Button', {
 				rawComponent: { default: Button }
 			});
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Button).toBeTruthy();
+			expect(BB.Components.Button).toBeTruthy();
 		});
 
 
 		it('should register a ComponentRegistryItem, with rawComponent in a Promised ES Module', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', {
+			const BB = new BlueBase();
+			await BB.Components.register('Button', {
 				rawComponent: Promise.resolve({ default: Button })
 			});
 
 			// TODO: Add proper dom testing
-			expect(BR.Components.Button).toBeTruthy();
+			expect(BB.Components.Button).toBeTruthy();
 		});
 
 		it('should register a ComponentRegistryItem, with preload set to true', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', {
+			const BB = new BlueBase();
+			await BB.Components.register('Button', {
 				preload: true,
 				rawComponent: Button,
 			});
 
-			const Component = BR.Components.get('Button');
+			const Component = BB.Components.get('Button');
 
 			if (!Component) {
 				throw Error();
@@ -151,12 +151,12 @@ describe('ComponentRegistry', () => {
 		});
 
 		it('should throw an Error for empty object', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
 			let message = false;
 
 			try {
-				await BR.Components.register('Button', {} as any);
+				await BB.Components.register('Button', {} as any);
 			} catch (e) {
 				message = e.message;
 			}
@@ -168,18 +168,18 @@ describe('ComponentRegistry', () => {
 		////// Overrides
 
 		it('should merge a ComponentRegistryItem with an existing one', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', {
+			const BB = new BlueBase();
+			await BB.Components.register('Button', {
 				hocs: [() => Button],
 				preload: true,
 				rawComponent: Button,
 			});
-			await BR.Components.register('Button', {
+			await BB.Components.register('Button', {
 				hocs: [() => Button, () => Button],
 				rawComponent: Button,
 			});
 
-			const Component = BR.Components.get('Button');
+			const Component = BB.Components.get('Button');
 
 			if (!Component) {
 				throw Error();
@@ -193,11 +193,11 @@ describe('ComponentRegistry', () => {
 	describe('.addHocs method', () => {
 
 		it('should add a single HOC', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', Button);
-			BR.Components.addHocs('Button', () => Button);
+			const BB = new BlueBase();
+			await BB.Components.register('Button', Button);
+			BB.Components.addHocs('Button', () => Button);
 
-			const Component = BR.Components.get('Button');
+			const Component = BB.Components.get('Button');
 
 			if (!Component) {
 				throw Error();
@@ -206,13 +206,13 @@ describe('ComponentRegistry', () => {
 		});
 
 		it('should add multiple HOCs', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', Button);
-			BR.Components.addHocs('Button', () => Button);
-			BR.Components.addHocs('Button', () => Button);
-			BR.Components.addHocs('Button', () => Button);
+			const BB = new BlueBase();
+			await BB.Components.register('Button', Button);
+			BB.Components.addHocs('Button', () => Button);
+			BB.Components.addHocs('Button', () => Button);
+			BB.Components.addHocs('Button', () => Button);
 
-			const Component = BR.Components.get('Button');
+			const Component = BB.Components.get('Button');
 
 			if (!Component) {
 				throw Error();
@@ -221,14 +221,14 @@ describe('ComponentRegistry', () => {
 		});
 
 		it('should not override existing HOCs', async () => {
-			const BR = new BlueRain();
-			await BR.Components.register('Button', {
+			const BB = new BlueBase();
+			await BB.Components.register('Button', {
 				hocs: [() => Button],
 				rawComponent: Button,
 			});
-			BR.Components.addHocs('Button', () => Button);
+			BB.Components.addHocs('Button', () => Button);
 
-			const Component = BR.Components.get('Button');
+			const Component = BB.Components.get('Button');
 
 			if (!Component) {
 				throw Error();
@@ -237,12 +237,12 @@ describe('ComponentRegistry', () => {
 		});
 
 		it('should throw an Error for unregistered components', async () => {
-			const BR = new BlueRain();
+			const BB = new BlueBase();
 
 			let message = false;
 
 			try {
-				BR.Components.addHocs('Button', () => Button);
+				BB.Components.addHocs('Button', () => Button);
 			} catch (e) {
 				message = e.message;
 			}

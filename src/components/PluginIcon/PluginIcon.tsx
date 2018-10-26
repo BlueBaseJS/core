@@ -1,5 +1,5 @@
-import { BlueRain } from '../../BlueRain';
-import { BlueRainConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 import React from 'react';
 import { resolveThunk } from '../../utils';
 
@@ -14,12 +14,12 @@ export class PluginIcon extends React.PureComponent<PluginIconProperties> {
 	render() {
 
 		return (
-			<BlueRainConsumer>
-				{(BR: BlueRain) => {
+			<BlueBaseConsumer>
+				{(BB: BlueBase) => {
 
 					const { slug, ...rest } = this.props;
 
-					const plugin = BR.Plugins.get(slug);
+					const plugin = BB.Plugins.get(slug);
 
 					if (!plugin) {
 						throw new Error(`There's no pluign registered with "${slug}" key in the registry.`);
@@ -29,11 +29,11 @@ export class PluginIcon extends React.PureComponent<PluginIconProperties> {
 						return;
 					}
 
-					const iconProps = resolveThunk(plugin.icon, plugin, BR);
+					const iconProps = resolveThunk(plugin.icon, plugin, BB);
 
-					return <BR.Components.DynamicIcon {...iconProps} {...rest} />;
+					return <BB.Components.DynamicIcon {...iconProps} {...rest} />;
 				}}
-			</BlueRainConsumer>
+			</BlueBaseConsumer>
 		);
 	}
 }

@@ -1,10 +1,10 @@
 Emoji reference of Commitizen scopes for this repo:
 
-💧 BlueRainApp
-📦 BlueRainModule
+💧 BlueBaseApp
+📦 BlueBaseModule
 🎁 ComponentRegistry
 🎣 HookRegistry
-🎣 BlueRainHook Component
+🎣 BlueBaseHook Component
 🗿 Icons
 🍱 JSON Schema
 🔌 PluginRegistry
