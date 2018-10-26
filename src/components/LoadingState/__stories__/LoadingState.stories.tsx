@@ -1,11 +1,11 @@
-import { BlueRain, BlueRainConsumer } from '../../..';
+import { BlueBase, BlueBaseConsumer } from '../../..';
 import React from 'react';
 import storiesOf from '@blueeast/bluerain-storybook-addon';
 
 storiesOf('LoadingState', module)
 
 	.add('With default props', () => (
-		<BlueRainConsumer children={(BR: BlueRain) => (
-			<BR.Components.LoadingState />
+		<BlueBaseConsumer children={(BB: BlueBase) => (
+			<BB.Components.LoadingState />
 		)} />
 	));

@@ -1,5 +1,5 @@
-import { BlueRain } from '../../BlueRain';
-import { BlueRainConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 import React from 'react';
 
 export class SystemApp extends React.PureComponent {
@@ -7,15 +7,15 @@ export class SystemApp extends React.PureComponent {
 	render() {
 
 		return (
-			<BlueRainConsumer>
-				{(BR: BlueRain) => (
-					<BR.Components.View {...this.props}>
-						<BR.Components.SystemHeader />
-						<BR.Components.SystemContent />
-						<BR.Components.SystemFooter />
-					</BR.Components.View>
+			<BlueBaseConsumer>
+				{(BB: BlueBase) => (
+					<BB.Components.View {...this.props}>
+						<BB.Components.SystemHeader />
+						<BB.Components.SystemContent />
+						<BB.Components.SystemFooter />
+					</BB.Components.View>
 				)}
-			</BlueRainConsumer>
+			</BlueBaseConsumer>
 		);
 	}
 }

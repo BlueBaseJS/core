@@ -1,5 +1,5 @@
 import { HookCollectionItem, HookInput, HookNameGeneratorFn } from './types';
-import { getDefiniteArray, getDefiniteBlueRainModule } from '../../utils';
+import { getDefiniteArray, getDefiniteBlueBaseModule } from '../../utils';
 import { DEFAULT_HOOK_NAME_GENERATOR_FN } from './defaults';
 import { Hook } from '../../models/Hook';
 import isFunction from 'lodash.isfunction';
@@ -43,8 +43,8 @@ export async function parseHookCollectionItem(
 	// Iterate over each item of hookField
 	for (const hookItem of hookFieldArr) {
 
-		// Each hookField maybe a BlueRainModule, we create one if its not
-		const item = getDefiniteBlueRainModule(hookItem);
+		// Each hookField maybe a BlueBaseModule, we create one if its not
+		const item = getDefiniteBlueBaseModule(hookItem);
 
 		// Resolve listener, so if its another bundle, gets loaded here
 		const handlerOrListener = await item.promise;

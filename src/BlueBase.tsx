@@ -1,22 +1,22 @@
 import { ComponentRegistry, HookCollection, HookRegistry, PluginRegistry } from './registries';
-import { BlueRainProvider } from './Context';
+import { BlueBaseProvider } from './Context';
 import { Logger } from './api';
 import React from 'react';
 import systemHooks from './hooks';
 import { Plugin } from './models/Plugin';
 import { ComponentInput } from './registries/ComponentRegistry/types';
-import { MaybeBlueRainModuleOrInput } from './utils';
+import { MaybeBlueBaseModuleOrInput } from './utils';
 
 export interface BootOptions {
 
-	plugins: Array<MaybeBlueRainModuleOrInput<Plugin>>;
+	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>;
 	components: { [key: string]: ComponentInput };
 	hooks: HookCollection;
 	// routes: Plugin[]
 	// configs: Plugin[]
 }
 
-export class BlueRain {
+export class BlueBase {
 
 	// APIs
 	public Logger = new Logger(this);
@@ -43,16 +43,16 @@ export class BlueRain {
 		await this.Hooks.registerCollection(systemHooks);
 		await this.Hooks.registerCollection(this.bootOptions.hooks);
 
-		await this.Hooks.run('bluerain.boot', this.bootOptions);
+		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
 		// Set View
 		// const SystemApp = this.Components.resolve('SystemApp');
-		// SystemApp = await this.Hooks.run('bluerain.system.app', SystemApp);
+		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
 
 		const BluerainApp = () => (
-			<BlueRainProvider value={this}>
+			<BlueBaseProvider value={this}>
 				<this.Components.SystemApp />
-			</BlueRainProvider>
+			</BlueBaseProvider>
 		);
 
 		this.booted = true;

@@ -1,5 +1,5 @@
 import { ComponentRegistryItem, ComponentRegistryItemInternal } from './types';
-import { getDefiniteBlueRainModule } from '../../utils';
+import { getDefiniteBlueBaseModule } from '../../utils';
 
 export function createComponentRegistryItem(input: ComponentRegistryItemInternal): ComponentRegistryItem {
 
@@ -8,7 +8,7 @@ export function createComponentRegistryItem(input: ComponentRegistryItemInternal
 		throw Error(`"rawComponent" property is required to register a component. Please provide valid component while adding component.`);
 	}
 
-	const rawComponent = getDefiniteBlueRainModule(input.rawComponent);
+	const rawComponent = getDefiniteBlueBaseModule(input.rawComponent);
 
 	return {
 		hocs: [],

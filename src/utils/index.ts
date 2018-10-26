@@ -1,4 +1,4 @@
-export * from './BlueRainModule';
+export * from './BlueBaseModule';
 export * from './Class';
 export * from './Collections';
 export * from './Modules';

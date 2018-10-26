@@ -1,5 +1,5 @@
 // import { BootOptions } from '../../src';
-// import commonBootOptions from '../common/bluerain';
+// import commonBootOptions from '../common/bluebase';
 // import deepmerge from 'deepmerge';
 
 /**

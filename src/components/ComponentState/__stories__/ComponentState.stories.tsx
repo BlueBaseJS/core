@@ -1,4 +1,4 @@
-import { BlueRain, BlueRainConsumer } from '../../../';
+import { BlueBase, BlueBaseConsumer } from '../../../';
 import React from 'react';
 import storiesOf from '@blueeast/bluerain-storybook-addon';
 
@@ -6,9 +6,9 @@ storiesOf('ComponentState', module)
 
 
 	.add('Everything', () => (
-		<BlueRainConsumer>
-			{(BR: BlueRain) => (
-				<BR.Components.ComponentState
+		<BlueBaseConsumer>
+			{(BB: BlueBase) => (
+				<BB.Components.ComponentState
 					title="Error!"
 					description="A unknown error occured!"
 					imageSource="https://picsum.photos/200"
@@ -16,74 +16,74 @@ storiesOf('ComponentState', module)
 					actionTitle="Retry"
 				/>
 			)}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 	.add('Only title', () => (
-		<BlueRainConsumer>
-		{(BR: BlueRain) => <BR.Components.ComponentState title="A simple state" />}
-		</BlueRainConsumer>
+		<BlueBaseConsumer>
+		{(BB: BlueBase) => <BB.Components.ComponentState title="A simple state" />}
+		</BlueBaseConsumer>
 	))
 
 	.add('Title with custom styles', () => (
-	<BlueRainConsumer>
-		{(BR: BlueRain) => (
-			<BR.Components.ComponentState
+	<BlueBaseConsumer>
+		{(BB: BlueBase) => (
+			<BB.Components.ComponentState
 				title= "A simple state"
 				titleStyle = {{ color: 'green', fontSize: 20 }}
 			/>
 		)}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 	.add('Only description', () => (
-		<BlueRainConsumer>
-		{(BR: BlueRain) => (
-			<BR.Components.ComponentState description= "A simple description" />
+		<BlueBaseConsumer>
+		{(BB: BlueBase) => (
+			<BB.Components.ComponentState description= "A simple description" />
 		)}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 
 	.add('Description with custom styles', () => (
-		<BlueRainConsumer>
-		{(BR: BlueRain) => (
-			<BR.Components.ComponentState
+		<BlueBaseConsumer>
+		{(BB: BlueBase) => (
+			<BB.Components.ComponentState
 				description= "A simple description"
 				descriptionStyle = {{ color: 'green', fontSize: 20 }}
 			/>
 		)}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 
 	.add('Only action title', () => (
-		<BlueRainConsumer>
-		{(BR: BlueRain) => (
-			<BR.Components.ComponentState actionTitle="Bluerain" />
+		<BlueBaseConsumer>
+		{(BB: BlueBase) => (
+			<BB.Components.ComponentState actionTitle="Bluerain" />
 		)}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 	.add('Action button with onPress listener', () => (
-		<BlueRainConsumer>
-		{(BR: BlueRain) => {
+		<BlueBaseConsumer>
+		{(BB: BlueBase) => {
 			const Handler = () => console.log('clicked');
 
 			return(
-				<BR.Components.ComponentState
+				<BB.Components.ComponentState
 					actionTitle = "Bluerain"
 					actionOnPress = { Handler }
 				/>
 			);
 		}}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 	.add('Action button with custom styles', () => (
-		<BlueRainConsumer>
-		{(BR: BlueRain) => (
-			<BR.Components.ComponentState
+		<BlueBaseConsumer>
+		{(BB: BlueBase) => (
+			<BB.Components.ComponentState
 				actionTitle= "Bluerain"
 				actionStyle = {{
 					// color: 'white',
@@ -95,27 +95,27 @@ storiesOf('ComponentState', module)
 				}}
 			/>
 		)}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 	.add('Image with custom image component', () => (
-		<BlueRainConsumer>
-		{(BR: BlueRain) => {
+		<BlueBaseConsumer>
+		{(BB: BlueBase) => {
 			// tslint:disable-next-line:max-line-length
-			const ImageComponent = <BR.Components.Image source="https://picsum.photos/200" style = {{ width: 200, height: 200 }} />;
-			return (<BR.Components.ComponentState image={ImageComponent} />);
+			const ImageComponent = <BB.Components.Image source="https://picsum.photos/200" style = {{ width: 200, height: 200 }} />;
+			return (<BB.Components.ComponentState image={ImageComponent} />);
 		}}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	))
 
 
 	.add('Image with source path', () => (
-		<BlueRainConsumer>
-			{(BR: BlueRain) => (
-				<BR.Components.ComponentState
+		<BlueBaseConsumer>
+			{(BB: BlueBase) => (
+				<BB.Components.ComponentState
 					imageSource="https://picsum.photos/200/200/?random"
 					imageStyle={{ width: 100, height: 100 }}
 				/>
 			)}
-		</BlueRainConsumer>
+		</BlueBaseConsumer>
 	));

@@ -7,9 +7,9 @@ import { Fields, objectMapper } from './objectMapper';
  * Example 1:
  *
  * Material UI Button: <MUI.Button label="ABC" />
- * BlueRain BUtton: <BR.Components.Button>{label}</BR.Components.Button>
+ * BlueBase BUtton: <BB.Components.Button>{label}</BB.Components.Button>
  *
- * So BR.Components.Button = componentMapper(MUI.Button, { label: children });
+ * So BB.Components.Button = componentMapper(MUI.Button, { label: children });
  *
  * @param Component
  * @param fields

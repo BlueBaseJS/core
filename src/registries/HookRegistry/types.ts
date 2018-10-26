@@ -1,5 +1,5 @@
-import { MaybeArray, MaybeBlueRainModuleOrInput, MaybeThunk } from '../../utils';
-import { BlueRain } from '../../BlueRain';
+import { MaybeArray, MaybeBlueBaseModuleOrInput, MaybeThunk } from '../../utils';
+import { BlueBase } from '../../BlueBase';
 import { Hook } from '../../models/Hook';
 
 /**
@@ -19,11 +19,11 @@ export type HookNameGeneratorFn = (eventInput: string, index: number) => string;
  *
  * @param value The input value
  * @param args Any arguments passed on to the listener by the caller
- * @param BR The BlueRain context
+ * @param BB The BlueBase context
  *
  * @returns Orinal or mutates version of input value. May be a promise that resolves the value.
  */
-export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BR: BlueRain) => T | Promise<T>;
+export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BB: BlueBase) => T | Promise<T>;
 
 /**
  * An object that may either be an instance of Hook class, a HookInput object or hook handler function.
@@ -46,14 +46,14 @@ export interface HookInput {
 	priority?: number,
 
 	/** Handler function */
-	handler: MaybeBlueRainModuleOrInput<HookHandlerFn>,
+	handler: MaybeBlueBaseModuleOrInput<HookHandlerFn>,
 }
 
 /**
  * HookCollectionItem represents a single hook or multiple hooks for a single event in a HookCollection.
- * Each hook may be a Hook, HookInput or a Hook handler function. These may also be BlueRain modules.
+ * Each hook may be a Hook, HookInput or a Hook handler function. These may also be BlueBase modules.
  */
-export type HookCollectionItem = MaybeArray<MaybeBlueRainModuleOrInput<HookInputOrHandler>>;
+export type HookCollectionItem = MaybeArray<MaybeBlueBaseModuleOrInput<HookInputOrHandler>>;
 
 /**
  * A Hook Collection is used to register multiple hooks for multiple events at the same time.

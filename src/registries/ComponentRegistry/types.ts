@@ -1,4 +1,4 @@
-import { BlueRainModule, MaybeBlueRainModuleOrInput } from '../../utils';
+import { BlueBaseModule, MaybeBlueBaseModuleOrInput } from '../../utils';
 import React from 'react';
 
 /////////////////////////////////////
@@ -20,7 +20,7 @@ export interface ComponentSource {
 
 
 export interface ComponentRegistryItemBase {
-	hocs: ComponentRegistryHocItem[]; // TODO: maybe each HOC should also be a BlueRainModule?
+	hocs: ComponentRegistryHocItem[]; // TODO: maybe each HOC should also be a BlueBaseModule?
 	source?: ComponentSource;
 
 	isAsync: boolean;
@@ -28,11 +28,11 @@ export interface ComponentRegistryItemBase {
 }
 
 export interface ComponentRegistryItem extends ComponentRegistryItemBase {
-	rawComponent: BlueRainModule<React.ComponentType<any>>;
+	rawComponent: BlueBaseModule<React.ComponentType<any>>;
 }
 
 export interface ComponentRegistryItemInternal extends Partial<ComponentRegistryItemBase> {
-	rawComponent: MaybeBlueRainModuleOrInput<React.ComponentType<any>>;
+	rawComponent: MaybeBlueBaseModuleOrInput<React.ComponentType<any>>;
 }
 
 /**
@@ -40,4 +40,4 @@ export interface ComponentRegistryItemInternal extends Partial<ComponentRegistry
  */
 export type ComponentInput =
 	ComponentRegistryItemInternal |
-	MaybeBlueRainModuleOrInput<React.ComponentType<any>>;
+	MaybeBlueBaseModuleOrInput<React.ComponentType<any>>;

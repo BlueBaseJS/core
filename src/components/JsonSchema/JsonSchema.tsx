@@ -1,10 +1,10 @@
 import { JsonComponentNode, JsonSchemaParser } from '../../lib/json-schema-parser';
-import { BlueRain } from '../../BlueRain';
-import { BlueRainConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 import { MaybeArray } from '../../utils';
 import React from 'react';
 import isString from 'lodash.isstring';
-import { BlueRainHook } from '../BlueRainHook';
+import { BlueBaseHook } from '../BlueBaseHook';
 
 export interface JsonSchemaProperties {
 	schema: MaybeArray<JsonComponentNode>;
@@ -12,34 +12,34 @@ export interface JsonSchemaProperties {
 	args?: { [key: string]: any };
 }
 
-const getComponent = (BR: BlueRain) => {
+const getComponent = (BB: BlueBase) => {
 	return ({ component }: JsonComponentNode) => {
 
 		if (!isString(component)) {
 			return null;
 		}
 
-		return BR.Components.has(component) ? BR.Components.resolve(component) : null;
+		return BB.Components.has(component) ? BB.Components.resolve(component) : null;
 	};
 };
 
 
 // export const JsonSchema = ({ hook, schema }: JsonSchemaProperties) => (
-// 	<BlueRainConsumer>
-// 		{(BR: BlueRain) => {
+// 	<BlueBaseConsumer>
+// 		{(BB: BlueBase) => {
 
 // 			const AsyncJsonSchema = Loadable({
-// 				loader: () => hook ? BR.Hooks.run(hook, schema) : Promise.resolve(schema),
+// 				loader: () => hook ? BB.Hooks.run(hook, schema) : Promise.resolve(schema),
 // 				loading: () => <Text>Loading</Text>,
 // 				render(loadedSchema: JsonSchemaProperties['schema']) {
-// 					return (new JsonSchemaParser(getComponent(BR))).parseSchema(loadedSchema);
+// 					return (new JsonSchemaParser(getComponent(BB))).parseSchema(loadedSchema);
 // 				}
 // 			});
 
 // 			return <AsyncJsonSchema />;
 
 // 		}}
-// 	</BlueRainConsumer>
+// 	</BlueBaseConsumer>
 // );
 
 
@@ -49,9 +49,9 @@ export class JsonSchema extends React.PureComponent<JsonSchemaProperties> {
 		const { hook, schema, args } = this.props;
 
 		return (
-			<BlueRainConsumer children={(BR: BlueRain) => {
+			<BlueBaseConsumer children={(BB: BlueBase) => {
 
-				const parser = new JsonSchemaParser(getComponent(BR));
+				const parser = new JsonSchemaParser(getComponent(BB));
 
 				// There's no hook, we don't need to do complex asyn handling
 				if (!hook) {
@@ -59,7 +59,7 @@ export class JsonSchema extends React.PureComponent<JsonSchemaProperties> {
 				}
 
 				return (
-					<BlueRainHook hook={hook} value={schema} args={args} children={(loadedSchema) => {
+					<BlueBaseHook hook={hook} value={schema} args={args} children={(loadedSchema) => {
 						return parser.parseSchema(loadedSchema);
 					}} />
 				);

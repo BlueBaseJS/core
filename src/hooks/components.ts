@@ -1,7 +1,7 @@
-import { BlueRain, BootOptions } from '../BlueRain';
+import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInput } from '../registries';
 import {
-	BlueRainHook,
+	BlueBaseHook,
 	ComponentState,
 	DynamicIcon,
 	EmptyState,
@@ -18,33 +18,33 @@ import { ActivityIndicator, Button, Image, Text, View } from '../native';
 
 export const components: { [key: string]: HookInput[] } = {
 
-	'bluerain.components.register.internal': [{
-		handler: async (bootOptions: BootOptions, _ctx: {}, BR: BlueRain) => {
+	'bluebase.components.register.internal': [{
+		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
-			// await BR.Components.register('DynamicIcon', import('../components/DynamicIcon'));
-			await BR.Components.register('BlueRainHook', BlueRainHook);
-			await BR.Components.register('ComponentState', ComponentState);
-			await BR.Components.register('DynamicIcon', DynamicIcon);
-			await BR.Components.register('EmptyState', EmptyState);
-			await BR.Components.register('ErrorState', ErrorState);
-			await BR.Components.register('JsonSchema', JsonSchema);
-			await BR.Components.register('LoadingState', LoadingState);
-			await BR.Components.register('Noop', Noop);
-			await BR.Components.register('PluginIcon', PluginIcon);
-			await BR.Components.register('SystemApp', SystemApp);
-			await BR.Components.register('SystemContent', SystemContent);
-			await BR.Components.register('SystemFooter', Noop);
-			await BR.Components.register('SystemHeader', Noop);
+			// await BB.Components.register('DynamicIcon', import('../components/DynamicIcon'));
+			await BB.Components.register('BlueBaseHook', BlueBaseHook);
+			await BB.Components.register('ComponentState', ComponentState);
+			await BB.Components.register('DynamicIcon', DynamicIcon);
+			await BB.Components.register('EmptyState', EmptyState);
+			await BB.Components.register('ErrorState', ErrorState);
+			await BB.Components.register('JsonSchema', JsonSchema);
+			await BB.Components.register('LoadingState', LoadingState);
+			await BB.Components.register('Noop', Noop);
+			await BB.Components.register('PluginIcon', PluginIcon);
+			await BB.Components.register('SystemApp', SystemApp);
+			await BB.Components.register('SystemContent', SystemContent);
+			await BB.Components.register('SystemFooter', Noop);
+			await BB.Components.register('SystemHeader', Noop);
 
-			await BR.Components.register('ActivityIndicator', ActivityIndicator);
-			await BR.Components.register('Button', Button);
-			await BR.Components.register('Image', Image);
-			await BR.Components.register('Text', Text);
-			await BR.Components.register('View', View);
+			await BB.Components.register('ActivityIndicator', ActivityIndicator);
+			await BB.Components.register('Button', Button);
+			await BB.Components.register('Image', Image);
+			await BB.Components.register('Text', Text);
+			await BB.Components.register('View', View);
 
 			return bootOptions;
 		},
-		name: 'bluerain-components-register-internal-default',
+		name: 'bluebase-components-register-internal-default',
 		priority: 5,
 	}]
 };

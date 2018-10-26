@@ -1,4 +1,4 @@
-import { MaybeBlueRainModuleOrInput, getDefiniteBlueRainModule, isClass } from '../../utils';
+import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, isClass } from '../../utils';
 import { Registry } from '../Registry';
 import { Plugin } from '../../models/Plugin';
 import { PluginInput } from './types';
@@ -13,17 +13,17 @@ export class PluginRegistry extends Registry<Plugin> {
 	 * - An instance of Plugin Class
 	 * - An object that has similar properties to a Plugin object (PluginInput)
 	 *
-	 * Moreover all of these can be split into BlueRainModules
+	 * Moreover all of these can be split into BlueBaseModules
 	 *
 	 * @param plugin Input
 	 */
-	public async register(plugin: MaybeBlueRainModuleOrInput<typeof Plugin | Plugin | PluginInput>): Promise<void> {
+	public async register(plugin: MaybeBlueBaseModuleOrInput<typeof Plugin | Plugin | PluginInput>): Promise<void> {
 
 		if (!plugin) {
 			throw Error(`Could not register plugin. Reason: No plugin provided in PluginRegistry's register method.`);
 		}
 
-		plugin = await getDefiniteBlueRainModule(plugin).promise;
+		plugin = await getDefiniteBlueBaseModule(plugin).promise;
 
 		let finalPlugin;
 

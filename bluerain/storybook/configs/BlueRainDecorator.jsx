@@ -1,7 +1,7 @@
-import { BlueRain, BlueRainApp, BR as _BR } from '@blueeast/bluerain';
+import { BlueBase, BlueBaseApp, BB as _BB } from '@blueeast/bluebase';
 import React from 'react';
 
-const BlueRainDecorator = (maybeEsConfigs, BR = _BR) => (storyFn) => {
+const BlueBaseDecorator = (maybeEsConfigs, BB = _BB) => (storyFn) => {
 
 	const configs = maybeEsConfigs.default ? maybeEsConfigs.default : maybeEsConfigs;
 
@@ -10,7 +10,7 @@ const BlueRainDecorator = (maybeEsConfigs, BR = _BR) => (storyFn) => {
 	const StorybookPlugin = {
 		name: 'Storybook Plugin',
 		hooks: {
-			'bluerain.boot.end': (bootOpts: any, _args: any, ctx: BlueRain) => {
+			'bluebase.boot.end': (bootOpts: any, _args: any, ctx: BlueBase) => {
 				ctx.Components.replace('SystemApp', Component);
 				return bootOpts;
 			}
@@ -25,8 +25,8 @@ const BlueRainDecorator = (maybeEsConfigs, BR = _BR) => (storyFn) => {
 	allConfigs.plugins = allConfigs.plugins || [];
 	allConfigs.plugins.push(StorybookPlugin);
 
-	// const BluerainApp = BR.boot(allConfigs);
-	return <BlueRainApp {...allConfigs} />;
+	// const BluerainApp = BB.boot(allConfigs);
+	return <BlueBaseApp {...allConfigs} />;
 };
 
-export default BlueRainDecorator;
+export default BlueBaseDecorator;

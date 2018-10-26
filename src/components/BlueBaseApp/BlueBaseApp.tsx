@@ -1,28 +1,28 @@
-import { BlueRain, BootOptions } from '../../BlueRain';
+import { BlueBase, BootOptions } from '../../BlueBase';
 import React from 'react';
 
 // tslint:disable-next-line:no-var-requires
 const { Text } = require('react-native');
 
-export interface BlueRainAppProperties extends Partial<BootOptions> {
-	BR?: BlueRain
+export interface BlueBaseAppProperties extends Partial<BootOptions> {
+	BB?: BlueBase
 }
 
-interface BlueRainAppState {
+interface BlueBaseAppState {
 
 	booted: boolean;
-	BR: BlueRain
+	BB: BlueBase
 
 	Component: React.ComponentType<any>
 }
 
-export class BlueRainApp extends React.Component<BlueRainAppProperties, BlueRainAppState> {
+export class BlueBaseApp extends React.Component<BlueBaseAppProperties, BlueBaseAppState> {
 
-	constructor(props: BlueRainAppProperties) {
+	constructor(props: BlueBaseAppProperties) {
 		super(props);
 
 		this.state = {
-			BR: props.BR || new BlueRain(),
+			BB: props.BB || new BlueBase(),
 			Component: () => <Text>Loading</Text>,
 			booted: false,
 		};
@@ -30,13 +30,13 @@ export class BlueRainApp extends React.Component<BlueRainAppProperties, BlueRain
 
 	async componentDidMount() {
 
-		const BR = this.state.BR;
+		const BB = this.state.BB;
 
 		try {
-			const Component = await BR.boot(this.props);
+			const Component = await BB.boot(this.props);
 			this.setState({
 				Component,
-				booted: BR.booted,
+				booted: BB.booted,
 			});
 		} catch (error) {
 			// tslint:disable-next-line:no-console

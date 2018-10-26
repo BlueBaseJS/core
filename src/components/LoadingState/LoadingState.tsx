@@ -1,14 +1,14 @@
 import React from 'react';
-import { BlueRain } from '../../BlueRain';
-import { BlueRainConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 
 export class LoadingState extends React.PureComponent {
 
 	render() {
 
 		return (
-			<BlueRainConsumer children={(BR: BlueRain) => (
-				<BR.Components.ActivityIndicator />
+			<BlueBaseConsumer children={(BB: BlueBase) => (
+				<BB.Components.ActivityIndicator />
 			)} />
 		);
 	}

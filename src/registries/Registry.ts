@@ -1,4 +1,4 @@
-import { BlueRain } from '../BlueRain';
+import { BlueBase } from '../BlueBase';
 
 /**
  * A Base Registry
@@ -8,7 +8,7 @@ export class Registry<RegistryItemType> {
 	/** Internal data */
 	protected data: Map<string, RegistryItemType> = new Map();
 
-	constructor(protected BR: BlueRain) {
+	constructor(protected BB: BlueBase) {
 		//
 	}
 

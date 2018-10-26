@@ -1,5 +1,5 @@
 import { Hook } from '../Hook';
-import { isBlueRainModule } from '../../utils';
+import { isBlueBaseModule } from '../../utils';
 import { DEFAULT_HOOK_PRIORITY } from '../../registries/HookRegistry/defaults';
 
 describe('Models', () => {
@@ -14,7 +14,7 @@ describe('Models', () => {
 			expect(hook).toBeTruthy();
 			expect(hook.name).toBe('foo');
 			expect(hook.priority).toBe(DEFAULT_HOOK_PRIORITY);
-			expect(isBlueRainModule(hook.handler)).toBe(true);
+			expect(isBlueBaseModule(hook.handler)).toBe(true);
 		});
 
 		it('should create a new hook with given priority', async () => {
@@ -26,7 +26,7 @@ describe('Models', () => {
 			expect(hook).toBeTruthy();
 			expect(hook.name).toBe('foo');
 			expect(hook.priority).toBe(50);
-			expect(isBlueRainModule(hook.handler)).toBe(true);
+			expect(isBlueBaseModule(hook.handler)).toBe(true);
 		});
 
 		it('should throw when a name is not provided to Hook constructor', () => {

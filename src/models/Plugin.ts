@@ -1,4 +1,4 @@
-import { BlueRain } from '../BlueRain';
+import { BlueBase } from '../BlueBase';
 import { HookCollectionInput } from '../registries';
 import kebabCase from 'lodash.kebabcase';
 import { PluginInput } from '../registries/PluginRegistry/types';
@@ -62,7 +62,7 @@ export class Plugin {
 		return this;
 	}
 
-	public initialize: (configs: { [key: string]: any }, BR: BlueRain) => Promise<void> | void = () => { return; };
+	public initialize: (configs: { [key: string]: any }, BB: BlueBase) => Promise<void> | void = () => { return; };
 
 	public isEnabled() {
 		return this.enabled;

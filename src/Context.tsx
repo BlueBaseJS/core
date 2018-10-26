@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { BlueRain } from './BlueRain';
+import { BlueBase } from './BlueBase';
 
-export const BlueRainContext: React.Context<BlueRain> = createContext(undefined as any);
-export const BlueRainProvider = BlueRainContext.Provider;
-export const BlueRainConsumer = BlueRainContext.Consumer;
+export const BlueBaseContext: React.Context<BlueBase> = createContext(undefined as any);
+export const BlueBaseProvider = BlueBaseContext.Provider;
+export const BlueBaseConsumer = BlueBaseContext.Consumer;

@@ -1,6 +1,6 @@
 // tslint:disable:object-literal-sort-keys
 import { Plugin } from '../models/Plugin';
-import { BlueRain, BootOptions } from '../BlueRain';
+import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInput } from '../registries';
 
 export const plugins: { [key: string]: HookInput[] } = {
@@ -8,14 +8,14 @@ export const plugins: { [key: string]: HookInput[] } = {
 	/**
 	 * Registers given list of plugins
 	 */
-	'bluerain.plugins.register': [
+	'bluebase.plugins.register': [
 		{
-			name: 'bluerain.plugins.register.default',
+			name: 'bluebase.plugins.register.default',
 			priority: 5,
-			handler: async (pluginsArr: BootOptions['plugins'], _args: any, BR: BlueRain) => {
+			handler: async (pluginsArr: BootOptions['plugins'], _args: any, BB: BlueBase) => {
 
 				for (const plugin of pluginsArr) {
-					await BR.Plugins.register(plugin);
+					await BB.Plugins.register(plugin);
 				}
 
 				// return
@@ -25,19 +25,19 @@ export const plugins: { [key: string]: HookInput[] } = {
 	],
 
 	/**
-	 * Initializes all ENABLED plugins in BlueRain
+	 * Initializes all ENABLED plugins in BlueBase
 	 */
-	'bluerain.plugins.initialize.all': [
+	'bluebase.plugins.initialize.all': [
 		{
-			name: 'bluerain.plugins.initialize.all.default',
+			name: 'bluebase.plugins.initialize.all.default',
 			priority: 5,
-			handler: async (noop: any, _args: any, BR: BlueRain) => {
+			handler: async (noop: any, _args: any, BB: BlueBase) => {
 
-				for (const entry of BR.Plugins.entries()) {
+				for (const entry of BB.Plugins.entries()) {
 					const plugin = entry['1'];
 
 					if (plugin.isEnabled()) {
-						await BR.Hooks.run('bluerain.plugins.initialize', plugin);
+						await BB.Hooks.run('bluebase.plugins.initialize', plugin);
 					}
 				}
 
@@ -48,16 +48,16 @@ export const plugins: { [key: string]: HookInput[] } = {
 	],
 
 	/**
-	 * Initializes a single plugin in BlueRain
+	 * Initializes a single plugin in BlueBase
 	 */
-	'bluerain.plugins.initialize': [
+	'bluebase.plugins.initialize': [
 		{
-			name: 'bluerain.plugins.initialize.default',
+			name: 'bluebase.plugins.initialize.default',
 			priority: 5,
-			handler: async (plugin: Plugin, _args: any, BR: BlueRain) => {
+			handler: async (plugin: Plugin, _args: any, BB: BlueBase) => {
 
 				// Register plugin hooks
-				await BR.Hooks.registerCollection(
+				await BB.Hooks.registerCollection(
 					plugin.hooks,
 					(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
 				);
@@ -65,14 +65,14 @@ export const plugins: { [key: string]: HookInput[] } = {
 				// Register components
 				const componentKeys = Object.keys(plugin.components);
 				for (const key of componentKeys) {
-					await BR.Components.register(key, plugin.components[key]);
+					await BB.Components.register(key, plugin.components[key]);
 				}
 
 				// TODO: Register routes
 
 				// Initialize plugin
 				// TODO: Fix configs injection
-				await plugin.initialize({}, BR);
+				await plugin.initialize({}, BB);
 
 				// return
 				return plugin;
