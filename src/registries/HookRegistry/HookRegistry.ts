@@ -5,7 +5,7 @@ import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 import { Hook } from '../../models/Hook';
-import { resolveThunk } from '../../utils/Thunk';
+import { resolveThunk } from '../../utils';
 
 /**
  * 🎣 This is where are BlueBase hooks are stored.

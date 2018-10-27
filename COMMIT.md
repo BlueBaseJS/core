@@ -11,3 +11,4 @@ Emoji reference of Commitizen scopes for this repo:
 📖 README
 📕 Storybook
 🎛 Utils
+⏰ Wait Component
