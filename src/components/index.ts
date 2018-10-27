@@ -10,3 +10,4 @@ export * from './Noop';
 export * from './PluginIcon';
 export * from './SystemApp';
 export * from './SystemContent';
+export * from './Wait';
