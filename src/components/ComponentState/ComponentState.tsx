@@ -2,7 +2,7 @@ import React from 'react';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
 
-export interface ComponentStateProperties {
+export interface ComponentStateProps {
 
 	/**
 	 * Action title
@@ -55,7 +55,7 @@ export interface ComponentStateProperties {
 	titleStyle?: any;
 }
 
-export class ComponentState extends React.PureComponent<ComponentStateProperties> {
+export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
 	render() {
 
