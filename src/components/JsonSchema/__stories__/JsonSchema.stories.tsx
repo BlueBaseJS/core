@@ -1,6 +1,6 @@
 import { BlueBase, BlueBaseConsumer } from '../../..';
 import React from 'react';
-import storiesOf from '@blueeast/bluerain-storybook-addon';
+import storiesOf from '@bluebase/storybook-addon';
 
 storiesOf('JsonSchema', module)
 

@@ -2,11 +2,11 @@
 	"name": "@bluebase/core",
 	"description": "🚀 A modular, pluggable and cross platform app framework.",
 	"author": "BlueEast Team <code@blueeast.com>",
-	"version": "4.0.0-aplha.1",
+	"version": "4.0.0-aplha.2",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"module": "dist/index.js",
-	"repository": "https://github.com/BlueEastCode/bluerain",
+	"repository": "https://github.com/BlueBaseJS/core",
 	"license": "MIT",
 	"keywords": [],
 	"scripts": {
@@ -67,8 +67,8 @@
 		"tslib": "^1.9.3"
 	},
 	"devDependencies": {
+		"@bluebase/storybook-addon": "^2.0.0",
 		"@blueeast/bluerain-cli-essentials": "^4.0.0-beta.2",
-		"@blueeast/bluerain-storybook-addon": "^1.1.4",
 		"@blueeast/tslint-config-blueeast": "^0.5.6",
 		"@storybook/addon-actions": "^3.4.11",
 		"@storybook/addon-console": "^1.0.4",

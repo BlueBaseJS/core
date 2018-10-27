@@ -571,6 +571,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@bluebase/storybook-addon@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/storybook-addon/-/storybook-addon-2.0.0.tgz#2b2dcca561a76904608a8920866494f6abf2df95"
+
 "@blueeast/bluerain-cli-essentials@^4.0.0-beta.2":
   version "4.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@blueeast/bluerain-cli-essentials/-/bluerain-cli-essentials-4.0.0-beta.2.tgz#aea1e938ef3d95b9abac84396e029f37d4bca93e"
@@ -580,10 +584,6 @@
     react-docgen-typescript-webpack-plugin "^1.1.0"
     react-native-web "^0.9.0"
     webpack "^4.17.1"
-
-"@blueeast/bluerain-storybook-addon@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@blueeast/bluerain-storybook-addon/-/bluerain-storybook-addon-1.1.4.tgz#e9fb8db6285aadd9a93e6c37e8c276d9a492d39d"
 
 "@blueeast/tslint-config-blueeast@^0.5.6":
   version "0.5.6"
