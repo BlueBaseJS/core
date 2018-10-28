@@ -16,6 +16,16 @@ interface BlueBaseAppState {
 	Component: React.ComponentType<any>
 }
 
+/**
+ * 🚀 BlueBaseApp
+ *
+ * This is the Main App used to render at the top level.
+ *
+ * TODO: Add better docs
+ */
+// NOTE FOR DEVELOPERS:
+// Don't use BlueBase context or any data saved in context (e.g. components)
+// here. This is because the context may not be initialized yet.
 export class BlueBaseApp extends React.Component<BlueBaseAppProperties, BlueBaseAppState> {
 
 	constructor(props: BlueBaseAppProperties) {

@@ -34,7 +34,7 @@ export class BlueBaseHook extends React.PureComponent<BlueBaseHookProperties> {
 
 				const AsyncBlueBaseHook = Loadable({
 					loader: () => BB.Hooks.run(hook, value, args),
-					loading: () => <BB.Components.Text>Loading</BB.Components.Text>,
+					loading: () => <BB.Components.LoadingState />,
 					render(loadedValue: any) {
 						return children(loadedValue);
 					}

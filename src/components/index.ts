@@ -1,6 +1,7 @@
 export * from './BlueBaseApp';
 export * from './BlueBaseHook';
 export * from './ComponentState';
+export * from './DataObserver';
 export * from './DynamicIcon';
 export * from './EmptyState';
 export * from './ErrorObserver';
