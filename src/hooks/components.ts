@@ -5,6 +5,7 @@ import {
 	ComponentState,
 	DynamicIcon,
 	EmptyState,
+	ErrorObserver,
 	ErrorState,
 	JsonSchema,
 	LoadingState,
@@ -12,7 +13,7 @@ import {
 	PluginIcon,
 	SystemApp,
 	SystemContent,
-	Wait
+	WaitObserver
 } from '../components';
 
 import { ActivityIndicator, Button, Image, Text, View } from '../native';
@@ -27,6 +28,7 @@ export const components: { [key: string]: HookInput[] } = {
 			await BB.Components.register('ComponentState', ComponentState);
 			await BB.Components.register('DynamicIcon', DynamicIcon);
 			await BB.Components.register('EmptyState', EmptyState);
+			await BB.Components.register('ErrorObserver', ErrorObserver);
 			await BB.Components.register('ErrorState', ErrorState);
 			await BB.Components.register('Icon', Noop);
 			await BB.Components.register('JsonSchema', JsonSchema);
@@ -37,7 +39,7 @@ export const components: { [key: string]: HookInput[] } = {
 			await BB.Components.register('SystemContent', SystemContent);
 			await BB.Components.register('SystemFooter', Noop);
 			await BB.Components.register('SystemHeader', Noop);
-			await BB.Components.register('Wait', Wait);
+			await BB.Components.register('WaitObserver', WaitObserver);
 
 			await BB.Components.register('ActivityIndicator', ActivityIndicator);
 			await BB.Components.register('Button', Button);

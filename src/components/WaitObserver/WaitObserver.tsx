@@ -1,6 +1,15 @@
 import React from 'react';
 
-export interface WaitProps {
+export interface WaitObserverChildrenProps {
+
+	/** A flag that tells if a timeout has occured */
+	timedOut: boolean,
+
+	/** A function the resets timers */
+	retry: () => void
+}
+
+export interface WaitObserverProps {
 
 	/** Delay before rendering a component */
 	delay?: number,
@@ -18,16 +27,10 @@ export interface WaitProps {
 	 */
 	onRetry?: () => void;
 
-	/**
-	 * The component to render after delay. Receives following props:
-	 *
-	 * timedOut (boolean): A flag that tells if a timeout has occured
-	 * retry (function): Reset wait
-	 */
-	component: React.ComponentType<any>,
+	children: ((props: WaitObserverChildrenProps) => React.ReactNode);
 }
 
-interface State {
+interface WaitObserverState {
 
 	/**
 	 * Flag that tells if we have waited more time than specified in the delay prop
@@ -41,25 +44,25 @@ interface State {
 }
 
 /**
- * ⏰ **Wait Component**
+ * ⏰ **WaitObserver Component**
  *
  * This component is used to do the following:
  *
- * - Wait a certain period of time before rendering a component
+ * - WaitObserver a certain period of time before rendering a component
  * - Show timeout state, if the component is visible for a certain time period
  *
  * A use case for this can be to show a loading state after waiting a certain period
  * of time for data to load, and if the loading takes too long, show a timeout state.
  */
-export class Wait extends React.PureComponent<WaitProps> {
+export class WaitObserver extends React.PureComponent<WaitObserverProps> {
 
-	public static defaultProps: Partial<WaitProps> = {
+	public static defaultProps: Partial<WaitObserverProps> = {
 		delay: 200,
 		onTimeout: () => { return; },
 		onRetry: () => { return; },
 	};
 
-	readonly state: State = {
+	readonly state: WaitObserverState = {
 		pastDelay: false,
     timedOut: false,
 	};
@@ -77,8 +80,7 @@ export class Wait extends React.PureComponent<WaitProps> {
 
 	render() {
 		if (this.state.pastDelay) {
-			return React.createElement(this.props.component, {
-				// pastDelay: this.state.pastDelay,
+			return this.props.children({
 				timedOut: this.state.timedOut,
 				retry: this.retry
 			});
@@ -116,4 +118,4 @@ export class Wait extends React.PureComponent<WaitProps> {
 		this.setState({ timedOut: false });
 		this.init();
 	}
-};
+}
