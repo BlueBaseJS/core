@@ -9,7 +9,7 @@ import React from 'react';
 // 	</BlueBaseHook>
 // );
 
-export interface BlueBaseHookProperties<T = any> {
+export interface BlueBaseHookProps<T = any> {
 	hook: string;
 	value: T;
 	args?: { [key: string]: any };
@@ -19,7 +19,7 @@ export interface BlueBaseHookProperties<T = any> {
 /**
  * 🎣 BlueBaseHook Component
  */
-export class BlueBaseHook extends React.PureComponent<BlueBaseHookProperties> {
+export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 
 	public static defaultProps = {
 		args: {}

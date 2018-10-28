@@ -2,11 +2,11 @@ import React, { ReactNode } from 'react';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
 
-export interface SystemContentProperties {
+export interface SystemContentProps {
 	children: ReactNode
 }
 
-export class SystemContent extends React.PureComponent<SystemContentProperties> {
+export class SystemContent extends React.PureComponent<SystemContentProps> {
 
 	render() {
 
@@ -15,7 +15,7 @@ export class SystemContent extends React.PureComponent<SystemContentProperties> 
 				{(BB: BlueBase) => (
 					<BB.Components.View {...this.props}>
 						<BB.Components.Text>
-							💧 BlueBase System Content!
+							🚀 BlueBase System Content!
 						</BB.Components.Text>
 						{this.props.children}
 					</BB.Components.View>

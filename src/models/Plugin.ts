@@ -2,7 +2,7 @@ import { BlueBase } from '../BlueBase';
 import { HookCollectionInput } from '../registries';
 import kebabCase from 'lodash.kebabcase';
 import { PluginInput } from '../registries/PluginRegistry/types';
-import { DynamicIconProperties } from '../components/DynamicIcon';
+import { DynamicIconProps } from '../components/DynamicIcon';
 import { MaybeThunk } from '../utils';
 import { ComponentInput } from '../registries/ComponentRegistry/types';
 
@@ -25,7 +25,7 @@ export class Plugin {
 
 	public components: { [key: string]: ComponentInput } = {};
 
-	public icon?: MaybeThunk<DynamicIconProperties>;
+	public icon?: MaybeThunk<DynamicIconProps>;
 
 	protected enabled: boolean = true;
 

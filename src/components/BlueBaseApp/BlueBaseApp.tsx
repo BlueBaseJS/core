@@ -4,7 +4,7 @@ import React from 'react';
 // tslint:disable-next-line:no-var-requires
 const { Text } = require('react-native');
 
-export interface BlueBaseAppProperties extends Partial<BootOptions> {
+export interface BlueBaseAppProps extends Partial<BootOptions> {
 	BB?: BlueBase
 }
 
@@ -26,9 +26,9 @@ interface BlueBaseAppState {
 // NOTE FOR DEVELOPERS:
 // Don't use BlueBase context or any data saved in context (e.g. components)
 // here. This is because the context may not be initialized yet.
-export class BlueBaseApp extends React.Component<BlueBaseAppProperties, BlueBaseAppState> {
+export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
 
-	constructor(props: BlueBaseAppProperties) {
+	constructor(props: BlueBaseAppProps) {
 		super(props);
 
 		this.state = {

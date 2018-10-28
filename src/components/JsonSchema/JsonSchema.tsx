@@ -6,7 +6,7 @@ import React from 'react';
 import isString from 'lodash.isstring';
 import { BlueBaseHook } from '../BlueBaseHook';
 
-export interface JsonSchemaProperties {
+export interface JsonSchemaProps {
 	schema: MaybeArray<JsonComponentNode>;
 	hook?: string;
 	args?: { [key: string]: any };
@@ -24,14 +24,14 @@ const getComponent = (BB: BlueBase) => {
 };
 
 
-// export const JsonSchema = ({ hook, schema }: JsonSchemaProperties) => (
+// export const JsonSchema = ({ hook, schema }: JsonSchemaProps) => (
 // 	<BlueBaseConsumer>
 // 		{(BB: BlueBase) => {
 
 // 			const AsyncJsonSchema = Loadable({
 // 				loader: () => hook ? BB.Hooks.run(hook, schema) : Promise.resolve(schema),
 // 				loading: () => <Text>Loading</Text>,
-// 				render(loadedSchema: JsonSchemaProperties['schema']) {
+// 				render(loadedSchema: JsonSchemaProps['schema']) {
 // 					return (new JsonSchemaParser(getComponent(BB))).parseSchema(loadedSchema);
 // 				}
 // 			});
@@ -43,7 +43,7 @@ const getComponent = (BB: BlueBase) => {
 // );
 
 
-export class JsonSchema extends React.PureComponent<JsonSchemaProperties> {
+export class JsonSchema extends React.PureComponent<JsonSchemaProps> {
 
 	render() {
 		const { hook, schema, args } = this.props;
