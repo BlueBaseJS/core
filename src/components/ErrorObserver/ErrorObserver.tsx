@@ -1,15 +1,15 @@
 import React from 'react';
+import { BlueBaseConsumer } from '../../Context';
+import { BlueBase } from '../../BlueBase';
+import { MaybeRenderPropChildren } from '../../utils';
 
 const MISSING_ERROR = 'An unknown error occured.';
-
-export interface ErrorObserverChildrenProps {
-  error?: Error,
-}
 
 export interface ErrorObserverProps {
   error?: Error,
   checkError?: (props: ErrorObserverProps & any) => Error,
-  children: ((props: ErrorObserverChildrenProps) => React.ReactNode);
+	errorComponent?: React.ComponentType<any>;
+  children?: MaybeRenderPropChildren;
 }
 
 export interface ErrorObserverState {
@@ -33,6 +33,26 @@ export class ErrorObserver extends React.PureComponent<ErrorObserverProps, Error
 	}
 
   render() {
-    return this.props.children({ error: this.state.error });
+
+    return (
+      <BlueBaseConsumer children={(BB: BlueBase) => {
+
+        const { error } = this.state;
+        const { children } = this.props;
+
+        if (error) {
+          BB.Logger.error(error);
+          const Error = this.props.errorComponent || BB.Components.ErrorState;
+          return React.createElement(Error, { error });
+        }
+
+        // 'children' as a function, 'render prop' pattern
+        if (typeof children === 'function') {
+          return (children as any)();
+        }
+
+        return children;
+      }} />
+    );
   }
 }

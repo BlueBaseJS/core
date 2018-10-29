@@ -11,6 +11,7 @@ import {
 	LoadingState,
 	Noop,
 	PluginIcon,
+	StatefulComponent,
 	SystemApp,
 	SystemContent,
 	WaitObserver
@@ -35,6 +36,7 @@ export const components: { [key: string]: HookInput[] } = {
 			await BB.Components.register('LoadingState', LoadingState);
 			await BB.Components.register('Noop', Noop);
 			await BB.Components.register('PluginIcon', PluginIcon);
+			await BB.Components.register('StatefulComponent', StatefulComponent);
 			await BB.Components.register('SystemApp', SystemApp);
 			await BB.Components.register('SystemContent', SystemContent);
 			await BB.Components.register('SystemFooter', Noop);

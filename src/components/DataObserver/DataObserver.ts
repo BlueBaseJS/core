@@ -1,15 +1,15 @@
 import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
+import { MaybeRenderPropChildren } from '../../utils';
 
-interface DataObserverChildrenProps {
+export interface DataObserverChildrenProps {
   data: any,
   loading: boolean,
   empty: boolean,
 }
 
 export interface DataObserverProps {
-	children: ((props: DataObserverChildrenProps) => React.ReactNode);
 
   // Checks
 	isLoading?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
@@ -18,6 +18,8 @@ export interface DataObserverProps {
   // Data Points
   loading?: boolean;
   data?: any;
+
+  children?: MaybeRenderPropChildren<DataObserverChildrenProps>
 }
 
 export interface DataObserverState {
@@ -60,10 +62,17 @@ export class DataObserver extends React.PureComponent<DataObserverProps, DataObs
   };
 
   render() {
-    return this.props.children({
-      data: this.props.data,
-      empty: this.state.isEmpty,
-      loading: this.state.isLoading,
-    });
+
+    const { children } = this.props;
+
+    if (typeof children === 'function') {
+      return (children as any)({
+        data: this.props.data,
+        empty: this.state.isEmpty,
+        loading: this.state.isLoading,
+      });
+    }
+
+    return children;
   }
 }

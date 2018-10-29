@@ -1,4 +1,5 @@
 import React from 'react';
+import { MaybeRenderPropChildren } from '../../utils';
 
 export interface WaitObserverChildrenProps {
 
@@ -27,7 +28,7 @@ export interface WaitObserverProps {
 	 */
 	onRetry?: () => void;
 
-	children: ((props: WaitObserverChildrenProps) => React.ReactNode);
+	children?: MaybeRenderPropChildren<WaitObserverChildrenProps>;
 }
 
 interface WaitObserverState {
@@ -80,10 +81,17 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 
 	render() {
 		if (this.state.pastDelay) {
-			return this.props.children({
-				timedOut: this.state.timedOut,
-				retry: this.retry
-			});
+
+			const { children } = this.props;
+
+			if (typeof children === 'function') {
+				return (children as any)({
+					timedOut: this.state.timedOut,
+					retry: this.retry
+				});
+			}
+
+			return children;
 		} else {
 			return null;
 		}

@@ -10,6 +10,7 @@ export * from './JsonSchema';
 export * from './LoadingState';
 export * from './Noop';
 export * from './PluginIcon';
+export * from './StatefulComponent';
 export * from './SystemApp';
 export * from './SystemContent';
 export * from './WaitObserver';
