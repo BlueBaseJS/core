@@ -25,6 +25,8 @@ export interface HoverObserverState {
 
 /**
  * 🛸 HoverObserver
+ *
+ * Initial code taken from: https://github.com/ethanselzer/react-hover-observer
  */
 export class HoverObserver extends React.PureComponent<HoverObserverProps, HoverObserverState> {
 
