@@ -7,6 +7,7 @@ import {
 	EmptyState,
 	ErrorObserver,
 	ErrorState,
+	HoverObserver,
 	JsonSchema,
 	LoadingState,
 	Noop,
@@ -32,6 +33,7 @@ export const components: { [key: string]: HookInput[] } = {
 			await BB.Components.register('ErrorObserver', ErrorObserver);
 			await BB.Components.register('ErrorState', ErrorState);
 			await BB.Components.register('Icon', Noop);
+			await BB.Components.register('HoverObserver', HoverObserver);
 			await BB.Components.register('JsonSchema', JsonSchema);
 			await BB.Components.register('LoadingState', LoadingState);
 			await BB.Components.register('Noop', Noop);

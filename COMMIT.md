@@ -18,6 +18,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🎣 BlueBaseHook
 - ️⚡️ DataObserver
 - 🚨 ErrorObserver
+- 🛸 HoverObserver
 - 🍱 JsonSchema
 - ⏳ LoadingState
 - 👨‍🎨 StatefulComponent

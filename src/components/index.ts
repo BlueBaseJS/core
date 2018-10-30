@@ -6,6 +6,7 @@ export * from './DynamicIcon';
 export * from './EmptyState';
 export * from './ErrorObserver';
 export * from './ErrorState';
+export * from './HoverObserver';
 export * from './JsonSchema';
 export * from './LoadingState';
 export * from './Noop';
