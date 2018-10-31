@@ -64,8 +64,8 @@ export class Wait extends React.PureComponent<WaitProps> {
     timedOut: false,
 	};
 
-	private _delay?: NodeJS.Timer;
-	private _timeout?: NodeJS.Timer;
+	private _delay?: number;
+	private _timeout?: number;
 
 	componentWillMount() {
 		this.init();
