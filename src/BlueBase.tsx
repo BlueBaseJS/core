@@ -1,11 +1,11 @@
-import { ComponentRegistry, HookCollection, HookRegistry, PluginRegistry } from './registries';
+import { ComponentRegistry, HookCollection, HookRegistry, PluginRegistry, ThemeRegistry } from './registries';
 import { BlueBaseProvider } from './Context';
+import { ComponentInput } from './registries/ComponentRegistry/types';
 import { Logger } from './api';
+import { MaybeBlueBaseModuleOrInput } from './utils';
+import { Plugin } from './models/Plugin';
 import React from 'react';
 import systemHooks from './hooks';
-import { Plugin } from './models/Plugin';
-import { ComponentInput } from './registries/ComponentRegistry/types';
-import { MaybeBlueBaseModuleOrInput } from './utils';
 
 export interface BootOptions {
 
@@ -25,6 +25,7 @@ export class BlueBase {
 	public Components: ComponentRegistry = new ComponentRegistry(this);
 	public Hooks: HookRegistry = new HookRegistry(this);
 	public Plugins: PluginRegistry = new PluginRegistry(this);
+	public Themes: ThemeRegistry = new ThemeRegistry(this);
 
 	// Flags
 	public booted = false;
