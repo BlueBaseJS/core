@@ -1,3 +1,4 @@
+import { Palette } from './palette';
 import { ThemeTypography } from './typography';
 
 export interface Theme {
@@ -11,4 +12,5 @@ export interface Theme {
 		unit: number,
 	}
 	typography: ThemeTypography,
+	palette: Palette
 }

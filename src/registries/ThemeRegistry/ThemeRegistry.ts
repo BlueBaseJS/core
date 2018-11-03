@@ -1,8 +1,5 @@
 import { Registry } from '../Registry';
 import { Theme } from './Theme/theme';
-import { createContext } from 'react';
-
-export const ThemeContext: React.Context<Theme> = createContext(undefined as any);
 
 /**
  * 🎨 ThemeRegistry
@@ -21,6 +18,11 @@ export class ThemeRegistry extends Registry<Theme> {
 	}
 
 	public setSelectedThemeKey(key: string) {
+
+		if(!this.has(key)) {
+			throw Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`);
+		}
+
 		this.selectedTheme = key;
 	}
 }

@@ -2,7 +2,7 @@ import { BlueBase, BootOptions } from '../BlueBase';
 import { BlueBaseDarkTheme, BlueBaseLightTheme } from '../themes';
 import { HookInput } from '../registries';
 
-export const components: { [key: string]: HookInput[] } = {
+export const themes: { [key: string]: HookInput[] } = {
 
 	'bluebase.themes.register': [{
 		name: 'bluebase-components-register-internal-default',
