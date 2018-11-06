@@ -11,9 +11,9 @@ export const themes: { [key: string]: HookInput[] } = {
 		// tslint:disable-line:object-literal-sort-keys
 		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
-			// TODO: Use .register method instead, as themes may be split
-			BB.Themes.set('BlueBase.Light', BlueBaseLightTheme);
-			BB.Themes.set('BlueBase.Dark', BlueBaseDarkTheme);
+			await BB.Themes.register(BlueBaseLightTheme);
+			await BB.Themes.register(BlueBaseDarkTheme);
+
 			return bootOptions;
 		},
 	}]

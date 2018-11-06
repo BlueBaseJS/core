@@ -4,6 +4,8 @@ import { Picker } from 'react-native';
 import React from 'react';
 import { Theme } from '../Theme/theme';
 import { ThemeContext } from '../ThemeContext';
+// import { ThemePicker } from './ThemePicker';
+// import { ThemeDemo } from './ThemeDemo';
 import { ThemeProvider } from '../index';
 import storiesOf from '@bluebase/storybook-addon';
 
@@ -26,6 +28,8 @@ storiesOf('ThemeContext', module)
 									{theme.name}
 								</BB.Components.Text>
 							</BB.Components.View>
+							{/* <ThemeDemo /> */}
+							{/* <ThemePicker /> */}
 
 							<Picker
 								selectedValue={BB.Themes.getSelectedThemeKey()}

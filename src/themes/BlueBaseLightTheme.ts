@@ -1,6 +1,6 @@
-import { Theme } from '../registries/ThemeRegistry/Theme/theme';
+import { ThemeInput } from '../models';
 
-export const BlueBaseLightTheme: Theme = {
+export const BlueBaseLightTheme: ThemeInput = {
 	name: 'BlueBase Light',
 	type: 'light',
 
