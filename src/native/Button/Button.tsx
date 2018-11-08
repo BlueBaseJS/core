@@ -1,12 +1,12 @@
 import {
 	Platform,
-	StyleSheet,
 	Text,
 	TouchableNativeFeedback,
 	TouchableOpacity,
 	View
 } from 'react-native';
 import React from 'react';
+import { styles } from './styles';
 
 export type ButtonProps = {
   /**
@@ -77,12 +77,11 @@ export class Button extends React.Component<ButtonProps> {
 			color,
 			onPress,
 			children,
-			hasTVPreferredFocus,
 			disabled,
 			testID,
 		} = this.props;
-		const buttonStyles = [styles.button];
-		const textStyles = [styles.text];
+		const buttonStyles: any[] = [styles.button];
+		const textStyles: any[] = [styles.text];
 		if (color) {
 			if (Platform.OS === 'ios') {
 				textStyles.push({ color: color });
@@ -90,7 +89,7 @@ export class Button extends React.Component<ButtonProps> {
 				buttonStyles.push({ backgroundColor: color });
 			}
 		}
-		const accessibilityStates = [];
+		const accessibilityStates: any = [];
 		if (disabled) {
 			buttonStyles.push(styles.buttonDisabled);
 			textStyles.push(styles.textDisabled);
@@ -103,14 +102,13 @@ export class Button extends React.Component<ButtonProps> {
 				accessibilityLabel={accessibilityLabel}
 				accessibilityRole="button"
 				accessibilityStates={accessibilityStates}
-				hasTVPreferredFocus={hasTVPreferredFocus}
 				testID={testID}
 				disabled={disabled}
 				onPress={onPress}
 			>
 				<View style={buttonStyles}>
 					{typeof children === 'string'
-						? <Text style={textStyles} disabled={disabled}>{children}</Text>
+						? <Text style={textStyles}>{children}</Text>
 						: children
 					}
 				</View>
@@ -118,60 +116,3 @@ export class Button extends React.Component<ButtonProps> {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	button: Platform.select({
-		android: {
-			// Material design blue from https://material.google.com/style/color.html#color-color-palette
-			backgroundColor: '#2196F3',
-			borderRadius: 2,
-			elevation: 4,
-		},
-		ios: {},
-		web: {
-			// Material design blue from https://material.google.com/style/color.html#color-color-palette
-			backgroundColor: '#2196F3',
-			borderRadius: 2,
-			color: 'white',
-			fontWeight: '500',
-			padding: 8,
-			textAlign: 'center',
-		},
-	}),
-	buttonDisabled: Platform.select({
-		android: {
-			backgroundColor: '#dfdfdf',
-			elevation: 0,
-		},
-		ios: {},
-	}),
-	text: Platform.select({
-		android: {
-			color: 'white',
-			fontWeight: '500',
-			padding: 8,
-			textAlign: 'center',
-		},
-		ios: {
-			// iOS blue from https://developer.apple.com/ios/human-interface-guidelines/visual-design/color/
-			color: '#007AFF',
-			fontSize: 18,
-			padding: 8,
-			textAlign: 'center',
-		},
-		web: {
-			color: 'white',
-			fontWeight: '500',
-			padding: 8,
-			textAlign: 'center',
-		},
-	}),
-	textDisabled: Platform.select({
-		android: {
-			color: '#a1a1a1',
-		},
-		ios: {
-			color: '#cdcdcd',
-		},
-	}),
-});
