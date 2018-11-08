@@ -1,6 +1,6 @@
+import { DEFAULT_HOOK_PRIORITY } from '../../registries/HookRegistry/defaults';
 import { Hook } from '../Hook';
 import { isBlueBaseModule } from '../../utils';
-import { DEFAULT_HOOK_PRIORITY } from '../../registries/HookRegistry/defaults';
 
 describe('Models', () => {
 

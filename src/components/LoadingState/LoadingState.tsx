@@ -1,7 +1,7 @@
-import React from 'react';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
 import { ComponentStateProps } from '../ComponentState';
+import React from 'react';
 
 export interface LoadingProps {
 	timedOut: boolean,

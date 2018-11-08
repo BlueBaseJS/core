@@ -1,7 +1,7 @@
 import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, isClass } from '../../utils';
-import { Registry } from '../Registry';
 import { Plugin } from '../../models/Plugin';
 import { PluginInput } from './types';
+import { Registry } from '../Registry';
 import { isPluginInput } from './helpers';
 
 export class PluginRegistry extends Registry<Plugin> {

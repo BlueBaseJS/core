@@ -1,5 +1,5 @@
+import { ActivityIndicator, Button, Image, Text, View } from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
-import { HookInput } from '../registries';
 import {
 	BlueBaseHook,
 	ComponentState,
@@ -14,12 +14,16 @@ import {
 	SystemContent,
 	Wait
 } from '../components';
+import { HookInput } from '../registries';
 
-import { ActivityIndicator, Button, Image, Text, View } from '../native';
 
 export const components: { [key: string]: HookInput[] } = {
 
 	'bluebase.components.register.internal': [{
+		name: 'bluebase-components-register-internal-default',
+		priority: 5,
+
+		// tslint:disable-next-line:object-literal-sort-keys
 		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			// await BB.Components.register('DynamicIcon', import('../components/DynamicIcon'));
@@ -47,7 +51,5 @@ export const components: { [key: string]: HookInput[] } = {
 
 			return bootOptions;
 		},
-		name: 'bluebase-components-register-internal-default',
-		priority: 5,
 	}]
 };

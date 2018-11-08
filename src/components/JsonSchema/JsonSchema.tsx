@@ -1,10 +1,10 @@
 import { JsonComponentNode, JsonSchemaParser } from '../../lib/json-schema-parser';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
+import { BlueBaseHook } from '../BlueBaseHook';
 import { MaybeArray } from '../../utils';
 import React from 'react';
 import isString from 'lodash.isstring';
-import { BlueBaseHook } from '../BlueBaseHook';
 
 export interface JsonSchemaProperties {
 	schema: MaybeArray<JsonComponentNode>;
