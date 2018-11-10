@@ -1,5 +1,5 @@
-import React from 'react';
 import { MaybeRenderPropChildren } from '../../utils';
+import React from 'react';
 
 export interface WaitObserverChildrenProps {
 
@@ -86,8 +86,8 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 
 			if (typeof children === 'function') {
 				return (children as any)({
+					retry: this.retry,
 					timedOut: this.state.timedOut,
-					retry: this.retry
 				});
 			}
 

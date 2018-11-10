@@ -26,5 +26,3 @@ export class Logger {
 		this.BB.Hooks.run('bluebase.logger.debug', message, optionalParams).then();
 	}
 }
-
-console.log();

@@ -1,30 +1,30 @@
+import { MaybeRenderPropChildren } from '../../utils';
 import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
-import { MaybeRenderPropChildren } from '../../utils';
 
 export interface DataObserverChildrenProps {
-  data: any,
-  loading: boolean,
-  empty: boolean,
+	data: any,
+	loading: boolean,
+	empty: boolean,
 }
 
 export interface DataObserverProps {
 
-  // Checks
+	// Checks
 	isLoading?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
 	isEmpty?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
 
-  // Data Points
-  loading?: boolean;
-  data?: any;
+	// Data Points
+	loading?: boolean;
+	data?: any;
 
-  children?: MaybeRenderPropChildren<DataObserverChildrenProps>
+	children?: MaybeRenderPropChildren<DataObserverChildrenProps>
 }
 
 export interface DataObserverState {
-  // Check
-  readonly isLoading: boolean;
+	// Check
+	readonly isLoading: boolean;
 	readonly isEmpty: boolean;
 }
 
@@ -36,10 +36,9 @@ export interface DataObserverState {
  */
 export class DataObserver extends React.PureComponent<DataObserverProps, DataObserverState> {
 
-  public static defaultProps: Partial<DataObserverProps> = {
+	public static defaultProps: Partial<DataObserverProps> = {
 		loading: false,
 
-		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
 		isEmpty: (props) => {
 			// If its null or undefined
 			if (isnil(props.data)) {
@@ -53,26 +52,27 @@ export class DataObserver extends React.PureComponent<DataObserverProps, DataObs
 
 			return false;
 		},
+		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
 
-  };
+	};
 
-  readonly state: DataObserverState = {
-		isLoading: (this.props.isLoading) ? this.props.isLoading(this.props) : false,
+	readonly state: DataObserverState = {
 		isEmpty: (this.props.isEmpty) ? this.props.isEmpty(this.props) : false,
-  };
+		isLoading: (this.props.isLoading) ? this.props.isLoading(this.props) : false,
+	};
 
-  render() {
+	render() {
 
-    const { children } = this.props;
+		const { children } = this.props;
 
-    if (typeof children === 'function') {
-      return (children as any)({
-        data: this.props.data,
-        empty: this.state.isEmpty,
-        loading: this.state.isLoading,
-      });
-    }
+		if (typeof children === 'function') {
+			return (children as any)({
+				data: this.props.data,
+				empty: this.state.isEmpty,
+				loading: this.state.isLoading,
+			});
+		}
 
-    return children;
-  }
+		return children;
+	}
 }
