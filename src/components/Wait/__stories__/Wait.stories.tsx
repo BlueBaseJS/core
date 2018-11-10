@@ -1,9 +1,8 @@
 import { BlueBase, BlueBaseConsumer } from '../../..';
+import { Text, View } from 'react-native';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
-// tslint:disable-next-line:no-var-requires
-const { Text, View } = require('react-native');
 
 // const Loading = ({ timedOut }: any) => {
 

@@ -1,6 +1,6 @@
 import { BlueBase } from '../BlueBase';
 import { ComponentInput } from '../registries/ComponentRegistry/types';
-import { DynamicIconProperties } from '../components/DynamicIcon';
+import { DynamicIconProps } from '../components/DynamicIcon';
 import { HookCollectionInput } from '../registries';
 import { MaybeThunk } from '../utils';
 import { PluginInput } from '../registries/PluginRegistry/types';
@@ -25,7 +25,7 @@ export class Plugin {
 
 	public components: { [key: string]: ComponentInput } = {};
 
-	public icon?: MaybeThunk<DynamicIconProperties>;
+	public icon?: MaybeThunk<DynamicIconProps>;
 
 	protected enabled: boolean = true;
 

@@ -3,13 +3,13 @@ import { BlueBaseConsumer } from '../../Context';
 import React from 'react';
 import { resolveThunk } from '../../utils';
 
-export interface PluginIconProperties {
+export interface PluginIconProps {
 	slug: string;
 	size?: number,
 	[key: string]: any
 }
 
-export class PluginIcon extends React.PureComponent<PluginIconProperties> {
+export class PluginIcon extends React.PureComponent<PluginIconProps> {
 
 	render() {
 

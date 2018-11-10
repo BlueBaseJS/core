@@ -2,7 +2,7 @@ import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
 import React from 'react';
 
-export interface DynamicIconProperties {
+export interface DynamicIconProps {
 
 	/**
 	 * If value is:
@@ -46,7 +46,7 @@ export interface DynamicIconProperties {
  * - BB.Components.Image
  * - A custom component
  */
-const DynamicIcon: React.ComponentType<DynamicIconProperties> = (props) => {
+const DynamicIcon: React.ComponentType<DynamicIconProps> = (props) => {
 	const { type, component: Component, name, source, ...rest } = props;
 
 	return (

@@ -6,7 +6,7 @@ import { MaybeArray } from '../../utils';
 import React from 'react';
 import isString from 'lodash.isstring';
 
-export interface JsonSchemaProperties {
+export interface JsonSchemaProps {
 	schema: MaybeArray<JsonComponentNode>;
 	hook?: string;
 	args?: { [key: string]: any };
@@ -43,7 +43,7 @@ const getComponent = (BB: BlueBase) => {
 // );
 
 
-export class JsonSchema extends React.PureComponent<JsonSchemaProperties> {
+export class JsonSchema extends React.PureComponent<JsonSchemaProps> {
 
 	render() {
 		const { hook, schema, args } = this.props;
