@@ -6,6 +6,6 @@ storiesOf('PluginIcon', module)
 
 	.add('Basic Example', () => (
 		<BlueBaseConsumer children={(BB: BlueBase) => (
-			<BB.Components.PluginIcon />
+			<BB.Components.PluginIcon slug=""/>
 		)} />
 	));
