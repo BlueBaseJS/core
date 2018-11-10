@@ -9,7 +9,7 @@ storiesOf('WaitObserver', module)
 	.add('Basic Example', () => (
 		<BlueBaseConsumer children={(BB: BlueBase) => (
 			<View>
-				<Text style={{ size: 10, color: '#999', marginBottom: 20 }}>
+				<Text style={{ fontSize: 10, color: '#999', marginBottom: 20 }}>
 				The loading component will render after 1 second, and timeout after 3 seconds.
 				</Text>
 				<BB.Components.WaitObserver
