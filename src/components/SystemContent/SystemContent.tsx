@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
+import React from 'react';
+import { ViewProperties } from 'react-native';
 
-export interface SystemContentProperties {
-	children: ReactNode
-}
+export interface SystemContentProps extends ViewProperties {}
 
-export class SystemContent extends React.PureComponent<SystemContentProperties> {
+
+export class SystemContent extends React.PureComponent<ViewProperties> {
 
 	render() {
 

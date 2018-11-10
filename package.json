@@ -69,7 +69,7 @@
 	"devDependencies": {
 		"@bluebase/storybook-addon": "^2.0.0",
 		"@blueeast/bluerain-cli-essentials": "^4.0.0-beta.2",
-		"@blueeast/tslint-config-blueeast": "^0.5.6",
+		"@blueeast/tslint-config-blueeast": "^0.7.0",
 		"@storybook/addon-actions": "^3.4.11",
 		"@storybook/addon-console": "^1.0.4",
 		"@storybook/addon-links": "^3.4.11",
@@ -82,17 +82,16 @@
 		"@types/lodash.isnil": "^4.0.4",
 		"@types/lodash.isstring": "^4.0.4",
 		"@types/lodash.kebabcase": "^4.1.4",
-		"@types/node": "^10.11.0",
 		"@types/react": "^16.4.18",
 		"@types/react-loadable": "^5.4.1",
+		"@types/react-native": "^0.57.7",
 		"@types/react-test-renderer": "^16.0.2",
-		"@types/storybook__react": "^3.0.9",
 		"babel-core": "^6.26.3",
 		"babel-preset-react-native": "^4.0.1",
 		"codecov": "^3.0.2",
-		"commitizen": "^2.10.1",
+		"commitizen": "^3.0.4",
 		"cz-conventional-changelog": "^2.1.0",
-		"gh-pages": "^1.2.0",
+		"gh-pages": "^2.0.1",
 		"jest": "^23.4.1",
 		"npm-run-all": "^4.1.3",
 		"opn-cli": "^3.1.0",
@@ -107,8 +106,8 @@
 		"ts-jest": "^23.10.0",
 		"ts-node": "^7.0.0",
 		"tslint": "^5.11.0",
-		"typedoc": "^0.12.0",
-		"typescript": "3.0.3"
+		"typedoc": "^0.13.0",
+		"typescript": "3.1.6"
 	},
 	"peerDependencies": {
 		"react": "^16.*"

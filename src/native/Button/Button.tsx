@@ -1,14 +1,12 @@
-import React from 'react';
-
-const {
+import {
 	Platform,
-	StyleSheet,
 	Text,
 	TouchableNativeFeedback,
 	TouchableOpacity,
 	View
-// tslint:disable-next-line:no-var-requires
-} = require('react-native');
+} from 'react-native';
+import React from 'react';
+import { styles } from './styles';
 
 export type ButtonProps = {
   /**
@@ -16,35 +14,35 @@ export type ButtonProps = {
    */
 	children: React.ReactNode,
 
-		/**
-		 * Handler to be called when the user taps the button
-		 */
-		onPress: (event?: any) => any,
+	/**
+	 * Handler to be called when the user taps the button
+	 */
+	onPress: (event?: any) => any,
 
-			/**
-			 * Color of the text (iOS), or background color of the button (Android)
-			 */
-			color?: string,
+	/**
+	 * Color of the text (iOS), or background color of the button (Android)
+	 */
+	color?: string,
 
-			/**
-			 * TV preferred focus (see documentation for the View component).
-			 */
-			hasTVPreferredFocus?: boolean,
+	/**
+	 * TV preferred focus (see documentation for the View component).
+	 */
+	hasTVPreferredFocus?: boolean,
 
-			/**
-			 * Text to display for blindness accessibility features
-			 */
-			accessibilityLabel?: string,
+	/**
+	 * Text to display for blindness accessibility features
+	 */
+	accessibilityLabel?: string,
 
-			/**
-			 * If true, disable all interactions for this component.
-			 */
-			disabled?: boolean,
+	/**
+	 * If true, disable all interactions for this component.
+	 */
+	disabled?: boolean,
 
-			/**
-			 * Used to locate this view in end-to-end tests.
-			 */
-			testID?: string,
+	/**
+	 * Used to locate this view in end-to-end tests.
+	 */
+	testID?: string,
 };
 
 /**
@@ -79,12 +77,11 @@ export class Button extends React.Component<ButtonProps> {
 			color,
 			onPress,
 			children,
-			hasTVPreferredFocus,
 			disabled,
 			testID,
 		} = this.props;
-		const buttonStyles = [styles.button];
-		const textStyles = [styles.text];
+		const buttonStyles: any[] = [styles.button];
+		const textStyles: any[] = [styles.text];
 		if (color) {
 			if (Platform.OS === 'ios') {
 				textStyles.push({ color: color });
@@ -92,7 +89,7 @@ export class Button extends React.Component<ButtonProps> {
 				buttonStyles.push({ backgroundColor: color });
 			}
 		}
-		const accessibilityStates = [];
+		const accessibilityStates: any = [];
 		if (disabled) {
 			buttonStyles.push(styles.buttonDisabled);
 			textStyles.push(styles.textDisabled);
@@ -105,13 +102,13 @@ export class Button extends React.Component<ButtonProps> {
 				accessibilityLabel={accessibilityLabel}
 				accessibilityRole="button"
 				accessibilityStates={accessibilityStates}
-				hasTVPreferredFocus={hasTVPreferredFocus}
 				testID={testID}
 				disabled={disabled}
-				onPress={onPress}>
+				onPress={onPress}
+			>
 				<View style={buttonStyles}>
 					{typeof children === 'string'
-						? <Text style={textStyles} disabled={disabled}>{children}</Text>
+						? <Text style={textStyles}>{children}</Text>
 						: children
 					}
 				</View>
@@ -119,60 +116,3 @@ export class Button extends React.Component<ButtonProps> {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	button: Platform.select({
-		ios: {},
-		android: {
-			elevation: 4,
-			// Material design blue from https://material.google.com/style/color.html#color-color-palette
-			backgroundColor: '#2196F3',
-			borderRadius: 2,
-		},
-		web: {
-			// Material design blue from https://material.google.com/style/color.html#color-color-palette
-			backgroundColor: '#2196F3',
-			borderRadius: 2,
-			color: 'white',
-			textAlign: 'center',
-			padding: 8,
-			fontWeight: '500',
-		},
-	}),
-	text: Platform.select({
-		ios: {
-			// iOS blue from https://developer.apple.com/ios/human-interface-guidelines/visual-design/color/
-			color: '#007AFF',
-			textAlign: 'center',
-			padding: 8,
-			fontSize: 18,
-		},
-		android: {
-			color: 'white',
-			textAlign: 'center',
-			padding: 8,
-			fontWeight: '500',
-		},
-		web: {
-			color: 'white',
-			textAlign: 'center',
-			padding: 8,
-			fontWeight: '500',
-		},
-	}),
-	buttonDisabled: Platform.select({
-		ios: {},
-		android: {
-			elevation: 0,
-			backgroundColor: '#dfdfdf',
-		},
-	}),
-	textDisabled: Platform.select({
-		ios: {
-			color: '#cdcdcd',
-		},
-		android: {
-			color: '#a1a1a1',
-		},
-	}),
-});

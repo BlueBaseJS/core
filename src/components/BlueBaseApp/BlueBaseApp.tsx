@@ -1,8 +1,6 @@
 import { BlueBase, BootOptions } from '../../BlueBase';
 import React from 'react';
-
-// tslint:disable-next-line:no-var-requires
-const { Text } = require('react-native');
+import { Text } from 'react-native';
 
 export interface BlueBaseAppProperties extends Partial<BootOptions> {
 	BB?: BlueBase

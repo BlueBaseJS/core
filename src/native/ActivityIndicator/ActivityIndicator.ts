@@ -1,3 +1,1 @@
-// tslint:disable-next-line:no-var-requires
-const { ActivityIndicator } = require('react-native');
-export { ActivityIndicator };
+export { ActivityIndicator } from 'react-native';

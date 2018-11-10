@@ -1,12 +1,13 @@
-// tslint:disable:object-literal-sort-keys
-import { HookInput } from '../registries';
 import { BlueBase, BootOptions } from '../BlueBase';
+import { HookInput } from '../registries';
 
 export const boot: { [key: string]: HookInput[] } = {
 
 	'bluebase.boot': [{
 		name: 'bluebase-boot-default',
 		priority: 5,
+
+		// tslint:disable-next-line:object-literal-sort-keys
 		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			await BB.Hooks.run('bluebase.boot.start', bootOptions);
@@ -29,6 +30,8 @@ export const boot: { [key: string]: HookInput[] } = {
 	'bluebase.boot.start': [{
 		name: 'system-initialize-default',
 		priority: 5,
+
+		// tslint:disable-next-line:object-literal-sort-keys
 		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			await BB.Hooks.run('bluebase.components.register.internal', bootOptions);

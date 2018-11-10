@@ -1,11 +1,10 @@
 import * as TYPES from './types';
-import { parseHookCollectionItem } from './helpers';
-import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule } from '../../utils';
+import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, resolveThunk } from '../../utils';
+import { Hook } from '../../models/Hook';
 import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
-import { Hook } from '../../models/Hook';
-import { resolveThunk } from '../../utils';
+import { parseHookCollectionItem } from './helpers';
 
 /**
  * 🎣 This is where are BlueBase hooks are stored.

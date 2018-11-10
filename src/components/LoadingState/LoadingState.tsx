@@ -1,9 +1,9 @@
-import React from 'react';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
 import { ComponentStateProps } from '../ComponentState';
+import React from 'react';
 
-export interface LoadingProps {
+export interface LoadingStateProps {
 	timedOut: boolean,
 	retry: () => void,
 }
@@ -14,7 +14,7 @@ export interface LoadingProps {
  * A component that is used to show a loading state. Shows a spinner by
  * default. If 'timedOut' flag is set then it shows a timeout version.
  */
-export class LoadingState extends React.PureComponent<LoadingProps> {
+export class LoadingState extends React.PureComponent<LoadingStateProps> {
 
 	render() {
 

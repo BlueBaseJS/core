@@ -1,8 +1,8 @@
 /**
  * Initial code take from https://github.com/TechniqueSoftware/react-json-schema
  */
-import React from 'react';
 import { MaybeArray } from '../../utils';
+import React from 'react';
 import isNil from 'lodash.isnil';
 import isString from 'lodash.isstring';
 

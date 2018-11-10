@@ -5,6 +5,8 @@
   "rules": {
     "no-expression-statement": false,
 		"object-literal-sort-keys": true,
-		"no-implicit-dependencies": false
+    "no-implicit-dependencies": false,
+    "jsx-alignment": false,
+    "jsx-no-lambda": false
   }
 }

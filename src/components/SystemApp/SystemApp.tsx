@@ -1,8 +1,11 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
 import React from 'react';
+import { ViewProperties } from 'react-native';
 
-export class SystemApp extends React.PureComponent {
+export interface SystemAppProps extends ViewProperties {}
+
+export class SystemApp extends React.PureComponent<SystemAppProps> {
 
 	render() {
 

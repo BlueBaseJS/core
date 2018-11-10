@@ -1,6 +1,7 @@
-import React from 'react';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
+import { ButtonProps } from '../../ui-interfaces';
+import React from 'react';
 
 export interface ComponentStateProps {
 
@@ -12,12 +13,12 @@ export interface ComponentStateProps {
 	/**
 	 * Action styles
 	 */
-	actionStyle?: any; // TODO: Import interface from react-native
+	actionStyle?: ButtonProps['style'];
 
 	/**
 	 * Action onPress handler
 	 */
-	actionOnPress?: Function;
+	actionOnPress?: ButtonProps['onPress'];
 
 	/**
 	 * Description Text
@@ -73,9 +74,9 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 		} = this.props;
 
 		const imgStyle = {
-			width: 250,
 			height: 250,
 			marginBottom: 10,
+			width: 250,
 			...imageStyle
 		};
 
