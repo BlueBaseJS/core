@@ -3,6 +3,7 @@ import { HookInput } from '../registries';
 import {
 	BlueBaseHook,
 	ComponentState,
+	DataObserver,
 	DynamicIcon,
 	EmptyState,
 	ErrorObserver,
@@ -28,6 +29,7 @@ export const components: { [key: string]: HookInput[] } = {
 			// await BB.Components.register('DynamicIcon', import('../components/DynamicIcon'));
 			await BB.Components.register('BlueBaseHook', BlueBaseHook);
 			await BB.Components.register('ComponentState', ComponentState);
+			await BB.Components.register('DataObserver', DataObserver);
 			await BB.Components.register('DynamicIcon', DynamicIcon);
 			await BB.Components.register('EmptyState', EmptyState);
 			await BB.Components.register('ErrorObserver', ErrorObserver);
