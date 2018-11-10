@@ -1,4 +1,4 @@
-import { parseHookCollectionItem, isHook, isHookInput } from '../helpers';
+import { isHook, isHookInput, parseHookCollectionItem } from '../helpers';
 import { Hook } from '../../../models/Hook';
 
 // const DummyPlugin = createPlugin({ pluginName: 'DummyPlugin' });

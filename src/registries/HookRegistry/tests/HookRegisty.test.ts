@@ -1,8 +1,8 @@
-import { HookRegistry } from '../HookRegistry';
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseModule } from '../../../utils';
 import { DEFAULT_HOOK_PRIORITY } from '../defaults';
 import { Hook } from '../../../models/Hook';
+import { HookRegistry } from '../HookRegistry';
 
 const BB = new BlueBase();
 

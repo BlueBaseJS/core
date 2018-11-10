@@ -18,8 +18,9 @@ storiesOf('DataObserver', module)
 				{(data: any) => {
 					console.log(data);
 					return (
-						data.loading ? <BB.Components.LoadingState /> : data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-							<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <BB.Components.LoadingState />
+							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
+								<BB.Components.Text>Text as a children</BB.Components.Text>
 					);
 				}}
 			</BB.Components.DataObserver>

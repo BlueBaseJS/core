@@ -41,7 +41,7 @@ interface WaitObserverState {
 	/**
 	 * Flag that tells if waiting has timedout
 	 */
-  readonly timedOut: boolean,
+	readonly timedOut: boolean,
 }
 
 /**
@@ -59,17 +59,17 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 
 	public static defaultProps: Partial<WaitObserverProps> = {
 		delay: 200,
-		onTimeout: () => { return; },
 		onRetry: () => { return; },
+		onTimeout: () => { return; },
 	};
 
 	readonly state: WaitObserverState = {
 		pastDelay: false,
-    timedOut: false,
+		timedOut: false,
 	};
 
-	private _delay?: NodeJS.Timer;
-	private _timeout?: NodeJS.Timer;
+	private _delay?: number;
+	private _timeout?: number;
 
 	componentWillMount() {
 		this.init();
@@ -110,19 +110,27 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 
 		if (typeof this.props.timeout === 'number') {
 			this._timeout = setTimeout(() => {
-				this.props.onTimeout && this.props.onTimeout();
+				if (this.props.onTimeout) {
+					this.props.onTimeout();
+				}
 				this.setState({ timedOut: true });
 			}, this.props.timeout);
 		}
 	}
 
 	private clearTimeouts() {
-		this._delay && clearTimeout(this._delay);
-		this._timeout && clearTimeout(this._timeout);
+		if (this._delay) {
+			clearTimeout(this._delay);
+		}
+		if (this._timeout) {
+			clearTimeout(this._timeout);
+		}
 	}
 
 	private retry = () => {
-		this.props.onRetry && this.props.onRetry();
+		if (this.props.onRetry) {
+			this.props.onRetry();
+		}
 		this.setState({ timedOut: false });
 		this.init();
 	}

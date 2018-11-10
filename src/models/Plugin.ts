@@ -1,10 +1,10 @@
 import { BlueBase } from '../BlueBase';
-import { HookCollectionInput } from '../registries';
-import kebabCase from 'lodash.kebabcase';
-import { PluginInput } from '../registries/PluginRegistry/types';
-import { DynamicIconProps } from '../components/DynamicIcon';
-import { MaybeThunk } from '../utils';
 import { ComponentInput } from '../registries/ComponentRegistry/types';
+import { DynamicIconProps } from '../components/DynamicIcon';
+import { HookCollectionInput } from '../registries';
+import { MaybeThunk } from '../utils';
+import { PluginInput } from '../registries/PluginRegistry/types';
+import kebabCase from 'lodash.kebabcase';
 
 export type PluginCategory = 'app' | 'store' | 'router' | 'logger' | 'theme' | string;
 

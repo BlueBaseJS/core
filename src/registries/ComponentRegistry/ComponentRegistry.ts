@@ -1,10 +1,10 @@
 import { ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
-import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
 import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, getDefiniteModule, isPromise } from '../../utils';
+import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
 import { BlueBase } from '../../BlueBase';
 import { Registry } from '../Registry';
-import { getAsyncComponent } from './getAsyncComponent';
 import flowRight from 'lodash.flowright';
+import { getAsyncComponent } from './getAsyncComponent';
 
 export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 

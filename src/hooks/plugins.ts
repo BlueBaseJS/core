@@ -1,7 +1,6 @@
-// tslint:disable:object-literal-sort-keys
-import { Plugin } from '../models/Plugin';
 import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInput } from '../registries';
+import { Plugin } from '../models/Plugin';
 
 export const plugins: { [key: string]: HookInput[] } = {
 
@@ -12,6 +11,8 @@ export const plugins: { [key: string]: HookInput[] } = {
 		{
 			name: 'bluebase.plugins.register.default',
 			priority: 5,
+
+			// tslint:disable-next-line:object-literal-sort-keys
 			handler: async (pluginsArr: BootOptions['plugins'], _args: any, BB: BlueBase) => {
 
 				for (const plugin of pluginsArr) {
@@ -31,6 +32,8 @@ export const plugins: { [key: string]: HookInput[] } = {
 		{
 			name: 'bluebase.plugins.initialize.all.default',
 			priority: 5,
+
+			// tslint:disable-next-line:object-literal-sort-keys
 			handler: async (noop: any, _args: any, BB: BlueBase) => {
 
 				for (const entry of BB.Plugins.entries()) {
@@ -54,6 +57,8 @@ export const plugins: { [key: string]: HookInput[] } = {
 		{
 			name: 'bluebase.plugins.initialize.default',
 			priority: 5,
+
+			// tslint:disable-next-line:object-literal-sort-keys
 			handler: async (plugin: Plugin, _args: any, BB: BlueBase) => {
 
 				// Register plugin hooks

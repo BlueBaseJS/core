@@ -29,8 +29,8 @@ storiesOf('ComponentState', module)
 	<BlueBaseConsumer>
 		{(BB: BlueBase) => (
 			<BB.Components.ComponentState
-				title= "A simple state"
-				titleStyle = {{ color: 'green', fontSize: 20 }}
+				title="A simple state"
+				titleStyle={{ color: 'green', fontSize: 20 }}
 			/>
 		)}
 		</BlueBaseConsumer>
@@ -39,7 +39,7 @@ storiesOf('ComponentState', module)
 	.add('Only description', () => (
 		<BlueBaseConsumer>
 		{(BB: BlueBase) => (
-			<BB.Components.ComponentState description= "A simple description" />
+			<BB.Components.ComponentState description="A simple description" />
 		)}
 		</BlueBaseConsumer>
 	))
@@ -49,8 +49,8 @@ storiesOf('ComponentState', module)
 		<BlueBaseConsumer>
 		{(BB: BlueBase) => (
 			<BB.Components.ComponentState
-				description= "A simple description"
-				descriptionStyle = {{ color: 'green', fontSize: 20 }}
+				description="A simple description"
+				descriptionStyle={{ color: 'green', fontSize: 20 }}
 			/>
 		)}
 		</BlueBaseConsumer>
@@ -72,8 +72,8 @@ storiesOf('ComponentState', module)
 
 			return(
 				<BB.Components.ComponentState
-					actionTitle = "Bluerain"
-					actionOnPress = { Handler }
+					actionTitle="Bluerain"
+					actionOnPress={Handler}
 				/>
 			);
 		}}
@@ -84,8 +84,8 @@ storiesOf('ComponentState', module)
 		<BlueBaseConsumer>
 		{(BB: BlueBase) => (
 			<BB.Components.ComponentState
-				actionTitle= "Bluerain"
-				actionStyle = {{
+				actionTitle="Bluerain"
+				actionStyle={{
 					// color: 'white',
 					backgroundColor: 'red',
 					width: 100,
@@ -102,7 +102,7 @@ storiesOf('ComponentState', module)
 		<BlueBaseConsumer>
 		{(BB: BlueBase) => {
 			// tslint:disable-next-line:max-line-length
-			const ImageComponent = <BB.Components.Image source="https://picsum.photos/200" style = {{ width: 200, height: 200 }} />;
+			const ImageComponent = <BB.Components.Image source="https://picsum.photos/200" style={{ width: 200, height: 200 }} />;
 			return (<BB.Components.ComponentState image={ImageComponent} />);
 		}}
 		</BlueBaseConsumer>
