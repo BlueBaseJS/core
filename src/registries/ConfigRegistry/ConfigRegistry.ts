@@ -1,8 +1,7 @@
+import { BlueBaseConfigs } from './types';
 import { Registry } from '../Registry';
 
-export interface ConfigsCollection {
-	[key: string]: any
-}
+export interface ConfigsCollection extends Partial<BlueBaseConfigs> {}
 
 /**
  * 🎛 ConfigRegistry
