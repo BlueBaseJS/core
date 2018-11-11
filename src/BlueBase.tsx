@@ -1,6 +1,15 @@
-import { ComponentRegistry, HookCollection, HookRegistry, PluginRegistry, ThemeRegistry } from './registries';
+import {
+	ComponentRegistry,
+	ConfigRegistry,
+	ConfigsCollection,
+	HookCollection,
+	HookRegistry,
+	PluginRegistry,
+	ThemeRegistry
+} from './registries';
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
+import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
 import { Logger } from './api';
 import { MaybeBlueBaseModuleOrInput } from './utils';
 import { Plugin } from './models/Plugin';
@@ -8,12 +17,11 @@ import React from 'react';
 import systemHooks from './hooks';
 
 export interface BootOptions {
-
-	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>;
 	components: { [key: string]: ComponentInput };
+	configs: ConfigsCollection,
 	hooks: HookCollection;
+	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>;
 	// routes: Plugin[]
-	// configs: Plugin[]
 }
 
 export class BlueBase {
@@ -22,7 +30,8 @@ export class BlueBase {
 	public Logger = new Logger(this);
 
 	// Registries
-	public Components: ComponentRegistry = new ComponentRegistry(this);
+	public Components: IComponentRegistry = new ComponentRegistry(this) as IComponentRegistry;
+	public Configs: ConfigRegistry = new ConfigRegistry(this);
 	public Hooks: HookRegistry = new HookRegistry(this);
 	public Plugins: PluginRegistry = new PluginRegistry(this);
 	public Themes: ThemeRegistry = new ThemeRegistry(this);
@@ -32,7 +41,7 @@ export class BlueBase {
 
 	private bootOptions: BootOptions = {
 		components: {},
-		// config: {},
+		configs: {},
 		hooks: {},
 		plugins: [],
 	};

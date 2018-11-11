@@ -1,12 +1,10 @@
 import { JsonComponentNode, JsonSchemaParser } from '../JsonSchemaParser';
-import renderer from 'react-test-renderer';
 import React from 'react';
-
-// tslint:disable-next-line:no-var-requires
-const { Text } = require('react-native');
+import { Text } from 'react-native';
+import renderer from 'react-test-renderer';
 
 const Timeline = ({ children, ...rest }: any) => <Text {...rest}>Timeline: {children}</Text>;
-const Post = ({ content, ...rest}: any) => <Text {...rest}>Post: {content}</Text>;
+const Post = ({ content, ...rest }: any) => <Text {...rest}>Post: {content}</Text>;
 
 describe.only('JsonSchemaParser', () => {
 

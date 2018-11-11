@@ -48,4 +48,36 @@ describe('Plugin', () => {
 	});
 
 
+
+	describe('.hasConfig method', () => {
+
+		it('should return true, because key starts with "plugin.{slug}."', () => {
+			const plugin = new Plugin({
+				name: 'A Test Plugin',
+				slug: 'test',
+			});
+			expect(plugin.hasConfig('plugin.test.foo')).toBe(true);
+		});
+
+		it('should return true, because key exists in defaultConfigs', () => {
+			const plugin = new Plugin({
+				defaultConfigs: { title: 'foo' },
+				name: 'A Test Plugin',
+				slug: 'test',
+			});
+			expect(plugin.hasConfig('title')).toBe(true);
+		});
+
+		it('should return false, because key does not exist in defaultConfigs', () => {
+			const plugin = new Plugin({
+				defaultConfigs: { title: 'foo' },
+				name: 'A Test Plugin',
+				slug: 'test',
+			});
+			expect(plugin.hasConfig('description')).toBe(false);
+		});
+
+	});
+
+
 });

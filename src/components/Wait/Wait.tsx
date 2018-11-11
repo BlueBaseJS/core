@@ -37,7 +37,7 @@ interface State {
 	/**
 	 * Flag that tells if waiting has timedout
 	 */
-  readonly timedOut: boolean,
+	readonly timedOut: boolean,
 }
 
 /**
@@ -55,13 +55,13 @@ export class Wait extends React.PureComponent<WaitProps> {
 
 	public static defaultProps: Partial<WaitProps> = {
 		delay: 200,
-		onTimeout: () => { return; },
 		onRetry: () => { return; },
+		onTimeout: () => { return; },
 	};
 
 	readonly state: State = {
 		pastDelay: false,
-    timedOut: false,
+		timedOut: false,
 	};
 
 	private _delay?: number;
@@ -79,8 +79,8 @@ export class Wait extends React.PureComponent<WaitProps> {
 		if (this.state.pastDelay) {
 			return React.createElement(this.props.component, {
 				// pastDelay: this.state.pastDelay,
+				retry: this.retry,
 				timedOut: this.state.timedOut,
-				retry: this.retry
 			});
 		} else {
 			return null;
@@ -100,20 +100,28 @@ export class Wait extends React.PureComponent<WaitProps> {
 
 		if (typeof this.props.timeout === 'number') {
 			this._timeout = setTimeout(() => {
-				this.props.onTimeout && this.props.onTimeout();
+				if (this.props.onTimeout) {
+					this.props.onTimeout();
+				}
 				this.setState({ timedOut: true });
 			}, this.props.timeout);
 		}
 	}
 
 	private clearTimeouts() {
-		this._delay && clearTimeout(this._delay);
-		this._timeout && clearTimeout(this._timeout);
+		if (this._delay) {
+			clearTimeout(this._delay);
+		}
+		if (this._timeout) {
+			clearTimeout(this._timeout);
+		}
 	}
 
 	private retry = () => {
-		this.props.onRetry && this.props.onRetry();
+		if (this.props.onRetry) {
+			this.props.onRetry();
+		}
 		this.setState({ timedOut: false });
 		this.init();
 	}
-};
+}

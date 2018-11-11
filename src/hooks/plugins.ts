@@ -1,7 +1,6 @@
-// tslint:disable:object-literal-sort-keys
-import { Plugin } from '../models/Plugin';
 import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInput } from '../registries';
+import { Plugin } from '../models/Plugin';
 
 export const plugins: { [key: string]: HookInput[] } = {
 
@@ -12,6 +11,8 @@ export const plugins: { [key: string]: HookInput[] } = {
 		{
 			name: 'bluebase.plugins.register.default',
 			priority: 5,
+
+			// tslint:disable-next-line:object-literal-sort-keys
 			handler: async (pluginsArr: BootOptions['plugins'], _args: any, BB: BlueBase) => {
 
 				for (const plugin of pluginsArr) {
@@ -31,6 +32,8 @@ export const plugins: { [key: string]: HookInput[] } = {
 		{
 			name: 'bluebase.plugins.initialize.all.default',
 			priority: 5,
+
+			// tslint:disable-next-line:object-literal-sort-keys
 			handler: async (noop: any, _args: any, BB: BlueBase) => {
 
 				for (const entry of BB.Plugins.entries()) {
@@ -54,25 +57,54 @@ export const plugins: { [key: string]: HookInput[] } = {
 		{
 			name: 'bluebase.plugins.initialize.default',
 			priority: 5,
+
+			// tslint:disable-next-line:object-literal-sort-keys
 			handler: async (plugin: Plugin, _args: any, BB: BlueBase) => {
 
-				// Register plugin hooks
+				//////////////////////////
+				///// Register Hooks /////
+				//////////////////////////
+
 				await BB.Hooks.registerCollection(
 					plugin.hooks,
 					(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
 				);
 
-				// Register components
+				///////////////////////////////
+				///// Register Components /////
+				///////////////////////////////
+
 				const componentKeys = Object.keys(plugin.components);
 				for (const key of componentKeys) {
 					await BB.Components.register(key, plugin.components[key]);
 				}
 
-				// TODO: Register routes
+				////////////////////////////
+				///// Register Configs /////
+				////////////////////////////
 
-				// Initialize plugin
-				// TODO: Fix configs injection
-				await plugin.initialize({}, BB);
+				let configs = plugin.defaultConfigs;
+
+				// Custom input configs are already registered at this point,
+				// We just want to make sure we set default configs are used
+				// if certain configs were not given as input
+
+				if (Object.keys(configs).length > 0) {
+					const inputConfigs = BB.Configs.filter((_value, key) => plugin.hasConfig(key));
+					configs = { ...configs, ...inputConfigs, };
+					BB.Configs.registerCollection(configs);
+				}
+
+				///////////////////////////
+				///// Register Routes /////
+				///////////////////////////
+
+				// TODO: Implement route registeration
+
+				//////////////////////
+				///// Initialize /////
+				//////////////////////
+				await plugin.initialize(configs, BB);
 
 				// return
 				return plugin;
