@@ -1,5 +1,5 @@
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseConsumer } from '../../Context';
+import { BlueBaseContext } from '../../Context';
 import { MaybeRenderPropChildren } from '../../utils';
 import React from 'react';
 
@@ -18,6 +18,8 @@ export interface ErrorObserverState {
 
 export class ErrorObserver extends React.PureComponent<ErrorObserverProps, ErrorObserverState> {
 
+	static contextType = BlueBaseContext;
+
 	public static defaultProps: Partial<ErrorObserverProps> = {
 		checkError: (props) => props.error,
 	};
@@ -34,25 +36,23 @@ export class ErrorObserver extends React.PureComponent<ErrorObserverProps, Error
 
 	render() {
 
-		return (
-			<BlueBaseConsumer children={(BB: BlueBase) => {
+		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
+		const BB: BlueBase = (this as any).context;
 
-				const { error } = this.state;
-				const { children } = this.props;
+		const { error } = this.state;
+		const { children } = this.props;
 
-				if (error) {
-					BB.Logger.error(error);
-					const Error = this.props.errorComponent || BB.Components.ErrorState;
-					return React.createElement(Error, { error });
-				}
+		if (error) {
+			BB.Logger.error(error);
+			const Error = this.props.errorComponent || BB.Components.ErrorState;
+			return React.createElement(Error, { error });
+		}
 
-				// 'children' as a function, 'render prop' pattern
-				if (typeof children === 'function') {
-					return (children as any)();
-				}
+		// 'children' as a function, 'render prop' pattern
+		if (typeof children === 'function') {
+			return (children as any)();
+		}
 
-				return children;
-			}} />
-		);
+		return children;
 	}
 }
