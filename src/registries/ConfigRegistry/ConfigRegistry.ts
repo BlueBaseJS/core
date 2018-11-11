@@ -10,7 +10,7 @@ export class ConfigRegistry extends Registry<any> {
 
 	/**
 	 * Registers a config property. But before registering it, that config is filtered
-	 * through the 'bluebase.configs.register' hook.
+	 * through the 'bluebase.config.set' hook.
 	 * @param key Config key
 	 * @param value Config value
 	 */
@@ -19,7 +19,7 @@ export class ConfigRegistry extends Registry<any> {
 		const config: {
 			key: string,
 			value: T
-		} = await this.BB.Hooks.run('bluebase.configs.register', { key, value });
+		} = await this.BB.Hooks.run('bluebase.config.set', { key, value });
 
 		this.set(config.key, config.value);
 	}
