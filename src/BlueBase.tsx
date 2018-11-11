@@ -1,4 +1,4 @@
-import { ComponentRegistry, HookCollection, HookRegistry, PluginRegistry } from './registries';
+import { ComponentRegistry, ConfigRegistry, HookCollection, HookRegistry, PluginRegistry } from './registries';
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
 import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
@@ -24,6 +24,7 @@ export class BlueBase {
 
 	// Registries
 	public Components: IComponentRegistry = new ComponentRegistry(this) as IComponentRegistry;
+	public Configs: ConfigRegistry = new ConfigRegistry(this);
 	public Hooks: HookRegistry = new HookRegistry(this);
 	public Plugins: PluginRegistry = new PluginRegistry(this);
 
