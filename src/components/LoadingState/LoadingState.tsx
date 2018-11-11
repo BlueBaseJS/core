@@ -4,8 +4,8 @@ import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
 
 export interface LoadingStateProps {
-	timedOut: boolean,
-	retry: () => void,
+	timedOut?: boolean,
+	retry?: () => void,
 }
 
 /**

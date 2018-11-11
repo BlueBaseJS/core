@@ -12,8 +12,8 @@ export const configs: { [key: string]: HookInput[] } = {
 		// tslint:disable-next-line:object-literal-sort-keys
 		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
-			BB.Configs.registerCollection(BlueBaseDefaultConfigs);
-			BB.Configs.registerCollection(bootOptions.configs);
+			await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
+			await BB.Configs.registerCollection(bootOptions.configs);
 
 			return bootOptions;
 		},

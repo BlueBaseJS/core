@@ -22,7 +22,7 @@ describe('ConfigRegistry', () => {
 
 		it('should hook a config property and then register it', async () => {
 			const BB = new BlueBase();
-			await BB.Hooks.register('bluebase.configs.register', {
+			await BB.Hooks.register('bluebase.config.set', {
 				name: 'change-config',
 				handler: ({ key }: { key: string, value: any }) => {
 					return {
@@ -50,7 +50,7 @@ describe('ConfigRegistry', () => {
 
 		it('should hook a config collection during register', async () => {
 			const BB = new BlueBase();
-			await BB.Hooks.register('bluebase.configs.register', {
+			await BB.Hooks.register('bluebase.config.set', {
 				name: 'change-config',
 				handler: ({ key, value }: { key: string, value: any }) => {
 
