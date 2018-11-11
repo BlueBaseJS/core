@@ -1,7 +1,7 @@
+import { ConfigsCollection, HookCollectionInput } from '../registries';
 import { BlueBase } from '../BlueBase';
 import { ComponentInput } from '../registries/ComponentRegistry/types';
 import { DynamicIconProps } from '../components/DynamicIcon';
-import { HookCollectionInput } from '../registries';
 import { MaybeThunk } from '../utils';
 import { PluginInput } from '../registries/PluginRegistry/types';
 import kebabCase from 'lodash.kebabcase';
@@ -25,13 +25,13 @@ export class Plugin {
 
 	public components: { [key: string]: ComponentInput } = {};
 
+	public defaultConfigs: ConfigsCollection = {};
+
 	public icon?: MaybeThunk<DynamicIconProps>;
 
 	protected enabled: boolean = true;
 
 	// // routes: any;
-
-	// // defaultConfigs: any;
 
 	constructor(options?: PluginInput) {
 
@@ -74,5 +74,20 @@ export class Plugin {
 
 	public disable() {
 		this.enabled = false;
+	}
+
+	/**
+	 * Checks if a config key belongs to this plugin. Does so by checking 2 things:
+	 *
+	 * 1. Does the key start with 'plugin.{slug}.'?
+	 * 2. Does the key exist in defaultConfigs property of the plugin?
+	 *
+	 * Returns true if any of the above are true, otherwise returns false
+	 *
+	 * @param key
+	 */
+	public hasConfig(key: string): boolean {
+		return key.startsWith(`plugin.${this.slug}.`)
+			|| Object.keys(this.defaultConfigs).findIndex(k => k === key) >= 0;
 	}
 }

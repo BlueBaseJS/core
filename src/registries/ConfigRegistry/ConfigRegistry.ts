@@ -1,5 +1,9 @@
 import { Registry } from '../Registry';
 
+export interface ConfigsCollection {
+	[key: string]: any
+}
+
 /**
  * 🎛 ConfigRegistry
  */
@@ -23,9 +27,9 @@ export class ConfigRegistry extends Registry<any> {
 
 	/**
 	 * Registers multiple configs at once. Takes a config object as input.
-	 * @param collection 
+	 * @param collection
 	 */
-	public async registerCollection(collection: { [key: string]: any }) {
+	public async registerCollection(collection: ConfigsCollection) {
 		for (const item of Object.keys(collection)) {
 			await this.register(item, collection[item]);
 		}
