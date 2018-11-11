@@ -2,6 +2,7 @@ import { ThemeInput } from '../models';
 
 export const BlueBaseDarkTheme: ThemeInput = {
 	name: 'BlueBase Dark',
+	slug: 'bluebase-dark',
 	type: 'dark',
 
 	// tslint:disable-line
@@ -54,10 +55,10 @@ export const BlueBaseDarkTheme: ThemeInput = {
 	typography: {
 		body1: {
 			color: 'rgb(255, 255, 255)',
-			fontFamily: 'Roboto',
+			fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
 			fontSize: 16,
 			fontWeight: '400',
-			lineHeight: 1.5,
+			// lineHeight: 1.5,
 		}
 	}
 };

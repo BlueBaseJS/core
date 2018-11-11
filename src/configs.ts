@@ -6,6 +6,6 @@ export const BlueBaseDefaultConfigs: BlueBaseConfigs = {
 	development: !(isProduction()),
 	direction: 'ltr',
 	locale: 'en',
-	theme: 'BlueBase.Light',
+	theme: 'bluebase-light',
 	title: 'BlueBase',
 };

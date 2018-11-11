@@ -75,29 +75,4 @@ export class ThemeRegistry extends Registry<Theme> {
 		this.delete(slug);
 		// TODO: Do we force rerender/reboot?
 	}
-
-
-	/////////// Remove below
-
-
-	// TODO: create a proper default theme selection mechanism
-	// tslint:disable-next-line:member-ordering
-	private selectedTheme = 'BlueBase.Light';
-
-	public getSelectedTheme() {
-		return this.get(this.selectedTheme);
-	}
-
-	public getSelectedThemeKey() {
-		return this.selectedTheme;
-	}
-
-	public setSelectedThemeKey(key: string) {
-
-		if(!this.has(key)) {
-			throw Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`);
-		}
-
-		this.selectedTheme = key;
-	}
 }

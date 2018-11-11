@@ -1,33 +1,33 @@
-// tslint:disable:jsx-alignment jsx-no-lambda no-console
-import { BlueBase, BlueBaseConsumer } from '../../../../';
+import { BlueBase, BlueBaseContext } from '../../../';
 import React from 'react';
-import { Theme } from '../Theme/theme';
+import { Theme } from '../../../models';
 import { ThemeContext } from '../ThemeContext';
 
-export const ThemeDemo = () => {
+export class ThemeDemo extends React.PureComponent {
 
-	return (
-    <BlueBaseConsumer children={(BB: BlueBase) => {
+	static contextType = BlueBaseContext;
 
-			return (
-				<ThemeContext.Consumer children={({ theme }: { theme: Theme }) => {
-	
-					const mainStyle = {
-						backgroundColor: theme.palette.background.default,
-						padding: theme.spacing.unit
-					};
-	
-					return (
-						<BB.Components.View style={mainStyle}>
-							<BB.Components.View>
-								<BB.Components.Text style={theme.typography.h1}>
-									{theme.name}
-								</BB.Components.Text>
-							</BB.Components.View>
+	render() {
+		const BB: BlueBase = (this as any).context;
+
+		return (
+			<ThemeContext.Consumer children={({ theme }: { theme: Theme }) => {
+
+				const mainStyle = {
+					backgroundColor: theme.palette.background.default,
+					padding: theme.spacing.unit
+				};
+
+				return (
+					<BB.Components.View style={mainStyle}>
+						<BB.Components.View>
+							<BB.Components.Text style={theme.typography.body1}>
+								{theme.name}
+							</BB.Components.Text>
 						</BB.Components.View>
-					);
-				}} />
-			);
-		}} />
-	);
-};
+					</BB.Components.View>
+				);
+			}} />
+		);
+	}
+}
