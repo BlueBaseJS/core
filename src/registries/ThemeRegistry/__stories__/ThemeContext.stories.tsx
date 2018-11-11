@@ -1,11 +1,11 @@
-// tslint:disable:jsx-alignment jsx-no-lambda no-console
+// tslint:disable:no-console
 import { BlueBase, BlueBaseConsumer } from '../../../';
 import { Picker } from 'react-native';
 import React from 'react';
-import { Theme } from '../Theme/theme';
 import { ThemeContext } from '../ThemeContext';
 // import { ThemePicker } from './ThemePicker';
 // import { ThemeDemo } from './ThemeDemo';
+import { Theme } from '../../../models';
 import { ThemeProvider } from '../index';
 import storiesOf from '@bluebase/storybook-addon';
 

@@ -4,6 +4,8 @@ import { BlueBaseContext } from '../../Context';
 import { Theme } from '../../models';
 
 export interface ThemeProviderProps {
+	theme?: string;
+	overrides?: Partial<Theme>;
 	children: React.ReactNode,
 }
 
@@ -18,35 +20,29 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 	static contextType = BlueBaseContext;
 
 	componentWillMount() {
-		const BB: BlueBase = this.context;
-		const theme = BB.Themes.getSelectedTheme();
+		const BB: BlueBase = (this as any).context;
+		this.setTheme(this.props.theme, BB);
+	}
+
+	setTheme(slug: string | undefined, BB: BlueBase) {
+		const key = slug || BB.Configs.get('theme');
+
+		const theme = BB.Themes.get(key);
 
 		if (!theme) {
-			throw Error('No theme found.');
+			throw Error(`Could not set theme. Reason: Theme with the key "${key}" does not exist.`);
 		}
 
-		this.setState({
-			theme,
-		});
+		this.setState({ theme });
 	}
 
 	render() {
 
-		const BB: BlueBase = this.context;
+		const BB: BlueBase = (this as any).context;
 
-		const changeTheme = (key: string) => {
-
-			BB.Themes.setSelectedThemeKey(key);
-			const theme = BB.Themes.getSelectedTheme();
-
-			if(!theme) {
-				throw Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`);
-			}
-
-			this.setState(() => {
-				return {
-					theme
-				};
+		const changeTheme = (slug: string) => {
+			BB.Configs.register('theme', slug).then(() => {
+				this.setTheme(slug, BB);
 			});
 		};
 

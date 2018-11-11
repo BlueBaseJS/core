@@ -15,6 +15,9 @@ export interface BlueBaseConfigs {
 	/** Development mode */
 	development: boolean,
 
+	/** Selected theme */
+	theme: string;
+
 	// others
 	[key: string]: any,
 }
