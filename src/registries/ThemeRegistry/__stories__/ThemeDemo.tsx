@@ -3,12 +3,17 @@ import React from 'react';
 import { Theme } from '../../../models';
 import { ThemeContext } from '../ThemeContext';
 
-export class ThemeDemo extends React.PureComponent {
+export interface ThemeDemoProps {
+	children?: React.ReactNode;
+}
+
+export class ThemeDemo extends React.PureComponent<ThemeDemoProps> {
 
 	static contextType = BlueBaseContext;
 
 	render() {
 		const BB: BlueBase = (this as any).context;
+		const { children } = this.props;
 
 		return (
 			<ThemeContext.Consumer children={({ theme }: { theme: Theme }) => {
@@ -24,6 +29,7 @@ export class ThemeDemo extends React.PureComponent {
 							<BB.Components.Text style={theme.typography.body1}>
 								{theme.name}
 							</BB.Components.Text>
+							{children}
 						</BB.Components.View>
 					</BB.Components.View>
 				);
