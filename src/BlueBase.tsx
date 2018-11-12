@@ -5,7 +5,8 @@ import {
 	HookCollection,
 	HookRegistry,
 	PluginRegistry,
-	ThemeRegistry
+	ThemeProvider,
+	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
@@ -59,14 +60,16 @@ export class BlueBase {
 		// const SystemApp = this.Components.resolve('SystemApp');
 		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
 
-		const BluerainApp = () => (
+		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
-				<this.Components.SystemApp />
+				<ThemeProvider>
+					<this.Components.SystemApp />
+				</ThemeProvider>
 			</BlueBaseProvider>
 		);
 
 		this.booted = true;
 
-		return BluerainApp;
+		return BlueBaseRoot;
 	}
 }

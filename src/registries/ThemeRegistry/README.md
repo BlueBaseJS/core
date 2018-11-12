@@ -1,9 +1,9 @@
-- Selected theme value should be saved in settings ==> So can be overrided, persisted, etc
-- Theme selection should be done through hook
-- Provider should be auto injected
-- How to override themes?
+- [-] Selected theme value should be saved in settings ==> So can be overrided, persisted, etc
+- [-] Theme selection should be done through hook
+- [-] Provider should be auto injected
+- [ ] How to override themes?
 
-- [ ] Have a default theme
+- [-] Have a default theme
 - [ ] Themes should be overrideable through boot options aka bluebase.js.
 - [ ] Themes should provide styles for components by saving them in a key-value pair
 - [ ] Themes should be overrideable on a per-component usage

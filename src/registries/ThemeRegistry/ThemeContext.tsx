@@ -15,6 +15,12 @@ export interface ThemeProviderState {
 
 export const ThemeContext: React.Context<ThemeProviderState> = createContext(undefined as any);
 
+/**
+ * 🎨 ThemeProvider
+ *
+ * TODO: This provider doesn't listen to theme config changes done elsewhere, implement this.
+ * Relevant issue: https://github.com/BlueBaseJS/core/issues/19
+ */
 export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
 
 	static contextType = BlueBaseContext;
