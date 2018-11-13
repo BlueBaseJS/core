@@ -50,7 +50,7 @@ describe('LoadingState', () => {
 		expect(tree).toMatchSnapshot();
 	});
 
-	test(`Snapshot LoadingState component with timedOut: false`, () => {
+	test(`Snapshot LoadingState component with timedOut: true and retry mocked function`, () => {
 		const mockedFn = jest.fn();
 		const component = TestRenderer.create(
 			<LoadingState timedOut={true} retry={mockedFn} />
