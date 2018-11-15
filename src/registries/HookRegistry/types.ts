@@ -36,7 +36,7 @@ export type HookInputOrHandler = Hook | HookInput | HookHandlerFn;
  */
 export interface HookInput {
 	/** Name of the listener, used as an ID */
-	name: string,
+	name?: string,
 
 	/**
 	 * Priority of exeuction.
