@@ -17,21 +17,46 @@ export const ThemeContext: React.Context<ThemeProviderState> = createContext(und
 
 /**
  * 🎨 ThemeProvider
- *
- * TODO: This provider doesn't listen to theme config changes done elsewhere, implement this.
- * Relevant issue: https://github.com/BlueBaseJS/core/issues/19
  */
 export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
 
 	static contextType = BlueBaseContext;
 
-	componentWillMount() {
+	/** Stores configuration subscription ID */
+	private subscriptionId?: string;
+
+	async componentWillMount() {
 		const BB: BlueBase = (this as any).context;
 		this.setTheme(this.props.theme, BB);
+
+		// Subscribe to theme config updates
+		if (!this.props.theme) {
+
+			this.subscriptionId = BB.Configs.subscribe('theme', (value) => {
+				this.setTheme(value, BB);
+			});
+		}
 	}
 
+	componentWillUnmount() {
+		const BB: BlueBase = (this as any).context;
+
+		// Unsubscribe from theme config updates
+		if(this.subscriptionId) {
+			BB.Configs.unsubscribe('theme', this.subscriptionId);
+			delete this.subscriptionId;
+		}
+	}
+
+	/**
+	 * Sets a theme to Provider's state. If a theme key is given, it is used,
+	 * otherwise global theme is used.
+	 *
+	 * @param slug
+	 * @param BB
+	 */
 	setTheme(slug: string | undefined, BB: BlueBase) {
-		const key = slug || BB.Configs.get('theme');
+		const key = slug || BB.Configs.getValue('theme');
 
 		const theme = BB.Themes.get(key);
 
@@ -46,15 +71,9 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 
 		const BB: BlueBase = (this as any).context;
 
-		const changeTheme = (slug: string) => {
-			BB.Configs.register('theme', slug).then(() => {
-				this.setTheme(slug, BB);
-			});
-		};
-
 		const value = {
-			changeTheme,
-			theme: this.state.theme,
+			changeTheme: (slug: string) => { BB.Configs.register('theme', slug); },
+			theme: this.state.theme
 		};
 
 		return (

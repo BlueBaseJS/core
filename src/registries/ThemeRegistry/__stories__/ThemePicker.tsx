@@ -13,9 +13,9 @@ export class ThemePicker extends React.PureComponent {
 		return (
 			<ThemeContext.Consumer children={({ changeTheme }: any) => (
 				<Picker
-					selectedValue={BB.Configs.get('theme')}
+					selectedValue={BB.Configs.getValue('theme')}
 					style={{ width: 150 }}
-					onValueChange={(itemValue) => changeTheme(itemValue)}>
+					onValueChange={changeTheme}>
 					{themes.map(entry => <Picker.Item label={entry[1].name} value={entry[0]} key={entry[0]} />)}
 				</Picker>
 			)} />
