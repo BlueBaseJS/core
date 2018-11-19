@@ -18,6 +18,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🚀 BlueBaseApp
 - 🎣 BlueBaseHook
 - ️⚡️ DataObserver
+- 🚨 ErrorState
 - 🚨 ErrorObserver
 - 🛸 HoverObserver
 - 🍱 JsonSchema
