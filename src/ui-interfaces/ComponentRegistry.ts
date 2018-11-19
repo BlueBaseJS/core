@@ -8,7 +8,7 @@ import {
 	PluginIconProps,
 	SystemAppProps,
 	SystemContentProps,
-	WaitProps,
+	WaitObserverProps,
 } from '../components';
 import { ButtonProps as ButtonProperites } from './components/Button';
 import { ComponentRegistry } from '../registries';
@@ -28,7 +28,7 @@ export interface ComponentRegistryWithUIInterfaces extends ComponentRegistry {
 	PluginIcon: React.ComponentType<PluginIconProps>,
 	SystemApp: React.ComponentType<SystemAppProps>,
 	SystemContent: React.ComponentType<SystemContentProps>,
-	Wait: React.ComponentType<WaitProps>,
+	WaitObserver: React.ComponentType<WaitObserverProps>,
 
 	// UI
 	// ActivityIndicator: ActivityIndicator,

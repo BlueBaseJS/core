@@ -24,14 +24,14 @@ const getComponent = (BB: BlueBase) => {
 };
 
 
-// export const JsonSchema = ({ hook, schema }: JsonSchemaProperties) => (
+// export const JsonSchema = ({ hook, schema }: JsonSchemaProps) => (
 // 	<BlueBaseConsumer>
 // 		{(BB: BlueBase) => {
 
 // 			const AsyncJsonSchema = Loadable({
 // 				loader: () => hook ? BB.Hooks.run(hook, schema) : Promise.resolve(schema),
 // 				loading: () => <Text>Loading</Text>,
-// 				render(loadedSchema: JsonSchemaProperties['schema']) {
+// 				render(loadedSchema: JsonSchemaProps['schema']) {
 // 					return (new JsonSchemaParser(getComponent(BB))).parseSchema(loadedSchema);
 // 				}
 // 			});

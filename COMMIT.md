@@ -1,20 +1,26 @@
 Emoji reference of Commitizen scopes for this repo:
 
-📦 BlueBaseModule
-🎁 ComponentRegistry
-🎛 ConfigRegistry
-🎣 HookRegistry
-🗿 Icons
-🍱 JSON Schema
-🔌 PluginRegistry
-📖 README
-📕 Storybook
-🎛 Utils
-🎨 ThemeRegistry
+- 📦 BlueBaseModule
+- 🗿 Icons
+- 📖 README
+- 📕 Storybook
+- 🎛 Utils
+
+## Registries
+
+- 🎁 ComponentRegistry
+- 🎣 HookRegistry
+- 🔌 PluginRegistry
+- 🎨 ThemeRegistry
 
 ## Components
 
-🚀 BlueBaseApp
-🎣 BlueBaseHook
-⏳ LoadingState
-⏰ Wait
+- 🚀 BlueBaseApp
+- 🎣 BlueBaseHook
+- ️⚡️ DataObserver
+- 🚨 ErrorObserver
+- 🛸 HoverObserver
+- 🍱 JsonSchema
+- ⏳ LoadingState
+- 👨‍🎨 StatefulComponent
+- ⏰ WaitObserver

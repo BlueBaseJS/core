@@ -15,7 +15,7 @@ export class SystemContent extends React.PureComponent<ViewProperties> {
 				{(BB: BlueBase) => (
 					<BB.Components.View {...this.props}>
 						<BB.Components.Text>
-							💧 BlueBase System Content!
+							🚀 BlueBase System Content!
 						</BB.Components.Text>
 						{this.props.children}
 					</BB.Components.View>

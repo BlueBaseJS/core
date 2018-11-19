@@ -6,23 +6,23 @@ export class Logger {
 		//
 	}
 
-	public log(message: string, meta: any) {
-		this.BB.Hooks.run('bluebase.logger.log', message, meta).then();
+	public log(message?: any, ...optionalParams: any[]) {
+		this.BB.Hooks.run('bluebase.logger.log', message, optionalParams).then();
 	}
 
-	public info(message: string, meta: any) {
-		this.BB.Hooks.run('bluebase.logger.info', message, meta).then();
+	public info(message?: any, ...optionalParams: any[]) {
+		this.BB.Hooks.run('bluebase.logger.info', message, optionalParams).then();
 	}
 
-	public warn(message: string, meta: any) {
-		this.BB.Hooks.run('bluebase.logger.warn', message, meta).then();
+	public warn(message?: any, ...optionalParams: any[]) {
+		this.BB.Hooks.run('bluebase.logger.warn', message, optionalParams).then();
 	}
 
-	public error(message: string, meta: any) {
-		this.BB.Hooks.run('bluebase.logger.error', message, meta).then();
+	public error(message?: any, ...optionalParams: any[]) {
+		this.BB.Hooks.run('bluebase.logger.error', message, optionalParams).then();
 	}
 
-	public debug(message: string, meta: any) {
-		this.BB.Hooks.run('bluebase.logger.debug', message, meta).then();
+	public debug(message?: any, ...optionalParams: any[]) {
+		this.BB.Hooks.run('bluebase.logger.debug', message, optionalParams).then();
 	}
 }
