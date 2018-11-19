@@ -185,9 +185,9 @@ Object {
       "lastEffect": null,
       "memoizedProps": Object {
         "checkError": [Function],
-        "children": <Component>
+        "children": <Text>
           Hello
-        </Component>,
+        </Text>,
       },
       "memoizedState": Object {
         "error": undefined,
@@ -196,9 +196,9 @@ Object {
       "nextEffect": null,
       "pendingProps": Object {
         "checkError": [Function],
-        "children": <Component>
+        "children": <Text>
           Hello
-        </Component>,
+        </Text>,
       },
       "ref": null,
       "return": FiberNode {
@@ -288,9 +288,9 @@ Object {
                 "element": <ErrorObserver
                   checkError={[Function]}
                 >
-                  <Component>
+                  <Text>
                     Hello
-                  </Component>
+                  </Text>
                 </ErrorObserver>,
               },
               "tag": 0,
@@ -307,9 +307,9 @@ Object {
                 "element": <ErrorObserver
                   checkError={[Function]}
                 >
-                  <Component>
+                  <Text>
                     Hello
-                  </Component>
+                  </Text>
                 </ErrorObserver>,
               },
               "tag": 0,
@@ -331,9 +331,9 @@ Object {
           "element": <ErrorObserver
             checkError={[Function]}
           >
-            <Component>
+            <Text>
               Hello
-            </Component>
+            </Text>
           </ErrorObserver>,
         },
         "mode": 0,
@@ -391,9 +391,9 @@ Object {
             "element": <ErrorObserver
               checkError={[Function]}
             >
-              <Component>
+              <Text>
                 Hello
-              </Component>
+              </Text>
             </ErrorObserver>,
           },
           "firstCapturedEffect": null,
@@ -416,9 +416,9 @@ Object {
     "context": Object {},
     "props": Object {
       "checkError": [Function],
-      "children": <Component>
+      "children": <Text>
         Hello
-      </Component>,
+      </Text>,
     },
     "refs": Object {},
     "state": Object {
@@ -434,9 +434,9 @@ Object {
   "nodeType": "component",
   "props": Object {
     "checkError": [Function],
-    "children": <Component>
+    "children": <Text>
       Hello
-    </Component>,
+    </Text>,
   },
   "rendered": Object {
     "instance": null,
@@ -578,9 +578,9 @@ Object {
               "lastEffect": null,
               "memoizedProps": Object {
                 "checkError": [Function],
-                "children": <Component>
+                "children": <Text>
                   Hello
-                </Component>,
+                </Text>,
               },
               "memoizedState": Object {
                 "error": undefined,
@@ -589,9 +589,9 @@ Object {
               "nextEffect": null,
               "pendingProps": Object {
                 "checkError": [Function],
-                "children": <Component>
+                "children": <Text>
                   Hello
-                </Component>,
+                </Text>,
               },
               "ref": null,
               "return": FiberNode {
@@ -681,9 +681,9 @@ Object {
                         "element": <ErrorObserver
                           checkError={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "tag": 0,
@@ -700,9 +700,9 @@ Object {
                         "element": <ErrorObserver
                           checkError={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "tag": 0,
@@ -724,9 +724,9 @@ Object {
                   "element": <ErrorObserver
                     checkError={[Function]}
                   >
-                    <Component>
+                    <Text>
                       Hello
-                    </Component>
+                    </Text>
                   </ErrorObserver>,
                 },
                 "mode": 0,
@@ -784,9 +784,9 @@ Object {
                     "element": <ErrorObserver
                       checkError={[Function]}
                     >
-                      <Component>
+                      <Text>
                         Hello
-                      </Component>
+                      </Text>
                     </ErrorObserver>,
                   },
                   "firstCapturedEffect": null,
@@ -806,9 +806,9 @@ Object {
                 "context": Object {},
                 "props": Object {
                   "checkError": [Function],
-                  "children": <Component>
+                  "children": <Text>
                     Hello
-                  </Component>,
+                  </Text>,
                 },
                 "refs": Object {},
                 "state": Object {
@@ -865,9 +865,9 @@ Object {
               "lastEffect": null,
               "memoizedProps": Object {
                 "checkError": [Function],
-                "children": <Component>
+                "children": <Text>
                   Hello
-                </Component>,
+                </Text>,
               },
               "memoizedState": Object {
                 "error": undefined,
@@ -876,9 +876,9 @@ Object {
               "nextEffect": null,
               "pendingProps": Object {
                 "checkError": [Function],
-                "children": <Component>
+                "children": <Text>
                   Hello
-                </Component>,
+                </Text>,
               },
               "ref": null,
               "return": FiberNode {
@@ -968,9 +968,9 @@ Object {
                         "element": <ErrorObserver
                           checkError={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "tag": 0,
@@ -987,9 +987,9 @@ Object {
                         "element": <ErrorObserver
                           checkError={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "tag": 0,
@@ -1011,9 +1011,9 @@ Object {
                   "element": <ErrorObserver
                     checkError={[Function]}
                   >
-                    <Component>
+                    <Text>
                       Hello
-                    </Component>
+                    </Text>
                   </ErrorObserver>,
                 },
                 "mode": 0,
@@ -1071,9 +1071,9 @@ Object {
                     "element": <ErrorObserver
                       checkError={[Function]}
                     >
-                      <Component>
+                      <Text>
                         Hello
-                      </Component>
+                      </Text>
                     </ErrorObserver>,
                   },
                   "firstCapturedEffect": null,
@@ -1093,9 +1093,9 @@ Object {
                 "context": Object {},
                 "props": Object {
                   "checkError": [Function],
-                  "children": <Component>
+                  "children": <Text>
                     Hello
-                  </Component>,
+                  </Text>,
                 },
                 "refs": Object {},
                 "state": Object {
@@ -3033,9 +3033,9 @@ Object {
       "lastEffect": null,
       "memoizedProps": Object {
         "checkError": [Function],
-        "children": <Component>
+        "children": <Text>
           Hello
-        </Component>,
+        </Text>,
         "error": Object {
           "message": "no page found",
           "name": "404",
@@ -3052,9 +3052,9 @@ Object {
       "nextEffect": null,
       "pendingProps": Object {
         "checkError": [Function],
-        "children": <Component>
+        "children": <Text>
           Hello
-        </Component>,
+        </Text>,
         "error": Object {
           "message": "no page found",
           "name": "404",
@@ -3156,9 +3156,9 @@ Object {
                   }
                   errorComponent={[Function]}
                 >
-                  <Component>
+                  <Text>
                     Hello
-                  </Component>
+                  </Text>
                 </ErrorObserver>,
               },
               "tag": 0,
@@ -3182,9 +3182,9 @@ Object {
                   }
                   errorComponent={[Function]}
                 >
-                  <Component>
+                  <Text>
                     Hello
-                  </Component>
+                  </Text>
                 </ErrorObserver>,
               },
               "tag": 0,
@@ -3213,9 +3213,9 @@ Object {
             }
             errorComponent={[Function]}
           >
-            <Component>
+            <Text>
               Hello
-            </Component>
+            </Text>
           </ErrorObserver>,
         },
         "mode": 0,
@@ -3280,9 +3280,9 @@ Object {
               }
               errorComponent={[Function]}
             >
-              <Component>
+              <Text>
                 Hello
-              </Component>
+              </Text>
             </ErrorObserver>,
           },
           "firstCapturedEffect": null,
@@ -3305,9 +3305,9 @@ Object {
     "context": Object {},
     "props": Object {
       "checkError": [Function],
-      "children": <Component>
+      "children": <Text>
         Hello
-      </Component>,
+      </Text>,
       "error": Object {
         "message": "no page found",
         "name": "404",
@@ -3331,9 +3331,9 @@ Object {
   "nodeType": "component",
   "props": Object {
     "checkError": [Function],
-    "children": <Component>
+    "children": <Text>
       Hello
-    </Component>,
+    </Text>,
     "error": Object {
       "message": "no page found",
       "name": "404",
@@ -3384,9 +3384,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -3403,9 +3403,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -3507,9 +3507,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -3533,9 +3533,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -3564,9 +3564,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -3631,9 +3631,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -3653,9 +3653,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
@@ -3720,9 +3720,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -3739,9 +3739,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -3843,9 +3843,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -3869,9 +3869,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -3900,9 +3900,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -3967,9 +3967,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -3989,9 +3989,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
@@ -4071,9 +4071,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -4090,9 +4090,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -4194,9 +4194,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -4220,9 +4220,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -4251,9 +4251,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -4318,9 +4318,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -4340,9 +4340,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
@@ -4407,9 +4407,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -4426,9 +4426,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -4530,9 +4530,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -4556,9 +4556,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -4587,9 +4587,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -4654,9 +4654,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -4676,9 +4676,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
@@ -4846,9 +4846,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -4865,9 +4865,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -4969,9 +4969,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -4995,9 +4995,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -5026,9 +5026,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -5093,9 +5093,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -5115,9 +5115,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
@@ -5182,9 +5182,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -5201,9 +5201,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -5305,9 +5305,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -5331,9 +5331,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -5362,9 +5362,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -5429,9 +5429,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -5451,9 +5451,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
@@ -5533,9 +5533,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -5552,9 +5552,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -5656,9 +5656,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -5682,9 +5682,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -5713,9 +5713,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -5780,9 +5780,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -5802,9 +5802,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
@@ -5869,9 +5869,9 @@ Object {
                   "lastEffect": null,
                   "memoizedProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -5888,9 +5888,9 @@ Object {
                   "nextEffect": null,
                   "pendingProps": Object {
                     "checkError": [Function],
-                    "children": <Component>
+                    "children": <Text>
                       Hello
-                    </Component>,
+                    </Text>,
                     "error": Object {
                       "message": "no page found",
                       "name": "404",
@@ -5992,9 +5992,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -6018,9 +6018,9 @@ Object {
                               }
                               errorComponent={[Function]}
                             >
-                              <Component>
+                              <Text>
                                 Hello
-                              </Component>
+                              </Text>
                             </ErrorObserver>,
                           },
                           "tag": 0,
@@ -6049,9 +6049,9 @@ Object {
                         }
                         errorComponent={[Function]}
                       >
-                        <Component>
+                        <Text>
                           Hello
-                        </Component>
+                        </Text>
                       </ErrorObserver>,
                     },
                     "mode": 0,
@@ -6116,9 +6116,9 @@ Object {
                           }
                           errorComponent={[Function]}
                         >
-                          <Component>
+                          <Text>
                             Hello
-                          </Component>
+                          </Text>
                         </ErrorObserver>,
                       },
                       "firstCapturedEffect": null,
@@ -6138,9 +6138,9 @@ Object {
                     "context": Object {},
                     "props": Object {
                       "checkError": [Function],
-                      "children": <Component>
+                      "children": <Text>
                         Hello
-                      </Component>,
+                      </Text>,
                       "error": Object {
                         "message": "no page found",
                         "name": "404",
