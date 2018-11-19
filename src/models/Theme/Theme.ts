@@ -1,3 +1,4 @@
+import { TextStyle, ViewStyle } from 'react-native';
 import { Palette } from './Palette';
 import { ThemeTypography } from './Typography';
 import kebabCase from 'lodash.kebabcase';
@@ -6,27 +7,40 @@ export interface ThemeInput extends Pick<Theme, Exclude<keyof Theme, 'slug'>> {
 	slug?: string;
 }
 
+export interface ComponentStyles {
+
+	// rule
+	[key: string]: ViewStyle | TextStyle | any;
+}
+
 export class Theme {
 
 	/** Theme name */
 	public name!: string;
 
 	/** Theme slug, used as an ID. Must be unique */
-	slug!: string;
+	public slug!: string;
 
 	/** Type of theme. A theme can be either light or dark */
-	type: 'light' | 'dark' = 'light';
+	public type: 'light' | 'dark' = 'light';
 
-	shape!: {
+	/** Component styles */
+	public components: {
+
+		// component name
+		[key: string]: ComponentStyles
+	} = {};
+
+	public shape!: {
 		borderRadius: number,
 		[key: string]: any,
 	};
-	spacing!: {
+	public spacing!: {
 		unit: number,
 		[key: string]: any,
 	};
-	typography!: ThemeTypography;
-	palette!: Palette;
+	public typography!: ThemeTypography;
+	public palette!: Palette;
 
 	[key: string]: any,
 

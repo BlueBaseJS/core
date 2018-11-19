@@ -15,13 +15,15 @@ import { Logger } from './api';
 import { MaybeBlueBaseModuleOrInput } from './utils';
 import { Plugin } from './models/Plugin';
 import React from 'react';
+import { ThemeInput } from './models';
 import systemHooks from './hooks';
 
 export interface BootOptions {
-	components: { [key: string]: ComponentInput };
+	components: { [key: string]: ComponentInput },
 	configs: ConfigsCollection,
-	hooks: HookCollection;
-	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>;
+	hooks: HookCollection,
+	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>,
+	theme: ThemeInput,
 	// routes: Plugin[]
 }
 
@@ -45,6 +47,7 @@ export class BlueBase {
 		configs: {},
 		hooks: {},
 		plugins: [],
+		theme: {},
 	};
 
 	public async boot(options?: Partial<BootOptions>) {

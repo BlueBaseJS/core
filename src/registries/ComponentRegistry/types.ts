@@ -1,4 +1,5 @@
 import { BlueBaseModule, MaybeBlueBaseModuleOrInput } from '../../utils';
+import { ComponentStyles } from '../../models';
 import React from 'react';
 
 /////////////////////////////////////
@@ -23,6 +24,7 @@ export interface ComponentRegistryItemBase {
 	hocs: ComponentRegistryHocItem[]; // TODO: maybe each HOC should also be a BlueBaseModule?
 	source?: ComponentSource;
 
+	styles?: ComponentStyles;
 	isAsync: boolean;
 	preload: boolean;
 }
@@ -41,3 +43,7 @@ export interface ComponentRegistryItemInternal extends Partial<ComponentRegistry
 export type ComponentInput =
 	ComponentRegistryItemInternal |
 	MaybeBlueBaseModuleOrInput<React.ComponentType<any>>;
+
+export interface ComponentCollectionInput {
+	[key: string]: ComponentInput
+}

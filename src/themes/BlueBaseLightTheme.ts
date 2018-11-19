@@ -5,7 +5,7 @@ export const BlueBaseLightTheme: ThemeInput = {
 	slug: 'bluebase-light',
 	type: 'light',
 
-	// tslint:disable-line
+	// tslint:disable-next-line
 	direction: 'ltr',
 	palette: {
 		action: {

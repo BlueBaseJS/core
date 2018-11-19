@@ -1,8 +1,9 @@
-import { ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
+import { ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem, ComponentCollectionInput } from './types';
 import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, getDefiniteModule, isPromise } from '../../utils';
 import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
 import { BlueBase } from '../../BlueBase';
 import { Registry } from '../Registry';
+import { applyStyles } from '../../models';
 import flowRight from 'lodash.flowright';
 import { getAsyncComponent } from './getAsyncComponent';
 
@@ -89,6 +90,13 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 	}
 
+	public async registerCollection(components: ComponentCollectionInput) {
+		const componentKeys = Object.keys(components);
+		for (const key of componentKeys) {
+			await this.BB.Components.register(key, components[key]);
+		}
+	}
+
 	public replace(slug: string, component: MaybeBlueBaseModuleOrInput<React.ComponentType<any>>) {
 
 		const registryItem = this.get(slug);
@@ -109,9 +117,13 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 			throw new Error(`Could not resolve component "${name}". Reason: Component not registered.`);
 		}
 
-		const rawComponent = registryItem.rawComponent.isAsync
+		// Find the rawComponent
+		let rawComponent = registryItem.rawComponent.isAsync
 			? getAsyncComponent(registryItem.rawComponent.promise)
-			: registryItem.rawComponent.module;
+			: registryItem.rawComponent.module as React.ComponentType;
+
+		// Add withStyles HOC
+		rawComponent = applyStyles(name, rawComponent, registryItem.styles);
 
 		const hocs = registryItem.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 

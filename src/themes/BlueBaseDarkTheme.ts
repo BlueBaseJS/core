@@ -5,7 +5,7 @@ export const BlueBaseDarkTheme: ThemeInput = {
 	slug: 'bluebase-dark',
 	type: 'dark',
 
-	// tslint:disable-line
+	// tslint:disable-next-line
 	direction: 'ltr',
 	palette: {
 		action: {
