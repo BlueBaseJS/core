@@ -1,3 +1,5 @@
+import { Theme } from '../../models';
+
 export interface BlueBaseConfigs {
 
 	/** Project title */
@@ -15,8 +17,19 @@ export interface BlueBaseConfigs {
 	/** Development mode */
 	development: boolean,
 
-	/** Selected theme */
-	theme: string;
+	/** Name of selected theme */
+	'theme.name': string,
+
+	/**
+	 * Theme mode: Either light or dark.
+	 * TODO: Add 'auto' mode to detect OS/User preference? This will be added to configs.
+	 */
+	'theme.mode': 'light' | 'dark',
+
+	/**
+	 * Overrides for any selected theme. These overrides are applied to all themes.
+	 */
+	'theme.overrides': Partial<Theme>,
 
 	// others
 	[key: string]: any,

@@ -12,6 +12,15 @@ const bootOptions: Partial<BootOptions> = {
 
 	configs: {
 
+		'theme.overrides': {
+			components: {
+				ThemedCard2: {
+					root: {
+						backgroundColor: 'green'
+					}
+				}
+			}
+		}
 		// wallpaper: {
 		// 	backgroundColor: 'white',
 		// 	resizeMode: 'cover',
@@ -31,16 +40,6 @@ const bootOptions: Partial<BootOptions> = {
 			}
 		},
 	},
-
-	theme: {
-		components: {
-			ThemedCard2: {
-				root: {
-					backgroundColor: 'green'
-				}
-			}
-		}
-	}
 };
 
 export default bootOptions;

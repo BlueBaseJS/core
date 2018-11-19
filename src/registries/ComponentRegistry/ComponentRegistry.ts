@@ -1,4 +1,4 @@
-import { ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem, ComponentCollectionInput } from './types';
+import { ComponentCollectionInput, ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
 import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, getDefiniteModule, isPromise } from '../../utils';
 import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
 import { BlueBase } from '../../BlueBase';
@@ -123,7 +123,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 			: registryItem.rawComponent.module as React.ComponentType;
 
 		// Add withStyles HOC
-		rawComponent = applyStyles(name, rawComponent, registryItem.styles);
+		rawComponent = applyStyles(name, rawComponent, registryItem.styles) as React.ComponentType<any>;
 
 		const hocs = registryItem.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 

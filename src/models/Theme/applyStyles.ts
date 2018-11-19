@@ -3,8 +3,19 @@ import { BlueBaseContext } from '../../Context';
 import { ComponentStyles } from './Theme';
 import React from 'react';
 import deepmerge from 'deepmerge';
+import isNil from 'lodash.isnil';
 
 export type ComponentWithDefaultStyles = React.ComponentType<any> & { defaultStyles?: ComponentStyles };
+
+export interface ThemedComponentProps {
+	styles: ComponentStyles,
+
+	[key: string]: any,
+}
+
+export interface ThemedComponentState {
+	readonly themedStyles?: ComponentStyles,
+}
 
 /**
  * Merges component styles from different sources and passes on the the component as 'styles' prop.
@@ -17,32 +28,46 @@ export type ComponentWithDefaultStyles = React.ComponentType<any> & { defaultSty
  * 3. Themes: From theme.components[componentName] property of current theme.
  * 4. styles prop: The styles prop passed on to the component during usage.
  *
+ * FIXME: This doesn't handle loading state yet. i.e. When async theme is laoding
+ * FIXME: Fix return typing of this function
+ *
  * @param name
  * @param Component
  * @param stylesParam
  */
-export const applyStyles = (name: string, Component: ComponentWithDefaultStyles, stylesParam: ComponentStyles = {}) =>
+export const applyStyles = (name: string, Component: ComponentWithDefaultStyles, stylesParam: ComponentStyles = {})
+: React.ComponentType<any> =>
 {
 
-	return class ThemedComponent extends React.PureComponent<any> {
+	return class ThemedComponent extends React.PureComponent<ThemedComponentProps, ThemedComponentState> {
 
 		static contextType = BlueBaseContext;
 
-		render() {
+		readonly state: ThemedComponentState = {
+			themedStyles: undefined,
+		};
+
+		async componentWillMount() {
 			const BB: BlueBase = (this as any).context;
-			const { styles: stylesProp = {}, ...rest } = this.props;
+
+			const theme = await BB.Themes.resolve(BB.Configs.getValue('theme.name'));
+			const themedStyles = (theme.components[name]) ? theme.components[name] : {};
+
+			this.setState({ themedStyles });
+		}
+
+		render() {
+			const { styles: stylesProp, ...rest } = this.props;
+			const { themedStyles = {} } = this.state;
 
 			const defaultStyles = Component.defaultStyles || {};
-
-			const theme = BB.Themes.get(BB.Configs.getValue('theme'));
-			const themedStyles = (theme && theme.components && theme.components[name]) ? theme.components[name] : {};
 
 			const styles = deepmerge.all([
 				defaultStyles,
 				stylesParam,
 				themedStyles,
-				stylesProp
-			]);
+				stylesProp,
+			].filter(a => !isNil(a)));
 
 			return React.createElement(Component, { ...rest, styles });
 		}

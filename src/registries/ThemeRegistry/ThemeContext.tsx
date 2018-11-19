@@ -17,6 +17,9 @@ export const ThemeContext: React.Context<ThemeProviderState> = createContext(und
 
 /**
  * 🎨 ThemeProvider
+ *
+ * FIXME: This doesn't handle loading state yet. i.e. When async theme is laoding
+ * TODO: Added support for theme input in theme prop
  */
 export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
 
@@ -32,7 +35,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 		// Subscribe to theme config updates
 		if (!this.props.theme) {
 
-			this.subscriptionId = BB.Configs.subscribe('theme', (value) => {
+			this.subscriptionId = BB.Configs.subscribe('theme.name', (value) => {
 				this.setTheme(value, BB);
 			});
 		}
@@ -43,7 +46,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 
 		// Unsubscribe from theme config updates
 		if(this.subscriptionId) {
-			BB.Configs.unsubscribe('theme', this.subscriptionId);
+			BB.Configs.unsubscribe('theme.name', this.subscriptionId);
 			delete this.subscriptionId;
 		}
 	}
@@ -55,10 +58,10 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 	 * @param slug
 	 * @param BB
 	 */
-	setTheme(slug: string | undefined, BB: BlueBase) {
-		const key = slug || BB.Configs.getValue('theme');
+	async setTheme(slug: string | undefined, BB: BlueBase) {
+		const key = slug || BB.Configs.getValue('theme.name');
 
-		const theme = BB.Themes.get(key);
+		const theme = await BB.Themes.resolve(key);
 
 		if (!theme) {
 			throw Error(`Could not set theme. Reason: Theme with the key "${key}" does not exist.`);
@@ -71,8 +74,12 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 
 		const BB: BlueBase = (this as any).context;
 
+		if (!this.state || !this.state.theme) {
+			return null;
+		}
+
 		const value = {
-			changeTheme: (slug: string) => { BB.Configs.register('theme', slug); },
+			changeTheme: (slug: string) => { BB.Configs.register('theme.name', slug); },
 			theme: this.state.theme
 		};
 

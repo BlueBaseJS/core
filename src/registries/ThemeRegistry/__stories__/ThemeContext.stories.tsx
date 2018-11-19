@@ -59,7 +59,7 @@ storiesOf('Themes', module)
 .add('A component with defaultStyles', () => (
 	<BlueBaseConsumer children={(BB: BlueBase) => (
 		<BB.Components.ThemedCard>
-			A card with defaultStyles
+			A card with defaultStyles (Color: Red)
 		</BB.Components.ThemedCard>
 	)} />
 ))
@@ -67,7 +67,7 @@ storiesOf('Themes', module)
 .add('A component with styles from theme', () => (
 	<BlueBaseConsumer children={(BB: BlueBase) => (
 		<BB.Components.ThemedCard2>
-			A Card with styles from the theme
+			A Card with styles from the theme (Color: Green)
 		</BB.Components.ThemedCard2>
 	)} />
 ))
@@ -75,7 +75,7 @@ storiesOf('Themes', module)
 .add('A component with styles from prop', () => (
 	<BlueBaseConsumer children={(BB: BlueBase) => (
 		<BB.Components.ThemedCard2 styles={{ root: { backgroundColor: 'blue' } }}>
-			A Card with styles from the theme
+			A Card with styles from the theme (Color: Blue)
 		</BB.Components.ThemedCard2>
 	)} />
 ))
@@ -83,7 +83,7 @@ storiesOf('Themes', module)
 .add('A component with styles from component registry', () => (
 	<BlueBaseConsumer children={(BB: BlueBase) => (
 		<BB.Components.ThemedCard3>
-			A Card with styles from component registry
+			A Card with styles from component registry (Color: Orange)
 		</BB.Components.ThemedCard3>
 	)} />
 ));

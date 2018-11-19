@@ -1,70 +1,60 @@
-import { BlueBaseModule, MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, isClass } from '../../utils';
-import { Theme, ThemeInput } from '../../models';
+import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule } from '../../utils';
+import { Theme, createTheme } from '../../models';
 import { Registry } from '../Registry';
-import { isThemeInput } from './helpers';
+import kebabCase from 'lodash.kebabcase';
 
 export interface ThemeRegistryItem {
+	/** Name of theme */
 	name: string,
-	theme: BlueBaseModule<Theme>;
+
+	/** Theme slug, used as an ID. Must be unique */
+	slug: string,
+
+	/**
+	 * Theme mode: Either light or dark.
+	 */
+	mode: 'light' | 'dark',
+
+	/**
+	 * Sometimes a user wants to switch to the light/dark version of the same theme.
+	 * This property has the slug of that theme. For example, if this is a light theme,
+	 * this property will have the slug of the dark version, and vice versa.
+	 */
+	alternate?: string,
+
+	/** Theme object */
+	theme: MaybeBlueBaseModuleOrInput<Partial<Theme>>,
 }
 
 /**
  * 🎨 ThemeRegistry
  */
-export class ThemeRegistry extends Registry<Theme> {
+export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 
-	/**
-	 * Registers a Theme. Input can be any of the following:
-	 *
-	 * - A Theme Class
-	 * - An instance of Theme Class
-	 * - An object that has similar properties to a Theme object (ThemeInput)
-	 *
-	 * Moreover all of these can be split into BlueBaseModules
-	 *
-	 * @param theme Input
-	 */
-	public async register(theme: MaybeBlueBaseModuleOrInput<typeof Theme | Theme | ThemeInput>): Promise<void> {
+	public async register(item: MaybeBlueBaseModuleOrInput<ThemeRegistryItem>) {
+		const module = await getDefiniteBlueBaseModule(item).promise;
 
-		if (!theme) {
-			throw Error(`Could not register theme. Reason: No theme provided in ThemeRegistry's register method.`);
+		if (!module.name) {
+			throw Error('Could not register Theme. Reason: name property is required.');
 		}
 
-		theme = await getDefiniteBlueBaseModule(theme).promise;
+		module.slug = kebabCase(module.slug ? module.slug : module.name);
 
-		let finalTheme;
+		this.set(module.slug, module);
+	}
 
-		// If pluign is an instance of Theme class
-		if (theme instanceof Theme) {
-			finalTheme = theme;
+	public async resolve(slug: string): Promise<Theme> {
+		const item = this.get(slug);
+
+		if (!item) {
+			throw Error(`Could not resolve theme. Reason: No theme registered with slug ${slug}.`);
 		}
 
-		// If theme is an object
-		else if (isThemeInput(theme)) {
-			finalTheme = (new Theme(theme));
-		}
+		const theme = await getDefiniteBlueBaseModule(item.theme).promise;
+		const overrides: Partial<Theme> = this.BB.Configs.getValue('theme.overrides');
 
-		// If theme is a Class
-		else if (isClass(theme)) {
-			const classObj = (new (theme as typeof Theme)());
-
-			// If this object is not an instance of Theme,
-			// it means its no a Theme at all.
-			if (classObj instanceof Theme) {
-				finalTheme = classObj;
-			}
-		}
-
-		// If none of the above
-		if(!finalTheme) {
-			throw Error('Could not register theme. Reason: Input variable is not a theme.');
-		}
-
-		// Run setup
-		finalTheme = finalTheme.setup();
-
-		// Save
-		this.set(finalTheme.slug, finalTheme);
+		// We pass through createTheme to make sure if theme has missed some rules, they're provided
+		return createTheme(item.mode, theme, overrides);
 	}
 
 	/**
@@ -74,5 +64,15 @@ export class ThemeRegistry extends Registry<Theme> {
 	public unregister(slug: string) {
 		this.delete(slug);
 		// TODO: Do we force rerender/reboot?
+	}
+
+	public getAlternate(slug: string) {
+		const item = this.get(slug);
+
+		if (item) {
+			return item.alternate;
+		}
+
+		return;
 	}
 }
