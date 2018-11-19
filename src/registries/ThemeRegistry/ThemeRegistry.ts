@@ -1,5 +1,5 @@
 import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule } from '../../utils';
-import { Theme, createTheme } from '../../models';
+import { Theme, ThemeInput, createTheme } from '../../models';
 import { Registry } from '../Registry';
 import kebabCase from 'lodash.kebabcase';
 
@@ -23,7 +23,7 @@ export interface ThemeRegistryItem {
 	alternate?: string,
 
 	/** Theme object */
-	theme: MaybeBlueBaseModuleOrInput<Partial<Theme>>,
+	theme: MaybeBlueBaseModuleOrInput<ThemeInput>,
 }
 
 export type ThemeItemCollection = Array<MaybeBlueBaseModuleOrInput<ThemeRegistryItem>>;
@@ -59,7 +59,7 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 		}
 
 		const theme = await getDefiniteBlueBaseModule(item.theme).promise;
-		const overrides: Partial<Theme> = this.BB.Configs.getValue('theme.overrides');
+		const overrides: ThemeInput = this.BB.Configs.getValue('theme.overrides');
 
 		// We pass through createTheme to make sure if theme has missed some rules, they're provided
 		return createTheme(item.mode, theme, overrides);

@@ -1,4 +1,4 @@
-import { Theme } from '../../models';
+import { ThemeInput } from '../../models';
 
 export interface BlueBaseConfigs {
 
@@ -29,7 +29,7 @@ export interface BlueBaseConfigs {
 	/**
 	 * Overrides for any selected theme. These overrides are applied to all themes.
 	 */
-	'theme.overrides': Partial<Theme>,
+	'theme.overrides': ThemeInput,
 
 	// others
 	[key: string]: any,

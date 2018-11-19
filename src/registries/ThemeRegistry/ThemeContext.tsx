@@ -1,11 +1,12 @@
 import React, { createContext } from 'react';
+import { Theme, ThemeInput } from '../../models';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
-import { Theme } from '../../models';
+import deepmerge  from 'deepmerge';
 
 export interface ThemeProviderProps {
 	theme?: string;
-	overrides?: Partial<Theme>;
+	overrides?: ThemeInput;
 	children: React.ReactNode,
 }
 
@@ -18,7 +19,7 @@ export const ThemeContext: React.Context<ThemeProviderState> = createContext(und
 /**
  * 🎨 ThemeProvider
  *
- * FIXME: This doesn't handle loading state yet. i.e. When async theme is laoding
+ * FIXME: This doesn't handle loading state yet. i.e. When async theme is loading
  * TODO: Added support for theme input in theme prop
  */
 export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
@@ -30,13 +31,15 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 
 	async componentWillMount() {
 		const BB: BlueBase = (this as any).context;
-		this.setTheme(this.props.theme, BB);
+		const { theme, overrides = {} } = this.props;
+
+		this.setTheme(theme, overrides, BB);
 
 		// Subscribe to theme config updates
-		if (!this.props.theme) {
+		if (!theme) {
 
 			this.subscriptionId = BB.Configs.subscribe('theme.name', (value) => {
-				this.setTheme(value, BB);
+				this.setTheme(value, overrides, BB);
 			});
 		}
 	}
@@ -58,16 +61,16 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 	 * @param slug
 	 * @param BB
 	 */
-	async setTheme(slug: string | undefined, BB: BlueBase) {
+	async setTheme(slug: string | undefined, overrides: ThemeInput, BB: BlueBase) {
 		const key = slug || BB.Configs.getValue('theme.name');
 
 		const theme = await BB.Themes.resolve(key);
 
 		if (!theme) {
-			throw Error(`Could not set theme. Reason: Theme with the key "${key}" does not exist.`);
+			throw Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`);
 		}
 
-		this.setState({ theme });
+		this.setState({ theme: deepmerge(theme, overrides) as Theme });
 	}
 
 	render() {

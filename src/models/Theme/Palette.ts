@@ -37,3 +37,13 @@ export interface Palette {
 	text: TypeText;
 	background: TypeBackground;
 }
+
+export interface PaletteInput {
+	primary?: Partial<PaletteColor>;
+	secondary?: Partial<PaletteColor>;
+	error?: Partial<PaletteColor>;
+	action?: Partial<TypeAction>;
+	divider?: TypeDivider;
+	text?: Partial<TypeText>;
+	background?: Partial<TypeBackground>;
+}

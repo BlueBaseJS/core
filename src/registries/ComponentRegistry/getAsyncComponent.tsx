@@ -7,10 +7,6 @@ export function getAsyncComponent(componentPromise: Promise<React.ComponentType<
 	return Loadable({
 		loader: () => componentPromise,
 		loading: ReactLoadableLoading,
-
-		// render(Component: React.ComponentType<any>, props: any) {
-		// 	return <Component {...props} />;
-		// }
 	});
 }
 

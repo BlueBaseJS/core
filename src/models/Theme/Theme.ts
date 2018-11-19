@@ -1,11 +1,6 @@
+import { Palette, PaletteInput } from './Palette';
 import { TextStyle, ViewStyle } from 'react-native';
-import { Palette } from './Palette';
-import { ThemeTypography } from './Typography';
-
-// TODO: Do we need this now?
-export interface ThemeInput extends Pick<Theme, Exclude<keyof Theme, 'slug'>> {
-	slug?: string;
-}
+import { ThemeTypography, ThemeTypographyInput } from './Typography';
 
 export interface ComponentStyles {
 
@@ -36,4 +31,12 @@ export interface Theme {
 	palette: Palette;
 
 	[key: string]: any,
+}
+
+export interface ThemeInput {
+	components?: Theme['components'],
+	shape?: Partial<Theme['shape']>,
+	spacing?: Partial<Theme['spacing']>,
+	typography?: ThemeTypographyInput,
+	palette?: PaletteInput,
 }

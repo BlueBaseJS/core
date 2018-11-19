@@ -8,7 +8,9 @@ export interface ErrorStateProps {
 	retry?: () => void,
 }
 
-// TODO: show actual error in dev mode
+/**
+ * 🚨 ErrorState
+ */
 export class ErrorState extends React.PureComponent<ErrorStateProps> {
 
 	render() {

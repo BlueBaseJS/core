@@ -17,6 +17,16 @@ storiesOf('ThemeContext', module)
 	)} />
 ))
 
+.add('Basic Example with overrides', () => (
+	<BlueBaseConsumer children={(BB: BlueBase) => (
+		<ThemeProvider theme="bluebase-dark" overrides={{ palette: { background: { default: 'red' } } }}>
+			<BB.Components.View style={{ margin: 8 }}>
+				<ThemeDemo />
+			</BB.Components.View>
+		</ThemeProvider>
+	)} />
+))
+
 .add('Nested Theme', () => (
 	<BlueBaseConsumer children={(BB: BlueBase) => (
 		<BB.Components.View>
