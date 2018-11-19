@@ -1,6 +1,8 @@
 import { BlueBase, BlueBaseContext } from '../../../';
 import { TextStyle, ViewStyle } from 'react-native';
+import { MaybeThunk } from '../../../utils';
 import React from 'react';
+import { Theme } from '../../../models';
 
 export interface ThemedCardProps {
 	styles?: {
@@ -13,20 +15,21 @@ export class ThemedCard extends React.PureComponent<ThemedCardProps> {
 
 	static contextType = BlueBaseContext;
 
-	static defaultStyles: { root: ViewStyle, text: TextStyle } = {
+	static defaultStyles: MaybeThunk<{ root: ViewStyle, text: TextStyle }> = (theme: Theme) => ({
 		root: {
-			backgroundColor: 'red',
-			borderRadius: 5,
+			backgroundColor: theme.palette.background.card,
+			borderRadius: theme.shape.borderRadius,
 			height: 150,
 			justifyContent: 'center',
+			padding: theme.spacing.unit,
 			width: 150,
 		},
 
 		text: {
-			color: 'white',
+			color: theme.palette.text.primary,
 			textAlign: 'center',
 		}
-	};
+	})
 
 	render() {
 		const BB: BlueBase = (this as any).context;

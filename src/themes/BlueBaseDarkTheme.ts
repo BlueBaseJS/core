@@ -2,8 +2,8 @@ import { ThemeRegistryItem } from '../registries';
 
 export const BlueBaseDarkTheme: ThemeRegistryItem = {
 	mode: 'light',
-	name: 'BlueBase Light',
-	slug: 'bluebase-light',
+	name: 'BlueBase Dark',
+	slug: 'bluebase-dark',
 	theme: {
 		components: {},
 		palette: {

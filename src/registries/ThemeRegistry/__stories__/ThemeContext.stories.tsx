@@ -58,9 +58,12 @@ storiesOf('Themes', module)
 
 .add('A component with defaultStyles', () => (
 	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.ThemedCard>
-			A card with defaultStyles (Color: Red)
-		</BB.Components.ThemedCard>
+		<BB.Components.View>
+			<BB.Components.ThemedCard>
+				A card with defaultStyles
+			</BB.Components.ThemedCard>
+			<ThemePicker />
+		</BB.Components.View>
 	)} />
 ))
 
