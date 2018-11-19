@@ -26,6 +26,8 @@ export interface ThemeRegistryItem {
 	theme: MaybeBlueBaseModuleOrInput<Partial<Theme>>,
 }
 
+export type ThemeItemCollection = Array<MaybeBlueBaseModuleOrInput<ThemeRegistryItem>>;
+
 /**
  * 🎨 ThemeRegistry
  */
@@ -41,6 +43,12 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 		module.slug = kebabCase(module.slug ? module.slug : module.name);
 
 		this.set(module.slug, module);
+	}
+
+	public async registerCollection(themes: ThemeItemCollection) {
+		for (const theme of themes) {
+			await this.register(theme);
+		}
 	}
 
 	public async resolve(slug: string): Promise<Theme> {

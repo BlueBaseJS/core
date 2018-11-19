@@ -5,6 +5,7 @@ import {
 	HookCollection,
 	HookRegistry,
 	PluginRegistry,
+	ThemeItemCollection,
 	ThemeProvider,
 	ThemeRegistry,
 } from './registries';
@@ -15,7 +16,6 @@ import { Logger } from './api';
 import { MaybeBlueBaseModuleOrInput } from './utils';
 import { Plugin } from './models/Plugin';
 import React from 'react';
-import { ThemeInput } from './models';
 import systemHooks from './hooks';
 
 export interface BootOptions {
@@ -23,7 +23,7 @@ export interface BootOptions {
 	configs: ConfigsCollection,
 	hooks: HookCollection,
 	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>,
-	theme: ThemeInput,
+	themes: ThemeItemCollection,
 	// routes: Plugin[]
 }
 
@@ -47,7 +47,7 @@ export class BlueBase {
 		configs: {},
 		hooks: {},
 		plugins: [],
-		theme: {},
+		themes: [],
 	};
 
 	public async boot(options?: Partial<BootOptions>) {

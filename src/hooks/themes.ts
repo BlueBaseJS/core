@@ -13,6 +13,7 @@ export const themes: { [key: string]: HookInput[] } = {
 
 			await BB.Themes.register(BlueBaseLightTheme);
 			await BB.Themes.register(BlueBaseDarkTheme);
+			await BB.Themes.registerCollection(bootOptions.themes);
 
 			return bootOptions;
 		},
