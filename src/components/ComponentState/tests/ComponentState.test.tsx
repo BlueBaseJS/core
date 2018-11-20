@@ -1,5 +1,6 @@
-import * as Component from '../..';
+// import * as Component from '../..';
 import * as Native from '../../../native';
+import { BlueBase } from '../../../BlueBase';
 import { ComponentState } from '../ComponentState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
@@ -8,12 +9,10 @@ beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = {
-	Components: {
-		...Component,
-		...Native
-	}
-};
+const BB = new BlueBase();
+BB.Components.register('View', Native.View);
+BB.Components.register('Text', Native.Text);
+BB.Components.register('Image', Native.Image);
 const mockContext = jest.fn();
 
 jest.mock('../../../Context', () => ({
