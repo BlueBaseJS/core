@@ -1,5 +1,6 @@
 import * as Component from '../..';
 import { BlueBase } from '../../../BlueBase';
+import { BlueBaseProvider } from '../../../Context';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
@@ -8,23 +9,21 @@ beforeEach(() => {
 	jest.resetModules();
 });
 
-const mockContext = jest.fn();
 const BB = new BlueBase();
 
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
 
 describe('PluginIcon', () => {
-	beforeEach(() => {
-		mockContext.mockReset();
-	});
+	const PluginIconWithProvider = (props: any) => (
+		<BlueBaseProvider value={BB}>
+			<PluginIcon {...props}/>
+		</BlueBaseProvider>
+	);
 
 	it(`Snapshot PluginIcon component with no plugin registered`, async () => {
 
 		try {
 			const component = TestRenderer.create(
-				<PluginIcon slug="dummy-plugin" />
+				<PluginIconWithProvider slug="dummy-plugin" />
 			);
 			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
@@ -39,7 +38,7 @@ describe('PluginIcon', () => {
 			slug: 'dummy-plugin',
 		});
 		const component = TestRenderer.create(
-			<PluginIcon slug="dummy-plugin" />
+			<PluginIconWithProvider slug="dummy-plugin" />
 		);
 		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
@@ -56,7 +55,7 @@ describe('PluginIcon', () => {
 			slug: 'dummy-plugin',
 		});
 		const component = TestRenderer.create(
-			<PluginIcon slug="dummy-plugin" />
+			<PluginIconWithProvider slug="dummy-plugin" />
 		);
 		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
