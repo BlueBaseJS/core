@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import { MaybeRenderPropChildren } from '../../utils';
 import { Noop } from '../Noop';
 
+// TODO: fix for react-native, this is web only component
 interface MouseEventObject {
 	e: SyntheticEvent,
 	setIsHovering: () => void,

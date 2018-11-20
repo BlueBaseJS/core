@@ -1,4 +1,3 @@
-// import * as Component from '../..';
 import * as Native from '../../../native';
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseProvider } from '../../../Context';
@@ -23,9 +22,6 @@ describe('ComponentState', () => {
 			<ComponentState {...props}/>
 		</BlueBaseProvider>
 	);
-	beforeEach(() => {
-		// mockContext.mockReset();
-	});
 
 	test(`Snapshot ComponentState component`, () => {
 		const component = TestRenderer.create(
