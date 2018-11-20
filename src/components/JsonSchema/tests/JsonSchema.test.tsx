@@ -1,6 +1,6 @@
-// import * as Component from '../..';
 import * as Native from '../../../native';
 import { BlueBase } from '../../../BlueBase';
+import { BlueBaseProvider } from '../../../Context';
 import { JsonSchema } from '../JsonSchema';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
@@ -10,23 +10,17 @@ beforeEach(() => {
 });
 
 const BB = new BlueBase();
-// BB.Components.register('View', Native.View);
 BB.Components.register('Text', Native.Text);
-// BB.Components.register('Image', Native.Image);
-const mockContext = jest.fn();
-
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
 
 describe('JsonSchema', () => {
-	beforeEach(() => {
-		mockContext.mockReset();
-	});
-
+	const JsonSchemaWithProvider = (props: any) => (
+		<BlueBaseProvider value={BB}>
+			<JsonSchema {...props}/>
+		</BlueBaseProvider>
+	);
 	test(`Snapshot ComponentState component`, () => {
 		const component = TestRenderer.create(
-			<JsonSchema schema={{
+			<JsonSchemaWithProvider schema={{
 				component: 'Text',
 				props: {
 					style: {
@@ -36,7 +30,7 @@ describe('JsonSchema', () => {
 				text: 'This componenet is generated through JsonSchema Component',
 			}}/>
 		);
-		const tree = component.toTree();
+		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 });
