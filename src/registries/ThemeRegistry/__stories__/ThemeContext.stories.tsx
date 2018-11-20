@@ -15,7 +15,7 @@ storiesOf('ThemeContext', module)
 			<ThemeDemo />
 		</BB.Components.View>
 	)} />
-))
+), { info: { inline: true } })
 
 .add('Basic Example with overrides', () => (
 	<BlueBaseConsumer children={(BB: BlueBase) => (
