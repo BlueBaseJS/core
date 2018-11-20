@@ -1,1 +1,1 @@
-export { Image } from 'react-native';
+export { Image, ImageProps } from 'react-native';

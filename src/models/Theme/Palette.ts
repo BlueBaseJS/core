@@ -3,6 +3,7 @@ export interface TypeText {
 	secondary: string;
 	disabled: string;
 	hint: string;
+	icon: string;
 }
 
 export interface PaletteColor {
