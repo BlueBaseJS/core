@@ -1,5 +1,7 @@
 import * as Component from '../..';
 import * as Native from '../../../native';
+import { BlueBase } from '../../../BlueBase';
+import { BlueBaseProvider } from '../../../Context';
 import { LoadingState } from '../LoadingState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
@@ -8,55 +10,55 @@ beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = {
-	Components: {
-		...Component,
-		...Native
-	}
-};
-const mockContext = jest.fn();
-
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
+const BB = new BlueBase();
+BB.Components.register('ComponentState', Component.ComponentState);
+BB.Components.register('View', Native.View);
+BB.Components.register('Text', Native.Text);
+BB.Components.register('ErrorObserver', Component.ErrorObserver);
+BB.Components.register('DataObserver', Component.DataObserver);
+BB.Components.register('ErrorState', Component.ErrorState);
+BB.Components.register('ActivityIndicator', Native.ActivityIndicator);
+BB.Components.register('Button', Native.Button);
 
 describe('LoadingState', () => {
-	beforeEach(() => {
-		mockContext.mockReset();
-	});
+	const LoadingStateWithProvider = (props: any) => (
+		<BlueBaseProvider value={BB}>
+			<LoadingState {...props}/>
+		</BlueBaseProvider>
+	);
 
 	test(`Snapshot LoadingState component`, () => {
 		const component = TestRenderer.create(
-			<LoadingState />
+			<LoadingStateWithProvider />
 		);
-		const tree = component.toTree();
+		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	test(`Snapshot LoadingState component with timedOut: true`, () => {
 		const component = TestRenderer.create(
-			<LoadingState timedOut={true} />
+			<LoadingStateWithProvider timedOut={true} />
 		);
-		const tree = component.toTree();
+		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	test(`Snapshot LoadingState component with timedOut: false`, () => {
 
 		const component = TestRenderer.create(
-			<LoadingState timedOut={false} />
+			<LoadingStateWithProvider timedOut={false} />
 		);
-		const tree = component.toTree();
+		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	test(`Snapshot LoadingState component with timedOut: true and retry mocked function`, () => {
 		const mockedFn = jest.fn();
 		const component = TestRenderer.create(
-			<LoadingState timedOut={true} retry={mockedFn} />
+			<LoadingStateWithProvider timedOut={true} retry={mockedFn} />
 		);
 		component.root.findByType(Native.Button).props.onPress();
-		const tree = component.toTree();
-		expect(tree? tree.props.retry: tree).toBeCalled();
+		const tree: any = component.toJSON();
+		expect(tree).toMatchSnapshot();
 	});
 });
