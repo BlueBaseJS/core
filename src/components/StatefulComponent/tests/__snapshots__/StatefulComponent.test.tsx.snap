@@ -3,10 +3,10 @@
 exports[`StatefulComponent Snapshot StatefulComponent component 1`] = `
 <View>
   <Text>
-    Empty area
+    Something broke!
   </Text>
   <Text>
-    No data found.
+    An unknown error has occured. Please try again later.
   </Text>
 </View>
 `;
@@ -14,14 +14,32 @@ exports[`StatefulComponent Snapshot StatefulComponent component 1`] = `
 exports[`StatefulComponent Snapshot StatefulComponent component with child 1`] = `
 <View>
   <Text>
-    Empty area
+    Something broke!
   </Text>
   <Text>
-    No data found.
+    An unknown error has occured. Please try again later.
   </Text>
 </View>
 `;
 
-exports[`StatefulComponent Snapshot StatefulComponent component with child, isEmpty: () => true 1`] = `null`;
+exports[`StatefulComponent Snapshot StatefulComponent component with child, isEmpty: () => true 1`] = `
+<View>
+  <Text>
+    Something broke!
+  </Text>
+  <Text>
+    An unknown error has occured. Please try again later.
+  </Text>
+</View>
+`;
 
-exports[`StatefulComponent Snapshot StatefulComponent component with child, loading: true 1`] = `null`;
+exports[`StatefulComponent Snapshot StatefulComponent component with child, loading: true 1`] = `
+<View>
+  <Text>
+    Something broke!
+  </Text>
+  <Text>
+    An unknown error has occured. Please try again later.
+  </Text>
+</View>
+`;
