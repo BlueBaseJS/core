@@ -26,7 +26,7 @@ export class PluginIcon extends React.PureComponent<PluginIconProps> {
 					}
 
 					if (!plugin.icon) {
-						return;
+						return null;
 					}
 
 					const iconProps = resolveThunk(plugin.icon, plugin, BB);
