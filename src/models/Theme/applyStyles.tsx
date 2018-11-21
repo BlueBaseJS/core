@@ -1,9 +1,9 @@
 import { ComponentStyles, Theme } from './Theme';
+import { MaybeThunk, resolveThunk } from '../../utils';
 import React from 'react';
 import { ThemeContext } from '../../registries';
 import deepmerge from 'deepmerge';
 import isNil from 'lodash.isnil';
-import { resolveThunk } from '../../utils';
 
 export type ComponentWithDefaultStyles = React.ComponentType<any> & { defaultStyles?: ComponentStyles };
 
@@ -30,7 +30,10 @@ export interface ThemedComponentProps {
  * @param Component
  * @param stylesParam
  */
-export const applyStyles = (name: string, Component: ComponentWithDefaultStyles, stylesParam: ComponentStyles = {})
+export const applyStyles = (
+	name: string,
+	Component: ComponentWithDefaultStyles,
+	stylesParam: MaybeThunk<ComponentStyles> = {})
 : React.ComponentType<any> =>
 {
 
@@ -52,7 +55,7 @@ export const applyStyles = (name: string, Component: ComponentWithDefaultStyles,
 						stylesProp,
 					]
 					.filter(a => !isNil(a))
-					.map(a => resolveThunk(a, theme));
+					.map(a => a && resolveThunk(a, theme));
 
 					const styles = deepmerge.all(stylesArr);
 

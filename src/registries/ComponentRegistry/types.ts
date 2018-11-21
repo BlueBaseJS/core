@@ -1,4 +1,4 @@
-import { BlueBaseModule, MaybeBlueBaseModuleOrInput } from '../../utils';
+import { BlueBaseModule, MaybeBlueBaseModuleOrInput, MaybeThunk } from '../../utils';
 import { ComponentStyles } from '../../models';
 import React from 'react';
 
@@ -21,10 +21,10 @@ export interface ComponentSource {
 
 
 export interface ComponentRegistryItemBase {
-	hocs: ComponentRegistryHocItem[]; // TODO: maybe each HOC should also be a BlueBaseModule?
+	hocs: ComponentRegistryHocItem[];
 	source?: ComponentSource;
 
-	styles?: ComponentStyles;
+	styles?: MaybeThunk<ComponentStyles>;
 	isAsync: boolean;
 	preload: boolean;
 }

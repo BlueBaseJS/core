@@ -8,6 +8,7 @@ const typography = createTypography(palette);
 const theme = createTheme(palette, typography);
 
 export const BlueBaseDarkTheme: ThemeRegistryItem = {
+	alternate: 'bluebase-light',
 	mode: 'dark',
 	name: 'BlueBase Dark',
 	slug: 'bluebase-dark',

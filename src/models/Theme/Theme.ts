@@ -1,11 +1,12 @@
+import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { Palette, PaletteInput } from './Palette';
-import { TextStyle, ViewStyle } from 'react-native';
 import { ThemeTypography, ThemeTypographyInput } from './Typography';
+import { MaybeThunk } from '../../utils';
 
 export interface ComponentStyles {
 
 	// rule
-	[key: string]: ViewStyle | TextStyle | any;
+	[key: string]: ViewStyle | TextStyle | ImageStyle | { [prop: string]: string };
 }
 
 export interface Theme {
@@ -13,7 +14,7 @@ export interface Theme {
 	components: {
 
 		// component name
-		[key: string]: ComponentStyles
+		[key: string]: MaybeThunk<ComponentStyles>
 	};
 
 	shape: {

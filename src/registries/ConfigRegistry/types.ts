@@ -17,7 +17,10 @@ export interface BlueBaseConfigs {
 	/** Development mode */
 	development: boolean,
 
-	/** Name of selected theme */
+	/**
+	 * Name of selected theme.
+	 * FIXME: This key contains the slug, but is called name. This is confusing.
+	 */
 	'theme.name': string,
 
 	/**

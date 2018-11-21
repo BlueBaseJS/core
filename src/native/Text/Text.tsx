@@ -8,8 +8,8 @@ export interface TextProps extends NativeTextProps {
 	}
 }
 
-export const Text = ({ styles, style, ...rest }: TextProps) => (
+export const Text: React.ComponentType<TextProps> = ({ styles, style, ...rest }: TextProps) => (
 	<NativeText style={[styles && styles.root, style]} {...rest} />
 );
 
-Text.defaultStyles = (theme: Theme) => ({ root: theme.typography.body1 });
+(Text as any).defaultStyles = (theme: Theme) => ({ root: theme.typography.body1 });
