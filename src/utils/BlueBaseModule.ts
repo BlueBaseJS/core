@@ -73,9 +73,9 @@ export class BlueBaseModule<T> {
 	 */
 	public isAsync: boolean = false;
 
-	constructor(input: BlueBaseModuleInput<T>) {
+	constructor(input: T) {
 
-		this.module = getDefiniteModule(input);
+		this.module = getDefiniteModule(input as BlueBaseModuleInput<T>);
 
 		if (isPromise(this.module)) {
 			this.isAsync = true;

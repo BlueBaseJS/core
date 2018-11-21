@@ -1,6 +1,6 @@
 import { BlueBaseModule, getDefiniteBlueBaseModule } from '../BlueBaseModule';
 
-describe('Utils', () => {
+describe.only('Utils', () => {
 
 	describe('BlueBaseModule', () => {
 
@@ -14,7 +14,7 @@ describe('Utils', () => {
 
 		it('should process an ES module', async () => {
 
-			const module = new BlueBaseModule({ default: { foo: 'bar' }, __esModule: true });
+			const module = new BlueBaseModule({ default: { foo: 'bar' }, __esModule: true } as any);
 
 			const obj = await module.promise;
 			expect(obj.foo).toBe('bar');
@@ -30,7 +30,7 @@ describe('Utils', () => {
 
 		it('should process an ES module in a promise', async () => {
 
-			const module = new BlueBaseModule(Promise.resolve({ default: { foo: 'bar' }, __esModule: true }));
+			const module = new BlueBaseModule(Promise.resolve({ default: { foo: 'bar' }, __esModule: true }) as any);
 
 			const obj = await module.promise;
 			expect(obj.foo).toBe('bar');
