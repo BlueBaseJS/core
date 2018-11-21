@@ -26,6 +26,9 @@ export interface ThemeRegistryItem {
 	theme: MaybeBlueBaseModuleOrInput<ThemeInput>,
 }
 
+/**
+ * A collection (array) of themes. Each theme in this collection maybe a BlueBaseModule.
+ */
 export type ThemeItemCollection = Array<MaybeBlueBaseModuleOrInput<ThemeRegistryItem>>;
 
 /**
@@ -33,6 +36,10 @@ export type ThemeItemCollection = Array<MaybeBlueBaseModuleOrInput<ThemeRegistry
  */
 export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 
+	/**
+	 * Register a ThemeRegistryItem
+	 * @param item 
+	 */
 	public async register(item: MaybeBlueBaseModuleOrInput<ThemeRegistryItem>) {
 		const module = await getDefiniteBlueBaseModule(item).promise;
 
@@ -45,12 +52,19 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 		this.set(module.slug, module);
 	}
 
+	/**
+	 * Register a ThemeItemCollection
+	 */
 	public async registerCollection(themes: ThemeItemCollection) {
 		for (const theme of themes) {
 			await this.register(theme);
 		}
 	}
 
+	/**
+	 * Resolve a theme
+	 * @param slug 
+	 */
 	public async resolve(slug: string): Promise<Theme> {
 		const item = this.get(slug);
 
@@ -71,9 +85,12 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 	 */
 	public unregister(slug: string) {
 		this.delete(slug);
-		// TODO: Do we force rerender/reboot?
 	}
 
+	/**
+	 * Get alternate version of current theme
+	 * @param slug 
+	 */
 	public getAlternate(slug: string) {
 		const item = this.get(slug);
 
