@@ -1,5 +1,4 @@
 import { ActivityIndicatorProps, ImageProps, TextProps, ViewProps } from '../../native';
-import { BlueBaseConsumer } from '../../Context';
 import {
 	BlueBaseHookProps,
 	ComponentStateProps,
@@ -15,6 +14,7 @@ import {
 	WaitObserverProps,
 } from '../../components';
 import { BlueBase } from '../../BlueBase';
+import { BlueBaseConsumer } from '../../Context';
 import { ButtonProps } from '../../ui-interfaces';
 import React from 'react';
 
