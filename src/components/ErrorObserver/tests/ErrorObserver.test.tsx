@@ -1,22 +1,18 @@
-// import * as Component from '../..';
 import * as Native from '../../../native';
-import { BlueBase } from '../../../BlueBase';
-import { BlueBaseProvider } from '../../../Context';
 import { ErrorObserver } from '../ErrorObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = new BlueBase();
-
 describe('ErrorObserver', () => {
 	const ErrorObserverWithProvider = (props: any) => (
-		<BlueBaseProvider value={BB}>
+		<WithProvider>
 			<ErrorObserver {...props}/>
-		</BlueBaseProvider>
+		</WithProvider>
 	);
 
 	test(`Snapshot ErrorObserver`, () => {

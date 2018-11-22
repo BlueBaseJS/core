@@ -1,28 +1,18 @@
-import * as Component from '../..';
 import * as Native from '../../../native';
-import { BlueBase } from '../../../BlueBase';
-import { BlueBaseProvider } from '../../../Context';
 import React from 'react';
 import { StatefulComponent } from '../StatefulComponent';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = new BlueBase();
-BB.Components.register('ComponentState', Component.ComponentState);
-BB.Components.register('View', Native.View);
-BB.Components.register('Text', Native.Text);
-BB.Components.register('ErrorObserver', Component.ErrorObserver);
-BB.Components.register('DataObserver', Component.DataObserver);
-BB.Components.register('ErrorState', Component.ErrorState);
-
 describe('StatefulComponent', () => {
 	const StatefulComponentWithProvider = (props: any) => (
-		<BlueBaseProvider value={BB}>
+		<WithProvider>
 			<StatefulComponent {...props}/>
-		</BlueBaseProvider>
+		</WithProvider>
 	);
 
 	test(`Snapshot StatefulComponent component`, () => {
@@ -36,7 +26,7 @@ describe('StatefulComponent', () => {
 	test(`Snapshot StatefulComponent component with child`, () => {
 		const component = TestRenderer.create(
 			<StatefulComponentWithProvider>
-				<BB.Components.Text>Hello</BB.Components.Text>
+				<Native.Text>Hello</Native.Text>
 			</StatefulComponentWithProvider>
 		);
 		const tree = component.toJSON();
@@ -46,7 +36,7 @@ describe('StatefulComponent', () => {
 	test(`Snapshot StatefulComponent component with child, loading: true`, () => {
 		const component = TestRenderer.create(
 			<StatefulComponentWithProvider loading={true}>
-				<BB.Components.Text>Hello</BB.Components.Text>
+				<Native.Text>Hello</Native.Text>
 			</StatefulComponentWithProvider>
 		);
 		const tree = component.toJSON();
@@ -56,7 +46,7 @@ describe('StatefulComponent', () => {
 	test(`Snapshot StatefulComponent component with child, isEmpty: () => true`, () => {
 		const component = TestRenderer.create(
 			<StatefulComponentWithProvider isEmpty={() => true} loading={true}>
-				<BB.Components.Text>Hello</BB.Components.Text>
+				<Native.Text>Hello</Native.Text>
 			</StatefulComponentWithProvider>
 		);
 		const tree = component.toJSON();

@@ -1,30 +1,18 @@
-import * as Component from '../..';
 import * as Native from '../../../native';
-import { BlueBase } from '../../../BlueBase';
-import { BlueBaseProvider } from '../../../Context';
 import { LoadingState } from '../LoadingState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = new BlueBase();
-BB.Components.register('ComponentState', Component.ComponentState);
-BB.Components.register('View', Native.View);
-BB.Components.register('Text', Native.Text);
-BB.Components.register('ErrorObserver', Component.ErrorObserver);
-BB.Components.register('DataObserver', Component.DataObserver);
-BB.Components.register('ErrorState', Component.ErrorState);
-BB.Components.register('ActivityIndicator', Native.ActivityIndicator);
-BB.Components.register('Button', Native.Button);
-
 describe('LoadingState', () => {
 	const LoadingStateWithProvider = (props: any) => (
-		<BlueBaseProvider value={BB}>
+		<WithProvider>
 			<LoadingState {...props}/>
-		</BlueBaseProvider>
+		</WithProvider>
 	);
 
 	test(`Snapshot LoadingState component`, () => {

@@ -1,25 +1,17 @@
-import * as Component from '../..';
-import * as Native from '../../../native';
-import { BlueBase } from '../../../BlueBase';
-import { BlueBaseProvider } from '../../../Context';
 import { ErrorState } from '../ErrorState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = new BlueBase();
-BB.Components.register('Text', Native.Text);
-BB.Components.register('View', Native.View);
-BB.Components.register('ComponentState', Component.ComponentState);
-
 describe('ErrorState', () => {
 	const ErrorStateWithProvider = (props: any) => (
-		<BlueBaseProvider value={BB}>
+		<WithProvider>
 			<ErrorState {...props} />
-		</BlueBaseProvider>
+		</WithProvider>
 	);
 
 	test(`Snapshot ErrorState`, () => {

@@ -3,10 +3,10 @@
 exports[`StatefulComponent Snapshot StatefulComponent component 1`] = `
 <View>
   <Text>
-    Something broke!
+    Empty area
   </Text>
   <Text>
-    An unknown error has occured. Please try again later.
+    No data found.
   </Text>
 </View>
 `;
@@ -14,10 +14,10 @@ exports[`StatefulComponent Snapshot StatefulComponent component 1`] = `
 exports[`StatefulComponent Snapshot StatefulComponent component with child 1`] = `
 <View>
   <Text>
-    Something broke!
+    Empty area
   </Text>
   <Text>
-    An unknown error has occured. Please try again later.
+    No data found.
   </Text>
 </View>
 `;

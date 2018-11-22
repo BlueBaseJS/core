@@ -2,8 +2,7 @@
 
 exports[`DataObserver Snapshot DataObserver component data={['a', 'b']} 1`] = `
 <Text>
-  a
-  b
+  Text as a children
 </Text>
 `;
 

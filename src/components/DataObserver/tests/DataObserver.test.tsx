@@ -1,28 +1,19 @@
 import * as Component from '../../../components';
 import * as Native from '../../../native';
-import { BlueBase } from '../../../BlueBase';
-import { BlueBaseProvider } from '../../../Context';
 import { DataObserver } from '../DataObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = new BlueBase();
-BB.Components.register('View', Native.View);
-BB.Components.register('Text', Native.Text);
-BB.Components.register('Image', Native.Image);
-BB.Components.register('LoadingState', Component.LoadingState);
-BB.Components.register('ActivityIndicator', Native.ActivityIndicator);
-BB.Components.register('ComponentState', Component.ComponentState);
-
 describe('DataObserver', () => {
 	const DataObserverWithProvider = (props: any) => (
-		<BlueBaseProvider value={BB}>
-			<DataObserver {...props}/>
-		</BlueBaseProvider>
+		<WithProvider>
+			<DataObserver {...props} />
+		</WithProvider>
 	);
 
 	test(`Snapshot DataObserver component with Text`, () => {
@@ -40,9 +31,9 @@ describe('DataObserver', () => {
 			<DataObserverWithProvider isEmpty={() => false} isLoading={() => true}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
@@ -56,9 +47,9 @@ describe('DataObserver', () => {
 			<DataObserverWithProvider isEmpty={() => true} isLoading={() => false}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
@@ -72,9 +63,9 @@ describe('DataObserver', () => {
 			<DataObserverWithProvider isEmpty={() => false} isLoading={() => false}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
@@ -88,9 +79,9 @@ describe('DataObserver', () => {
 			<DataObserverWithProvider isEmpty={() => false} loading={true}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
@@ -104,9 +95,9 @@ describe('DataObserver', () => {
 			<DataObserverWithProvider data={[]} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
@@ -120,9 +111,9 @@ describe('DataObserver', () => {
 			<DataObserverWithProvider data={['a', 'b']} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>{data.data}</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
@@ -136,9 +127,9 @@ describe('DataObserver', () => {
 			<DataObserverWithProvider loading={true} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>{data.data}</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
@@ -154,9 +145,9 @@ describe('DataObserver', () => {
 			}} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>{data.data}</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
 			</DataObserverWithProvider>
