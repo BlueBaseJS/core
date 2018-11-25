@@ -11,11 +11,16 @@ export interface AnalyticTrackData {
 	 * as selection criteria when you create a segment.
 	 */
 	attributes?: { [key: string]: string },
+
+	/** Custom metrics that your app reports to analytics providers (i.e. AWS Pinpoint) */
 	metrics?: { [key: string]: number },
 
 	[key: string]: any,
 }
 
+/**
+ * 📈 Analytics API
+ */
 export class Analytics {
 
 	constructor(private BB: BlueBase) {

@@ -5,7 +5,7 @@ import { BlueBase } from '../../BlueBase';
 
 describe('Analytics', () => {
 
-	it('should register a Plugin', async () => {
+	it('should send track data through hook', async () => {
 		const BB = new BlueBase();
 		const testData: AnalyticTrackData = {
 			name: 'click',

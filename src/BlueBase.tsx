@@ -1,3 +1,4 @@
+import { Analytics, Logger } from './api';
 import {
 	ComponentRegistry,
 	ConfigRegistry,
@@ -6,11 +7,9 @@ import {
 	HookRegistry,
 	PluginRegistry
 } from './registries';
-import { Analytics } from './api/Analytics';
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
 import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
-import { Logger } from './api';
 import { MaybeBlueBaseModuleOrInput } from './utils';
 import { Plugin } from './models/Plugin';
 import React from 'react';
