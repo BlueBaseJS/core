@@ -1,6 +1,7 @@
 Emoji reference of Commitizen scopes for this repo:
 
 📈 Analytics
+📔 Logger
 📦 BlueBaseModule
 🎁 ComponentRegistry
 🎛 ConfigRegistry
