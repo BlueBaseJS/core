@@ -6,6 +6,7 @@ import {
 	HookRegistry,
 	PluginRegistry
 } from './registries';
+import { Analytics } from './api/Analytics';
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
 import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
@@ -26,6 +27,7 @@ export interface BootOptions {
 export class BlueBase {
 
 	// APIs
+	public Analytics = new Analytics(this);
 	public Logger = new Logger(this);
 
 	// Registries
