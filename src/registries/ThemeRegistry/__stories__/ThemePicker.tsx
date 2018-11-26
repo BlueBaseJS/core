@@ -1,7 +1,7 @@
 import { BlueBase, BlueBaseContext } from '../../../';
+import { ThemeContext, ThemeContextData } from '../ThemeContext';
 import { Picker } from 'react-native';
 import React from 'react';
-import { ThemeContext } from '../ThemeContext';
 
 export class ThemePicker extends React.PureComponent {
 
@@ -11,7 +11,7 @@ export class ThemePicker extends React.PureComponent {
 		const BB: BlueBase = (this as any).context;
 		const themes = [...BB.Themes.entries()];
 		return (
-			<ThemeContext.Consumer children={({ changeTheme }: any) => (
+			<ThemeContext.Consumer children={({ changeTheme }: ThemeContextData) => (
 				<Picker
 					selectedValue={BB.Configs.getValue('theme.name')}
 					style={{ width: 150 }}

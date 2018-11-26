@@ -14,13 +14,24 @@ export interface ThemeProviderState {
 	readonly theme: Theme,
 }
 
-export const ThemeContext: React.Context<ThemeProviderState> = createContext(undefined as any);
+/** Interface of param passed to the ThemeConsumer render prop method. */
+export interface ThemeContextData {
+
+	// Helper method to change current theme.
+	changeTheme: (slug: string) => void,
+
+	// Current theme
+	theme: Theme
+}
+
+export const ThemeContext: React.Context<ThemeContextData> = createContext(undefined as any);
+
+export const ThemeConsumer = ThemeContext.Consumer;
 
 /**
  * 🎨 ThemeProvider
  *
  * FIXME: This doesn't handle loading state yet. i.e. When async theme is loading
- * TODO: Added support for theme input in theme prop
  */
 export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
 
@@ -81,7 +92,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 			return null;
 		}
 
-		const value = {
+		const value: ThemeContextData = {
 			changeTheme: (slug: string) => { BB.Configs.register('theme.name', slug); },
 			theme: this.state.theme
 		};

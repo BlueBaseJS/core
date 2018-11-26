@@ -38,7 +38,7 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 
 	/**
 	 * Register a ThemeRegistryItem
-	 * @param item 
+	 * @param item
 	 */
 	public async register(item: MaybeBlueBaseModuleOrInput<ThemeRegistryItem>) {
 		const module = await getDefiniteBlueBaseModule(item).promise;
@@ -63,7 +63,7 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 
 	/**
 	 * Resolve a theme
-	 * @param slug 
+	 * @param slug
 	 */
 	public async resolve(slug: string): Promise<Theme> {
 		const item = this.get(slug);
@@ -89,7 +89,7 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 
 	/**
 	 * Get alternate version of current theme
-	 * @param slug 
+	 * @param slug
 	 */
 	public getAlternate(slug: string) {
 		const item = this.get(slug);
