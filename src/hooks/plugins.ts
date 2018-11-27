@@ -79,6 +79,12 @@ export const plugins: { [key: string]: HookInput[] } = {
 					await BB.Components.register(key, plugin.components[key]);
 				}
 
+				///////////////////////////
+				///// Register Themes /////
+				///////////////////////////
+
+				await BB.Themes.registerCollection(plugin.themes);
+
 				////////////////////////////
 				///// Register Configs /////
 				////////////////////////////
@@ -86,8 +92,8 @@ export const plugins: { [key: string]: HookInput[] } = {
 				let configs = plugin.defaultConfigs;
 
 				// Custom input configs are already registered at this point,
-				// We just want to make sure we set default configs are used
-				// if certain configs were not given as input
+				// We just want to make sure we set default configs if certain
+				// configs were not given as input
 
 				if (Object.keys(configs).length > 0) {
 					const inputConfigs = BB.Configs.filter((_value, key) => plugin.hasConfig(key));
