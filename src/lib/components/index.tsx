@@ -33,7 +33,7 @@ export function getComponent<T = any>(name: string) {
 	return BlueBaseComponent as React.ComponentType<T>;
 }
 
-// BlueBase
+// System Components
 export const BlueBaseHook = getComponent<BlueBaseHookProps>('BlueBaseHook');
 export const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 export const DataObserver = getComponent<DataObserverProps>('DataObserver');
@@ -44,6 +44,7 @@ export const ErrorState = getComponent<ErrorStateProps>('ErrorState');
 export const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
 export const JsonSchema = getComponent<JsonSchemaProps>('JsonSchema');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
+export const Noop = getComponent('Noop');
 export const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
 export const StatefulComponent = getComponent<StatefulComponentProps>('StatefulComponent');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');

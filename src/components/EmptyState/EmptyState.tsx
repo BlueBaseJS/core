@@ -2,7 +2,9 @@ import { BlueBase } from '../../BlueBase';
 import { BlueBaseConsumer } from '../../Context';
 import React from 'react';
 
-export class EmptyState extends React.PureComponent {
+export interface EmptyStateProps {}
+
+export class EmptyState extends React.PureComponent<EmptyStateProps> {
 
 	render() {
 
