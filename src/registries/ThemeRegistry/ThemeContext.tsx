@@ -4,38 +4,63 @@ import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import deepmerge  from 'deepmerge';
 
+/**
+ * Props of the `ThemeProvider` component.
+ */
 export interface ThemeProviderProps {
+
+	/**
+	 * Key of the theme to use for children components. If this prop is not set,
+	 * the globally selected theme is used.
+	 */
 	theme?: string;
+
+	/**
+	 * Any custom overrides to the selected theme.
+	 */
 	overrides?: ThemeInput;
+
 	children: React.ReactNode,
 }
 
 export interface ThemeProviderState {
-	readonly theme: Theme,
+	readonly loading: boolean,
+	readonly theme?: Theme,
+	readonly error?: any,
 }
 
-/** Interface of param passed to the ThemeConsumer render prop method. */
+/**
+ * Interface of object passed as param to the ThemeConsumer render prop method.
+ */
 export interface ThemeContextData {
 
-	// Helper method to change current theme.
+	/** Helper method to change current theme. */
 	changeTheme: (slug: string) => void,
 
-	// Current theme
+	/** Current theme */
 	theme: Theme
 }
 
+/**
+ * This is the context where BlueBase theme is stored.
+ */
 export const ThemeContext: React.Context<ThemeContextData> = createContext(undefined as any);
 
+/**
+ * BlueBase theme consumer.
+ */
 export const ThemeConsumer = ThemeContext.Consumer;
 
 /**
  * 🎨 ThemeProvider
- *
- * FIXME: This doesn't handle loading state yet. i.e. When async theme is loading
  */
 export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
 
 	static contextType = BlueBaseContext;
+
+	readonly state: ThemeProviderState = {
+		loading: true,
+	};
 
 	/** Stores configuration subscription ID */
 	private subscriptionId?: string;
@@ -72,7 +97,12 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 	 * @param slug
 	 * @param BB
 	 */
-	async setTheme(slug: string | undefined, overrides: ThemeInput, BB: BlueBase) {
+	async setTheme(slug: string | undefined, overrides: ThemeInput = {}, BB: BlueBase) {
+
+		if (this.state.loading !== true) {
+			this.setState({ loading: true });
+		}
+
 		const key = slug || BB.Configs.getValue('theme.name');
 
 		const theme = await BB.Themes.resolve(key);
@@ -81,20 +111,31 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 			throw Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`);
 		}
 
-		this.setState({ theme: deepmerge(theme, overrides) as Theme });
+		this.setState({ theme: deepmerge(theme, overrides) as Theme, loading: false });
 	}
 
 	render() {
 
 		const BB: BlueBase = (this as any).context;
+		const { loading, error, theme } = this.state;
 
-		if (!this.state || !this.state.theme) {
-			return null;
+		const retry = () => this.setTheme(this.props.theme, this.props.overrides, BB);
+
+		if (loading) {
+			return <BB.Components.LoadingState retry={retry} />;
+		}
+
+		if (error) {
+			return <BB.Components.ErrorState error={error} retry={retry} />;
+		}
+
+		if (!theme) {
+			return <BB.Components.ErrorState error={Error('Error: Could not load theme.')} />;
 		}
 
 		const value: ThemeContextData = {
 			changeTheme: (slug: string) => { BB.Configs.register('theme.name', slug); },
-			theme: this.state.theme
+			theme
 		};
 
 		return (
