@@ -1,9 +1,15 @@
 import { ComponentCollectionInput, ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
-import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, getDefiniteModule, isPromise } from '../../utils';
+import { ComponentStyles, applyStyles } from '../../models';
+import {
+	MaybeBlueBaseModuleOrInput,
+	MaybeThunk,
+	getDefiniteBlueBaseModule,
+	getDefiniteModule,
+	isPromise
+} from '../../utils';
 import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
 import { BlueBase } from '../../BlueBase';
 import { Registry } from '../Registry';
-import { applyStyles } from '../../models';
 import flowRight from 'lodash.flowright';
 import { getAsyncComponent } from './getAsyncComponent';
 
@@ -90,6 +96,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 	}
 
+	// TODO: Add docs
 	public async registerCollection(components: ComponentCollectionInput) {
 		const componentKeys = Object.keys(components);
 		for (const key of componentKeys) {
@@ -97,6 +104,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		}
 	}
 
+	// TODO: Add docs
 	public replace(slug: string, component: MaybeBlueBaseModuleOrInput<React.ComponentType<any>>) {
 
 		const registryItem = this.get(slug);
@@ -109,6 +117,8 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		this.set(slug, registryItem);
 	}
 
+	// TODO: Add docs
+	// TODO: Add support for fallback components
 	public resolve(name: string): React.ComponentType<any> {
 
 		const registryItem = super.get(name);
@@ -133,21 +143,47 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 	/**
 	 * Adds higher order component to the registered component
-	 * @param {string} name The name of the registered component to whom hocs are to added
+	 * @param {string} key The name of the registered component to whom hocs are to added
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 */
-	addHocs(name: string, ...hocs: ComponentRegistryHocItem[]) {
+	public addHocs(key: string, ...hocs: ComponentRegistryHocItem[]) {
 
-		const item = super.get(name);
+		const item = this.get(key);
 
 		if (!item) {
 			throw Error(
-				`Count not add hocs for "${name}" component. Reason: Component not found.`
+				`Cannot add hocs for "${key}" component. Reason: Component not found.`
 			);
 		}
 
 		item.hocs.push(...hocs);
 
-		this.data = this.data.set(name, item);
+		this.data = this.data.set(key, item);
+	}
+
+	// TODO: Add docs
+	public setStyles(key: string, styles: MaybeThunk<ComponentStyles>) {
+		const item = this.get(key);
+
+		if (!item) {
+			throw Error(
+				`Cannot set styles "${key}" component. Reason: Component not found.`
+			);
+		}
+
+		item.styles = styles;
+
+		this.data = this.data.set(key, item);
+	}
+
+	// TODO: Add docs
+	public getStyles(key: string): MaybeThunk<ComponentStyles> | undefined {
+		const item = this.get(key);
+
+		if (!item) {
+			return;
+		}
+
+		return item.styles;
 	}
 }
