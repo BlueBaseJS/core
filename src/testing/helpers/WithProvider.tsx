@@ -65,6 +65,10 @@ export async function boot(children: any, BB: BlueBase) {
 	await BB.Components.register('HoverObserver', Component.HoverObserver);
 	await BB.Components.register('JsonSchema', Component.JsonSchema);
 	await BB.Components.register('PluginIcon', Component.PluginIcon);
+	await BB.Components.register('SystemHeader', Component.Noop);
+	await BB.Components.register('SystemContent', Component.SystemContent);
+	await BB.Components.register('SystemApp', Component.SystemApp);
+	await BB.Components.register('SystemFooter', Component.Noop);
 	await BB.Plugins.register({
 		icon: {
 			source: '',
