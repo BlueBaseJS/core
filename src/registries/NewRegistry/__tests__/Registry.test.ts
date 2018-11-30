@@ -1,10 +1,13 @@
 import { BlueBase } from '../../../BlueBase';
 import { Registry } from '../Registry';
 
-import exportedFunctions from '../../../utils/Misc';
-let { makeId } = exportedFunctions;
-makeId = jest.fn();
-jest.mock('../../../utils/Misc');
+// import exportedFunctions from '../../../utils/Misc';
+// const { makeId } = exportedFunctions;
+
+// // tslint:disable-next-line
+// let { makeId } = require('../../../utils/Misc');
+// makeId = jest.fn();
+// jest.mock('../../../utils/Misc');
 
 describe('Registry', () => {
 
@@ -286,6 +289,29 @@ describe('Registry', () => {
 
 	});
 
+
+	describe('.filter method', () => {
+
+		it('should filter items', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<any, {}>(BB);
+
+			registry.setValue('title', 'Config Registry Test');
+			registry.setValue('subtitle', 'We are just testing');
+			registry.setValue('plugin.test.foo', 5);
+			registry.setValue('plugin.test.bar', 10);
+			registry.setValue('plugin.another.check', true);
+
+			const filteredConfigs = registry.filter((_value: any, key: string) => {
+				return key.startsWith('plugin.test.');
+			});
+
+			expect(filteredConfigs['plugin.test.foo'].value).toBe(5);
+			expect(filteredConfigs['plugin.test.bar'].value).toBe(10);
+			expect(Object.keys(filteredConfigs).length).toBe(2);
+		});
+
+	});
 	describe('.isValue method', () => {
 
 		it('should return true', async () => {
@@ -373,22 +399,22 @@ describe('Registry', () => {
 
 	});
 
-	describe.only('.createUniqueSubscriptionId method', () => {
+	// describe.only('.createUniqueSubscriptionId method', () => {
 
-		it('should successfully unsubscribe a config by subId', async () => {
-			// const BB = new BlueBase();
-			// const registry = new Registry<number, {}>(BB);
+	// 	it('should successfully unsubscribe a config by subId', async () => {
+	// 		// const BB = new BlueBase();
+	// 		// const registry = new Registry<number, {}>(BB);
 
-			(makeId as any)
-			.mockReturnValueOnce('foo')
-			.mockReturnValueOnce('foo')
-			.mockReturnValueOnce('bar');
+	// 		(makeId as any)
+	// 		.mockReturnValueOnce('foo')
+	// 		.mockReturnValueOnce('foo')
+	// 		.mockReturnValueOnce('bar');
 
-			expect(makeId()).toBe('foo');
-			expect(makeId()).toBe('foo');
-			expect(makeId()).toBe('bar');
-		});
+	// 		expect(makeId()).toBe('foo');
+	// 		expect(makeId()).toBe('foo');
+	// 		expect(makeId()).toBe('bar');
+	// 	});
 
-	});
+	// });
 
 });

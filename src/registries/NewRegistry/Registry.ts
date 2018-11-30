@@ -124,6 +124,10 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 		return item.meta[metaKey] = metaValue;
 	}
 
+	public async register(key: string, item: RegistryItem<ValueType, MetaType> | any) {
+		return this.set(key, item);
+	}
+
 	public async resolve(...keys: string[]) {
 
 		let value;
@@ -209,11 +213,21 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 		this.data.forEach(callbackfn, thisArg);
 	}
 
-	// Filter Items/values
-	public filter() {
-		//
-	}
+	/**
+	 * Filter registry items by a predicate function.
+	 * @param predicate
+	 */
+	public filter(predicate: (value: ValueType, key: string, item: RegistryItem<ValueType, MetaType>) => boolean) {
 
+		const arr = Array.from(this.entries()).filter((entry) => predicate(entry[1].value, entry[0], entry[1]));
+		const items: { [key: string]: RegistryItem<ValueType, MetaType> } = {};
+
+		Array.from(arr).forEach(entry => {
+			items[entry[0]] = entry[1];
+		});
+
+		return items;
+	}
 
 	/**
 	 * Subscribe to a config value update
@@ -300,8 +314,7 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	private createUniqueSubscriptionId(subscriptionIds: string[]) {
 		while(true) {
 			const id = makeId();
-			const foundUnique = !subscriptionIds.includes(id);
-			if (foundUnique) {
+			if (!subscriptionIds.includes(id)) {
 				return id;
 			}
 		}

@@ -32,10 +32,3 @@ export function makeId(chars: number = 5) {
 
 	return text;
 }
-
-const exportFunctions = {
-	isProduction,
-	makeId
-};
-
-export default exportFunctions;
