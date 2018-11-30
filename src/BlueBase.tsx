@@ -1,3 +1,4 @@
+import { Analytics, Logger } from './api';
 import {
 	ComponentRegistry,
 	ConfigRegistry,
@@ -12,7 +13,6 @@ import {
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
 import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
-import { Logger } from './api';
 import { MaybeBlueBaseModuleOrInput } from './utils';
 import { Plugin } from './models/Plugin';
 import React from 'react';
@@ -30,6 +30,7 @@ export interface BootOptions {
 export class BlueBase {
 
 	// APIs
+	public Analytics = new Analytics(this);
 	public Logger = new Logger(this);
 
 	// Registries
