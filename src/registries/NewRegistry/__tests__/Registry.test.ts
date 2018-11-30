@@ -1,15 +1,10 @@
 import { BlueBase } from '../../../BlueBase';
 import { Registry } from '../Registry';
 
-// import { makeId } from '../../../utils/Misc';
-// jest.mock('../../../utils/Misc');
-
-// (makeId as any)
-// .mockReturnValueOnce('m1')
-// .mockReturnValueOnce('m1')
-// .mockReturnValueOnce('m2')
-// .mockReturnValueOnce('m3')
-// .mockReturnValueOnce('m4');
+import exportedFunctions from '../../../utils/Misc';
+let { makeId } = exportedFunctions;
+makeId = jest.fn();
+jest.mock('../../../utils/Misc');
 
 describe('Registry', () => {
 
@@ -378,22 +373,22 @@ describe('Registry', () => {
 
 	});
 
-	// describe.only('.createUniqueSubscriptionId method', () => {
+	describe.only('.createUniqueSubscriptionId method', () => {
 
-	// 	it('should successfully unsubscribe a config by subId', async () => {
-	// 		// const BB = new BlueBase();
-	// 		// const registry = new Registry<number, {}>(BB);
+		it('should successfully unsubscribe a config by subId', async () => {
+			// const BB = new BlueBase();
+			// const registry = new Registry<number, {}>(BB);
 
-	// 		(makeId as any)
-	// 		.mockReturnValueOnce('foo')
-	// 		.mockReturnValueOnce('foo')
-	// 		.mockReturnValueOnce('bar');
+			(makeId as any)
+			.mockReturnValueOnce('foo')
+			.mockReturnValueOnce('foo')
+			.mockReturnValueOnce('bar');
 
-	// 		expect(makeId()).toBe('foo');
-	// 		expect(makeId()).toBe('foo');
-	// 		expect(makeId()).toBe('bar');
-	// 	});
+			expect(makeId()).toBe('foo');
+			expect(makeId()).toBe('foo');
+			expect(makeId()).toBe('bar');
+		});
 
-	// });
+	});
 
 });
