@@ -300,8 +300,8 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	private createUniqueSubscriptionId(subscriptionIds: string[]) {
 		while(true) {
 			const id = makeId();
-
-			if (subscriptionIds.indexOf(id) === -1) {
+			const foundUnique = !subscriptionIds.includes(id);
+			if (foundUnique) {
 				return id;
 			}
 		}
