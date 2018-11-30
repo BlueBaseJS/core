@@ -291,6 +291,29 @@ describe('Registry', () => {
 
 	});
 
+
+	describe('.filter method', () => {
+
+		it('should filter items', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<any, {}>(BB);
+
+			registry.setValue('title', 'Config Registry Test');
+			registry.setValue('subtitle', 'We are just testing');
+			registry.setValue('plugin.test.foo', 5);
+			registry.setValue('plugin.test.bar', 10);
+			registry.setValue('plugin.another.check', true);
+
+			const filteredConfigs = registry.filter((_value: any, key: string) => {
+				return key.startsWith('plugin.test.');
+			});
+
+			expect(filteredConfigs['plugin.test.foo'].value).toBe(5);
+			expect(filteredConfigs['plugin.test.bar'].value).toBe(10);
+			expect(Object.keys(filteredConfigs).length).toBe(2);
+		});
+
+	});
 	describe('.isValue method', () => {
 
 		it('should return true', async () => {
