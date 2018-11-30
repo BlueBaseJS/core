@@ -13,7 +13,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🔌 PluginRegistry
 - 🎨 ThemeRegistry
 
-## Components
+## 🎁 Components
 
 - 🚀 BlueBaseApp
 - 🎣 BlueBaseHook

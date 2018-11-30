@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmptyState Snapshot EmptyState 1`] = `
+exports[`ErrorState Snapshot ErrorState 1`] = `null`;
+
+exports[`ErrorState Snapshot ErrorState after complete rendering 1`] = `
 <View
   styles={Object {}}
 >
@@ -17,7 +19,7 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
       ]
     }
   >
-    Empty area
+    Something broke!
   </Text>
   <Text
     style={
@@ -32,7 +34,7 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
       ]
     }
   >
-    No data found.
+    An unknown error has occured. Please try again later.
   </Text>
 </View>
 `;

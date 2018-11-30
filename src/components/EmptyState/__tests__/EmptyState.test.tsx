@@ -1,36 +1,24 @@
-import * as Component from '../..';
-import * as Native from '../../../native';
 import { EmptyState } from '../EmptyState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = {
-	Components: {
-		...Component,
-		...Native
-	}
-};
-const mockContext = jest.fn();
-
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
-
 describe('EmptyState', () => {
-	beforeEach(() => {
-		mockContext.mockReset();
-	});
-
-	test(`Snapshot EmptyState`, () => {
+	test(`Snapshot EmptyState`, (done) => {
 		const component = TestRenderer.create(
-			<EmptyState/>
+			<WithProvider>
+				<EmptyState/>
+			</WithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
 });

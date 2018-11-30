@@ -1,168 +1,186 @@
-import * as Component from '../..';
+import * as Component from '../../../components';
 import * as Native from '../../../native';
 import { DataObserver } from '../DataObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = {
-	Components: {
-		...Component,
-		...Native
-	}
-};
-const mockContext = jest.fn();
-
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
-
 describe('DataObserver', () => {
-	beforeEach(() => {
-		mockContext.mockReset();
-	});
+	const DataObserverWithProvider = (props: any) => (
+		<WithProvider>
+			<DataObserver {...props} />
+		</WithProvider>
+	);
 
-	test(`Snapshot DataObserver component with Text`, () => {
+	test(`Snapshot DataObserver component with Text`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver>
+			<DataObserverWithProvider>
 				<Native.Text>hello</Native.Text>
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component isEmpty={() => false} isLoading={() => true}`, () => {
+	test(`Snapshot DataObserver component isEmpty={() => false} isLoading={() => true}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver isEmpty={() => false} isLoading={() => true}>
+			<DataObserverWithProvider isEmpty={() => false} isLoading={() => true}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component isEmpty={() => true} isLoading={() => false}`, () => {
+	test(`Snapshot DataObserver component isEmpty={() => true} isLoading={() => false}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver isEmpty={() => true} isLoading={() => false}>
+			<DataObserverWithProvider isEmpty={() => true} isLoading={() => false}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component isEmpty={() => false} isLoading={() => false}`, () => {
+	test(`Snapshot DataObserver component isEmpty={() => false} isLoading={() => false}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver isEmpty={() => false} isLoading={() => false}>
+			<DataObserverWithProvider isEmpty={() => false} isLoading={() => false}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component isEmpty={() => false} loading={true}`, () => {
+	test(`Snapshot DataObserver component isEmpty={() => false} loading={true}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver isEmpty={() => false} loading={true}>
+			<DataObserverWithProvider isEmpty={() => false} loading={true}>
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component data={[]}`, () => {
+	test(`Snapshot DataObserver component data={[]}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver data={[]} >
+			<DataObserverWithProvider data={[]} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>Text as a children</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component data={['a', 'b']}`, () => {
+	test(`Snapshot DataObserver component data={['a', 'b']}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver data={['a', 'b']} >
+			<DataObserverWithProvider data={['a', 'b']} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>{data.data}</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component loading={true}`, () => {
+	test(`Snapshot DataObserver component loading={true}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver loading={true} >
+			<DataObserverWithProvider loading={true} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>{data.data}</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot DataObserver component loading={true}`, () => {
+	test(`Snapshot DataObserver component loading={true}`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserver loading={true} isEmpty={(props) => {
+			<DataObserverWithProvider loading={true} isEmpty={(props: any) => {
 				return !props.loading;
 			}} >
 				{(data: any) => {
 					return (
-						data.loading ? <BB.Components.LoadingState />
-							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
-								<BB.Components.Text>{data.data}</BB.Components.Text>
+						data.loading ? <Component.LoadingState />
+							: data.empty ? <Native.Text>Empty</Native.Text> :
+								<Native.Text>Text as a children</Native.Text>
 					);
 				}}
-			</DataObserver>
+			</DataObserverWithProvider>
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
 });

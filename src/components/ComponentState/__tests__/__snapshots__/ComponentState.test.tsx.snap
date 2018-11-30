@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentState Snapshot ComponentState component 1`] = `
+<View
+  styles={Object {}}
+/>
+`;
+
+exports[`ComponentState Snapshot ComponentState component with description 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    This is just for test
+  </Text>
+</View>
+`;
+
+exports[`ComponentState Snapshot ComponentState component with description and image 1`] = `
+<View
+  styles={Object {}}
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://facebook.github.io/react-native/docs/assets/favicon.png",
+      }
+    }
+    style={
+      Object {
+        "height": 50,
+        "width": 50,
+      }
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    This is just for test
+  </Text>
+</View>
+`;
+
+exports[`ComponentState Snapshot ComponentState component with description and imageSource 1`] = `
+<View
+  styles={Object {}}
+>
+  <Image
+    source="hello"
+    style={
+      Object {
+        "height": 250,
+        "marginBottom": 10,
+        "width": 250,
+      }
+    }
+    styles={Object {}}
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    This is just for test
+  </Text>
+</View>
+`;
