@@ -20,6 +20,7 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!ui-components|react-native).+\\.js$',
   ],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
     'src/**/*.{ts,tsx,js,jsx}',

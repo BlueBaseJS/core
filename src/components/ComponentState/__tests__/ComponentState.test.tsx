@@ -1,64 +1,68 @@
-// import * as Component from '../..';
 import * as Native from '../../../native';
-import { BlueBase } from '../../../BlueBase';
 import { ComponentState } from '../ComponentState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = new BlueBase();
-BB.Components.register('View', Native.View);
-BB.Components.register('Text', Native.Text);
-BB.Components.register('Image', Native.Image);
-const mockContext = jest.fn();
-
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
 
 describe('ComponentState', () => {
-	beforeEach(() => {
-		mockContext.mockReset();
-	});
+	const ComponentStateWithProvider = (props: any) => (
+		<WithProvider>
+			<ComponentState {...props}/>
+		</WithProvider>
+	);
 
-	test(`Snapshot ComponentState component`, () => {
+	test(`Snapshot ComponentState component`, (done) => {
 		const component = TestRenderer.create(
-			<ComponentState />
+			<ComponentStateWithProvider />
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot ComponentState component with description`, () => {
+	test(`Snapshot ComponentState component with description`, (done) => {
 		const component = TestRenderer.create(
-			<ComponentState description={'This is just for test'} />
+			<ComponentStateWithProvider description={'This is just for test'} />
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot ComponentState component with description and image`, () => {
+	test(`Snapshot ComponentState component with description and image`, (done) => {
 		const component = TestRenderer.create(
-			<ComponentState description={'This is just for test'}
+			<ComponentStateWithProvider description={'This is just for test'}
 				image={<Native.Image
 					style={{ width: 50, height: 50 }}
 					source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
 				/>} />
 		);
-		const tree = component.toTree();
-		expect(tree).toMatchSnapshot();
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot ComponentState component with description and imageSource`, () => {
+	test(`Snapshot ComponentState component with description and imageSource`, (done) => {
 		const component = TestRenderer.create(
-			<ComponentState description={'This is just for test'}
+			<ComponentStateWithProvider description={'This is just for test'}
 				imageSource={'hello'} />
 		);
-		const tree = component.toTree();
-		expect(tree ? tree.props.imageSource : tree).toEqual('hello');
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
 });

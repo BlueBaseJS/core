@@ -1,36 +1,36 @@
-import * as Component from '../..';
-import * as Native from '../../../native';
 import { ErrorState } from '../ErrorState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
 });
 
-const BB = {
-	Components: {
-		...Component,
-		...Native
-	}
-};
-const mockContext = jest.fn();
-
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
-
 describe('ErrorState', () => {
-	beforeEach(() => {
-		mockContext.mockReset();
-	});
+	const ErrorStateWithProvider = (props: any) => (
+		<WithProvider>
+			<ErrorState {...props} />
+		</WithProvider>
+	);
 
 	test(`Snapshot ErrorState`, () => {
 		const component = TestRenderer.create(
-			<ErrorState/>
+			<ErrorStateWithProvider />
 		);
-		const tree = component.toTree();
+		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
+	});
+
+	test(`Snapshot ErrorState after complete rendering`, (done) => {
+		const component = TestRenderer.create(
+			<ErrorStateWithProvider />
+		);
+		setTimeout(() => {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
 });

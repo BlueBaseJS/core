@@ -1,38 +1,38 @@
-import * as Component from '../..';
-import { BlueBase } from '../../../BlueBase';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import WithProvider from '../../../testing/helpers/WithProvider';
 
-beforeEach(() => {
-	jest.resetModules();
-});
-
-const mockContext = jest.fn();
-const BB = new BlueBase();
-
-jest.mock('../../../Context', () => ({
-	BlueBaseConsumer: ({ children }: { children: any }) => children(BB)
-}));
 
 describe('PluginIcon', () => {
 	beforeEach(() => {
-		mockContext.mockReset();
+		jest.resetModules();
 	});
-	it(`Snapshot PluginIcon component`, async () => {
-		await BB.Components.register('DynamicIcon', Component.DynamicIcon);
-		await BB.Plugins.register({
-			icon: {
-				source: '',
-				type: 'image',
-			},
-			name: 'DummyPlugin',
-			slug: 'dummy-plugin',
-		});
+	const PluginIconWithProvider = (props: any) => (
+		<WithProvider>
+			<PluginIcon {...props} />
+		</WithProvider>
+	);
+
+	it(`Snapshot PluginIcon component with no plugin registered`, () => {
+
 		const component = TestRenderer.create(
-			<PluginIcon slug="dummy-plugin" />
+			<PluginIconWithProvider slug="unregistered-plugin" />
 		);
-		const tree = component.toTree();
+		try {
+			const tree = component.toJSON();
+			expect(tree).toMatchSnapshot();
+		} catch (e) {
+			expect(e.message).toBe(`There's no pluign registered with "unregistered-plugin" key in the registry.`);
+		}
+	});
+
+	it(`Snapshot PluginIcon component with plugin registered with icon`, () => {
+
+		const component = TestRenderer.create(
+			<PluginIconWithProvider slug="dummy-plugin" />
+		);
+		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 

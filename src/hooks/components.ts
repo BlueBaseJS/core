@@ -1,24 +1,7 @@
 // tslint:disable:object-literal-sort-keys
-import { ActivityIndicator, Button, Image, Text, View } from '../native';
+import * as Component from '../components';
+import * as Native from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
-import {
-	BlueBaseHook,
-	ComponentState,
-	DataObserver,
-	DynamicIcon,
-	EmptyState,
-	ErrorObserver,
-	ErrorState,
-	HoverObserver,
-	JsonSchema,
-	LoadingState,
-	Noop,
-	PluginIcon,
-	StatefulComponent,
-	SystemApp,
-	SystemContent,
-	WaitObserver
-} from '../components';
 import { HookInput } from '../registries';
 import { Theme } from '../models';
 
@@ -36,46 +19,26 @@ export const components: { [key: string]: HookInput[] } = {
 
 			await BB.Components.registerCollection({
 				// BlueBase Components
-				BlueBaseHook,
-				ComponentState,
-				DataObserver,
-				DynamicIcon,
-				EmptyState,
-				ErrorObserver,
-				ErrorState,
-				HoverObserver,
-				Icon: Noop,
-				JsonSchema,
-				LoadingState,
-				Noop,
-				PluginIcon,
-				StatefulComponent,
-				SystemApp,
-				SystemContent,
-				SystemFooter: Noop,
-				SystemHeader: Noop,
-				WaitObserver,
+				SystemFooter: Component.Noop,
+				SystemHeader: Component.Noop,
+				...Component,
 
 				// Native
-				ActivityIndicator,
-				Button,
-				Image,
-				Text,
-				View,
+				...Native,
 
 				// Typography
-				H1: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.h1 }) },
-				H2: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.h2 }) },
-				H3: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.h3 }) },
-				H4: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.h4 }) },
-				H5: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.h5 }) },
-				H6: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.h6 }) },
-				Subtitle1: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle1 }) },
-				Subtitle2: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle2 }) },
-				Body1: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.body1 }) },
-				Body2: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.body2 }) },
-				Caption: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.caption }) },
-				Overline: { rawComponent: Text, styles: (theme: Theme) => ({ root: theme.typography.overline }) },
+				H1: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h1 }) },
+				H2: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h2 }) },
+				H3: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h3 }) },
+				H4: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h4 }) },
+				H5: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h5 }) },
+				H6: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h6 }) },
+				Subtitle1: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle1 }) },
+				Subtitle2: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle2 }) },
+				Body1: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body1 }) },
+				Body2: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body2 }) },
+				Caption: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.caption }) },
+				Overline: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.overline }) },
 			});
 
 			return bootOptions;

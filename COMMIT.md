@@ -1,10 +1,17 @@
 Emoji reference of Commitizen scopes for this repo:
 
-- 📦 BlueBaseModule
-- 🗿 Icons
-- 📖 README
-- 📕 Storybook
-- 🎛 Utils
+📈 Analytics
+📔 Logger
+📦 BlueBaseModule
+🎁 ComponentRegistry
+🎛 ConfigRegistry
+🎣 HookRegistry
+🗿 Icons
+🍱 JSON Schema
+🔌 PluginRegistry
+📖 README
+📕 Storybook
+🎛 Utils
 
 ## Registries
 
@@ -13,7 +20,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🔌 PluginRegistry
 - 🎨 ThemeRegistry
 
-## Components
+## 🎁 Components
 
 - 🚀 BlueBaseApp
 - 🎣 BlueBaseHook

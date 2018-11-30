@@ -1,5 +1,5 @@
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseConsumer } from '../../Context';
+import { BlueBaseContext } from '../../Context';
 import { ButtonProps } from '../../ui-interfaces';
 import React from 'react';
 
@@ -58,7 +58,12 @@ export interface ComponentStateProps {
 
 export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
+	static contextType = BlueBaseContext;
+
 	render() {
+
+		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
+		const BB: BlueBase = (this as any).context;
 
 		const {
 			actionOnPress,
@@ -81,20 +86,18 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 		};
 
 		return (
-			<BlueBaseConsumer children={(BB: BlueBase) => (
-				<BB.Components.View>
-					{image ? image : (imageSource ? <BB.Components.Image style={imgStyle} source={imageSource} /> : null)}
-					{title ? <BB.Components.Text style={titleStyle} children={title} /> : null}
-					{description ? <BB.Components.Text style={descriptionStyle} children={description} /> : null}
-					{actionTitle
-						? (
-							<BB.Components.Button style={actionStyle} onPress={actionOnPress}>
-								<BB.Components.Text>{actionTitle}</BB.Components.Text>
-							</BB.Components.Button>
-						)
-						: null}
-				</BB.Components.View>
-			)} />
+			<BB.Components.View>
+				{image ? image : (imageSource ? <BB.Components.Image style={imgStyle} source={imageSource} /> : null)}
+				{title ? <BB.Components.Text style={titleStyle} children={title} /> : null}
+				{description ? <BB.Components.Text style={descriptionStyle} children={description} /> : null}
+				{actionTitle
+					? (
+						<BB.Components.Button style={actionStyle} onPress={actionOnPress}>
+							<BB.Components.Text>{actionTitle}</BB.Components.Text>
+						</BB.Components.Button>
+					)
+					: null}
+			</BB.Components.View>
 		);
 	}
 }
