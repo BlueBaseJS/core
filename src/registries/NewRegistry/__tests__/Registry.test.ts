@@ -179,6 +179,8 @@ describe('Registry', () => {
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
 			registry.setValue('far', 'bu');
+			expect(registry.size()).toBe(3);
+
 			registry.clear();
 
 			expect(registry.size()).toBe(0);
@@ -249,11 +251,18 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<string, { preload: boolean }>(BB);
 
-			registry.setValue('foo', 'bar');
-			registry.setValue('faa', 'baz');
-			registry.setValue('far', 'bu');
-			registry.delete('foo');
+			expect(registry.size()).toBe(0);
 
+			registry.setValue('foo', 'bar');
+			expect(registry.size()).toBe(1);
+
+			registry.setValue('faa', 'baz');
+			expect(registry.size()).toBe(2);
+
+			registry.setValue('far', 'bu');
+			expect(registry.size()).toBe(3);
+
+			registry.delete('foo');
 			expect(registry.size()).toBe(2);
 		});
 
@@ -299,15 +308,19 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<number, {}>(BB);
 
-			registry.subscribe('bar', (value) => {
-				expect(value).toBe(10);
-			});
-
-			// TODO: check subscription count
+			expect((registry as any).subscriptions.get('bar')).toBe(undefined);
 
 			registry.subscribe('bar', (value) => {
 				expect(value).toBe(10);
 			});
+
+			expect((registry as any).subscriptions.get('bar').size).toBe(1);
+
+			registry.subscribe('bar', (value) => {
+				expect(value).toBe(10);
+			});
+
+			expect((registry as any).subscriptions.get('bar').size).toBe(2);
 
 			registry.setValue('foo', 5);
 			registry.setValue('bar', 10);
