@@ -2,4 +2,39 @@
 
 exports[`ErrorState Snapshot ErrorState 1`] = `null`;
 
-exports[`ErrorState Snapshot ErrorState after complete rendering 1`] = `null`;
+exports[`ErrorState Snapshot ErrorState after complete rendering 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    Something broke!
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    An unknown error has occured. Please try again later.
+  </Text>
+</View>
+`;

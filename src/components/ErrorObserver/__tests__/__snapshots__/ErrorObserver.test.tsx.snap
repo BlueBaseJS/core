@@ -2,8 +2,41 @@
 
 exports[`ErrorObserver Snapshot ErrorObserver 1`] = `null`;
 
-exports[`ErrorObserver Snapshot ErrorObserver after complete rendering 1`] = `null`;
+exports[`ErrorObserver Snapshot ErrorObserver after complete rendering 1`] = `
+<Text
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  Hello
+</Text>
+`;
 
-exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with child as function 1`] = `null`;
+exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with child as function 1`] = `
+<Text
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  Hello
+</Text>
+`;
 
-exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with error 1`] = `null`;
+exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with error 1`] = `
+<Text
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  Error
+</Text>
+`;
