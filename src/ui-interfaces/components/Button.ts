@@ -28,7 +28,7 @@ export interface ButtonProps {
 	/**
 	 * Callback function fired when button is pressed.
 	 */
-	onPress?: () => void;
+	onPress?: (event?: any) => any;
 
 	/**
 	 * If true, renders a disabled button.

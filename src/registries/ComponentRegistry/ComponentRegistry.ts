@@ -152,7 +152,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 		if (!item) {
 			throw Error(
-				`Cannot add hocs for "${key}" component. Reason: Component not found.`
+				`Could not add hocs for "${key}" component. Reason: Component not found.`
 			);
 		}
 

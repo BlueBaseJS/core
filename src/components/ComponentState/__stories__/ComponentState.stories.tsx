@@ -88,9 +88,9 @@ storiesOf('ComponentState', module)
 				actionStyle={{
 					// color: 'white',
 					backgroundColor: 'red',
-					width: 100,
-					height: 50,
 					borderRadius: 8,
+					height: 50,
+					width: 100,
 					// textAlign: 'center'
 				}}
 			/>
@@ -102,7 +102,7 @@ storiesOf('ComponentState', module)
 		<BlueBaseConsumer>
 		{(BB: BlueBase) => {
 			// tslint:disable-next-line:max-line-length
-			const ImageComponent = <BB.Components.Image source="https://picsum.photos/200" style={{ width: 200, height: 200 }} />;
+			const ImageComponent = <BB.Components.Image source={{ uri: 'https://picsum.photos/200' }} style={{ width: 200, height: 200 }} />;
 			return (<BB.Components.ComponentState image={ImageComponent} />);
 		}}
 		</BlueBaseConsumer>

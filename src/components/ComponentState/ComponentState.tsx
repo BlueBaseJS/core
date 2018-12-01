@@ -85,14 +85,22 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			...imageStyle
 		};
 
+		const imageProps: any = {
+			style: actionStyle
+		};
+
+		if (actionOnPress) {
+			imageProps.onPress = actionOnPress;
+		}
+
 		return (
 			<BB.Components.View>
-				{image ? image : (imageSource ? <BB.Components.Image style={imgStyle} source={imageSource} /> : null)}
+				{image ? image : (imageSource ? <BB.Components.Image style={imgStyle} source={{ uri: imageSource }} /> : null)}
 				{title ? <BB.Components.Text style={titleStyle} children={title} /> : null}
 				{description ? <BB.Components.Text style={descriptionStyle} children={description} /> : null}
 				{actionTitle
 					? (
-						<BB.Components.Button style={actionStyle} onPress={actionOnPress}>
+						<BB.Components.Button {...imageProps} >
 							<BB.Components.Text>{actionTitle}</BB.Components.Text>
 						</BB.Components.Button>
 					)

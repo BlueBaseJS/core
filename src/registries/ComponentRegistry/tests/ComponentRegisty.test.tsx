@@ -247,7 +247,7 @@ describe('ComponentRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Count not add hocs for "Button" component. Reason: Component not found.');
+			expect(message).toBe('Could not add hocs for "Button" component. Reason: Component not found.');
 		});
 
 	});

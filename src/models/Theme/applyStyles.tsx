@@ -44,7 +44,14 @@ export const applyStyles = (
 			const { styles: stylesProp, ...rest } = this.props;
 
 			return (
-				<ThemeContext.Consumer children={({ theme }: { theme: Theme }) => {
+				<ThemeContext.Consumer children={(args?: { theme: Theme }) => {
+
+					if(!args) {
+						return;
+					}
+
+					const { theme } = args;
+
 					const defaultStyles = Component.defaultStyles;
 					const themedStyles = theme.components[name];
 
