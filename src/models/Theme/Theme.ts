@@ -31,6 +31,9 @@ export interface Theme {
 
 	palette: Palette;
 
+	// tslint:disable-next-line
+	// TODO: Add shadows. Example: https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/styles/shadows.js
+
 	[key: string]: any,
 }
 
