@@ -14,7 +14,7 @@ describe.only('Utils', () => {
 
 		it('should process an ES module', async () => {
 
-			const module = new BlueBaseModule({ default: { foo: 'bar' }, __esModule: true } as any);
+			const module = new BlueBaseModule({ default: { foo: 'bar' }, __esModule: true });
 
 			const obj = await module.promise;
 			expect(obj.foo).toBe('bar');
@@ -30,7 +30,7 @@ describe.only('Utils', () => {
 
 		it('should process an ES module in a promise', async () => {
 
-			const module = new BlueBaseModule(Promise.resolve({ default: { foo: 'bar' }, __esModule: true }) as any);
+			const module = new BlueBaseModule(Promise.resolve({ default: { foo: 'bar' }, __esModule: true }));
 
 			const obj = await module.promise;
 			expect(obj.foo).toBe('bar');

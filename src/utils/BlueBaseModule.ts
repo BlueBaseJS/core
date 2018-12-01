@@ -73,7 +73,7 @@ export class BlueBaseModule<T> {
 	 */
 	public isAsync: boolean = false;
 
-	constructor(input: T) {
+	constructor(input: MaybeBlueBaseModuleOrInput<T>) {
 
 		this.module = getDefiniteModule(input as BlueBaseModuleInput<T>);
 
