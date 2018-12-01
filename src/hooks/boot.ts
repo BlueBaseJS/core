@@ -16,6 +16,7 @@ export const boot: { [key: string]: HookInput[] } = {
 			await BB.Hooks.run('bluebase.configs.register', bootOptions);
 			await BB.Hooks.run('bluebase.hooks.register', bootOptions.hooks);
 			await BB.Hooks.run('bluebase.routes.register', bootOptions);
+			await BB.Hooks.run('bluebase.themes.register', bootOptions);
 			await BB.Hooks.run('bluebase.plugins.register', bootOptions.plugins);
 
 			await BB.Hooks.run('bluebase.plugins.initialize.all', bootOptions);

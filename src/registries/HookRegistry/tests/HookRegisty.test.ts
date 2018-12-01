@@ -1,3 +1,5 @@
+declare var global: any;
+
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseModule } from '../../../utils';
 import { DEFAULT_HOOK_PRIORITY } from '../defaults';
@@ -18,6 +20,16 @@ describe('HookRegistry', () => {
 
 			expect(hooks.length).toBe(1);
 			expect(hooks[0].name).toBe('listener1');
+		});
+
+		it('should register listener with auto generated ID', async () => {
+
+			const Hooks = new HookRegistry(BB);
+			const hook = await Hooks.register('hook1', { handler: () => 'foo1' });
+			const hooks = Hooks.get('hook1') as Hook[];
+
+			expect(hooks.length).toBe(1);
+			expect(hooks[0].name).toBe(hook.name);
 		});
 
 		it('should register listener from an ES Module', async () => {
@@ -119,6 +131,72 @@ describe('HookRegistry', () => {
 		});
 
 	});
+
+
+	describe('.hasHook method', () => {
+
+		it('should return true for a known hook', async () => {
+
+			const Hooks = new HookRegistry(BB);
+			await Hooks.register('hook1', { name: 'listener1', handler: () => 'foo1' });
+
+			expect(Hooks.hasHook('hook1', 'listener1')).toBe(true);
+		});
+
+		it('should return false for an unknown hook', async () => {
+
+			const Hooks = new HookRegistry(BB);
+			await Hooks.register('hook1', { name: 'listener1', handler: () => 'foo1' });
+
+			expect(Hooks.hasHook('hook1', 'listener2')).toBe(false);
+		});
+
+		it('should return false for an unknown event', async () => {
+
+			const Hooks = new HookRegistry(BB);
+			await Hooks.register('hook1', { name: 'listener1', handler: () => 'foo1' });
+
+			expect(Hooks.hasHook('hook2', 'listener1')).toBe(false);
+		});
+
+	});
+
+	describe('.createUniqueHookName method', () => {
+
+		it('should create a different ID each time', async () => {
+
+			const Hooks = new HookRegistry(BB);
+			const n1 = Hooks.createUniqueHookName('foo');
+			const n2 = Hooks.createUniqueHookName('foo');
+			const n3 = Hooks.createUniqueHookName('foo');
+
+			expect(n1 === n2).toBe(false);
+			expect(n3 === n2).toBe(false);
+			expect(n1 === n3).toBe(false);
+		});
+
+		it('should not return until a unique ID id found', async () => {
+
+			// patch Math object
+			let count = 0;
+			const mockMath = Object.create(global.Math);
+			mockMath.random = () => {
+				count++;
+				return (count > 3) ? 1 : 0.5;
+			};
+			global.Math = mockMath;
+
+
+			const Hooks = new HookRegistry(BB);
+			await Hooks.register('hook1', { handler: () => 'foo1' });
+			await Hooks.register('hook1', { handler: () => 'foo1' });
+			const hooks = Hooks.get('hook1') as Hook[];
+
+			expect(hooks.length).toBe(2);
+		});
+
+	});
+
 
 	describe('.run method', () => {
 

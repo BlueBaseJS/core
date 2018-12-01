@@ -1,1 +1,1 @@
-export { ActivityIndicator } from 'react-native';
+export { ActivityIndicator, ActivityIndicatorProps } from 'react-native';

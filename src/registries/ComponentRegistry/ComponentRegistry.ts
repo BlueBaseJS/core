@@ -1,5 +1,12 @@
-import { ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
-import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, getDefiniteModule, isPromise } from '../../utils';
+import { ComponentCollectionInput, ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
+import { ComponentStyles, applyStyles } from '../../models';
+import {
+	MaybeBlueBaseModuleOrInput,
+	MaybeThunk,
+	getDefiniteBlueBaseModule,
+	getDefiniteModule,
+	isPromise
+} from '../../utils';
 import { createComponentRegistryItem, isComponentRegistryItem } from './helpers';
 import { BlueBase } from '../../BlueBase';
 import { Registry } from '../Registry';
@@ -89,6 +96,15 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 	}
 
+	// TODO: Add docs
+	public async registerCollection(components: ComponentCollectionInput) {
+		const componentKeys = Object.keys(components);
+		for (const key of componentKeys) {
+			await this.BB.Components.register(key, components[key]);
+		}
+	}
+
+	// TODO: Add docs
 	public replace(slug: string, component: MaybeBlueBaseModuleOrInput<React.ComponentType<any>>) {
 
 		const registryItem = this.get(slug);
@@ -101,6 +117,8 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 		this.set(slug, registryItem);
 	}
 
+	// TODO: Add docs
+	// TODO: Add support for fallback components
 	public resolve(name: string): React.ComponentType<any> {
 
 		const registryItem = super.get(name);
@@ -109,9 +127,13 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 			throw new Error(`Could not resolve component "${name}". Reason: Component not registered.`);
 		}
 
-		const rawComponent = registryItem.rawComponent.isAsync
+		// Find the rawComponent
+		let rawComponent = registryItem.rawComponent.isAsync
 			? getAsyncComponent(registryItem.rawComponent.promise)
-			: registryItem.rawComponent.module;
+			: registryItem.rawComponent.module as React.ComponentType;
+
+		// Add withStyles HOC
+		rawComponent = applyStyles(name, rawComponent, registryItem.styles) as React.ComponentType<any>;
 
 		const hocs = registryItem.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
@@ -121,21 +143,47 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 	/**
 	 * Adds higher order component to the registered component
-	 * @param {string} name The name of the registered component to whom hocs are to added
+	 * @param {string} key The name of the registered component to whom hocs are to added
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 */
-	addHocs(name: string, ...hocs: ComponentRegistryHocItem[]) {
+	public addHocs(key: string, ...hocs: ComponentRegistryHocItem[]) {
 
-		const item = super.get(name);
+		const item = this.get(key);
 
 		if (!item) {
 			throw Error(
-				`Count not add hocs for "${name}" component. Reason: Component not found.`
+				`Could not add hocs for "${key}" component. Reason: Component not found.`
 			);
 		}
 
 		item.hocs.push(...hocs);
 
-		this.data = this.data.set(name, item);
+		this.data = this.data.set(key, item);
+	}
+
+	// TODO: Add docs
+	public setStyles(key: string, styles: MaybeThunk<ComponentStyles>) {
+		const item = this.get(key);
+
+		if (!item) {
+			throw Error(
+				`Cannot set styles "${key}" component. Reason: Component not found.`
+			);
+		}
+
+		item.styles = styles;
+
+		this.data = this.data.set(key, item);
+	}
+
+	// TODO: Add docs
+	public getStyles(key: string): MaybeThunk<ComponentStyles> | undefined {
+		const item = this.get(key);
+
+		if (!item) {
+			return;
+		}
+
+		return item.styles;
 	}
 }

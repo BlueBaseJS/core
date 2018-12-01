@@ -8,4 +8,16 @@ storiesOf('LoadingState', module)
 		<BlueBaseConsumer children={(BB: BlueBase) => (
 			<BB.Components.LoadingState />
 		)} />
+	))
+
+	.add('With timedOut', () => (
+		<BlueBaseConsumer children={(BB: BlueBase) => (
+			<BB.Components.LoadingState timedOut={true} />
+		)} />
+	))
+
+	.add('With timedOut and retry', () => (
+		<BlueBaseConsumer children={(BB: BlueBase) => (
+			<BB.Components.LoadingState timedOut={true} retry={() => console.log('Hello')}/>
+		)} />
 	));

@@ -66,7 +66,6 @@ export class PluginRegistry extends Registry<Plugin> {
 	 */
 	public unregister(slug: string) {
 		this.delete(slug);
-		// TODO: Do we force rerender/reboot?
 	}
 
 	/**
@@ -82,7 +81,6 @@ export class PluginRegistry extends Registry<Plugin> {
 	 * @param plugin Plugin slug or the plugin object itself
 	 */
 	public async enable(plugin: string | Plugin) {
-		// TODO: Do we force rerender/reboot?
 
 		// Fetch plugin
 		plugin = this.getFromSlugOrPlugin(plugin);
@@ -97,7 +95,6 @@ export class PluginRegistry extends Registry<Plugin> {
 	 * @param plugin Plugin slug or the plugin object itself
 	 */
 	public async disable(plugin: string | Plugin) {
-		// TODO: Do we force rerender/reboot?
 
 		// Fetch plugin
 		plugin = this.getFromSlugOrPlugin(plugin);
@@ -105,8 +102,6 @@ export class PluginRegistry extends Registry<Plugin> {
 		// Set plugin flag
 		plugin.disable();
 		this.set(plugin.slug, plugin);
-
-		// TODO: unregister hooks, etc. Or just re-render take care of it?
 	}
 
 	/**

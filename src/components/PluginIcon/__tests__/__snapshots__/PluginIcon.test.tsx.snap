@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PluginIcon Snapshot PluginIcon component with no plugin registered 1`] = `null`;
+
+exports[`PluginIcon Snapshot PluginIcon component with plugin registered with icon 1`] = `null`;

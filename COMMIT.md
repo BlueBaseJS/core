@@ -13,9 +13,22 @@ Emoji reference of Commitizen scopes for this repo:
 📕 Storybook
 🎛 Utils
 
-## Components
+## Registries
 
-🚀 BlueBaseApp
-🎣 BlueBaseHook
-⏳ LoadingState
-⏰ Wait
+- 🎁 ComponentRegistry
+- 🎣 HookRegistry
+- 🔌 PluginRegistry
+- 🎨 ThemeRegistry
+
+## 🎁 Components
+
+- 🚀 BlueBaseApp
+- 🎣 BlueBaseHook
+- ️⚡️ DataObserver
+- 🚨 ErrorState
+- 🚨 ErrorObserver
+- 🛸 HoverObserver
+- 🍱 JsonSchema
+- ⏳ LoadingState
+- 👨‍🎨 StatefulComponent
+- ⏰ WaitObserver

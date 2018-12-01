@@ -10,7 +10,7 @@ export type EsModule<T> = {
 /**
  * An object that may or may not be an ES Module
  */
-export type MaybeEsModule<T> = T | EsModule<T>;
+export type MaybeEsModule<T> = EsModule<T> | T;
 
 /**
  * If an input object is an ES module, returns object.default, otherwise returns the object as is.

@@ -2,7 +2,7 @@ import { BlueBase, BootOptions } from '../../BlueBase';
 import React from 'react';
 import { Text } from 'react-native';
 
-export interface BlueBaseAppProperties extends Partial<BootOptions> {
+export interface BlueBaseAppProps extends Partial<BootOptions> {
 	BB?: BlueBase
 }
 
@@ -14,9 +14,19 @@ interface BlueBaseAppState {
 	Component: React.ComponentType<any>
 }
 
-export class BlueBaseApp extends React.Component<BlueBaseAppProperties, BlueBaseAppState> {
+/**
+ * 🚀 BlueBaseApp
+ *
+ * This is the Main App used to render at the top level.
+ *
+ * TODO: Add better docs
+ */
+// NOTE FOR DEVELOPERS:
+// Don't use BlueBase context or any data saved in context (e.g. components)
+// here. This is because the context may not be initialized yet.
+export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
 
-	constructor(props: BlueBaseAppProperties) {
+	constructor(props: BlueBaseAppProps) {
 		super(props);
 
 		this.state = {

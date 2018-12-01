@@ -1,5 +1,5 @@
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseConsumer } from '../../Context';
+import { BlueBaseContext } from '../../Context';
 import React from 'react';
 
 export interface DynamicIconProps {
@@ -46,47 +46,50 @@ export interface DynamicIconProps {
  * - BB.Components.Image
  * - A custom component
  */
-const DynamicIcon: React.ComponentType<DynamicIconProps> = (props) => {
-	const { type, component: Component, name, source, ...rest } = props;
 
-	return (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => {
-				let component: React.ComponentType<any>;
+export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
 
-				if (type === 'component' && Component) {
-					component = (typeof Component === 'string')
-						? BB.Components.resolve(Component)
-						: component = Component;
+	static contextType = BlueBaseContext;
 
-				} else if (type === 'name' && name) {
-					component = BB.Components.resolve('Icon');
-					rest.name = name;
+	public static defaultProps: Partial<DynamicIconProps> = {
+		size: 100
+	};
 
-				} else if (type === 'image' && source) {
-					component = BB.Components.resolve('Image');
-					rest.source = source;
+	render() {
 
-					if (!rest.style) {
-						rest.style = {};
-					}
+		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
+		const BB: BlueBase = (this as any).context;
 
-					if (rest.size) {
-						rest.style.width = rest.size;
-						rest.style.height = rest.size;
-					}
-				} else {
-					return null;
-				}
+		const { type, component: Component, name, source, ...other } = this.props;
+		const rest = { ...other };
 
-				return React.createElement(component, rest);
-			}}
-		</BlueBaseConsumer>
-	);
-};
+		let component: React.ComponentType<any>;
 
-DynamicIcon.defaultProps = { size: 100 };
+		if (type === 'component' && Component) {
+			component = (typeof Component === 'string')
+							? BB.Components.resolve(Component)
+							: component = Component;
 
-export {
-	DynamicIcon
-};
+		} else if (type === 'name' && name) {
+			component = BB.Components.resolve('Icon');
+			rest.name = name;
+
+		} else if (type === 'image' && source) {
+			component = BB.Components.resolve('Image');
+			rest.source = source;
+
+			if (!rest.style) {
+				rest.style = {};
+			}
+
+			if (rest.size) {
+				rest.style.width = rest.size;
+				rest.style.height = rest.size;
+			}
+		} else {
+			return null;
+		}
+
+		return React.createElement(component, rest);
+	}
+}

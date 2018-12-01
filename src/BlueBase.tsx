@@ -5,7 +5,10 @@ import {
 	ConfigsCollection,
 	HookCollection,
 	HookRegistry,
-	PluginRegistry
+	PluginRegistry,
+	ThemeItemCollection,
+	ThemeProvider,
+	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
@@ -16,10 +19,11 @@ import React from 'react';
 import systemHooks from './hooks';
 
 export interface BootOptions {
-	components: { [key: string]: ComponentInput };
+	components: { [key: string]: ComponentInput },
 	configs: ConfigsCollection,
-	hooks: HookCollection;
-	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>;
+	hooks: HookCollection,
+	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>,
+	themes: ThemeItemCollection,
 	// routes: Plugin[]
 }
 
@@ -34,6 +38,7 @@ export class BlueBase {
 	public Configs: ConfigRegistry = new ConfigRegistry(this);
 	public Hooks: HookRegistry = new HookRegistry(this);
 	public Plugins: PluginRegistry = new PluginRegistry(this);
+	public Themes: ThemeRegistry = new ThemeRegistry(this);
 
 	// Flags
 	public booted = false;
@@ -43,6 +48,7 @@ export class BlueBase {
 		configs: {},
 		hooks: {},
 		plugins: [],
+		themes: [],
 	};
 
 	public async boot(options?: Partial<BootOptions>) {
@@ -58,14 +64,16 @@ export class BlueBase {
 		// const SystemApp = this.Components.resolve('SystemApp');
 		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
 
-		const BluerainApp = () => (
+		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
-				<this.Components.SystemApp />
+				<ThemeProvider>
+					<this.Components.SystemApp />
+				</ThemeProvider>
 			</BlueBaseProvider>
 		);
 
 		this.booted = true;
 
-		return BluerainApp;
+		return BlueBaseRoot;
 	}
 }

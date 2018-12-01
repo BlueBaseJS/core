@@ -1,3 +1,5 @@
+import { ThemeInput } from '../../models';
+
 export interface BlueBaseConfigs {
 
 	/** Project title */
@@ -14,6 +16,23 @@ export interface BlueBaseConfigs {
 
 	/** Development mode */
 	development: boolean,
+
+	/**
+	 * Name of selected theme.
+	 * FIXME: This key contains the slug, but is called name. This is confusing.
+	 */
+	'theme.name': string,
+
+	/**
+	 * Theme mode: Either light or dark.
+	 * TODO: Add 'auto' mode to detect OS/User preference? This will be added to configs.
+	 */
+	'theme.mode': 'light' | 'dark',
+
+	/**
+	 * Overrides for any selected theme. These overrides are applied to all themes.
+	 */
+	'theme.overrides': ThemeInput,
 
 	// others
 	[key: string]: any,

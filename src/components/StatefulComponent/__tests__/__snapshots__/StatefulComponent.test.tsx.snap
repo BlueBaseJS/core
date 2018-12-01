@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatefulComponent Snapshot StatefulComponent component 1`] = `null`;
+
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    Empty area
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    No data found.
+  </Text>
+</View>
+`;
+
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    Empty area
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    No data found.
+  </Text>
+</View>
+`;
+
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    Something broke!
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    An unknown error has occured. Please try again later.
+  </Text>
+</View>
+`;
+
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true, Component 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    Something broke!
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    An unknown error has occured. Please try again later.
+  </Text>
+</View>
+`;
+
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, loading: true 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    Something broke!
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    An unknown error has occured. Please try again later.
+  </Text>
+</View>
+`;

@@ -1,5 +1,5 @@
 import * as TYPES from './types';
-import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, resolveThunk } from '../../utils';
+import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, makeId, resolveThunk } from '../../utils';
 import { Hook } from '../../models/Hook';
 import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
@@ -7,7 +7,9 @@ import isNil from 'lodash.isnil';
 import { parseHookCollectionItem } from './helpers';
 
 /**
- * 🎣 This is where are BlueBase hooks are stored.
+ * 🎣 HookRegistry
+ *
+ * This is where are BlueBase hooks are stored.
  */
 export class HookRegistry extends Registry<Hook[]> {
 
@@ -26,6 +28,13 @@ export class HookRegistry extends Registry<Hook[]> {
 
 		// const item = await this.buildHookListenerInternal(listener);
 		const input = await getDefiniteBlueBaseModule(hook).promise;
+
+		// If the hook doesn't have a name, create a unique name
+		if (!input.name) {
+			input.name = this.createUniqueHookName(eventName);
+		}
+
+		// Create a new hook object
 		const item = new Hook(input);
 
 		const hookItems = this.get(eventName) || [];
@@ -34,16 +43,17 @@ export class HookRegistry extends Registry<Hook[]> {
 		// Initialize new array
 		if (hookItems.length === 0) {
 			this.set(eventName, [item]);
-			return;
+			return item;
 		}
 
 		// Check if listener already exists
-		const found = hookItems.find(lookupItem => lookupItem.name === item.name);
-		if (!isNil(found)) {
+		if (this.hasHook(eventName, item.name)) {
 			throw new Error(`Could not register hook. Reason: "${item.name}" hook item already exists in "${eventName}" hook.`);
 		}
 
 		this.set(eventName, [...hookItems, item]);
+
+		return item;
 	}
 
 	/**
@@ -70,6 +80,40 @@ export class HookRegistry extends Registry<Hook[]> {
 
 				// Register this listener
 				await this.BB.Hooks.register(eventName, hook);
+			}
+		}
+	}
+
+	/**
+	 * Check if a hook event has a specific hook
+	 * @param eventName Name of hook event
+	 * @param hookName Hook name
+	 */
+	public hasHook(eventName: string, hookName: string) {
+		const hookItems = this.get(eventName);
+
+		if (!hookItems) {
+			return false;
+		}
+
+		const found = hookItems.find(lookupItem => lookupItem.name === hookName);
+		if (isNil(found)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Create a unique hook name for a given event. Used to generate names for anonymous hooks
+	 * @param eventName Event Name
+	 */
+	public createUniqueHookName(eventName: string) {
+		while(true) {
+			const name = `hook-${makeId()}`;
+
+			if (!this.hasHook(eventName, name)) {
+				return name;
 			}
 		}
 	}

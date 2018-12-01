@@ -10,12 +10,12 @@ export type BlueBaseModuleInput<T> = MaybeEsModule<MaybePromise<MaybeEsModule<T>
 /**
  * An object that may or may not be an instance of BlueBaseModule
  */
-export type MaybeBlueBaseModule<T> = T | BlueBaseModule<T>;
+export type MaybeBlueBaseModule<T> = BlueBaseModule<T> | T;
 
 /**
  * An object that maybe an instance of BlueBaseModule, or a BlueBaseModuleInput object, or neiter.
  */
-export type MaybeBlueBaseModuleOrInput<T> = BlueBaseModuleInput<T> | MaybeBlueBaseModule<T>;
+export type MaybeBlueBaseModuleOrInput<T> = MaybeBlueBaseModule<T> | BlueBaseModuleInput<T>;
 
 /**
  * Checks if an input object is a BlueBaseModule. Returns as is if true, otherwise,
