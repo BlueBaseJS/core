@@ -46,7 +46,7 @@ export interface BlueBaseModule<T> extends Promise<T> {
  * Creates a BlueBaseModule promise
  * @param input
  */
-export function createBlueBaseModule<T>(input: MaybeBlueBaseModule<T>) {
+export function createBlueBaseModule<T>(input: MaybeBlueBaseModule<T> | Promise<T>) {
 
 	const module = getDefiniteModule(input);
 
