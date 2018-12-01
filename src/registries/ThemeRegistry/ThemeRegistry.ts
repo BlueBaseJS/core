@@ -80,14 +80,6 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 	}
 
 	/**
-	 * Unregisters a theme
-	 * @param slug Theme slug
-	 */
-	public unregister(slug: string) {
-		this.delete(slug);
-	}
-
-	/**
 	 * Get alternate version of current theme
 	 * @param slug
 	 */
