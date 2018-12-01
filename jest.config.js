@@ -20,12 +20,16 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!ui-components|react-native).+\\.js$',
   ],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/dist/',
+  ],
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
     'src/**/*.{ts,tsx,js,jsx}',
     '!src/**/*.stories.{ts,tsx,js,jsx}',
     '!src/**/*.d.ts',
+    '!**/__stories__/**',
   ],
   coverageThreshold: {
     global: {
@@ -37,7 +41,7 @@ module.exports = {
   },
   coveragePathIgnorePatterns: [
     '.*\\.d\\.ts', 
-    '<rootDir>/node_modules/'
+    '<rootDir>/node_modules/',
   ],
   watchPathIgnorePatterns: [
     // 'src/*/output/**',
