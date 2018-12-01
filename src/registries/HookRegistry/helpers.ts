@@ -47,7 +47,7 @@ export async function parseHookCollectionItem(
 		const item = getDefiniteBlueBaseModule(hookItem);
 
 		// Resolve listener, so if its another bundle, gets loaded here
-		const handlerOrListener = await item.promise;
+		const handlerOrListener = await item;
 
 		let hook: Hook;
 

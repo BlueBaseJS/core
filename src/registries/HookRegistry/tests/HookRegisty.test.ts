@@ -1,10 +1,10 @@
 declare var global: any;
 
 import { BlueBase } from '../../../BlueBase';
-import { BlueBaseModule } from '../../../utils';
 import { DEFAULT_HOOK_PRIORITY } from '../defaults';
 import { Hook } from '../../../models/Hook';
 import { HookRegistry } from '../HookRegistry';
+import { createBlueBaseModule } from '../../../utils';
 
 const BB = new BlueBase();
 
@@ -35,7 +35,7 @@ describe('HookRegistry', () => {
 		it('should register listener from an ES Module', async () => {
 
 			const Hooks = new HookRegistry(BB);
-			await Hooks.register('hook1', new BlueBaseModule({ name: 'listener1', handler: () => 'foo1' }));
+			await Hooks.register('hook1', createBlueBaseModule({ name: 'listener1', handler: () => 'foo1' }));
 			const hooks = Hooks.get('hook1') as Hook[];
 
 			expect(hooks.length).toBe(1);
@@ -45,7 +45,8 @@ describe('HookRegistry', () => {
 		it('should register listener from a Promised ES Module', async () => {
 
 			const Hooks = new HookRegistry(BB);
-			await Hooks.register('hook1', new BlueBaseModule(Promise.resolve({ name: 'listener1', handler: () => 'foo1' })));
+			await Hooks.register(
+				'hook1', createBlueBaseModule(Promise.resolve({ name: 'listener1', handler: () => 'foo1' }) as any));
 			const hooks = Hooks.get('hook1') as Hook[];
 
 			expect(hooks.length).toBe(1);
@@ -237,7 +238,7 @@ describe('HookRegistry', () => {
 					default: (val: number) => val + 5,
 				},
 				name: 'listener1',
-			});
+			} as any);
 
 			const value = await Hooks.run('hook1', 30);
 			expect(value).toBe(35);
@@ -252,7 +253,7 @@ describe('HookRegistry', () => {
 					default: (val: number) => val - 5,
 				}),
 				name: 'listener1',
-			});
+			} as any);
 
 			const value = await Hooks.run('hook1', 40);
 			expect(value).toBe(35);
@@ -264,7 +265,7 @@ describe('HookRegistry', () => {
 			await Hooks.register('hook1', {
 				handler: Promise.resolve((val: number) => val * 2),
 				name: 'listener1',
-			});
+			} as any);
 
 			const value = await Hooks.run('hook1', 40);
 			expect(value).toBe(80);
@@ -274,12 +275,12 @@ describe('HookRegistry', () => {
 
 			const Hooks = new HookRegistry(BB);
 			await Hooks.register('hook1', {
-				handler: new BlueBaseModule({
+				handler: createBlueBaseModule({
 					__esModule: true,
 					default: (val: number) => val + 5,
 				}),
 				name: 'listener1',
-			});
+			} as any);
 
 			const value = await Hooks.run('hook1', 30);
 			expect(value).toBe(35);
@@ -289,10 +290,10 @@ describe('HookRegistry', () => {
 
 			const Hooks = new HookRegistry(BB);
 			await Hooks.register('hook1', {
-				handler: new BlueBaseModule(Promise.resolve({
+				handler: createBlueBaseModule(Promise.resolve({
 					__esModule: true,
 					default: (val: number) => val + 5,
-				})),
+				}) as any),
 				name: 'listener1',
 			});
 
@@ -304,7 +305,7 @@ describe('HookRegistry', () => {
 
 			const Hooks = new HookRegistry(BB);
 			await Hooks.register('hook1', {
-				handler: new BlueBaseModule(Promise.resolve((val: number) => val * 2)),
+				handler: createBlueBaseModule(Promise.resolve((val: number) => val * 2) as any),
 				name: 'listener1',
 			});
 

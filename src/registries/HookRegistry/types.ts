@@ -1,4 +1,4 @@
-import { MaybeArray, MaybeBlueBaseModuleOrInput, MaybeThunk } from '../../utils';
+import { MaybeArray, MaybeBlueBaseModule, MaybeThunk } from '../../utils';
 import { BlueBase } from '../../BlueBase';
 import { Hook } from '../../models/Hook';
 
@@ -46,14 +46,14 @@ export interface HookInput {
 	priority?: number,
 
 	/** Handler function */
-	handler: MaybeBlueBaseModuleOrInput<HookHandlerFn>,
+	handler: MaybeBlueBaseModule<HookHandlerFn>,
 }
 
 /**
  * HookCollectionItem represents a single hook or multiple hooks for a single event in a HookCollection.
  * Each hook may be a Hook, HookInput or a Hook handler function. These may also be BlueBase modules.
  */
-export type HookCollectionItem = MaybeArray<MaybeBlueBaseModuleOrInput<HookInputOrHandler>>;
+export type HookCollectionItem = MaybeArray<MaybeBlueBaseModule<HookInputOrHandler>>;
 
 /**
  * A Hook Collection is used to register multiple hooks for multiple events at the same time.

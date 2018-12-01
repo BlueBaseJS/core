@@ -1,4 +1,4 @@
-import { BlueBaseModule, MaybeBlueBaseModuleOrInput, MaybeThunk } from '../../utils';
+import { BlueBaseModule, MaybeBlueBaseModule, MaybeThunk } from '../../utils';
 import { ComponentStyles } from '../../models';
 import React from 'react';
 
@@ -34,7 +34,7 @@ export interface ComponentRegistryItem extends ComponentRegistryItemBase {
 }
 
 export interface ComponentRegistryItemInternal extends Partial<ComponentRegistryItemBase> {
-	rawComponent: MaybeBlueBaseModuleOrInput<React.ComponentType<any>>;
+	rawComponent: MaybeBlueBaseModule<React.ComponentType<any>>;
 }
 
 /**
@@ -42,7 +42,7 @@ export interface ComponentRegistryItemInternal extends Partial<ComponentRegistry
  */
 export type ComponentInput =
 	ComponentRegistryItemInternal |
-	MaybeBlueBaseModuleOrInput<React.ComponentType<any>>;
+	MaybeBlueBaseModule<React.ComponentType<any>>;
 
 export interface ComponentCollectionInput {
 	[key: string]: ComponentInput

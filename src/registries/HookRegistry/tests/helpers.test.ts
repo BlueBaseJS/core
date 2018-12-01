@@ -92,14 +92,14 @@ describe('PluginRegistry', () => {
 
 			it('should accept a listener in an ES Module and return it in an array', async () => {
 				// const listeners = await parseHookCollectionItem2(SingleListenerInESModule, 'some-hook');
-				const listeners = await parseHookCollectionItem([SingleListenerInESModule], 'some-hook');
+				const listeners = await parseHookCollectionItem([SingleListenerInESModule as any], 'some-hook');
 
 				expect(listeners).toHaveLength(1);
 				expect(listeners[0].name).toBe('add.two');
 			});
 
 			it('should accept a listener in a Promised ES Module and return it in an array', async () => {
-				const listeners = await parseHookCollectionItem(SingleListenerInPromisedESModule, 'some-hook');
+				const listeners = await parseHookCollectionItem(SingleListenerInPromisedESModule as any, 'some-hook');
 
 				expect(listeners).toHaveLength(1);
 				expect(listeners[0].name).toBe('add.six');
@@ -144,7 +144,7 @@ describe('PluginRegistry', () => {
 
 			it('should accept two listeners from imported modules and return that in an array', async () => {
 				const listeners = await parseHookCollectionItem([
-					SingleListenerInESModule,
+					SingleListenerInESModule as any,
 					SingleListenerInPromisedESModule,
 				], 'some-hook');
 
@@ -165,7 +165,8 @@ describe('PluginRegistry', () => {
 			});
 
 			it('should accept a handler function in an ES module and return it as a listener in an array', async () => {
-				const listeners = await parseHookCollectionItem({ __esModule: true, default: SingleHookHandler }, 'some-hook');
+				const listeners = await parseHookCollectionItem(
+					{ __esModule: true, default: SingleHookHandler } as any, 'some-hook');
 
 				expect(listeners).toHaveLength(1);
 				expect(listeners[0].name).toBe('unknown.some-hook.0');
@@ -173,7 +174,7 @@ describe('PluginRegistry', () => {
 
 			it('should accept a handler function in a Promised ES module and return it as a listener in an array', async () => {
 				const listeners = await parseHookCollectionItem(
-					Promise.resolve({ __esModule: true, default: SingleHookHandler }),
+					Promise.resolve({ __esModule: true, default: SingleHookHandler }) as any,
 					'some-hook');
 
 				expect(listeners).toHaveLength(1);
@@ -195,7 +196,7 @@ describe('PluginRegistry', () => {
 			it('should accept mixed items (including modules) and return them in an array of listeners', async () => {
 				const listeners = await parseHookCollectionItem([
 					SingleListener,
-					SingleListenerInESModule,
+					SingleListenerInESModule as any,
 					SingleHookHandler,
 					SingleListenerInPromisedESModule
 				], 'some-hook');

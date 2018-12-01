@@ -13,7 +13,7 @@ import {
 import { BlueBaseProvider } from './Context';
 import { ComponentInput } from './registries/ComponentRegistry/types';
 import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
-import { MaybeBlueBaseModuleOrInput } from './utils';
+import { MaybeBlueBaseModule } from './utils';
 import { Plugin } from './models/Plugin';
 import React from 'react';
 import systemHooks from './hooks';
@@ -22,7 +22,7 @@ export interface BootOptions {
 	components: { [key: string]: ComponentInput },
 	configs: ConfigsCollection,
 	hooks: HookCollection,
-	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>,
+	plugins: Array<MaybeBlueBaseModule<Plugin>>,
 	themes: ThemeItemCollection,
 	// routes: Plugin[]
 }

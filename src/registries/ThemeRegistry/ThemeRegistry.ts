@@ -1,4 +1,4 @@
-import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule } from '../../utils';
+import { MaybeBlueBaseModule, getDefiniteBlueBaseModule } from '../../utils';
 import { Theme, ThemeInput, createTheme } from '../../models';
 import { Registry } from '../Registry';
 import kebabCase from 'lodash.kebabcase';
@@ -23,13 +23,13 @@ export interface ThemeRegistryItem {
 	alternate?: string,
 
 	/** Theme object */
-	theme: MaybeBlueBaseModuleOrInput<ThemeInput>,
+	theme: MaybeBlueBaseModule<ThemeInput>,
 }
 
 /**
  * A collection (array) of themes. Each theme in this collection maybe a BlueBaseModule.
  */
-export type ThemeItemCollection = Array<MaybeBlueBaseModuleOrInput<ThemeRegistryItem>>;
+export type ThemeItemCollection = Array<MaybeBlueBaseModule<ThemeRegistryItem>>;
 
 /**
  * 🎨 ThemeRegistry
@@ -40,8 +40,8 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 	 * Register a ThemeRegistryItem
 	 * @param item
 	 */
-	public async register(item: MaybeBlueBaseModuleOrInput<ThemeRegistryItem>) {
-		const module = await getDefiniteBlueBaseModule(item).promise;
+	public async register(item: MaybeBlueBaseModule<ThemeRegistryItem>) {
+		const module = await getDefiniteBlueBaseModule(item);
 
 		if (!module.name) {
 			throw Error('Could not register Theme. Reason: name property is required.');
@@ -72,7 +72,7 @@ export class ThemeRegistry extends Registry<ThemeRegistryItem> {
 			throw Error(`Could not resolve theme. Reason: No theme registered with slug ${slug}.`);
 		}
 
-		const theme = await getDefiniteBlueBaseModule(item.theme).promise;
+		const theme = await getDefiniteBlueBaseModule(item.theme);
 		const overrides: ThemeInput = this.BB.Configs.getValue('theme.overrides');
 
 		// We pass through createTheme to make sure if theme has missed some rules, they're provided

@@ -10,21 +10,17 @@ interface BaseMetaType { [key: string]: any }
 export interface RegistryItem<ValueType, MetaType> {
 
 	/** Item Key */
-	key: string;
+	key: string,
 
 	/**
 	 * Registry Item Value.
 	 */
-	value: ValueType // BlueBaseModule<ValueType>,
+	value: ValueType, // BlueBaseModule<ValueType>,
 
 	/**
 	 * Additional meta data about this registry item
 	 */
-	meta: MetaType
-
-	// subscriptions: {
-	// 	[key: string]: (value: ValueType) => void;
-	// };
+	meta: MetaType,
 
 	/** Additional Item Data */
 	[key: string]: any,
@@ -88,7 +84,7 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param key
 	 * @param value
 	 */
-	public setValue(key: string, value: ValueType) {
+	public setValue(key: string, value: ValueType | any) {
 		let item = this.get(key);
 
 		if (item) {
@@ -124,11 +120,17 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 		return item.meta[metaKey] = metaValue;
 	}
 
-	public async register(key: string, item: RegistryItem<ValueType, MetaType> | any) {
-		return this.set(key, item);
+	public async register(key: string, item: RegistryItem<ValueType, MetaType> | ValueType | any) {
+		if (this.isItem(item)) {
+			return this.set(key, item);
+		} else if (this.isValue(item)) {
+			return this.setValue(key, item);
+		}
+
+		throw Error('Could not register item. Reason: Unknown item type.');
 	}
 
-	public async resolve(...keys: string[]) {
+	public async resolve(...keys: string[]): Promise<ValueType> {
 
 		let value;
 
@@ -138,6 +140,10 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 			if (!isNil(value)) {
 				break;
 			}
+		}
+
+		if (!value) {
+			throw Error(`Could not resolve registry item. Reason: Could not find any of the input keys.`);
 		}
 
 		return value;
@@ -311,7 +317,7 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * Creates a unique subscription ID for a given list of subscriptions.
 	 * @param subscriptions An object containing current subscriptions
 	 */
-	private createUniqueSubscriptionId(subscriptionIds: string[]) {
+	protected createUniqueSubscriptionId(subscriptionIds: string[]) {
 		while(true) {
 			const id = makeId();
 			if (!subscriptionIds.includes(id)) {
@@ -325,7 +331,7 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param key
 	 * @param item
 	 */
-	private publish(key: string, item: RegistryItem<ValueType, MetaType>) {
+	protected publish(key: string, item: RegistryItem<ValueType, MetaType>) {
 
 		const subscriptions = this.subscriptions.get(key);
 

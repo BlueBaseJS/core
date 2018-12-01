@@ -1,5 +1,5 @@
 import * as TYPES from './types';
-import { MaybeBlueBaseModuleOrInput, getDefiniteBlueBaseModule, makeId, resolveThunk } from '../../utils';
+import { MaybeBlueBaseModule, getDefiniteBlueBaseModule, makeId, resolveThunk } from '../../utils';
 import { Hook } from '../../models/Hook';
 import { Registry } from '../Registry';
 import isFunction from 'lodash.isfunction';
@@ -24,10 +24,10 @@ export class HookRegistry extends Registry<Hook[]> {
 	 * @param eventName Name to the hook to subscribe to
 	 * @param hook Hook object
 	 */
-	public async register(eventName: string, hook: MaybeBlueBaseModuleOrInput<TYPES.HookInput>) {
+	public async register(eventName: string, hook: MaybeBlueBaseModule<TYPES.HookInput>) {
 
 		// const item = await this.buildHookListenerInternal(listener);
-		const input = await getDefiniteBlueBaseModule(hook).promise;
+		const input = await getDefiniteBlueBaseModule(hook);
 
 		// If the hook doesn't have a name, create a unique name
 		if (!input.name) {
@@ -187,7 +187,7 @@ export class HookRegistry extends Registry<Hook[]> {
 		const hookValue = await accumulator;
 
 		// Handler
-		const handler: TYPES.HookHandlerFn<T> = await hookItem.handler.promise;
+		const handler: TYPES.HookHandlerFn<T> = await hookItem.handler;
 
 		if (!isFunction(handler)) {
 			throw Error(`Handler of HookListener "${hookItem.name}" in hook "${eventName}" is not a function.`);

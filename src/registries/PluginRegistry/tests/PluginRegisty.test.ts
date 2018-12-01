@@ -1,6 +1,6 @@
 // tslint:disable:max-classes-per-file
+import { BlueBaseModule, createBlueBaseModule } from '../../../utils';
 import { BlueBase } from '../../../BlueBase';
-import { BlueBaseModule } from '../../../utils';
 import { Plugin } from '../../../models/Plugin';
 
 describe('PluginRegistry', () => {
@@ -43,7 +43,7 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 
 			// const Plugins = new PluginRegistry(BB);
-			await BB.Plugins.register({ __esModule: true, default: { name: 'DummyPlugin' } });
+			await BB.Plugins.register({ __esModule: true, default: { name: 'DummyPlugin' } } as any);
 
 			const plugin = BB.Plugins.get('dummy-plugin');
 
@@ -58,7 +58,7 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 
 			// const Plugins = new PluginRegistry(BB);
-			await BB.Plugins.register(Promise.resolve({ __esModule: true, default: { name: 'DummyPlugin' } }));
+			await BB.Plugins.register(Promise.resolve({ __esModule: true, default: { name: 'DummyPlugin' } }) as any);
 
 			const plugin = BB.Plugins.get('dummy-plugin');
 
@@ -73,7 +73,7 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 
 			// const Plugins = new PluginRegistry(BB);
-			await BB.Plugins.register(new BlueBaseModule({ __esModule: true, default: { name: 'DummyPlugin' } }));
+			await BB.Plugins.register(createBlueBaseModule({ __esModule: true, default: { name: 'DummyPlugin' } }) as any);
 
 			const plugin = BB.Plugins.get('dummy-plugin');
 
@@ -88,7 +88,7 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 
 			// const Plugins = new PluginRegistry(BB);
-			await BB.Plugins.register(Promise.resolve({ name: 'DummyPlugin' }));
+			await BB.Plugins.register(Promise.resolve({ name: 'DummyPlugin' }) as BlueBaseModule<{ name: string }>);
 
 			const plugin = BB.Plugins.get('dummy-plugin');
 

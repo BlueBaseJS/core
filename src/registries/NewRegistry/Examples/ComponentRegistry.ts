@@ -100,7 +100,7 @@
 // 		}
 
 // 		const rawComponent = registryItem.rawComponent.isAsync
-// 			? getAsyncComponent(registryItem.rawComponent.promise)
+// 			? getAsyncComponent(registryItem.rawComponent)
 // 			: registryItem.rawComponent.module;
 
 // 		const hocs = registryItem.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
@@ -129,7 +129,7 @@
 // 		this.data = this.data.set(name, item);
 // 	}
 
-	// public preload() {
+// 	public preload() {
 
-	// }
+// 	}
 // }

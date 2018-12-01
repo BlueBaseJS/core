@@ -1,7 +1,7 @@
 import { ComponentCollectionInput, ComponentInput, ComponentRegistryHocItem, ComponentRegistryItem } from './types';
 import { ComponentStyles, applyStyles } from '../../models';
 import {
-	MaybeBlueBaseModuleOrInput,
+	MaybeBlueBaseModule,
 	MaybeThunk,
 	getDefiniteBlueBaseModule,
 	getDefiniteModule,
@@ -105,7 +105,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 	}
 
 	// TODO: Add docs
-	public replace(slug: string, component: MaybeBlueBaseModuleOrInput<React.ComponentType<any>>) {
+	public replace(slug: string, component: MaybeBlueBaseModule<React.ComponentType<any>>) {
 
 		const registryItem = this.get(slug);
 
@@ -129,7 +129,7 @@ export class ComponentRegistry extends Registry<ComponentRegistryItem> {
 
 		// Find the rawComponent
 		let rawComponent = registryItem.rawComponent.isAsync
-			? getAsyncComponent(registryItem.rawComponent.promise)
+			? getAsyncComponent(registryItem.rawComponent)
 			: registryItem.rawComponent.module as React.ComponentType;
 
 		// Add withStyles HOC
