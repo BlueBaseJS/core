@@ -438,7 +438,7 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<number>>(BB);
 
 			// tslint:disable-next-line
-			expect(() => registry.unsubscribe('foo', 'bar')).toThrow('Could not unsubscribe from a registry item. Reason: No item with key "foo" registered.');
+			expect(() => registry.unsubscribe('foo', 'bar')).toThrow('Could not unsubscribe from a registry item. Reason: No subsciptions for item with key "foo" registered.');
 		});
 
 		it('should throw an error for unknown subscription ID', async () => {

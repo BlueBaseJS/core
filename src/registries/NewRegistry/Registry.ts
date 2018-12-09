@@ -180,6 +180,30 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 		throw Error('Could not register item. Reason: Unknown item type.');
 	}
 
+	// TODO: Add tests
+	public async registerCollection<T = ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']>
+	(collection: T[] | { [key: string]: T }) {
+
+		// If its an array
+		if (Array.isArray(collection)) {
+			for (const item of collection) {
+				await this.register(item);
+			}
+
+			return;
+		}
+		// If its an object
+		else if (collection === Object(collection)) {
+			for (const key of Object.keys(collection)) {
+				await this.register(key, collection[key]);
+			}
+
+			return;
+		}
+
+		throw Error('Could not register collection. Reason: Unknown collection type.');
+	}
+
 	/**
 	 * The has() method returns a boolean indicating whether an element
 	 * with the specified key exists or not.
@@ -267,6 +291,24 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	}
 
 	/**
+	 * Filter registry items by a predicate function.
+	 * @param predicate
+	 */
+	public filterValues(predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean) {
+
+		const filtered = this.filter(predicate);
+		const items: { [key: string]: ItemType } = {};
+
+		for (const key in filtered) {
+			if (filtered.hasOwnProperty(key)) {
+				items[key] = filtered[key].value;
+			}
+		}
+
+		return items;
+	}
+
+	/**
 	 * Subscribe to a config value update
 	 * @param key Config key
 	 * @param callback Callback function
@@ -302,7 +344,8 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 		const subscriptions = this.subscriptions.get(key);
 
 		if (!subscriptions) {
-			throw Error(`Could not unsubscribe from a registry item. Reason: No item with key "${key}" registered.`);
+			// tslint:disable-next-line
+			throw Error(`Could not unsubscribe from a registry item. Reason: No subsciptions for item with key \"${key}\" registered.`);
 		}
 
 		if (!subscriptions.get(subscriptionId)) {
