@@ -1,13 +1,14 @@
+import { getDefiniteModule, makeId } from '../../utils';
 import { BlueBase } from '../../BlueBase';
 import isNil from 'lodash.isnil';
-import { makeId } from '../../utils';
+import merge from 'deepmerge';
 
-interface BaseMetaType { [key: string]: any }
+export interface BaseMetaType { [key: string]: any }
 
 /**
  * BlueBase Registry Item
  */
-export interface RegistryItem<ValueType, MetaType> {
+export interface RegistryItem<ValueType = any, MetaType = BaseMetaType> {
 
 	/** Item Key */
 	key: string,
@@ -15,7 +16,7 @@ export interface RegistryItem<ValueType, MetaType> {
 	/**
 	 * Registry Item Value.
 	 */
-	value: ValueType, // BlueBaseModule<ValueType>,
+	value: ValueType,
 
 	/**
 	 * Additional meta data about this registry item
@@ -26,18 +27,32 @@ export interface RegistryItem<ValueType, MetaType> {
 	[key: string]: any,
 }
 
-export type RegistrySubscriptionFn<ValueType> = (value: ValueType, item: any) => void;
+/**
+ * BlueBase Registry Item
+ */
+export interface RegistryInputItem<ValueType = any> {
+
+	/**
+	 * Registry Item Value.
+	 */
+	value: ValueType,
+
+	/** Additional Item Data */
+	[key: string]: any,
+}
+
+export type RegistrySubscriptionFn<ItemType extends RegistryItem> = (value: ItemType['value'], item: ItemType) => void;
 
 /**
  * A Base Registry
  */
-export class Registry<ValueType, MetaType extends BaseMetaType> {
+export class Registry<ItemType extends RegistryItem, ItemInputType extends RegistryInputItem = RegistryInputItem> {
 
 	/** Internal data */
-	protected data: Map<string, RegistryItem<ValueType, MetaType>> = new Map();
+	protected data: Map<string, ItemType> = new Map();
 
 	/** List of subscriptions */
-	protected subscriptions: Map<string, Map<string, RegistrySubscriptionFn<ValueType>>> = new Map();
+	protected subscriptions: Map<string, Map<string, RegistrySubscriptionFn<ItemType>>> = new Map();
 
 	constructor(protected BB: BlueBase) {
 		//
@@ -47,8 +62,18 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * The get() method returns a specified registry item.
 	 * @param key
 	 */
-	public get(key: string) {
-		return this.data.get(key);
+	public get(...keys: string[]) {
+		let item;
+
+		for (const key of keys) {
+			item = this.data.get(key);
+
+			if (!isNil(item)) {
+				break;
+			}
+		}
+
+		return item ? item : undefined;
 	}
 
 	/**
@@ -57,26 +82,35 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param key
 	 * @param value
 	 */
-	public set(key: string, item: RegistryItem<ValueType, MetaType> | any) {
-		const i = this.createItem(key, item);
-		const response = this.data.set(key, i);
-		this.publish(key, i);
+	public set(key: string, item: ItemType | ItemInputType) {
+		const existingItem = this.get(key);
 
-		return response;
+		// Override existing or create an new one
+		const finalItem = (existingItem) ? merge(existingItem, item) as any : this.createItem(key, item);
+
+		this.data.set(key, finalItem);
+		this.publish(key, finalItem);
+
+		return this;
 	}
 
 	/**
 	 * The getValue() method returns a specified value from a Registry object.
 	 * @param key
 	 */
-	public getValue(key: string): ValueType | undefined {
-		const item = this.get(key);
+	public getValue(...keys: string[]): ItemType['value'] | undefined {
 
-		if (item) {
-			return item.value;
+		let item;
+
+		for (const key of keys) {
+			item = this.get(key);
+
+			if (!isNil(item)) {
+				break;
+			}
 		}
 
-		return;
+		return item ? item.value : undefined;
 	}
 
 	/**
@@ -84,29 +118,31 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param key
 	 * @param value
 	 */
-	public setValue(key: string, value: ValueType | any) {
-		let item = this.get(key);
-
-		if (item) {
-			item.value = value;
-		} else {
-			item = this.createItem(key, { value });
-		}
-
-		return this.set(key, item);
-	}
-
-	public getMeta<K extends keyof MetaType>(key: string, metaKey: K) {
+	public setValue(key: string, value: ItemType['value'] | ItemInputType['value']) {
 		const item = this.get(key);
 
-		if (!item) {
+		// Override existing
+		if (item) {
+			item.value = value;
+			return this.set(key, item);
+		}
+
+		// Create a new item
+		return this.set(key, { value } as any);
+	}
+
+	public getMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K) {
+		const item = this.get(key);
+
+		if (!item || !item.meta) {
 			return;
 		}
 
-		return item.meta[metaKey];
+		// FIXME: Fixe typing issues
+		return (item as any).meta[metaKey];
 	}
 
-	public setMeta<K extends keyof MetaType>(key: string, metaKey: K, metaValue: MetaType[K]) {
+	public setMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K, metaValue: ItemType['meta'][K]) {
 		const item = this.get(key);
 
 		if (!item) {
@@ -117,36 +153,31 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 			item.meta = {} as any;
 		}
 
-		return item.meta[metaKey] = metaValue;
+		// FIXME: Fixe typing issues
+		return (item as any).meta[metaKey] = metaValue;
 	}
 
-	public async register(key: string, item: RegistryItem<ValueType, MetaType> | ValueType | any) {
-		if (this.isItem(item)) {
-			return this.set(key, item);
-		} else if (this.isValue(item)) {
-			return this.setValue(key, item);
+	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<void>;
+	public async register(
+		key: string,
+		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): Promise<void>;
+	public async register(
+		key: string | ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'],
+		item?: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): Promise<void> {
+
+		const args = this.getKeyAnyItem((key as any), item);
+
+		if (this.isInputItem(args.item)) {
+			this.set(args.key, args.item);
+			return;
+		} else if (this.isInputValue(args.item)) {
+			this.setValue(args.key, args.item);
+			return;
 		}
 
 		throw Error('Could not register item. Reason: Unknown item type.');
-	}
-
-	public async resolve(...keys: string[]): Promise<ValueType> {
-
-		let value;
-
-		for (const key of keys) {
-			value = this.getValue(key);
-
-			if (!isNil(value)) {
-				break;
-			}
-		}
-
-		if (!value) {
-			throw Error(`Could not resolve registry item. Reason: Could not find any of the input keys.`);
-		}
-
-		return value;
 	}
 
 	/**
@@ -212,9 +243,9 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param thisArg
 	 */
 	public forEach(callbackfn: (
-			value: RegistryItem<ValueType, MetaType>,
+			value: ItemType,
 			key: string,
-			map: Map<string, RegistryItem<ValueType, MetaType>>
+			map: Map<string, ItemType>
 		) => void, thisArg?: any) {
 		this.data.forEach(callbackfn, thisArg);
 	}
@@ -223,10 +254,10 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * Filter registry items by a predicate function.
 	 * @param predicate
 	 */
-	public filter(predicate: (value: ValueType, key: string, item: RegistryItem<ValueType, MetaType>) => boolean) {
+	public filter(predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean) {
 
 		const arr = Array.from(this.entries()).filter((entry) => predicate(entry[1].value, entry[0], entry[1]));
-		const items: { [key: string]: RegistryItem<ValueType, MetaType> } = {};
+		const items: { [key: string]: ItemType } = {};
 
 		Array.from(arr).forEach(entry => {
 			items[entry[0]] = entry[1];
@@ -241,7 +272,7 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param callback Callback function
 	 * @returns Subscription ID
 	 */
-	public subscribe(key: string, callback: (value: any) => void): string {
+	public subscribe(key: string, callback: RegistrySubscriptionFn<ItemType>): string {
 
 		let subscriptions = this.subscriptions.get(key);
 
@@ -251,7 +282,7 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 		}
 
 		// Create a unique subscription ID
-		const subId = this.createUniqueSubscriptionId([ ...subscriptions.keys() ]);
+		const subId = makeId();
 
 		// Set the callback function
 		subscriptions.set(subId, callback);
@@ -289,11 +320,12 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param key
 	 * @param partial
 	 */
-	protected createItem(key: string, partial: any): RegistryItem<ValueType, MetaType> {
+	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
 
 		const item = {
 			key,
-			...partial,
+			meta: partial.meta || {},
+			value: partial.value,
 		};
 
 		if (!this.isItem(item)) {
@@ -303,27 +335,36 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 		return item;
 	}
 
-	// Typeguard to check value
-	protected isValue(value: any): value is ValueType {
+	/**
+	 * Typeguard to check a given object is a registry value
+	 * @param value
+	 */
+	protected isValue(value: any): value is ItemType['value'] {
 		return !!(value);
 	}
 
-	// Typeguard to check item
-	protected isItem(item: any): item is RegistryItem<ValueType, MetaType> {
-		return (item as RegistryItem<ValueType, MetaType>).value !== undefined;
+	/**
+	 * Typeguard to check a given object is an input value
+	 * @param value
+	 */
+	protected isInputValue(value: any): value is ItemInputType['value'] {
+		return !!(value);
 	}
 
 	/**
-	 * Creates a unique subscription ID for a given list of subscriptions.
-	 * @param subscriptions An object containing current subscriptions
+	 * Typeguard to check a given object is a registry item
+	 * @param item
 	 */
-	protected createUniqueSubscriptionId(subscriptionIds: string[]) {
-		while(true) {
-			const id = makeId();
-			if (!subscriptionIds.includes(id)) {
-				return id;
-			}
-		}
+	protected isItem(item: any): item is ItemType {
+		return (item as ItemType).value !== undefined;
+	}
+
+	/**
+	 * Typeguard to check a given object is a input item
+	 * @param item
+	 */
+	protected isInputItem(item: any): item is ItemInputType {
+		return (item as ItemType).value !== undefined;
 	}
 
 	/**
@@ -331,7 +372,7 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 	 * @param key
 	 * @param item
 	 */
-	protected publish(key: string, item: RegistryItem<ValueType, MetaType>) {
+	protected publish(key: string, item: ItemType) {
 
 		const subscriptions = this.subscriptions.get(key);
 
@@ -340,5 +381,64 @@ export class Registry<ValueType, MetaType extends BaseMetaType> {
 		}
 
 		subscriptions.forEach(fn => fn(item.value, item));
+	}
+
+	/**
+	 * Find one item in a given sequence. Returns the first item found.
+	 * @param keys
+	 */
+	protected findOne(...keys: string[]) {
+
+		for (const tempKey of keys) {
+			const item = this.data.get(tempKey);
+
+			if (!isNil(item)) {
+				return item;
+			}
+		}
+
+		return;
+	}
+
+
+	/**
+	 * Used internally by the register method. Since this function as many overloads,
+	 * resolves final key and value params.
+	 * @param item
+	 */
+	protected getKeyAnyItem(
+		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): { key: string, item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']};
+	protected getKeyAnyItem(
+		key: string,
+		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): { key: string, item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']};
+	protected getKeyAnyItem(
+		key: string | ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'],
+		item?: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): { key: string, item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']} {
+
+		let finalKey, finalItem;
+
+		// Only key is passed, and no item
+		if (typeof key === 'string' && item === undefined) {
+			throw Error('Could not register item. Reason: No item given.');
+		}
+		// 2 params were passed, key and item
+		else if (typeof key === 'string' && item !== undefined) {
+			finalKey = key;
+			finalItem = item;
+		}
+		// Only one param was passed to the function, this should be an item
+		else if (key && (this.isItem(key) || this.isInputItem(key))) {
+			finalKey = key.key;
+			finalItem = key;
+		}
+
+		if (!finalKey) {
+			throw Error('Could not register item. Reason: No key given.');
+		}
+
+		return { key: finalKey, item: getDefiniteModule(finalItem) };
 	}
 }

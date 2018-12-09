@@ -99,13 +99,13 @@ describe('Utils', () => {
 			it('should create a string of 5 chars', async () => {
 
 				const n1 = makeId();
-				expect(n1.length).toBe(5);
+				expect(n1.length).toBe(8);
 			});
 
 			it('should create a string of 8 chars', async () => {
 
-				const n1 = makeId(8);
-				expect(n1.length).toBe(8);
+				const n1 = makeId(5);
+				expect(n1.length).toBe(5);
 			});
 
 		});

@@ -1,10 +1,20 @@
-import { BlueBaseModule, MaybeBlueBaseModule, getDefiniteBlueBaseModule } from '../../utils';
-import { Registry } from './Registry';
+import { BaseMetaType, Registry } from './Registry';
+import {
+	BlueBaseModule,
+	MaybeBlueBaseModule,
+	getDefiniteBlueBaseModule,
+	isBlueBaseModule,
+	isPromise
+} from '../../utils';
+
+export interface BlueBaseModuleRegistryItemMeta extends BaseMetaType {
+	preload: boolean,
+}
 
 /**
  * BlueBaseModule Registry Item
  */
-export interface BlueBaseModuleRegistryItem<ValueType, MetaType> {
+export interface BlueBaseModuleRegistryItem<ValueType = any, MetaType = BlueBaseModuleRegistryItemMeta> {
 
 	/** Item Key */
 	key: string,
@@ -23,54 +33,74 @@ export interface BlueBaseModuleRegistryItem<ValueType, MetaType> {
 	[key: string]: any,
 }
 
-export class BlueBaseModuleRegistry<ValueType, MetaType> extends Registry<BlueBaseModule<ValueType>, MetaType> {
+/**
+ * BlueBase Registry Item
+ */
+export interface BlueBaseModuleRegistryInputItem<ValueType = any, MetaType = BlueBaseModuleRegistryItemMeta> {
 
 	/**
-	 * The set() method adds or updates an element with a specified
-	 * key and item to the registry.
-	 * @param key
-	 * @param value
+	 * Registry Item Value.
 	 */
-	public set(key: string, item: BlueBaseModuleRegistryItem<MaybeBlueBaseModule<ValueType>, MetaType> | any) {
-		return super.set(key, item);
-	}
-
+	value: MaybeBlueBaseModule<ValueType>,
 
 	/**
-	 * The setValue() method adds or updates the value a registry item with the specified key.
-	 * @param key
-	 * @param value
+	 * Additional meta data about this registry item
 	 */
-	public setValue(key: string, value: MaybeBlueBaseModule<ValueType>) {
-		return super.setValue(key, value);
-	}
+	meta?: Partial<MetaType>,
 
+	/** Additional Item Data */
+	[key: string]: any,
+}
 
+export class BlueBaseModuleRegistry<
+	ItemType extends BlueBaseModuleRegistryItem,
+	ItemInputType extends BlueBaseModuleRegistryInputItem = BlueBaseModuleRegistryInputItem,
+> extends Registry<ItemType, ItemInputType> {
+
+	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<void>;
 	public async register(
 		key: string,
-		item: MaybeBlueBaseModule<BlueBaseModuleRegistryItem<ValueType, MetaType>> | any
-	) {
-		const module = await getDefiniteBlueBaseModule<BlueBaseModuleRegistryItem<ValueType, MetaType>>(item);
-		return super.register(key, module);
+		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): Promise<void>;
+	public async register(
+		key: string | ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'],
+		item?: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): Promise<void> {
+
+		key = isPromise(key) ?  await key : key;
+		item = isPromise(item) ?  await item : item;
+
+		return super.register((key as any), item);
 	}
 
-	// public async resolve(...keys: string[]) {
+	public async preload() {
+		const items = this.filter((_value, key) => this.getMeta(key, 'preload'));
+		const promises = Object.values(items).map((item) => item.value );
 
-	// 	return await super.resolve(...keys);
-	// }
+		return Promise.all(promises);
+	}
 
-	protected createItem(key: string, partial: any): BlueBaseModuleRegistryItem<ValueType, MetaType> {
-
-		const item = {
-			key,
-			...partial,
+	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
+		return super.createItem(key, {
+			...(partial as any),
 			value: getDefiniteBlueBaseModule(partial.value),
-		};
+		});
+	}
 
-		if (!this.isItem(item)) {
-			throw Error(`Could not set item. Reason: Unknown item type.`);
-		}
 
-		return item;
+	/**
+	 * Typeguard to check a given object is a registry value
+	 * @param value
+	 */
+	protected isValue(value: any): value is ItemType['value'] {
+		return isBlueBaseModule(value);
+	}
+
+	/**
+	 * Typeguard to check a given object is an input value
+	 * @param value
+	 */
+	protected isInputValue(value: any): value is ItemInputType['value'] {
+		return isBlueBaseModule(value) || !!(value);
 	}
 }

@@ -19,16 +19,13 @@ export function isProduction(): boolean {
 }
 
 /**
- * Creates a random ID.
+ * Creates a unique ID.
  * @param chars Number of characters. Defaults to 5
  */
-export function makeId(chars: number = 5) {
-	let text = '';
-	const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-	for (let i = 0; i < chars; i++) {
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
+export function makeId(length: number = 8) {
+	let str = '';
+	for (let i = 1; i < length + 1; i = i + 8) {
+		str += Math.random().toString(36).substr(2, 10);
 	}
-
-	return text;
+	return ('_' + str).substr(0, length);
 }
