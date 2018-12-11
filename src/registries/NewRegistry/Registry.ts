@@ -83,6 +83,11 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param value
 	 */
 	public set(key: string, item: ItemType | ItemInputType) {
+
+		if(!this.isItem(item)) {
+			throw Error('Could not set registry item. Reason: Unknown item type.');
+		}
+
 		const existingItem = this.get(key);
 
 		// Override existing or create an new one
@@ -157,24 +162,24 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 		return (item as any).meta[metaKey] = metaValue;
 	}
 
-	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<void>;
+	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<string>;
 	public async register(
 		key: string,
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
-	): Promise<void>;
-	public async register(
-		key: string | ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'],
-		item?: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
-	): Promise<void> {
+	): Promise<string>;
+	public async register<T = ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']>(
+		key: string | T,
+		item?: T
+	): Promise<string> {
 
 		const args = this.getKeyAnyItem((key as any), item);
 
 		if (this.isInputItem(args.item)) {
 			this.set(args.key, args.item);
-			return;
+			return args.key;
 		} else if (this.isInputValue(args.item)) {
 			this.setValue(args.key, args.item);
-			return;
+			return args.key;
 		}
 
 		throw Error('Could not register item. Reason: Unknown item type.');
@@ -366,9 +371,9 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
 
 		const item = {
+			meta: {},
+			...(partial as any),
 			key,
-			meta: partial.meta || {},
-			value: partial.value,
 		};
 
 		if (!this.isItem(item)) {
@@ -463,25 +468,40 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 
 		let finalKey, finalItem;
 
-		// Only key is passed, and no item
-		if (typeof key === 'string' && item === undefined) {
-			throw Error('Could not register item. Reason: No item given.');
-		}
 		// 2 params were passed, key and item
-		else if (typeof key === 'string' && item !== undefined) {
+		if (typeof key === 'string' && item !== undefined) {
 			finalKey = key;
 			finalItem = item;
 		}
+
 		// Only one param was passed to the function, this should be an item
 		else if (key && (this.isItem(key) || this.isInputItem(key))) {
 			finalKey = key.key;
 			finalItem = key;
 		}
 
+		// No key exists, attempt to generate one
+		if (!finalKey) {
+			finalKey = this.generateKey(finalItem);
+		}
+
 		if (!finalKey) {
 			throw Error('Could not register item. Reason: No key given.');
 		}
 
+		if (!finalItem) {
+			throw Error('Could not register item. Reason: No item given.');
+		}
+
 		return { key: finalKey, item: getDefiniteModule(finalItem) };
+	}
+
+	/**
+	 * This function is used to auto generate an item key
+	 * @param item
+	 */
+	protected generateKey(_item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'])
+	: string | undefined {
+		return makeId();
 	}
 }

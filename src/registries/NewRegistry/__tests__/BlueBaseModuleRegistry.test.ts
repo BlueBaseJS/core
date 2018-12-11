@@ -17,11 +17,14 @@ describe('BlueBaseModuleRegistry', () => {
 			expect(result).toBe('bar');
 		});
 
-		it('should throw, as item param cannot be a BlueBaseModule', async () => {
+		it('should set an item inside an ES Module', async () => {
 			const BB = new BlueBase();
 			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
 
-			expect(() => registry.set('foo', { default: { value: 'bar' } } as any)).toThrow();
+			registry.set('foo', { default: { value: 'bar' } } as any);
+			const result = await registry.getValue('foo');
+
+			expect(result).toBe('bar');
 		});
 
 	});

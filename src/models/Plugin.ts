@@ -13,6 +13,7 @@ export class Plugin {
 	/** Name of the plugin */
 	public name!: string;
 
+	/** TODO: Reevaluate requirement of this, after new Registry keys */
 	public slug!: string;
 
 	public description?: string;
@@ -31,6 +32,7 @@ export class Plugin {
 
 	public icon?: MaybeThunk<DynamicIconProps>;
 
+	/** TODO: Remove from here. Now use PluginRegistry's meta */
 	protected enabled: boolean = true;
 
 	// // routes: any;
@@ -66,14 +68,17 @@ export class Plugin {
 
 	public initialize: (configs: { [key: string]: any }, BB: BlueBase) => Promise<void> | void = () => { return; };
 
+	/** TODO: Remove from here. Now use PluginRegistry's meta */
 	public isEnabled() {
 		return this.enabled;
 	}
 
+	/** TODO: Remove from here. Now use PluginRegistry's meta */
 	public enable() {
 		this.enabled = true;
 	}
 
+	/** TODO: Remove from here. Now use PluginRegistry's meta */
 	public disable() {
 		this.enabled = false;
 	}

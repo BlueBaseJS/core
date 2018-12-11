@@ -2,9 +2,11 @@ import { BaseMetaType, Registry } from './Registry';
 import {
 	BlueBaseModule,
 	MaybeBlueBaseModule,
+	createBlueBaseModule,
 	getDefiniteBlueBaseModule,
+	getDefiniteModule,
 	isBlueBaseModule,
-	isPromise
+	isPromise,
 } from '../../utils';
 
 export interface BlueBaseModuleRegistryItemMeta extends BaseMetaType {
@@ -57,18 +59,30 @@ export class BlueBaseModuleRegistry<
 	ItemInputType extends BlueBaseModuleRegistryInputItem = BlueBaseModuleRegistryInputItem,
 > extends Registry<ItemType, ItemInputType> {
 
-	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<void>;
+
+	/**
+	 * The set() method adds or updates an element with a specified
+	 * key and item to the registry.
+	 * @param key
+	 * @param value
+	 */
+	public set(key: string, item: ItemType | ItemInputType) {
+		return super.set(key, getDefiniteModule(item));
+	}
+
+
+	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<string>;
 	public async register(
 		key: string,
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
-	): Promise<void>;
+	): Promise<string>;
 	public async register(
 		key: string | ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'],
 		item?: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
-	): Promise<void> {
+	): Promise<string> {
 
-		key = isPromise(key) ?  await key : key;
-		item = isPromise(item) ?  await item : item;
+		key = isPromise(key) ?  await createBlueBaseModule(key) : getDefiniteModule(key);
+		item = isPromise(item) ?  await createBlueBaseModule(item) : getDefiniteModule(item);
 
 		return super.register((key as any), item);
 	}

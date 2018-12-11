@@ -29,7 +29,8 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
-			expect(() => registry.set('foo', 'bar' as any)).toThrowError('Could not set item. Reason: Unknown item type.');
+			expect(() => registry.set('foo', 'bar' as any))
+				.toThrowError('Could not set registry item. Reason: Unknown item type.');
 		});
 
 	});
