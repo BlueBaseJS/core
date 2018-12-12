@@ -1,4 +1,3 @@
-import { BaseMetaType, Registry } from './Registry';
 import {
 	BlueBaseModule,
 	MaybeBlueBaseModule,
@@ -8,15 +7,12 @@ import {
 	isBlueBaseModule,
 	isPromise,
 } from '../../utils';
-
-export interface BlueBaseModuleRegistryItemMeta extends BaseMetaType {
-	preload: boolean,
-}
+import { Registry } from './Registry';
 
 /**
  * BlueBaseModule Registry Item
  */
-export interface BlueBaseModuleRegistryItem<ValueType = any, MetaType = BlueBaseModuleRegistryItemMeta> {
+export interface BlueBaseModuleRegistryItem<ValueType = any> {
 
 	/** Item Key */
 	key: string,
@@ -27,9 +23,9 @@ export interface BlueBaseModuleRegistryItem<ValueType = any, MetaType = BlueBase
 	value: BlueBaseModule<ValueType>,
 
 	/**
-	 * Additional meta data about this registry item
+	 * Preload this value
 	 */
-	meta: MetaType,
+	preload: boolean,
 
 	/** Additional Item Data */
 	[key: string]: any,
@@ -38,7 +34,7 @@ export interface BlueBaseModuleRegistryItem<ValueType = any, MetaType = BlueBase
 /**
  * BlueBase Registry Item
  */
-export interface BlueBaseModuleRegistryInputItem<ValueType = any, MetaType = BlueBaseModuleRegistryItemMeta> {
+export interface BlueBaseModuleRegistryInputItem<ValueType = any> {
 
 	/**
 	 * Registry Item Value.
@@ -46,9 +42,9 @@ export interface BlueBaseModuleRegistryInputItem<ValueType = any, MetaType = Blu
 	value: MaybeBlueBaseModule<ValueType>,
 
 	/**
-	 * Additional meta data about this registry item
+	 * Preload this value
 	 */
-	meta?: Partial<MetaType>,
+	preload?: boolean,
 
 	/** Additional Item Data */
 	[key: string]: any,
@@ -88,7 +84,7 @@ export class BlueBaseModuleRegistry<
 	}
 
 	public async preload() {
-		const items = this.filter((_value, key) => this.getMeta(key, 'preload'));
+		const items = this.filter((_value, _key, item) => item.preload);
 		const promises = Object.values(items).map((item) => item.value );
 
 		return Promise.all(promises);
@@ -96,6 +92,7 @@ export class BlueBaseModuleRegistry<
 
 	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
 		return super.createItem(key, {
+			preload: false,
 			...(partial as any),
 			value: getDefiniteBlueBaseModule(partial.value),
 		});

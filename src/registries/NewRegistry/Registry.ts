@@ -3,12 +3,10 @@ import { BlueBase } from '../../BlueBase';
 import isNil from 'lodash.isnil';
 import merge from 'deepmerge';
 
-export interface BaseMetaType { [key: string]: any }
-
 /**
  * BlueBase Registry Item
  */
-export interface RegistryItem<ValueType = any, MetaType = BaseMetaType> {
+export interface RegistryItem<ValueType = any> {
 
 	/** Item Key */
 	key: string,
@@ -17,11 +15,6 @@ export interface RegistryItem<ValueType = any, MetaType = BaseMetaType> {
 	 * Registry Item Value.
 	 */
 	value: ValueType,
-
-	/**
-	 * Additional meta data about this registry item
-	 */
-	meta: MetaType,
 
 	/** Additional Item Data */
 	[key: string]: any,
@@ -91,7 +84,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 		const existingItem = this.get(key);
 
 		// Override existing or create an new one
-		const finalItem = (existingItem) ? merge(existingItem, item) as any : this.createItem(key, item);
+		const finalItem = (existingItem) ? merge(existingItem, item) as ItemType : this.createItem(key, item);
 
 		this.data.set(key, finalItem);
 		this.publish(key, finalItem);
@@ -136,31 +129,31 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 		return this.set(key, { value } as any);
 	}
 
-	public getMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K) {
-		const item = this.get(key);
+	// public getMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K) {
+	// 	const item = this.get(key);
 
-		if (!item || !item.meta) {
-			return;
-		}
+	// 	if (!item || !item.meta) {
+	// 		return;
+	// 	}
 
-		// FIXME: Fixe typing issues
-		return (item as any).meta[metaKey];
-	}
+	// 	// FIXME: Fixe typing issues
+	// 	return (item as any).meta[metaKey];
+	// }
 
-	public setMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K, metaValue: ItemType['meta'][K]) {
-		const item = this.get(key);
+	// public setMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K, metaValue: ItemType['meta'][K]) {
+	// 	const item = this.get(key);
 
-		if (!item) {
-			return;
-		}
+	// 	if (!item) {
+	// 		return;
+	// 	}
 
-		if (!item.meta) {
-			item.meta = {} as any;
-		}
+	// 	if (!item.meta) {
+	// 		item.meta = {} as any;
+	// 	}
 
-		// FIXME: Fixe typing issues
-		return (item as any).meta[metaKey] = metaValue;
-	}
+	// 	// FIXME: Fixe typing issues
+	// 	return (item as any).meta[metaKey] = metaValue;
+	// }
 
 	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<string>;
 	public async register(

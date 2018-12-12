@@ -9,7 +9,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should set item', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			registry.set('foo', { value: { default: 'bar' } });
 			const result = await registry.getValue('foo');
@@ -19,7 +19,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should set an item inside an ES Module', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			registry.set('foo', { default: { value: 'bar' } } as any);
 			const result = await registry.getValue('foo');
@@ -42,7 +42,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should set a value of a known item', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			registry.set('foo', { value: 'bar' });
 			registry.setValue('foo', 'baz');
@@ -54,7 +54,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should get value of an item set through setValue', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 
@@ -70,7 +70,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should get value for first known item', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
@@ -82,7 +82,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should get value for a backup item', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			registry.setValue('far', 'bu');
 
@@ -97,16 +97,18 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should register an item', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
-			await registry.register('some', Promise.resolve({ value: 'foo', meta: { preload: true } }));
-			expect(await registry.getValue('some')).toBe('foo');
-			expect(await registry.getMeta('some', 'preload')).toBe(true);
+			await registry.register('some', Promise.resolve({ value: 'foo', preload: true, }));
+
+			const item = registry.get('some');
+			expect(await (item as any).value).toBe('foo');
+			expect(await (item as any).preload).toBe(true);
 		});
 
 		it('should register a value', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			await registry.register('some', Promise.resolve('foo'));
 			expect(await registry.getValue('some')).toBe('foo');
@@ -114,7 +116,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should throw an error for unknown input', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			// Override value test to force error
 			(registry as any).isValue = () => false;
@@ -128,19 +130,21 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should register an item without key param', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
-			await registry.register(Promise.resolve({ key: 'some', value: 'foo', meta: { preload: true } }));
-			expect(await registry.getValue('some')).toBe('foo');
-			expect(await registry.getMeta('some', 'preload')).toBe(true);
+			await registry.register(Promise.resolve({ key: 'some', value: 'foo', preload: true }));
+
+			const item = registry.get('some');
+			expect(await (item as any).value).toBe('foo');
+			expect(await (item as any).preload).toBe(true);
 		});
 
 		it('should throw an error, becuase theres no key i  item', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			try {
-				await registry.register(Promise.resolve({ value: 'foo', meta: { preload: true } }));
+				await registry.register(Promise.resolve({ value: 'foo', preload: true }));
 			} catch (error) {
 				expect(error.message).toBe('Could not register item. Reason: No key given.');
 			}
@@ -148,7 +152,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 		it('should throw an error, becuase theres no key in value', async () => {
 			const BB = new BlueBase();
-			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			try {
 				await registry.register(Promise.resolve('foo'));

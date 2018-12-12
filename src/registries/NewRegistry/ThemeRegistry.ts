@@ -2,13 +2,12 @@ import {
 	BlueBaseModuleRegistry,
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
-	BlueBaseModuleRegistryItemMeta,
 } from './BlueBaseModuleRegistry';
 import { Theme, ThemeInput, createTheme } from '../../models';
 import { getDefiniteBlueBaseModule } from '../../utils';
 
 
-export interface ThemeRegistryItemMeta extends BlueBaseModuleRegistryItemMeta {
+export interface ThemeRegistryItem extends BlueBaseModuleRegistryItem<Theme> {
 	/**
 	 * Name of theme.
 	 *
@@ -30,14 +29,16 @@ export interface ThemeRegistryItemMeta extends BlueBaseModuleRegistryItemMeta {
 	alternate?: string,
 }
 
-export type ThemeRegistryItem = BlueBaseModuleRegistryItem<Theme, ThemeRegistryItemMeta>;
-export type ThemeRegistryInputItem =
-	BlueBaseModuleRegistryInputItem<ThemeInput, ThemeRegistryItemMeta>;
+export interface ThemeRegistryInputItem extends BlueBaseModuleRegistryInputItem<ThemeInput> {
+}
+
+type ItemType = ThemeRegistryItem;
+type ItemInputType = ThemeRegistryInputItem;
 
 /**
  * 🎨 ThemeRegistry
  */
-export class ThemeRegistry extends BlueBaseModuleRegistry<ThemeRegistryItem, ThemeRegistryInputItem> {
+export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
 
 	public async resolve(...keys: string[]): Promise<Theme> {
 
@@ -60,8 +61,13 @@ export class ThemeRegistry extends BlueBaseModuleRegistry<ThemeRegistryItem, The
 	 * @param slug
 	 */
 	public async resolveAlternate(slug: string) {
-		const name = this.getMeta(slug, 'alternate');
-		return this.resolve(name);
+		const item = this.get(slug);
+
+		if (!item || !item.alternate) {
+			return;
+		}
+
+		return this.resolve(item.alternate);
 	}
 
 	protected createItem(key: string, partial: any): ThemeRegistryItem {

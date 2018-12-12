@@ -1,16 +1,6 @@
 import { Registry, RegistryItem } from '../Registry';
 import { BlueBase } from '../../../BlueBase';
 
-// import { makeId } from '../../../utils/Misc';
-// jest.mock('../../../utils/Misc');
-
-// (makeId as any)
-// .mockReturnValueOnce('m1')
-// .mockReturnValueOnce('m1')
-// .mockReturnValueOnce('m2')
-// .mockReturnValueOnce('m3')
-// .mockReturnValueOnce('m4');
-
 describe('Registry', () => {
 
 
@@ -68,14 +58,14 @@ describe('Registry', () => {
 
 		it('should return undefined for unkown item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, {}>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			expect(registry.getValue('foo')).toBe(undefined);
 		});
 
 		it('should get value for first known item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<number, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<number>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
@@ -87,7 +77,7 @@ describe('Registry', () => {
 
 		it('should get value for a backup item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('far', 'bu');
 
@@ -98,46 +88,49 @@ describe('Registry', () => {
 	});
 
 
-	describe('meta setter/getters', () => {
+	// describe('meta setter/getters', () => {
 
-		it('should return undefined when setting meta value of an unknown item', async () => {
-			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean, loaded: number }>>(BB);
+	// 	it('should return undefined when setting meta value of an unknown item', async () => {
+	// 		const BB = new BlueBase();
+	// 		const registry = new Registry<RegistryItem<string, { preload: boolean, loaded: number }>>(BB);
 
-			registry.setMeta('foo', 'preload', true);
+	// 		registry.setMeta('foo', 'preload', true);
 
-			expect(registry.getMeta('foo', 'preload')).toBe(undefined);
-		});
+	// 		expect(registry.getMeta('foo', 'preload')).toBe(undefined);
+	// 	});
 
-		it('should set meta value of an item', async () => {
-			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean, loaded: string }>>(BB);
+	// 	it('should set meta value of an item', async () => {
+	// 		const BB = new BlueBase();
+	// 		const registry = new Registry<RegistryItem<string, { preload: boolean, loaded: string }>>(BB);
 
-			registry.set('foo', { value: 'bar' });
-			registry.setMeta('foo', 'preload', true);
-			registry.setMeta('foo', 'loaded', 'yes');
+	// 		registry.set('foo', { value: 'bar' });
+	// 		registry.setMeta('foo', 'preload', true);
+	// 		registry.setMeta('foo', 'loaded', 'yes');
 
-			expect(registry.getMeta('foo', 'preload')).toBe(true);
-			expect(registry.getMeta('foo', 'loaded')).toBe('yes');
-		});
+	// 		expect(registry.getMeta('foo', 'preload')).toBe(true);
+	// 		expect(registry.getMeta('foo', 'loaded')).toBe('yes');
+	// 	});
 
-	});
+	// });
 
 
 	describe('.register method', () => {
 
 		it('should register an item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
-			await registry.register('some', { value: 'foo', meta: { preload: true } });
-			expect(registry.getValue('some')).toBe('foo');
-			expect(registry.getMeta('some', 'preload')).toBe(true);
+			await registry.register('some', { value: 'foo', preload: true, });
+
+			const item = registry.get('some');
+
+			expect((item as any).value).toBe('foo');
+			expect((item as any).preload).toBe(true);
 		});
 
 		it('should register a value', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			await registry.register('some', 'foo');
 			expect(registry.getValue('some')).toBe('foo');
@@ -145,7 +138,7 @@ describe('Registry', () => {
 
 		it('should throw an error for unknown input', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			// Override value test to force error
 			(registry as any).isValue = () => false;
@@ -159,19 +152,22 @@ describe('Registry', () => {
 
 		it('should register an item without key param', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
-			await registry.register({ key: 'some', value: 'foo', meta: { preload: true } });
-			expect(registry.getValue('some')).toBe('foo');
-			expect(registry.getMeta('some', 'preload')).toBe(true);
+			await registry.register({ key: 'some', value: 'foo', preload: true });
+
+			const item = registry.get('some');
+
+			expect((item as any).value).toBe('foo');
+			expect((item as any).preload).toBe(true);
 		});
 
 		it('should throw an error, becuase theres no key i  item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			try {
-				await registry.register({ value: 'foo', meta: { preload: true } });
+				await registry.register({ value: 'foo', preload: true, });
 			} catch (error) {
 				expect(error.message).toBe('Could not register item. Reason: No key given.');
 			}
@@ -179,7 +175,7 @@ describe('Registry', () => {
 
 		it('should throw an error, becuase theres only key', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			try {
 				await registry.register('foo');
@@ -195,14 +191,14 @@ describe('Registry', () => {
 
 		it('should return false for an unknown item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			expect(registry.has('foo')).toBe(false);
 		});
 
 		it('should set meta value of an item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean, loaded: string }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.set('foo', { value: 'bar' });
 			expect(registry.has('foo')).toBe(true);
@@ -214,7 +210,7 @@ describe('Registry', () => {
 
 		it('should delete a registry item', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.delete('foo');
@@ -228,7 +224,7 @@ describe('Registry', () => {
 
 		it('should clear registry', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
@@ -246,7 +242,7 @@ describe('Registry', () => {
 
 		it('should return entries iterator', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
@@ -265,7 +261,7 @@ describe('Registry', () => {
 
 		it('should return keys iterator', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
@@ -284,7 +280,7 @@ describe('Registry', () => {
 
 		it('should return values iterator', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
@@ -303,7 +299,7 @@ describe('Registry', () => {
 
 		it('should return correct size', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			expect(registry.size()).toBe(0);
 
@@ -326,7 +322,7 @@ describe('Registry', () => {
 
 		it('should run a forEach loop', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<string, { preload: boolean }>>(BB);
+			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
 			registry.setValue('faa', 'baz');
@@ -350,7 +346,7 @@ describe('Registry', () => {
 
 		it('should filter items', async () => {
 			const BB = new BlueBase();
-			const registry = new Registry<RegistryItem<any, {}>>(BB);
+			const registry = new Registry<RegistryItem<any>>(BB);
 
 			registry.setValue('title', 'Config Registry Test');
 			registry.setValue('subtitle', 'We are just testing');

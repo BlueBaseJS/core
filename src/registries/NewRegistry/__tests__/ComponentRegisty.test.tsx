@@ -160,7 +160,7 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 
 			await Components.register('Button', {
-				meta: { preload: true, },
+				preload: true,
 				value: Button,
 			});
 
@@ -170,8 +170,7 @@ describe('ComponentRegistry', () => {
 				throw Error();
 			}
 
-			expect(Components.getMeta('Button', 'preload')).toBe(true);
-			expect(Component.meta.preload).toBe(true);
+			expect(Component.preload).toBe(true);
 		});
 
 		it('should throw an Error for empty object', async () => {
@@ -198,16 +197,12 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 
 			await Components.register('Button', {
-				meta: {
-					hocs: [() => Button],
-				  preload: true,
-				},
+				hocs: [() => Button],
+				preload: true,
 				value: Button,
 			});
 			await Components.register('Button', {
-				meta: {
-					hocs: [() => Button, () => Button],
-				},
+				hocs: [() => Button, () => Button],
 				value: Button,
 			});
 
@@ -216,8 +211,8 @@ describe('ComponentRegistry', () => {
 			if (!Component) {
 				throw Error();
 			}
-			expect(Components.getMeta('Button', 'hocs')).toHaveLength(3);
-			expect(Components.getMeta('Button', 'preload')).toBe(true);
+			expect(Component.hocs).toHaveLength(3);
+			expect(Component.preload).toBe(true);
 		});
 	});
 
@@ -236,7 +231,7 @@ describe('ComponentRegistry', () => {
 			if (!Component) {
 				throw Error();
 			}
-			expect(Components.getMeta('Button', 'hocs')).toHaveLength(1);
+			expect(Component.hocs).toHaveLength(1);
 		});
 
 		it('should add multiple HOCs', async () => {
@@ -253,7 +248,7 @@ describe('ComponentRegistry', () => {
 			if (!Component) {
 				throw Error();
 			}
-			expect(Components.getMeta('Button', 'hocs')).toHaveLength(3);
+			expect(Component.hocs).toHaveLength(3);
 		});
 
 		it('should not override existing HOCs', async () => {
@@ -261,7 +256,7 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 
 			await Components.register('Button', {
-				meta: { hocs: [() => Button], },
+				hocs: [() => Button],
 				value: Button,
 			});
 			Components.addHocs('Button', () => Button);
@@ -271,7 +266,7 @@ describe('ComponentRegistry', () => {
 			if (!Component) {
 				throw Error();
 			}
-			expect(Components.getMeta('Button', 'hocs')).toHaveLength(2);
+			expect(Component.hocs).toHaveLength(2);
 		});
 
 		it('should throw an Error for unregistered components', async () => {

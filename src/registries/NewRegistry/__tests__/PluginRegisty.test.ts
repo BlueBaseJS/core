@@ -14,13 +14,13 @@ describe.only('PluginRegistry', () => {
 
 			await Plugins.register({
 				key: 'dummy-plugin',
-				meta: {
-					name: 'Dummy Plugin',
-				},
+				name: 'Dummy Plugin',
 				value: {},
 			});
 
-			expect(Plugins.getMeta('dummy-plugin', 'name')).toBe('Dummy Plugin');
+			const item = Plugins.get('dummy-plugin');
+
+			expect((item as any).name).toBe('Dummy Plugin');
 		});
 
 		// it('should register a Plugin with auto generated slug', async () => {
@@ -49,14 +49,15 @@ describe.only('PluginRegistry', () => {
 				default:
 				{
 					key: 'dummy-plugin',
-					meta: {
-						name: 'Dummy Plugin',
-					},
+					name: 'Dummy Plugin',
 					value: {},
 				}
 			} as any);
 
-			expect(Plugins.getMeta('dummy-plugin', 'name')).toBe('Dummy Plugin');
+
+			const item = Plugins.get('dummy-plugin');
+
+			expect((item as any).name).toBe('Dummy Plugin');
 		});
 
 		it('should register a Plugin from a Promised ES Module', async () => {
@@ -68,14 +69,14 @@ describe.only('PluginRegistry', () => {
 				default:
 				{
 					key: 'dummy-plugin',
-					meta: {
-						name: 'Dummy Plugin',
-					},
+					name: 'Dummy Plugin',
 					value: {},
 				}
 			}) as any);
 
-			expect(Plugins.getMeta('dummy-plugin', 'name')).toBe('Dummy Plugin');
+			const item = Plugins.get('dummy-plugin');
+
+			expect((item as any).name).toBe('Dummy Plugin');
 		});
 
 		it('should register a Plugin from an ES Module in a BlueBaseModule', async () => {
@@ -87,14 +88,15 @@ describe.only('PluginRegistry', () => {
 				default:
 				{
 					key: 'dummy-plugin',
-					meta: {
-						name: 'Dummy Plugin',
-					},
+					name: 'Dummy Plugin',
 					value: {},
 				}
 			}) as any);
 
-			expect(Plugins.getMeta('dummy-plugin', 'name')).toBe('Dummy Plugin');
+
+			const item = Plugins.get('dummy-plugin');
+
+			expect((item as any).name).toBe('Dummy Plugin');
 		});
 
 		it('should register a Plugin from a Promise', async () => {
@@ -103,13 +105,14 @@ describe.only('PluginRegistry', () => {
 
 			await Plugins.register(Promise.resolve({
 				key: 'dummy-plugin',
-				meta: {
-					name: 'Dummy Plugin',
-				},
+				name: 'Dummy Plugin',
 				value: {},
 			}) as any);
 
-			expect(Plugins.getMeta('dummy-plugin', 'name')).toBe('Dummy Plugin');
+
+			const item = Plugins.get('dummy-plugin');
+
+			expect((item as any).name).toBe('Dummy Plugin');
 		});
 
 		it('should throw an error if unknown class is registered', async () => {
@@ -203,13 +206,14 @@ describe.only('PluginRegistry', () => {
 
 			await Plugins.register({
 				key: 'dummy-plugin',
-				meta: {
-					name: 'Dummy Plugin',
-				},
+				name: 'Dummy Plugin',
 				value: {},
 			});
 
-			expect(Plugins.getMeta('dummy-plugin', 'name')).toBe('Dummy Plugin');
+
+			const item = Plugins.get('dummy-plugin');
+
+			expect((item as any).name).toBe('Dummy Plugin');
 
 			Plugins.delete('dummy-plugin');
 

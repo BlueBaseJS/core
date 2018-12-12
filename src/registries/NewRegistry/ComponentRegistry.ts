@@ -2,7 +2,6 @@ import {
 	BlueBaseModuleRegistry,
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
-	BlueBaseModuleRegistryItemMeta,
 } from './BlueBaseModuleRegistry';
 import { getDefiniteBlueBaseModule, isBlueBaseModule } from '../../utils';
 import { BlueBase } from '../../BlueBase';
@@ -23,16 +22,17 @@ export interface ComponentSource {
 	slug: string,
 }
 
-
-export interface ComponentRegistryItemMeta extends BlueBaseModuleRegistryItemMeta {
+interface ComponentRegistryItemExtras {
 	hocs: ComponentRegistryHocItem[],
 	source: ComponentSource,
 	isAsync: boolean,
 }
 
-export type ComponentRegistryItem = BlueBaseModuleRegistryItem<React.ComponentType<any>, ComponentRegistryItemMeta>;
+export type ComponentRegistryItem =
+	BlueBaseModuleRegistryItem<React.ComponentType<any>> & ComponentRegistryItemExtras;
+
 export type ComponentRegistryInputItem =
-	BlueBaseModuleRegistryInputItem<React.ComponentType<any>, ComponentRegistryItemMeta>;
+	BlueBaseModuleRegistryInputItem<React.ComponentType<any>> & Partial<ComponentRegistryItemExtras>;
 
 
 export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryItem, ComponentRegistryInputItem> {
@@ -73,7 +73,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 			})
 			: item.value.module;
 
-		const hocs = this.getMeta(item.key, 'hocs')
+		const hocs = item.hocs
 			.map((hoc: ComponentRegistryHocItem) => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		return flowRight([...hocs])(rawComponent);
@@ -94,11 +94,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 			);
 		}
 
-		const currentHOCs: ComponentRegistryHocItem[] = this.getMeta(key, 'hocs') || [];
-
-		currentHOCs.push(...hocs);
-
-		this.setMeta(key, 'hocs', currentHOCs);
+		this.set(key, { ...item, hocs, });
 	}
 
 	public removeHocs() {
@@ -110,16 +106,11 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 		const value = getDefiniteBlueBaseModule(partial.value);
 
 		return super.createItem(key, {
+			hocs: [],
+			isAsync: value.isAsync,
+			preload: false,
 			...partial,
 			value,
-
-			meta: {
-				hocs: [],
-				isAsync: value.isAsync,
-				preload: false,
-
-				...partial.meta,
-			}
 		});
 	}
 

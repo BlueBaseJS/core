@@ -2,7 +2,6 @@ import {
 	BlueBaseModuleRegistry,
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
-	BlueBaseModuleRegistryItemMeta,
 } from './BlueBaseModuleRegistry';
 import { MaybeThunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../../utils';
 import { DynamicIconProps } from '../../components';
@@ -13,7 +12,7 @@ export interface Plugin {
 	hooks: any; // HookCollectionInput;
 	themes: any; // ThemeItemCollection;
 }
-export interface PluginRegistryItemMeta extends BlueBaseModuleRegistryItemMeta {
+export interface PluginRegistryItemExtras {
 	/**
 	 * Name of the plugin.
 	 *
@@ -22,7 +21,7 @@ export interface PluginRegistryItemMeta extends BlueBaseModuleRegistryItemMeta {
 	 */
 	name: string,
 
-	categories: any; // PluginCategory | PluginCategory[];
+	categories?: any; // PluginCategory | PluginCategory[];
 	description?: string,
 	version?: string,
 	icon?: MaybeThunk<DynamicIconProps>,
@@ -36,9 +35,11 @@ export interface PluginRegistryItemMeta extends BlueBaseModuleRegistryItemMeta {
  */
 export type PluginInput = Partial<Plugin>;
 
-export type PluginRegistryItem = BlueBaseModuleRegistryItem<Plugin, PluginRegistryItemMeta>;
+export type PluginRegistryItem =
+	BlueBaseModuleRegistryItem<Plugin> & PluginRegistryItemExtras;
+
 export type PluginRegistryInputItem =
-	BlueBaseModuleRegistryInputItem<PluginInput, PluginRegistryItemMeta>;
+	BlueBaseModuleRegistryInputItem<PluginInput> & Partial<PluginRegistryItemExtras>;
 
 type ItemType = PluginRegistryItem;
 type ItemInputType = PluginRegistryInputItem;
@@ -81,7 +82,13 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param key
 	 */
 	public isEnabled(key: string) {
-		return this.getMeta(key, 'enabled') === true ? true : false;
+		const item = this.get(key);
+
+		if (!item) {
+			return false;
+		}
+
+		return item.enabled;
 	}
 
 	/**
@@ -89,7 +96,14 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param key
 	 */
 	public async enable(key: string) {
-		return this.setMeta(key, 'enabled', true);
+		const item = this.get(key);
+
+		if (!item) {
+			return;
+		}
+
+		item.enabled = true;
+		this.set(key, item);
 	}
 
 	/**
@@ -97,7 +111,14 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param key
 	 */
 	public async disable(key: string) {
-		return this.setMeta(key, 'enabled', false);
+		const item = this.get(key);
+
+		if (!item) {
+			return;
+		}
+
+		item.enabled = false;
+		this.set(key, item);
 	}
 
 	/**
@@ -121,6 +142,9 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	protected createItem(key: string, partial: any): ItemType {
 
 		return super.createItem(key, {
+			categories: [],
+			enabled: true,
+			name: 'Untitled Plugin',
 			...partial,
 
 			value: {
@@ -130,13 +154,6 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 				themes: {},
 				...getDefiniteBlueBaseModule(partial.value)
 			},
-
-			meta: {
-				categories: [],
-				enabled: true,
-				name: 'Untitled Plugin',
-				...partial.meta,
-			}
 		});
 	}
 
