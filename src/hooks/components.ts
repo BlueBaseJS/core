@@ -1,5 +1,5 @@
 // tslint:disable:object-literal-sort-keys
-import * as Component from '../components';
+import * as Components from '../components';
 import * as Native from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInput } from '../registries';
@@ -19,26 +19,26 @@ export const components: { [key: string]: HookInput[] } = {
 
 			await BB.Components.registerCollection({
 				// BlueBase Components
-				SystemFooter: Component.Noop,
-				SystemHeader: Component.Noop,
-				...Component,
+				SystemFooter: Components.Noop,
+				SystemHeader: Components.Noop,
+				...Components,
 
 				// Native
 				...Native,
 
 				// Typography
-				H1: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h1 }) },
-				H2: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h2 }) },
-				H3: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h3 }) },
-				H4: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h4 }) },
-				H5: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h5 }) },
-				H6: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h6 }) },
-				Subtitle1: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle1 }) },
-				Subtitle2: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle2 }) },
-				Body1: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body1 }) },
-				Body2: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body2 }) },
-				Caption: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.caption }) },
-				Overline: { rawComponent: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.overline }) },
+				H1: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h1 }) },
+				H2: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h2 }) },
+				H3: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h3 }) },
+				H4: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h4 }) },
+				H5: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h5 }) },
+				H6: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h6 }) },
+				Subtitle1: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle1 }) },
+				Subtitle2: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle2 }) },
+				Body1: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body1 }) },
+				Body2: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body2 }) },
+				Caption: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.caption }) },
+				Overline: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.overline }) },
 			});
 
 			return bootOptions;

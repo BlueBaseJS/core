@@ -34,6 +34,8 @@ export interface RegistryInputItem<ValueType = any> {
 	[key: string]: any,
 }
 
+export type ItemCollection<T extends RegistryInputItem> = Array<T | T['value']>| { [key: string]: (T | T['value']) };
+
 export type RegistrySubscriptionFn<ItemType extends RegistryItem> = (value: ItemType['value'], item: ItemType) => void;
 
 /**
@@ -179,8 +181,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	}
 
 	// TODO: Add tests
-	public async registerCollection<T = ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']>
-	(collection: T[] | { [key: string]: T }) {
+	public async registerCollection(collection: ItemCollection<ItemInputType>) {
 
 		// If its an array
 		if (Array.isArray(collection)) {

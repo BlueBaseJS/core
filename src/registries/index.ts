@@ -1,4 +1,4 @@
-export * from './ComponentRegistry';
+export * from './NewRegistry/ComponentRegistry';
 export * from './ConfigRegistry';
 export * from './HookRegistry';
 export * from './PluginRegistry';

@@ -8,6 +8,7 @@ import { BlueBase } from '../../BlueBase';
 import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../../components';
 import flowRight from 'lodash.flowright';
+import { ItemCollection } from './Registry';
 
 /**
  * Definition of the HOC
@@ -34,7 +35,11 @@ export type ComponentRegistryItem =
 export type ComponentRegistryInputItem =
 	BlueBaseModuleRegistryInputItem<React.ComponentType<any>> & Partial<ComponentRegistryItemExtras>;
 
+export type ComponentInputCollection = ItemCollection<ComponentRegistryInputItem>;
 
+/**
+ * 🎁 ComponentRegistry
+ */
 export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryItem, ComponentRegistryInputItem> {
 
 	// For proxy methods

@@ -3,18 +3,11 @@
 exports[`ErrorState Snapshot ErrorState 1`] = `null`;
 
 exports[`ErrorState Snapshot ErrorState after complete rendering 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text
     style={
       Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
+        undefined,
         undefined,
       ]
     }
@@ -24,12 +17,7 @@ exports[`ErrorState Snapshot ErrorState after complete rendering 1`] = `
   <Text
     style={
       Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
+        undefined,
         undefined,
       ]
     }

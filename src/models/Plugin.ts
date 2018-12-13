@@ -1,6 +1,5 @@
-import { ConfigsCollection, HookCollectionInput, ThemeItemCollection } from '../registries';
+import { ComponentInputCollection, ConfigsCollection, HookCollectionInput, ThemeItemCollection } from '../registries';
 import { BlueBase } from '../BlueBase';
-import { ComponentCollectionInput } from '../registries/ComponentRegistry/types';
 import { DynamicIconProps } from '../components/DynamicIcon';
 import { MaybeThunk } from '../utils';
 import { PluginInput } from '../registries/PluginRegistry/types';
@@ -24,7 +23,7 @@ export class Plugin {
 
 	public hooks: HookCollectionInput = {};
 
-	public components: ComponentCollectionInput = {};
+	public components: ComponentInputCollection = {};
 
 	public defaultConfigs: ConfigsCollection = {};
 

@@ -14,10 +14,13 @@ export class SystemApp extends React.PureComponent<SystemAppProps> {
 		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
 		const BB: BlueBase = (this as any).context;
 
+		const { children, ...rest } = this.props;
+		const content = children || <BB.Components.SystemContent />;
+
 		return (
-			<BB.Components.View {...this.props}>
+			<BB.Components.View {...rest}>
 				<BB.Components.SystemHeader />
-				<BB.Components.SystemContent />
+				{content}
 				<BB.Components.SystemFooter />
 			</BB.Components.View>
 		);

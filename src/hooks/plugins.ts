@@ -74,10 +74,7 @@ export const plugins: { [key: string]: HookInput[] } = {
 				///// Register Components /////
 				///////////////////////////////
 
-				const componentKeys = Object.keys(plugin.components);
-				for (const key of componentKeys) {
-					await BB.Components.register(key, plugin.components[key]);
-				}
+				await BB.Components.registerCollection(plugin.components);
 
 				///////////////////////////
 				///// Register Themes /////

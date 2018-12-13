@@ -1,24 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComponentState Snapshot ComponentState component 1`] = `
-<View
-  styles={Object {}}
-/>
-`;
+exports[`ComponentState Snapshot ComponentState component 1`] = `<View />`;
 
 exports[`ComponentState Snapshot ComponentState component with description 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text
     style={
       Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
+        undefined,
         undefined,
       ]
     }
@@ -29,9 +18,7 @@ exports[`ComponentState Snapshot ComponentState component with description 1`] =
 `;
 
 exports[`ComponentState Snapshot ComponentState component with description and image 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Image
     source={
       Object {
@@ -48,12 +35,7 @@ exports[`ComponentState Snapshot ComponentState component with description and i
   <Text
     style={
       Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
+        undefined,
         undefined,
       ]
     }
@@ -64,9 +46,7 @@ exports[`ComponentState Snapshot ComponentState component with description and i
 `;
 
 exports[`ComponentState Snapshot ComponentState component with description and imageSource 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Image
     source={
       Object {
@@ -80,17 +60,11 @@ exports[`ComponentState Snapshot ComponentState component with description and i
         "width": 250,
       }
     }
-    styles={Object {}}
   />
   <Text
     style={
       Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
+        undefined,
         undefined,
       ]
     }

@@ -40,29 +40,23 @@ exports[`DataObserver Snapshot DataObserver component isEmpty={() => false} isLo
 `;
 
 exports[`DataObserver Snapshot DataObserver component isEmpty={() => false} isLoading={() => true} 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
 </View>
 `;
 
 exports[`DataObserver Snapshot DataObserver component isEmpty={() => false} loading={true} 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
 </View>
 `;
@@ -81,29 +75,23 @@ exports[`DataObserver Snapshot DataObserver component isEmpty={() => true} isLoa
 `;
 
 exports[`DataObserver Snapshot DataObserver component loading={true} 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
 </View>
 `;
 
 exports[`DataObserver Snapshot DataObserver component loading={true} 2`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
 </View>
 `;

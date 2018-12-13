@@ -4,10 +4,11 @@ import {
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
 import { MaybeThunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../../utils';
+import { ComponentInputCollection } from './ComponentRegistry';
 import { DynamicIconProps } from '../../components';
 
 export interface Plugin {
-	components: any; // ComponentCollectionInput;
+	components: ComponentInputCollection;
 	defaultConfigs: any; // ConfigsCollection;
 	hooks: any; // HookCollectionInput;
 	themes: any; // ThemeItemCollection;

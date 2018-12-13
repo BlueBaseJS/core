@@ -3,53 +3,39 @@
 exports[`LoadingState Snapshot LoadingState component 1`] = `null`;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
 </View>
 `;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: false 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
 </View>
 `;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
   <Text
     style={
       Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
+        undefined,
         undefined,
       ]
     }
@@ -60,25 +46,17 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
 `;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true and retry mocked function 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <ActivityIndicator
     animating={true}
     color="#999999"
     hidesWhenStopped={true}
     size="small"
-    styles={Object {}}
   />
   <Text
     style={
       Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
+        undefined,
         undefined,
       ]
     }
@@ -112,12 +90,7 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
       <Text
         style={
           Array [
-            Object {
-              "color": "rgba(0, 0, 0, 0.87)",
-              "fontFamily": "Roboto",
-              "fontSize": 16,
-              "fontWeight": "400",
-            },
+            undefined,
             undefined,
           ]
         }

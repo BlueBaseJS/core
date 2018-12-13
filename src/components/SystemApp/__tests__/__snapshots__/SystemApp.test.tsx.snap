@@ -3,21 +3,12 @@
 exports[`SystemApp Snapshot SystemApp component 1`] = `null`;
 
 exports[`SystemApp Snapshot SystemApp component after complete render 1`] = `
-<View
-  styles={Object {}}
->
-  <View
-    styles={Object {}}
-  >
+<View>
+  <View>
     <Text
       style={
         Array [
-          Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Roboto",
-            "fontSize": 16,
-            "fontWeight": "400",
-          },
+          undefined,
           undefined,
         ]
       }

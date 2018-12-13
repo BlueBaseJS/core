@@ -3,7 +3,8 @@ import React from 'react';
 import { Text } from 'react-native';
 
 export interface BlueBaseAppProps extends Partial<BootOptions> {
-	BB?: BlueBase
+	BB?: BlueBase,
+	children?: React.ReactNode,
 }
 
 interface BlueBaseAppState {
@@ -56,6 +57,6 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 
 		const Component = this.state.Component;
 
-		return <Component />;
+		return <Component children={this.props.children} />;
 	}
 }

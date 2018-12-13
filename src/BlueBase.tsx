@@ -1,5 +1,6 @@
 import { Analytics, Logger } from './api';
 import {
+	ComponentInputCollection,
 	ComponentRegistry,
 	ConfigRegistry,
 	ConfigsCollection,
@@ -11,7 +12,6 @@ import {
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
-import { ComponentInput } from './registries/ComponentRegistry/types';
 import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
 import { MaybeBlueBaseModule } from './utils';
 import { Plugin } from './models/Plugin';
@@ -19,7 +19,7 @@ import React from 'react';
 import systemHooks from './hooks';
 
 export interface BootOptions {
-	components: { [key: string]: ComponentInput },
+	components: ComponentInputCollection,
 	configs: ConfigsCollection,
 	hooks: HookCollection,
 	plugins: Array<MaybeBlueBaseModule<Plugin>>,
@@ -51,7 +51,7 @@ export class BlueBase {
 		themes: [],
 	};
 
-	public async boot(options?: Partial<BootOptions>) {
+	public async boot(options?: Partial<BootOptions> & { children?: React.ReactNode }) {
 
 		this.bootOptions = { ...this.bootOptions, ...options };
 
@@ -67,7 +67,9 @@ export class BlueBase {
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-					<this.Components.SystemApp />
+					<this.Components.SystemApp>
+						{options && options.children}
+					</this.Components.SystemApp>
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);

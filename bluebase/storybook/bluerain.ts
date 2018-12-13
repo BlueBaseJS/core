@@ -32,12 +32,12 @@ const bootOptions: Partial<BootOptions> = {
 		ThemedCard,
 		ThemedCard2: ThemedCard,
 		ThemedCard3: {
-			rawComponent: ThemedCard,
 			styles: {
 				root: {
 					backgroundColor: 'orange'
 				}
-			}
+			},
+			value: ThemedCard,
 		},
 	},
 };
