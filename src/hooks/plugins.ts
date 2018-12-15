@@ -1,6 +1,5 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-import { HookInput } from '../registries';
-import { Plugin } from '../models/Plugin';
+import { HookInput, Plugin } from '../registries';
 
 export const plugins: { [key: string]: HookInput[] } = {
 
@@ -13,14 +12,12 @@ export const plugins: { [key: string]: HookInput[] } = {
 			priority: 5,
 
 			// tslint:disable-next-line:object-literal-sort-keys
-			handler: async (pluginsArr: BootOptions['plugins'], _args: any, BB: BlueBase) => {
+			handler: async (pluginsCollection: BootOptions['plugins'], _args: any, BB: BlueBase) => {
 
-				for (const plugin of pluginsArr) {
-					await BB.Plugins.register(plugin);
-				}
+				await BB.Plugins.registerCollection(pluginsCollection);
 
 				// return
-				return plugins;
+				return pluginsCollection;
 			}
 		}
 	],
