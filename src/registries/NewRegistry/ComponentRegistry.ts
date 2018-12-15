@@ -3,17 +3,19 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { getDefiniteBlueBaseModule, isBlueBaseModule } from '../../utils';
+import { Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../../utils';
 import { BlueBase } from '../../BlueBase';
+import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../../components';
 import flowRight from 'lodash.flowright';
-import { ItemCollection } from './Registry';
 
 /**
  * Definition of the HOC
  */
 export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
+
+export type ComponentRegistryHocItemWithArgs<T = any> = [Thunk<ComponentRegistryHocItem>, T];
 
 /**
  * Source of this component. Contains information about who registered this component.
@@ -24,7 +26,7 @@ export interface ComponentSource {
 }
 
 interface ComponentRegistryItemExtras {
-	hocs: ComponentRegistryHocItem[],
+	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>,
 	source: ComponentSource,
 	isAsync: boolean,
 }
@@ -79,7 +81,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 			: item.value.module;
 
 		const hocs = item.hocs
-			.map((hoc: ComponentRegistryHocItem) => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
+			.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		return flowRight([...hocs])(rawComponent);
 	}
@@ -89,7 +91,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 	 * @param {string} key The name of the registered component to whom hocs are to added
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 */
-	addHocs(key: string, ...hocs: ComponentRegistryHocItem[]) {
+	addHocs(key: string, ...hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>) {
 
 		const item = super.get(key);
 
@@ -102,9 +104,9 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 		this.set(key, { ...item, hocs, });
 	}
 
-	public removeHocs() {
-		// TODO:
-	}
+	// public removeHocs() {
+	// 	// TODO:
+	// }
 
 	protected createItem(key: string, partial: any): ComponentRegistryItem {
 

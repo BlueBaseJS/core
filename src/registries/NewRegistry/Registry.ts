@@ -295,14 +295,12 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 */
 	public filterValues(predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean) {
 
-		const filtered = this.filter(predicate);
+		const arr = Array.from(this.entries()).filter((entry) => predicate(entry[1].value, entry[0], entry[1]));
 		const items: { [key: string]: ItemType } = {};
 
-		for (const key in filtered) {
-			if (filtered.hasOwnProperty(key)) {
-				items[key] = filtered[key].value;
-			}
-		}
+		Array.from(arr).forEach(entry => {
+			items[entry[0]] = entry[1].value;
+		});
 
 		return items;
 	}
@@ -365,7 +363,6 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
 
 		const item = {
-			meta: {},
 			...(partial as any),
 			key,
 		};

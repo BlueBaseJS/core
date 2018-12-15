@@ -1,8 +1,11 @@
+import { Text, View } from 'react-native';
 import { BlueBase } from '../../../BlueBase';
 import { ComponentRegistry } from '../';
 import React from 'react';
+import { ReactLoadableLoading } from '../../../components';
+import TestRenderer from 'react-test-renderer';
 
-const Button: React.StatelessComponent<{}> = () => <div>A Button</div>;
+const Button: React.StatelessComponent<{}> = () => <View>A Button</View>;
 
 class Welcome extends React.Component<{ name: string }> {
 	render() {
@@ -46,6 +49,92 @@ describe('ComponentRegistry', () => {
 			}
 
 			expect(message).toBe('Could not resolve any of the following components: [Foo].');
+		});
+
+		it('should resolve a component', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			await Components.register('Foo', Text);
+			const Foo = Components.resolve('Foo');
+
+			const rendered = TestRenderer.create(<Foo>Some text</Foo>);
+
+			expect(rendered.root.props.children).toBe('Some text');
+			// expect(rendered.root.type.displayName).toBe('Text');
+			expect(rendered.toJSON()).toMatchSnapshot();
+		});
+
+		it('should resolve a Promised component', async (done) => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			await Components.register('Foo', { value: Promise.resolve(Text) as any });
+			const Foo = Components.resolve('Foo');
+
+			const rendered = TestRenderer.create(<Foo>Some text</Foo>);
+			const foo = rendered.root.findByType(ReactLoadableLoading);
+			expect(foo.props.isLoading).toBe(true);
+
+			const json = rendered.toJSON();
+			expect(json).toBe(null);
+			expect(json).toMatchSnapshot();
+
+			setImmediate(() => {
+				try {
+					const json2 = rendered.toJSON() as any;
+
+					expect(json2.type).toBe('Text');
+					expect(json2.children[0]).toBe('Some text');
+					expect(json2).toMatchSnapshot();
+				} catch (e) {
+					done.fail(e);
+				}
+				done();
+			});
+		});
+
+		it('should add an HOC that makes background green', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			await Components.register('Button', Button);
+			Components.addHocs('Button', (Comp: React.ComponentType) => () => (
+				<View style={{ backgroundColor: 'green' }}>
+					<Comp />
+				</View>
+			));
+
+			const ResolvedComponent = Components.resolve('Button');
+
+			const rendered = TestRenderer.create(<ResolvedComponent />);
+			const tree = rendered.toJSON() as any;
+			expect(tree.props.style.backgroundColor).toBe('green');
+			expect(tree).toMatchSnapshot();
+		});
+
+		it('should add an HOC with its arguments that makes background orange', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			await Components.register('Button', Button);
+
+			const hoc = (args: { backgroundColor: string }) => 
+			(Comp: React.ComponentType) => 
+			() => (
+				<View style={{ backgroundColor: args.backgroundColor }}>
+					<Comp />
+				</View>
+			);
+
+			Components.addHocs('Button', [hoc, { backgroundColor: 'orange' }]);
+
+			const ResolvedComponent = Components.resolve('Button');
+
+			const rendered = TestRenderer.create(<ResolvedComponent />);
+			const tree = rendered.toJSON() as any;
+			expect(tree.props.style.backgroundColor).toBe('orange');
+			expect(tree).toMatchSnapshot();
 		});
 
 	});

@@ -184,6 +184,92 @@ describe('Registry', () => {
 			}
 		});
 
+		it('should throw an error, if no key is provided or generated', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+			(registry as any).generateKey = () => { return; };
+
+			try {
+				await registry.register({ value: 'foo' });
+			} catch (error) {
+				expect(error.message).toBe('Could not register item. Reason: No key given.');
+			}
+		});
+
+	});
+
+
+	describe('.registerCollection', () => {
+
+		it('should register an array collection', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+
+			await registry.registerCollection([
+				{ key: 'foo', value: 'bar', preload: true, },
+				{ key: 'baz', value: 'boo', preload: false, },
+			]);
+
+			const item = registry.get('foo');
+			expect((item as any).value).toBe('bar');
+			expect((item as any).preload).toBe(true);
+
+			const item2 = registry.get('baz');
+			expect((item2 as any).value).toBe('boo');
+			expect((item2 as any).preload).toBe(false);
+
+			expect(registry.size()).toBe(2);
+		});
+
+		it('should register an object collection', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+
+			await registry.registerCollection({
+				baz: { value: 'boo', preload: false, },
+				foo: { value: 'bar', preload: true, },
+			});
+
+			const item = registry.get('foo');
+			expect((item as any).value).toBe('bar');
+			expect((item as any).preload).toBe(true);
+
+			const item2 = registry.get('baz');
+			expect((item2 as any).value).toBe('boo');
+			expect((item2 as any).preload).toBe(false);
+
+			expect(registry.size()).toBe(2);
+		});
+
+		it('should register an object value collection', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+
+			await registry.registerCollection({
+				baz: 'boo',
+				foo: 'bar',
+			});
+
+			const item = registry.get('foo');
+			expect((item as any).value).toBe('bar');
+
+			const item2 = registry.get('baz');
+			expect((item2 as any).value).toBe('boo');
+
+			expect(registry.size()).toBe(2);
+		});
+
+		it('should throw an error for unknown collection format', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+
+			try {
+				await registry.registerCollection('boom' as any);
+			} catch (error) {
+				expect(error.message).toBe('Could not register collection. Reason: Unknown collection type.');				
+			}
+		});
+
 	});
 
 
@@ -364,6 +450,31 @@ describe('Registry', () => {
 		});
 
 	});
+
+	describe('.filterValues method', () => {
+
+		it('should filter values', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<any>>(BB);
+
+			registry.setValue('title', 'Config Registry Test');
+			registry.setValue('subtitle', 'We are just testing');
+			registry.setValue('plugin.test.foo', 5);
+			registry.setValue('plugin.test.bar', 10);
+			registry.setValue('plugin.another.check', true);
+
+			const filteredConfigs = registry.filterValues((_value: any, key: string) => {
+				return key.startsWith('plugin.test.');
+			});
+
+			expect(filteredConfigs['plugin.test.foo']).toBe(5);
+			expect(filteredConfigs['plugin.test.bar']).toBe(10);
+			expect(Object.keys(filteredConfigs).length).toBe(2);
+		});
+
+	});
+
+
 	describe('.isValue method', () => {
 
 		it('should return true', async () => {
@@ -447,6 +558,26 @@ describe('Registry', () => {
 
 			// tslint:disable-next-line
 			expect(() => registry.unsubscribe('foo', '123')).toThrow('Could not unsubscribe from a registry item. Reason: No subscription with id "123" registered.');
+		});
+
+	});
+
+	describe('.createItem method', () => {
+
+		it('should successfully create a new item', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<number>>(BB);
+
+			expect((registry as any).createItem('foo', { value: 5 })).toMatchObject({ key: 'foo', value: 5 });
+		});
+
+
+		it('should throw an error unknown item input', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<number>>(BB);
+
+			expect(() => (registry as any).createItem('foo', 'bar'))
+			.toThrowError('Could not set item. Reason: Unknown item type.');
 		});
 
 	});

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentRegistry .resolve method should add an HOC that makes background green 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "green",
+    }
+  }
+>
+  <View>
+    A Button
+  </View>
+</View>
+`;
+
+exports[`ComponentRegistry .resolve method should add an HOC with its arguments that makes background orange 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "orange",
+    }
+  }
+>
+  <View>
+    A Button
+  </View>
+</View>
+`;
+
+exports[`ComponentRegistry .resolve method should resolve a Promised component 1`] = `null`;
+
+exports[`ComponentRegistry .resolve method should resolve a Promised component 2`] = `
+<Text>
+  Some text
+</Text>
+`;
+
+exports[`ComponentRegistry .resolve method should resolve a component 1`] = `
+<Text>
+  Some text
+</Text>
+`;
