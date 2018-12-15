@@ -34,15 +34,12 @@ export interface ThemeRegistryItemExtras {
 
 
 export type ThemeRegistryItem = BlueBaseModuleRegistryItem<ThemeValue> & ThemeRegistryItemExtras;
-
-export interface ThemeRegistryInputItem extends BlueBaseModuleRegistryInputItem<ThemeValueInput> {
-}
+export type ThemeRegistryInputItem = BlueBaseModuleRegistryInputItem<ThemeValueInput>;
 
 type ItemType = ThemeRegistryItem;
 type ItemInputType = ThemeRegistryInputItem;
 
 export type Theme = ThemeRegistryItemExtras & ThemeValue;
-
 export type ThemeInput = ThemeRegistryInputItem;
 
 export type ThemeInputCollection = ItemCollection<ThemeInput>;

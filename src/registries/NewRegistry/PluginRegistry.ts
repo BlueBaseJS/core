@@ -6,13 +6,19 @@ import {
 import { MaybeThunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../../utils';
 import { ComponentInputCollection } from './ComponentRegistry';
 import { DynamicIconProps } from '../../components';
+import { ItemCollection } from './Registry';
 
-export interface Plugin {
+
+
+export interface PluginValue {
 	components: ComponentInputCollection;
 	defaultConfigs: any; // ConfigsCollection;
 	hooks: any; // HookCollectionInput;
-	themes: any; // ThemeItemCollection;
+	themes: any;
 }
+
+export type PluginValueInput = Partial<PluginValue>;
+
 export interface PluginRegistryItemExtras {
 	/**
 	 * Name of the plugin.
@@ -29,45 +35,45 @@ export interface PluginRegistryItemExtras {
 
 	/** Is this plugin currently enabled/ */
 	enabled: boolean,
+
+	[key: string]: any,
 }
 
-/**
- * A PluginInput object where all Plugin properties are optional.
- */
-export type PluginInput = Partial<Plugin>;
-
-export type PluginRegistryItem =
-	BlueBaseModuleRegistryItem<Plugin> & PluginRegistryItemExtras;
-
-export type PluginRegistryInputItem =
-	BlueBaseModuleRegistryInputItem<PluginInput> & Partial<PluginRegistryItemExtras>;
+export type PluginRegistryItem = BlueBaseModuleRegistryItem<PluginValue> & PluginRegistryItemExtras;
+export type PluginRegistryInputItem = BlueBaseModuleRegistryInputItem<PluginValueInput>;
 
 type ItemType = PluginRegistryItem;
 type ItemInputType = PluginRegistryInputItem;
 
-// export function createPlugin(plugin: PluginInput) {
-// 	const { key, name, description, version, icon, enabled, preload, ...value } = plugin;
+export type Plugin = PluginRegistryItemExtras & PluginValue;
+export type PluginInput = PluginRegistryInputItem;
 
-// 	return {
-// 		key,
-// 		meta: {
-// 			description,
-// 			enabled,
-// 			icon,
-// 			name,
-// 			preload,
-// 			version,
-// 		},
-// 		value,
-// 	};
-// }
+export type PluginInputCollection = ItemCollection<PluginInput>;
+
+
+
+export function inputToPlugin(plugin: PluginInput): Plugin {
+	const { value, ...rest } = plugin;
+
+	return {
+		components: {},
+		defaultConfigs: {},
+		enabled: true,
+		hooks: {},
+		name: 'Untitled Plugin',
+		themes: {},
+
+		...rest,
+		...value,
+	};
+}
 
 /**
- * 🎨 PluginRegistry
+ * 🔌 PluginRegistry
  */
 export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
 
-	public async resolve(...keys: string[]) {
+	public async resolve(...keys: string[]): Promise<Plugin> {
 
 		const item = this.findOne(...keys);
 
@@ -75,7 +81,9 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			throw Error(`Could not resolve any of the following plugins: [${keys.join(', ')}].`);
 		}
 
-		return item.value;
+		const input: PluginInput = { ...item, value: await item.value };
+
+		return inputToPlugin(input);
 	}
 
 	/**
@@ -86,7 +94,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		const item = this.get(key);
 
 		if (!item) {
-			return false;
+			throw Error(`Could not check if plugin is enabled. Reason: No plugin registered by key "${key}".`);
 		}
 
 		return item.enabled;
@@ -100,7 +108,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		const item = this.get(key);
 
 		if (!item) {
-			return;
+			throw Error(`Could not enable plugin. Reason: No plugin registered by key "${key}".`);
 		}
 
 		item.enabled = true;
@@ -115,7 +123,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		const item = this.get(key);
 
 		if (!item) {
-			return;
+			throw Error(`Could not disbale plugin. Reason: No plugin registered by key "${key}".`);
 		}
 
 		item.enabled = false;
@@ -123,20 +131,25 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	}
 
 	/**
-	 * Checks if a config key belongs to this plugin. Does so by checking 2 things:
+	 * Checks if a config belongs to a plugin. Does so by checking 2 things:
 	 *
-	 * 1. Does the key start with 'plugin.{slug}.'?
-	 * 2. Does the key exist in defaultConfigs property of the plugin?
+	 * 1. Does the config start with 'plugin.{key}.'?
+	 * 2. Does the config exist in defaultConfigs property of the plugin?
 	 *
 	 * Returns true if any of the above are true, otherwise returns false
 	 *
 	 * @param key
 	 */
-	public hasConfig(_key: string): boolean {
-		// FIXME:
-		return false;
-		// return key.startsWith(`plugin.${this.slug}.`)
-		// 	|| Object.keys(this.defaultConfigs).findIndex(k => k === key) >= 0;
+	public hasConfig(key: string, config: string): boolean {
+
+		const plugin = this.get(key);
+
+		if (!plugin) {
+			throw Error(`Could not check config for a plugin. Reason: No plugin registered by key "${key}".`);
+		}
+
+		return config.startsWith(`plugin.${key}.`)
+			|| Object.keys(plugin.defaultConfigs).findIndex(k => k === config) >= 0;
 	}
 
 
@@ -148,13 +161,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			name: 'Untitled Plugin',
 			...partial,
 
-			value: {
-				components: {},
-				defaultConfigs: {},
-				hooks: {},
-				themes: {},
-				...getDefiniteBlueBaseModule(partial.value)
-			},
+			value: getDefiniteBlueBaseModule(partial.value),
 		});
 	}
 
