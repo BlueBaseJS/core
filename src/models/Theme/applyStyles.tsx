@@ -1,7 +1,7 @@
-import { ComponentStyles, Theme } from './Theme';
+import { ComponentStyles, ThemeValue } from './Theme';
 import { MaybeThunk, resolveThunk } from '../../utils';
 import React from 'react';
-import { ThemeContext } from '../../registries';
+import { ThemeContext } from '../../themes';
 import deepmerge from 'deepmerge';
 import isNil from 'lodash.isnil';
 
@@ -44,7 +44,7 @@ export const applyStyles = (
 			const { styles: stylesProp, ...rest } = this.props;
 
 			return (
-				<ThemeContext.Consumer children={(args?: { theme: Theme }) => {
+				<ThemeContext.Consumer children={(args?: { theme: ThemeValue }) => {
 
 					if(!args) {
 						return;

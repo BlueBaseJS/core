@@ -3,7 +3,7 @@ import * as Components from '../components';
 import * as Native from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInput } from '../registries';
-import { Theme } from '../models';
+import { ThemeValue } from '../models';
 
 
 export const components: { [key: string]: HookInput[] } = {
@@ -27,18 +27,18 @@ export const components: { [key: string]: HookInput[] } = {
 				...Native,
 
 				// Typography
-				H1: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h1 }) },
-				H2: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h2 }) },
-				H3: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h3 }) },
-				H4: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h4 }) },
-				H5: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h5 }) },
-				H6: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.h6 }) },
-				Subtitle1: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle1 }) },
-				Subtitle2: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.subtitle2 }) },
-				Body1: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body1 }) },
-				Body2: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.body2 }) },
-				Caption: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.caption }) },
-				Overline: { value: Native.Text, styles: (theme: Theme) => ({ root: theme.typography.overline }) },
+				H1: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.h1 }) },
+				H2: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.h2 }) },
+				H3: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.h3 }) },
+				H4: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.h4 }) },
+				H5: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.h5 }) },
+				H6: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.h6 }) },
+				Subtitle1: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.subtitle1 }) },
+				Subtitle2: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.subtitle2 }) },
+				Body1: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.body1 }) },
+				Body2: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.body2 }) },
+				Caption: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.caption }) },
+				Overline: { value: Native.Text, styles: (theme: ThemeValue) => ({ root: theme.typography.overline }) },
 			});
 
 			return bootOptions;

@@ -1,8 +1,9 @@
 import React, { createContext } from 'react';
-import { Theme, ThemeInput } from '../../models';
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
-import deepmerge  from 'deepmerge';
+import { BlueBase } from '../BlueBase';
+import { BlueBaseContext } from '../Context';
+import { Theme } from '../registries';
+import { ThemeValueInput } from '../models';
+import deepmerge from 'deepmerge';
 
 /**
  * Props of the `ThemeProvider` component.
@@ -18,7 +19,7 @@ export interface ThemeProviderProps {
 	/**
 	 * Any custom overrides to the selected theme.
 	 */
-	overrides?: ThemeInput;
+	overrides?: ThemeValueInput;
 
 	children: React.ReactNode,
 }
@@ -97,7 +98,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 	 * @param slug
 	 * @param BB
 	 */
-	async setTheme(slug: string | undefined, overrides: ThemeInput = {}, BB: BlueBase) {
+	async setTheme(slug: string | undefined, overrides: ThemeValueInput = {}, BB: BlueBase) {
 
 		if (this.state.loading !== true) {
 			this.setState({ loading: true });

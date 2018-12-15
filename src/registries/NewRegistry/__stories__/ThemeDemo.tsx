@@ -1,7 +1,7 @@
 import { BlueBase, BlueBaseContext } from '../../../';
 import React from 'react';
-import { Theme } from '../../../models';
-import { ThemeContext } from '../ThemeContext';
+import { Theme } from '../ThemeRegistry';
+import { ThemeContext } from '../../../themes';
 
 export interface ThemeDemoProps {
 	children?: React.ReactNode;

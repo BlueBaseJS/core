@@ -1,3 +1,3 @@
 export * from './applyStyles';
-export * from './createTheme';
+export * from './buildTheme';
 export * from './Theme';

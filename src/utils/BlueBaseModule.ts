@@ -22,7 +22,7 @@ export type MaybeBlueBaseModule<T> = BlueBaseModule<T> | T;
 /**
  * 📦 BlueBaseModule
  */
-export interface BlueBaseModule<T> extends Promise<T> {
+export class BlueBaseModule<T> extends Promise<T> {
 
 	/**
 	 * This is the input value. If this value is an ES module,
@@ -40,6 +40,29 @@ export interface BlueBaseModule<T> extends Promise<T> {
 	 * represents the actual module, converted from ES.
 	 */
 	isAsync: boolean;
+
+	/**
+	 * Has the promise resolved at least once?
+	 */
+	loaded: boolean = false;
+
+	constructor(executor: any, input: MaybeBlueBaseModule<T>) {
+		super(executor);
+		this.module = getDefiniteModule(input);
+		this.isAsync = isPromise(this.module) ? true : false;
+	}
+
+	public then: Promise<T>['then'] = (onfulfilled, onRejected) => {
+		this.loaded = true;
+
+		const success = (!onfulfilled) ? onfulfilled : (value: T) => onfulfilled(getDefiniteModule(value));
+		return super.then(success, onRejected);
+	}
+	// resolve(input: MaybeBlueBaseModule<T>) {
+	// 	this.module = getDefiniteModule(input);
+	// 	this.isAsync = isPromise(this.module) ? true : false;
+	// 	return getDefinitePromise()
+	// }
 }
 
 /**
@@ -49,15 +72,20 @@ export interface BlueBaseModule<T> extends Promise<T> {
 export function createBlueBaseModule<T>(input: MaybeBlueBaseModule<T>) {
 
 	const module = getDefiniteModule(input);
+	const promisedModule = getDefinitePromise(module);
 
 	const promise = new Promise((resolve, reject) => {
-		getDefinitePromise(module)
-				.then((m: MaybeEsModule<T>) => resolve(getDefiniteModule(m)))
-				.catch(reject);
+		promisedModule
+			.then((m: MaybeEsModule<T>) => {
+				(promise as BlueBaseModule<T>).loaded = true;
+				return resolve(getDefiniteModule(m));
+			})
+			.catch(reject);
 	}) as BlueBaseModule<T>;
 
 	promise.isAsync = isPromise(module) ? true : false;
 	promise.module = module;
+	promise.loaded = false;
 
 	return promise;
 }

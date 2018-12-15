@@ -9,7 +9,7 @@ export interface ComponentStyles {
 	[key: string]: ViewStyle | TextStyle | ImageStyle | { [prop: string]: string };
 }
 
-export interface Theme {
+export interface ThemeValue {
 	/** Component styles */
 	components: {
 
@@ -37,10 +37,10 @@ export interface Theme {
 	[key: string]: any,
 }
 
-export interface ThemeInput {
-	components?: Theme['components'],
-	shape?: Partial<Theme['shape']>,
-	spacing?: Partial<Theme['spacing']>,
+export interface ThemeValueInput {
+	components?: ThemeValue['components'],
+	shape?: Partial<ThemeValue['shape']>,
+	spacing?: Partial<ThemeValue['spacing']>,
 	typography?: ThemeTypographyInput,
 	palette?: PaletteInput,
 }

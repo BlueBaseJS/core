@@ -1,4 +1,4 @@
-import { ThemeInput } from '.';
+import { ThemeValueInput } from '.';
 
 export interface Configs {
 
@@ -32,7 +32,7 @@ export interface Configs {
 	/**
 	 * Overrides for any selected theme. These overrides are applied to all themes.
 	 */
-	'theme.overrides': ThemeInput,
+	'theme.overrides': ThemeValueInput,
 
 	// others
 	[key: string]: any,

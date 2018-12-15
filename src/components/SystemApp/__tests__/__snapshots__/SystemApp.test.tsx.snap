@@ -2,19 +2,4 @@
 
 exports[`SystemApp Snapshot SystemApp component 1`] = `null`;
 
-exports[`SystemApp Snapshot SystemApp component after complete render 1`] = `
-<View>
-  <View>
-    <Text
-      style={
-        Array [
-          undefined,
-          undefined,
-        ]
-      }
-    >
-      🚀 BlueBase System Content!
-    </Text>
-  </View>
-</View>
-`;
+exports[`SystemApp Snapshot SystemApp component after complete render 1`] = `null`;

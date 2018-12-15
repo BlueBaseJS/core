@@ -3,11 +3,12 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { Theme, ThemeInput, createTheme } from '../../models';
+import { ThemeValue, ThemeValueInput, buildTheme } from '../../models';
+import { ItemCollection } from './Registry';
 import { getDefiniteBlueBaseModule } from '../../utils';
 
 
-export interface ThemeRegistryItem extends BlueBaseModuleRegistryItem<Theme> {
+export interface ThemeRegistryItemExtras {
 	/**
 	 * Name of theme.
 	 *
@@ -27,13 +28,24 @@ export interface ThemeRegistryItem extends BlueBaseModuleRegistryItem<Theme> {
 	 * this property will have the slug of the dark version, and vice versa.
 	 */
 	alternate?: string,
+
+	key: string,
 }
 
-export interface ThemeRegistryInputItem extends BlueBaseModuleRegistryInputItem<ThemeInput> {
+
+export type ThemeRegistryItem = BlueBaseModuleRegistryItem<ThemeValue> & ThemeRegistryItemExtras;
+
+export interface ThemeRegistryInputItem extends BlueBaseModuleRegistryInputItem<ThemeValueInput> {
 }
 
 type ItemType = ThemeRegistryItem;
 type ItemInputType = ThemeRegistryInputItem;
+
+export type Theme = ThemeRegistryItemExtras & ThemeValue;
+
+export type ThemeInput = ThemeRegistryInputItem;
+
+export type ThemeInputCollection = ItemCollection<ThemeInput>;
 
 /**
  * 🎨 ThemeRegistry
@@ -48,23 +60,23 @@ export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTyp
 			throw Error(`Could not resolve any of the following themes: [${keys.join(', ')}].`);
 		}
 
-		const theme = await item.value;
-		const overrides: ThemeInput = this.BB.Configs.getValue('theme.overrides');
+		const theme: ThemeInput = { ...item, value: await item.value };
+		const overrides: ThemeInput = { value: this.BB.Configs.getValue('theme.overrides') || {} };
 
 		// We pass through createTheme to make sure if theme has missed some rules,
 		// they're provided
-		return createTheme(item.mode, theme, overrides);
+		return buildTheme(item.mode)(theme, overrides);
 	}
 
 	/**
 	 * Get alternate version of current theme
-	 * @param slug
+	 * @param key
 	 */
-	public async resolveAlternate(slug: string) {
-		const item = this.get(slug);
+	public async resolveAlternate(key: string): Promise<Theme> {
+		const item = this.get(key);
 
 		if (!item || !item.alternate) {
-			return;
+			throw Error(`Could not resolve alternate theme of "${key}".`);
 		}
 
 		return this.resolve(item.alternate);
@@ -75,15 +87,10 @@ export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTyp
 		const value = getDefiniteBlueBaseModule(partial.value);
 
 		return super.createItem(key, {
+			mode: 'light',
+			name: 'Untitled Theme',
 			...partial,
 			value,
-
-			meta: {
-				mode: 'light',
-				name: 'Untitled Theme',
-
-				...partial.meta,
-			}
 		});
 	}
 

@@ -1,8 +1,8 @@
-import { BlueBase, BlueBaseContext } from '../../../';
+import { BlueBase, BlueBaseContext } from '../../..';
 import { TextStyle, ViewStyle } from 'react-native';
 import { MaybeThunk } from '../../../utils';
 import React from 'react';
-import { Theme } from '../../../models';
+import { Theme } from '../ThemeRegistry';
 
 export interface ThemedCardProps {
 	styles?: {

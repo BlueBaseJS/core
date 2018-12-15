@@ -83,8 +83,11 @@ export class BlueBaseModuleRegistry<
 		return super.register((key as any), item);
 	}
 
-	public async preload() {
-		const items = this.filter((_value, _key, item) => item.preload);
+	/**
+	 * Preload all items that have preload property set to true
+	 */
+	public async preloadAll() {
+		const items = this.filter((_value, _key, item) => item.preload === true);
 		const promises = Object.values(items).map((item) => item.value );
 
 		return Promise.all(promises);

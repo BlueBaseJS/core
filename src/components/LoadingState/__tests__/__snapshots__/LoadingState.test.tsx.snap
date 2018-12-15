@@ -2,102 +2,10 @@
 
 exports[`LoadingState Snapshot LoadingState component 1`] = `null`;
 
-exports[`LoadingState Snapshot LoadingState component after complete rendering 1`] = `
-<View>
-  <ActivityIndicator
-    animating={true}
-    color="#999999"
-    hidesWhenStopped={true}
-    size="small"
-  />
-</View>
-`;
+exports[`LoadingState Snapshot LoadingState component after complete rendering 1`] = `null`;
 
-exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: false 1`] = `
-<View>
-  <ActivityIndicator
-    animating={true}
-    color="#999999"
-    hidesWhenStopped={true}
-    size="small"
-  />
-</View>
-`;
+exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: false 1`] = `null`;
 
-exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true 1`] = `
-<View>
-  <ActivityIndicator
-    animating={true}
-    color="#999999"
-    hidesWhenStopped={true}
-    size="small"
-  />
-  <Text
-    style={
-      Array [
-        undefined,
-        undefined,
-      ]
-    }
-  >
-    This is taking longer than usual
-  </Text>
-</View>
-`;
+exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true 1`] = `null`;
 
-exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true and retry mocked function 1`] = `
-<View>
-  <ActivityIndicator
-    animating={true}
-    color="#999999"
-    hidesWhenStopped={true}
-    size="small"
-  />
-  <Text
-    style={
-      Array [
-        undefined,
-        undefined,
-      ]
-    }
-  >
-    This is taking longer than usual
-  </Text>
-  <View
-    accessibilityRole="button"
-    accessibilityStates={Array []}
-    accessible={true}
-    isTVSelectable={true}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "opacity": 1,
-      }
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {},
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            undefined,
-            undefined,
-          ]
-        }
-      >
-        Retry
-      </Text>
-    </View>
-  </View>
-</View>
-`;
+exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true and retry mocked function 1`] = `null`;

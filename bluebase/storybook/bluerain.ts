@@ -1,7 +1,7 @@
 // import { BootOptions } from '../../src';
 // import commonBootOptions from '../common/bluebase';
 // import deepmerge from 'deepmerge';
-import { ThemedCard } from '../../src/registries/ThemeRegistry/__stories__/ThemedCard';
+import { ThemedCard } from '../../src/registries/NewRegistry/__stories__/ThemedCard';
 import { BootOptions } from '../../src';
 /**
  * Add your platform specific configs here. 

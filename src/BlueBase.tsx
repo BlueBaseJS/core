@@ -7,8 +7,7 @@ import {
 	HookCollection,
 	HookRegistry,
 	PluginRegistry,
-	ThemeItemCollection,
-	ThemeProvider,
+	ThemeInputCollection,
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
@@ -16,6 +15,7 @@ import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-in
 import { MaybeBlueBaseModule } from './utils';
 import { Plugin } from './models/Plugin';
 import React from 'react';
+import { ThemeProvider } from './themes';
 import systemHooks from './hooks';
 
 export interface BootOptions {
@@ -23,7 +23,7 @@ export interface BootOptions {
 	configs: ConfigCollection,
 	hooks: HookCollection,
 	plugins: Array<MaybeBlueBaseModule<Plugin>>,
-	themes: ThemeItemCollection,
+	themes: ThemeInputCollection,
 	// routes: Plugin[]
 }
 
