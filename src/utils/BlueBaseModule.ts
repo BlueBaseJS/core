@@ -22,7 +22,7 @@ export type MaybeBlueBaseModule<T> = BlueBaseModule<T> | T;
 /**
  * 📦 BlueBaseModule
  */
-export class BlueBaseModule<T> extends Promise<T> {
+export interface BlueBaseModule<T> extends Promise<T> {
 
 	/**
 	 * This is the input value. If this value is an ES module,
@@ -44,25 +44,7 @@ export class BlueBaseModule<T> extends Promise<T> {
 	/**
 	 * Has the promise resolved at least once?
 	 */
-	loaded: boolean = false;
-
-	constructor(executor: any, input: MaybeBlueBaseModule<T>) {
-		super(executor);
-		this.module = getDefiniteModule(input);
-		this.isAsync = isPromise(this.module) ? true : false;
-	}
-
-	public then: Promise<T>['then'] = (onfulfilled, onRejected) => {
-		this.loaded = true;
-
-		const success = (!onfulfilled) ? onfulfilled : (value: T) => onfulfilled(getDefiniteModule(value));
-		return super.then(success, onRejected);
-	}
-	// resolve(input: MaybeBlueBaseModule<T>) {
-	// 	this.module = getDefiniteModule(input);
-	// 	this.isAsync = isPromise(this.module) ? true : false;
-	// 	return getDefinitePromise()
-	// }
+	loaded: boolean;
 }
 
 /**

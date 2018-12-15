@@ -226,4 +226,30 @@ describe('HookRegistry', () => {
 		});
 
 	});
+
+	describe('.isInputValue method', () => {
+
+		it('should return true if input is a function', async () => {
+			const BB = new BlueBase();
+			const Plugins = new HookRegistry(BB);
+
+			expect((Plugins as any).isInputValue(() => { return; })).toBe(true);
+		});
+
+		it('should return false if input is an object', async () => {
+			const BB = new BlueBase();
+			const Plugins = new HookRegistry(BB);
+
+			expect((Plugins as any).isInputValue({})).toBe(false);
+		});
+
+		it('should return false if input is a string', async () => {
+			const BB = new BlueBase();
+			const Plugins = new HookRegistry(BB);
+
+			expect((Plugins as any).isInputValue('foo')).toBe(false);
+		});
+
+	});
+
 });
