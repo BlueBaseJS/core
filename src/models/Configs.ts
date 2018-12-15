@@ -1,6 +1,6 @@
-import { ThemeInput } from '../../models';
+import { ThemeInput } from '.';
 
-export interface BlueBaseConfigs {
+export interface Configs {
 
 	/** Project title */
 	title: string,

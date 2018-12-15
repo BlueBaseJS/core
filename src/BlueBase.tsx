@@ -2,8 +2,8 @@ import { Analytics, Logger } from './api';
 import {
 	ComponentInputCollection,
 	ComponentRegistry,
+	ConfigCollection,
 	ConfigRegistry,
-	ConfigsCollection,
 	HookCollection,
 	HookRegistry,
 	PluginRegistry,
@@ -20,7 +20,7 @@ import systemHooks from './hooks';
 
 export interface BootOptions {
 	components: ComponentInputCollection,
-	configs: ConfigsCollection,
+	configs: ConfigCollection,
 	hooks: HookCollection,
 	plugins: Array<MaybeBlueBaseModule<Plugin>>,
 	themes: ThemeItemCollection,

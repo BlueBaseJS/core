@@ -34,7 +34,8 @@ export interface RegistryInputItem<ValueType = any> {
 	[key: string]: any,
 }
 
-export type ItemCollection<T extends RegistryInputItem> = Array<T | T['value']>| { [key: string]: (T | T['value']) };
+export type ItemCollection<T extends RegistryInputItem = RegistryInputItem>
+ = Array<T | T['value']>| { [key: string]: (T | T['value']) };
 
 export type RegistrySubscriptionFn<ItemType extends RegistryItem> = (value: ItemType['value'], item: ItemType) => void;
 

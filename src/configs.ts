@@ -1,7 +1,7 @@
-import { BlueBaseConfigs } from './registries';
+import { Configs } from './models';
 import { isProduction } from './utils';
 
-export const BlueBaseDefaultConfigs: BlueBaseConfigs = {
+export const BlueBaseDefaultConfigs: Configs = {
 	'debug': !(isProduction()),
 	'development': !(isProduction()),
 	'direction': 'ltr',
