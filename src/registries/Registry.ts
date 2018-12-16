@@ -182,7 +182,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	}
 
 	// TODO: Add tests
-	public async registerCollection(collection: ItemCollection<ItemInputType>) {
+	public async registerCollection(collection: ItemCollection<ItemInputType> = []) {
 
 		// If its an array
 		if (Array.isArray(collection)) {

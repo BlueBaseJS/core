@@ -81,7 +81,7 @@ export type HookInputNestedCollection<T = Omit<HookInput, 'event'> | HookHandler
  */
 export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
 
-	public async registerNestedCollection(collections: HookInputNestedCollection) {
+	public async registerNestedCollection(collections: HookInputNestedCollection = {}) {
 
 		// If hooks field is a thunk, then call the thunk function
 		collections = resolveThunk(collections, this.BB);

@@ -9,6 +9,9 @@ export interface PluginIconProps {
 	[key: string]: any
 }
 
+/**
+ * 🔌 PluginIcon
+ */
 export class PluginIcon extends React.PureComponent<PluginIconProps> {
 
 	static contextType = BlueBaseContext;

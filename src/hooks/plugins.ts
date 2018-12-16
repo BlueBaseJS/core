@@ -36,7 +36,7 @@ export const plugins: HookInputNestedCollection = {
 				for (const entry of BB.Plugins.entries()) {
 					const plugin = entry['1'];
 
-					if (plugin.isEnabled()) {
+					if (BB.Plugins.isEnabled(plugin.key)) {
 						await BB.Hooks.run('bluebase.plugins.initialize', plugin);
 					}
 				}
@@ -80,7 +80,7 @@ export const plugins: HookInputNestedCollection = {
 				///// Register Configs /////
 				////////////////////////////
 
-				let configs = plugin.defaultConfigs;
+				let configs = plugin.defaultConfigs || {};
 
 				// Custom input configs are already registered at this point,
 				// We just want to make sure we set default configs if certain
@@ -101,7 +101,9 @@ export const plugins: HookInputNestedCollection = {
 				//////////////////////
 				///// Initialize /////
 				//////////////////////
-				await plugin.initialize(configs, BB);
+				if (plugin.initialize && typeof  plugin.initialize === 'function') {
+					await plugin.initialize(configs, BB);
+				}
 
 				// return
 				return plugin;
