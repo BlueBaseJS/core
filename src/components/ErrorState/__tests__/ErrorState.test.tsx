@@ -1,7 +1,7 @@
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { ErrorState } from '../ErrorState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
@@ -9,9 +9,9 @@ beforeEach(() => {
 
 describe('ErrorState', () => {
 	const ErrorStateWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<ErrorState {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot ErrorState`, () => {

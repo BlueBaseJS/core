@@ -1,7 +1,7 @@
+import { BlueBaseApp } from '../../BlueBaseApp';
 import React from 'react';
 import { SystemApp } from '../SystemApp';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
@@ -9,9 +9,9 @@ beforeEach(() => {
 
 describe('SystemApp', () => {
 	const SystemAppWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<SystemApp {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot SystemApp component`, () => {

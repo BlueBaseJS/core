@@ -1,7 +1,7 @@
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { JsonSchema } from '../JsonSchema';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
@@ -9,9 +9,9 @@ beforeEach(() => {
 
 describe('JsonSchema', () => {
 	const JsonSchemaWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<JsonSchema {...props}/>
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot ComponentState component`, () => {

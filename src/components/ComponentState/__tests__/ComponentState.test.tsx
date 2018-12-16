@@ -1,8 +1,8 @@
 import * as Native from '../../../native';
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { ComponentState } from '../ComponentState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
@@ -11,9 +11,9 @@ beforeEach(() => {
 
 describe('ComponentState', () => {
 	const ComponentStateWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<ComponentState {...props}/>
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot ComponentState component`, (done) => {

@@ -1,9 +1,9 @@
 import * as Component from '../../../components';
 import * as Native from '../../../native';
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { DataObserver } from '../DataObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
 beforeEach(() => {
 	jest.resetModules();
@@ -11,9 +11,9 @@ beforeEach(() => {
 
 describe('DataObserver', () => {
 	const DataObserverWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<DataObserver {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot DataObserver component with Text`, (done) => {

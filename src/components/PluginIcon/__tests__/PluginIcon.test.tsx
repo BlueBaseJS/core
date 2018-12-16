@@ -1,7 +1,7 @@
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
 
 describe('PluginIcon', () => {
@@ -9,9 +9,9 @@ describe('PluginIcon', () => {
 		jest.resetModules();
 	});
 	const PluginIconWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<PluginIcon {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	it(`Snapshot PluginIcon component with no plugin registered`, () => {
