@@ -25,6 +25,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🚀 BlueBaseApp
 - 🎣 BlueBaseHook
 - ️⚡️ DataObserver
+- 🗿 DynamicIcon
 - 🚨 ErrorState
 - 🚨 ErrorObserver
 - 🛸 HoverObserver
