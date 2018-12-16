@@ -1,14 +1,14 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-import { HookInput } from '../registries';
+import { HookInputNestedCollection } from '../registries';
 
-export const boot: { [key: string]: HookInput[] } = {
+export const boot: HookInputNestedCollection = {
 
 	'bluebase.boot': [{
-		name: 'bluebase-boot-default',
+		key: 'bluebase-boot-default',
 		priority: 5,
 
 		// tslint:disable-next-line:object-literal-sort-keys
-		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+		value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			await BB.Hooks.run('bluebase.boot.start', bootOptions);
 
@@ -28,11 +28,11 @@ export const boot: { [key: string]: HookInput[] } = {
 	}],
 
 	'bluebase.boot.start': [{
-		name: 'system-initialize-default',
+		key: 'system-initialize-default',
 		priority: 5,
 
 		// tslint:disable-next-line:object-literal-sort-keys
-		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+		value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			await BB.Hooks.run('bluebase.components.register.internal', bootOptions);
 

@@ -10,9 +10,10 @@ describe('Logger', () => {
 		const testMessage = 'A log message';
 		const testData = { foo: 'bar' };
 
-		await BB.Hooks.register('bluebase.logger.log', {
-			name: 'analytics-test',
-			handler: (message: string, data: any) => {
+		await BB.Hooks.register({
+			key: 'analytics-test',
+			event: 'bluebase.logger.log',
+			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject(testData);
 			}
@@ -27,9 +28,10 @@ describe('Logger', () => {
 		const testMessage = 'A info message';
 		const testData = { foo: 'bar' };
 
-		await BB.Hooks.register('bluebase.logger.info', {
-			name: 'analytics-test',
-			handler: (message: string, data: any) => {
+		await BB.Hooks.register({
+			key: 'analytics-test',
+			event: 'bluebase.logger.log',
+			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject(testData);
 			}
@@ -44,9 +46,10 @@ describe('Logger', () => {
 		const testMessage = 'A warn message';
 		const testData = { foo: 'bar' };
 
-		await BB.Hooks.register('bluebase.logger.warn', {
-			name: 'analytics-test',
-			handler: (message: string, data: any) => {
+		await BB.Hooks.register({
+			key: 'analytics-test',
+			event: 'bluebase.logger.log',
+			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject(testData);
 			}
@@ -61,9 +64,10 @@ describe('Logger', () => {
 		const testMessage = 'A error message';
 		const testData = { foo: 'bar' };
 
-		await BB.Hooks.register('bluebase.logger.error', {
-			name: 'analytics-test',
-			handler: (message: string, data: any) => {
+		await BB.Hooks.register({
+			key: 'analytics-test',
+			event: 'bluebase.logger.log',
+			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject(testData);
 			}
@@ -78,9 +82,10 @@ describe('Logger', () => {
 		const testMessage = 'A debug message';
 		const testData = { foo: 'bar' };
 
-		await BB.Hooks.register('bluebase.logger.debug', {
-			name: 'analytics-test',
-			handler: (message: string, data: any) => {
+		await BB.Hooks.register({
+			key: 'analytics-test',
+			event: 'bluebase.logger.log',
+			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject(testData);
 			}

@@ -5,3 +5,4 @@ export * from './Misc';
 export * from './Modules';
 export * from './Promises';
 export * from './Thunks';
+export * from './Typescript';

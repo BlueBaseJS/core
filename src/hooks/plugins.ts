@@ -1,18 +1,18 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-import { HookInput, Plugin } from '../registries';
+import { HookInputNestedCollection, Plugin } from '../registries';
 
-export const plugins: { [key: string]: HookInput[] } = {
+export const plugins: HookInputNestedCollection = {
 
 	/**
 	 * Registers given list of plugins
 	 */
 	'bluebase.plugins.register': [
 		{
-			name: 'bluebase.plugins.register.default',
+			key: 'bluebase-plugins-register-default',
 			priority: 5,
 
 			// tslint:disable-next-line:object-literal-sort-keys
-			handler: async (pluginsCollection: BootOptions['plugins'], _args: any, BB: BlueBase) => {
+			value: async (pluginsCollection: BootOptions['plugins'], _args: any, BB: BlueBase) => {
 
 				await BB.Plugins.registerCollection(pluginsCollection);
 
@@ -27,11 +27,11 @@ export const plugins: { [key: string]: HookInput[] } = {
 	 */
 	'bluebase.plugins.initialize.all': [
 		{
-			name: 'bluebase.plugins.initialize.all.default',
+			key: 'bluebase-plugins-initialize-all-default',
 			priority: 5,
 
 			// tslint:disable-next-line:object-literal-sort-keys
-			handler: async (noop: any, _args: any, BB: BlueBase) => {
+			value: async (noop: any, _args: any, BB: BlueBase) => {
 
 				for (const entry of BB.Plugins.entries()) {
 					const plugin = entry['1'];
@@ -52,20 +52,17 @@ export const plugins: { [key: string]: HookInput[] } = {
 	 */
 	'bluebase.plugins.initialize': [
 		{
-			name: 'bluebase.plugins.initialize.default',
+			key: 'bluebase-plugins-initialize-default',
 			priority: 5,
 
 			// tslint:disable-next-line:object-literal-sort-keys
-			handler: async (plugin: Plugin, _args: any, BB: BlueBase) => {
+			value: async (plugin: Plugin, _args: any, BB: BlueBase) => {
 
 				//////////////////////////
 				///// Register Hooks /////
 				//////////////////////////
 
-				await BB.Hooks.registerCollection(
-					plugin.hooks,
-					(hookName: string, index: number) => `${plugin.slug}.${hookName}.${index}`
-				);
+				await BB.Hooks.registerNestedCollection(plugin.hooks);
 
 				///////////////////////////////
 				///// Register Components /////

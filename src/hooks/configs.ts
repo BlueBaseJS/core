@@ -1,16 +1,16 @@
 import { BlueBase, BootOptions } from '../BlueBase';
 import { BlueBaseDefaultConfigs } from '../configs';
-import { HookInput } from '../registries';
+import { HookInputNestedCollection } from '../registries';
 
 
-export const configs: { [key: string]: HookInput[] } = {
+export const configs: HookInputNestedCollection = {
 
 	'bluebase.configs.register': [{
-		name: 'bluebase-configs-register-default',
+		key: 'bluebase-configs-register-default',
 		priority: 5,
 
 		// tslint:disable-next-line:object-literal-sort-keys
-		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+		value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
 			await BB.Configs.registerCollection(bootOptions.configs);

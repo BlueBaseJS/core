@@ -2,20 +2,20 @@
 import * as Components from '../components';
 import * as Native from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
-import { HookInput } from '../registries';
+import { HookInputNestedCollection } from '../registries';
 import { ThemeValue } from '../models';
 
 
-export const components: { [key: string]: HookInput[] } = {
+export const components: HookInputNestedCollection = {
 
 	/**
 	 * Registers all components that ship with BlueBase
 	 */
 	'bluebase.components.register.internal': [{
-		name: 'bluebase-components-register-internal-default',
+		key: 'bluebase-components-register-internal-default',
 		priority: 5,
 
-		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+		value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			await BB.Components.registerCollection({
 				// BlueBase Components
@@ -50,11 +50,11 @@ export const components: { [key: string]: HookInput[] } = {
 	 * These are the components typically set in the bluebase.js file.
 	 */
 	'bluebase.components.register': [{
-		name: 'bluebase-components-register-default',
+		key: 'bluebase-components-register-default',
 		priority: 5,
 
 		// tslint:disable-next-line:object-literal-sort-keys
-		handler: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+		value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 
 			await BB.Components.registerCollection(bootOptions.components);
 

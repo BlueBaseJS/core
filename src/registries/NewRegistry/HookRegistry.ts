@@ -3,7 +3,17 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
+import {
+	MaybeArray,
+	MaybeBlueBaseModule,
+	MaybeThunk,
+	Omit,
+	getDefiniteArray,
+	getDefiniteBlueBaseModule,
+	resolveThunk,
+} from '../../utils';
 import { BlueBase } from '../../BlueBase';
+import { ItemCollection } from './Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 
@@ -26,8 +36,7 @@ export const DEFAULT_HOOK_PRIORITY = 10;
  */
 export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BB: BlueBase) => T | Promise<T>;
 
-
-export interface HookRegistryItem extends BlueBaseModuleRegistryItem<HookHandlerFn> {
+export interface HookRegistryItemExtras {
 	/**
 	 * Priority of exeuction.
 	 *
@@ -39,8 +48,11 @@ export interface HookRegistryItem extends BlueBaseModuleRegistryItem<HookHandler
 	 * ID of event to subscribe to
 	 */
 	event: string;
+
+	[key: string]: any,
 }
 
+export type HookRegistryItem = BlueBaseModuleRegistryItem<HookHandlerFn> & HookRegistryItemExtras;
 export interface HookRegistryInputItem extends BlueBaseModuleRegistryInputItem<HookHandlerFn> {
 
 	/**
@@ -52,10 +64,59 @@ export interface HookRegistryInputItem extends BlueBaseModuleRegistryInputItem<H
 type ItemType = HookRegistryItem;
 type ItemInputType = HookRegistryInputItem;
 
+export type Hook = HookRegistryItemExtras & { value: HookHandlerFn };
+export type HookInput = HookRegistryInputItem;
+
+export type HookInputCollection = ItemCollection<HookInput>;
+
+
+///////// Nested Collection
+
+export type HookInputNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn>
+ = MaybeThunk<{ [event: string]: MaybeArray<MaybeBlueBaseModule<T>> }>;
+
+
 /**
  * 🎣 HookRegistry
  */
 export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
+
+	public async registerNestedCollection(collections: HookInputNestedCollection) {
+
+		// If hooks field is a thunk, then call the thunk function
+		collections = resolveThunk(collections, this.BB);
+
+		// Extract hook names. These are events that are being subscribed to
+		const eventNames = Object.keys(collections);
+
+		// Iterate over each hook name
+		for (const eventName of eventNames) {
+
+			// Extract collection for each event
+			const singleCollection = getDefiniteArray(collections[eventName]);
+
+			for (let item of singleCollection) {
+
+				// Make sure item is resolved if its a promise
+				item = await getDefiniteBlueBaseModule(item);
+
+				// Register each item indivitually
+				if (this.isInputValue(item)) {
+					await this.register({ event: eventName, value: item });
+					continue;
+				}
+
+				const newItem: HookRegistryInputItem = { event: eventName, ...item } as any;
+
+				if (!this.isInputItem(newItem)){
+					throw Error(`Could not register Hook. Reason: Input is not a hook item.`);
+				}
+
+				await this.register(newItem);
+			}
+
+		}
+	}
 
 	/**
 	 * Get all hooks for a specific event

@@ -1,6 +1,6 @@
 // declare var global: any;
 
-import { DEFAULT_HOOK_PRIORITY, HookRegistry } from '../HookRegistry';
+import { DEFAULT_HOOK_PRIORITY, HookRegistry, HookInputNestedCollection } from '../HookRegistry';
 import { BlueBase } from '../../../BlueBase';
 
 
@@ -62,6 +62,109 @@ describe('HookRegistry', () => {
 
 			expect((hook as any).event).toBe('hook1');
 			expect((hook as any).priority).toBe(DEFAULT_HOOK_PRIORITY);
+		});
+
+	});
+
+
+	describe('.registerNestedCollection method', () => {
+
+		it('should register hooks', async () => {
+			const BB = new BlueBase();
+			const Hooks = new HookRegistry(BB);
+
+			const collection: HookInputNestedCollection = {
+				hook1: [
+					{ key: 'add-fifteen', value: (val: number) => val + 15 },
+					(val: number) => val
+				],
+				hook2: { key: 'add-five', value: (val: number) => val + 5 },
+				hook3: (val: number) => (val + 10)
+			};
+
+			await Hooks.registerNestedCollection(collection);
+
+			expect(Hooks.size()).toBe(4);
+
+			const valHook1 = await Hooks.run('hook1', 5);
+			expect(valHook1).toBe(20);
+
+			const valHook2 = await Hooks.run('hook2', 5);
+			expect(valHook2).toBe(10);
+
+			const valHook3 = await Hooks.run('hook3', 5);
+			expect(valHook3).toBe(15);
+		});
+
+		it('should register promised hooks', async () => {
+			const BB = new BlueBase();
+			const Hooks = new HookRegistry(BB);
+
+			const collection: HookInputNestedCollection = {
+				hook1: [
+					Promise.resolve({ key: 'add-fifteen', value: (val: number) => val + 15 }),
+					Promise.resolve((val: number) => val)
+				],
+				hook2: Promise.resolve({ key: 'add-five', value: (val: number) => val + 5 }),
+				hook3: Promise.resolve((val: number) => (val + 10))
+			};
+
+			await Hooks.registerNestedCollection(collection);
+
+			expect(Hooks.size()).toBe(4);
+
+			const valHook1 = await Hooks.run('hook1', 5);
+			expect(valHook1).toBe(20);
+
+			const valHook2 = await Hooks.run('hook2', 5);
+			expect(valHook2).toBe(10);
+
+			const valHook3 = await Hooks.run('hook3', 5);
+			expect(valHook3).toBe(15);
+		});
+
+		it('should register hooks in a thunk', async () => {
+			const BB = new BlueBase();
+			const Hooks = new HookRegistry(BB);
+
+			const collection: HookInputNestedCollection = () => ({
+				hook1: [
+					{ key: 'add-fifteen', value: (val: number) => val + 15 },
+					(val: number) => val
+				],
+				hook2: { key: 'add-five', value: (val: number) => val + 5 },
+				hook3: (val: number) => (val + 10)
+			});
+
+			await Hooks.registerNestedCollection(collection);
+
+			expect(Hooks.size()).toBe(4);
+
+			const valHook1 = await Hooks.run('hook1', 5);
+			expect(valHook1).toBe(20);
+
+			const valHook2 = await Hooks.run('hook2', 5);
+			expect(valHook2).toBe(10);
+
+			const valHook3 = await Hooks.run('hook3', 5);
+			expect(valHook3).toBe(15);
+		});
+
+		it('should throw an error for unknown hook type', async () => {
+			const BB = new BlueBase();
+			const Hooks = new HookRegistry(BB);
+
+			const collection: HookInputNestedCollection = () => ({
+				hook1: [
+					{ key: 'add-fifteen' },
+				],
+			});
+
+			try {
+				await Hooks.registerNestedCollection(collection);
+			} catch (error) {
+				expect(error.message).toBe('Could not register Hook. Reason: Input is not a hook item.');
+			}
 		});
 
 	});

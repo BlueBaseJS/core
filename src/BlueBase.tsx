@@ -4,7 +4,7 @@ import {
 	ComponentRegistry,
 	ConfigCollection,
 	ConfigRegistry,
-	HookCollection,
+	HookInputNestedCollection,
 	HookRegistry,
 	PluginInputCollection,
 	PluginRegistry,
@@ -20,7 +20,7 @@ import systemHooks from './hooks';
 export interface BootOptions {
 	components: ComponentInputCollection,
 	configs: ConfigCollection,
-	hooks: HookCollection,
+	hooks: HookInputNestedCollection,
 	plugins: PluginInputCollection,
 	themes: ThemeInputCollection,
 	// routes: Plugin[]
@@ -54,8 +54,8 @@ export class BlueBase {
 
 		this.bootOptions = { ...this.bootOptions, ...options };
 
-		await this.Hooks.registerCollection(systemHooks);
-		await this.Hooks.registerCollection(this.bootOptions.hooks);
+		await this.Hooks.registerNestedCollection(systemHooks);
+		await this.Hooks.registerNestedCollection(this.bootOptions.hooks);
 
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
