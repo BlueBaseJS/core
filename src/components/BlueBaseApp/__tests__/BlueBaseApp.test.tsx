@@ -8,21 +8,16 @@ beforeEach(() => {
 
 describe('BlueBaseApp', () => {
 
-	test(`Snapshot BlueBaseApp component`, () => {
-		const component: any = TestRenderer.create(
-			<BlueBaseApp />
-		);
-		component.getInstance().componentDidMount();
-		// const tree = wrapper.toJSON();
-		expect(component).toMatchSnapshot();
-	});
+	test(`should render BlueBaseApp`, (done: any) => {
+		const rendered: any = TestRenderer.create(<BlueBaseApp />);
 
-	test(`Snapshot BlueBaseApp component after complete rendering`, (done: any) => {
-		const component: any = TestRenderer.create(
-			<BlueBaseApp />
-		);
+		// Will show loading
+		expect(rendered.toJSON().children.join()).toBe('Loading');
+		expect(rendered).toMatchSnapshot();
+
+		// After loading
 		setTimeout(() => {
-			expect(component).toMatchSnapshot();
+			expect(rendered).toMatchSnapshot();
 			done();
 		});
 	});
