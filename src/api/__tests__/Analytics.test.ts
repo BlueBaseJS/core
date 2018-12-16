@@ -18,9 +18,10 @@ describe('Analytics', () => {
 			},
 		};
 
-		await BB.Hooks.register('bluebase.analytics.track', {
-			name: 'analytics-test',
-			handler: (data: AnalyticTrackData) => {
+		await BB.Hooks.register({
+			key: 'analytics-test',
+			event: 'bluebase.analytics.track',
+			value: (data: AnalyticTrackData) => {
 				expect(data).toMatchObject(testData);
 			}
 		});

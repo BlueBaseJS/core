@@ -10,6 +10,7 @@ export * from './HoverObserver';
 export * from './JsonSchema';
 export * from './LoadingState';
 export * from './Noop';
+export * from './ReactLoadableLoading';
 export * from './PluginIcon';
 export * from './StatefulComponent';
 export * from './SystemApp';

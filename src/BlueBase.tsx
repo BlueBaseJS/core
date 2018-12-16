@@ -1,29 +1,28 @@
 import { Analytics, Logger } from './api';
 import {
+	ComponentInputCollection,
 	ComponentRegistry,
+	ConfigCollection,
 	ConfigRegistry,
-	ConfigsCollection,
-	HookCollection,
+	HookInputNestedCollection,
 	HookRegistry,
+	PluginInputCollection,
 	PluginRegistry,
-	ThemeItemCollection,
-	ThemeProvider,
+	ThemeInputCollection,
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
-import { ComponentInput } from './registries/ComponentRegistry/types';
 import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
-import { MaybeBlueBaseModuleOrInput } from './utils';
-import { Plugin } from './models/Plugin';
 import React from 'react';
+import { ThemeProvider } from './themes';
 import systemHooks from './hooks';
 
 export interface BootOptions {
-	components: { [key: string]: ComponentInput },
-	configs: ConfigsCollection,
-	hooks: HookCollection,
-	plugins: Array<MaybeBlueBaseModuleOrInput<Plugin>>,
-	themes: ThemeItemCollection,
+	components: ComponentInputCollection,
+	configs: ConfigCollection,
+	hooks: HookInputNestedCollection,
+	plugins: PluginInputCollection,
+	themes: ThemeInputCollection,
 	// routes: Plugin[]
 }
 
@@ -51,12 +50,12 @@ export class BlueBase {
 		themes: [],
 	};
 
-	public async boot(options?: Partial<BootOptions>) {
+	public async boot(options?: Partial<BootOptions> & { children?: React.ReactNode }) {
 
 		this.bootOptions = { ...this.bootOptions, ...options };
 
-		await this.Hooks.registerCollection(systemHooks);
-		await this.Hooks.registerCollection(this.bootOptions.hooks);
+		await this.Hooks.registerNestedCollection(systemHooks);
+		await this.Hooks.registerNestedCollection(this.bootOptions.hooks);
 
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
@@ -67,7 +66,9 @@ export class BlueBase {
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-					<this.Components.SystemApp />
+					<this.Components.SystemApp>
+						{options && options.children}
+					</this.Components.SystemApp>
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);

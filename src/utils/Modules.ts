@@ -27,6 +27,6 @@ export function getDefiniteModule<T = any>(object: MaybeEsModule<T>): T {
  * Checks if an object is an ES module.
  * @param object Input object
  */
-export function isEsModule<T>(object: MaybeEsModule<T>): object is EsModule<T> {
-	return (object as EsModule<T>).default !== undefined;
+export function isEsModule<T>(object: any): object is EsModule<T> {
+	return object && object.default !== undefined;
 }

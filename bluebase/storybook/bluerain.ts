@@ -1,7 +1,7 @@
 // import { BootOptions } from '../../src';
 // import commonBootOptions from '../common/bluebase';
 // import deepmerge from 'deepmerge';
-import { ThemedCard } from '../../src/registries/ThemeRegistry/__stories__/ThemedCard';
+import { ThemedCard } from '../../src/registries/__stories__/ThemedCard';
 import { BootOptions } from '../../src';
 /**
  * Add your platform specific configs here. 
@@ -32,12 +32,12 @@ const bootOptions: Partial<BootOptions> = {
 		ThemedCard,
 		ThemedCard2: ThemedCard,
 		ThemedCard3: {
-			rawComponent: ThemedCard,
 			styles: {
 				root: {
 					backgroundColor: 'orange'
 				}
-			}
+			},
+			value: ThemedCard,
 		},
 	},
 };

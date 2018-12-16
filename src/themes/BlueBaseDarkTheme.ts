@@ -1,4 +1,4 @@
-import { ThemeRegistryItem } from '../registries';
+import { ThemeInput } from '../registries';
 import { createPalette } from './createPalette';
 import { createTheme } from './createTheme';
 import { createTypography } from './createTypography';
@@ -7,10 +7,10 @@ const palette = createPalette('dark');
 const typography = createTypography(palette);
 const theme = createTheme(palette, typography);
 
-export const BlueBaseDarkTheme: ThemeRegistryItem = {
+export const BlueBaseDarkTheme: ThemeInput = {
 	alternate: 'bluebase-light',
+	key: 'bluebase-dark',
 	mode: 'dark',
 	name: 'BlueBase Dark',
-	slug: 'bluebase-dark',
-	theme
+	value: theme,
 };

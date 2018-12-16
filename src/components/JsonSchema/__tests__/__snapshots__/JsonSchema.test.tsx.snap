@@ -2,22 +2,4 @@
 
 exports[`JsonSchema Snapshot ComponentState component 1`] = `null`;
 
-exports[`JsonSchema Snapshot ComponentState component after complete rendering 1`] = `
-<Text
-  style={
-    Array [
-      Object {
-        "color": "rgba(0, 0, 0, 0.87)",
-        "fontFamily": "Roboto",
-        "fontSize": 16,
-        "fontWeight": "400",
-      },
-      Object {
-        "color": "red",
-      },
-    ]
-  }
->
-  This componenet is generated through JsonSchema Component
-</Text>
-`;
+exports[`JsonSchema Snapshot ComponentState component after complete rendering 1`] = `null`;

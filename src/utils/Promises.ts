@@ -19,6 +19,6 @@ export function getDefinitePromise<T = any>(object: MaybePromise<T>): Promise<T>
  * Checks if an object is a Promise
  * @param object Input object
  */
-export function isPromise<T>(object: MaybePromise<T>): object is Promise<T> {
+export function isPromise<T>(object: any): object is Promise<T> {
 	return !!object && 'function' === typeof (object as Promise<T>).then;
 }

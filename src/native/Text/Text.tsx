@@ -1,6 +1,6 @@
 import { Text as NativeText, TextProps as NativeTextProps, TextStyle } from 'react-native';
 import React from 'react';
-import { Theme } from '../../models';
+import { ThemeValue } from '../../models';
 
 export interface TextProps extends NativeTextProps {
 	styles?: {
@@ -12,4 +12,4 @@ export const Text: React.ComponentType<TextProps> = ({ styles, style, ...rest }:
 	<NativeText style={[styles && styles.root, style]} {...rest} />
 );
 
-(Text as any).defaultStyles = (theme: Theme) => ({ root: theme.typography.body1 });
+(Text as any).defaultStyles = (theme: ThemeValue) => ({ root: theme.typography.body1 });

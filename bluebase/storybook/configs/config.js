@@ -1,6 +1,7 @@
 // import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import { BlueBaseDecorator } from '@bluebase/storybook-addon';
+import { BlueBaseDecorator } from './BlueRainDecorator';
+// import { BlueBaseDecorator } from '@bluebase/storybook-addon';
 
 import '@storybook/addon-console';
 

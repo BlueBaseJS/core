@@ -1,3 +1,2 @@
-export * from './Hook';
-export * from './Plugin';
+export * from './Configs';
 export * from './Theme';
