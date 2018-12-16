@@ -1,5 +1,5 @@
 // tslint:disable:no-console
-import { BlueBase, BlueBaseConsumer } from '../../..';
+import { BlueBase, BlueBaseConsumer } from '../../';
 import React from 'react';
 import { ThemeDemo } from './ThemeDemo';
 import { ThemePicker } from './ThemePicker';

@@ -47,7 +47,7 @@ export const applyStyles = (
 				<ThemeContext.Consumer children={(args?: { theme: ThemeValue }) => {
 
 					if(!args) {
-						return;
+						return React.createElement(Component, { ...rest });
 					}
 
 					const { theme } = args;

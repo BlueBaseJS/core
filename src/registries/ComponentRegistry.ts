@@ -3,8 +3,9 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
+import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
 import { BlueBase } from '../BlueBase';
+import { ComponentStyles, applyStyles } from '../models';
 import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../components';
@@ -28,6 +29,7 @@ export interface ComponentSource {
 interface ComponentRegistryItemExtras {
 	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>,
 	source: ComponentSource,
+	styles: MaybeThunk<ComponentStyles>,
 	isAsync: boolean,
 }
 
@@ -73,12 +75,15 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 			throw Error(`Could not resolve any of the following components: [${keys.join(', ')}].`);
 		}
 
-		const rawComponent = item.value.isAsync
+		let rawComponent = item.value.isAsync
 			? Loadable({
 				loader: () => item.value,
 				loading: ReactLoadableLoading,
 			})
-			: item.value.module;
+			: item.value.module as React.ComponentType<any>;
+
+		// Add withStyles HOC
+		rawComponent = applyStyles(item.key, rawComponent, item.styles);
 
 		const hocs = item.hocs
 			.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
@@ -107,6 +112,32 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 	// public removeHocs() {
 	// 	// TODO:
 	// }
+
+	// TODO: Add docs
+	public setStyles(key: string, styles: MaybeThunk<ComponentStyles>) {
+		const item = this.get(key);
+
+		if (!item) {
+			throw Error(
+				`Cannot set styles "${key}" component. Reason: Component not found.`
+			);
+		}
+
+		item.styles = styles;
+
+		this.data = this.data.set(key, item);
+	}
+
+	// TODO: Add docs
+	public getStyles(key: string): MaybeThunk<ComponentStyles> | undefined {
+		const item = this.get(key);
+
+		if (!item) {
+			return;
+		}
+
+		return item.styles;
+	}
 
 	protected createItem(key: string, partial: any): ComponentRegistryItem {
 

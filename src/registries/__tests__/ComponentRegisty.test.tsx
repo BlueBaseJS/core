@@ -67,10 +67,11 @@ describe('ComponentRegistry', () => {
 
 		it('should resolve a Promised component', async (done) => {
 			const BB = new BlueBase();
-			const Components = new ComponentRegistry(BB);
+			await BB.boot();
+			// const Components = new ComponentRegistry(BB);
 
-			await Components.register('Foo', { value: Promise.resolve(Text) as any });
-			const Foo = Components.resolve('Foo');
+			await BB.Components.register('Foo', { value: Promise.resolve(Text) as any });
+			const Foo = BB.Components.resolve('Foo');
 
 			const rendered = TestRenderer.create(<Foo>Some text</Foo>);
 			const foo = rendered.root.findByType(ReactLoadableLoading);

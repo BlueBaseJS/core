@@ -1,4 +1,4 @@
-import { BlueBase, BlueBaseConsumer } from '../../..';
+import { BlueBase, BlueBaseConsumer } from '../../';
 import { Text, View } from 'react-native';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
