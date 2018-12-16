@@ -3,9 +3,9 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
+import { ComponentStyles, applyStyles } from '../models';
 import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
 import { BlueBase } from '../BlueBase';
-import { ComponentStyles, applyStyles } from '../models';
 import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../components';

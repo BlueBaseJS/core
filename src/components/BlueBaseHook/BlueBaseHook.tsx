@@ -2,6 +2,7 @@ import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import Loadable from 'react-loadable';
 import React from 'react';
+import { ReactLoadableLoading } from '../ReactLoadableLoading';
 
 // const example = () => (
 // 	<BlueBaseHook hook="bluebase.event" value={5} args={{ foo: 'bar' }}>
@@ -36,7 +37,7 @@ export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 
 		const AsyncBlueBaseHook = Loadable({
 			loader: () => BB.Hooks.run(hook, value, args),
-			loading: () => <BB.Components.LoadingState />,
+			loading: ReactLoadableLoading,
 			render(loadedValue: any) {
 				return children(loadedValue);
 			}
