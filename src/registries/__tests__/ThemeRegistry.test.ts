@@ -1,7 +1,6 @@
 // tslint:disable:object-literal-sort-keys
-import { BlueBase } from '../../../BlueBase';
+import { BlueBase } from '../../BlueBase';
 import { ThemeRegistry } from '../ThemeRegistry';
-
 
 describe('ThemeRegistry', () => {
 

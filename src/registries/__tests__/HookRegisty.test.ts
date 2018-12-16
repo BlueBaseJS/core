@@ -1,7 +1,11 @@
 // declare var global: any;
 
-import { DEFAULT_HOOK_PRIORITY, HookRegistry, HookInputNestedCollection } from '../HookRegistry';
-import { BlueBase } from '../../../BlueBase';
+import {
+	DEFAULT_HOOK_PRIORITY,
+	HookInputNestedCollection,
+	HookRegistry,
+} from '../HookRegistry';
+import { BlueBase } from '../../BlueBase';
 
 
 describe('HookRegistry', () => {

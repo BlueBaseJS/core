@@ -1,5 +1,5 @@
 import { BlueBase, BlueBaseContext } from '../../..';
-import { ThemeContext, ThemeContextData } from '../../../themes';
+import { ThemeContext, ThemeContextData } from '../../themes';
 import { Picker } from 'react-native';
 import React from 'react';
 

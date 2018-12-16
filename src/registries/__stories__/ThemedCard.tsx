@@ -1,6 +1,6 @@
 import { BlueBase, BlueBaseContext } from '../../..';
 import { TextStyle, ViewStyle } from 'react-native';
-import { MaybeThunk } from '../../../utils';
+import { MaybeThunk } from '../../utils';
 import React from 'react';
 import { Theme } from '../ThemeRegistry';
 

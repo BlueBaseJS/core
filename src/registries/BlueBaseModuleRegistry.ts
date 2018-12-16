@@ -6,7 +6,7 @@ import {
 	getDefiniteModule,
 	isBlueBaseModule,
 	isPromise,
-} from '../../utils';
+} from '../utils';
 import { Registry } from './Registry';
 
 /**

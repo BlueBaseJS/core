@@ -11,8 +11,8 @@ import {
 	getDefiniteArray,
 	getDefiniteBlueBaseModule,
 	resolveThunk,
-} from '../../utils';
-import { BlueBase } from '../../BlueBase';
+} from '../utils';
+import { BlueBase } from '../BlueBase';
 import { ItemCollection } from './Registry';
 import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';

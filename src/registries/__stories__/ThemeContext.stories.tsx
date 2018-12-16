@@ -3,7 +3,7 @@ import { BlueBase, BlueBaseConsumer } from '../../..';
 import React from 'react';
 import { ThemeDemo } from './ThemeDemo';
 import { ThemePicker } from './ThemePicker';
-import { ThemeProvider } from '../../../themes';
+import { ThemeProvider } from '../../themes';
 import storiesOf from '@bluebase/storybook-addon';
 
 storiesOf('ThemeContext', module)

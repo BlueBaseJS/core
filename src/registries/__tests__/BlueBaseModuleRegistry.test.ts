@@ -1,6 +1,6 @@
 import { BlueBaseModuleRegistry, BlueBaseModuleRegistryItem } from '../BlueBaseModuleRegistry';
-import { BlueBase } from '../../../BlueBase';
-import { createBlueBaseModule } from '../../../utils';
+import { BlueBase } from '../../BlueBase';
+import { createBlueBaseModule } from '../../utils';
 
 describe('BlueBaseModuleRegistry', () => {
 

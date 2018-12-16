@@ -1,8 +1,8 @@
 import { Text, View } from 'react-native';
-import { BlueBase } from '../../../BlueBase';
+import { BlueBase } from '../../BlueBase';
 import { ComponentRegistry } from '../';
 import React from 'react';
-import { ReactLoadableLoading } from '../../../components';
+import { ReactLoadableLoading } from '../../components';
 import TestRenderer from 'react-test-renderer';
 
 const Button: React.StatelessComponent<{}> = () => <View>A Button</View>;

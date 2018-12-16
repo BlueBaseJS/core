@@ -3,11 +3,11 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../../utils';
-import { BlueBase } from '../../BlueBase';
+import { Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
+import { BlueBase } from '../BlueBase';
 import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
-import { ReactLoadableLoading } from '../../components';
+import { ReactLoadableLoading } from '../components';
 import flowRight from 'lodash.flowright';
 
 /**

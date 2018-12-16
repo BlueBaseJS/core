@@ -1,7 +1,7 @@
 // tslint:disable:max-classes-per-file
-import { BlueBase } from '../../../BlueBase';
+import { BlueBase } from '../../BlueBase';
 import { PluginRegistry } from '../PluginRegistry';
-import { createBlueBaseModule } from '../../../utils';
+import { createBlueBaseModule } from '../../utils';
 
 describe.only('PluginRegistry', () => {
 

@@ -1,5 +1,5 @@
 import { Registry, RegistryItem } from '../Registry';
-import { BlueBase } from '../../../BlueBase';
+import { BlueBase } from '../../BlueBase';
 
 describe('Registry', () => {
 

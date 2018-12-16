@@ -3,9 +3,9 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { ThemeValue, ThemeValueInput, buildTheme } from '../../models';
+import { ThemeValue, ThemeValueInput, buildTheme } from '../models';
 import { ItemCollection } from './Registry';
-import { getDefiniteBlueBaseModule } from '../../utils';
+import { getDefiniteBlueBaseModule } from '../utils';
 
 
 export interface ThemeRegistryItemExtras {
