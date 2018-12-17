@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponent should render a button component 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`getComponent should render a button component 2`] = `
+<View
+  styles={Object {}}
+>
+  <View
+    accessibilityRole="button"
+    accessibilityStates={Array []}
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "padding": 8,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        A Button component
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`getComponent should render a text component 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`getComponent should render a text component 2`] = `
+<View
+  styles={Object {}}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        undefined,
+      ]
+    }
+  >
+    A Text component
+  </Text>
+</View>
+`;
