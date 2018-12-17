@@ -5,6 +5,11 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
   styles={Object {}}
 >
   <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
     styles={Object {}}
   >
     <Text
@@ -13,10 +18,12 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
           Object {
             "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "Roboto",
-            "fontSize": 16,
-            "fontWeight": "400",
+            "fontSize": 20,
+            "fontWeight": "500",
           },
-          undefined,
+          Object {
+            "textAlign": "center",
+          },
         ]
       }
     >
@@ -31,7 +38,9 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
             "fontSize": 16,
             "fontWeight": "400",
           },
-          undefined,
+          Object {
+            "textAlign": "center",
+          },
         ]
       }
     >

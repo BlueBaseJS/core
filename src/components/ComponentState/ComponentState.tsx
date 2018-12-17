@@ -1,19 +1,32 @@
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
-import { ButtonProps } from '../../ui-interfaces';
+import { Button, H6, Image, Text, View } from '../..';
+import { ImageStyle, TextStyle, ViewStyle,  } from 'react-native';
+import { ButtonProps } from '../../native';
 import React from 'react';
+import { Theme } from '../../registries';
 
+export interface ComponentStateStyles {
+
+	/** Action button styles */
+	actionRoot?: ViewStyle,
+
+	/** Description text styles */
+	description?: TextStyle,
+
+	/** Image styles */
+	image?: ImageStyle,
+
+	/** Root View styles */
+	root?: ViewStyle,
+
+	/** Title style */
+	title?: TextStyle,
+}
 export interface ComponentStateProps {
 
 	/**
 	 * Action title
 	 */
 	actionTitle?: string;
-
-	/**
-	 * Action styles
-	 */
-	actionStyle?: ButtonProps['style'];
 
 	/**
 	 * Action onPress handler
@@ -26,19 +39,9 @@ export interface ComponentStateProps {
 	description?: string;
 
 	/**
-	 * Description style
-	 */
-	descriptionStyle?: any;
-
-	/**
 	 * Image Component, if provided, imageSource will be ignored
 	 */
 	image?: React.ReactNode;
-
-	/**
-	 * Image styles
-	 */
-	imageStyle?: any;
 
 	/**
 	 * Image source
@@ -50,62 +53,60 @@ export interface ComponentStateProps {
 	 */
 	title?: string;
 
-	/**
-	 * Title style
-	 */
-	titleStyle?: any;
+
+	styles?: ComponentStateStyles;
 }
 
 export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
-	static contextType = BlueBaseContext;
-
-	render() {
-
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
-
-		const {
-			actionOnPress,
-			actionStyle,
-			actionTitle,
-			description,
-			descriptionStyle,
-			image,
-			imageSource,
-			imageStyle,
-			title,
-			titleStyle
-		} = this.props;
-
-		const imgStyle = {
+	static defaultStyles = (theme: Theme) => ({
+		actionRoot: {
+			marginTop: theme.spacing.unit,
+		},
+		description: {
+			textAlign: 'center',
+		},
+		image: {
 			height: 250,
 			marginBottom: 10,
 			width: 250,
-			...imageStyle
-		};
+		},
+		root: {
+			alignItems: 'center',
+		},
+		title: {
+			textAlign: 'center',
+		},
+	})
 
-		const imageProps: any = {
-			style: actionStyle
-		};
+	render() {
 
-		if (actionOnPress) {
-			imageProps.onPress = actionOnPress;
-		}
+		const {
+			actionOnPress,
+			actionTitle,
+			description,
+			image,
+			imageSource,
+			title,
+		} = this.props;
+
+		const styles = this.props.styles as ComponentStateStyles;
 
 		return (
-			<BB.Components.View>
-				{image ? image : (imageSource ? <BB.Components.Image style={imgStyle} source={{ uri: imageSource }} /> : null)}
-				{title ? <BB.Components.Text style={titleStyle} children={title} /> : null}
-				{description ? <BB.Components.Text style={descriptionStyle} children={description} /> : null}
+			<View style={styles.root}>
+				{image ? image : (imageSource ? <Image style={styles.image} source={{ uri: imageSource }} /> : null)}
+				{title ? <H6 style={styles.title} children={title} /> : null}
+				{description ? <Text style={styles.description} children={description} /> : null}
 				{actionTitle
 					? (
-						<BB.Components.Button {...imageProps} >
-							<BB.Components.Text>{actionTitle}</BB.Components.Text>
-						</BB.Components.Button>
+						<View style={styles.actionRoot}>
+							<Button color="primary" onPress={actionOnPress} >
+								{actionTitle}
+							</Button>
+						</View>
 					)
 					: null}
-			</BB.Components.View>
+			</View>
 		);
 	}
 }

@@ -41,7 +41,7 @@ describe('HookRegistry', () => {
 
 			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo1' });
 			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo2' });
-			const hook = Hooks.getValue('listener1');
+			const hook = await Hooks.getValue('listener1');
 
 			expect((hook as any)()).toBe('foo2');
 		});

@@ -1,39 +1,44 @@
 // tslint:disable:object-literal-sort-keys
 
 export const light = {
-  // The colors used to style the text.
+  /** The colors used to style the text. */
 	text: {
-    // The most important text.
+    /** The most important text. */
 		primary: 'rgba(0, 0, 0, 0.87)',
-    // Secondary text.
+    /** Secondary text. */
 		secondary: 'rgba(0, 0, 0, 0.54)',
-    // Disabled text have even lower visual prominence.
+    /** Disabled text have even lower visual prominence. */
 		disabled: 'rgba(0, 0, 0, 0.38)',
-    // Text hints.
+    /** Text hints. */
 		hint: 'rgba(0, 0, 0, 0.38)',
-		// Icon color
+		/** Icon color */
 		icon: 'rgba(0, 0, 0, 0.38)',
 	},
-  // The color used to divide different elements.
+
+	/** The color used to divide different elements. */
 	divider: 'rgba(0, 0, 0, 0.12)',
-  // The background colors used to style the surfaces.
-  // Consistency between these values is important.
+
+	/**
+	 * The background colors used to style the surfaces.
+	 * Consistency between these values is important.
+	 */
 	background: {
 		card: '#ffffff',
 		default: '#fafafa',
 	},
-  // The colors used to style the action elements.
+
+	/** The colors used to style the action elements. */
 	action: {
-    // The color of an active action like an icon button.
+    /** The color of an active action like an icon button. */
 		active: 'rgba(0, 0, 0, 0.54)',
-    // The color of an hovered action.
+    /** The color of an hovered action. */
 		hover: 'rgba(0, 0, 0, 0.08)',
 		hoverOpacity: 0.08,
-    // The color of a selected action.
+    /** The color of a selected action. */
 		selected: 'rgba(0, 0, 0, 0.14)',
-    // The color of a disabled action.
+    /** The color of a disabled action. */
 		disabled: 'rgba(0, 0, 0, 0.26)',
-    // The background color of a disabled action.
+    /** The background color of a disabled action. */
 		disabledBackground: 'rgba(0, 0, 0, 0.12)',
 	},
 };

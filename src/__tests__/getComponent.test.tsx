@@ -1,5 +1,5 @@
 import { Button, Text } from '../index';
-import { BlueBaseApp } from '../../../components';
+import { BlueBaseApp } from '../components/';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 

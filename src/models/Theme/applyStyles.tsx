@@ -47,7 +47,9 @@ export const applyStyles = (
 				<ThemeContext.Consumer children={(args?: { theme: ThemeValue }) => {
 
 					if(!args) {
-						return React.createElement(Component, { ...rest });
+						// We return null here because the component may depend on the styles prop,
+						// and may crash without it.
+						return null;
 					}
 
 					const { theme } = args;

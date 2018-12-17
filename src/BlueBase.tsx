@@ -12,7 +12,6 @@ import {
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
-import { ComponentRegistryWithUIInterfaces as IComponentRegistry } from './ui-interfaces';
 import React from 'react';
 import { ThemeProvider } from './themes';
 import systemHooks from './hooks';
@@ -33,11 +32,11 @@ export class BlueBase {
 	public Logger = new Logger(this);
 
 	// Registries
-	public Components: IComponentRegistry = new ComponentRegistry(this) as IComponentRegistry;
-	public Configs: ConfigRegistry = new ConfigRegistry(this);
-	public Hooks: HookRegistry = new HookRegistry(this);
-	public Plugins: PluginRegistry = new PluginRegistry(this);
-	public Themes: ThemeRegistry = new ThemeRegistry(this);
+	public Components = new ComponentRegistry(this);
+	public Configs = new ConfigRegistry(this);
+	public Hooks = new HookRegistry(this);
+	public Plugins = new PluginRegistry(this);
+	public Themes = new ThemeRegistry(this);
 
 	// Flags
 	public booted = false;

@@ -12,7 +12,6 @@ exports[`getComponent should render a button component 2`] = `
 >
   <View
     accessibilityRole="button"
-    accessibilityStates={Array []}
     accessible={true}
     isTVSelectable={true}
     onResponderGrant={[Function]}
@@ -30,7 +29,17 @@ exports[`getComponent should render a button component 2`] = `
     <View
       style={
         Array [
-          Object {},
+          Object {
+            "alignSelf": "flex-start",
+            "borderRadius": 4,
+            "paddingBottom": 8,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 8,
+          },
+          Object {
+            "backgroundColor": "#fafafa",
+          },
         ]
       }
     >
@@ -38,11 +47,14 @@ exports[`getComponent should render a button component 2`] = `
         style={
           Array [
             Object {
-              "color": "#007AFF",
-              "fontSize": 18,
-              "padding": 8,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "fontFamily": "Roboto",
+              "fontSize": 14,
+              "fontWeight": "500",
               "textAlign": "center",
+              "textTransform": "uppercase",
             },
+            Object {},
           ]
         }
       >

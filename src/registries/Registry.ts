@@ -86,8 +86,12 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 
 		const existingItem = this.get(key);
 
+		if (existingItem) {
+			item = merge(existingItem, item) as ItemType;
+		}
+
 		// Override existing or create an new one
-		const finalItem = (existingItem) ? merge(existingItem, item) as ItemType : this.createItem(key, item);
+		const finalItem = this.createItem(key, item);
 
 		this.data.set(key, finalItem);
 		this.publish(key, finalItem);

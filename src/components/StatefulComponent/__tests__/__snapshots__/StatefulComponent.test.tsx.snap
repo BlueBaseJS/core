@@ -11,6 +11,11 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
   styles={Object {}}
 >
   <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
     styles={Object {}}
   >
     <Text
@@ -19,10 +24,12 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
           Object {
             "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "Roboto",
-            "fontSize": 16,
-            "fontWeight": "400",
+            "fontSize": 20,
+            "fontWeight": "500",
           },
-          undefined,
+          Object {
+            "textAlign": "center",
+          },
         ]
       }
     >
@@ -37,7 +44,9 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
             "fontSize": 16,
             "fontWeight": "400",
           },
-          undefined,
+          Object {
+            "textAlign": "center",
+          },
         ]
       }
     >
@@ -52,6 +61,11 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
   styles={Object {}}
 >
   <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
     styles={Object {}}
   >
     <Text
@@ -60,10 +74,12 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
           Object {
             "color": "rgba(0, 0, 0, 0.87)",
             "fontFamily": "Roboto",
-            "fontSize": 16,
-            "fontWeight": "400",
+            "fontSize": 20,
+            "fontWeight": "500",
           },
-          undefined,
+          Object {
+            "textAlign": "center",
+          },
         ]
       }
     >
@@ -78,7 +94,9 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
             "fontSize": 16,
             "fontWeight": "400",
           },
-          undefined,
+          Object {
+            "textAlign": "center",
+          },
         ]
       }
     >

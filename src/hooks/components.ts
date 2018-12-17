@@ -1,7 +1,24 @@
-// tslint:disable:object-literal-sort-keys
-import * as Components from '../components';
+// tslint:disable: object-literal-sort-keys
 import * as Native from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
+import {
+	BlueBaseHook,
+	ComponentState,
+	DataObserver,
+	DynamicIcon,
+	EmptyState,
+	ErrorObserver,
+	ErrorState,
+	HoverObserver,
+	JsonSchema,
+	LoadingState,
+	Noop,
+	PluginIcon,
+	StatefulComponent,
+	SystemApp,
+	SystemContent,
+	WaitObserver
+} from '../components/';
 import { HookInputNestedCollection } from '../registries';
 import { ThemeValue } from '../models';
 
@@ -19,9 +36,25 @@ export const components: HookInputNestedCollection = {
 
 			await BB.Components.registerCollection({
 				// BlueBase Components
-				SystemFooter: Components.Noop,
-				SystemHeader: Components.Noop,
-				...Components,
+				BlueBaseHook,
+				ComponentState,
+				DataObserver,
+				DynamicIcon,
+				EmptyState,
+				ErrorObserver,
+				ErrorState,
+				HoverObserver,
+				Icon: Noop,
+				JsonSchema,
+				LoadingState,
+				Noop,
+				PluginIcon,
+				StatefulComponent,
+				SystemApp,
+				SystemContent,
+				SystemFooter: Noop,
+				SystemHeader: Noop,
+				WaitObserver,
 
 				// Native
 				...Native,

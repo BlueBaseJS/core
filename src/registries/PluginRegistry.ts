@@ -5,7 +5,7 @@ import {
 } from './BlueBaseModuleRegistry';
 import { MaybeThunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
 import { ComponentInputCollection } from './ComponentRegistry';
-import { DynamicIconProps } from '../components';
+import { DynamicIconProps } from '../components/';
 import { ItemCollection } from './Registry';
 
 

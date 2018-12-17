@@ -1,4 +1,4 @@
-import { ActivityIndicatorProps, ImageProps, TextProps, ViewProps } from '../../native';
+import { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 import {
 	BlueBaseHookProps,
 	ComponentStateProps,
@@ -12,10 +12,9 @@ import {
 	PluginIconProps,
 	StatefulComponentProps,
 	WaitObserverProps,
-} from '../../components';
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseConsumer } from '../../Context';
-import { ButtonProps } from '../../ui-interfaces';
+} from './components';
+import { BlueBase } from './BlueBase';
+import { BlueBaseConsumer } from './Context';
 import React from 'react';
 
 export function getComponent<T = any>(name: string) {

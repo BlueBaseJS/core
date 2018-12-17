@@ -164,10 +164,10 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
+			expect(tree).toMatchSnapshot();
 			expect((tree as any).type).toBe('View');
 			expect((tree as any).children[0].type).toBe('View');
 			expect((tree as any).children[0].props.style).toMatchObject({ height: 100, width: 100, backgroundColor: 'blue' });
-			expect(tree).toMatchSnapshot();
 			done();
 		});
 	});
