@@ -68,7 +68,7 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 		try {
 			const AppComponent = await BB.boot(this.props);
 			this.setState({
-				AppComponent,
+				AppComponent: AppComponent || this.state.AppComponent,
 				booted: BB.booted,
 				loading: false,
 			});
@@ -89,14 +89,17 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 
 	render() {
 
-		const { loading, error, AppComponent } = this.state;
+		const { loading, error, AppComponent, BB } = this.state;
 
 		if (loading) {
 			return (<Text>Loading</Text>);
 		}
 
 		if (error) {
-			return (<Text>An error occured</Text>);
+			const development = BB.Configs.getValue('development');
+			const message = (development === true) ? error.message : MISSING_ERROR;
+
+			return (<Text>{message}</Text>);
 		}
 
 		return <AppComponent children={this.props.children} />;

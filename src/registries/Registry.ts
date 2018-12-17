@@ -380,7 +380,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param value
 	 */
 	protected isValue(value: any): value is ItemType['value'] {
-		return !!(value);
+		return value !== undefined;
 	}
 
 	/**
@@ -388,7 +388,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param value
 	 */
 	protected isInputValue(value: any): value is ItemInputType['value'] {
-		return !!(value);
+		return value !== undefined;
 	}
 
 	/**
@@ -481,7 +481,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 			throw Error('Could not register item. Reason: No key given.');
 		}
 
-		if (!finalItem) {
+		if (finalItem === undefined) {
 			throw Error('Could not register item. Reason: No item given.');
 		}
 
