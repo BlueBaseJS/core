@@ -8,26 +8,39 @@ beforeEach(() => {
 });
 
 describe('ErrorState', () => {
-	const ErrorStateWithProvider = (props: any) => (
-		<BlueBaseApp>
-			<ErrorState {...props} />
-		</BlueBaseApp>
-	);
 
-	test(`Snapshot ErrorState`, () => {
+	test(`should render ErrorState`, (done) => {
 		const component = TestRenderer.create(
-			<ErrorStateWithProvider />
+			<BlueBaseApp>
+				<ErrorState />
+			</BlueBaseApp>
 		);
-		const tree = component.toJSON();
+		let tree = component.toJSON();
+		expect((tree as any).children.join()).toBe('Loading');
 		expect(tree).toMatchSnapshot();
+
+		setTimeout(() => {
+			tree = component.toJSON();
+			expect((tree as any).children[0].children[0].children.join()).toBe('Something broke!');
+			expect((tree as any).children[0].children[1].children.join())
+				.toBe('An unknown error has occured. Please try again later.');
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
-	test(`Snapshot ErrorState after complete rendering`, (done) => {
+	test(`should render ErrorState with retry button and custom error`, (done) => {
 		const component = TestRenderer.create(
-			<ErrorStateWithProvider />
+			<BlueBaseApp>
+				<ErrorState retry={() => { return null; }} error={Error('Bang!')} />
+			</BlueBaseApp>
 		);
+
 		setTimeout(() => {
 			const tree = component.toJSON();
+			expect((tree as any).children[0].children[0].children.join()).toBe('Error');
+			expect((tree as any).children[0].children[1].children.join()).toBe('Bang!');
+			expect((tree as any).children[0].children[2].type).toBe('View'); // Button
 			expect(tree).toMatchSnapshot();
 			done();
 		});

@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorState Snapshot ErrorState 1`] = `
+exports[`ErrorState should render ErrorState 1`] = `
 <Text>
   Loading
 </Text>
 `;
 
-exports[`ErrorState Snapshot ErrorState after complete rendering 1`] = `
+exports[`ErrorState should render ErrorState 2`] = `
 <View
   styles={Object {}}
 >
@@ -43,6 +43,88 @@ exports[`ErrorState Snapshot ErrorState after complete rendering 1`] = `
     >
       An unknown error has occured. Please try again later.
     </Text>
+  </View>
+</View>
+`;
+
+exports[`ErrorState should render ErrorState with retry button and custom error 1`] = `
+<View
+  styles={Object {}}
+>
+  <View
+    styles={Object {}}
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      Error
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      Bang!
+    </Text>
+    <View
+      accessibilityRole="button"
+      accessibilityStates={Array []}
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {},
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeight": "400",
+              },
+              undefined,
+            ]
+          }
+        >
+          Retry
+        </Text>
+      </View>
+    </View>
   </View>
 </View>
 `;

@@ -1,5 +1,5 @@
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseConsumer } from '../../Context';
+import { BlueBaseContext } from '../../Context';
 import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
 
@@ -13,27 +13,27 @@ export interface ErrorStateProps {
  */
 export class ErrorState extends React.PureComponent<ErrorStateProps> {
 
+	static contextType = BlueBaseContext;
+
 	render() {
 
 		const { error, retry } = this.props;
 
-		return (
-			<BlueBaseConsumer children={(BB: BlueBase) => {
+		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
+		const BB: BlueBase = (this as any).context;
 
-				const debug = BB.Configs.getValue('debug');
+		const development = BB.Configs.getValue('development');
 
-				const props: ComponentStateProps = {
-					description: (debug && error)? error.message : 'An unknown error has occured. Please try again later.',
-					title: (debug && error) ? error.name : 'Something broke!',
-				};
+		const props: ComponentStateProps = {
+			description: (development && error)? error.message : 'An unknown error has occured. Please try again later.',
+			title: (development && error) ? error.name : 'Something broke!',
+		};
 
-				if (retry) {
-					props.actionTitle = 'Retry';
-					props.actionOnPress = retry;
-				}
+		if (retry) {
+			props.actionTitle = 'Retry';
+			props.actionOnPress = retry;
+		}
 
-				return (<BB.Components.ComponentState {...props} />);
-			}} />
-		);
+		return (<BB.Components.ComponentState {...props} />);
 	}
 }
