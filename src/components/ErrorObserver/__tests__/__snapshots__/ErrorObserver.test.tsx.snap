@@ -1,23 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorObserver Snapshot ErrorObserver 1`] = `
-<Text>
-  Loading
-</Text>
+<View
+  styles={Object {}}
+>
+  <Text>
+    Hello
+  </Text>
+</View>
 `;
 
 exports[`ErrorObserver Snapshot ErrorObserver after complete rendering 1`] = `
 <View
   styles={Object {}}
 >
-  <Text
-    style={
-      Array [
-        undefined,
-        undefined,
-      ]
-    }
-  >
+  <Text>
     Hello
   </Text>
 </View>
@@ -27,14 +24,7 @@ exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with chil
 <View
   styles={Object {}}
 >
-  <Text
-    style={
-      Array [
-        undefined,
-        undefined,
-      ]
-    }
-  >
+  <Text>
     Hello
   </Text>
 </View>
@@ -44,15 +34,100 @@ exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with erro
 <View
   styles={Object {}}
 >
-  <Text
-    style={
-      Array [
-        undefined,
-        undefined,
-      ]
-    }
-  >
+  <Text>
     Error
+  </Text>
+</View>
+`;
+
+exports[`ErrorObserver should catch an error when thrown by a child component 1`] = `
+<View
+  styles={Object {}}
+>
+  <View
+    styles={Object {}}
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      Error
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      💥 Boom!
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`ErrorObserver should catch an error when thrown null by a child component 1`] = `
+<View
+  styles={Object {}}
+>
+  <View
+    styles={Object {}}
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      Error
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      An unknown error occured.
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`ErrorObserver should not catch an error because check error is null 1`] = `
+<View
+  styles={Object {}}
+>
+  <Text>
+    Hello
   </Text>
 </View>
 `;

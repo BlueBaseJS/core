@@ -10,6 +10,6 @@ storiesOf('ErrorObserver', module)
 
 	.add('Basic Example', () => (
 		<BlueBaseConsumer children={(BB: BlueBase) => (
-			<BB.Components.ErrorObserver children={() => <Bang />} />
+			<BB.Components.ErrorObserver><Bang /></BB.Components.ErrorObserver>
 		)} />
 	));

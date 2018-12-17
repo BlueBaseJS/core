@@ -16,6 +16,9 @@ export interface ErrorObserverState {
 	readonly error?: Error,
 }
 
+/**
+ * 🚨 ErrorObserver
+ */
 export class ErrorObserver extends React.PureComponent<ErrorObserverProps, ErrorObserverState> {
 
 	static contextType = BlueBaseContext;
