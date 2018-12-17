@@ -1,16 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyState Snapshot EmptyState 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <Text
       style={

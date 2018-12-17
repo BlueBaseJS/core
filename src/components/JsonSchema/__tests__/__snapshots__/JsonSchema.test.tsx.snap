@@ -13,9 +13,7 @@ exports[`JsonSchema should render a text component with red color 1`] = `
 `;
 
 exports[`JsonSchema should render a text component with red color 2`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text
     style={
       Array [
@@ -37,9 +35,7 @@ exports[`JsonSchema should render a text component with red color 2`] = `
 `;
 
 exports[`JsonSchema should render a text component with red color that is processed by hooks 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text
     style={
       Array [

@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DynamicIcon should render an Icon component 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
@@ -21,9 +19,7 @@ exports[`DynamicIcon should render an Icon component 1`] = `
 `;
 
 exports[`DynamicIcon should render an custom component 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
@@ -37,9 +33,7 @@ exports[`DynamicIcon should render an custom component 1`] = `
 `;
 
 exports[`DynamicIcon should render an custom component that is registered in component registry 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
@@ -53,9 +47,7 @@ exports[`DynamicIcon should render an custom component that is registered in com
 `;
 
 exports[`DynamicIcon should render an image with default size of 100x100 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Image
     size={100}
     source={
@@ -69,15 +61,12 @@ exports[`DynamicIcon should render an image with default size of 100x100 1`] = `
         "width": 100,
       }
     }
-    styles={Object {}}
   />
 </View>
 `;
 
 exports[`DynamicIcon should render an image with default size of 250x250 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Image
     size={250}
     source={
@@ -91,15 +80,12 @@ exports[`DynamicIcon should render an image with default size of 250x250 1`] = `
         "width": 250,
       }
     }
-    styles={Object {}}
   />
 </View>
 `;
 
 exports[`DynamicIcon should render an image with style prop overwritten 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Image
     size={100}
     source={
@@ -113,15 +99,12 @@ exports[`DynamicIcon should render an image with style prop overwritten 1`] = `
         "width": 100,
       }
     }
-    styles={Object {}}
   />
 </View>
 `;
 
 exports[`DynamicIcon should render an image with style prop overwritten 2`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Image
     size={100}
     source={
@@ -135,7 +118,6 @@ exports[`DynamicIcon should render an image with style prop overwritten 2`] = `
         "width": 100,
       }
     }
-    styles={Object {}}
   />
 </View>
 `;

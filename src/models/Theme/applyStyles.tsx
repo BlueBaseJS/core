@@ -33,7 +33,7 @@ export interface ThemedComponentProps {
 export const applyStyles = (
 	name: string,
 	Component: ComponentWithDefaultStyles,
-	stylesParam: MaybeThunk<ComponentStyles> = {})
+	stylesParam: MaybeThunk<ComponentStyles>)
 : React.ComponentType<any> =>
 {
 
@@ -57,7 +57,7 @@ export const applyStyles = (
 					const defaultStyles = Component.defaultStyles;
 					const themedStyles = theme.components[name];
 
-					const stylesArr: any = [
+					const stylesArr: any[] = [
 						defaultStyles,
 						stylesParam,
 						themedStyles,
@@ -68,7 +68,9 @@ export const applyStyles = (
 
 					const styles = deepmerge.all(stylesArr);
 
-					return React.createElement(Component, { ...rest, styles });
+					const props = stylesArr.length > 0 ? { ...rest, styles } : rest;
+
+					return React.createElement(Component, props);
 				}} />
 			);
 		}

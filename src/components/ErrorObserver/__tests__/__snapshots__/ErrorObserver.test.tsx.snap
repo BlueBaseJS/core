@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorObserver Snapshot ErrorObserver 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text>
     Hello
   </Text>
@@ -11,9 +9,7 @@ exports[`ErrorObserver Snapshot ErrorObserver 1`] = `
 `;
 
 exports[`ErrorObserver Snapshot ErrorObserver after complete rendering 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text>
     Hello
   </Text>
@@ -21,9 +17,7 @@ exports[`ErrorObserver Snapshot ErrorObserver after complete rendering 1`] = `
 `;
 
 exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with child as function 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text>
     Hello
   </Text>
@@ -31,9 +25,7 @@ exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with chil
 `;
 
 exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with error 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text>
     Error
   </Text>
@@ -41,16 +33,13 @@ exports[`ErrorObserver Snapshot ErrorObserver after complete rendering with erro
 `;
 
 exports[`ErrorObserver should catch an error when thrown by a child component 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <Text
       style={
@@ -91,16 +80,13 @@ exports[`ErrorObserver should catch an error when thrown by a child component 1`
 `;
 
 exports[`ErrorObserver should catch an error when thrown null by a child component 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <Text
       style={
@@ -141,9 +127,7 @@ exports[`ErrorObserver should catch an error when thrown null by a child compone
 `;
 
 exports[`ErrorObserver should not catch an error because check error is null 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text>
     Hello
   </Text>

@@ -7,16 +7,13 @@ exports[`StatefulComponent Snapshot StatefulComponent component 1`] = `
 `;
 
 exports[`StatefulComponent Snapshot StatefulComponent component after complete render 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <Text
       style={
@@ -57,16 +54,13 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
 `;
 
 exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <Text
       style={
@@ -106,20 +100,8 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
 </View>
 `;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true 1`] = `
-<View
-  styles={Object {}}
-/>
-`;
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true 1`] = `<View />`;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true, Component 1`] = `
-<View
-  styles={Object {}}
-/>
-`;
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true, Component 1`] = `<View />`;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, loading: true 1`] = `
-<View
-  styles={Object {}}
-/>
-`;
+exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, loading: true 1`] = `<View />`;

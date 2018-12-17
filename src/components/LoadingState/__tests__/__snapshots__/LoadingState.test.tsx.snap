@@ -7,69 +7,57 @@ exports[`LoadingState Snapshot LoadingState component 1`] = `
 `;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <ActivityIndicator
       animating={true}
       color="#999999"
       hidesWhenStopped={true}
       size="small"
-      styles={Object {}}
     />
   </View>
 </View>
 `;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: false 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <ActivityIndicator
       animating={true}
       color="#999999"
       hidesWhenStopped={true}
       size="small"
-      styles={Object {}}
     />
   </View>
 </View>
 `;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <ActivityIndicator
       animating={true}
       color="#999999"
       hidesWhenStopped={true}
       size="small"
-      styles={Object {}}
     />
     <Text
       style={
@@ -93,23 +81,19 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
 `;
 
 exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true and retry mocked function 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <ActivityIndicator
       animating={true}
       color="#999999"
       hidesWhenStopped={true}
       size="small"
-      styles={Object {}}
     />
     <Text
       style={
@@ -134,7 +118,6 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
           "marginTop": 8,
         }
       }
-      styles={Object {}}
     >
       <View
         accessibilityRole="button"

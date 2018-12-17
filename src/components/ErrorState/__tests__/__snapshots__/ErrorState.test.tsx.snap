@@ -7,16 +7,13 @@ exports[`ErrorState should render ErrorState 1`] = `
 `;
 
 exports[`ErrorState should render ErrorState 2`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <Text
       style={
@@ -57,16 +54,13 @@ exports[`ErrorState should render ErrorState 2`] = `
 `;
 
 exports[`ErrorState should render ErrorState with retry button and custom error 1`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     style={
       Object {
         "alignItems": "center",
       }
     }
-    styles={Object {}}
   >
     <Text
       style={
@@ -108,7 +102,6 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
           "marginTop": 8,
         }
       }
-      styles={Object {}}
     >
       <View
         accessibilityRole="button"

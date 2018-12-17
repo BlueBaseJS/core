@@ -7,9 +7,7 @@ exports[`getComponent should render a button component 1`] = `
 `;
 
 exports[`getComponent should render a button component 2`] = `
-<View
-  styles={Object {}}
->
+<View>
   <View
     accessibilityRole="button"
     accessible={true}
@@ -72,9 +70,7 @@ exports[`getComponent should render a text component 1`] = `
 `;
 
 exports[`getComponent should render a text component 2`] = `
-<View
-  styles={Object {}}
->
+<View>
   <Text
     style={
       Array [

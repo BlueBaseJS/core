@@ -1,7 +1,7 @@
+import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../BlueBaseApp';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { BlueBase } from '../../../BlueBase';
 
 beforeEach(() => {
 	jest.resetModules();

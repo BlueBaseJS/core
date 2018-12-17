@@ -7,12 +7,8 @@ exports[`BlueBaseApp should render BlueBaseApp 1`] = `
 `;
 
 exports[`BlueBaseApp should render BlueBaseApp 2`] = `
-<View
-  styles={Object {}}
->
-  <View
-    styles={Object {}}
-  >
+<View>
+  <View>
     <Text
       style={
         Array [
