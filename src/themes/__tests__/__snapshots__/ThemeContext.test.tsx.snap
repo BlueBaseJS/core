@@ -1,12 +1,416 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThemeContext should render a text component with red color 1`] = `
+exports[`ThemeContext should change theme based on callback function 1`] = `
+<BlueBaseApp>
+  <Text>
+    <Text>
+      Loading
+    </Text>
+  </Text>
+</BlueBaseApp>
+`;
+
+exports[`ThemeContext should change theme based on callback function 2`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <ThemedComponent>
+        <SystemApp>
+          <ThemedComponent>
+            <View>
+              <View>
+                <ThemedComponent>
+                  <Component />
+                </ThemedComponent>
+                <ThemeProvider>
+                  <ThemePicker>
+                    <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue="bluebase-light"
+                      style={
+                        Object {
+                          "width": 150,
+                        }
+                      }
+                    >
+                      <PickerIOS
+                        mode="dialog"
+                        onValueChange={[Function]}
+                        selectedValue="bluebase-light"
+                        style={
+                          Object {
+                            "width": 150,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "width": 150,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "width": 150,
+                              }
+                            }
+                          >
+                            <_class
+                              items={
+                                Array [
+                                  Object {
+                                    "label": "BlueBase Light",
+                                    "textColor": undefined,
+                                    "value": "bluebase-light",
+                                  },
+                                  Object {
+                                    "label": "BlueBase Dark",
+                                    "textColor": undefined,
+                                    "value": "bluebase-dark",
+                                  },
+                                ]
+                              }
+                              onChange={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              selectedIndex={0}
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 216,
+                                  },
+                                  undefined,
+                                ]
+                              }
+                            >
+                              <RCTPicker
+                                items={
+                                  Array [
+                                    Object {
+                                      "label": "BlueBase Light",
+                                      "textColor": undefined,
+                                      "value": "bluebase-light",
+                                    },
+                                    Object {
+                                      "label": "BlueBase Dark",
+                                      "textColor": undefined,
+                                      "value": "bluebase-dark",
+                                    },
+                                  ]
+                                }
+                                onChange={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                selectedIndex={0}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 216,
+                                    },
+                                    undefined,
+                                  ]
+                                }
+                              />
+                            </_class>
+                          </View>
+                        </View>
+                      </PickerIOS>
+                    </Picker>
+                  </ThemePicker>
+                  <ThemeDemo>
+                    <ThemedComponent
+                      style={
+                        Object {
+                          "backgroundColor": "#fafafa",
+                          "padding": 8,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Object {
+                            "backgroundColor": "#fafafa",
+                            "padding": 8,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "backgroundColor": "#fafafa",
+                              "padding": 8,
+                            }
+                          }
+                        >
+                          <ThemedComponent>
+                            <Component
+                              styles={
+                                Object {
+                                  "root": Object {
+                                    "color": "rgba(0, 0, 0, 0.87)",
+                                    "fontFamily": "Roboto",
+                                    "fontSize": 16,
+                                    "fontWeight": "400",
+                                  },
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": "Roboto",
+                                      "fontSize": 16,
+                                      "fontWeight": "400",
+                                    },
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "rgba(0, 0, 0, 0.87)",
+                                        "fontFamily": "Roboto",
+                                        "fontSize": 16,
+                                        "fontWeight": "400",
+                                      },
+                                      undefined,
+                                    ]
+                                  }
+                                >
+                                  BlueBase Light
+                                </Text>
+                              </Text>
+                            </Component>
+                          </ThemedComponent>
+                        </View>
+                      </View>
+                    </ThemedComponent>
+                  </ThemeDemo>
+                </ThemeProvider>
+                <ThemedComponent>
+                  <Component />
+                </ThemedComponent>
+              </View>
+            </View>
+          </ThemedComponent>
+        </SystemApp>
+      </ThemedComponent>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
+
+exports[`ThemeContext should change theme based on callback function 3`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <ThemedComponent>
+        <SystemApp>
+          <ThemedComponent>
+            <View>
+              <View>
+                <ThemedComponent>
+                  <Component />
+                </ThemedComponent>
+                <ThemeProvider>
+                  <ThemePicker>
+                    <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue="bluebase-light"
+                      style={
+                        Object {
+                          "width": 150,
+                        }
+                      }
+                    >
+                      <PickerIOS
+                        mode="dialog"
+                        onValueChange={[Function]}
+                        selectedValue="bluebase-light"
+                        style={
+                          Object {
+                            "width": 150,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "width": 150,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "width": 150,
+                              }
+                            }
+                          >
+                            <_class
+                              items={
+                                Array [
+                                  Object {
+                                    "label": "BlueBase Light",
+                                    "textColor": undefined,
+                                    "value": "bluebase-light",
+                                  },
+                                  Object {
+                                    "label": "BlueBase Dark",
+                                    "textColor": undefined,
+                                    "value": "bluebase-dark",
+                                  },
+                                ]
+                              }
+                              onChange={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              selectedIndex={0}
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 216,
+                                  },
+                                  undefined,
+                                ]
+                              }
+                            >
+                              <RCTPicker
+                                items={
+                                  Array [
+                                    Object {
+                                      "label": "BlueBase Light",
+                                      "textColor": undefined,
+                                      "value": "bluebase-light",
+                                    },
+                                    Object {
+                                      "label": "BlueBase Dark",
+                                      "textColor": undefined,
+                                      "value": "bluebase-dark",
+                                    },
+                                  ]
+                                }
+                                onChange={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                selectedIndex={0}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 216,
+                                    },
+                                    undefined,
+                                  ]
+                                }
+                              />
+                            </_class>
+                          </View>
+                        </View>
+                      </PickerIOS>
+                    </Picker>
+                  </ThemePicker>
+                  <ThemeDemo>
+                    <ThemedComponent
+                      style={
+                        Object {
+                          "backgroundColor": "#fafafa",
+                          "padding": 8,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Object {
+                            "backgroundColor": "#fafafa",
+                            "padding": 8,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "backgroundColor": "#fafafa",
+                              "padding": 8,
+                            }
+                          }
+                        >
+                          <ThemedComponent>
+                            <Component
+                              styles={
+                                Object {
+                                  "root": Object {
+                                    "color": "rgba(0, 0, 0, 0.87)",
+                                    "fontFamily": "Roboto",
+                                    "fontSize": 16,
+                                    "fontWeight": "400",
+                                  },
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": "Roboto",
+                                      "fontSize": 16,
+                                      "fontWeight": "400",
+                                    },
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "rgba(0, 0, 0, 0.87)",
+                                        "fontFamily": "Roboto",
+                                        "fontSize": 16,
+                                        "fontWeight": "400",
+                                      },
+                                      undefined,
+                                    ]
+                                  }
+                                >
+                                  BlueBase Light
+                                </Text>
+                              </Text>
+                            </Component>
+                          </ThemedComponent>
+                        </View>
+                      </View>
+                    </ThemedComponent>
+                  </ThemeDemo>
+                </ThemeProvider>
+                <ThemedComponent>
+                  <Component />
+                </ThemedComponent>
+              </View>
+            </View>
+          </ThemedComponent>
+        </SystemApp>
+      </ThemedComponent>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
+
+exports[`ThemeContext should render a ThemeDemo component with themed background color 1`] = `
 <Text>
   Loading
 </Text>
 `;
 
-exports[`ThemeContext should render a text component with red color 2`] = `
+exports[`ThemeContext should render a ThemeDemo component with themed background color 2`] = `
 <View>
   <View
     style={
@@ -16,28 +420,56 @@ exports[`ThemeContext should render a text component with red color 2`] = `
       }
     }
   >
-    <View>
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "rgba(0, 0, 0, 0.87)",
-              "fontFamily": "Roboto",
-              "fontSize": 16,
-              "fontWeight": "400",
-            },
-            Object {
-              "color": "rgba(0, 0, 0, 0.87)",
-              "fontFamily": "Roboto",
-              "fontSize": 16,
-              "fontWeight": "400",
-            },
-          ]
-        }
-      >
-        BlueBase Light
-      </Text>
-    </View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      BlueBase Light
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`ThemeContext should render a overwritten ThemeDemo component with red background color 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`ThemeContext should render a overwritten ThemeDemo component with red background color 2`] = `
+<View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "red",
+        "padding": 8,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      BlueBase Dark
+    </Text>
   </View>
 </View>
 `;

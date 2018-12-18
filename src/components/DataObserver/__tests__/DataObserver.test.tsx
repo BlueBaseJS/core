@@ -5,9 +5,9 @@ import { DataObserver } from '../DataObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('DataObserver', () => {
 	const DataObserverWithProvider = (props: any) => (

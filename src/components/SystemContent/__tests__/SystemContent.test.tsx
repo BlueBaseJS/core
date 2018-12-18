@@ -3,9 +3,9 @@ import React from 'react';
 import { SystemContent } from '../SystemContent';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('SystemContent', () => {
 	const SystemContentWithProvider = (props: any) => (

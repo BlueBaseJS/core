@@ -4,9 +4,9 @@ import React from 'react';
 import { StatefulComponent } from '../StatefulComponent';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('StatefulComponent', () => {
 	const StatefulComponentWithProvider = (props: any) => (

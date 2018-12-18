@@ -4,9 +4,9 @@ import { LoadingState } from '../LoadingState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('LoadingState', () => {
 	const LoadingStateWithProvider = (props: any) => (

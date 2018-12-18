@@ -3,9 +3,9 @@ import { BlueBaseApp } from '../BlueBaseApp';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 const Bang = () => {
 	throw Error('💥 Boom!');

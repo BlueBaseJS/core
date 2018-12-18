@@ -1,14 +1,14 @@
+import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../../BlueBaseApp';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { BlueBase } from '../../../BlueBase';
 
 
 describe('PluginIcon', () => {
-	beforeEach(() => {
-		jest.resetModules();
-	});
+	// beforeEach(() => {
+	// 	jest.resetModules();
+	// });
 	const PluginIconWithProvider = (props: any) => (
 		<BlueBaseApp>
 			<PluginIcon {...props} />

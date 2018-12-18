@@ -3,9 +3,9 @@ import { BlueBaseApp } from '../components/';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('getComponent', () => {
 

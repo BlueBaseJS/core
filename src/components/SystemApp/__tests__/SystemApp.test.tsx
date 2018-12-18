@@ -3,9 +3,9 @@ import React from 'react';
 import { SystemApp } from '../SystemApp';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('SystemApp', () => {
 	const SystemAppWithProvider = (props: any) => (

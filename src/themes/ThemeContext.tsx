@@ -109,7 +109,11 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 		const theme = await BB.Themes.resolve(key);
 
 		if (!theme) {
-			throw Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`);
+			this.setState({
+				error: Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`),
+				loading: false,
+			});
+			return;
 		}
 
 		this.setState({ theme: deepmerge(theme, overrides) as Theme, loading: false });
@@ -122,12 +126,12 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 
 		const retry = () => this.setTheme(this.props.theme, this.props.overrides, BB);
 
-		if (loading) {
-			return <BB.Components.LoadingState retry={retry} />;
-		}
-
 		if (error) {
 			return <BB.Components.ErrorState error={error} retry={retry} />;
+		}
+
+		if (loading) {
+			return <BB.Components.LoadingState retry={retry} />;
 		}
 
 		if (!theme) {
@@ -135,7 +139,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 		}
 
 		const value: ThemeContextData = {
-			changeTheme: (slug: string) => { BB.Configs.register('theme.name', slug); },
+			changeTheme: (slug: string) => { BB.Configs.setValue('theme.name', slug); },
 			theme
 		};
 

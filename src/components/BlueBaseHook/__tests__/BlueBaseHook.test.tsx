@@ -4,9 +4,9 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Text } from 'react-native';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('BlueBaseHook', () => {
 

@@ -3,9 +3,9 @@ import { JsonSchema } from '../JsonSchema';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('JsonSchema', () => {
 

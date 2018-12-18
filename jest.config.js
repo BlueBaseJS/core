@@ -46,5 +46,6 @@ module.exports = {
   watchPathIgnorePatterns: [
     // 'src/*/output/**',
     // 'output/'
-  ]
+  ],
+  setupTestFrameworkScriptFile: "<rootDir>/tests/setup.js"
 };

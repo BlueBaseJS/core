@@ -25,12 +25,10 @@ export class ThemeDemo extends React.PureComponent<ThemeDemoProps> {
 
 				return (
 					<BB.Components.View style={mainStyle}>
-						<BB.Components.View>
-							<BB.Components.Text style={theme.typography.body1}>
-								{theme.name}
-							</BB.Components.Text>
-							{children}
-						</BB.Components.View>
+						<BB.Components.Body1>
+							{theme.name}
+						</BB.Components.Body1>
+						{children}
 					</BB.Components.View>
 				);
 			}} />
