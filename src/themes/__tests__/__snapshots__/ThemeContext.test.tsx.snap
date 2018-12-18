@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeContext should render a text component with red color 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`ThemeContext should render a text component with red color 2`] = `
+<View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fafafa",
+        "padding": 8,
+      }
+    }
+  >
+    <View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "rgba(0, 0, 0, 0.87)",
+              "fontFamily": "Roboto",
+              "fontSize": 16,
+              "fontWeight": "400",
+            },
+            Object {
+              "color": "rgba(0, 0, 0, 0.87)",
+              "fontFamily": "Roboto",
+              "fontSize": 16,
+              "fontWeight": "400",
+            },
+          ]
+        }
+      >
+        BlueBase Light
+      </Text>
+    </View>
+  </View>
+</View>
+`;

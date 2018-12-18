@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import { BlueBase } from '../BlueBase';
 import { BlueBaseContext } from '../Context';
 import { Theme } from '../registries';
-import { ThemeValueInput } from '../models';
+import { ThemeValueInput } from './structure';
 import deepmerge from 'deepmerge';
 
 /**

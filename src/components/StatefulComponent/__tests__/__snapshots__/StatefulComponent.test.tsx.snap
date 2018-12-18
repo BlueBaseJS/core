@@ -25,6 +25,7 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]
@@ -72,6 +73,7 @@ exports[`StatefulComponent Snapshot StatefulComponent component after complete r
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]

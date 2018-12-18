@@ -1,9 +1,9 @@
 // tslint:disable:no-console
-import { BlueBase, BlueBaseConsumer } from '../../';
+import { BlueBase, BlueBaseConsumer } from '../..';
 import React from 'react';
-import { ThemeDemo } from './ThemeDemo';
-import { ThemePicker } from './ThemePicker';
-import { ThemeProvider } from '../../themes';
+import { ThemeDemo } from '../../themes/__stories__/ThemeDemo';
+import { ThemePicker } from '../../themes/__stories__/ThemePicker';
+import { ThemeProvider } from '..';
 import storiesOf from '@bluebase/storybook-addon';
 
 storiesOf('ThemeContext', module)

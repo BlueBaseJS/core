@@ -1,6 +1,6 @@
 import { BlueBase, BlueBaseContext } from '../../';
 import React from 'react';
-import { Theme } from '../ThemeRegistry';
+import { Theme } from '../../registries';
 import { ThemeContext } from '../../themes';
 
 export interface ThemeDemoProps {

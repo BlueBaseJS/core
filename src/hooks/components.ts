@@ -20,7 +20,7 @@ import {
 	WaitObserver
 } from '../components/';
 import { HookInputNestedCollection } from '../registries';
-import { ThemeValue } from '../models';
+import { ThemeValue } from '../themes';
 
 
 export const components: HookInputNestedCollection = {

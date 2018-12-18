@@ -68,13 +68,14 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 		},
 		image: {
 			height: 250,
-			marginBottom: 10,
+			marginBottom: theme.spacing.unit,
 			width: 250,
 		},
 		root: {
 			alignItems: 'center',
 		},
 		title: {
+			marginBottom: theme.spacing.unit,
 			textAlign: 'center',
 		},
 	})

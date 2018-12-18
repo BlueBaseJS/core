@@ -1,5 +1,4 @@
-import { Palette } from '../models/Theme/Palette';
-import { ThemeTypography } from '../models/Theme/Typography';
+import { Palette, ThemeTypography } from '../structure';
 
 export function createTheme(palette: Palette, typography: ThemeTypography) {
 	return {

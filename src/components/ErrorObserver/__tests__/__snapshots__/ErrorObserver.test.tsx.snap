@@ -51,6 +51,7 @@ exports[`ErrorObserver should catch an error when thrown by a child component 1`
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]
@@ -98,6 +99,7 @@ exports[`ErrorObserver should catch an error when thrown null by a child compone
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]

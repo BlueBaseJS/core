@@ -1,6 +1,6 @@
 import { Text as NativeText, TextProps as NativeTextProps, TextStyle } from 'react-native';
 import React from 'react';
-import { ThemeValue } from '../../models';
+import { ThemeValue } from '../../themes';
 
 export interface TextProps extends NativeTextProps {
 	styles?: {

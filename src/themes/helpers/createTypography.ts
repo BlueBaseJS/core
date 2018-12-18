@@ -1,5 +1,5 @@
 // tslint:disable:object-literal-sort-keys
-import { Palette } from '../models/Theme/Palette';
+import { Palette } from '../structure';
 import { Platform } from 'react-native';
 
 const isWeb = Platform.OS === 'web';

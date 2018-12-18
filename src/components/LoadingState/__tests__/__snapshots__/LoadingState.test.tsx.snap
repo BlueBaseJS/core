@@ -69,6 +69,7 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]
@@ -105,6 +106,7 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]

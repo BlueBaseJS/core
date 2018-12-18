@@ -1,5 +1,5 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-import { BlueBaseDefaultConfigs } from '../configs';
+import { BlueBaseDefaultConfigs } from '../Configs';
 import { HookInputNestedCollection } from '../registries';
 
 

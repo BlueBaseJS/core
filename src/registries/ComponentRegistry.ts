@@ -3,7 +3,7 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { ComponentStyles, applyStyles } from '../models';
+import { ComponentStyles, applyStyles } from '../themes';
 import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
 import { BlueBase } from '../BlueBase';
 import { ItemCollection } from './Registry';

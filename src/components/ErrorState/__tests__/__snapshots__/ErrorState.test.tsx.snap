@@ -25,6 +25,7 @@ exports[`ErrorState should render ErrorState 2`] = `
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]
@@ -72,6 +73,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]

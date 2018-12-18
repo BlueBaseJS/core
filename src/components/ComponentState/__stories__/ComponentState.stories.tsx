@@ -80,26 +80,6 @@ storiesOf('ComponentState', module)
 		</BlueBaseConsumer>
 	))
 
-	.add('Action button with custom styles', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => (
-			<BB.Components.ComponentState
-				actionTitle="Bluerain"
-				styles={{
-					action: {
-						// color: 'white',
-						backgroundColor: 'red',
-						borderRadius: 8,
-						height: 50,
-						width: 100,
-						// textAlign: 'center'
-					}
-				}}
-			/>
-		)}
-		</BlueBaseConsumer>
-	))
-
 	.add('Image with custom image component', () => (
 		<BlueBaseConsumer>
 		{(BB: BlueBase) => {

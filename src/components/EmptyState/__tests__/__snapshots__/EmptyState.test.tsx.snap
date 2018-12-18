@@ -19,6 +19,7 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
             "fontWeight": "500",
           },
           Object {
+            "marginBottom": 8,
             "textAlign": "center",
           },
         ]

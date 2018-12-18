@@ -3,7 +3,7 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { ThemeValue, ThemeValueInput, buildTheme } from '../models';
+import { ThemeValue, ThemeValueInput, buildTheme } from '../themes';
 import { ItemCollection } from './Registry';
 import { getDefiniteBlueBaseModule } from '../utils';
 

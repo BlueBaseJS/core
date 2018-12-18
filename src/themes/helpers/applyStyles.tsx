@@ -1,7 +1,7 @@
-import { ComponentStyles, ThemeValue } from './Theme';
+import { ComponentStyles, ThemeValue } from '../structure/Theme';
 import { MaybeThunk, resolveThunk } from '../../utils';
 import React from 'react';
-import { ThemeContext } from '../../themes';
+import { ThemeContext } from '..';
 import deepmerge from 'deepmerge';
 import isNil from 'lodash.isnil';
 

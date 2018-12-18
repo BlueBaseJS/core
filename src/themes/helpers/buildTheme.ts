@@ -1,4 +1,4 @@
-import { BlueBaseDarkTheme, BlueBaseLightTheme } from '../../themes';
+import { BlueBaseDarkTheme, BlueBaseLightTheme } from '..';
 import { Theme, ThemeInput } from '../../registries';
 import deepmerge  from 'deepmerge';
 
