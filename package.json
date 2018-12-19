@@ -56,7 +56,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "deepmerge": "^2.1.1",
+    "deepmerge": "^3.0.0",
     "lodash.flowright": "^3.5.0",
     "lodash.isboolean": "^3.0.3",
     "lodash.isfunction": "^3.0.9",
@@ -70,12 +70,12 @@
     "@bluebase/storybook-addon": "^2.0.0",
     "@blueeast/bluerain-cli-essentials": "^4.0.0-beta.2",
     "@blueeast/tslint-config-blueeast": "^0.7.0",
-    "@storybook/addon-actions": "^4.0.7",
+    "@storybook/addon-actions": "^4.1.2",
     "@storybook/addon-console": "^1.0.8",
-    "@storybook/addon-links": "^4.0.7",
+    "@storybook/addon-links": "^4.1.2",
     "@storybook/addon-viewport": "^3.4.11",
-    "@storybook/addons": "^4.0.7",
-    "@storybook/react": "^4.0.7",
+    "@storybook/addons": "^4.1.2",
+    "@storybook/react": "^4.1.2",
     "@types/deepmerge": "^2.2.0",
     "@types/enzyme": "^3.1.15",
     "@types/enzyme-adapter-react-16": "^1.0.3",
@@ -112,7 +112,7 @@
     "react-art": "^16.6.3",
     "react-dom": "^16.6.0",
     "react-native": "^0.57.4",
-    "react-native-web": "^0.9.8",
+    "react-native-web": "^0.9.9",
     "react-test-renderer": "^16.6.1",
     "schedule": "0.4.0",
     "standard-version": "^4.4.0",
@@ -120,9 +120,9 @@
     "ts-jest": "^23.10.0",
     "ts-loader": "^5.3.0",
     "ts-node": "^7.0.0",
-    "tslint": "^5.11.0",
+    "tslint": "^5.12.0",
     "typedoc": "^0.13.0",
-    "typescript": "3.1.6"
+    "typescript": "3.2.2"
   },
   "peerDependencies": {
     "react": "^16.*"

@@ -158,7 +158,7 @@ export class Button extends React.Component<ButtonProps> {
 			rootStyles.push(styles.fullWidth);
 		}
 
-		const Touchable =
+		const Touchable: React.ComponentType<any> =
 			Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
 		return (
 			<Touchable

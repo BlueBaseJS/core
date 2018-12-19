@@ -266,7 +266,7 @@ describe('Registry', () => {
 			try {
 				await registry.registerCollection('boom' as any);
 			} catch (error) {
-				expect(error.message).toBe('Could not register collection. Reason: Unknown collection type.');				
+				expect(error.message).toBe('Could not register collection. Reason: Unknown collection type.');
 			}
 		});
 
