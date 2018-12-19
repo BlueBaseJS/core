@@ -17,17 +17,19 @@ import { BlueBase } from './BlueBase';
 import { BlueBaseConsumer } from './Context';
 import React from 'react';
 
-export function getComponent<T = any>(name: string) {
+export function getComponent<T = any>(...keys: string[]) {
 
 	const BlueBaseComponent = (props: T) => (
 		<BlueBaseConsumer children={(BB: BlueBase) => {
-			const Component = BB.Components.resolve(name);
+			const Component = BB.Components.resolve(...keys);
 
 			return React.createElement(Component, props);
 		}} />
 	);
 
-	BlueBaseComponent.displayName = name;
+	if (keys.length > 0) {
+		BlueBaseComponent.displayName = keys.join('_');
+	}
 
 	return BlueBaseComponent as React.ComponentType<T>;
 }

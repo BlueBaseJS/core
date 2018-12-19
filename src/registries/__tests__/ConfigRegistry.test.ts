@@ -154,6 +154,15 @@ describe('ConfigRegistry', () => {
 			expect(Configs.getValue('plugin.test.baz')).toBe(100);
 		});
 
+		it('should not do any thing if provided no arguments', async () => {
+			const BB = new BlueBase();
+			const Configs = new ConfigRegistry(BB);
+
+			await Configs.registerCollectionIfNotExists();
+
+			expect(Configs.size()).toBe(0);
+		});
+
 		it('should throw an error when trying to register unknown collection type', async () => {
 			const BB = new BlueBase();
 			const Configs = new ConfigRegistry(BB);

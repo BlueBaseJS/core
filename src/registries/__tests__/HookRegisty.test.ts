@@ -171,6 +171,14 @@ describe('HookRegistry', () => {
 			}
 		});
 
+		it('should not do anything if no param given', async () => {
+			const BB = new BlueBase();
+			const Hooks = new HookRegistry(BB);
+
+			await Hooks.registerNestedCollection();
+			expect(Hooks.size()).toBe(0);
+		});
+
 	});
 
 

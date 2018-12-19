@@ -66,21 +66,6 @@ export class BlueBaseModuleRegistry<
 		return super.set(key, getDefiniteModule(item));
 	}
 
-	// public set(key: string, item: ItemType | ItemInputType) {
-
-	// 	item = getDefiniteModule(item);
-
-	// 	const value = isBlueBaseModule(item.value)
-	// 	? item.value
-	// 	: getDefiniteBlueBaseModule(item.value);
-
-	// 	return super.set(key, {
-	// 		...(item as any),
-	// 		value,
-	// 	});
-	// }
-
-
 	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<string>;
 	public async register(
 		key: string,

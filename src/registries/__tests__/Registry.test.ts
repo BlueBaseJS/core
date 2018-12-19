@@ -270,6 +270,14 @@ describe('Registry', () => {
 			}
 		});
 
+		it('should not do anything if no param given', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+
+			await registry.registerCollection();
+			expect(registry.size()).toBe(0);
+		});
+
 	});
 
 

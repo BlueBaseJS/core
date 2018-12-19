@@ -33,12 +33,10 @@ export const plugins: HookInputNestedCollection = {
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (noop: any, _args: any, BB: BlueBase) => {
 
-				for (const entry of BB.Plugins.entries()) {
-					const plugin = entry['1'];
+				const enabledPlugins = BB.Plugins.filter((_value, key) => BB.Plugins.isEnabled(key));
 
-					if (BB.Plugins.isEnabled(plugin.key)) {
-						await BB.Hooks.run('bluebase.plugins.initialize', plugin);
-					}
+				for (const plugin of Object.values(enabledPlugins)) {
+					await BB.Hooks.run('bluebase.plugins.initialize', await BB.Plugins.resolve(plugin.key));
 				}
 
 				// return
@@ -80,30 +78,17 @@ export const plugins: HookInputNestedCollection = {
 				///// Register Configs /////
 				////////////////////////////
 
-				let configs = plugin.defaultConfigs || {};
-
 				// Custom input configs are already registered at this point,
 				// We just want to make sure we set default configs if certain
 				// configs were not given as input
 
-				if (Object.keys(configs).length > 0) {
-					const inputConfigs = BB.Configs.filter((_value, key) => plugin.hasConfig(key));
-					configs = { ...configs, ...inputConfigs, };
-					BB.Configs.registerCollection(configs);
-				}
+				BB.Configs.registerCollectionIfNotExists(plugin.defaultConfigs);
 
 				///////////////////////////
 				///// Register Routes /////
 				///////////////////////////
 
 				// TODO: Implement route registeration
-
-				//////////////////////
-				///// Initialize /////
-				//////////////////////
-				if (plugin.initialize && typeof  plugin.initialize === 'function') {
-					await plugin.initialize(configs, BB);
-				}
 
 				// return
 				return plugin;
