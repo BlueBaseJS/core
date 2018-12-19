@@ -1,8 +1,11 @@
 import { Text, View } from 'react-native';
 import { BlueBase } from '../../BlueBase';
+import { BlueBaseApp } from '../../components';
 import { ComponentRegistry } from '../';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import { getComponent } from '../../getComponent';
+import { mount } from 'enzyme';
 
 const Button: React.StatelessComponent<{}> = () => <View>A Button</View>;
 
@@ -64,42 +67,28 @@ describe('ComponentRegistry', () => {
 			expect(rendered.toJSON()).toMatchSnapshot();
 		});
 
-		// FIXME: Fix this test
-		// it('should resolve a Promised component', async (done) => {
-		// 	const BB = new BlueBase();
-		// 	await BB.boot();
-		// 	// const Components = new ComponentRegistry(BB);
+		it('should resolve a Promised component', async (done) => {
+			const Foo = getComponent('Foo');
+			const wrapper = mount(
+				<BlueBaseApp components={{ Foo: Promise.resolve(Text) as any }}>
+					<Foo>Some text</Foo>
+				</BlueBaseApp>
+			);
 
-		// 	await BB.Components.register('Foo', { value: Promise.resolve(Text) as any });
-		// 	const Foo = BB.Components.resolve('Foo');
+			// expect(json).toBe(null);
+			expect(wrapper).toMatchSnapshot();
 
-		// 	const rendered = TestRenderer.create(<Foo>Some text</Foo>);
+			setTimeout(() => {
+				wrapper.update();
+				expect(wrapper).toMatchSnapshot();
 
-		// 	const json = rendered.toJSON();
-		// 	expect(json).toBe(null);
-		// 	expect(json).toMatchSnapshot();
+				// Verify that background color is light
+				const view = wrapper.find('Foo').find('Text').last();
+				expect(view.text()).toBe('Some text');
 
-		// 	// setImmediate(() => {
-		// 	// 	try {
-		// 	// 		const json2 = rendered.toJSON() as any;
-
-		// 	// 		expect(json2.type).toBe('Text');
-		// 	// 		expect(json2.children[0]).toBe('Some text');
-		// 	// 		expect(json2).toMatchSnapshot();
-		// 	// 	} catch (e) {
-		// 	// 		done.fail(e);
-		// 	// 	}
-		// 	// });
-
-		// 	setTimeout(() => {
-		// 		const json2 = rendered.toJSON() as any;
-
-		// 		expect(json2.type).toBe('Text');
-		// 		expect(json2.children[0]).toBe('Some text');
-		// 		expect(json2).toMatchSnapshot();
-		// 		done();
-		// 	});
-		// });
+				done();
+			});
+		});
 
 		it('should add an HOC that makes background green', async () => {
 			const BB = new BlueBase();
@@ -379,6 +368,56 @@ describe('ComponentRegistry', () => {
 			}
 
 			expect(message).toBe('Could not add hocs for "Button" component. Reason: Component not found.');
+		});
+
+	});
+
+
+	describe('.setStyles/getStyles method', () => {
+
+		it('should set & get styles of a Component', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			await Components.register('Button', Button);
+			Components.setStyles('Button', {
+				root: {
+					backgroundColor: 'blue',
+				}
+			});
+
+			const styles = Components.getStyles('Button');
+
+			if (!styles) {
+				throw Error();
+			}
+			expect(styles).toMatchObject({
+				root: {
+					backgroundColor: 'blue',
+				}
+			});
+		});
+
+		it('should throw an Error if setting styles of an unknown component', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			try {
+				Components.setStyles('Button', {
+					root: {
+						backgroundColor: 'blue',
+					}
+				});
+			} catch (error) {
+				expect(error.message).toBe('Cannot set styles "Button" component. Reason: Component not found.');
+			}
+
+		});
+
+		it('should return undefined if getting styles of an unknown component', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+			expect(Components.getStyles('Button')).toBe(undefined);
 		});
 
 	});
