@@ -4,7 +4,6 @@ import { ThemeTypography, ThemeTypographyInput } from './Typography';
 import { MaybeThunk } from '../../utils';
 
 export interface ComponentStyles {
-
 	// rule
 	[key: string]: ViewStyle | TextStyle | ImageStyle | { [prop: string]: string };
 }
@@ -12,19 +11,18 @@ export interface ComponentStyles {
 export interface ThemeValue {
 	/** Component styles */
 	components: {
-
 		// component name
-		[key: string]: MaybeThunk<ComponentStyles>
+		[key: string]: MaybeThunk<ComponentStyles>;
 	};
 
 	shape: {
-		borderRadius: number,
-		[key: string]: any,
+		borderRadius: number;
+		[key: string]: any;
 	};
 
 	spacing: {
-		unit: number,
-		[key: string]: any,
+		unit: number;
+		[key: string]: any;
 	};
 
 	typography: ThemeTypography;
@@ -34,13 +32,13 @@ export interface ThemeValue {
 	// tslint:disable-next-line
 	// TODO: Add shadows. Example: https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/styles/shadows.js
 
-	[key: string]: any,
+	[key: string]: any;
 }
 
 export interface ThemeValueInput {
-	components?: ThemeValue['components'],
-	shape?: Partial<ThemeValue['shape']>,
-	spacing?: Partial<ThemeValue['spacing']>,
-	typography?: ThemeTypographyInput,
-	palette?: PaletteInput,
+	components?: ThemeValue['components'];
+	shape?: Partial<ThemeValue['shape']>;
+	spacing?: Partial<ThemeValue['spacing']>;
+	typography?: ThemeTypographyInput;
+	palette?: PaletteInput;
 }

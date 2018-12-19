@@ -3,9 +3,7 @@ import { BlueBase } from '../../BlueBase';
 import { ThemeRegistry } from '../ThemeRegistry';
 
 describe('ThemeRegistry', () => {
-
 	describe('.register method', () => {
-
 		it('should register a theme with default properties', async () => {
 			const BB = new BlueBase();
 			const Themes = new ThemeRegistry(BB);
@@ -17,7 +15,6 @@ describe('ThemeRegistry', () => {
 			expect(theme && theme.name).toBe('Untitled Theme');
 			expect(theme && theme.mode).toBe('light');
 		});
-
 
 		it('should register a theme with given properties', async () => {
 			const BB = new BlueBase();
@@ -34,16 +31,14 @@ describe('ThemeRegistry', () => {
 			expect(theme && theme.name).toBe('BlueBase Test Theme');
 			expect(theme && theme.mode).toBe('dark');
 		});
-
 	});
 
 	describe('.resolve method', () => {
-
 		it('should resolve a merged theme with default properties', async () => {
 			const BB = new BlueBase();
 			const Themes = new ThemeRegistry(BB);
 
-			await Themes.register('foo', { value: { } });
+			await Themes.register('foo', { value: {} });
 
 			const theme = await Themes.resolve('foo');
 
@@ -65,12 +60,9 @@ describe('ThemeRegistry', () => {
 				expect(error.message).toBe('Could not resolve any of the following themes: [foo].');
 			}
 		});
-
-
 	});
 
 	describe('.resolveAlternate method', () => {
-
 		it('should resolve a merged theme with default properties', async () => {
 			const BB = new BlueBase();
 			const Themes = new ThemeRegistry(BB);
@@ -80,7 +72,7 @@ describe('ThemeRegistry', () => {
 				mode: 'light',
 				name: 'Light Theme',
 				alternate: 'dark',
-				value: {}
+				value: {},
 			});
 
 			await Themes.register({
@@ -88,7 +80,7 @@ describe('ThemeRegistry', () => {
 				mode: 'dark',
 				name: 'Dark Theme',
 				alternate: 'light',
-				value: {}
+				value: {},
 			});
 
 			let theme = await Themes.resolve('light');
@@ -114,8 +106,5 @@ describe('ThemeRegistry', () => {
 				expect(error.message).toBe('Could not resolve alternate theme of "foo".');
 			}
 		});
-
-
 	});
-
 });

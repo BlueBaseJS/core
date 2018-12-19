@@ -3,10 +3,7 @@ import { BlueBase } from '../../BlueBase';
 import { createBlueBaseModule } from '../../utils';
 
 describe('BlueBaseModuleRegistry', () => {
-
-
 	describe('.set method', () => {
-
 		it('should set item', async () => {
 			const BB = new BlueBase();
 			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
@@ -26,11 +23,9 @@ describe('BlueBaseModuleRegistry', () => {
 
 			expect(result).toBe('bar');
 		});
-
 	});
 
 	describe('value setter/getters', () => {
-
 		it('should set a value of an unknown item', async () => {
 			const BB = new BlueBase();
 			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
@@ -89,17 +84,14 @@ describe('BlueBaseModuleRegistry', () => {
 			const value = await registry.getValue('foo', 'faa', 'far');
 			expect(value).toBe('bu');
 		});
-
 	});
 
-
 	describe('.register method', () => {
-
 		it('should register an item', async () => {
 			const BB = new BlueBase();
 			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
-			await registry.register('some', Promise.resolve({ value: 'foo', preload: true, }));
+			await registry.register('some', Promise.resolve({ value: 'foo', preload: true }));
 
 			const item = registry.get('some');
 			expect(await (item as any).value).toBe('foo');
@@ -160,39 +152,30 @@ describe('BlueBaseModuleRegistry', () => {
 				expect(error.message).toBe('Could not register item. Reason: No item given.');
 			}
 		});
-
 	});
 
 	describe('.preloadAll method', () => {
-
 		// it('should preload all items with preload prop set to true', async () => {
 		// 	// FIXME: Big bug!!!
-
 		// 	const BB = new BlueBase();
 		// 	const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
-
 		// 	await registry.register('a', { value: Promise.resolve('apple'), preload: true, });
 		// 	await registry.register('b', { value: Promise.resolve('ball'), preload: false, });
 		// 	await registry.register('c', { value: Promise.resolve('cat'), preload: true, });
 		// 	await registry.register('d', { value: Promise.resolve('dog'), preload: false, });
-
 		// 	expect(((registry.getValue('a') as BlueBaseModule<string>).loaded)).toBe(false);
 		// 	expect(((registry.getValue('b') as BlueBaseModule<string>).loaded)).toBe(false);
 		// 	expect(((registry.getValue('c') as BlueBaseModule<string>).loaded)).toBe(false);
 		// 	expect(((registry.getValue('d') as BlueBaseModule<string>).loaded)).toBe(false);
-
 		// 	await registry.preloadAll();
-
 		// 	expect(((registry.getValue('a') as BlueBaseModule<string>).loaded)).toBe(true);
 		// 	expect(((registry.getValue('b') as BlueBaseModule<string>).loaded)).toBe(false);
 		// 	expect(((registry.getValue('c') as BlueBaseModule<string>).loaded)).toBe(true);
 		// 	expect(((registry.getValue('d') as BlueBaseModule<string>).loaded)).toBe(false);
 		// });
-
 	});
 
 	describe('.isValue method', () => {
-
 		it('should return true', async () => {
 			const BB = new BlueBase();
 			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
@@ -206,18 +189,14 @@ describe('BlueBaseModuleRegistry', () => {
 
 			expect((registry as any).isValue('foo')).toBe(false);
 		});
-
 	});
 
 	describe('.isValue method', () => {
-
 		it('should return true', async () => {
 			const BB = new BlueBase();
 			const registry = new BlueBaseModuleRegistry<BlueBaseModuleRegistryItem<string>>(BB);
 
 			expect((registry as any).isInputValue('foo')).toBe(true);
 		});
-
 	});
-
 });

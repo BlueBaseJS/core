@@ -3,7 +3,6 @@
 import { BlueBase } from '../../BlueBase';
 
 describe('Logger', () => {
-
 	it('should send "log" data through hook', async () => {
 		const BB = new BlueBase();
 
@@ -16,7 +15,7 @@ describe('Logger', () => {
 			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject({ params: [{ foo: 'hello' }] });
-			}
+			},
 		});
 
 		BB.Logger.log(testMessage, testData);
@@ -34,7 +33,7 @@ describe('Logger', () => {
 			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject({ params: [{ foo: 'hello' }] });
-			}
+			},
 		});
 
 		BB.Logger.info(testMessage, testData);
@@ -52,7 +51,7 @@ describe('Logger', () => {
 			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject({ params: [{ foo: 'hello' }] });
-			}
+			},
 		});
 
 		BB.Logger.warn(testMessage, testData);
@@ -70,7 +69,7 @@ describe('Logger', () => {
 			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject({ params: [{ foo: 'hello' }] });
-			}
+			},
 		});
 
 		BB.Logger.error(testMessage, testData);
@@ -88,10 +87,9 @@ describe('Logger', () => {
 			value: (message: string, data: any) => {
 				expect(message).toBe(testMessage);
 				expect(data).toMatchObject({ params: [{ foo: 'hello' }] });
-			}
+			},
 		});
 
 		BB.Logger.debug(testMessage, testData);
 	});
-
 });

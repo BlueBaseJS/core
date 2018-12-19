@@ -9,10 +9,7 @@ export type MaybePromise<T> = T | Promise<T>;
  * @param object Input object
  */
 export function getDefinitePromise<T = any>(object: MaybePromise<T>): Promise<T> {
-
-	return !isPromise<T>(object)
-		? Promise.resolve(object)
-		: object as Promise<T>;
+	return !isPromise<T>(object) ? Promise.resolve(object) : (object as Promise<T>);
 }
 
 /**

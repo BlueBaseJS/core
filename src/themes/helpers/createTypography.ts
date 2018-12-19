@@ -17,7 +17,6 @@ const caseAllCaps = {
 const fontFamily = isWeb ? '"Roboto", "Helvetica", "Arial", sans-serif' : 'Roboto';
 
 export function createTypography(palette: Palette) {
-
 	const buildVariant = (
 		fontWeight: string,
 		size: number,

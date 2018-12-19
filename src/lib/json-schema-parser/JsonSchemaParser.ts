@@ -17,10 +17,9 @@ export interface JsonComponentNode {
 	name?: string;
 }
 
-export type ResolveComponentFn = (node: JsonComponentNode) => (React.ComponentType<any> | null);
+export type ResolveComponentFn = (node: JsonComponentNode) => React.ComponentType<any> | null;
 
 export class JsonSchemaParser {
-
 	constructor(private getComponent: ResolveComponentFn = () => null) {
 		//
 	}
@@ -67,7 +66,6 @@ export class JsonSchemaParser {
 	}
 
 	resolveComponent(node: JsonComponentNode): React.ComponentType<any> {
-
 		// component is already a react component
 		if (!isString(node.component) && node.component === Object(node.component)) {
 			return node.component;
@@ -82,7 +80,9 @@ export class JsonSchemaParser {
 		throw Error('Could not parse React JSON Schema. Reason: Could not resolve component.');
 	}
 
-	resolveComponentChildren({ children }: JsonComponentNode): MaybeArray<React.ReactElement<any>> | undefined {
+	resolveComponentChildren({
+		children,
+	}: JsonComponentNode): MaybeArray<React.ReactElement<any>> | undefined {
 		return !isNil(children) ? this.parseSchema(children) : undefined;
 	}
 }

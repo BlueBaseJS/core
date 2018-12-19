@@ -16,9 +16,7 @@ export type MaybeThunk<T> = T | Thunk<T>;
  * @param params Any params that need to be passed onto the thunk during execution
  */
 export function resolveThunk<T = any>(input: MaybeThunk<T>, ...params: any[]): T {
-	return isThunk(input)
-		? input(...params)
-		: input;
+	return isThunk(input) ? input(...params) : input;
 }
 
 /**
@@ -26,5 +24,5 @@ export function resolveThunk<T = any>(input: MaybeThunk<T>, ...params: any[]): T
  * @param input Object to test
  */
 export function isThunk<T>(input: MaybeThunk<T>): input is Thunk<T> {
-	return (typeof input === 'function');
+	return typeof input === 'function';
 }

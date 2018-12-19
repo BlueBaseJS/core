@@ -2,7 +2,6 @@ import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInputNestedCollection, Plugin } from '../registries';
 
 export const plugins: HookInputNestedCollection = {
-
 	/**
 	 * Registers given list of plugins
 	 */
@@ -13,13 +12,12 @@ export const plugins: HookInputNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (pluginsCollection: BootOptions['plugins'], _args: any, BB: BlueBase) => {
-
 				await BB.Plugins.registerCollection(pluginsCollection);
 
 				// return
 				return pluginsCollection;
-			}
-		}
+			},
+		},
 	],
 
 	/**
@@ -32,7 +30,6 @@ export const plugins: HookInputNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (noop: any, _args: any, BB: BlueBase) => {
-
 				const enabledPlugins = BB.Plugins.filter((_value, key) => BB.Plugins.isEnabled(key));
 
 				for (const plugin of Object.values(enabledPlugins)) {
@@ -41,8 +38,8 @@ export const plugins: HookInputNestedCollection = {
 
 				// return
 				return noop;
-			}
-		}
+			},
+		},
 	],
 
 	/**
@@ -55,7 +52,6 @@ export const plugins: HookInputNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (plugin: Plugin, _args: any, BB: BlueBase) => {
-
 				//////////////////////////
 				///// Register Hooks /////
 				//////////////////////////
@@ -92,7 +88,7 @@ export const plugins: HookInputNestedCollection = {
 
 				// return
 				return plugin;
-			}
-		}
+			},
+		},
 	],
 };

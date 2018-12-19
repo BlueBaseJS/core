@@ -1,10 +1,11 @@
 import { BlueBaseDarkTheme, BlueBaseLightTheme } from '..';
 import { Theme, ThemeInput } from '../../registries';
-import deepmerge  from 'deepmerge';
+import deepmerge from 'deepmerge';
 
-export const buildTheme = (mode: 'light' | 'dark' = 'light') => (...overrides: ThemeInput[]): Theme => {
-
-	const base: ThemeInput = (mode === 'light') ? BlueBaseLightTheme : BlueBaseDarkTheme;
+export const buildTheme = (mode: 'light' | 'dark' = 'light') => (
+	...overrides: ThemeInput[]
+): Theme => {
+	const base: ThemeInput = mode === 'light' ? BlueBaseLightTheme : BlueBaseDarkTheme;
 	const mergedInput = deepmerge.all([base, ...overrides]) as Theme;
 
 	const { value, ...rest } = mergedInput;

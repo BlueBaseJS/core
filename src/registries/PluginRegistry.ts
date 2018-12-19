@@ -8,8 +8,6 @@ import { ComponentInputCollection } from './ComponentRegistry';
 import { DynamicIconProps } from '../components/';
 import { ItemCollection } from './Registry';
 
-
-
 export interface PluginValue {
 	components: ComponentInputCollection;
 	defaultConfigs: any; // ConfigsCollection;
@@ -26,17 +24,17 @@ export interface PluginRegistryItemExtras {
 	 * We put it in meta so we can show the name in menu een without downloading
 	 * the whole plugin.
 	 */
-	name: string,
+	name: string;
 
 	categories?: any; // PluginCategory | PluginCategory[];
-	description?: string,
-	version?: string,
-	icon?: MaybeThunk<DynamicIconProps>,
+	description?: string;
+	version?: string;
+	icon?: MaybeThunk<DynamicIconProps>;
 
 	/** Is this plugin currently enabled/ */
-	enabled: boolean,
+	enabled: boolean;
 
-	[key: string]: any,
+	[key: string]: any;
 }
 
 export type PluginRegistryItem = BlueBaseModuleRegistryItem<PluginValue> & PluginRegistryItemExtras;
@@ -49,8 +47,6 @@ export type Plugin = PluginRegistryItemExtras & PluginValue;
 export type PluginInput = PluginRegistryInputItem;
 
 export type PluginInputCollection = ItemCollection<PluginInput>;
-
-
 
 export function inputToPlugin(plugin: PluginInput): Plugin {
 	const { value, ...rest } = plugin;
@@ -72,9 +68,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * 🔌 PluginRegistry
  */
 export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
-
 	public async resolve(...keys: string[]): Promise<Plugin> {
-
 		const item = this.findOne(...keys);
 
 		if (!item) {
@@ -94,7 +88,9 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		const item = this.get(key);
 
 		if (!item) {
-			throw Error(`Could not check if plugin is enabled. Reason: No plugin registered by key "${key}".`);
+			throw Error(
+				`Could not check if plugin is enabled. Reason: No plugin registered by key "${key}".`
+			);
 		}
 
 		return item.enabled;
@@ -141,20 +137,21 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param key
 	 */
 	public hasConfig(key: string, config: string): boolean {
-
 		const plugin = this.get(key);
 
 		if (!plugin) {
-			throw Error(`Could not check config for a plugin. Reason: No plugin registered by key "${key}".`);
+			throw Error(
+				`Could not check config for a plugin. Reason: No plugin registered by key "${key}".`
+			);
 		}
 
-		return config.startsWith(`plugin.${key}.`)
-			|| Object.keys(plugin.defaultConfigs).findIndex(k => k === config) >= 0;
+		return (
+			config.startsWith(`plugin.${key}.`) ||
+			Object.keys(plugin.defaultConfigs).findIndex(k => k === config) >= 0
+		);
 	}
 
-
 	protected createItem(key: string, partial: any): ItemType {
-
 		return super.createItem(key, {
 			categories: [],
 			enabled: true,
@@ -170,7 +167,6 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param value
 	 */
 	protected isInputValue(value: any): value is PluginRegistryInputItem['value'] {
-		return isBlueBaseModule(value) || (typeof value === 'object');
+		return isBlueBaseModule(value) || typeof value === 'object';
 	}
-
 }
