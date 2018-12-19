@@ -8,7 +8,7 @@ describe('Utils', () => {
 				fzz: 10,
 			};
 
-			const output = objectMapper(src, { foo: 'bar', fzz: 'baz' });
+			const output = objectMapper(src, { bar: 'foo', baz: 'fzz', brr: 'faz' });
 
 			const expected = {
 				bar: 5,
@@ -24,7 +24,7 @@ describe('Utils', () => {
 				fzz: 10,
 			};
 
-			const output = objectMapper(src, { foo: 'bar', fzz: 'baz' });
+			const output = objectMapper(src, { bar: 'foo', baz: 'fzz' });
 
 			const expected = { baz: 10 };
 
@@ -42,12 +42,12 @@ describe('Utils', () => {
 			};
 
 			const fields = {
-				label: 'children',
-				onClick: {
-					key: 'onPress',
-					transform: (onClickFn: any) => {
+				children: 'label',
+				onPress: {
+					key: 'onClick',
+					transform: (props: typeof src) => {
 						// Return a onPress function
-						return (onPressParam: any) => onClickFn({ target: onPressParam.value });
+						return (onPressParam: any) => props.onClick({ target: onPressParam.value });
 					},
 				},
 			};
