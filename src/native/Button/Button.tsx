@@ -66,6 +66,11 @@ export interface ButtonProps {
 	 */
 	styles?: ButtonStyles,
 
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
+
 	[key: string]: any;
 }
 
@@ -121,6 +126,7 @@ export class Button extends React.Component<ButtonProps> {
 			fullWidth,
 			// active,
 			// size,
+			testID,
 		} = this.props;
 
 		const styles = this.props.styles as ButtonStyles;
@@ -160,7 +166,7 @@ export class Button extends React.Component<ButtonProps> {
 				disabled={disabled}
 				onPress={onPress}
 			>
-				<View style={rootStyles}>
+				<View style={rootStyles} testID={testID} >
 					{typeof children === 'string'
 						? <Text style={textStyles}>{children}</Text>
 						: children
