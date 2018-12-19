@@ -22,9 +22,18 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                 <ThemedComponent>
                   <Component />
                 </ThemedComponent>
-                <ThemeProvider>
-                  <ThemePicker>
-                    <Picker
+                <ThemePicker>
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue="bluebase-light"
+                    style={
+                      Object {
+                        "width": 150,
+                      }
+                    }
+                  >
+                    <PickerIOS
                       mode="dialog"
                       onValueChange={[Function]}
                       selectedValue="bluebase-light"
@@ -34,10 +43,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                         }
                       }
                     >
-                      <PickerIOS
-                        mode="dialog"
-                        onValueChange={[Function]}
-                        selectedValue="bluebase-light"
+                      <View
                         style={
                           Object {
                             "width": 150,
@@ -51,14 +57,35 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                             }
                           }
                         >
-                          <View
+                          <_class
+                            items={
+                              Array [
+                                Object {
+                                  "label": "BlueBase Light",
+                                  "textColor": undefined,
+                                  "value": "bluebase-light",
+                                },
+                                Object {
+                                  "label": "BlueBase Dark",
+                                  "textColor": undefined,
+                                  "value": "bluebase-dark",
+                                },
+                              ]
+                            }
+                            onChange={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            selectedIndex={0}
                             style={
-                              Object {
-                                "width": 150,
-                              }
+                              Array [
+                                Object {
+                                  "height": 216,
+                                },
+                                undefined,
+                              ]
                             }
                           >
-                            <_class
+                            <RCTPicker
                               items={
                                 Array [
                                   Object {
@@ -85,43 +112,23 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                                   undefined,
                                 ]
                               }
-                            >
-                              <RCTPicker
-                                items={
-                                  Array [
-                                    Object {
-                                      "label": "BlueBase Light",
-                                      "textColor": undefined,
-                                      "value": "bluebase-light",
-                                    },
-                                    Object {
-                                      "label": "BlueBase Dark",
-                                      "textColor": undefined,
-                                      "value": "bluebase-dark",
-                                    },
-                                  ]
-                                }
-                                onChange={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
-                                selectedIndex={0}
-                                style={
-                                  Array [
-                                    Object {
-                                      "height": 216,
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              />
-                            </_class>
-                          </View>
+                            />
+                          </_class>
                         </View>
-                      </PickerIOS>
-                    </Picker>
-                  </ThemePicker>
-                  <ThemeDemo>
-                    <ThemedComponent
+                      </View>
+                    </PickerIOS>
+                  </Picker>
+                </ThemePicker>
+                <ThemeDemo>
+                  <ThemedComponent
+                    style={
+                      Object {
+                        "backgroundColor": "#fafafa",
+                        "padding": 8,
+                      }
+                    }
+                  >
+                    <View
                       style={
                         Object {
                           "backgroundColor": "#fafafa",
@@ -137,25 +144,30 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                           }
                         }
                       >
-                        <View
-                          style={
-                            Object {
-                              "backgroundColor": "#fafafa",
-                              "padding": 8,
+                        <ThemedComponent>
+                          <Component
+                            styles={
+                              Object {
+                                "root": Object {
+                                  "color": "rgba(0, 0, 0, 0.87)",
+                                  "fontFamily": "Roboto",
+                                  "fontSize": 16,
+                                  "fontWeight": "400",
+                                },
+                              }
                             }
-                          }
-                        >
-                          <ThemedComponent>
-                            <Component
-                              styles={
-                                Object {
-                                  "root": Object {
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
                                     "fontFamily": "Roboto",
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
-                                }
+                                  undefined,
+                                ]
                               }
                             >
                               <Text
@@ -171,29 +183,15 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                                   ]
                                 }
                               >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": "Roboto",
-                                        "fontSize": 16,
-                                        "fontWeight": "400",
-                                      },
-                                      undefined,
-                                    ]
-                                  }
-                                >
-                                  BlueBase Light
-                                </Text>
+                                BlueBase Light
                               </Text>
-                            </Component>
-                          </ThemedComponent>
-                        </View>
+                            </Text>
+                          </Component>
+                        </ThemedComponent>
                       </View>
-                    </ThemedComponent>
-                  </ThemeDemo>
-                </ThemeProvider>
+                    </View>
+                  </ThemedComponent>
+                </ThemeDemo>
                 <ThemedComponent>
                   <Component />
                 </ThemedComponent>
@@ -219,9 +217,18 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                 <ThemedComponent>
                   <Component />
                 </ThemedComponent>
-                <ThemeProvider>
-                  <ThemePicker>
-                    <Picker
+                <ThemePicker>
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue="bluebase-light"
+                    style={
+                      Object {
+                        "width": 150,
+                      }
+                    }
+                  >
+                    <PickerIOS
                       mode="dialog"
                       onValueChange={[Function]}
                       selectedValue="bluebase-light"
@@ -231,10 +238,7 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                         }
                       }
                     >
-                      <PickerIOS
-                        mode="dialog"
-                        onValueChange={[Function]}
-                        selectedValue="bluebase-light"
+                      <View
                         style={
                           Object {
                             "width": 150,
@@ -248,14 +252,35 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                             }
                           }
                         >
-                          <View
+                          <_class
+                            items={
+                              Array [
+                                Object {
+                                  "label": "BlueBase Light",
+                                  "textColor": undefined,
+                                  "value": "bluebase-light",
+                                },
+                                Object {
+                                  "label": "BlueBase Dark",
+                                  "textColor": undefined,
+                                  "value": "bluebase-dark",
+                                },
+                              ]
+                            }
+                            onChange={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            selectedIndex={0}
                             style={
-                              Object {
-                                "width": 150,
-                              }
+                              Array [
+                                Object {
+                                  "height": 216,
+                                },
+                                undefined,
+                              ]
                             }
                           >
-                            <_class
+                            <RCTPicker
                               items={
                                 Array [
                                   Object {
@@ -282,43 +307,23 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                                   undefined,
                                 ]
                               }
-                            >
-                              <RCTPicker
-                                items={
-                                  Array [
-                                    Object {
-                                      "label": "BlueBase Light",
-                                      "textColor": undefined,
-                                      "value": "bluebase-light",
-                                    },
-                                    Object {
-                                      "label": "BlueBase Dark",
-                                      "textColor": undefined,
-                                      "value": "bluebase-dark",
-                                    },
-                                  ]
-                                }
-                                onChange={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
-                                selectedIndex={0}
-                                style={
-                                  Array [
-                                    Object {
-                                      "height": 216,
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              />
-                            </_class>
-                          </View>
+                            />
+                          </_class>
                         </View>
-                      </PickerIOS>
-                    </Picker>
-                  </ThemePicker>
-                  <ThemeDemo>
-                    <ThemedComponent
+                      </View>
+                    </PickerIOS>
+                  </Picker>
+                </ThemePicker>
+                <ThemeDemo>
+                  <ThemedComponent
+                    style={
+                      Object {
+                        "backgroundColor": "#fafafa",
+                        "padding": 8,
+                      }
+                    }
+                  >
+                    <View
                       style={
                         Object {
                           "backgroundColor": "#fafafa",
@@ -334,25 +339,30 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                           }
                         }
                       >
-                        <View
-                          style={
-                            Object {
-                              "backgroundColor": "#fafafa",
-                              "padding": 8,
+                        <ThemedComponent>
+                          <Component
+                            styles={
+                              Object {
+                                "root": Object {
+                                  "color": "rgba(0, 0, 0, 0.87)",
+                                  "fontFamily": "Roboto",
+                                  "fontSize": 16,
+                                  "fontWeight": "400",
+                                },
+                              }
                             }
-                          }
-                        >
-                          <ThemedComponent>
-                            <Component
-                              styles={
-                                Object {
-                                  "root": Object {
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
                                     "fontFamily": "Roboto",
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
-                                }
+                                  undefined,
+                                ]
                               }
                             >
                               <Text
@@ -368,29 +378,15 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                                   ]
                                 }
                               >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": "Roboto",
-                                        "fontSize": 16,
-                                        "fontWeight": "400",
-                                      },
-                                      undefined,
-                                    ]
-                                  }
-                                >
-                                  BlueBase Light
-                                </Text>
+                                BlueBase Light
                               </Text>
-                            </Component>
-                          </ThemedComponent>
-                        </View>
+                            </Text>
+                          </Component>
+                        </ThemedComponent>
                       </View>
-                    </ThemedComponent>
-                  </ThemeDemo>
-                </ThemeProvider>
+                    </View>
+                  </ThemedComponent>
+                </ThemeDemo>
                 <ThemedComponent>
                   <Component />
                 </ThemedComponent>
