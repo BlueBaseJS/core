@@ -57,10 +57,8 @@ describe('ThemeContext', () => {
 	test(`should change theme based on callback function`, async (done) => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<ThemeProvider>
-					<ThemePicker />
-					<ThemeDemo />
-				</ThemeProvider>
+				<ThemePicker />
+				<ThemeDemo />
 			</BlueBaseApp>
 		);
 
