@@ -1,0 +1,390 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HoverObserver Snapshot HoverObserver component 1`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+/>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with child 1`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with child as function 1`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout 1`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout 2`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout 3`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout 4`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout with props 1`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout with props 2`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout with props 3`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout with props 4`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions after setTimeout with props 5`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions without setTimeout 1`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions without setTimeout 2`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions without setTimeout 3`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouse actions without setTimeout 4`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouseEnter 1`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouseEnter 2`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouseEnter 3`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
+
+exports[`HoverObserver Snapshot HoverObserver component with onMouseEnter 4`] = `
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    Hello
+  </Text>
+</div>
+`;
