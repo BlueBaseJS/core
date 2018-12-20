@@ -12,7 +12,7 @@ storiesOf('ComponentState', module)
 					title="Error!"
 					description="A unknown error occured!"
 					imageSource="https://picsum.photos/200"
-					imageStyle={{ width: 100, height: 100 }}
+					styles={{ image: { width: 100, height: 100 } }}
 					actionTitle="Retry"
 				/>
 			)}
@@ -30,7 +30,7 @@ storiesOf('ComponentState', module)
 		{(BB: BlueBase) => (
 			<BB.Components.ComponentState
 				title="A simple state"
-				titleStyle={{ color: 'green', fontSize: 20 }}
+				styles={{ title: { color: 'green', fontSize: 20 } }}
 			/>
 		)}
 		</BlueBaseConsumer>
@@ -50,7 +50,7 @@ storiesOf('ComponentState', module)
 		{(BB: BlueBase) => (
 			<BB.Components.ComponentState
 				description="A simple description"
-				descriptionStyle={{ color: 'green', fontSize: 20 }}
+				styles={{ description: { color: 'green', fontSize: 20 } }}
 			/>
 		)}
 		</BlueBaseConsumer>
@@ -80,24 +80,6 @@ storiesOf('ComponentState', module)
 		</BlueBaseConsumer>
 	))
 
-	.add('Action button with custom styles', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => (
-			<BB.Components.ComponentState
-				actionTitle="Bluerain"
-				actionStyle={{
-					// color: 'white',
-					backgroundColor: 'red',
-					borderRadius: 8,
-					height: 50,
-					width: 100,
-					// textAlign: 'center'
-				}}
-			/>
-		)}
-		</BlueBaseConsumer>
-	))
-
 	.add('Image with custom image component', () => (
 		<BlueBaseConsumer>
 		{(BB: BlueBase) => {
@@ -114,7 +96,7 @@ storiesOf('ComponentState', module)
 			{(BB: BlueBase) => (
 				<BB.Components.ComponentState
 					imageSource="https://picsum.photos/200/200/?random"
-					imageStyle={{ width: 100, height: 100 }}
+					styles={{ image: { width: 100, height: 100 } }}
 				/>
 			)}
 		</BlueBaseConsumer>

@@ -4,13 +4,12 @@ import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
 
 export interface DataObserverChildrenProps {
-	data: any,
-	loading: boolean,
-	empty: boolean,
+	data: any;
+	loading: boolean;
+	empty: boolean;
 }
 
 export interface DataObserverProps {
-
 	// Checks
 	isLoading?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
 	isEmpty?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
@@ -19,7 +18,7 @@ export interface DataObserverProps {
 	loading?: boolean;
 	data?: any;
 
-	children?: MaybeRenderPropChildren<DataObserverChildrenProps>
+	children?: MaybeRenderPropChildren<DataObserverChildrenProps>;
 }
 
 export interface DataObserverState {
@@ -35,11 +34,10 @@ export interface DataObserverState {
  * A use case is to render a different UI for each case.
  */
 export class DataObserver extends React.PureComponent<DataObserverProps, DataObserverState> {
-
 	public static defaultProps: Partial<DataObserverProps> = {
 		loading: false,
 
-		isEmpty: (props) => {
+		isEmpty: props => {
 			// If its null or undefined
 			if (isnil(props.data)) {
 				return true;
@@ -52,17 +50,15 @@ export class DataObserver extends React.PureComponent<DataObserverProps, DataObs
 
 			return false;
 		},
-		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
-
+		isLoading: props => (!isnil(props.loading) && isboolean(props.loading) ? props.loading : false),
 	};
 
 	readonly state: DataObserverState = {
-		isEmpty: (this.props.isEmpty) ? this.props.isEmpty(this.props) : false,
-		isLoading: (this.props.isLoading) ? this.props.isLoading(this.props) : false,
+		isEmpty: this.props.isEmpty ? this.props.isEmpty(this.props) : false,
+		isLoading: this.props.isLoading ? this.props.isLoading(this.props) : false,
 	};
 
 	render() {
-
 		const { children } = this.props;
 
 		if (typeof children === 'function') {

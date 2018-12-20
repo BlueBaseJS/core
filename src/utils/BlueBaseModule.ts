@@ -18,12 +18,10 @@ import isNil from 'lodash.isnil';
  */
 export type MaybeBlueBaseModule<T> = BlueBaseModule<T> | T;
 
-
 /**
  * 📦 BlueBaseModule
  */
 export interface BlueBaseModule<T> extends Promise<T> {
-
 	/**
 	 * This is the input value. If this value is an ES module,
 	 * then we store the value of `.default` property.
@@ -52,7 +50,6 @@ export interface BlueBaseModule<T> extends Promise<T> {
  * @param input
  */
 export function createBlueBaseModule<T>(input: MaybeBlueBaseModule<T>) {
-
 	const module = getDefiniteModule(input);
 	const promisedModule = getDefinitePromise(module);
 
@@ -79,7 +76,6 @@ export function createBlueBaseModule<T>(input: MaybeBlueBaseModule<T>) {
  * @param input Input object
  */
 export function getDefiniteBlueBaseModule<T>(input: MaybeBlueBaseModule<T>): BlueBaseModule<T> {
-
 	if (isBlueBaseModule(input)) {
 		return input;
 	}

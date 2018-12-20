@@ -1,17 +1,18 @@
+import { BlueBase } from '../../../BlueBase';
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
 
 describe('PluginIcon', () => {
-	beforeEach(() => {
-		jest.resetModules();
-	});
+	// beforeEach(() => {
+	// 	jest.resetModules();
+	// });
 	const PluginIconWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<PluginIcon {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	it(`Snapshot PluginIcon component with no plugin registered`, () => {
@@ -27,13 +28,88 @@ describe('PluginIcon', () => {
 		}
 	});
 
-	it(`Snapshot PluginIcon component with plugin registered with icon`, () => {
+	test(`should render an image icon for a registered plugin`, (done) => {
 
-		const component = TestRenderer.create(
-			<PluginIconWithProvider slug="dummy-plugin" />
+		const plugin = {
+			icon: {
+				source: { uri: 'https://picsum.photos/200' },
+				type: 'image',
+			},
+			key: 'some',
+			value: {},
+		};
+
+		const BB = new BlueBase();
+
+		const rendered = TestRenderer.create(
+			<BlueBaseApp BB={BB} plugins={[plugin]}>
+				<PluginIcon slug="some" />
+			</BlueBaseApp>
 		);
-		const tree = component.toJSON();
-		expect(tree).toMatchSnapshot();
+
+		setTimeout(() => {
+			const tree = rendered.toJSON();
+			expect((tree as any).type).toBe('View');
+			expect((tree as any).children[0].type).toBe('Image');
+			expect((tree as any).children[0].props.size).toBe(100);
+			expect((tree as any).children[0].props.style).toMatchObject({ height: 100, width: 100 });
+			expect(tree).toMatchSnapshot();
+			done();
+		});
+	});
+
+	test(`should render an image icon for a registered plugin where icon prop is a thunk`, (done) => {
+
+		const plugin = {
+			icon: () => ({
+				source: { uri: 'https://picsum.photos/200' },
+				type: 'image',
+			}),
+			key: 'some',
+			value: {},
+		};
+
+		const BB = new BlueBase();
+
+		const rendered = TestRenderer.create(
+			<BlueBaseApp BB={BB} plugins={[plugin]}>
+				<PluginIcon slug="some" />
+			</BlueBaseApp>
+		);
+
+		setTimeout(() => {
+			const tree = rendered.toJSON();
+			expect((tree as any).type).toBe('View');
+			expect((tree as any).children[0].type).toBe('Image');
+			expect((tree as any).children[0].props.size).toBe(100);
+			expect((tree as any).children[0].props.style).toMatchObject({ height: 100, width: 100 });
+			expect(tree).toMatchSnapshot();
+			done();
+		});
+	});
+
+	test(`should render null where plugin doesnt have an icon prop`, (done) => {
+
+		const plugin = {
+			key: 'some',
+			value: {},
+		};
+
+		const BB = new BlueBase();
+
+		const rendered = TestRenderer.create(
+			<BlueBaseApp BB={BB} plugins={[plugin]}>
+				<PluginIcon slug="some" />
+			</BlueBaseApp>
+		);
+
+		setTimeout(() => {
+			const tree = rendered.toJSON();
+			expect((tree as any).type).toBe('View');
+			expect((tree as any).children).toBe(null);
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
 });

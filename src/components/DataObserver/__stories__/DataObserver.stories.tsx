@@ -16,7 +16,6 @@ storiesOf('DataObserver', module)
 		<BlueBaseConsumer children={(BB: BlueBase) => (
 			<BB.Components.DataObserver isEmpty={() => false} isLoading={() => true}>
 				{(data: any) => {
-					console.log(data);
 					return (
 						data.loading ? <BB.Components.LoadingState />
 							: data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
@@ -31,7 +30,6 @@ storiesOf('DataObserver', module)
 		<BlueBaseConsumer children={(BB: BlueBase) => (
 			<BB.Components.DataObserver isEmpty={() => true} isLoading={() => false}>
 				{(data: any) => {
-					console.log(data);
 					return (
 						data.loading ? <BB.Components.LoadingState /> : data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
 							<BB.Components.Text>Text as a children</BB.Components.Text>
@@ -45,7 +43,7 @@ storiesOf('DataObserver', module)
 		<BlueBaseConsumer children={(BB: BlueBase) => (
 			<BB.Components.DataObserver isEmpty={() => false} isLoading={() => false}>
 				{(data: any) => {
-					console.log(data);
+
 					return (
 						data.loading ? <BB.Components.LoadingState /> : data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
 							<BB.Components.Text>Text as a children</BB.Components.Text>
@@ -59,7 +57,7 @@ storiesOf('DataObserver', module)
 		<BlueBaseConsumer children={(BB: BlueBase) => (
 			<BB.Components.DataObserver loading={true} isEmpty={() => false}>
 				{(data: any) => {
-					console.log(data);
+
 					return (
 						data.loading ? <BB.Components.LoadingState /> : data.empty ? <BB.Components.Text>Empty</BB.Components.Text> :
 							<BB.Components.Text>Text as a children</BB.Components.Text>

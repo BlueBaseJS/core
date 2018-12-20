@@ -2,7 +2,6 @@ import { BlueBase, BootOptions } from '../BlueBase';
 import { HookInputNestedCollection, Plugin } from '../registries';
 
 export const plugins: HookInputNestedCollection = {
-
 	/**
 	 * Registers given list of plugins
 	 */
@@ -13,13 +12,12 @@ export const plugins: HookInputNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (pluginsCollection: BootOptions['plugins'], _args: any, BB: BlueBase) => {
-
 				await BB.Plugins.registerCollection(pluginsCollection);
 
 				// return
 				return pluginsCollection;
-			}
-		}
+			},
+		},
 	],
 
 	/**
@@ -32,19 +30,16 @@ export const plugins: HookInputNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (noop: any, _args: any, BB: BlueBase) => {
+				const enabledPlugins = BB.Plugins.filter((_value, key) => BB.Plugins.isEnabled(key));
 
-				for (const entry of BB.Plugins.entries()) {
-					const plugin = entry['1'];
-
-					if (plugin.isEnabled()) {
-						await BB.Hooks.run('bluebase.plugins.initialize', plugin);
-					}
+				for (const plugin of Object.values(enabledPlugins)) {
+					await BB.Hooks.run('bluebase.plugins.initialize', await BB.Plugins.resolve(plugin.key));
 				}
 
 				// return
 				return noop;
-			}
-		}
+			},
+		},
 	],
 
 	/**
@@ -57,7 +52,6 @@ export const plugins: HookInputNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (plugin: Plugin, _args: any, BB: BlueBase) => {
-
 				//////////////////////////
 				///// Register Hooks /////
 				//////////////////////////
@@ -80,17 +74,11 @@ export const plugins: HookInputNestedCollection = {
 				///// Register Configs /////
 				////////////////////////////
 
-				let configs = plugin.defaultConfigs;
-
 				// Custom input configs are already registered at this point,
 				// We just want to make sure we set default configs if certain
 				// configs were not given as input
 
-				if (Object.keys(configs).length > 0) {
-					const inputConfigs = BB.Configs.filter((_value, key) => plugin.hasConfig(key));
-					configs = { ...configs, ...inputConfigs, };
-					BB.Configs.registerCollection(configs);
-				}
+				BB.Configs.registerCollectionIfNotExists(plugin.defaultConfigs);
 
 				///////////////////////////
 				///// Register Routes /////
@@ -98,14 +86,9 @@ export const plugins: HookInputNestedCollection = {
 
 				// TODO: Implement route registeration
 
-				//////////////////////
-				///// Initialize /////
-				//////////////////////
-				await plugin.initialize(configs, BB);
-
 				// return
 				return plugin;
-			}
-		}
+			},
+		},
 	],
 };

@@ -7,11 +7,7 @@ exports[`ComponentRegistry .resolve method should add an HOC that makes backgrou
       "backgroundColor": "green",
     }
   }
->
-  <View>
-    A Button
-  </View>
-</View>
+/>
 `;
 
 exports[`ComponentRegistry .resolve method should add an HOC with its arguments that makes background orange 1`] = `
@@ -21,23 +17,73 @@ exports[`ComponentRegistry .resolve method should add an HOC with its arguments 
       "backgroundColor": "orange",
     }
   }
->
-  <View>
-    A Button
-  </View>
-</View>
+/>
 `;
 
-exports[`ComponentRegistry .resolve method should resolve a Promised component 1`] = `null`;
+exports[`ComponentRegistry .resolve method should resolve a Promised component 1`] = `
+<BlueBaseApp
+  components={
+    Object {
+      "Foo": Promise {
+        "_40": 0,
+        "_55": [Function],
+        "_65": 1,
+        "_72": null,
+      },
+    }
+  }
+>
+  <Text>
+    <Text>
+      Loading
+    </Text>
+  </Text>
+</BlueBaseApp>
+`;
 
 exports[`ComponentRegistry .resolve method should resolve a Promised component 2`] = `
-<Text>
-  Some text
-</Text>
+<BlueBaseApp
+  components={
+    Object {
+      "Foo": Promise {
+        "_40": 0,
+        "_55": [Function],
+        "_65": 1,
+        "_72": null,
+      },
+    }
+  }
+>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <ThemedComponent>
+        <SystemApp>
+          <ThemedComponent>
+            <View>
+              <View>
+                <ThemedComponent>
+                  <Component />
+                </ThemedComponent>
+                <Foo>
+                  <ThemedComponent>
+                    <Text>
+                      <Text>
+                        Some text
+                      </Text>
+                    </Text>
+                  </ThemedComponent>
+                </Foo>
+                <ThemedComponent>
+                  <Component />
+                </ThemedComponent>
+              </View>
+            </View>
+          </ThemedComponent>
+        </SystemApp>
+      </ThemedComponent>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
 `;
 
-exports[`ComponentRegistry .resolve method should resolve a component 1`] = `
-<Text>
-  Some text
-</Text>
-`;
+exports[`ComponentRegistry .resolve method should resolve a component 1`] = `null`;

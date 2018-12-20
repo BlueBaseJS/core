@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlueBaseHook should render a hooked value 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`BlueBaseHook should render a hooked value 2`] = `
+<View>
+  <Text>
+    25
+  </Text>
+</View>
+`;

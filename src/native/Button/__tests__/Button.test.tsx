@@ -1,0 +1,137 @@
+import { Button, ButtonStyles } from '../Button';
+import { BlueBaseLightTheme } from '../../../themes';
+import React from 'react';
+import TestRenderer from 'react-test-renderer';
+import { Text } from 'react-native';
+
+describe('Button', () => {
+
+	test(`should render Button with default color styles`, () => {
+
+		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const rendered = TestRenderer.create(
+			<Button styles={styles} testID="button-root">
+				Hello
+			</Button>
+		);
+
+		const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
+		const text = rendered.root.findByType(Text);
+
+		expect(el.props.style[0]).toMatchObject(styles.root);
+		expect(el.props.style[1]).toMatchObject(styles.default);
+
+		expect(text.props.style[0]).toMatchObject(styles.text);
+		expect(text.props.style[0]).toMatchObject(styles.defaultText);
+
+		expect(rendered).toMatchSnapshot();
+	});
+
+	test(`should render Button with primary color styles`, () => {
+
+		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const rendered = TestRenderer.create(
+			<Button styles={styles} color="primary" testID="button-root">
+				Hello
+			</Button>
+		);
+
+		const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
+		const text = rendered.root.findByType(Text);
+
+		expect(el.props.style[0]).toMatchObject(styles.root);
+		expect(el.props.style[1]).toMatchObject(styles.primary);
+
+		expect(text.props.style[0]).toMatchObject(styles.text);
+		expect(text.props.style[1]).toMatchObject(styles.primaryText);
+
+		expect(rendered).toMatchSnapshot();
+	});
+
+	test(`should render Button with secondary color styles`, () => {
+
+		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const rendered = TestRenderer.create(
+			<Button styles={styles} color="secondary" testID="button-root">
+				Hello
+			</Button>
+		);
+
+		const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
+		const text = rendered.root.findByType(Text);
+
+		expect(el.props.style[0]).toMatchObject(styles.root);
+		expect(el.props.style[1]).toMatchObject(styles.secondary);
+
+		expect(text.props.style[0]).toMatchObject(styles.text);
+		expect(text.props.style[1]).toMatchObject(styles.secondaryText);
+
+		expect(rendered).toMatchSnapshot();
+	});
+
+	test(`should render Button with link color styles`, () => {
+
+		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const rendered = TestRenderer.create(
+			<Button styles={styles} color="link" testID="button-root">
+				Hello
+			</Button>
+		);
+
+		const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
+		const text = rendered.root.findByType(Text);
+
+		expect(el.props.style[0]).toMatchObject(styles.root);
+		expect(el.props.style[1]).toMatchObject(styles.link);
+
+		expect(text.props.style[0]).toMatchObject(styles.text);
+		expect(text.props.style[1]).toMatchObject(styles.linkText);
+
+		expect(rendered).toMatchSnapshot();
+	});
+
+	test(`should render Button with full width`, () => {
+
+		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const rendered = TestRenderer.create(
+			<Button styles={styles} testID="button-root" fullWidth={true} >
+				Hello
+			</Button>
+		);
+
+		const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
+		const text = rendered.root.findByType(Text);
+
+		expect(el.props.style[0]).toMatchObject(styles.root);
+		expect(el.props.style[1]).toMatchObject(styles.default);
+		expect(el.props.style[2]).toMatchObject(styles.fullWidth);
+
+		expect(text.props.style[0]).toMatchObject(styles.text);
+		expect(text.props.style[1]).toMatchObject(styles.defaultText);
+
+		expect(rendered).toMatchSnapshot();
+	});
+
+	test(`should render Button with custom children`, () => {
+
+		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const rendered = TestRenderer.create(
+			<Button styles={styles} testID="button-root" fullWidth={true} >
+				<Text testID="custom">Custom</Text>
+			</Button>
+		);
+
+		const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
+		const text = rendered.root.findByType(Text);
+
+		expect(el.props.style[0]).toMatchObject(styles.root);
+		expect(el.props.style[1]).toMatchObject(styles.default);
+		expect(el.props.style[2]).toMatchObject(styles.fullWidth);
+
+		expect(text.props.style).toBeUndefined();
+		expect(text.props.testID).toBe('custom');
+
+		expect(rendered).toMatchSnapshot();
+	});
+
+});

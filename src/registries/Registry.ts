@@ -7,43 +7,47 @@ import merge from 'deepmerge';
  * BlueBase Registry Item
  */
 export interface RegistryItem<ValueType = any> {
-
 	/** Item Key */
-	key: string,
+	key: string;
 
 	/**
 	 * Registry Item Value.
 	 */
-	value: ValueType,
+	value: ValueType;
 
 	/** Additional Item Data */
-	[key: string]: any,
+	[key: string]: any;
 }
 
 /**
  * BlueBase Registry Item
  */
 export interface RegistryInputItem<ValueType = any> {
-
 	/**
 	 * Registry Item Value.
 	 */
-	value: ValueType,
+	value: ValueType;
 
 	/** Additional Item Data */
-	[key: string]: any,
+	[key: string]: any;
 }
 
-export type ItemCollection<T extends RegistryInputItem = RegistryInputItem>
- = Array<T | T['value']> | { [key: string]: (T | T['value']) };
+export type ItemCollection<T extends RegistryInputItem = RegistryInputItem> =
+	| Array<T | T['value']>
+	| { [key: string]: T | T['value'] };
 
-export type RegistrySubscriptionFn<ItemType extends RegistryItem> = (value: ItemType['value'], item: ItemType) => void;
+export type RegistrySubscriptionFn<ItemType extends RegistryItem> = (
+	value: ItemType['value'],
+	item: ItemType
+) => void;
 
 /**
  * A Base Registry
  */
-export class Registry<ItemType extends RegistryItem, ItemInputType extends RegistryInputItem = RegistryInputItem> {
-
+export class Registry<
+	ItemType extends RegistryItem,
+	ItemInputType extends RegistryInputItem = RegistryInputItem
+> {
 	/** Internal data */
 	protected data: Map<string, ItemType> = new Map();
 
@@ -79,15 +83,18 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param value
 	 */
 	public set(key: string, item: ItemType | ItemInputType) {
-
-		if(!this.isItem(item)) {
+		if (!this.isItem(item)) {
 			throw Error('Could not set registry item. Reason: Unknown item type.');
 		}
 
 		const existingItem = this.get(key);
 
+		if (existingItem) {
+			item = merge(existingItem, item) as ItemType;
+		}
+
 		// Override existing or create an new one
-		const finalItem = (existingItem) ? merge(existingItem, item) as ItemType : this.createItem(key, item);
+		const finalItem = this.createItem(key, item);
 
 		this.data.set(key, finalItem);
 		this.publish(key, finalItem);
@@ -100,7 +107,6 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param key
 	 */
 	public getValue(...keys: string[]): ItemType['value'] | undefined {
-
 		let item;
 
 		for (const key of keys) {
@@ -158,7 +164,9 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	// 	return (item as any).meta[metaKey] = metaValue;
 	// }
 
-	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<string>;
+	public async register(
+		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): Promise<string>;
 	public async register(
 		key: string,
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
@@ -167,8 +175,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 		key: string | T,
 		item?: T
 	): Promise<string> {
-
-		const args = this.getKeyAnyItem((key as any), item);
+		const args = this.getKeyAnyItem(key as any, item);
 
 		if (this.isInputItem(args.item)) {
 			this.set(args.key, args.item);
@@ -182,8 +189,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	}
 
 	// TODO: Add tests
-	public async registerCollection(collection: ItemCollection<ItemInputType>) {
-
+	public async registerCollection(collection: ItemCollection<ItemInputType> = []) {
 		// If its an array
 		if (Array.isArray(collection)) {
 			for (const item of collection) {
@@ -266,11 +272,10 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param callbackfn
 	 * @param thisArg
 	 */
-	public forEach(callbackfn: (
-			value: ItemType,
-			key: string,
-			map: Map<string, ItemType>
-		) => void, thisArg?: any) {
+	public forEach(
+		callbackfn: (value: ItemType, key: string, map: Map<string, ItemType>) => void,
+		thisArg?: any
+	) {
 		this.data.forEach(callbackfn, thisArg);
 	}
 
@@ -279,8 +284,9 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param predicate
 	 */
 	public filter(predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean) {
-
-		const arr = Array.from(this.entries()).filter((entry) => predicate(entry[1].value, entry[0], entry[1]));
+		const arr = Array.from(this.entries()).filter(entry =>
+			predicate(entry[1].value, entry[0], entry[1])
+		);
 		const items: { [key: string]: ItemType } = {};
 
 		Array.from(arr).forEach(entry => {
@@ -294,9 +300,12 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * Filter registry items by a predicate function.
 	 * @param predicate
 	 */
-	public filterValues(predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean) {
-
-		const arr = Array.from(this.entries()).filter((entry) => predicate(entry[1].value, entry[0], entry[1]));
+	public filterValues(
+		predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean
+	) {
+		const arr = Array.from(this.entries()).filter(entry =>
+			predicate(entry[1].value, entry[0], entry[1])
+		);
 		const items: { [key: string]: ItemType } = {};
 
 		Array.from(arr).forEach(entry => {
@@ -313,7 +322,6 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @returns Subscription ID
 	 */
 	public subscribe(key: string, callback: RegistrySubscriptionFn<ItemType>): string {
-
 		let subscriptions = this.subscriptions.get(key);
 
 		// If theres no subscriptions map, create one
@@ -343,12 +351,16 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 
 		if (!subscriptions) {
 			// tslint:disable-next-line
-			throw Error(`Could not unsubscribe from a registry item. Reason: No subsciptions for item with key \"${key}\" registered.`);
+			throw Error(
+				`Could not unsubscribe from a registry item. Reason: No subsciptions for item with key \"${key}\" registered.`
+			);
 		}
 
 		if (!subscriptions.get(subscriptionId)) {
 			// tslint:disable-next-line
-			throw Error(`Could not unsubscribe from a registry item. Reason: No subscription with id "${subscriptionId}" registered.`);
+			throw Error(
+				`Could not unsubscribe from a registry item. Reason: No subscription with id "${subscriptionId}" registered.`
+			);
 		}
 
 		subscriptions.delete(subscriptionId);
@@ -362,7 +374,6 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param partial
 	 */
 	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
-
 		const item = {
 			...(partial as any),
 			key,
@@ -380,7 +391,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param value
 	 */
 	protected isValue(value: any): value is ItemType['value'] {
-		return !!(value);
+		return value !== undefined;
 	}
 
 	/**
@@ -388,7 +399,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param value
 	 */
 	protected isInputValue(value: any): value is ItemInputType['value'] {
-		return !!(value);
+		return value !== undefined;
 	}
 
 	/**
@@ -413,7 +424,6 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param item
 	 */
 	protected publish(key: string, item: ItemType) {
-
 		const subscriptions = this.subscriptions.get(key);
 
 		if (!subscriptions) {
@@ -428,7 +438,6 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * @param keys
 	 */
 	protected findOne(...keys: string[]) {
-
 		for (const tempKey of keys) {
 			const item = this.data.get(tempKey);
 
@@ -440,7 +449,6 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 		return;
 	}
 
-
 	/**
 	 * Used internally by the register method. Since this function as many overloads,
 	 * resolves final key and value params.
@@ -448,16 +456,15 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 */
 	protected getKeyAnyItem(
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
-	): { key: string, item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']};
+	): { key: string; item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'] };
 	protected getKeyAnyItem(
 		key: string,
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
-	): { key: string, item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']};
+	): { key: string; item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'] };
 	protected getKeyAnyItem(
 		key: string | ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'],
 		item?: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
-	): { key: string, item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']} {
-
+	): { key: string; item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'] } {
 		let finalKey, finalItem;
 
 		// 2 params were passed, key and item
@@ -481,7 +488,7 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 			throw Error('Could not register item. Reason: No key given.');
 		}
 
-		if (!finalItem) {
+		if (finalItem === undefined) {
 			throw Error('Could not register item. Reason: No item given.');
 		}
 
@@ -492,8 +499,9 @@ export class Registry<ItemType extends RegistryItem, ItemInputType extends Regis
 	 * This function is used to auto generate an item key
 	 * @param item
 	 */
-	protected generateKey(_item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'])
-	: string | undefined {
+	protected generateKey(
+		_item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): string | undefined {
 		return makeId();
 	}
 }

@@ -1,18 +1,18 @@
 // import * as Native from '../../../native';
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { LoadingState } from '../LoadingState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('LoadingState', () => {
 	const LoadingStateWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<LoadingState {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot LoadingState component`, () => {

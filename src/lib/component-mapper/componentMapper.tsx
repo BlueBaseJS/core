@@ -1,5 +1,5 @@
-import React from 'react';
 import { Fields, objectMapper } from './objectMapper';
+import React from 'react';
 
 /**
  * A React HOC to map components

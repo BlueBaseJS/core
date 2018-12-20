@@ -1,3 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmptyState Snapshot EmptyState 1`] = `null`;
+exports[`EmptyState Snapshot EmptyState 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 20,
+            "fontWeight": "500",
+          },
+          Object {
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Empty area
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      No data found.
+    </Text>
+  </View>
+</View>
+`;

@@ -17,10 +17,7 @@ export type MaybeEsModule<T> = EsModule<T> | T;
  * @param object Input object
  */
 export function getDefiniteModule<T = any>(object: MaybeEsModule<T>): T {
-
-	return isEsModule(object)
-		? (object.default)
-		: object;
+	return isEsModule(object) ? object.default : object;
 }
 
 /**

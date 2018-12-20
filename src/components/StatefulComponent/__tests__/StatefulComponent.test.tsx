@@ -1,18 +1,18 @@
 import * as Native from '../../../native';
+import { BlueBaseApp } from '../../BlueBaseApp';
 import React from 'react';
 import { StatefulComponent } from '../StatefulComponent';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('StatefulComponent', () => {
 	const StatefulComponentWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<StatefulComponent {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot StatefulComponent component`, () => {

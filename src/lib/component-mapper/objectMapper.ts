@@ -1,28 +1,23 @@
 export interface ObjectMapperField {
-	key: string;
-	transform?: (...params: any[]) => any
+	key?: string;
+	transform?: (...params: any[]) => any;
 }
 
 export interface Fields {
-	[src: string]: string | ObjectMapperField
+	[src: string]: string | ObjectMapperField;
 }
 
 export interface FieldsInternal {
-	[src: string]: ObjectMapperField
+	[src: string]: ObjectMapperField;
 }
 
 function processMapperFields(fields: Fields): FieldsInternal {
-
 	const newFields: FieldsInternal = {};
 
 	Object.keys(fields).forEach((srcKey: string) => {
 		const destKey = fields[srcKey];
 
-		if (!destKey) {
-			return;
-		}
-
-		newFields[srcKey] = (typeof destKey === 'string') ? { key: destKey } : destKey;
+		newFields[srcKey] = typeof destKey === 'string' ? { key: destKey } : destKey;
 	});
 
 	return newFields;
@@ -35,21 +30,27 @@ function processMapperFields(fields: Fields): FieldsInternal {
  */
 
 export function objectMapper(obj: any, fields: Fields) {
-
 	const newObj: any = {};
 	const processedFields = processMapperFields(fields);
 
-	Object.keys(processedFields).forEach(srcKey => {
+	Object.keys(processedFields).forEach(destKey => {
+		const src = processedFields[destKey];
 
-		const value = obj[srcKey];
+		let value;
 
-		if (!value) {
+		if (src.key && obj[src.key]) {
+			value = obj[src.key];
+		}
+
+		if (src.transform) {
+			value = src.transform(obj, fields);
+		}
+
+		if (value === undefined) {
 			return;
 		}
 
-		const dest = processedFields[srcKey];
-
-		newObj[dest.key] = dest.transform ? dest.transform(value, obj, fields) : value;
+		newObj[destKey] = value;
 	});
 
 	return newObj;

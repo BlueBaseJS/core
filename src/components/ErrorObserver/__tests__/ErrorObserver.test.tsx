@@ -1,70 +1,148 @@
-import * as Native from '../../../native';
+import { BlueBaseApp } from '../../BlueBaseApp';
 import { ErrorObserver } from '../ErrorObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
+import { Text } from 'react-native';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
+
+const Bang = () => {
+	throw Error('💥 Boom!');
+};
+
+const BangNull = () => {
+	throw null;
+};
 
 describe('ErrorObserver', () => {
-	const ErrorObserverWithProvider = (props: any) => (
-		<WithProvider>
-			<ErrorObserver {...props}/>
-		</WithProvider>
-	);
 
-	test(`Snapshot ErrorObserver`, () => {
-		const component = TestRenderer.create(
-			<ErrorObserverWithProvider>
-				<Native.Text>Hello</Native.Text>
-			</ErrorObserverWithProvider>
+	test(`Snapshot ErrorObserver`, (done) => {
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<ErrorObserver>
+					<Text>Hello</Text>
+				</ErrorObserver>
+			</BlueBaseApp>
 		);
-		const tree = component.toJSON();
-		expect(tree).toMatchSnapshot();
+
+		setTimeout(() => {
+			const tree = rendered.toJSON();
+			expect((tree as any).children[0].children.join()).toBe('Hello');
+			expect(tree).toMatchSnapshot();
+			done();
+		});
 	});
 
 	test(`Snapshot ErrorObserver after complete rendering`, (done) => {
-		const component = TestRenderer.create(
-			<ErrorObserverWithProvider>
-				<Native.Text>Hello</Native.Text>
-			</ErrorObserverWithProvider>
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<ErrorObserver>
+					<Text>Hello</Text>
+				</ErrorObserver>
+			</BlueBaseApp>
 		);
+
 		setTimeout(() => {
-			const tree = component.toJSON();
+			const tree = rendered.toJSON();
+			expect((tree as any).children[0].children.join()).toBe('Hello');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
 	});
 
 	test(`Snapshot ErrorObserver after complete rendering with error`, (done) => {
-		const component = TestRenderer.create(
-			<ErrorObserverWithProvider error={{ name: '404', message: 'no page found' }}
-				errorComponent={() => <Native.Text>Error</Native.Text>}>
-				<Native.Text>Hello</Native.Text>
-			</ErrorObserverWithProvider>
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<ErrorObserver
+					error={{ name: '404', message: 'no page found' }}
+					errorComponent={() => <Text>Error</Text>}
+				>
+					<Text>Hello</Text>
+				</ErrorObserver>
+			</BlueBaseApp>
 		);
+
 		setTimeout(() => {
-			const tree = component.toJSON();
+			const tree = rendered.toJSON();
+			expect((tree as any).children[0].children.join()).toBe('Error');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
 	});
 
 	test(`Snapshot ErrorObserver after complete rendering with child as function`, (done) => {
-		const component = TestRenderer.create(
-			<ErrorObserverWithProvider>
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<ErrorObserver>
 				{
-					() => <Native.Text>Hello</Native.Text>
+					() => <Text>Hello</Text>
 				}
-			</ErrorObserverWithProvider>
+				</ErrorObserver>
+			</BlueBaseApp>
 		);
+
 		setTimeout(() => {
-			const tree = component.toJSON();
+			const tree = rendered.toJSON();
+			expect((tree as any).children[0].children.join()).toBe('Hello');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
 	});
+
+	test(`should catch an error when thrown by a child component`, (done) => {
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<ErrorObserver>
+					<Bang />
+				</ErrorObserver>
+			</BlueBaseApp>
+		);
+
+		setTimeout(() => {
+			const tree = rendered.toJSON();
+			expect((tree as any).children[0].children[0].children.join()).toBe('Error');
+			expect((tree as any).children[0].children[1].children.join()).toBe('💥 Boom!');
+			expect(tree).toMatchSnapshot();
+			done();
+		});
+	});
+
+	test(`should catch an error when thrown null by a child component`, (done) => {
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<ErrorObserver>
+					<BangNull />
+				</ErrorObserver>
+			</BlueBaseApp>
+		);
+
+		setTimeout(() => {
+			const tree = rendered.toJSON();
+			expect((tree as any).children[0].children[0].children.join()).toBe('Error');
+			expect((tree as any).children[0].children[1].children.join()).toBe('An unknown error occured.');
+			expect(tree).toMatchSnapshot();
+			done();
+		});
+	});
+
+	test(`should not catch an error because check error is null`, (done) => {
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<ErrorObserver checkError={null as any} error={Error('Useless')} >
+					<Text>Hello</Text>
+				</ErrorObserver>
+			</BlueBaseApp>
+		);
+
+		setTimeout(() => {
+			const tree = rendered.toJSON();
+			expect((tree as any).children[0].children.join()).toBe('Hello');
+			expect(tree).toMatchSnapshot();
+			done();
+		});
+	});
+
 
 });

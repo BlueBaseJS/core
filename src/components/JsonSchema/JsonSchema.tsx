@@ -4,7 +4,6 @@ import { BlueBaseContext } from '../../Context';
 import { BlueBaseHook } from '../BlueBaseHook';
 import { MaybeArray } from '../../utils';
 import React from 'react';
-import isString from 'lodash.isstring';
 
 export interface JsonSchemaProps {
 	schema: MaybeArray<JsonComponentNode>;
@@ -15,14 +14,13 @@ export interface JsonSchemaProps {
 const getComponent = (BB: BlueBase) => {
 	return ({ component }: JsonComponentNode) => {
 
-		if (!isString(component)) {
-			return null;
-		}
-
-		return BB.Components.has(component) ? BB.Components.resolve(component) : null;
+		return BB.Components.has(String(component)) ? BB.Components.resolve(String(component)) : null;
 	};
 };
 
+/**
+ * 🍱 JsonSchema
+ */
 export class JsonSchema extends React.PureComponent<JsonSchemaProps> {
 
 	static contextType = BlueBaseContext;
@@ -35,15 +33,13 @@ export class JsonSchema extends React.PureComponent<JsonSchemaProps> {
 		const { hook, schema, args } = this.props;
 		const parser = new JsonSchemaParser(getComponent(BB));
 
-		// There's no hook, we don't need to do complex asyn handling
+		// There's no hook, we don't need to do complex async handling
 		if (!hook) {
 			return parser.parseSchema(schema);
 		}
 
 		return (
-			<BlueBaseHook hook={hook} value={schema} args={args} children={(loadedSchema) => {
-				return parser.parseSchema(loadedSchema);
-			}} />
+			<BlueBaseHook hook={hook} value={schema} args={args} children={(loadedSchema) => parser.parseSchema(loadedSchema)} />
 		);
 	}
 }

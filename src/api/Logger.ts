@@ -4,7 +4,6 @@ import { BlueBase } from '../BlueBase';
  * 📔 Logger API
  */
 export class Logger {
-
 	constructor(private BB: BlueBase) {
 		//
 	}

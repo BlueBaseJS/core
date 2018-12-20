@@ -1,9 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComponentState Snapshot ComponentState component 1`] = `null`;
+exports[`ComponentState Snapshot ComponentState component 1`] = `
+<Text>
+  Cannot read property 'root' of undefined
+</Text>
+`;
 
-exports[`ComponentState Snapshot ComponentState component with description 1`] = `null`;
+exports[`ComponentState Snapshot ComponentState component with description 1`] = `
+<Text>
+  Cannot read property 'root' of undefined
+</Text>
+`;
 
-exports[`ComponentState Snapshot ComponentState component with description and image 1`] = `null`;
+exports[`ComponentState Snapshot ComponentState component with description and image 1`] = `
+<Text>
+  Cannot read property 'root' of undefined
+</Text>
+`;
 
-exports[`ComponentState Snapshot ComponentState component with description and imageSource 1`] = `null`;
+exports[`ComponentState Snapshot ComponentState component with description and imageSource 1`] = `
+<Text>
+  Cannot read property 'root' of undefined
+</Text>
+`;

@@ -13,49 +13,45 @@ import { Registry } from './Registry';
  * BlueBaseModule Registry Item
  */
 export interface BlueBaseModuleRegistryItem<ValueType = any> {
-
 	/** Item Key */
-	key: string,
+	key: string;
 
 	/**
 	 * Registry Item Value.
 	 */
-	value: BlueBaseModule<ValueType>,
+	value: BlueBaseModule<ValueType>;
 
 	/**
 	 * Preload this value
 	 */
-	preload: boolean,
+	preload: boolean;
 
 	/** Additional Item Data */
-	[key: string]: any,
+	[key: string]: any;
 }
 
 /**
  * BlueBase Registry Item
  */
 export interface BlueBaseModuleRegistryInputItem<ValueType = any> {
-
 	/**
 	 * Registry Item Value.
 	 */
-	value: MaybeBlueBaseModule<ValueType>,
+	value: MaybeBlueBaseModule<ValueType>;
 
 	/**
 	 * Preload this value
 	 */
-	preload?: boolean,
+	preload?: boolean;
 
 	/** Additional Item Data */
-	[key: string]: any,
+	[key: string]: any;
 }
 
 export class BlueBaseModuleRegistry<
 	ItemType extends BlueBaseModuleRegistryItem,
-	ItemInputType extends BlueBaseModuleRegistryInputItem = BlueBaseModuleRegistryInputItem,
+	ItemInputType extends BlueBaseModuleRegistryInputItem = BlueBaseModuleRegistryInputItem
 > extends Registry<ItemType, ItemInputType> {
-
-
 	/**
 	 * The set() method adds or updates an element with a specified
 	 * key and item to the registry.
@@ -66,8 +62,9 @@ export class BlueBaseModuleRegistry<
 		return super.set(key, getDefiniteModule(item));
 	}
 
-
-	public async register(item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']): Promise<string>;
+	public async register(
+		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
+	): Promise<string>;
 	public async register(
 		key: string,
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
@@ -76,11 +73,10 @@ export class BlueBaseModuleRegistry<
 		key: string | ItemType | ItemType['value'] | ItemInputType | ItemInputType['value'],
 		item?: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
 	): Promise<string> {
+		key = isPromise(key) ? await createBlueBaseModule(key) : getDefiniteModule(key);
+		item = isPromise(item) ? await createBlueBaseModule(item) : getDefiniteModule(item);
 
-		key = isPromise(key) ?  await createBlueBaseModule(key) : getDefiniteModule(key);
-		item = isPromise(item) ?  await createBlueBaseModule(item) : getDefiniteModule(item);
-
-		return super.register((key as any), item);
+		return super.register(key as any, item);
 	}
 
 	/**
@@ -88,19 +84,22 @@ export class BlueBaseModuleRegistry<
 	 */
 	public async preloadAll() {
 		const items = this.filter((_value, _key, item) => item.preload === true);
-		const promises = Object.values(items).map((item) => item.value );
+		const promises = Object.values(items).map(item => item.value);
 
 		return Promise.all(promises);
 	}
 
 	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
+		const value = isBlueBaseModule(partial.value)
+			? partial.value
+			: getDefiniteBlueBaseModule(partial.value);
+
 		return super.createItem(key, {
 			preload: false,
 			...(partial as any),
-			value: getDefiniteBlueBaseModule(partial.value),
+			value,
 		});
 	}
-
 
 	/**
 	 * Typeguard to check a given object is a registry value
@@ -115,6 +114,6 @@ export class BlueBaseModuleRegistry<
 	 * @param value
 	 */
 	protected isInputValue(value: any): value is ItemInputType['value'] {
-		return isBlueBaseModule(value) || !!(value);
+		return isBlueBaseModule(value) || !!value;
 	}
 }

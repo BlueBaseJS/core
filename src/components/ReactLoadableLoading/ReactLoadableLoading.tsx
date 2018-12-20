@@ -1,4 +1,4 @@
-import { ErrorState, LoadingState } from '../../lib/components';
+import { ErrorState, LoadingState } from '../';
 import { LoadingComponentProps } from 'react-loadable';
 import React from 'react';
 

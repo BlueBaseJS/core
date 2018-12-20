@@ -3,10 +3,9 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { ThemeValue, ThemeValueInput, buildTheme } from '../models';
+import { ThemeValue, ThemeValueInput, buildTheme } from '../themes';
 import { ItemCollection } from './Registry';
 import { getDefiniteBlueBaseModule } from '../utils';
-
 
 export interface ThemeRegistryItemExtras {
 	/**
@@ -15,23 +14,22 @@ export interface ThemeRegistryItemExtras {
 	 * We put it in meta so we can show the name in menu een without downloading
 	 * the whole theme.
 	 */
-	name: string,
+	name: string;
 
 	/**
 	 * Theme mode: Either light or dark.
 	 */
-	mode: 'light' | 'dark',
+	mode: 'light' | 'dark';
 
 	/**
 	 * Sometimes a user wants to switch to the light/dark version of the same theme.
 	 * This property has the slug of that theme. For example, if this is a light theme,
 	 * this property will have the slug of the dark version, and vice versa.
 	 */
-	alternate?: string,
+	alternate?: string;
 
-	key: string,
+	key: string;
 }
-
 
 export type ThemeRegistryItem = BlueBaseModuleRegistryItem<ThemeValue> & ThemeRegistryItemExtras;
 export type ThemeRegistryInputItem = BlueBaseModuleRegistryInputItem<ThemeValueInput>;
@@ -48,9 +46,7 @@ export type ThemeInputCollection = ItemCollection<ThemeInput>;
  * 🎨 ThemeRegistry
  */
 export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
-
 	public async resolve(...keys: string[]): Promise<Theme> {
-
 		const item = this.findOne(...keys);
 
 		if (!item) {
@@ -80,7 +76,6 @@ export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTyp
 	}
 
 	protected createItem(key: string, partial: any): ThemeRegistryItem {
-
 		const value = getDefiniteBlueBaseModule(partial.value);
 
 		return super.createItem(key, {
@@ -90,5 +85,4 @@ export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTyp
 			value,
 		});
 	}
-
 }

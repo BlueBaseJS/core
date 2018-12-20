@@ -1,5 +1,6 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
+import { ImageSourcePropType } from 'react-native';
 import React from 'react';
 
 export interface DynamicIconProps {
@@ -30,7 +31,7 @@ export interface DynamicIconProps {
 	 * Used when type is 'image'.
 	 * The image source
 	 */
-	source?: string;
+	source?: ImageSourcePropType;
 
 	/**
 	 * Icon size. Defaults to 100
@@ -41,6 +42,8 @@ export interface DynamicIconProps {
 }
 
 /**
+ * 🗿 DynamicIcon
+ *
  * An enhanced Icon that can render any of the following:
  * - BB.Components.Icon
  * - BB.Components.Image
@@ -65,10 +68,14 @@ export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
 
 		let component: React.ComponentType<any>;
 
+		if (!rest.style) {
+			rest.style = {};
+		}
+
 		if (type === 'component' && Component) {
 			component = (typeof Component === 'string')
-							? BB.Components.resolve(Component)
-							: component = Component;
+			? BB.Components.resolve(Component)
+			: component = Component;
 
 		} else if (type === 'name' && name) {
 			component = BB.Components.resolve('Icon');
@@ -78,17 +85,13 @@ export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
 			component = BB.Components.resolve('Image');
 			rest.source = source;
 
-			if (!rest.style) {
-				rest.style = {};
-			}
-
-			if (rest.size) {
-				rest.style.width = rest.size;
-				rest.style.height = rest.size;
-			}
+			rest.style.width = Number(rest.size);
+			rest.style.height = Number(rest.size);
 		} else {
 			return null;
 		}
+
+		rest.size = Number(rest.size);
 
 		return React.createElement(component, rest);
 	}

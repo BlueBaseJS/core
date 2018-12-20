@@ -2,10 +2,7 @@ import { Registry, RegistryItem } from '../Registry';
 import { BlueBase } from '../../BlueBase';
 
 describe('Registry', () => {
-
-
 	describe('.set method', () => {
-
 		it('should set item', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -19,15 +16,13 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
-			expect(() => registry.set('foo', 'bar' as any))
-				.toThrowError('Could not set registry item. Reason: Unknown item type.');
+			expect(() => registry.set('foo', 'bar' as any)).toThrowError(
+				'Could not set registry item. Reason: Unknown item type.'
+			);
 		});
-
 	});
 
-
 	describe('value setter/getters', () => {
-
 		it('should set a value of an unknown item', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -84,9 +79,7 @@ describe('Registry', () => {
 			const value = await registry.getValue('foo', 'faa', 'far');
 			expect(value).toBe('bu');
 		});
-
 	});
-
 
 	// describe('meta setter/getters', () => {
 
@@ -113,14 +106,12 @@ describe('Registry', () => {
 
 	// });
 
-
 	describe('.register method', () => {
-
 		it('should register an item', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
-			await registry.register('some', { value: 'foo', preload: true, });
+			await registry.register('some', { value: 'foo', preload: true });
 
 			const item = registry.get('some');
 
@@ -167,7 +158,7 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			try {
-				await registry.register({ value: 'foo', preload: true, });
+				await registry.register({ value: 'foo', preload: true });
 			} catch (error) {
 				expect(error.message).toBe('Could not register item. Reason: No key given.');
 			}
@@ -187,7 +178,9 @@ describe('Registry', () => {
 		it('should throw an error, if no key is provided or generated', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
-			(registry as any).generateKey = () => { return; };
+			(registry as any).generateKey = () => {
+				return;
+			};
 
 			try {
 				await registry.register({ value: 'foo' });
@@ -195,19 +188,16 @@ describe('Registry', () => {
 				expect(error.message).toBe('Could not register item. Reason: No key given.');
 			}
 		});
-
 	});
 
-
 	describe('.registerCollection', () => {
-
 		it('should register an array collection', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			await registry.registerCollection([
-				{ key: 'foo', value: 'bar', preload: true, },
-				{ key: 'baz', value: 'boo', preload: false, },
+				{ key: 'foo', value: 'bar', preload: true },
+				{ key: 'baz', value: 'boo', preload: false },
 			]);
 
 			const item = registry.get('foo');
@@ -226,8 +216,8 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			await registry.registerCollection({
-				baz: { value: 'boo', preload: false, },
-				foo: { value: 'bar', preload: true, },
+				baz: { value: 'boo', preload: false },
+				foo: { value: 'bar', preload: true },
 			});
 
 			const item = registry.get('foo');
@@ -266,15 +256,22 @@ describe('Registry', () => {
 			try {
 				await registry.registerCollection('boom' as any);
 			} catch (error) {
-				expect(error.message).toBe('Could not register collection. Reason: Unknown collection type.');				
+				expect(error.message).toBe(
+					'Could not register collection. Reason: Unknown collection type.'
+				);
 			}
 		});
 
+		it('should not do anything if no param given', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+
+			await registry.registerCollection();
+			expect(registry.size()).toBe(0);
+		});
 	});
 
-
 	describe('.has method', () => {
-
 		it('should return false for an unknown item', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -289,11 +286,9 @@ describe('Registry', () => {
 			registry.set('foo', { value: 'bar' });
 			expect(registry.has('foo')).toBe(true);
 		});
-
 	});
 
 	describe('.delete method', () => {
-
 		it('should delete a registry item', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -303,11 +298,9 @@ describe('Registry', () => {
 
 			expect(registry.has('foo')).toBe(false);
 		});
-
 	});
 
 	describe('.clear method', () => {
-
 		it('should clear registry', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -321,11 +314,9 @@ describe('Registry', () => {
 
 			expect(registry.size()).toBe(0);
 		});
-
 	});
 
 	describe('.entries method', () => {
-
 		it('should return entries iterator', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -340,11 +331,9 @@ describe('Registry', () => {
 			expect(iterator.next().value).toMatchObject(['faa', { key: 'faa', value: 'baz' }]);
 			expect(iterator.next().value).toMatchObject(['far', { key: 'far', value: 'bu' }]);
 		});
-
 	});
 
 	describe('.keys method', () => {
-
 		it('should return keys iterator', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -359,11 +348,9 @@ describe('Registry', () => {
 			expect(iterator.next().value).toBe('faa');
 			expect(iterator.next().value).toBe('far');
 		});
-
 	});
 
 	describe('.values method', () => {
-
 		it('should return values iterator', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -378,11 +365,9 @@ describe('Registry', () => {
 			expect(iterator.next().value).toMatchObject({ key: 'faa', value: 'baz' });
 			expect(iterator.next().value).toMatchObject({ key: 'far', value: 'bu' });
 		});
-
 	});
 
 	describe('.size method', () => {
-
 		it('should return correct size', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -401,11 +386,9 @@ describe('Registry', () => {
 			registry.delete('foo');
 			expect(registry.size()).toBe(2);
 		});
-
 	});
 
 	describe('.forEach method', () => {
-
 		it('should run a forEach loop', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
@@ -424,12 +407,9 @@ describe('Registry', () => {
 			expect(arr[1]).toMatchObject(['faa', { key: 'faa', value: 'baz' }]);
 			expect(arr[2]).toMatchObject(['far', { key: 'far', value: 'bu' }]);
 		});
-
 	});
 
-
 	describe('.filter method', () => {
-
 		it('should filter items', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<any>>(BB);
@@ -448,11 +428,9 @@ describe('Registry', () => {
 			expect(filteredConfigs['plugin.test.bar'].value).toBe(10);
 			expect(Object.keys(filteredConfigs).length).toBe(2);
 		});
-
 	});
 
 	describe('.filterValues method', () => {
-
 		it('should filter values', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<any>>(BB);
@@ -471,36 +449,31 @@ describe('Registry', () => {
 			expect(filteredConfigs['plugin.test.bar']).toBe(10);
 			expect(Object.keys(filteredConfigs).length).toBe(2);
 		});
-
 	});
 
-
 	describe('.isValue method', () => {
-
 		it('should return true', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			expect((registry as any).isValue('foo')).toBe(true);
 		});
-
 	});
 
 	describe('.subscribe method', () => {
-
 		it('should successfully subscribe to a registry item', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<number>>(BB);
 
 			expect((registry as any).subscriptions.get('bar')).toBe(undefined);
 
-			registry.subscribe('bar', (value) => {
+			registry.subscribe('bar', value => {
 				expect(value).toBe(10);
 			});
 
 			expect((registry as any).subscriptions.get('bar').size).toBe(1);
 
-			registry.subscribe('bar', (value) => {
+			registry.subscribe('bar', value => {
 				expect(value).toBe(10);
 			});
 
@@ -515,7 +488,7 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<number>>(BB);
 
-			registry.subscribe('bar', (value) => {
+			registry.subscribe('bar', value => {
 				expect(value).toBe(10);
 			});
 
@@ -523,16 +496,16 @@ describe('Registry', () => {
 			registry.setValue('bar', 10);
 			registry.setValue('baz', 15);
 		});
-
 	});
 
 	describe('.unsubscribe method', () => {
-
 		it('should successfully unsubscribe a config by subId', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<number>>(BB);
 
-			const subId = registry.subscribe('bar', () => { return; });
+			const subId = registry.subscribe('bar', () => {
+				return;
+			});
 
 			expect((registry as any).subscriptions.get('bar').get(subId)).toBeTruthy();
 
@@ -546,7 +519,9 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<number>>(BB);
 
 			// tslint:disable-next-line
-			expect(() => registry.unsubscribe('foo', 'bar')).toThrow('Could not unsubscribe from a registry item. Reason: No subsciptions for item with key "foo" registered.');
+			expect(() => registry.unsubscribe('foo', 'bar')).toThrow(
+				'Could not unsubscribe from a registry item. Reason: No subsciptions for item with key "foo" registered.'
+			);
 		});
 
 		it('should throw an error for unknown subscription ID', async () => {
@@ -554,32 +529,36 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
-			registry.subscribe('foo', () => { return; });
+			registry.subscribe('foo', () => {
+				return;
+			});
 
 			// tslint:disable-next-line
-			expect(() => registry.unsubscribe('foo', '123')).toThrow('Could not unsubscribe from a registry item. Reason: No subscription with id "123" registered.');
+			expect(() => registry.unsubscribe('foo', '123')).toThrow(
+				'Could not unsubscribe from a registry item. Reason: No subscription with id "123" registered.'
+			);
 		});
-
 	});
 
 	describe('.createItem method', () => {
-
 		it('should successfully create a new item', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<number>>(BB);
 
-			expect((registry as any).createItem('foo', { value: 5 })).toMatchObject({ key: 'foo', value: 5 });
+			expect((registry as any).createItem('foo', { value: 5 })).toMatchObject({
+				key: 'foo',
+				value: 5,
+			});
 		});
-
 
 		it('should throw an error unknown item input', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<number>>(BB);
 
-			expect(() => (registry as any).createItem('foo', 'bar'))
-			.toThrowError('Could not set item. Reason: Unknown item type.');
+			expect(() => (registry as any).createItem('foo', 'bar')).toThrowError(
+				'Could not set item. Reason: Unknown item type.'
+			);
 		});
-
 	});
 
 	// describe.only('.createUniqueSubscriptionId method', () => {
@@ -599,6 +578,4 @@ describe('Registry', () => {
 	// 	});
 
 	// });
-
-
 });

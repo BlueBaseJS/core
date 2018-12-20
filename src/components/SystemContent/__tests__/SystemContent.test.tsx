@@ -1,17 +1,17 @@
+import { BlueBaseApp } from '../../BlueBaseApp';
 import React from 'react';
 import { SystemContent } from '../SystemContent';
 import TestRenderer from 'react-test-renderer';
-import WithProvider from '../../../testing/helpers/WithProvider';
 
-beforeEach(() => {
-	jest.resetModules();
-});
+// beforeEach(() => {
+// 	jest.resetModules();
+// });
 
 describe('SystemContent', () => {
 	const SystemContentWithProvider = (props: any) => (
-		<WithProvider>
+		<BlueBaseApp>
 			<SystemContent {...props} />
-		</WithProvider>
+		</BlueBaseApp>
 	);
 
 	test(`Snapshot SystemContent component`, () => {

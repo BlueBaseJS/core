@@ -4,11 +4,8 @@ import { PluginRegistry } from '../PluginRegistry';
 import { createBlueBaseModule } from '../../utils';
 
 describe.only('PluginRegistry', () => {
-
 	describe('.register method', () => {
-
 		it('should register a Plugin', async () => {
-
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
@@ -24,7 +21,6 @@ describe.only('PluginRegistry', () => {
 		});
 
 		it('should register a Plugin with auto generated slug', async () => {
-
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
@@ -46,14 +42,12 @@ describe.only('PluginRegistry', () => {
 
 			await Plugins.register({
 				__esModule: true,
-				default:
-				{
+				default: {
 					key: 'dummy-plugin',
 					name: 'Dummy Plugin',
 					value: {},
-				}
+				},
 			} as any);
-
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -66,12 +60,11 @@ describe.only('PluginRegistry', () => {
 
 			await Plugins.register(Promise.resolve({
 				__esModule: true,
-				default:
-				{
+				default: {
 					key: 'dummy-plugin',
 					name: 'Dummy Plugin',
 					value: {},
-				}
+				},
 			}) as any);
 
 			const item = Plugins.get('dummy-plugin');
@@ -85,14 +78,12 @@ describe.only('PluginRegistry', () => {
 
 			await Plugins.register(createBlueBaseModule({
 				__esModule: true,
-				default:
-				{
+				default: {
 					key: 'dummy-plugin',
 					name: 'Dummy Plugin',
 					value: {},
-				}
+				},
 			}) as any);
-
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -108,7 +99,6 @@ describe.only('PluginRegistry', () => {
 				name: 'Dummy Plugin',
 				value: {},
 			}) as any);
-
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -146,8 +136,7 @@ describe.only('PluginRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message)
-				.toBe('Could not register item. Reason: No item given.');
+			expect(message).toBe('Could not register item. Reason: No item given.');
 		});
 
 		it('should throw an error if empty object is registered', async () => {
@@ -194,16 +183,14 @@ describe.only('PluginRegistry', () => {
 
 			expect(message).toBeTruthy();
 		});
-
 	});
 
 	describe('.resolve method', () => {
-
 		it('should resolve a merged plugin with default properties', async () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register('foo', { enabled: false, value: { } });
+			await Plugins.register('foo', { enabled: false, value: {} });
 
 			const plugin = await Plugins.resolve('foo');
 
@@ -223,18 +210,14 @@ describe.only('PluginRegistry', () => {
 				expect(error.message).toBe('Could not resolve any of the following plugins: [foo].');
 			}
 		});
-
-
 	});
 
-
 	describe('.hasConfig method', () => {
-
 		it('should return true, becuase config is has a default value in plugin', async () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register('foo', { defaultConfigs: { 'some.config': true }, value: { } });
+			await Plugins.register('foo', { defaultConfigs: { 'some.config': true }, value: {} });
 
 			expect(Plugins.hasConfig('foo', 'some.config')).toBe(true);
 		});
@@ -243,7 +226,7 @@ describe.only('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register('foo', { defaultConfigs: { 'some.config': true }, value: { } });
+			await Plugins.register('foo', { defaultConfigs: { 'some.config': true }, value: {} });
 
 			expect(Plugins.hasConfig('foo', 'plugin.foo.xyz')).toBe(true);
 		});
@@ -252,7 +235,7 @@ describe.only('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register('foo', { defaultConfigs: { 'some.config': true }, value: { } });
+			await Plugins.register('foo', { defaultConfigs: { 'some.config': true }, value: {} });
 
 			expect(Plugins.hasConfig('foo', 'other.config')).toBe(false);
 		});
@@ -264,20 +247,19 @@ describe.only('PluginRegistry', () => {
 			try {
 				Plugins.hasConfig('foo', 'other.config');
 			} catch (error) {
-				expect(error.message).toBe('Could not check config for a plugin. Reason: No plugin registered by key "foo".');
+				expect(error.message).toBe(
+					'Could not check config for a plugin. Reason: No plugin registered by key "foo".'
+				);
 			}
 		});
-
-
 	});
 
 	describe('.isEnabled method', () => {
-
 		it('should return false', async () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register('foo', { enabled: false, value: { } });
+			await Plugins.register('foo', { enabled: false, value: {} });
 
 			expect(Plugins.isEnabled('foo')).toBe(false);
 		});
@@ -286,12 +268,10 @@ describe.only('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register('foo', { enabled: true, value: { } });
+			await Plugins.register('foo', { enabled: true, value: {} });
 
 			expect(Plugins.isEnabled('foo')).toBe(true);
 		});
-
-
 
 		it('should throw an error when trying to check an unknown plugin', async () => {
 			const BB = new BlueBase();
@@ -300,19 +280,19 @@ describe.only('PluginRegistry', () => {
 			try {
 				Plugins.isEnabled('foo');
 			} catch (e) {
-				expect(e.message).toBe('Could not check if plugin is enabled. Reason: No plugin registered by key "foo".');
+				expect(e.message).toBe(
+					'Could not check if plugin is enabled. Reason: No plugin registered by key "foo".'
+				);
 			}
 		});
-
 	});
 
 	describe('.enable/.disable method', () => {
-
 		it('should enable and disable plugins', async () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register('foo', { enabled: false, value: { } });
+			await Plugins.register('foo', { enabled: false, value: {} });
 
 			Plugins.enable('foo');
 			expect(Plugins.isEnabled('foo')).toBe(true);
@@ -328,7 +308,9 @@ describe.only('PluginRegistry', () => {
 			try {
 				Plugins.enable('foo');
 			} catch (e) {
-				expect(e.message).toBe('Could not enable plugin. Reason: No plugin registered by key "foo".');
+				expect(e.message).toBe(
+					'Could not enable plugin. Reason: No plugin registered by key "foo".'
+				);
 			}
 		});
 
@@ -339,15 +321,14 @@ describe.only('PluginRegistry', () => {
 			try {
 				Plugins.disable('foo');
 			} catch (e) {
-				expect(e.message).toBe('Could not disable plugin. Reason: No plugin registered by key "foo".');
+				expect(e.message).toBe(
+					'Could not disable plugin. Reason: No plugin registered by key "foo".'
+				);
 			}
 		});
-
-
 	});
 
 	describe('.delete method', () => {
-
 		it('should unregister a Plugin', async () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
@@ -358,7 +339,6 @@ describe.only('PluginRegistry', () => {
 				value: {},
 			});
 
-
 			const item = Plugins.get('dummy-plugin');
 
 			expect((item as any).name).toBe('Dummy Plugin');
@@ -368,11 +348,9 @@ describe.only('PluginRegistry', () => {
 			const plugin = Plugins.get('dummy-plugin');
 			expect(plugin).toBe(undefined);
 		});
-
 	});
 
 	describe('.isInputValue method', () => {
-
 		it('should return true if input is a BlueBaseModule', async () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
@@ -393,9 +371,7 @@ describe.only('PluginRegistry', () => {
 
 			expect((Plugins as any).isInputValue('foo')).toBe(false);
 		});
-
 	});
-
 
 	// describe('Initialization', () => {
 
@@ -503,7 +479,6 @@ describe.only('PluginRegistry', () => {
 
 	// });
 
-
 	// describe('.disable method', () => {
 
 	// 	it('should disable plugin', async () => {
@@ -527,7 +502,6 @@ describe.only('PluginRegistry', () => {
 	// 	});
 
 	// });
-
 
 	// describe('.enable method', () => {
 
@@ -553,9 +527,6 @@ describe.only('PluginRegistry', () => {
 	// 	});
 
 	// });
-
-
-
 
 	// describe('.getFromSlugOrPlugin method', () => {
 
@@ -591,5 +562,4 @@ describe.only('PluginRegistry', () => {
 	// 	});
 
 	// });
-
 });

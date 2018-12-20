@@ -34,7 +34,11 @@ export const DEFAULT_HOOK_PRIORITY = 10;
  *
  * @returns Orinal or mutates version of input value. May be a promise that resolves the value.
  */
-export type HookHandlerFn<T = any> = (value: T, args: { [key: string]: any }, BB: BlueBase) => T | Promise<T>;
+export type HookHandlerFn<T = any> = (
+	value: T,
+	args: { [key: string]: any },
+	BB: BlueBase
+) => T | Promise<T>;
 
 export interface HookRegistryItemExtras {
 	/**
@@ -49,12 +53,11 @@ export interface HookRegistryItemExtras {
 	 */
 	event: string;
 
-	[key: string]: any,
+	[key: string]: any;
 }
 
 export type HookRegistryItem = BlueBaseModuleRegistryItem<HookHandlerFn> & HookRegistryItemExtras;
 export interface HookRegistryInputItem extends BlueBaseModuleRegistryInputItem<HookHandlerFn> {
-
 	/**
 	 * ID of event to subscribe to
 	 */
@@ -69,20 +72,17 @@ export type HookInput = HookRegistryInputItem;
 
 export type HookInputCollection = ItemCollection<HookInput>;
 
-
 ///////// Nested Collection
 
-export type HookInputNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn>
- = MaybeThunk<{ [event: string]: MaybeArray<MaybeBlueBaseModule<T>> }>;
-
+export type HookInputNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn> = MaybeThunk<{
+	[event: string]: MaybeArray<MaybeBlueBaseModule<T>>;
+}>;
 
 /**
  * 🎣 HookRegistry
  */
 export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
-
-	public async registerNestedCollection(collections: HookInputNestedCollection) {
-
+	public async registerNestedCollection(collections: HookInputNestedCollection = {}) {
 		// If hooks field is a thunk, then call the thunk function
 		collections = resolveThunk(collections, this.BB);
 
@@ -91,12 +91,10 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 
 		// Iterate over each hook name
 		for (const eventName of eventNames) {
-
 			// Extract collection for each event
 			const singleCollection = getDefiniteArray(collections[eventName]);
 
 			for (let item of singleCollection) {
-
 				// Make sure item is resolved if its a promise
 				item = await getDefiniteBlueBaseModule(item);
 
@@ -108,13 +106,12 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 
 				const newItem: HookRegistryInputItem = { event: eventName, ...item } as any;
 
-				if (!this.isInputItem(newItem)){
+				if (!this.isInputItem(newItem)) {
 					throw Error(`Could not register Hook. Reason: Input is not a hook item.`);
 				}
 
 				await this.register(newItem);
 			}
-
 		}
 	}
 
@@ -141,8 +138,11 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 	 * @param value Initial value to send to the hook
 	 * @param args Any extra arguments to pass to the hook
 	 */
-	public async run<T = any>(eventName: string, initialValue: T, args: { [key: string]: any } = {}): Promise<T> {
-
+	public async run<T = any>(
+		eventName: string,
+		initialValue: T,
+		args: { [key: string]: any } = {}
+	): Promise<T> {
 		let value = initialValue;
 
 		// Get all hook items registered for this event
@@ -158,13 +158,14 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 
 		// Run waterfall
 		for (const item of hookItems) {
-
 			// Resolve handler functions
 			const handler = await item.value;
 
 			// Check if handler is a valid function
 			if (!isFunction(handler)) {
-				throw Error(`Handler of HookListener "${item.key}" in hook "${eventName}" is not a function.`);
+				throw Error(
+					`Handler of HookListener "${item.key}" in hook "${eventName}" is not a function.`
+				);
 			}
 
 			// Execute hook function
@@ -172,13 +173,14 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 
 			// If the hook didn't return any value, return previous accumulator
 			if (typeof result === 'undefined' && typeof initialValue !== 'undefined') {
-
 				// if result of current iteration is undefined, don't pass it on
-				this.BB.Logger.warn(`HookListener "${item.key}" in hook "${eventName}" did not return a result.`, item);
+				this.BB.Logger.warn(
+					`HookListener "${item.key}" in hook "${eventName}" did not return a result.`,
+					item
+				);
 			} else {
 				value = result;
 			}
-
 		}
 
 		return value;
@@ -201,11 +203,9 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 	}
 
 	protected createItem(key: string, partial: any): HookRegistryItem {
-
 		return super.createItem(key, {
 			priority: DEFAULT_HOOK_PRIORITY,
 			...partial,
 		});
 	}
-
 }

@@ -3,12 +3,12 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
+import { ComponentStyles, applyStyles } from '../themes';
 import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
 import { BlueBase } from '../BlueBase';
-import { ComponentStyles, applyStyles } from '../models';
 import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
-import { ReactLoadableLoading } from '../components';
+import { ReactLoadableLoading } from '../components/';
 import flowRight from 'lodash.flowright';
 
 /**
@@ -22,30 +22,32 @@ export type ComponentRegistryHocItemWithArgs<T = any> = [Thunk<ComponentRegistry
  * Source of this component. Contains information about who registered this component.
  */
 export interface ComponentSource {
-	type: 'plugin' | 'api' | 'custom',
-	slug: string,
+	type: 'plugin' | 'api' | 'custom';
+	slug: string;
 }
 
 interface ComponentRegistryItemExtras {
-	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>,
-	source: ComponentSource,
-	styles: MaybeThunk<ComponentStyles>,
-	isAsync: boolean,
+	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>;
+	source: ComponentSource;
+	styles: MaybeThunk<ComponentStyles>;
+	isAsync: boolean;
 }
 
-export type ComponentRegistryItem =
-	BlueBaseModuleRegistryItem<React.ComponentType<any>> & ComponentRegistryItemExtras;
+export type ComponentRegistryItem = BlueBaseModuleRegistryItem<React.ComponentType<any>> &
+	ComponentRegistryItemExtras;
 
-export type ComponentRegistryInputItem =
-	BlueBaseModuleRegistryInputItem<React.ComponentType<any>> & Partial<ComponentRegistryItemExtras>;
+export type ComponentRegistryInputItem = BlueBaseModuleRegistryInputItem<React.ComponentType<any>> &
+	Partial<ComponentRegistryItemExtras>;
 
 export type ComponentInputCollection = ItemCollection<ComponentRegistryInputItem>;
 
 /**
  * 🎁 ComponentRegistry
  */
-export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryItem, ComponentRegistryInputItem> {
-
+export class ComponentRegistry extends BlueBaseModuleRegistry<
+	ComponentRegistryItem,
+	ComponentRegistryInputItem
+> {
 	// For proxy methods
 	[key: string]: any;
 
@@ -55,20 +57,21 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 		// Create proxy to enable BB.Components.Name method
 		return new Proxy(this, {
 			get: (target, name, value) => {
-				if (typeof name === 'string' && typeof (this[name]) === 'undefined') {
+				if (typeof name === 'string' && typeof this[name] === 'undefined') {
 					if (this.has(name)) {
 						return this.resolve(name);
 					}
-					throw Error(`BlueBase could not find "${name}" component. Did you forget to register it?`);
+					throw Error(
+						`BlueBase could not find "${name}" component. Did you forget to register it?`
+					);
 				}
 
 				return Reflect.get(target, name, value);
-			}
+			},
 		});
 	}
 
 	public resolve(...keys: string[]): React.ComponentType<any> {
-
 		const item = this.findOne(...keys);
 
 		if (!item) {
@@ -76,17 +79,13 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 		}
 
 		let rawComponent = item.value.isAsync
-			? Loadable({
-				loader: () => item.value,
-				loading: ReactLoadableLoading,
-			})
-			: item.value.module as React.ComponentType<any>;
+			? Loadable({ loader: () => item.value, loading: ReactLoadableLoading })
+			: (item.value.module as React.ComponentType<any>);
 
 		// Add withStyles HOC
 		rawComponent = applyStyles(item.key, rawComponent, item.styles);
 
-		const hocs = item.hocs
-			.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
+		const hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		return flowRight([...hocs])(rawComponent);
 	}
@@ -96,17 +95,17 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 	 * @param {string} key The name of the registered component to whom hocs are to added
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 */
-	addHocs(key: string, ...hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>) {
-
+	addHocs(
+		key: string,
+		...hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>
+	) {
 		const item = super.get(key);
 
 		if (!item) {
-			throw Error(
-				`Could not add hocs for "${key}" component. Reason: Component not found.`
-			);
+			throw Error(`Could not add hocs for "${key}" component. Reason: Component not found.`);
 		}
 
-		this.set(key, { ...item, hocs, });
+		this.set(key, { ...item, hocs });
 	}
 
 	// public removeHocs() {
@@ -118,9 +117,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 		const item = this.get(key);
 
 		if (!item) {
-			throw Error(
-				`Cannot set styles "${key}" component. Reason: Component not found.`
-			);
+			throw Error(`Cannot set styles "${key}" component. Reason: Component not found.`);
 		}
 
 		item.styles = styles;
@@ -140,7 +137,6 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 	}
 
 	protected createItem(key: string, partial: any): ComponentRegistryItem {
-
 		const value = getDefiniteBlueBaseModule(partial.value);
 
 		return super.createItem(key, {
@@ -159,5 +155,4 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<ComponentRegistryI
 	protected isInputValue(value: any): value is ComponentRegistryInputItem['value'] {
 		return isBlueBaseModule(value) || typeof value === 'function';
 	}
-
 }

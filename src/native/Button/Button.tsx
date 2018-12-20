@@ -1,112 +1,172 @@
 import {
 	Platform,
 	Text,
+	TextStyle,
 	TouchableNativeFeedback,
 	TouchableOpacity,
-	View
+	View,
+	ViewStyle,
 } from 'react-native';
 import React from 'react';
-import { styles } from './styles';
+import { Theme } from '../../registries';
 
-export type ButtonProps = {
+export interface ButtonStyles {
+	root: ViewStyle,
+	primary: ViewStyle,
+	secondary: ViewStyle,
+	default: ViewStyle,
+	link: ViewStyle,
+	fullWidth: ViewStyle,
+	text: TextStyle,
+	primaryText: TextStyle,
+	secondaryText: TextStyle,
+	defaultText: TextStyle,
+	linkText: TextStyle,
+}
+
+export interface ButtonProps {
+
+	/* Label to be passed as child. */
+	children?: React.ReactNode;
+
+	/* Color prop of type enum. */
+	color?:
+		| 'primary'
+		| 'secondary'
+		| 'link'
+		| 'default';
+
+	/**
+	 * Callback function fired when button is pressed.
+	 */
+	onPress?: (event?: any) => any;
+
+	/**
+	 * If true, renders a disabled button.
+	 */
+	disabled?: boolean;
+
+	/**
+	 * If true, button is generated with 100% width of the container.
+	 */
+	fullWidth?: boolean;
+
+	/**
+	 * If true, shows active state of the button.
+	 */
+	active?: boolean;
+
+	/**
+	 * The size of the button.
+	 */
+	size?: 'small' | 'medium' | 'large';
+
+	/**
+	 * Button Styles
+	 */
+	styles?: ButtonStyles,
+
   /**
-   * Text to display inside the button
+   * Used to locate this view in end-to-end tests.
    */
-	children: React.ReactNode,
-
-	/**
-	 * Handler to be called when the user taps the button
-	 */
-	onPress: (event?: any) => any,
-
-	/**
-	 * Color of the text (iOS), or background color of the button (Android)
-	 */
-	color?: string,
-
-	/**
-	 * TV preferred focus (see documentation for the View component).
-	 */
-	hasTVPreferredFocus?: boolean,
-
-	/**
-	 * Text to display for blindness accessibility features
-	 */
-	accessibilityLabel?: string,
-
-	/**
-	 * If true, disable all interactions for this component.
-	 */
-	disabled?: boolean,
-
-	/**
-	 * Used to locate this view in end-to-end tests.
-	 */
 	testID?: string,
-};
+
+	[key: string]: any;
+}
 
 /**
  * A basic button component that should render nicely on any platform. Supports
  * a minimal level of customization.
- *
- * If this button doesn't look right for your app, you can build your own
- * button using [TouchableOpacity](docs/touchableopacity.html)
- * or [TouchableNativeFeedback](docs/touchablenativefeedback.html).
- *
- * Example usage:
- *
- * ```
- * import { Button } from 'react-native';
- * ...
- *
- * <Button
- *   onPress={onPressLearnMore}
- *   color="#841584"
- *   accessibilityLabel="Learn more about this purple button"
- * />
- * Learn More
- * </Button>
- * ```
- *
  */
 
 export class Button extends React.Component<ButtonProps> {
+
+	static defaultStyles = (theme: Theme) => ({
+		default: {
+			backgroundColor: theme.palette.background.default,
+		},
+		defaultText: {},
+		fullWidth: {
+			alignSelf: 'stretch',
+		},
+		link: {},
+		linkText: {},
+		primary: {
+			backgroundColor: theme.palette.primary.main,
+		},
+		primaryText: {
+			color: theme.palette.primary.contrastText,
+		},
+		root: {
+			alignSelf: 'flex-start',
+			borderRadius: theme.shape.borderRadius,
+			paddingBottom: theme.spacing.unit,
+			paddingLeft: theme.spacing.unit * 2,
+			paddingRight: theme.spacing.unit * 2,
+			paddingTop: theme.spacing.unit,
+		},
+		secondary: {
+			backgroundColor: theme.palette.secondary.main,
+		},
+		secondaryText: {
+			color: theme.palette.secondary.contrastText,
+		},
+		text: {
+			...theme.typography.button,
+			textAlign: 'center',
+		},
+	})
+
 	render() {
 		const {
-			accessibilityLabel,
-			color,
+			color = 'default',
 			onPress,
 			children,
 			disabled,
+			fullWidth,
+			// active,
+			// size,
 			testID,
 		} = this.props;
-		const buttonStyles: any[] = [styles.button];
-		const textStyles: any[] = [styles.text];
-		if (color) {
-			if (Platform.OS === 'ios') {
-				textStyles.push({ color: color });
-			} else {
-				buttonStyles.push({ backgroundColor: color });
-			}
+
+		const styles = this.props.styles as ButtonStyles;
+
+		const rootStyles: ViewStyle[] = [styles.root];
+		const textStyles: TextStyle[] = [styles.text];
+
+		if (color === 'default') {
+			rootStyles.push(styles.default);
+			textStyles.push(styles.defaultText);
 		}
-		const accessibilityStates: any = [];
-		if (disabled) {
-			buttonStyles.push(styles.buttonDisabled);
-			textStyles.push(styles.textDisabled);
-			accessibilityStates.push('disabled');
+
+		if (color === 'primary') {
+			rootStyles.push(styles.primary);
+			textStyles.push(styles.primaryText);
 		}
-		const Touchable =
+
+		if (color === 'secondary') {
+			rootStyles.push(styles.secondary);
+			textStyles.push(styles.secondaryText);
+		}
+
+		if (color === 'link') {
+			rootStyles.push(styles.link);
+			textStyles.push(styles.linkText);
+		}
+
+		if (fullWidth === true) {
+			rootStyles.push(styles.fullWidth);
+		}
+
+		const Touchable: React.ComponentType<any> =
 			Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
 		return (
 			<Touchable
-				accessibilityLabel={accessibilityLabel}
 				accessibilityRole="button"
-				accessibilityStates={accessibilityStates}
-				testID={testID}
 				disabled={disabled}
 				onPress={onPress}
 			>
-				<View style={buttonStyles}>
+				<View style={rootStyles} testID={testID} >
 					{typeof children === 'string'
 						? <Text style={textStyles}>{children}</Text>
 						: children
