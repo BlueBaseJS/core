@@ -1,4 +1,4 @@
-import { BlueBase, BlueBaseConsumer } from '../../../';
+import { ComponentState, Image } from '../../../index';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
@@ -6,98 +6,64 @@ storiesOf('ComponentState', module)
 
 
 	.add('Everything', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.ComponentState
-					title="Error!"
-					description="A unknown error occured!"
-					imageSource="https://picsum.photos/200"
-					styles={{ image: { width: 100, height: 100 } }}
-					actionTitle="Retry"
-				/>
-			)}
-		</BlueBaseConsumer>
+		<ComponentState
+			title="Error!"
+			description="A unknown error occured!"
+			imageSource="https://picsum.photos/200"
+			styles={{ image: { width: 100, height: 100 } }}
+			actionTitle="Retry"
+		/>
 	))
 
 	.add('Only title', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => <BB.Components.ComponentState title="A simple state" />}
-		</BlueBaseConsumer>
+		<ComponentState title="A simple state" />
 	))
 
 	.add('Title with custom styles', () => (
-	<BlueBaseConsumer>
-		{(BB: BlueBase) => (
-			<BB.Components.ComponentState
-				title="A simple state"
-				styles={{ title: { color: 'green', fontSize: 20 } }}
-			/>
-		)}
-		</BlueBaseConsumer>
+		<ComponentState
+			title="A simple state"
+			styles={{ title: { color: 'green', fontSize: 20 } }}
+		/>
 	))
 
 	.add('Only description', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => (
-			<BB.Components.ComponentState description="A simple description" />
-		)}
-		</BlueBaseConsumer>
+		<ComponentState description="A simple description" />
 	))
 
 
 	.add('Description with custom styles', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => (
-			<BB.Components.ComponentState
-				description="A simple description"
-				styles={{ description: { color: 'green', fontSize: 20 } }}
-			/>
-		)}
-		</BlueBaseConsumer>
+		<ComponentState
+			description="A simple description"
+			styles={{ description: { color: 'green', fontSize: 20 } }}
+		/>
 	))
 
 
 	.add('Only action title', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => (
-			<BB.Components.ComponentState actionTitle="Bluerain" />
-		)}
-		</BlueBaseConsumer>
+		<ComponentState actionTitle="Bluerain" />
 	))
 
-	.add('Action button with onPress listener', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => {
-			const Handler = () => console.log('clicked');
+	.add('Action button with onPress listener', () => {
+		const Handler = () => console.log('clicked');
 
-			return(
-				<BB.Components.ComponentState
-					actionTitle="Bluerain"
-					actionOnPress={Handler}
-				/>
-			);
-		}}
-		</BlueBaseConsumer>
-	))
+		return(
+			<ComponentState
+				actionTitle="Bluerain"
+				actionOnPress={Handler}
+			/>
+		);
+	})
 
-	.add('Image with custom image component', () => (
-		<BlueBaseConsumer>
-		{(BB: BlueBase) => {
-			// tslint:disable-next-line:max-line-length
-			const ImageComponent = <BB.Components.Image source={{ uri: 'https://picsum.photos/200' }} style={{ width: 200, height: 200 }} />;
-			return (<BB.Components.ComponentState image={ImageComponent} />);
-		}}
-		</BlueBaseConsumer>
-	))
+	.add('Image with custom image component', () => {
+		// tslint:disable-next-line:max-line-length
+		const ImageComponent = <Image source={{ uri: 'https://picsum.photos/200' }} style={{ width: 200, height: 200 }} />;
+		return (<ComponentState image={ImageComponent} />);
+	})
 
 
 	.add('Image with source path', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.ComponentState
-					imageSource="https://picsum.photos/200/200/?random"
-					styles={{ image: { width: 100, height: 100 } }}
-				/>
-			)}
-		</BlueBaseConsumer>
+		<ComponentState
+			imageSource="https://picsum.photos/200/200/?random"
+			styles={{ image: { width: 100, height: 100 } }}
+		/>
 	));
