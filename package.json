@@ -1,192 +1,135 @@
 {
-	"name": "@blueeast/bluerain-os",
-	"version": "0.0.0-development",
-	"description": "A browser based OS, made with React JS",
-	"keywords": [],
-	"main": "dist/index.js",
-	"typings": "types/index.d.ts",
-	"files": [
-		"dist",
-		"types"
-	],
-	"author": "BlueEast Team <code@blueeast.com>",
-	"release": {
-		"branch": "master",
-		"dryRun": false,
-		"debug": true
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/BlueEastCode/bluerain-os.git"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": ">=6.0.0"
-	},
-	"scripts": {
-		"storybook": "start-storybook -p 6006",
-		"storybook-native": "storybook start -p 7007",
-		"prestorybook-native": "rnstl",
-		"build-storybook": "build-storybook",
-		"lint": "tslint -t codeFrame 'src/**/*.ts' 'src/**/*.tsx'",
-		"prebuild": "rimraf dist",
-		"build": "tsc && babel -D compiled --out-dir dist --copy-files",
-		"postbuild": "rimraf compiled && yarn run size",
-		"build:prod:exclude": "ts-node tools/production-package-exclude",
-		"size": "size-limit",
-		"watch": "tsc -w",
-		"start": "bluerain run web",
-		"test": "jest",
-		"test:watch": "jest --watch",
-		"test:prod": "npm run lint && npm run test -- --coverage --no-cache --maxWorkers=4",
-		"deploy-docs": "ts-node tools/gh-pages-publish",
-		"docs": "documentation readme src/** --section=API",
-		"report-coverage": "cat ./coverage/lcov.info | coveralls && codecov",
-		"commit": "git-cz",
-		"semantic-release": "semantic-release",
-		"precommit": "lint-staged",
-		"travis-deploy-once": "travis-deploy-once"
-	},
-	"lint-staged": {
-		"{src,test}/**/*.ts": [
-			"prettier --write --use-tabs --single-quote",
-			"git add"
-		]
-	},
-	"config": {
-		"commitizen": {
-			"path": "node_modules/cz-conventional-changelog"
-		},
-		"validate-commit-msg": {
-			"types": "conventional-commit-types",
-			"helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
-		},
-		"react-native-storybook-loader": {
-			"searchDir": [
-				"./src"
-			],
-			"pattern": "**/*.stories.tsx",
-			"outputFile": "./storybook/storyLoader.tsx"
-		}
-	},
-	"jest": {
-		"testURL": "http://localhost/",
-		"transform": {
-			".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-		},
-		"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-		"moduleFileExtensions": [
-			"ts",
-			"tsx",
-			"js"
-		],
-		"coveragePathIgnorePatterns": [
-			"/node_modules/",
-			"/test/"
-		],
-		"coverageThreshold": {
-			"global": {
-				"branches": 71,
-				"functions": 77,
-				"lines": 80,
-				"statements": 80
-			}
-		},
-		"collectCoverage": true,
-		"mapCoverage": true
-	},
-	"size-limit": [
-		{
-			"limit": "5.07 KB",
-			"webpack": false,
-			"path": "dist/*.js"
-		}
-	],
-	"dependencies": {
-		"@blueeast/bluerain-ui-interfaces": "^3.2.12",
-		"@blueeast/proxy-polyfill": "^0.1.9",
-		"babel-polyfill": "^6.26.0",
-		"create-react-context": "^0.2.1",
-		"deepmerge": "^2.0.1",
-		"eventemitter3": "^3.1.0",
-		"immutable": "^3.8.2",
-		"lodash.flowright": "^3.5.0",
-		"lodash.get": "^4.4.2",
-		"lodash.isboolean": "^3.0.3",
-		"lodash.isnil": "^4.0.0",
-		"lodash.kebabcase": "^4.1.1",
-		"lodash.set": "^4.3.2",
-		"prop-types": "^15.6.0",
-		"react-dom-factories": "^1.0.2",
-		"recompose": "^0.30.0"
-	},
-	"devDependencies": {
-		"@blueeast/bluerain-platform-reactxp": "^3.0.3",
-		"@blueeast/bluerain-plugin-react-router": "^1.1.2",
-		"@blueeast/bluerain-plugin-redux": "^0.6.4",
-		"@blueeast/bluerain-plugin-responsive-components": "^1.1.3",
-		"@blueeast/bluerain-storybook-addon": "^1.1.0",
-		"@blueeast/tslint-config-blueeast": "^0.5.6",
-		"@storybook/addon-actions": "^3.3.15",
-		"@storybook/addon-links": "^3.3.15",
-		"@storybook/react": "^3.3.15",
-		"@storybook/react-native": "^3.3.15",
-		"@types/deepmerge": "^2.2.0",
-		"@types/jest": "23.3.7",
-		"@types/lodash.flowright": "^3.5.3",
-		"@types/lodash.get": "^4.4.3",
-		"@types/lodash.isboolean": "^3.0.3",
-		"@types/lodash.isnil": "^4.0.3",
-		"@types/lodash.kebabcase": "^4.1.3",
-		"@types/lodash.merge": "^4.6.3",
-		"@types/lodash.set": "^4.3.3",
-		"@types/prop-types": "^15.5.2",
-		"@types/react": "^16.0.38",
-		"@types/react-dom-factories": "^1.0.0",
-		"@types/recompose": "^0.27.0",
-		"@types/storybook__react": "^3.0.6",
-		"awesome-typescript-loader": "^5.2.1",
-		"babel-cli": "^6.26.0",
-		"babel-preset-env": "^1.6.1",
-		"babel-preset-react": "^6.24.1",
-		"babel-preset-stage-0": "^6.24.1",
-		"codecov": "^3.0.0",
-		"colors": "^1.1.2",
-		"commitizen": "^3.0.4",
-		"coveralls": "^3.0.0",
-		"cross-env": "^5.0.1",
-		"cz-conventional-changelog": "^2.0.0",
-		"enzyme": "^3.3.0",
-		"enzyme-adapter-react-16": "^1.1.1",
-		"husky": "^1.1.2",
-		"jest": "23.6.0",
-		"jest-cli": "23.6.0",
-		"lint-staged": "^7.0.0",
-		"lodash.camelcase": "^4.3.0",
-		"prettier": "^1.4.4",
-		"prompt": "^1.0.0",
-		"prop-types": "^15.6.0",
-		"react": "^16.2.0",
-		"react-addons-test-utils": "^15.6.2",
-		"react-dom": "^16.2.0",
-		"react-native-storybook-loader": "^1.7.0",
-		"react-native-typescript-transformer": "^1.2.3",
-		"react-redux": "^5.0.6",
-		"react-test-render": "^1.1.1",
-		"redux-mock-store": "^1.3.0",
-		"replace-in-file": "^3.0.0-beta.2",
-		"rimraf": "^2.6.1",
-		"semantic-release": "^15.1.7",
-		"size-limit": "^0.20.1",
-		"travis-deploy-once": "^5.0.9",
-		"ts-jest": "23.10.4",
-		"ts-node": "^7.0.1",
-		"tslint": "^5.4.3",
-		"typedoc": "^0.13.0",
-		"typescript": "^3.1.3",
-		"validate-commit-msg": "^2.12.2"
-	},
-	"peerDependencies": {
-		"react": "^16.*"
-	}
+  "name": "@bluebase/core",
+  "description": "🚀 A modular, pluggable and cross platform app framework.",
+  "author": "BlueEast Team <code@blueeast.com>",
+  "version": "4.0.0-aplha.2",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
+  "module": "dist/src/index.js",
+  "repository": "https://github.com/BlueBaseJS/core",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "start": "DEBUG=*,-follow-redirects ts-node ./src/example",
+    "clean": "rimraf coverage dist tmp",
+    "watch": "tsc -w -p tsconfig.json",
+    "watch:test": "jest --watch",
+    "lint": "tslint -t stylish --project \"tsconfig.json\"",
+    "info": "npm-scripts-info",
+    "build": "run-s clean && run-p build:*",
+    "build:main": "tsc -p tsconfig.json",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"src/**/*.ts\" --write",
+    "fix:tslint": "tslint --fix --project .",
+    "test": "run-s build test:*",
+    "test:only": "jest --coverage",
+    "test:lint": "npm run lint",
+    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
+    "commit": "git-cz",
+    "report-coverage": "codecov",
+    "doc": "run-s doc:html && opn docs/index.html",
+    "doc:html": "typedoc src/ --target ES6 --mode file --out docs",
+    "doc:json": "typedoc src/ --target ES6 --mode file --json docs/typedoc.json",
+    "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d docs",
+    "version": "standard-version",
+    "reset": "git clean -dfx && git reset --hard && npm i",
+    "all": "run-s reset test cov:check doc:html",
+    "prepare-release": "run-s all version doc:publish",
+    "storybook:start": "bluerain storybook:start",
+    "storybook": "start-storybook -p 6006 --config-dir ./bluebase/storybook/configs",
+    "build-storybook": "build-storybook"
+  },
+  "scripts-info": {
+    "info": "Display information about the package scripts",
+    "build": "Clean and rebuild the project",
+    "fix": "Try to automatically fix any linting problems",
+    "test": "Lint and unit test the project",
+    "watch": "Watch and rebuild the project on save",
+    "cov": "Rebuild, run tests, then create and open the coverage report",
+    "doc": "Generate HTML API documentation and open it in a browser",
+    "doc:json": "Generate API documentation in typedoc JSON format",
+    "version": "Bump package.json version, update CHANGELOG.md, tag release",
+    "reset": "Delete all untracked files and reset the repo to the last commit",
+    "prepare-release": "One-step: clean, build, test, publish docs, and prep a release"
+  },
+  "engines": {
+    "node": ">=8.9"
+  },
+  "dependencies": {
+    "deepmerge": "^3.0.0",
+    "lodash.flowright": "^3.5.0",
+    "lodash.isboolean": "^3.0.3",
+    "lodash.isfunction": "^3.0.9",
+    "lodash.isnil": "^4.0.0",
+    "lodash.isstring": "^4.0.1",
+    "lodash.kebabcase": "^4.1.1",
+    "react-loadable": "^5.5.0",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@bluebase/storybook-addon": "^2.0.0",
+    "@blueeast/bluerain-cli-essentials": "^4.0.0-beta.2",
+    "@blueeast/tslint-config-blueeast": "^0.7.0",
+    "@storybook/addon-actions": "^4.1.2",
+    "@storybook/addon-console": "^1.0.8",
+    "@storybook/addon-links": "^4.1.2",
+    "@storybook/addon-viewport": "^3.4.11",
+    "@storybook/addons": "^4.1.2",
+    "@storybook/react": "^4.1.2",
+    "@types/deepmerge": "^2.2.0",
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/jest": "^23.3.8",
+    "@types/lodash.flowright": "^3.5.4",
+    "@types/lodash.isboolean": "^3.0.4",
+    "@types/lodash.isfunction": "^3.0.4",
+    "@types/lodash.isnil": "^4.0.4",
+    "@types/lodash.isstring": "^4.0.4",
+    "@types/lodash.kebabcase": "^4.1.4",
+    "@types/react": "^16.4.18",
+    "@types/react-loadable": "^5.4.1",
+    "@types/react-native": "^0.57.7",
+    "@types/react-test-renderer": "^16.0.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-native": "^4.0.1",
+    "codecov": "^3.0.2",
+    "commitizen": "^3.0.4",
+    "cz-conventional-changelog": "^2.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "gh-pages": "^2.0.1",
+    "jest": "^23.6.0",
+    "jest-enzyme": "^7.0.1",
+    "jsdom": "^13.1.0",
+    "npm-run-all": "^4.1.3",
+    "opn-cli": "^3.1.0",
+    "prettier": "^1.13.4",
+    "react": "^16.6.0",
+    "react-art": "^16.6.3",
+    "react-dom": "^16.6.0",
+    "react-native": "^0.57.4",
+    "react-native-web": "^0.9.9",
+    "react-test-renderer": "^16.6.1",
+    "schedule": "0.4.0",
+    "standard-version": "^4.4.0",
+    "trash-cli": "^1.4.0",
+    "ts-jest": "^23.10.0",
+    "ts-loader": "^5.3.0",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.12.0",
+    "typedoc": "^0.13.0",
+    "typescript": "3.2.2"
+  },
+  "peerDependencies": {
+    "react": "^16.*"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "useTabs": true,
+    "trailingComma": "es5"
+  }
 }

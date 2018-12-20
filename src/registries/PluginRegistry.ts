@@ -1,146 +1,172 @@
-import { BlueRain, Plugin } from '../index';
-import { EsModule, MaybeEsModule } from '../typings';
-import MapRegistry from './MapRegistry';
-import isNil from 'lodash.isnil';
-import kebabCase from 'lodash.kebabcase';
+import {
+	BlueBaseModuleRegistry,
+	BlueBaseModuleRegistryInputItem,
+	BlueBaseModuleRegistryItem,
+} from './BlueBaseModuleRegistry';
+import { MaybeThunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
+import { ComponentInputCollection } from './ComponentRegistry';
+import { DynamicIconProps } from '../components/';
+import { ItemCollection } from './Registry';
+
+export interface PluginValue {
+	components: ComponentInputCollection;
+	defaultConfigs: any; // ConfigsCollection;
+	hooks: any; // HookCollectionInput;
+	themes: any;
+}
+
+export type PluginValueInput = Partial<PluginValue>;
+
+export interface PluginRegistryItemExtras {
+	/**
+	 * Name of the plugin.
+	 *
+	 * We put it in meta so we can show the name in menu een without downloading
+	 * the whole plugin.
+	 */
+	name: string;
+
+	categories?: any; // PluginCategory | PluginCategory[];
+	description?: string;
+	version?: string;
+	icon?: MaybeThunk<DynamicIconProps>;
+
+	/** Is this plugin currently enabled/ */
+	enabled: boolean;
+
+	[key: string]: any;
+}
+
+export type PluginRegistryItem = BlueBaseModuleRegistryItem<PluginValue> & PluginRegistryItemExtras;
+export type PluginRegistryInputItem = BlueBaseModuleRegistryInputItem<PluginValueInput>;
+
+type ItemType = PluginRegistryItem;
+type ItemInputType = PluginRegistryInputItem;
+
+export type Plugin = PluginRegistryItemExtras & PluginValue;
+export type PluginInput = PluginRegistryInputItem;
+
+export type PluginInputCollection = ItemCollection<PluginInput>;
+
+export function inputToPlugin(plugin: PluginInput): Plugin {
+	const { value, ...rest } = plugin;
+
+	return {
+		components: {},
+		defaultConfigs: {},
+		enabled: true,
+		hooks: {},
+		name: 'Untitled Plugin',
+		themes: {},
+
+		...rest,
+		...value,
+	};
+}
 
 /**
- * All system plugins are stored in this registry
- * @property {Map<string, Plugin>} data Storage Map of all plugins
+ * 🔌 PluginRegistry
  */
-export default class PluginRegistry extends MapRegistry<Plugin> {
-	constructor(private BR: BlueRain) {
-		super('PluginRegistry');
+export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
+	public async resolve(...keys: string[]): Promise<Plugin> {
+		const item = this.findOne(...keys);
+
+		if (!item) {
+			throw Error(`Could not resolve any of the following plugins: [${keys.join(', ')}].`);
+		}
+
+		const input: PluginInput = { ...item, value: await item.value };
+
+		return inputToPlugin(input);
 	}
 
 	/**
-	 * Register an Plugin
-	 * @param {Plugin} plugin The BlueRain plugin to register
+	 * Checks if a plugin is enabled
+	 * @param key
 	 */
-	add(key: string, plugin: MaybeEsModule<Plugin>): void;
-	add(plugin: MaybeEsModule<Plugin>): void;
-	add(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
-		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
-		super.add(k, a);
-	}
+	public isEnabled(key: string) {
+		const item = this.get(key);
 
-	/**
-	 * Replace an item in the Registry.
-	 *
-	 * @param {string} key The key of the item
-	 * @param {any} item  The item to add
-	 */
-	set(key: string, plugin: MaybeEsModule<Plugin>): void;
-	set(plugin: MaybeEsModule<Plugin>): void;
-	set(key: string | MaybeEsModule<Plugin>, plugin?: MaybeEsModule<Plugin>) {
-		const { key: k, plugin: a } = this.getKeyAndItem(key, plugin);
-		this.data = this.data.set(k, a);
-	}
-
-	/**
-	 * Register many plugins at once
-	 * @param {Array<Plugin>} plugins The BlueRain plugins to register
-	 */
-	registerMany(plugins: Array<MaybeEsModule<Plugin>>) {
-		plugins = plugins || [];
-		if (!Array.isArray(plugins)) {
-			throw new Error(
-				'Plugins parameter while registering via "registerMany" method must be an array'
+		if (!item) {
+			throw Error(
+				`Could not check if plugin is enabled. Reason: No plugin registered by key "${key}".`
 			);
 		}
 
-		plugins.forEach(plugin => this.set(plugin));
+		return item.enabled;
 	}
 
 	/**
-	 * Initialize all the registered plugins
+	 * Enable a plugin
+	 * @param key
 	 */
-	initializeAll() {
-		this.data.forEach(plugin => {
-			if (!plugin) {
-				return;
-			}
+	public async enable(key: string) {
+		const item = this.get(key);
 
-			// Add hooks from the 'hooks' static property of plugin
-			if (plugin.hooks) {
-				Object.keys(plugin.hooks).forEach(hook => {
-					// Satisfy TS
-					if (!plugin || !plugin.hooks || !plugin.hooks[hook]) {
-						return;
-					}
+		if (!item) {
+			throw Error(`Could not enable plugin. Reason: No plugin registered by key "${key}".`);
+		}
 
-					this.BR.Hooks.set(hook, `${plugin.slug}.${hook}`, plugin.hooks[hook]);
-				});
-			}
+		item.enabled = true;
+		this.set(key, item);
+	}
 
-			// Add components from the 'components' static property of plugin
-			if (plugin.components) {
-				Object.keys(plugin.components).forEach(component => {
-					// Satisfy TS
-					if (!plugin || !plugin.components || !plugin.components[component]) {
-						return;
-					}
+	/**
+	 * Disable a plugin
+	 * @param key
+	 */
+	public async disable(key: string) {
+		const item = this.get(key);
 
-					this.BR.Components.set(component, plugin.components[component]);
-					this.BR.Components.setSource(component, {
-						type: 'plugin',
-						slug: this.createSlug(plugin)
-					});
-				});
-			}
+		if (!item) {
+			throw Error(`Could not disbale plugin. Reason: No plugin registered by key "${key}".`);
+		}
 
-			// If the plugin has an initialize methid, call it
-			if (plugin.initialize) {
-				const config = this.BR.Configs.get(`plugins.${plugin.slug}`);
-				plugin.config = config;
-				plugin.initialize(config, this.BR);
-			}
+		item.enabled = false;
+		this.set(key, item);
+	}
+
+	/**
+	 * Checks if a config belongs to a plugin. Does so by checking 2 things:
+	 *
+	 * 1. Does the config start with 'plugin.{key}.'?
+	 * 2. Does the config exist in defaultConfigs property of the plugin?
+	 *
+	 * Returns true if any of the above are true, otherwise returns false
+	 *
+	 * @param key
+	 */
+	public hasConfig(key: string, config: string): boolean {
+		const plugin = this.get(key);
+
+		if (!plugin) {
+			throw Error(
+				`Could not check config for a plugin. Reason: No plugin registered by key "${key}".`
+			);
+		}
+
+		return (
+			config.startsWith(`plugin.${key}.`) ||
+			Object.keys(plugin.defaultConfigs).findIndex(k => k === config) >= 0
+		);
+	}
+
+	protected createItem(key: string, partial: any): ItemType {
+		return super.createItem(key, {
+			categories: [],
+			enabled: true,
+			name: 'Untitled Plugin',
+			...partial,
+
+			value: getDefiniteBlueBaseModule(partial.value),
 		});
 	}
 
 	/**
-	 * Returns a plugin slug, or generates one
-	 *
-	 * @param {Plugin} plugin
-	 * @returns {string}
+	 * Typeguard to check a given object is an input value
+	 * @param value
 	 */
-	createSlug(plugin: Plugin): string {
-		return kebabCase(plugin.slug ? plugin.slug : plugin.pluginName);
-	}
-
-	/**
-	 * Takes an plugin, adds necessary fields and returns the processed plugin with a key
-	 * @param key
-	 * @param plugin
-	 */
-	private getKeyAndItem(
-		key: string | MaybeEsModule<Plugin>,
-		plugin?: MaybeEsModule<Plugin>
-	): { key: string; plugin: Plugin } {
-		if (typeof key !== 'string' && !isNil(key)) {
-			plugin = key as Plugin;
-			key = '';
-		}
-
-		if (!plugin) {
-			throw new Error('No plugin provided');
-		}
-
-		// ES modules
-		plugin = (plugin as EsModule<Plugin>).default ? (plugin as EsModule<Plugin>).default : plugin;
-
-		// Casting, to remove possiblity of undefined value is TS.
-		plugin = plugin as Plugin;
-
-		if (!plugin.pluginName) {
-			throw new Error('Plugin name not provided.');
-		}
-
-		const slug = this.createSlug(plugin);
-
-		plugin.slug = slug;
-
-		const strKey = key && typeof key === 'string' ? key : slug;
-		return { key: strKey, plugin };
+	protected isInputValue(value: any): value is PluginRegistryInputItem['value'] {
+		return isBlueBaseModule(value) || typeof value === 'object';
 	}
 }

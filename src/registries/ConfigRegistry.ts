@@ -1,71 +1,54 @@
-import { BlueRain } from '../index';
-import get from 'lodash.get';
-import isNil from 'lodash.isnil';
-import merge from 'deepmerge';
-import set from 'lodash.set';
+import { ItemCollection, Registry, RegistryInputItem, RegistryItem } from './Registry';
+
+export { ItemCollection as ConfigCollection } from './Registry';
 
 /**
- * All system configs are stored in this registry
- * @property {Object} data Storage table of all configs
+ * 🎛 ConfigRegistry
  */
-class ConfigRegistry {
-	data: {} = {};
-	BR: BlueRain;
+export class ConfigRegistry extends Registry<RegistryItem> {
+	/**
+	 * Registers a value if it's not already registered.
+	 * @param item
+	 */
+	public async registerIfNotExists(
+		item: RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+	): Promise<void>;
+	public async registerIfNotExists(
+		key: string,
+		item: RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+	): Promise<void>;
+	public async registerIfNotExists<
+		T = RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+	>(key: string | T, item?: T): Promise<void> {
+		const args = this.getKeyAnyItem(key as any, item);
 
-	constructor(ctx: BlueRain) {
-		this.BR = ctx;
+		if (!this.has(args.key)) {
+			this.register(args.key, args.item);
+		}
 	}
 
 	/**
-	 * Set a Config
+	 * Registers all collection items that aren't already registered.
+	 * @param collection
 	 */
-	set(key: string, value: any) {
-		if (isNil(key)) {
-			throw new Error('No config key provided. Please provide valid key while adding config.');
+	public async registerCollectionIfNotExists(collection: ItemCollection<RegistryInputItem> = []) {
+		// If its an array
+		if (Array.isArray(collection)) {
+			for (const item of collection) {
+				await this.registerIfNotExists(item);
+			}
+
+			return;
+		}
+		// If its an object
+		else if (collection === Object(collection)) {
+			for (const key of Object.keys(collection)) {
+				await this.registerIfNotExists(key, collection[key]);
+			}
+
+			return;
 		}
 
-		if (isNil(value)) {
-			throw new Error('No config value provided. Please provide valid value while adding config.');
-		}
-
-		set(this.data, key, value);
-	}
-
-	/**
-	 * Get a config value
-	 */
-	get(key: string): any {
-		if (isNil(key)) {
-			throw new Error('No config key provided. Please provide valid key while getting config.');
-		}
-
-		return get(this.data, key);
-	}
-
-	/**
-	 * Register a Config To be deprecated in 2.0.0
-	 */
-	register(configs: {}) {
-		console.warn(
-			'Deprecation Warning: "register" method of ConfigRegistry has been deprecated.',
-			' Please use "registerMany" method instead.'
-		);
-		this.registerMany(configs);
-	}
-
-	/**
-	 * Register many configs at once
-	 */
-	registerMany(configs: {}) {
-		this.data = merge(this.data, configs);
-	}
-
-	/**
-	 * Clear Configs
-	 */
-	clear() {
-		this.data = {};
+		throw Error('Could not register collection. Reason: Unknown collection type.');
 	}
 }
-
-export default ConfigRegistry;

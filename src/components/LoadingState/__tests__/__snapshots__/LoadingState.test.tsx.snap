@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingState Snapshot LoadingState component 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`LoadingState Snapshot LoadingState component after complete rendering 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+</View>
+`;
+
+exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: false 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+</View>
+`;
+
+exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="small"
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 20,
+            "fontWeight": "500",
+          },
+          Object {
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      This is taking longer than usual
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`LoadingState Snapshot LoadingState component after complete rendering with timedOut: true and retry mocked function 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="small"
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 20,
+            "fontWeight": "500",
+          },
+          Object {
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      This is taking longer than usual
+    </Text>
+    <View
+      style={
+        Object {
+          "marginTop": 8,
+        }
+      }
+    >
+      <View
+        accessibilityRole="button"
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "borderRadius": 4,
+                "paddingBottom": 8,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 8,
+              },
+              Object {
+                "backgroundColor": "#3f51b5",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "rgba(0, 0, 0, 0.87)",
+                  "fontFamily": "Roboto",
+                  "fontSize": 14,
+                  "fontWeight": "500",
+                  "textAlign": "center",
+                  "textTransform": "uppercase",
+                },
+                Object {
+                  "color": "#fff",
+                },
+              ]
+            }
+          >
+            Retry
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

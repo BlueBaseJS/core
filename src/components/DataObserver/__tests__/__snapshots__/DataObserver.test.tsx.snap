@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataObserver Snapshot DataObserver component with Text 1`] = `
+<View>
+  <Text
+    style={
+      Array [
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    hello
+  </Text>
+</View>
+`;
+
+exports[`DataObserver should generate states from custom listener functions 1`] = `
+<View>
+  <View>
+    <Text>
+      foo
+    </Text>
+    <Text>
+      false
+    </Text>
+    <Text>
+      true
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`DataObserver should set empty and loading to false when there are no listener functions 1`] = `
+<View>
+  <View>
+    <Text>
+      a
+    </Text>
+    <Text>
+      false
+    </Text>
+    <Text>
+      false
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`DataObserver should set empty to false if data if an array 1`] = `
+<View>
+  <View>
+    <Text>
+      a
+    </Text>
+    <Text>
+      false
+    </Text>
+    <Text>
+      true
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`DataObserver should set empty to true if data if an empty array 1`] = `
+<View>
+  <View>
+    <Text />
+    <Text>
+      true
+    </Text>
+    <Text>
+      true
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`DataObserver should set loading to false, if loading prop is not a boolean 1`] = `
+<View>
+  <View>
+    <Text>
+      a
+    </Text>
+    <Text>
+      false
+    </Text>
+    <Text>
+      false
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`DataObserver should set loading to true 1`] = `
+<View>
+  <View>
+    <Text>
+      foo
+    </Text>
+    <Text>
+      false
+    </Text>
+    <Text>
+      true
+    </Text>
+  </View>
+</View>
+`;

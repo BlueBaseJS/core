@@ -1,8 +1,8 @@
 <!--
 Please fill the informations requested OR use one of the following url:
-  - Bug report: https://github.com/BlueEastCode/bluerain-os/issues/new?template=bug-report.md
-  - Feature request: https://github.com/BlueEastCode/bluerain-os/issues/new?template=feature-request.md
-  - New plugin request: https://github.com/BlueEastCode/bluerain-os/issues/new?template=plugin-request.md
+  - Bug report: https://github.com/BlueBaseJS/core/issues/new?template=bug-report.md
+  - Feature request: https://github.com/BlueBaseJS/core/issues/new?template=feature-request.md
+  - New plugin request: https://github.com/BlueBaseJS/core/issues/new?template=plugin-request.md
 -->
 
 <!--------------------- FOR BUG REPORT ONLY --------------------->
@@ -19,11 +19,11 @@ Please fill the informations requested OR use one of the following url:
 
 ## Environment
 
-- **bluerain-os** version: 
-- **bluerain-cli** version: 
+- **bluebase** version: 
+- **bluebase-cli** version: 
 
 - CI environment: <!-- CI service name -->
-- Plugins used: <!-- List bluerain plugins used if any with version -->
+- Plugins used: <!-- List bluebase plugins used if any with version -->
 - CI logs: <!-- link to your CI logs or semantic-release logs -->
 
 <!--------------------- FOR FEATURE REQUEST ONLY --------------------->

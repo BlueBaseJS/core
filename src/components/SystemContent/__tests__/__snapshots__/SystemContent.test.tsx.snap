@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SystemContent Snapshot SystemContent component 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`SystemContent Snapshot SystemContent component after complete render 1`] = `
+<View>
+  <View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 16,
+            "fontWeight": "400",
+          },
+          undefined,
+        ]
+      }
+    >
+      🚀 BlueBase System Content!
+    </Text>
+  </View>
+</View>
+`;

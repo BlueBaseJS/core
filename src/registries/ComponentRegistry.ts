@@ -1,219 +1,158 @@
-import { BlueRain } from '../index';
-import MapRegistry from './MapRegistry';
-import React from 'react';
-import flowright from 'lodash.flowright';
-import isNil from 'lodash.isnil';
+import {
+	BlueBaseModuleRegistry,
+	BlueBaseModuleRegistryInputItem,
+	BlueBaseModuleRegistryItem,
+} from './BlueBaseModuleRegistry';
+import { ComponentStyles, applyStyles } from '../themes';
+import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
+import { BlueBase } from '../BlueBase';
+import { ItemCollection } from './Registry';
+import Loadable from 'react-loadable';
+import { ReactLoadableLoading } from '../components/';
+import flowRight from 'lodash.flowright';
 
+/**
+ * Definition of the HOC
+ */
 export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<any>;
 
+export type ComponentRegistryHocItemWithArgs<T = any> = [Thunk<ComponentRegistryHocItem>, T];
+
+/**
+ * Source of this component. Contains information about who registered this component.
+ */
 export interface ComponentSource {
-	type: 'plugin' | 'app' | 'custom';
+	type: 'plugin' | 'api' | 'custom';
 	slug: string;
 }
 
-export interface ComponentRegistryItem {
-	rawComponent: React.ComponentType<any>;
-	hocs: ComponentRegistryHocItem[];
-	source?: ComponentSource;
+interface ComponentRegistryItemExtras {
+	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>;
+	source: ComponentSource;
+	styles: MaybeThunk<ComponentStyles>;
+	isAsync: boolean;
 }
 
-/**
- * All system components are stored in this registry
- * @property {Map<string, {rawComponent: React.ComponentType<any>, hocs: Array<Function | Array<any>>}>} data Storage
- * of all components
- */
-class ComponentRegistry extends MapRegistry<ComponentRegistryItem> {
-	BR: BlueRain;
+export type ComponentRegistryItem = BlueBaseModuleRegistryItem<React.ComponentType<any>> &
+	ComponentRegistryItemExtras;
 
+export type ComponentRegistryInputItem = BlueBaseModuleRegistryInputItem<React.ComponentType<any>> &
+	Partial<ComponentRegistryItemExtras>;
+
+export type ComponentInputCollection = ItemCollection<ComponentRegistryInputItem>;
+
+/**
+ * 🎁 ComponentRegistry
+ */
+export class ComponentRegistry extends BlueBaseModuleRegistry<
+	ComponentRegistryItem,
+	ComponentRegistryInputItem
+> {
 	// For proxy methods
 	[key: string]: any;
 
-	constructor(ctx: BlueRain) {
-		super('ComponentRegistry');
-		this.BR = ctx;
+	constructor(BB: BlueBase) {
+		super(BB);
 
-		// Create proxy to enable BR.Components.Name method
+		// Create proxy to enable BB.Components.Name method
 		return new Proxy(this, {
 			get: (target, name, value) => {
-				if (!this.hasOwnProperty(name)) {
-					if (typeof name === 'string' && this.has(name)) {
-						return this.get(name);
+				if (typeof name === 'string' && typeof this[name] === 'undefined') {
+					if (this.has(name)) {
+						return this.resolve(name);
 					}
+					throw Error(
+						`BlueBase could not find "${name}" component. Did you forget to register it?`
+					);
 				}
 
 				return Reflect.get(target, name, value);
-			}
+			},
 		});
 	}
 
-	/**
-	 * Register a component with a name, a raw component than can be extended
-	 * and one or more optional higher order components.
-	 *
-	 * @param {String} name The name of the component to register.
-	 * @param {React.ComponentType<any>} rawComponent Interchangeable/extendable component.
-	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
-	 *
-	 * Note: when a component is registered without higher order component, `hocs` will be
-	 * an empty array, and it's ok!
-	 * See https://lodash.com/docs/4.17.4#flowRight
-	 */
-	add(name: string, rawComponent: React.ComponentType<any>, ...hocs: ComponentRegistryHocItem[]) {
-		if (isNil(rawComponent)) {
-			throw new Error(
-				'rawComponent is required to register a component.' +
-					'Please provide valid component while adding component'
-			);
+	public resolve(...keys: string[]): React.ComponentType<any> {
+		const item = this.findOne(...keys);
+
+		if (!item) {
+			throw Error(`Could not resolve any of the following components: [${keys.join(', ')}].`);
 		}
 
-		super.set(name, { rawComponent, hocs });
-	}
+		let rawComponent = item.value.isAsync
+			? Loadable({ loader: () => item.value, loading: ReactLoadableLoading })
+			: (item.value.module as React.ComponentType<any>);
 
-	/**
-	 * Replace a component with the same name with a new component or
-	 * an extension of the raw component and one or more optional higher order components.
-	 * This function keeps track of the previous HOCs and wrap the new HOCs around previous ones
-	 *
-	 * @param {String} name The name of the component to register.
-	 * @param {React.ComponentType<any>} rawComponent Interchangeable/extendable component.
-	 * @param {...Function} hocs The HOCs to compose with the raw component.
-	 * @returns {Function|React.ComponentType<any>} A component callable with Components[name]
-	 *
-	 * Note: when a component is registered without higher order component, `hocs` will be
-	 * an empty array, and it's ok!
-	 * See https://lodash.com/docs/4.17.4#flowRight
-	 */
-	replace(
-		name: string,
-		newComponent: React.ComponentType<any>,
-		...newHocs: ComponentRegistryHocItem[]
-	) {
-		if (!this.has(name)) {
-			throw new Error(
-				`Component ${name} not registered.Please register component before replacing it`
-			);
-		}
-		const previousComponent: ComponentRegistryItem = super.get(name);
-		const hocs = [...newHocs, ...previousComponent.hocs];
-		super.set(name, { rawComponent: newComponent, hocs });
-	}
+		// Add withStyles HOC
+		rawComponent = applyStyles(item.key, rawComponent, item.styles);
 
-	/**
-	 * Set or Replace an item in the Registry.
-	 *
-	 * @param {string} key The key of the item
-	 * @param {React.ComponentType<any>} item  The item to add
-	 */
-	set(key: string, rawComponent: React.ComponentType<any>, ...hocs: ComponentRegistryHocItem[]) {
-		if (!key) {
-			throw new Error(`No key provided in the setOrReplace method of ${this.name} registry.`);
-		}
-		if (!rawComponent) {
-			throw new Error(`No item provided in the setOrReplace method of ${this.name} registry.`);
-		}
+		const hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
-		if (this.has(key)) {
-			this.replace(key, rawComponent, ...hocs);
-		} else {
-			this.add(key, rawComponent, ...hocs);
-		}
+		return flowRight([...hocs])(rawComponent);
 	}
 
 	/**
 	 * Adds higher order component to the registered component
-	 * @param {string} name The name of the registered component to whom hocs are to added
+	 * @param {string} key The name of the registered component to whom hocs are to added
 	 * @param {Array<ComponentRegistryHocItem>} hocs The HOCs to compose with the raw component.
 	 */
-	addHocs(name: string, ...hocs: ComponentRegistryHocItem[]) {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}. Please provide valid name while adding Hocs`
-			);
+	addHocs(
+		key: string,
+		...hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>
+	) {
+		const item = super.get(key);
+
+		if (!item) {
+			throw Error(`Could not add hocs for "${key}" component. Reason: Component not found.`);
 		}
 
-		if (!this.has(name)) {
-			throw new Error(
-				`Component ${name} not registered.Please register component before adding Hocs`
-			);
+		this.set(key, { ...item, hocs });
+	}
+
+	// public removeHocs() {
+	// 	// TODO:
+	// }
+
+	// TODO: Add docs
+	public setStyles(key: string, styles: MaybeThunk<ComponentStyles>) {
+		const item = this.get(key);
+
+		if (!item) {
+			throw Error(`Cannot set styles "${key}" component. Reason: Component not found.`);
 		}
 
-		const item: ComponentRegistryItem = super.get(name);
-		item.hocs.push(...hocs);
+		item.styles = styles;
 
-		this.data = this.data.set(name, item);
+		this.data = this.data.set(key, item);
+	}
+
+	// TODO: Add docs
+	public getStyles(key: string): MaybeThunk<ComponentStyles> | undefined {
+		const item = this.get(key);
+
+		if (!item) {
+			return;
+		}
+
+		return item.styles;
+	}
+
+	protected createItem(key: string, partial: any): ComponentRegistryItem {
+		const value = getDefiniteBlueBaseModule(partial.value);
+
+		return super.createItem(key, {
+			hocs: [],
+			isAsync: value.isAsync,
+			preload: false,
+			...partial,
+			value,
+		});
 	}
 
 	/**
-	 * Get a component registered with set(name, component, ...hocs).
-	 * Its accepts multiple component names.It iterates arguments and returns first found registered component.
-	 *
-	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React.ComponentType<any>} A (wrapped) React component
+	 * Typeguard to check a given object is an input value
+	 * @param value
 	 */
-	get(...name: string[]): React.ComponentType<any> {
-		let component: ComponentRegistryItem | null = null;
-		for (const componentName of name) {
-			if (this.has(componentName)) {
-				component = this.data.get(componentName);
-				break;
-			}
-		}
-		if (!component) {
-			throw new Error(`None of components ${name.toString()} are registered.`);
-		}
-
-		const hocs = component.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
-
-		// TS Error: https://github.com/Microsoft/TypeScript/issues/4130
-		return flowright([...hocs])(component.rawComponent);
-	}
-
-	/**
-	 * Get the **raw** (original) component registered with registerComponent
-	 * without the possible HOCs wrapping it.
-	 *
-	 * @param {String} name The name of the component to get.
-	 * @returns {Function|React.ComponentType<any>} An interchangeable/extendable React component
-	 */
-	getRawComponent(name: string): React.ComponentType<any> {
-		if (isNil(name)) {
-			throw new Error(
-				`Component name cannot be ${name}.Please provide valid name while getting raw component`
-			);
-		}
-
-		if (!this.has(name)) {
-			throw new Error(
-				`Component ${name} not registered. Please register component before getting raw component`
-			);
-		}
-		const component: ComponentRegistryItem = super.get(name);
-		return component.rawComponent;
-	}
-
-	setSource(key: string, source: ComponentSource): void {
-		if (!this.has(key)) {
-			throw new Error(`No component registered with the key: "${key}"`);
-		}
-
-		if (!source || !source.type || !source.slug) {
-			throw new Error('Invalid source provided to setSource method of ComponentRegistry');
-		}
-
-		const componentItem: ComponentRegistryItem = this.data.get(key);
-		componentItem.source = source;
-
-		super.set(key, componentItem);
-	}
-
-	getSource(key: string): ComponentSource | undefined {
-		if (!this.has(key)) {
-			throw new Error(`No component registered with the key: "${key}"`);
-		}
-
-		const componentItem: ComponentRegistryItem = this.data.get(key);
-		return componentItem.source;
+	protected isInputValue(value: any): value is ComponentRegistryInputItem['value'] {
+		return isBlueBaseModule(value) || typeof value === 'function';
 	}
 }
-
-export default ComponentRegistry;

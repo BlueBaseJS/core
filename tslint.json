@@ -1,11 +1,12 @@
 {
   "extends": [
-		"@blueeast/tslint-config-blueeast/react"
-	],
-	"rules": {
-		"ban-types": false,
-		"no-console": false,
-		"interface-name": false,
-		"no-implicit-dependencies": false
-	}
+    "@blueeast/tslint-config-blueeast/react"
+  ],
+  "rules": {
+    "no-expression-statement": false,
+		"object-literal-sort-keys": true,
+    "no-implicit-dependencies": false,
+    "jsx-alignment": false,
+    "jsx-no-lambda": false
+  }
 }
