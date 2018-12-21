@@ -1,7 +1,7 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-import { HookInputNestedCollection } from '../registries';
+import { HookNestedCollection } from '../registries';
 
-export const boot: HookInputNestedCollection = {
+export const boot: HookNestedCollection = {
 	'bluebase.boot': [
 		{
 			key: 'bluebase-boot-default',

@@ -4,7 +4,7 @@ import {
 	ComponentRegistry,
 	ConfigCollection,
 	ConfigRegistry,
-	HookInputNestedCollection,
+	HookNestedCollection,
 	HookRegistry,
 	PluginInputCollection,
 	PluginRegistry,
@@ -19,7 +19,7 @@ import systemHooks from './hooks';
 export interface BootOptions {
 	components: ComponentInputCollection,
 	configs: ConfigCollection,
-	hooks: HookInputNestedCollection,
+	hooks: HookNestedCollection,
 	plugins: PluginInputCollection,
 	themes: ThemeInputCollection,
 	// routes: Plugin[]
