@@ -3,10 +3,6 @@ import { JsonSchema } from '../JsonSchema';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
-
 describe('JsonSchema', () => {
 
 	test(`should render a text component with red color`, (done) => {
@@ -30,10 +26,10 @@ describe('JsonSchema', () => {
 
 		setTimeout(() => {
 			tree = component.toJSON();
-			expect((tree as any).children[0].props.style[1]).toMatchObject({
+			expect((tree as any).props.style[1]).toMatchObject({
 				color: 'red'
 			});
-			expect((tree as any).children[0].children.join()).toBe('This component is generated through JsonSchema Component');
+			expect((tree as any).children.join()).toBe('This component is generated through JsonSchema Component');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -73,10 +69,10 @@ describe('JsonSchema', () => {
 
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect((tree as any).children[0].props.style[1]).toMatchObject({
+			expect((tree as any).props.style[1]).toMatchObject({
 				color: 'blue'
 			});
-			expect((tree as any).children[0].children.join()).toBe('Content changed by hook!');
+			expect((tree as any).children.join()).toBe('Content changed by hook!');
 			expect(tree).toMatchSnapshot();
 			done();
 		});

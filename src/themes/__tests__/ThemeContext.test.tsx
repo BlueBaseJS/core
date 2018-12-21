@@ -26,7 +26,7 @@ describe('ThemeContext', () => {
 		setTimeout(() => {
 			tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
-			expect((tree as any).children[0].props.style.backgroundColor).toBe('#fafafa');
+			expect((tree as any).props.style.backgroundColor).toBe('#fafafa');
 			done();
 		});
 	});
@@ -48,7 +48,7 @@ describe('ThemeContext', () => {
 		setTimeout(() => {
 			tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
-			expect((tree as any).children[0].props.style.backgroundColor).toBe('red');
+			expect((tree as any).props.style.backgroundColor).toBe('red');
 			done();
 		});
 	});

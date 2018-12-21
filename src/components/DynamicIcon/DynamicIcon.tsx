@@ -60,8 +60,7 @@ export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
 
 	render() {
 
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
+		const BB: BlueBase = this.context;
 
 		const { type, component: Component, name, source, ...other } = this.props;
 		const rest = { ...other };

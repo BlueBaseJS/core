@@ -58,27 +58,15 @@ exports[`ComponentRegistry .resolve method should resolve a Promised component 2
     <ThemeProvider>
       <ThemedComponent>
         <SystemApp>
-          <ThemedComponent>
-            <View>
-              <View>
-                <ThemedComponent>
-                  <Component />
-                </ThemedComponent>
-                <Foo>
-                  <ThemedComponent>
-                    <Text>
-                      <Text>
-                        Some text
-                      </Text>
-                    </Text>
-                  </ThemedComponent>
-                </Foo>
-                <ThemedComponent>
-                  <Component />
-                </ThemedComponent>
-              </View>
-            </View>
-          </ThemedComponent>
+          <Foo>
+            <ThemedComponent>
+              <Text>
+                <Text>
+                  Some text
+                </Text>
+              </Text>
+            </ThemedComponent>
+          </Foo>
         </SystemApp>
       </ThemedComponent>
     </ThemeProvider>

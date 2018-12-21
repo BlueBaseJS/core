@@ -1,4 +1,3 @@
-import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../../BlueBaseApp';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
@@ -6,19 +5,13 @@ import TestRenderer from 'react-test-renderer';
 
 
 describe('PluginIcon', () => {
-	// beforeEach(() => {
-	// 	jest.resetModules();
-	// });
-	const PluginIconWithProvider = (props: any) => (
-		<BlueBaseApp>
-			<PluginIcon {...props} />
-		</BlueBaseApp>
-	);
 
 	it(`Snapshot PluginIcon component with no plugin registered`, () => {
 
 		const component = TestRenderer.create(
-			<PluginIconWithProvider slug="unregistered-plugin" />
+			<BlueBaseApp>
+				<PluginIcon id="unregistered-plugin" />
+			</BlueBaseApp>
 		);
 		try {
 			const tree = component.toJSON();
@@ -39,21 +32,19 @@ describe('PluginIcon', () => {
 			value: {},
 		};
 
-		const BB = new BlueBase();
-
 		const rendered = TestRenderer.create(
-			<BlueBaseApp BB={BB} plugins={[plugin]}>
-				<PluginIcon slug="some" />
+			<BlueBaseApp plugins={[plugin]}>
+				<PluginIcon id="some" />
 			</BlueBaseApp>
 		);
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).type).toBe('View');
-			expect((tree as any).children[0].type).toBe('Image');
-			expect((tree as any).children[0].props.size).toBe(100);
-			expect((tree as any).children[0].props.style).toMatchObject({ height: 100, width: 100 });
 			expect(tree).toMatchSnapshot();
+
+			expect((tree as any).type).toBe('Image');
+			expect((tree as any).props.size).toBe(100);
+			expect((tree as any).props.style).toMatchObject({ height: 100, width: 100 });
 			done();
 		});
 	});
@@ -69,21 +60,19 @@ describe('PluginIcon', () => {
 			value: {},
 		};
 
-		const BB = new BlueBase();
-
 		const rendered = TestRenderer.create(
-			<BlueBaseApp BB={BB} plugins={[plugin]}>
-				<PluginIcon slug="some" />
+			<BlueBaseApp plugins={[plugin]}>
+				<PluginIcon id="some" />
 			</BlueBaseApp>
 		);
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).type).toBe('View');
-			expect((tree as any).children[0].type).toBe('Image');
-			expect((tree as any).children[0].props.size).toBe(100);
-			expect((tree as any).children[0].props.style).toMatchObject({ height: 100, width: 100 });
 			expect(tree).toMatchSnapshot();
+
+			expect((tree as any).type).toBe('Image');
+			expect((tree as any).props.size).toBe(100);
+			expect((tree as any).props.style).toMatchObject({ height: 100, width: 100 });
 			done();
 		});
 	});
@@ -95,19 +84,17 @@ describe('PluginIcon', () => {
 			value: {},
 		};
 
-		const BB = new BlueBase();
-
 		const rendered = TestRenderer.create(
-			<BlueBaseApp BB={BB} plugins={[plugin]}>
-				<PluginIcon slug="some" />
+			<BlueBaseApp plugins={[plugin]}>
+				<PluginIcon id="some" />
 			</BlueBaseApp>
 		);
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).type).toBe('View');
-			expect((tree as any).children).toBe(null);
 			expect(tree).toMatchSnapshot();
+
+			expect((tree as any)).toBe(null);
 			done();
 		});
 	});
