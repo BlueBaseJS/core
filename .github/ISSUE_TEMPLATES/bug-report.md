@@ -10,9 +10,9 @@
 
 ## Environment
 
-- **bluerain-os** version: 
-- **bluerain-cli** version: 
+- **bluebase** version: 
+- **bluebase-cli** version: 
 
 - CI environment: <!-- CI service name -->
-- Plugins used: <!-- List bluerain plugins used if any with version -->
+- Plugins used: <!-- List bluebase plugins used if any with version -->
 - CI logs: <!-- link to your CI logs or semantic-release logs -->

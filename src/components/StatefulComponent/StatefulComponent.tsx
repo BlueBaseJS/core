@@ -1,108 +1,33 @@
-import { BlueRain, withBlueRain } from '../../index';
+import { DataObserverChildrenProps, DataObserverProps } from '../DataObserver';
+import { WaitObserverChildrenProps, WaitObserverProps } from '../WaitObserver';
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseContext } from '../../Context';
+import { ErrorObserverProps } from '../ErrorObserver';
+import { MaybeRenderPropChildren } from '../../utils';
 import React from 'react';
-import isboolean from 'lodash.isboolean';
-import isnil from 'lodash.isnil';
 
-const MISSING_ERROR = 'An unknown error occured.';
+export interface StatefulComponentProps extends DataObserverProps, ErrorObserverProps, WaitObserverProps {
 
-export interface StatefulComponentProperties {
 	// Components
 	component?: React.ComponentType<any>;
 	loadingComponent?: React.ComponentType<any>;
 	emptyComponent?: React.ComponentType<any>;
-	errorComponent?: React.ComponentType<any>;
-	children?: ( (...args: any[]) => any) | React.ReactNode;
 
-	// Checks
-	isLoading?: (props: StatefulComponentProperties) => boolean;
-	isEmpty?: (props: StatefulComponentProperties) => boolean;
-	checkError?: (props: StatefulComponentProperties) => any;
-
-	// Data Points
-	loading?: boolean;
-	data?: any;
-	error?: any;
+	children?: MaybeRenderPropChildren;
+	// children?: ( (...args: any[]) => any) | React.ReactNode;
 }
 
-export type StatefulComponentState = {
-
-	// Check
-	isLoading: boolean;
-	isEmpty: boolean;
-	hasError: boolean;
-
-	// Data
-	error?: any;
-};
-
 /**
- * A Component to manage all states of a component with data
+ * 👨‍🎨 StatefulComponent
  */
-export type StatefulComponent = React.ComponentType<StatefulComponentProperties>;
+export class StatefulComponent extends React.PureComponent<StatefulComponentProps> {
 
-class StatefulComponentClass extends React.Component<
-	StatefulComponentProperties & { bluerain: BlueRain },
-	StatefulComponentState> {
-
-	static defaultProps: StatefulComponentProperties = {
-
-		loading: false,
-
-		isLoading: (props) => ((!isnil(props.loading) && isboolean(props.loading)) ? props.loading : false),
-		isEmpty: (props) => {
-			// If its null or undefined
-			if (isnil(props.data)) {
-				return true;
-			}
-
-			// If its an empty array
-			if (Array.isArray(props.data) && props.data.length === 0) {
-				return true;
-			}
-
-			return false;
-		},
-		checkError: (props) => (!isnil(props.error)) ? true : false,
-	};
-
-	state: StatefulComponentState = {
-		isLoading: (this.props.isLoading) ? this.props.isLoading(this.props) : false,
-		isEmpty: (this.props.isEmpty) ? this.props.isEmpty(this.props) : false,
-		hasError: (this.props.checkError && this.props.checkError(this.props)) ? true : false,
-		error: (this.props.checkError) ? this.props.checkError(this.props): null,
-	};
-
-	componentWillReceiveProps(props: StatefulComponentProperties) {
-
-		if (!props) {
-			return;
-		}
-
-		const error = (props.checkError) ? props.checkError(props) : null;
-		const hasError = error ? true : false;
-
-		const isLoading = (props.isLoading) ? props.isLoading(props) : false;
-		const isEmpty = (props.isEmpty) ? props.isEmpty(props) : false;
-
-		this.setState({
-			isLoading,
-			isEmpty,
-			hasError,
-			error,
-		});
-	}
-
-	componentDidCatch(error: Error | null) {
-		this.setState({
-			hasError: true,
-			error: error || new Error(MISSING_ERROR)
-		});
-		// Send logs to registerd debuggers.
-		const { bluerain: BR } = this.props;
-		BR.Debug.log('Error:', error);
-	}
+	static contextType = BlueBaseContext;
 
 	render() {
+
+		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
+		const BB: BlueBase = (this as any).context;
 
 		const {
 			component: Component,
@@ -111,49 +36,58 @@ class StatefulComponentClass extends React.Component<
 			errorComponent,
 			children,
 
-			isLoading: isLoadingFunc,
-			isEmpty: isEmptyFunc,
+			// DataObserver
+			isLoading,
+			isEmpty,
+			loading,
+			data,
+
+			// WaitObserver
+			delay,
+			timeout,
+			onRetry,
+			onTimeout,
+
+			// ErrorObserver
+			error,
 			checkError,
 
-			bluerain: BR,
 			...other
 		} = this.props;
 
-		const { isLoading, isEmpty, hasError, error } = this.state;
+		const rest = { data, ...other };
 
-		const Error = errorComponent || BR.Components.ErrorState;
-		const Empty = emptyComponent || BR.Components.EmptyState;
-		const Loading = loadingComponent || BR.Components.LoadingState;
+		return (
+			<BB.Components.ErrorObserver {...{ error, checkError, errorComponent, rest }}>
+				<BB.Components.DataObserver
+					{...{ isEmpty, isLoading, loading, data, rest }}
+					children={(event: DataObserverChildrenProps) => {
 
-		///// Results /////
+						if (event.loading) {
+							return (
+								<BB.Components.WaitObserver
+									{...{ delay, timeout, onRetry, onTimeout, rest }}
+									children={(props: WaitObserverChildrenProps) => <BB.Components.LoadingState {...props} />}
+								/>
+							);
+						}
 
-		// Error State
-		if (hasError) { return React.createElement(Error, { error }); }
+						if (event.empty) {
+							return (<BB.Components.EmptyState />);
+						}
 
-		// Loading State
-		if (isLoading) { return React.createElement(Loading, other); }
+						// Render 'component' prop
+						if (Component) { return React.createElement(Component, rest); }
 
-		// Empty State
-		if (isEmpty) { return React.createElement(Empty, other); }
+						// 'children' as a function, 'render prop' pattern
+						if (typeof children === 'function') {
+							return (children as any)(rest);
+						}
 
-		// Render 'component' prop
-		if (Component) { return React.createElement(Component, other); }
-
-		// 'children' as a function, 'render prop' pattern
-		if (typeof children === 'function') {
-
-			// componentDidCatch doesn't catch it's own errors
-			try {
-				return children(other);
-			} catch (error) {
-				this.setState({ hasError: true, error });
-				return null;
-			}
-		}
-
-		// children
-		return children;
+						// children
+						return children;
+					}} />
+			</BB.Components.ErrorObserver>
+		);
 	}
 }
-
-export default withBlueRain(StatefulComponentClass) as StatefulComponent;

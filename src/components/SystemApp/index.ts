@@ -1,2 +1,1 @@
-import SystemApp from './SystemApp';
-export default SystemApp;
+export * from './SystemApp';

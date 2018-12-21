@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DynamicIcon should render an Icon component 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "blue",
+        "height": 100,
+        "width": 100,
+      }
+    }
+  >
+    <Text>
+      bus
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`DynamicIcon should render an custom component 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": 100,
+        "width": 100,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`DynamicIcon should render an custom component that is registered in component registry 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "green",
+        "height": 100,
+        "width": 100,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`DynamicIcon should render an image with default size of 100x100 1`] = `
+<View>
+  <Image
+    size={100}
+    source={
+      Object {
+        "uri": "https://picsum.photos/200",
+      }
+    }
+    style={
+      Object {
+        "height": 100,
+        "width": 100,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`DynamicIcon should render an image with default size of 250x250 1`] = `
+<View>
+  <Image
+    size={250}
+    source={
+      Object {
+        "uri": "https://picsum.photos/200",
+      }
+    }
+    style={
+      Object {
+        "height": 250,
+        "width": 250,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`DynamicIcon should render an image with style prop overwritten 1`] = `
+<View>
+  <Image
+    size={100}
+    source={
+      Object {
+        "uri": "https://picsum.photos/200",
+      }
+    }
+    style={
+      Object {
+        "height": 100,
+        "width": 100,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`DynamicIcon should render an image with style prop overwritten 2`] = `
+<View>
+  <Image
+    size={100}
+    source={
+      Object {
+        "uri": "https://picsum.photos/200",
+      }
+    }
+    style={
+      Object {
+        "height": 100,
+        "width": 100,
+      }
+    }
+  />
+</View>
+`;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JsonSchemaParser should parse schema with a single component 1`] = `
+<Text>
+  Timeline: 
+</Text>
+`;
+
+exports[`JsonSchemaParser should parse schema with a single component with children 1`] = `
+<Text>
+  Timeline: 
+  <Text>
+    Post: 
+    Hello
+  </Text>
+  <Text>
+    Post: 
+    World
+  </Text>
+  <Text>
+    Post: 
+  </Text>
+</Text>
+`;
+
+exports[`JsonSchemaParser should parse schema with a single component with props 1`] = `
+<Text
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  Timeline: 
+</Text>
+`;
+
+exports[`JsonSchemaParser should parse schema with a single component with text 1`] = `
+<Text>
+  Timeline: 
+  Hello
+</Text>
+`;
+
+exports[`JsonSchemaParser should parse schema with custom component lookup 1`] = `
+<Text>
+  Post: 
+</Text>
+`;

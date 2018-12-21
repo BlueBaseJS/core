@@ -1,2 +1,1 @@
-import SystemContent from './SystemContent';
-export default SystemContent;
+export * from './SystemContent';

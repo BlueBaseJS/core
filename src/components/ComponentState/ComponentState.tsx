@@ -1,21 +1,47 @@
-
-import { BlueRain, withBlueRain } from '../../index';
-import {  ImageStyle,TextStyle,ViewProperties,ViewStyle } from '@blueeast/bluerain-ui-interfaces';
-import ComponentStateButton from './ComponentStateButton';
-import ComponentStateImage from './ComponentStateImage';
-import ComponentStateText from './ComponentStateText';
+import { Button, H6, Image, Text, View } from '../..';
+import { ImageStyle, TextStyle, ViewStyle,  } from 'react-native';
+import { ButtonProps } from '../../native';
 import React from 'react';
+import { Theme } from '../../registries';
 
-export interface ComponentStateProperties extends ViewProperties {
+export interface ComponentStateStyles {
+
+	/** Action button styles */
+	actionRoot?: ViewStyle,
+
+	/** Description text styles */
+	description?: TextStyle,
+
+	/** Image styles */
+	image?: ImageStyle,
+
+	/** Root View styles */
+	root?: ViewStyle,
+
+	/** Title style */
+	title?: TextStyle,
+}
+export interface ComponentStateProps {
+
+	/**
+	 * Action title
+	 */
+	actionTitle?: string;
+
+	/**
+	 * Action onPress handler
+	 */
+	actionOnPress?: ButtonProps['onPress'];
+
+	/**
+	 * Description Text
+	 */
+	description?: string;
+
 	/**
 	 * Image Component, if provided, imageSource will be ignored
 	 */
-	image?: React.ComponentType;
-
-	/**
-	 * Image styles
-	 */
-	imageStyle?: ImageStyle;
+	image?: React.ReactNode;
 
 	/**
 	 * Image source
@@ -27,73 +53,61 @@ export interface ComponentStateProperties extends ViewProperties {
 	 */
 	title?: string;
 
-	/**
-	 * Title style
-	 */
-	titleStyle?: TextStyle;
 
-	/**
-	 * Description Text
-	 */
-	description?: string;
-
-	/**
-	 * Description style
-	 */
-	descriptionStyle?: TextStyle;
-
-	/**
-	 * Button Component, if provided, other button props will be ignored
-	 */
-	button?: React.ComponentType;
-
-	/**
-	 * Button title
-	 */
-	buttonTitle?: string;
-
-	/**
-	 * Button styles
-	 */
-	buttonStyle?: ViewStyle;
-
-	/**
-	 * Button onPress handler
-	 */
-	buttonOnPress?: Function;
-
-	style?: ViewStyle
+	styles?: ComponentStateStyles;
 }
 
-const ComponentState = (props: ComponentStateProperties & { bluerain: BlueRain }) => {
-	const {
-		title,
-		titleStyle,
-		description,
-		descriptionStyle,
-		bluerain: BR
-	} = props;
+export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
-	const style = {
-		alignItems: 'center',
-		padding: 16,
-		...props.style
-	};
+	static defaultStyles = (theme: Theme) => ({
+		actionRoot: {
+			marginTop: theme.spacing.unit,
+		},
+		description: {
+			textAlign: 'center',
+		},
+		image: {
+			height: 250,
+			marginBottom: theme.spacing.unit,
+			width: 250,
+		},
+		root: {
+			alignItems: 'center',
+		},
+		title: {
+			marginBottom: theme.spacing.unit,
+			textAlign: 'center',
+		},
+	})
 
-	const titleStylesheet = {
-		fontSize: 18,
-		// fontWeight: 'bold',
-		...titleStyle
- 	};
+	render() {
 
-	return (
-  <BR.Components.View style={style}>
-    <ComponentStateImage  {...props}  />
-    <ComponentStateText text={title} style={titleStylesheet} bluerain={BR} />
-    <ComponentStateText text={description} style={descriptionStyle} bluerain={BR} />
-    <ComponentStateButton {...props} />
-  </BR.Components.View>
-	);
-};
+		const {
+			actionOnPress,
+			actionTitle,
+			description,
+			image,
+			imageSource,
+			title,
+		} = this.props;
 
-export default withBlueRain(ComponentState) as React.ComponentType<ComponentStateProperties>;
+		const styles = this.props.styles as ComponentStateStyles;
+
+		return (
+			<View style={styles.root}>
+				{image ? image : (imageSource ? <Image style={styles.image} source={{ uri: imageSource }} /> : null)}
+				{title ? <H6 style={styles.title} children={title} /> : null}
+				{description ? <Text style={styles.description} children={description} /> : null}
+				{actionTitle
+					? (
+						<View style={styles.actionRoot}>
+							<Button color="primary" onPress={actionOnPress} >
+								{actionTitle}
+							</Button>
+						</View>
+					)
+					: null}
+			</View>
+		);
+	}
+}

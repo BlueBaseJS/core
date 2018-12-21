@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PluginIcon Snapshot PluginIcon component with no plugin registered 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`PluginIcon should render an image icon for a registered plugin 1`] = `
+<View>
+  <Image
+    size={100}
+    source={
+      Object {
+        "uri": "https://picsum.photos/200",
+      }
+    }
+    style={
+      Object {
+        "height": 100,
+        "width": 100,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`PluginIcon should render an image icon for a registered plugin where icon prop is a thunk 1`] = `
+<View>
+  <Image
+    size={100}
+    source={
+      Object {
+        "uri": "https://picsum.photos/200",
+      }
+    }
+    style={
+      Object {
+        "height": 100,
+        "width": 100,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`PluginIcon should render null where plugin doesnt have an icon prop 1`] = `<View />`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JsonSchema should render a null for unknown component 1`] = `
+<Text>
+  Could not parse React JSON Schema. Reason: Could not resolve component.
+</Text>
+`;
+
+exports[`JsonSchema should render a text component with red color 1`] = `
+<Text>
+  Loading
+</Text>
+`;
+
+exports[`JsonSchema should render a text component with red color 2`] = `
+<View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        Object {
+          "color": "red",
+        },
+      ]
+    }
+  >
+    This component is generated through JsonSchema Component
+  </Text>
+</View>
+`;
+
+exports[`JsonSchema should render a text component with red color that is processed by hooks 1`] = `
+<View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        Object {
+          "color": "blue",
+        },
+      ]
+    }
+  >
+    Content changed by hook!
+  </Text>
+</View>
+`;
