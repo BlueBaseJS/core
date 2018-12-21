@@ -138,32 +138,6 @@ export class Registry<
 		return this.set(key, { value } as any);
 	}
 
-	// public getMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K) {
-	// 	const item = this.get(key);
-
-	// 	if (!item || !item.meta) {
-	// 		return;
-	// 	}
-
-	// 	// FIXME: Fixe typing issues
-	// 	return (item as any).meta[metaKey];
-	// }
-
-	// public setMeta<K extends keyof ItemType['meta']>(key: string, metaKey: K, metaValue: ItemType['meta'][K]) {
-	// 	const item = this.get(key);
-
-	// 	if (!item) {
-	// 		return;
-	// 	}
-
-	// 	if (!item.meta) {
-	// 		item.meta = {} as any;
-	// 	}
-
-	// 	// FIXME: Fixe typing issues
-	// 	return (item as any).meta[metaKey] = metaValue;
-	// }
-
 	public async register(
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
 	): Promise<string>;
@@ -188,7 +162,6 @@ export class Registry<
 		throw Error('Could not register item. Reason: Unknown item type.');
 	}
 
-	// TODO: Add tests
 	public async registerCollection(collection: ItemCollection<ItemInputType> = []) {
 		// If its an array
 		if (Array.isArray(collection)) {
