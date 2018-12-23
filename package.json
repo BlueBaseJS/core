@@ -10,7 +10,7 @@
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "start": "DEBUG=*,-follow-redirects ts-node ./src/example",
+    "start": "yarn run storybook",
     "clean": "rimraf coverage dist tmp",
     "watch": "tsc -w -p tsconfig.json",
     "watch:test": "jest --watch",
@@ -120,7 +120,6 @@
     "trash-cli": "^1.4.0",
     "ts-jest": "^23.10.0",
     "ts-loader": "^5.3.0",
-    "ts-node": "^7.0.0",
     "tslint": "^5.12.0",
     "typedoc": "^0.13.0",
     "typescript": "3.2.2"
