@@ -47,7 +47,6 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	ComponentRegistryItem,
 	ComponentRegistryInputItem
 > {
-
 	/**
 	 * Resolves a Component. Wraps it in `hocs` and `styles`. Takes care of loading and error
 	 * states if required.
