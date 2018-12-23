@@ -1,6 +1,6 @@
 import { BlueBase } from '../BlueBase';
 
-export interface AnalyticTrackData {
+export interface AnalyticsTrackData {
 	/** Event name */
 	name: string;
 
@@ -24,7 +24,7 @@ export class Analytics {
 		//
 	}
 
-	public track(data: AnalyticTrackData) {
+	public track(data: AnalyticsTrackData) {
 		this.BB.Hooks.run('bluebase.analytics.track', data);
 	}
 }

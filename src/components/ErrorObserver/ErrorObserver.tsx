@@ -39,8 +39,7 @@ export class ErrorObserver extends React.PureComponent<ErrorObserverProps, Error
 
 	render() {
 
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
+		const BB: BlueBase = this.context;
 
 		const { error } = this.state;
 		const { children } = this.props;

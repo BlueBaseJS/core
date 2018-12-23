@@ -1,8 +1,8 @@
 import { BlueBase, BootOptions } from '../BlueBase';
 import { BlueBaseDefaultConfigs } from '../Configs';
-import { HookInputNestedCollection } from '../registries';
+import { HookNestedCollection } from '../registries';
 
-export const configs: HookInputNestedCollection = {
+export const configs: HookNestedCollection = {
 	'bluebase.configs.register': [
 		{
 			key: 'bluebase-configs-register-default',

@@ -13,45 +13,41 @@ exports[`JsonSchema should render a text component with red color 1`] = `
 `;
 
 exports[`JsonSchema should render a text component with red color 2`] = `
-<View>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
-        Object {
-          "color": "red",
-        },
-      ]
-    }
-  >
-    This component is generated through JsonSchema Component
-  </Text>
-</View>
+<Text
+  style={
+    Array [
+      Object {
+        "color": "rgba(0, 0, 0, 0.87)",
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "fontWeight": "400",
+      },
+      Object {
+        "color": "red",
+      },
+    ]
+  }
+>
+  This component is generated through JsonSchema Component
+</Text>
 `;
 
 exports[`JsonSchema should render a text component with red color that is processed by hooks 1`] = `
-<View>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
-        Object {
-          "color": "blue",
-        },
-      ]
-    }
-  >
-    Content changed by hook!
-  </Text>
-</View>
+<Text
+  style={
+    Array [
+      Object {
+        "color": "rgba(0, 0, 0, 0.87)",
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "fontWeight": "400",
+      },
+      Object {
+        "color": "blue",
+      },
+    ]
+  }
+>
+  Content changed by hook!
+</Text>
 `;

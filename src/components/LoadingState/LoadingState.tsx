@@ -1,4 +1,4 @@
-import { BlueBase } from '../../BlueBase';
+import { ActivityIndicator, ComponentState } from '../../index';
 import { BlueBaseContext } from '../../Context';
 import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
@@ -20,13 +20,10 @@ export class LoadingState extends React.Component<LoadingStateProps> {
 
 	render() {
 
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
-
 		const { timedOut, retry } = this.props;
 
 		const props: ComponentStateProps = {
-			image: <BB.Components.ActivityIndicator />
+			image: <ActivityIndicator />
 		};
 
 		if (timedOut === true) {
@@ -38,6 +35,6 @@ export class LoadingState extends React.Component<LoadingStateProps> {
 			}
 		}
 
-		return <BB.Components.ComponentState {...props} />;
+		return <ComponentState {...props} />;
 	}
 }

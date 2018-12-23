@@ -1,4 +1,4 @@
-import { HookHandlerFn, PluginInputCollection } from '../../registries';
+import { HookHandlerFn, PluginCollection } from '../../registries';
 import { BlueBase } from '../../BlueBase';
 // import React from 'react';
 // import TestRenderer from 'react-test-renderer';
@@ -7,7 +7,7 @@ import { Noop } from '../../components';
 import { plugins } from '../plugins';
 
 
-const collection: PluginInputCollection = [{
+const collection: PluginCollection = [{
 	enabled: true,
 	key: 'a',
 	value: {

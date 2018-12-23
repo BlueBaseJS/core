@@ -1,5 +1,6 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
+import { ComponentState } from '../../index';
 import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
 
@@ -19,8 +20,7 @@ export class ErrorState extends React.PureComponent<ErrorStateProps> {
 
 		const { error, retry } = this.props;
 
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
+		const BB: BlueBase = this.context;
 
 		const development = BB.Configs.getValue('development');
 
@@ -34,6 +34,6 @@ export class ErrorState extends React.PureComponent<ErrorStateProps> {
 			props.actionOnPress = retry;
 		}
 
-		return (<BB.Components.ComponentState {...props} />);
+		return (<ComponentState {...props} />);
 	}
 }

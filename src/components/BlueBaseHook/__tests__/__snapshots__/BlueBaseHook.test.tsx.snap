@@ -7,9 +7,7 @@ exports[`BlueBaseHook should render a hooked value 1`] = `
 `;
 
 exports[`BlueBaseHook should render a hooked value 2`] = `
-<View>
-  <Text>
-    25
-  </Text>
-</View>
+<Text>
+  25
+</Text>
 `;

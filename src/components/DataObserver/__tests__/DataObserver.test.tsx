@@ -5,10 +5,6 @@ import { DataObserver } from '../DataObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
-
 describe('DataObserver', () => {
 	const DataObserverWithProvider = (props: any) => (
 		<BlueBaseApp>
@@ -45,9 +41,9 @@ describe('DataObserver', () => {
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect((tree as any).children[0].children[0].children.join()).toBe('foo');
-			expect((tree as any).children[0].children[1].children.join()).toBe('false');
-			expect((tree as any).children[0].children[2].children.join()).toBe('true');
+			expect((tree as any).children[0].children.join()).toBe('foo');
+			expect((tree as any).children[1].children.join()).toBe('false');
+			expect((tree as any).children[2].children.join()).toBe('true');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -69,9 +65,9 @@ describe('DataObserver', () => {
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect((tree as any).children[0].children[0].children.join()).toBe('foo');
-			expect((tree as any).children[0].children[1].children.join()).toBe('false');
-			expect((tree as any).children[0].children[2].children.join()).toBe('true');
+			expect((tree as any).children[0].children.join()).toBe('foo');
+			expect((tree as any).children[1].children.join()).toBe('false');
+			expect((tree as any).children[2].children.join()).toBe('true');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -93,9 +89,9 @@ describe('DataObserver', () => {
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect((tree as any).children[0].children[0].children).toBe(null);
-			expect((tree as any).children[0].children[1].children.join()).toBe('true');
-			expect((tree as any).children[0].children[2].children.join()).toBe('true');
+			expect((tree as any).children[0].children).toBe(null);
+			expect((tree as any).children[1].children.join()).toBe('true');
+			expect((tree as any).children[2].children.join()).toBe('true');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -117,9 +113,9 @@ describe('DataObserver', () => {
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect((tree as any).children[0].children[0].children.join()).toBe('a');
-			expect((tree as any).children[0].children[1].children.join()).toBe('false');
-			expect((tree as any).children[0].children[2].children.join()).toBe('true');
+			expect((tree as any).children[0].children.join()).toBe('a');
+			expect((tree as any).children[1].children.join()).toBe('false');
+			expect((tree as any).children[2].children.join()).toBe('true');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -141,9 +137,9 @@ describe('DataObserver', () => {
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect((tree as any).children[0].children[0].children.join()).toBe('a');
-			expect((tree as any).children[0].children[1].children.join()).toBe('false');
-			expect((tree as any).children[0].children[2].children.join()).toBe('false');
+			expect((tree as any).children[0].children.join()).toBe('a');
+			expect((tree as any).children[1].children.join()).toBe('false');
+			expect((tree as any).children[2].children.join()).toBe('false');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -165,9 +161,9 @@ describe('DataObserver', () => {
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect((tree as any).children[0].children[0].children.join()).toBe('a');
-			expect((tree as any).children[0].children[1].children.join()).toBe('false');
-			expect((tree as any).children[0].children[2].children.join()).toBe('false');
+			expect((tree as any).children[0].children.join()).toBe('a');
+			expect((tree as any).children[1].children.join()).toBe('false');
+			expect((tree as any).children[2].children.join()).toBe('false');
 			expect(tree).toMatchSnapshot();
 			done();
 		});

@@ -11,8 +11,7 @@ export class SystemContent extends React.PureComponent<ViewProperties> {
 
 	render() {
 
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
+		const BB: BlueBase = this.context;
 
 		return (
 			<BB.Components.View {...this.props}>

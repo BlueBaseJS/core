@@ -22,8 +22,8 @@ export type ComponentRegistryHocItemWithArgs<T = any> = [Thunk<ComponentRegistry
  * Source of this component. Contains information about who registered this component.
  */
 export interface ComponentSource {
-	type: 'plugin' | 'api' | 'custom';
-	slug: string;
+	type: 'plugin' | 'theme' | 'api' | 'custom';
+	key: string;
 }
 
 interface ComponentRegistryItemExtras {
@@ -39,7 +39,7 @@ export type ComponentRegistryItem = BlueBaseModuleRegistryItem<React.ComponentTy
 export type ComponentRegistryInputItem = BlueBaseModuleRegistryInputItem<React.ComponentType<any>> &
 	Partial<ComponentRegistryItemExtras>;
 
-export type ComponentInputCollection = ItemCollection<ComponentRegistryInputItem>;
+export type ComponentCollection = ItemCollection<ComponentRegistryInputItem>;
 
 /**
  * 🎁 ComponentRegistry
@@ -71,6 +71,11 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		});
 	}
 
+	/**
+	 * Resolves a Component. Wraps it in `hocs` and `styles`. Takes care of loading and error
+	 * states if required.
+	 * @param keys
+	 */
 	public resolve(...keys: string[]): React.ComponentType<any> {
 		const item = this.findOne(...keys);
 
@@ -108,11 +113,11 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		this.set(key, { ...item, hocs });
 	}
 
-	// public removeHocs() {
-	// 	// TODO:
-	// }
-
-	// TODO: Add docs
+	/**
+	 * Set styles of a component.
+	 * @param key
+	 * @param styles
+	 */
 	public setStyles(key: string, styles: MaybeThunk<ComponentStyles>) {
 		const item = this.get(key);
 
@@ -125,7 +130,10 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		this.data = this.data.set(key, item);
 	}
 
-	// TODO: Add docs
+	/**
+	 * Get styles of a component
+	 * @param key
+	 */
 	public getStyles(key: string): MaybeThunk<ComponentStyles> | undefined {
 		const item = this.get(key);
 
@@ -136,6 +144,11 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		return item.styles;
 	}
 
+	/**
+	 * Convert any input value to an item. This is where you transform inputs and add defualts
+	 * @param key
+	 * @param partial
+	 */
 	protected createItem(key: string, partial: any): ComponentRegistryItem {
 		const value = getDefiniteBlueBaseModule(partial.value);
 

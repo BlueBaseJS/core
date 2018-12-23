@@ -22,8 +22,8 @@ describe('ErrorState', () => {
 		setTimeout(() => {
 			tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
-			expect((tree as any).children[0].children[0].children.join()).toBe('Something broke!');
-			expect((tree as any).children[0].children[1].children.join())
+			expect((tree as any).children[0].children.join()).toBe('Something broke!');
+			expect((tree as any).children[1].children.join())
 				.toBe('An unknown error has occured. Please try again later.');
 			done();
 		});
@@ -39,9 +39,9 @@ describe('ErrorState', () => {
 		setTimeout(() => {
 			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
-			expect((tree as any).children[0].children[0].children.join()).toBe('Error');
-			expect((tree as any).children[0].children[1].children.join()).toBe('Bang!');
-			expect((tree as any).children[0].children[2].type).toBe('View'); // Button
+			expect((tree as any).children[0].children.join()).toBe('Error');
+			expect((tree as any).children[1].children.join()).toBe('Bang!');
+			expect((tree as any).children[2].type).toBe('View'); // Button
 			done();
 		});
 	});
