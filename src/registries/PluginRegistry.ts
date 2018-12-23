@@ -11,7 +11,14 @@ import { HookNestedCollection } from './HookRegistry';
 import { ItemCollection } from './Registry';
 import { ThemeCollection } from './ThemeRegistry';
 
-export type PluginCategory = 'app' | 'store' | 'router' | 'logging' | 'theme' | 'analytics' | string;
+export type PluginCategory =
+	| 'app'
+	| 'store'
+	| 'router'
+	| 'logging'
+	| 'theme'
+	| 'analytics'
+	| string;
 
 export interface PluginValue {
 	components: ComponentCollection;
@@ -96,7 +103,7 @@ export function createPlugin(plugin: Plugin): PluginInput {
 			themes,
 
 			...value,
-		}
+		},
 	};
 }
 
@@ -104,7 +111,6 @@ export function createPlugin(plugin: Plugin): PluginInput {
  * 🔌 PluginRegistry
  */
 export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
-
 	/**
 	 * Returns a Promise that resolves a Plugin
 	 * @param keys

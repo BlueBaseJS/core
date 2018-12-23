@@ -110,9 +110,8 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 			throw Error(`Could not add hocs for "${key}" component. Reason: Component not found.`);
 		}
 
-		this.set(key, { ...item, hocs: [ ...item.hocs, ...hocs ] });
+		this.set(key, { ...item, hocs });
 	}
-
 
 	/**
 	 * Set styles of a component.

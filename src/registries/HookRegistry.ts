@@ -93,7 +93,6 @@ export type HookNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn> =
  * 🎣 HookRegistry
  */
 export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
-
 	/**
 	 * Registers a nested hook collection.
 	 *

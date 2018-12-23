@@ -46,7 +46,6 @@ export type ThemeCollection = ItemCollection<ThemeInput>;
  * 🎨 ThemeRegistry
  */
 export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
-
 	/**
 	 * Returns a Promise that resolves a Theme
 	 * @param keys
