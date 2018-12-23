@@ -168,7 +168,7 @@ describe('DynamicIcon', () => {
 
 		const rendered = TestRenderer.create(
 			<BlueBaseApp BB={BB} components={{ Icon }}>
-				<DynamicIcon type="name" name="bus" />
+				<DynamicIcon type="icon" name="bus" />
 			</BlueBaseApp>
 		);
 

@@ -9,10 +9,10 @@ export interface DynamicIconProps {
 	 * If value is:
 	 *
 	 * - component: Icon is a custom component, and looks for 'component' prop
-	 * - name: Icon is an instance of BB.Components.Icon and looks for 'name' prop
+	 * - icon: Icon is an instance of BB.Components.Icon and looks for 'icon' prop
 	 * - image: Icon is an instance of BB.Components.Image and looks for 'source' prop
 	 */
-	type: 'component' | 'name' | 'image';
+	type: 'component' | 'icon' | 'image';
 
 	/**
 	 * Used when type is 'component'.
@@ -22,7 +22,7 @@ export interface DynamicIconProps {
 	component?: React.ComponentType<any> | string;
 
 	/**
-	 * Used when type is 'name'.
+	 * Used when type is 'icon'.
 	 * The name prop of the BB.Components.Icon component
 	 */
 	name?: string;
@@ -76,7 +76,7 @@ export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
 			? BB.Components.resolve(Component)
 			: component = Component;
 
-		} else if (type === 'name' && name) {
+		} else if (type === 'icon' && name) {
 			component = BB.Components.resolve('Icon');
 			rest.name = name;
 
