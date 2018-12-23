@@ -1,12 +1,12 @@
 // tslint:disable:object-literal-sort-keys
 
-import { AnalyticTrackData } from '../Analytics';
+import { AnalyticsTrackData } from '../Analytics';
 import { BlueBase } from '../../BlueBase';
 
 describe('Analytics', () => {
 	it('should send track data through hook', async () => {
 		const BB = new BlueBase();
-		const testData: AnalyticTrackData = {
+		const testData: AnalyticsTrackData = {
 			name: 'click',
 			attributes: {
 				genre: 'music',
@@ -20,7 +20,7 @@ describe('Analytics', () => {
 		await BB.Hooks.register({
 			key: 'analytics-test',
 			event: 'bluebase.analytics.track',
-			value: (data: AnalyticTrackData) => {
+			value: (data: AnalyticsTrackData) => {
 				expect(data).toMatchObject(testData);
 			},
 		});
