@@ -385,7 +385,7 @@ describe.only('PluginRegistry', () => {
 
 				value: {
 					hooks: { Baz: Noop },
-				}
+				},
 			});
 
 			expect(input.key).toBe('foo');
