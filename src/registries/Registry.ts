@@ -32,10 +32,16 @@ export interface RegistryInputItem<ValueType = any> {
 	[key: string]: any;
 }
 
+/**
+ * A collection of input items. Used by `registerCollection` function.
+ */
 export type ItemCollection<T extends RegistryInputItem = RegistryInputItem> =
 	| Array<T | T['value']>
 	| { [key: string]: T | T['value'] };
 
+/**
+ * Callback function called when a subscription update is published.
+ */
 export type RegistrySubscriptionFn<ItemType extends RegistryItem> = (
 	value: ItemType['value'],
 	item: ItemType
@@ -138,6 +144,11 @@ export class Registry<
 		return this.set(key, { value } as any);
 	}
 
+	/**
+	 * Adds an Item or an Item value to the registry.
+	 *
+	 * @param item
+	 */
 	public async register(
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
 	): Promise<string>;
@@ -162,6 +173,10 @@ export class Registry<
 		throw Error('Could not register item. Reason: Unknown item type.');
 	}
 
+	/**
+	 * Register a collection of items.
+	 * @param collection
+	 */
 	public async registerCollection(collection: ItemCollection<ItemInputType> = []) {
 		// If its an array
 		if (Array.isArray(collection)) {

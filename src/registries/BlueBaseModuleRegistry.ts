@@ -48,6 +48,10 @@ export interface BlueBaseModuleRegistryInputItem<ValueType = any> {
 	[key: string]: any;
 }
 
+/**
+ * A registry that has all items as promises. Used to make parts of the app capable of
+ * supporting code splitting.
+ */
 export class BlueBaseModuleRegistry<
 	ItemType extends BlueBaseModuleRegistryItem,
 	ItemInputType extends BlueBaseModuleRegistryInputItem = BlueBaseModuleRegistryInputItem
@@ -62,6 +66,12 @@ export class BlueBaseModuleRegistry<
 		return super.set(key, getDefiniteModule(item));
 	}
 
+	/**
+	 * Adds an Item or an Item value to the registry. If the item is a BlueBaseModule,
+	 * it is resolved first.
+	 *
+	 * @param item
+	 */
 	public async register(
 		item: ItemType | ItemType['value'] | ItemInputType | ItemInputType['value']
 	): Promise<string>;
@@ -89,6 +99,11 @@ export class BlueBaseModuleRegistry<
 		return Promise.all(promises);
 	}
 
+	/**
+	 * Convert any input value to an item. This is where you transform inputs and add defualts
+	 * @param key
+	 * @param partial
+	 */
 	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
 		const value = isBlueBaseModule(partial.value)
 			? partial.value

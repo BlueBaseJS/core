@@ -6,6 +6,7 @@ export { ItemCollection as ConfigCollection } from './Registry';
  * 🎛 ConfigRegistry
  */
 export class ConfigRegistry extends Registry<RegistryItem> {
+
 	/**
 	 * Registers a value if it's not already registered.
 	 * @param item

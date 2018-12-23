@@ -40,12 +40,17 @@ type ItemInputType = ThemeRegistryInputItem;
 export type Theme = ThemeRegistryItemExtras & ThemeValue;
 export type ThemeInput = ThemeRegistryInputItem;
 
-export type ThemeInputCollection = ItemCollection<ThemeInput>;
+export type ThemeCollection = ItemCollection<ThemeInput>;
 
 /**
  * 🎨 ThemeRegistry
  */
 export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
+
+	/**
+	 * Returns a Promise that resolves a Theme
+	 * @param keys
+	 */
 	public async resolve(...keys: string[]): Promise<Theme> {
 		const item = this.findOne(...keys);
 
@@ -75,6 +80,11 @@ export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTyp
 		return this.resolve(item.alternate);
 	}
 
+	/**
+	 * Convert any input value to an item. This is where you transform inputs and add defualts
+	 * @param key
+	 * @param partial
+	 */
 	protected createItem(key: string, partial: any): ThemeRegistryItem {
 		const value = getDefiniteBlueBaseModule(partial.value);
 

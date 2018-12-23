@@ -219,6 +219,11 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 		return !isNil(item.value) && !isNil(item.event);
 	}
 
+	/**
+	 * Convert any input value to an item. This is where you transform inputs and add defualts
+	 * @param key
+	 * @param partial
+	 */
 	protected createItem(key: string, partial: any): HookRegistryItem {
 		return super.createItem(key, {
 			priority: DEFAULT_HOOK_PRIORITY,
