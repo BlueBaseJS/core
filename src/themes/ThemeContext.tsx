@@ -1,3 +1,4 @@
+import { ErrorState, LoadingState } from '../getComponent';
 import React, { createContext } from 'react';
 import { BlueBase } from '../BlueBase';
 import { BlueBaseContext } from '../Context';
@@ -127,15 +128,15 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 		const retry = () => this.setTheme(this.props.theme, this.props.overrides, BB);
 
 		if (error) {
-			return <BB.Components.ErrorState error={error} retry={retry} />;
+			return <ErrorState error={error} retry={retry} />;
 		}
 
 		if (loading) {
-			return <BB.Components.LoadingState retry={retry} />;
+			return <LoadingState retry={retry} />;
 		}
 
 		if (!theme) {
-			return <BB.Components.ErrorState error={Error('Error: Could not load theme.')} />;
+			return <ErrorState error={Error('Error: Could not load theme.')} />;
 		}
 
 		const value: ThemeContextData = {

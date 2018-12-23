@@ -1,5 +1,6 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
+import { ErrorState } from '../../getComponent';
 import { MaybeRenderPropChildren } from '../../utils';
 import React from 'react';
 
@@ -46,7 +47,7 @@ export class ErrorObserver extends React.PureComponent<ErrorObserverProps, Error
 
 		if (error) {
 			BB.Logger.error(error);
-			const Error = this.props.errorComponent || BB.Components.ErrorState;
+			const Error = this.props.errorComponent || ErrorState;
 			return React.createElement(Error, { error });
 		}
 

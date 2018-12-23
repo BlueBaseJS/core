@@ -14,20 +14,11 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <ThemedComponent>
-        <SystemApp>
-          <ThemePicker>
-            <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue="bluebase-light"
-              style={
-                Object {
-                  "width": 150,
-                }
-              }
-            >
-              <PickerIOS
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <ThemePicker>
+              <Picker
                 mode="dialog"
                 onValueChange={[Function]}
                 selectedValue="bluebase-light"
@@ -37,7 +28,10 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                   }
                 }
               >
-                <View
+                <PickerIOS
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue="bluebase-light"
                   style={
                     Object {
                       "width": 150,
@@ -51,35 +45,14 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                       }
                     }
                   >
-                    <_class
-                      items={
-                        Array [
-                          Object {
-                            "label": "BlueBase Light",
-                            "textColor": undefined,
-                            "value": "bluebase-light",
-                          },
-                          Object {
-                            "label": "BlueBase Dark",
-                            "textColor": undefined,
-                            "value": "bluebase-dark",
-                          },
-                        ]
-                      }
-                      onChange={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      selectedIndex={0}
+                    <View
                       style={
-                        Array [
-                          Object {
-                            "height": 216,
-                          },
-                          undefined,
-                        ]
+                        Object {
+                          "width": 150,
+                        }
                       }
                     >
-                      <RCTPicker
+                      <_class
                         items={
                           Array [
                             Object {
@@ -106,22 +79,42 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                             undefined,
                           ]
                         }
-                      />
-                    </_class>
+                      >
+                        <RCTPicker
+                          items={
+                            Array [
+                              Object {
+                                "label": "BlueBase Light",
+                                "textColor": undefined,
+                                "value": "bluebase-light",
+                              },
+                              Object {
+                                "label": "BlueBase Dark",
+                                "textColor": undefined,
+                                "value": "bluebase-dark",
+                              },
+                            ]
+                          }
+                          onChange={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          selectedIndex={0}
+                          style={
+                            Array [
+                              Object {
+                                "height": 216,
+                              },
+                              undefined,
+                            ]
+                          }
+                        />
+                      </_class>
+                    </View>
                   </View>
-                </View>
-              </PickerIOS>
-            </Picker>
-          </ThemePicker>
-          <ThemeDemo>
-            <ThemedComponent
-              style={
-                Object {
-                  "backgroundColor": "#fafafa",
-                  "padding": 8,
-                }
-              }
-            >
+                </PickerIOS>
+              </Picker>
+            </ThemePicker>
+            <ThemeDemo>
               <View
                 style={
                   Object {
@@ -130,7 +123,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                   }
                 }
               >
-                <View
+                <ThemedComponent
                   style={
                     Object {
                       "backgroundColor": "#fafafa",
@@ -138,56 +131,76 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                     }
                   }
                 >
-                  <ThemedComponent>
-                    <Component
-                      styles={
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "#fafafa",
+                        "padding": 8,
+                      }
+                    }
+                  >
+                    <View
+                      style={
                         Object {
-                          "root": Object {
-                            "color": "rgba(0, 0, 0, 0.87)",
-                            "fontFamily": "Roboto",
-                            "fontSize": 16,
-                            "fontWeight": "400",
-                          },
+                          "backgroundColor": "#fafafa",
+                          "padding": 8,
                         }
                       }
                     >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "rgba(0, 0, 0, 0.87)",
-                              "fontFamily": "Roboto",
-                              "fontSize": 16,
-                              "fontWeight": "400",
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            Array [
+                      <Body1>
+                        <ThemedComponent>
+                          <Component
+                            styles={
                               Object {
-                                "color": "rgba(0, 0, 0, 0.87)",
-                                "fontFamily": "Roboto",
-                                "fontSize": 16,
-                                "fontWeight": "400",
-                              },
-                              undefined,
-                            ]
-                          }
-                        >
-                          BlueBase Light
-                        </Text>
-                      </Text>
-                    </Component>
-                  </ThemedComponent>
-                </View>
+                                "root": Object {
+                                  "color": "rgba(0, 0, 0, 0.87)",
+                                  "fontFamily": "Roboto",
+                                  "fontSize": 16,
+                                  "fontWeight": "400",
+                                },
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "rgba(0, 0, 0, 0.87)",
+                                    "fontFamily": "Roboto",
+                                    "fontSize": 16,
+                                    "fontWeight": "400",
+                                  },
+                                  undefined,
+                                ]
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": "Roboto",
+                                      "fontSize": 16,
+                                      "fontWeight": "400",
+                                    },
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                BlueBase Light
+                              </Text>
+                            </Text>
+                          </Component>
+                        </ThemedComponent>
+                      </Body1>
+                    </View>
+                  </View>
+                </ThemedComponent>
               </View>
-            </ThemedComponent>
-          </ThemeDemo>
-        </SystemApp>
-      </ThemedComponent>
+            </ThemeDemo>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>
@@ -197,20 +210,11 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <ThemedComponent>
-        <SystemApp>
-          <ThemePicker>
-            <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue="bluebase-light"
-              style={
-                Object {
-                  "width": 150,
-                }
-              }
-            >
-              <PickerIOS
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <ThemePicker>
+              <Picker
                 mode="dialog"
                 onValueChange={[Function]}
                 selectedValue="bluebase-light"
@@ -220,7 +224,10 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                   }
                 }
               >
-                <View
+                <PickerIOS
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue="bluebase-light"
                   style={
                     Object {
                       "width": 150,
@@ -234,35 +241,14 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                       }
                     }
                   >
-                    <_class
-                      items={
-                        Array [
-                          Object {
-                            "label": "BlueBase Light",
-                            "textColor": undefined,
-                            "value": "bluebase-light",
-                          },
-                          Object {
-                            "label": "BlueBase Dark",
-                            "textColor": undefined,
-                            "value": "bluebase-dark",
-                          },
-                        ]
-                      }
-                      onChange={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      selectedIndex={0}
+                    <View
                       style={
-                        Array [
-                          Object {
-                            "height": 216,
-                          },
-                          undefined,
-                        ]
+                        Object {
+                          "width": 150,
+                        }
                       }
                     >
-                      <RCTPicker
+                      <_class
                         items={
                           Array [
                             Object {
@@ -289,22 +275,42 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                             undefined,
                           ]
                         }
-                      />
-                    </_class>
+                      >
+                        <RCTPicker
+                          items={
+                            Array [
+                              Object {
+                                "label": "BlueBase Light",
+                                "textColor": undefined,
+                                "value": "bluebase-light",
+                              },
+                              Object {
+                                "label": "BlueBase Dark",
+                                "textColor": undefined,
+                                "value": "bluebase-dark",
+                              },
+                            ]
+                          }
+                          onChange={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          selectedIndex={0}
+                          style={
+                            Array [
+                              Object {
+                                "height": 216,
+                              },
+                              undefined,
+                            ]
+                          }
+                        />
+                      </_class>
+                    </View>
                   </View>
-                </View>
-              </PickerIOS>
-            </Picker>
-          </ThemePicker>
-          <ThemeDemo>
-            <ThemedComponent
-              style={
-                Object {
-                  "backgroundColor": "#fafafa",
-                  "padding": 8,
-                }
-              }
-            >
+                </PickerIOS>
+              </Picker>
+            </ThemePicker>
+            <ThemeDemo>
               <View
                 style={
                   Object {
@@ -313,7 +319,7 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                   }
                 }
               >
-                <View
+                <ThemedComponent
                   style={
                     Object {
                       "backgroundColor": "#fafafa",
@@ -321,56 +327,76 @@ exports[`ThemeContext should change theme based on callback function 3`] = `
                     }
                   }
                 >
-                  <ThemedComponent>
-                    <Component
-                      styles={
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "#fafafa",
+                        "padding": 8,
+                      }
+                    }
+                  >
+                    <View
+                      style={
                         Object {
-                          "root": Object {
-                            "color": "rgba(0, 0, 0, 0.87)",
-                            "fontFamily": "Roboto",
-                            "fontSize": 16,
-                            "fontWeight": "400",
-                          },
+                          "backgroundColor": "#fafafa",
+                          "padding": 8,
                         }
                       }
                     >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "rgba(0, 0, 0, 0.87)",
-                              "fontFamily": "Roboto",
-                              "fontSize": 16,
-                              "fontWeight": "400",
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            Array [
+                      <Body1>
+                        <ThemedComponent>
+                          <Component
+                            styles={
                               Object {
-                                "color": "rgba(0, 0, 0, 0.87)",
-                                "fontFamily": "Roboto",
-                                "fontSize": 16,
-                                "fontWeight": "400",
-                              },
-                              undefined,
-                            ]
-                          }
-                        >
-                          BlueBase Light
-                        </Text>
-                      </Text>
-                    </Component>
-                  </ThemedComponent>
-                </View>
+                                "root": Object {
+                                  "color": "rgba(0, 0, 0, 0.87)",
+                                  "fontFamily": "Roboto",
+                                  "fontSize": 16,
+                                  "fontWeight": "400",
+                                },
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "rgba(0, 0, 0, 0.87)",
+                                    "fontFamily": "Roboto",
+                                    "fontSize": 16,
+                                    "fontWeight": "400",
+                                  },
+                                  undefined,
+                                ]
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": "Roboto",
+                                      "fontSize": 16,
+                                      "fontWeight": "400",
+                                    },
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                BlueBase Light
+                              </Text>
+                            </Text>
+                          </Component>
+                        </ThemedComponent>
+                      </Body1>
+                    </View>
+                  </View>
+                </ThemedComponent>
               </View>
-            </ThemedComponent>
-          </ThemeDemo>
-        </SystemApp>
-      </ThemedComponent>
+            </ThemeDemo>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>

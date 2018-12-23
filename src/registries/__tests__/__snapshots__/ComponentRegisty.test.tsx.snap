@@ -56,19 +56,21 @@ exports[`ComponentRegistry .resolve method should resolve a Promised component 2
 >
   <BlueBaseRoot>
     <ThemeProvider>
-      <ThemedComponent>
-        <SystemApp>
-          <Foo>
-            <ThemedComponent>
-              <Text>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <Foo>
+              <ThemedComponent>
                 <Text>
-                  Some text
+                  <Text>
+                    Some text
+                  </Text>
                 </Text>
-              </Text>
-            </ThemedComponent>
-          </Foo>
-        </SystemApp>
-      </ThemedComponent>
+              </ThemedComponent>
+            </Foo>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>

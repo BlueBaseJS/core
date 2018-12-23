@@ -5,7 +5,6 @@ import {
 } from './BlueBaseModuleRegistry';
 import { ComponentStyles, applyStyles } from '../themes';
 import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
-import { BlueBase } from '../BlueBase';
 import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../components/';
@@ -48,28 +47,6 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	ComponentRegistryItem,
 	ComponentRegistryInputItem
 > {
-	// For proxy methods
-	[key: string]: any;
-
-	constructor(BB: BlueBase) {
-		super(BB);
-
-		// Create proxy to enable BB.Components.Name method
-		return new Proxy(this, {
-			get: (target, name, value) => {
-				if (typeof name === 'string' && typeof this[name] === 'undefined') {
-					if (this.has(name)) {
-						return this.resolve(name);
-					}
-					throw Error(
-						`BlueBase could not find "${name}" component. Did you forget to register it?`
-					);
-				}
-
-				return Reflect.get(target, name, value);
-			},
-		});
-	}
 
 	/**
 	 * Resolves a Component. Wraps it in `hocs` and `styles`. Takes care of loading and error

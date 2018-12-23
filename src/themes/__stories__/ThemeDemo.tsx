@@ -1,4 +1,4 @@
-import { BlueBase, BlueBaseContext } from '../../';
+import { Body1, View } from '../../getComponent';
 import React from 'react';
 import { Theme } from '../../registries';
 import { ThemeContext } from '../../themes';
@@ -9,10 +9,7 @@ export interface ThemeDemoProps {
 
 export class ThemeDemo extends React.PureComponent<ThemeDemoProps> {
 
-	static contextType = BlueBaseContext;
-
 	render() {
-		const BB: BlueBase = (this as any).context;
 		const { children } = this.props;
 
 		return (
@@ -24,12 +21,12 @@ export class ThemeDemo extends React.PureComponent<ThemeDemoProps> {
 				};
 
 				return (
-					<BB.Components.View style={mainStyle}>
-						<BB.Components.Body1>
+					<View style={mainStyle}>
+						<Body1>
 							{theme.name}
-						</BB.Components.Body1>
+						</Body1>
 						{children}
-					</BB.Components.View>
+					</View>
 				);
 			}} />
 		);
