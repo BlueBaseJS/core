@@ -87,7 +87,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * Creates a BlueBase plugin from input params
  * @param plugin
  */
-export function createPlugin(plugin: Plugin): PluginInput {
+export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 	const { components, defaultConfigs, hooks, themes, value, ...rest } = plugin;
 
 	return {

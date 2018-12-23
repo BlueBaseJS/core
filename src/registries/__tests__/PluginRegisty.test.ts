@@ -1,6 +1,7 @@
 // tslint:disable:max-classes-per-file
+import { PluginRegistry, createPlugin } from '../PluginRegistry';
 import { BlueBase } from '../../BlueBase';
-import { PluginRegistry } from '../PluginRegistry';
+import { Noop } from '../../getComponent';
 import { createBlueBaseModule } from '../../utils';
 
 describe.only('PluginRegistry', () => {
@@ -370,6 +371,30 @@ describe.only('PluginRegistry', () => {
 			const Plugins = new PluginRegistry(BB);
 
 			expect((Plugins as any).isInputValue('foo')).toBe(false);
+		});
+	});
+
+	describe('.createPlugin method', () => {
+		it('should convert Plugin to PluginInput', async () => {
+			const input = createPlugin({
+				key: 'foo',
+				name: 'Foo',
+
+				components: { Foo: Noop },
+				hooks: { Bar: Noop },
+
+				value: {
+					hooks: { Baz: Noop },
+				}
+			});
+
+			expect(input.key).toBe('foo');
+			expect(input.name).toBe('Foo');
+			expect(input.enabled).toBe(true);
+			expect(input.components).toBe(undefined);
+			expect(input.hooks).toBe(undefined);
+			expect((input as any).value.components.Foo).toBeTruthy();
+			expect((input as any).value.hooks.Baz).toBeTruthy();
 		});
 	});
 
