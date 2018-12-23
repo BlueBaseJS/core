@@ -4,7 +4,7 @@ import React from 'react';
 import { resolveThunk } from '../../utils';
 
 export interface PluginIconProps {
-	slug: string;
+	id: string;
 	size?: number,
 	[key: string]: any
 }
@@ -18,15 +18,14 @@ export class PluginIcon extends React.PureComponent<PluginIconProps> {
 
 	render() {
 
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
+		const BB: BlueBase = this.context;
 
-		const { slug, ...rest } = this.props;
+		const { id, ...rest } = this.props;
 
-		const plugin = BB.Plugins.get(slug);
+		const plugin = BB.Plugins.get(id);
 
 		if (!plugin) {
-			throw new Error(`There's no pluign registered with "${slug}" key in the registry.`);
+			throw new Error(`There's no pluign registered with "${id}" key in the registry.`);
 		}
 
 		if (!plugin.icon) {

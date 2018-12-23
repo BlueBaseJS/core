@@ -1,14 +1,14 @@
 import { Analytics, Logger } from './api';
 import {
-	ComponentInputCollection,
+	ComponentCollection,
 	ComponentRegistry,
 	ConfigCollection,
 	ConfigRegistry,
-	HookInputNestedCollection,
+	HookNestedCollection,
 	HookRegistry,
-	PluginInputCollection,
+	PluginCollection,
 	PluginRegistry,
-	ThemeInputCollection,
+	ThemeCollection,
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
@@ -17,11 +17,11 @@ import { ThemeProvider } from './themes';
 import systemHooks from './hooks';
 
 export interface BootOptions {
-	components: ComponentInputCollection,
+	components: ComponentCollection,
 	configs: ConfigCollection,
-	hooks: HookInputNestedCollection,
-	plugins: PluginInputCollection,
-	themes: ThemeInputCollection,
+	hooks: HookNestedCollection,
+	plugins: PluginCollection,
+	themes: ThemeCollection,
 	// routes: Plugin[]
 }
 

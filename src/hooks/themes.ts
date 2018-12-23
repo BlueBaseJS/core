@@ -1,8 +1,8 @@
 import { BlueBase, BootOptions } from '../BlueBase';
 import { BlueBaseDarkTheme, BlueBaseLightTheme } from '../themes';
-import { HookInputNestedCollection } from '../registries';
+import { HookNestedCollection } from '../registries';
 
-export const themes: HookInputNestedCollection = {
+export const themes: HookNestedCollection = {
 	'bluebase.themes.register': [
 		{
 			key: 'bluebase-themes-register-internal-default',

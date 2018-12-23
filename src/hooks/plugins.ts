@@ -1,7 +1,7 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-import { HookInputNestedCollection, Plugin } from '../registries';
+import { HookNestedCollection, Plugin } from '../registries';
 
-export const plugins: HookInputNestedCollection = {
+export const plugins: HookNestedCollection = {
 	/**
 	 * Registers given list of plugins
 	 */

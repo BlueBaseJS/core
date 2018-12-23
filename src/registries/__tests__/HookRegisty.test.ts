@@ -1,6 +1,6 @@
 // declare var global: any;
 
-import { DEFAULT_HOOK_PRIORITY, HookInputNestedCollection, HookRegistry } from '../HookRegistry';
+import { DEFAULT_HOOK_PRIORITY, HookNestedCollection, HookRegistry } from '../HookRegistry';
 import { BlueBase } from '../../BlueBase';
 
 describe('HookRegistry', () => {
@@ -64,7 +64,7 @@ describe('HookRegistry', () => {
 			const BB = new BlueBase();
 			const Hooks = new HookRegistry(BB);
 
-			const collection: HookInputNestedCollection = {
+			const collection: HookNestedCollection = {
 				hook1: [{ key: 'add-fifteen', value: (val: number) => val + 15 }, (val: number) => val],
 				hook2: { key: 'add-five', value: (val: number) => val + 5 },
 				hook3: (val: number) => val + 10,
@@ -88,7 +88,7 @@ describe('HookRegistry', () => {
 			const BB = new BlueBase();
 			const Hooks = new HookRegistry(BB);
 
-			const collection: HookInputNestedCollection = {
+			const collection: HookNestedCollection = {
 				hook1: [
 					Promise.resolve({ key: 'add-fifteen', value: (val: number) => val + 15 }),
 					Promise.resolve((val: number) => val),
@@ -115,7 +115,7 @@ describe('HookRegistry', () => {
 			const BB = new BlueBase();
 			const Hooks = new HookRegistry(BB);
 
-			const collection: HookInputNestedCollection = () => ({
+			const collection: HookNestedCollection = () => ({
 				hook1: [{ key: 'add-fifteen', value: (val: number) => val + 15 }, (val: number) => val],
 				hook2: { key: 'add-five', value: (val: number) => val + 5 },
 				hook3: (val: number) => val + 10,
@@ -139,7 +139,7 @@ describe('HookRegistry', () => {
 			const BB = new BlueBase();
 			const Hooks = new HookRegistry(BB);
 
-			const collection: HookInputNestedCollection = () => ({
+			const collection: HookNestedCollection = () => ({
 				hook1: [{ key: 'add-fifteen' }],
 			});
 

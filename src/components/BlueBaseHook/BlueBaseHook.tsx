@@ -4,12 +4,6 @@ import Loadable from 'react-loadable';
 import React from 'react';
 import { ReactLoadableLoading } from '../ReactLoadableLoading';
 
-// const example = () => (
-// 	<BlueBaseHook hook="bluebase.event" value={5} args={{ foo: 'bar' }}>
-// 	{(value) => console.log(value)}
-// 	</BlueBaseHook>
-// );
-
 export interface BlueBaseHookProps<T = any> {
 	hook: string;
 	value: T;
@@ -32,8 +26,7 @@ export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 
 		const { hook, value, args, children } = this.props;
 
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
+		const BB: BlueBase = this.context;
 
 		const AsyncBlueBaseHook = Loadable({
 			loader: () => BB.Hooks.run(hook, value, args),

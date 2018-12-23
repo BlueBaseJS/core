@@ -4,10 +4,6 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Text } from 'react-native';
 
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
-
 const Bang = () => {
 	throw Error('💥 Boom!');
 };
@@ -29,7 +25,7 @@ describe('ErrorObserver', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).children[0].children.join()).toBe('Hello');
+			expect((tree as any).children.join()).toBe('Hello');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -46,7 +42,7 @@ describe('ErrorObserver', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).children[0].children.join()).toBe('Hello');
+			expect((tree as any).children.join()).toBe('Hello');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -66,7 +62,7 @@ describe('ErrorObserver', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).children[0].children.join()).toBe('Error');
+			expect((tree as any).children.join()).toBe('Error');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -85,7 +81,7 @@ describe('ErrorObserver', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).children[0].children.join()).toBe('Hello');
+			expect((tree as any).children.join()).toBe('Hello');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -102,8 +98,8 @@ describe('ErrorObserver', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).children[0].children[0].children.join()).toBe('Error');
-			expect((tree as any).children[0].children[1].children.join()).toBe('💥 Boom!');
+			expect((tree as any).children[0].children.join()).toBe('Error');
+			expect((tree as any).children[1].children.join()).toBe('💥 Boom!');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -120,8 +116,8 @@ describe('ErrorObserver', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).children[0].children[0].children.join()).toBe('Error');
-			expect((tree as any).children[0].children[1].children.join()).toBe('An unknown error occured.');
+			expect((tree as any).children[0].children.join()).toBe('Error');
+			expect((tree as any).children[1].children.join()).toBe('An unknown error occured.');
 			expect(tree).toMatchSnapshot();
 			done();
 		});
@@ -138,7 +134,7 @@ describe('ErrorObserver', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect((tree as any).children[0].children.join()).toBe('Hello');
+			expect((tree as any).children.join()).toBe('Hello');
 			expect(tree).toMatchSnapshot();
 			done();
 		});

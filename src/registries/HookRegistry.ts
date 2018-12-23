@@ -18,7 +18,7 @@ import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 
 /**
- * Default priority for a hook
+ * Default priority for a hook.
  */
 export const DEFAULT_HOOK_PRIORITY = 10;
 
@@ -32,7 +32,7 @@ export const DEFAULT_HOOK_PRIORITY = 10;
  * @param args Any arguments passed on to the listener by the caller
  * @param BB The BlueBase context
  *
- * @returns Orinal or mutates version of input value. May be a promise that resolves the value.
+ * @returns Original or mutated version of input value. May be a promise that resolves the value.
  */
 export type HookHandlerFn<T = any> = (
 	value: T,
@@ -40,7 +40,10 @@ export type HookHandlerFn<T = any> = (
 	BB: BlueBase
 ) => T | Promise<T>;
 
-export interface HookRegistryItemExtras {
+/**
+ * Properties of a Hook item.
+ */
+export interface HookRegistryItemProps {
 	/**
 	 * Priority of exeuction.
 	 *
@@ -56,7 +59,7 @@ export interface HookRegistryItemExtras {
 	[key: string]: any;
 }
 
-export type HookRegistryItem = BlueBaseModuleRegistryItem<HookHandlerFn> & HookRegistryItemExtras;
+export type HookRegistryItem = BlueBaseModuleRegistryItem<HookHandlerFn> & HookRegistryItemProps;
 export interface HookRegistryInputItem extends BlueBaseModuleRegistryInputItem<HookHandlerFn> {
 	/**
 	 * ID of event to subscribe to
@@ -67,14 +70,22 @@ export interface HookRegistryInputItem extends BlueBaseModuleRegistryInputItem<H
 type ItemType = HookRegistryItem;
 type ItemInputType = HookRegistryInputItem;
 
-export type Hook = HookRegistryItemExtras & { value: HookHandlerFn };
+/**
+ * Hook Type.
+ */
+export type Hook = HookRegistryItemProps & { value: HookHandlerFn };
+
+/**
+ * HookInput.
+ */
 export type HookInput = HookRegistryInputItem;
 
 export type HookInputCollection = ItemCollection<HookInput>;
 
-///////// Nested Collection
-
-export type HookInputNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn> = MaybeThunk<{
+/**
+ * A nested hook collection.
+ */
+export type HookNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn> = MaybeThunk<{
 	[event: string]: MaybeArray<MaybeBlueBaseModule<T>>;
 }>;
 
@@ -82,7 +93,12 @@ export type HookInputNestedCollection<T = Omit<HookInput, 'event'> | HookHandler
  * 🎣 HookRegistry
  */
 export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
-	public async registerNestedCollection(collections: HookInputNestedCollection = {}) {
+	/**
+	 * Registers a nested hook collection.
+	 *
+	 * @param collections
+	 */
+	public async registerNestedCollection(collections: HookNestedCollection = {}) {
 		// If hooks field is a thunk, then call the thunk function
 		collections = resolveThunk(collections, this.BB);
 
@@ -202,6 +218,11 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 		return !isNil(item.value) && !isNil(item.event);
 	}
 
+	/**
+	 * Convert any input value to an item. This is where you transform inputs and add defualts
+	 * @param key
+	 * @param partial
+	 */
 	protected createItem(key: string, partial: any): HookRegistryItem {
 		return super.createItem(key, {
 			priority: DEFAULT_HOOK_PRIORITY,

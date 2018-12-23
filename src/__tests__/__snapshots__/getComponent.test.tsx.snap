@@ -7,58 +7,56 @@ exports[`getComponent should render a button component 1`] = `
 `;
 
 exports[`getComponent should render a button component 2`] = `
-<View>
+<View
+  accessibilityRole="button"
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
   <View
-    accessibilityRole="button"
-    accessible={true}
-    isTVSelectable={true}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "borderRadius": 4,
+          "paddingBottom": 8,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 8,
+        },
+        Object {
+          "backgroundColor": "#fafafa",
+        },
+      ]
     }
   >
-    <View
+    <Text
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
-            "borderRadius": 4,
-            "paddingBottom": 8,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 8,
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "Roboto",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textAlign": "center",
+            "textTransform": "uppercase",
           },
-          Object {
-            "backgroundColor": "#fafafa",
-          },
+          Object {},
         ]
       }
     >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "rgba(0, 0, 0, 0.87)",
-              "fontFamily": "Roboto",
-              "fontSize": 14,
-              "fontWeight": "500",
-              "textAlign": "center",
-              "textTransform": "uppercase",
-            },
-            Object {},
-          ]
-        }
-      >
-        A Button component
-      </Text>
-    </View>
+      A Button component
+    </Text>
   </View>
 </View>
 `;
@@ -70,21 +68,19 @@ exports[`getComponent should render a text component 1`] = `
 `;
 
 exports[`getComponent should render a text component 2`] = `
-<View>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
-        undefined,
-      ]
-    }
-  >
-    A Text component
-  </Text>
-</View>
+<Text
+  style={
+    Array [
+      Object {
+        "color": "rgba(0, 0, 0, 0.87)",
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "fontWeight": "400",
+      },
+      undefined,
+    ]
+  }
+>
+  A Text component
+</Text>
 `;

@@ -7,157 +7,153 @@ exports[`ErrorState should render ErrorState 1`] = `
 `;
 
 exports[`ErrorState should render ErrorState 2`] = `
-<View>
-  <View
+<View
+  style={
+    Object {
+      "alignItems": "center",
+    }
+  }
+>
+  <Text
     style={
-      Object {
-        "alignItems": "center",
-      }
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 20,
+          "fontWeight": "500",
+        },
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
+      ]
     }
   >
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Roboto",
-            "fontSize": 20,
-            "fontWeight": "500",
-          },
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Something broke!
-    </Text>
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Roboto",
-            "fontSize": 16,
-            "fontWeight": "400",
-          },
-          Object {
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      An unknown error has occured. Please try again later.
-    </Text>
-  </View>
+    Something broke!
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    An unknown error has occured. Please try again later.
+  </Text>
 </View>
 `;
 
 exports[`ErrorState should render ErrorState with retry button and custom error 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "alignItems": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 20,
+          "fontWeight": "500",
+        },
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Error
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "rgba(0, 0, 0, 0.87)",
+          "fontFamily": "Roboto",
+          "fontSize": 16,
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Bang!
+  </Text>
   <View
     style={
       Object {
-        "alignItems": "center",
+        "marginTop": 8,
       }
     }
   >
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Roboto",
-            "fontSize": 20,
-            "fontWeight": "500",
-          },
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Error
-    </Text>
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Roboto",
-            "fontSize": 16,
-            "fontWeight": "400",
-          },
-          Object {
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Bang!
-    </Text>
     <View
+      accessibilityRole="button"
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "marginTop": 8,
+          "opacity": 1,
         }
       }
     >
       <View
-        accessibilityRole="button"
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
-          Object {
-            "opacity": 1,
-          }
+          Array [
+            Object {
+              "alignSelf": "flex-start",
+              "borderRadius": 4,
+              "paddingBottom": 8,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 8,
+            },
+            Object {
+              "backgroundColor": "#3f51b5",
+            },
+          ]
         }
       >
-        <View
+        <Text
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "borderRadius": 4,
-                "paddingBottom": 8,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 8,
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "Roboto",
+                "fontSize": 14,
+                "fontWeight": "500",
+                "textAlign": "center",
+                "textTransform": "uppercase",
               },
               Object {
-                "backgroundColor": "#3f51b5",
+                "color": "#fff",
               },
             ]
           }
         >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "rgba(0, 0, 0, 0.87)",
-                  "fontFamily": "Roboto",
-                  "fontSize": 14,
-                  "fontWeight": "500",
-                  "textAlign": "center",
-                  "textTransform": "uppercase",
-                },
-                Object {
-                  "color": "#fff",
-                },
-              ]
-            }
-          >
-            Retry
-          </Text>
-        </View>
+          Retry
+        </Text>
       </View>
     </View>
   </View>

@@ -19,10 +19,10 @@ import {
 	SystemContent,
 	WaitObserver,
 } from '../components/';
-import { HookInputNestedCollection } from '../registries';
+import { HookNestedCollection } from '../registries';
 import { ThemeValue } from '../themes';
 
-export const components: HookInputNestedCollection = {
+export const components: HookNestedCollection = {
 	/**
 	 * Registers all components that ship with BlueBase
 	 */

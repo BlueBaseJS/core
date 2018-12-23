@@ -1,20 +1,7 @@
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
+import { ComponentState } from '../../index';
 import React from 'react';
 
 export interface EmptyStateProps {}
 
-export class EmptyState extends React.PureComponent<EmptyStateProps> {
-
-	static contextType = BlueBaseContext;
-
-	render() {
-
-		// FIXME: remove typecasting, added because current react typings don't seem to support this.context
-		const BB: BlueBase = (this as any).context;
-
-		return (
-			<BB.Components.ComponentState title="Empty area" description="No data found." />
-		);
-	}
-}
+export const EmptyState = (_props: EmptyStateProps) =>
+	(<ComponentState title="Empty area" description="No data found." />);

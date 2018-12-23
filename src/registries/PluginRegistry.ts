@@ -4,15 +4,27 @@ import {
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
 import { MaybeThunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
-import { ComponentInputCollection } from './ComponentRegistry';
+import { ComponentCollection } from './ComponentRegistry';
+import { ConfigCollection } from './ConfigRegistry';
 import { DynamicIconProps } from '../components/';
+import { HookNestedCollection } from './HookRegistry';
 import { ItemCollection } from './Registry';
+import { ThemeCollection } from './ThemeRegistry';
+
+export type PluginCategory =
+	| 'app'
+	| 'store'
+	| 'router'
+	| 'logging'
+	| 'theme'
+	| 'analytics'
+	| string;
 
 export interface PluginValue {
-	components: ComponentInputCollection;
-	defaultConfigs: any; // ConfigsCollection;
-	hooks: any; // HookCollectionInput;
-	themes: any;
+	components: ComponentCollection;
+	defaultConfigs: ConfigCollection;
+	hooks: HookNestedCollection; // HookCollectionInput;
+	themes: ThemeCollection;
 }
 
 export type PluginValueInput = Partial<PluginValue>;
@@ -26,9 +38,16 @@ export interface PluginRegistryItemExtras {
 	 */
 	name: string;
 
-	categories?: any; // PluginCategory | PluginCategory[];
+	/** Plugin categories */
+	categories?: PluginCategory[];
+
+	/** Plugin description */
 	description?: string;
+
+	/** Plugin version */
 	version?: string;
+
+	/** Plugin Icon Props */
 	icon?: MaybeThunk<DynamicIconProps>;
 
 	/** Is this plugin currently enabled/ */
@@ -46,7 +65,7 @@ type ItemInputType = PluginRegistryInputItem;
 export type Plugin = PluginRegistryItemExtras & PluginValue;
 export type PluginInput = PluginRegistryInputItem;
 
-export type PluginInputCollection = ItemCollection<PluginInput>;
+export type PluginCollection = ItemCollection<PluginInput>;
 
 export function inputToPlugin(plugin: PluginInput): Plugin {
 	const { value, ...rest } = plugin;
@@ -65,9 +84,37 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
 }
 
 /**
+ * Creates a BlueBase plugin from input params
+ * @param plugin
+ */
+export function createPlugin(plugin: Partial<Plugin>): PluginInput {
+	const { components, defaultConfigs, hooks, themes, value, ...rest } = plugin;
+
+	return {
+		enabled: true,
+		name: 'Untitled Plugin',
+
+		...rest,
+
+		value: {
+			components,
+			defaultConfigs,
+			hooks,
+			themes,
+
+			...value,
+		},
+	};
+}
+
+/**
  * 🔌 PluginRegistry
  */
 export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
+	/**
+	 * Returns a Promise that resolves a Plugin
+	 * @param keys
+	 */
 	public async resolve(...keys: string[]): Promise<Plugin> {
 		const item = this.findOne(...keys);
 
@@ -151,6 +198,11 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		);
 	}
 
+	/**
+	 * Convert any input value to an item. This is where you transform inputs and add defualts
+	 * @param key
+	 * @param partial
+	 */
 	protected createItem(key: string, partial: any): ItemType {
 		return super.createItem(key, {
 			categories: [],
