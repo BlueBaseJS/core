@@ -1,102 +1,90 @@
 // tslint:disable:no-console
-import { BlueBase, BlueBaseConsumer } from '../..';
+import { View, getComponent } from '../../getComponent';
 import React from 'react';
 import { ThemeDemo } from '../../themes/__stories__/ThemeDemo';
 import { ThemePicker } from '../../themes/__stories__/ThemePicker';
 import { ThemeProvider } from '..';
 import storiesOf from '@bluebase/storybook-addon';
 
+const ThemedCard = getComponent('ThemedCard');
+const ThemedCard2 = getComponent('ThemedCard2');
+const ThemedCard3 = getComponent('ThemedCard3');
+
 storiesOf('ThemeContext', module)
 
 .add('Basic Example', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.View>
-			<ThemePicker />
-			<ThemeDemo />
-		</BB.Components.View>
-	)} />
+	<View>
+		<ThemePicker />
+		<ThemeDemo />
+	</View>
 ))
 
 .add('Basic Example with overrides', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<ThemeProvider theme="bluebase-dark" overrides={{ palette: { background: { default: 'red' } } }}>
-			<BB.Components.View style={{ margin: 8 }}>
-				<ThemeDemo />
-			</BB.Components.View>
-		</ThemeProvider>
-	)} />
+	<ThemeProvider theme="bluebase-dark" overrides={{ palette: { background: { default: 'red' } } }}>
+		<View style={{ margin: 8 }}>
+			<ThemeDemo />
+		</View>
+	</ThemeProvider>
 ))
 
 .add('Nested Theme', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.View>
-			<ThemePicker />
-			<ThemeDemo>
-				<ThemeProvider theme="bluebase-dark">
-					<BB.Components.View style={{ margin: 8 }}>
-						<ThemeDemo />
-					</BB.Components.View>
-				</ThemeProvider>
-			</ThemeDemo>
-		</BB.Components.View>
-	)} />
+	<View>
+		<ThemePicker />
+		<ThemeDemo>
+			<ThemeProvider theme="bluebase-dark">
+				<View style={{ margin: 8 }}>
+					<ThemeDemo />
+				</View>
+			</ThemeProvider>
+		</ThemeDemo>
+	</View>
 ))
 
 .add('3 Level Nesting', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.View>
-			<ThemePicker />
-			<ThemeDemo>
-				<ThemeProvider theme="bluebase-dark">
-					<BB.Components.View style={{ margin: 8 }}>
-					<ThemeDemo>
-						<ThemeProvider>
-							<BB.Components.View style={{ margin: 8 }}>
-								<ThemePicker />
-								<ThemeDemo />
-							</BB.Components.View>
-						</ThemeProvider>
-					</ThemeDemo>
-					</BB.Components.View>
-				</ThemeProvider>
-			</ThemeDemo>
-		</BB.Components.View>
-	)} />
+	<View>
+		<ThemePicker />
+		<ThemeDemo>
+			<ThemeProvider theme="bluebase-dark">
+				<View style={{ margin: 8 }}>
+				<ThemeDemo>
+					<ThemeProvider>
+						<View style={{ margin: 8 }}>
+							<ThemePicker />
+							<ThemeDemo />
+						</View>
+					</ThemeProvider>
+				</ThemeDemo>
+				</View>
+			</ThemeProvider>
+		</ThemeDemo>
+	</View>
 ));
 
 storiesOf('Themes', module)
 
 .add('A component with defaultStyles', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.View>
-			<BB.Components.ThemedCard>
-				A card with defaultStyles
-			</BB.Components.ThemedCard>
-			<ThemePicker />
-		</BB.Components.View>
-	)} />
+	<View>
+		<ThemedCard>
+			A card with defaultStyles
+		</ThemedCard>
+		<ThemePicker />
+	</View>
 ))
 
 .add('A component with styles from theme', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.ThemedCard2>
-			A Card with styles from the theme (Color: Green)
-		</BB.Components.ThemedCard2>
-	)} />
+	<ThemedCard2>
+		A Card with styles from the theme (Color: Green)
+	</ThemedCard2>
 ))
 
 .add('A component with styles from prop', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.ThemedCard2 styles={{ root: { backgroundColor: 'blue' } }}>
-			A Card with styles from the theme (Color: Blue)
-		</BB.Components.ThemedCard2>
-	)} />
+	<ThemedCard2 styles={{ root: { backgroundColor: 'blue' } }}>
+		A Card with styles from the theme (Color: Blue)
+	</ThemedCard2>
 ))
 
 .add('A component with styles from component registry', () => (
-	<BlueBaseConsumer children={(BB: BlueBase) => (
-		<BB.Components.ThemedCard3>
-			A Card with styles from component registry (Color: Orange)
-		</BB.Components.ThemedCard3>
-	)} />
+	<ThemedCard3>
+		A Card with styles from component registry (Color: Orange)
+	</ThemedCard3>
 ));

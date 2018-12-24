@@ -1,4 +1,4 @@
-import { BlueBase, BlueBaseConsumer } from '../../..';
+import { ErrorObserver } from '../../../getComponent';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
@@ -9,7 +9,5 @@ const Bang = () => {
 storiesOf('ErrorObserver', module)
 
 	.add('Basic Example', () => (
-		<BlueBaseConsumer children={(BB: BlueBase) => (
-			<BB.Components.ErrorObserver><Bang /></BB.Components.ErrorObserver>
-		)} />
+		<ErrorObserver><Bang /></ErrorObserver>
 	));
