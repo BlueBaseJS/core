@@ -92,6 +92,7 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 			}
 
 			return children;
+
 		} else {
 			return null;
 		}

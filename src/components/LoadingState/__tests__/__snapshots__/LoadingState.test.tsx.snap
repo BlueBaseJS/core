@@ -60,11 +60,10 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
           "fontFamily": "Roboto",
-          "fontSize": 20,
-          "fontWeight": "500",
+          "fontSize": 16,
+          "fontWeight": "400",
         },
         Object {
-          "marginBottom": 8,
           "textAlign": "center",
         },
       ]
@@ -95,11 +94,10 @@ exports[`LoadingState Snapshot LoadingState component after complete rendering w
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
           "fontFamily": "Roboto",
-          "fontSize": 20,
-          "fontWeight": "500",
+          "fontSize": 16,
+          "fontWeight": "400",
         },
         Object {
-          "marginBottom": 8,
           "textAlign": "center",
         },
       ]
