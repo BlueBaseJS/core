@@ -1,105 +1,1010 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StatefulComponent Snapshot StatefulComponent component 1`] = `
-<Text>
-  Loading
-</Text>
+exports[`StatefulComponent should show children from Component prop 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <StatefulComponent
+              component={[Function]}
+              data={true}
+              timeout={10000}
+            >
+              <ErrorObserver
+                rest={
+                  Object {
+                    "data": true,
+                  }
+                }
+              >
+                <ThemedComponent
+                  rest={
+                    Object {
+                      "data": true,
+                    }
+                  }
+                >
+                  <ErrorObserver
+                    checkError={[Function]}
+                    rest={
+                      Object {
+                        "data": true,
+                      }
+                    }
+                  >
+                    <DataObserver
+                      data={true}
+                      rest={
+                        Object {
+                          "data": true,
+                        }
+                      }
+                    >
+                      <ThemedComponent
+                        data={true}
+                        rest={
+                          Object {
+                            "data": true,
+                          }
+                        }
+                      >
+                        <DataObserver
+                          data={true}
+                          isEmpty={[Function]}
+                          isLoading={[Function]}
+                          loading={false}
+                          rest={
+                            Object {
+                              "data": true,
+                            }
+                          }
+                        >
+                          <Comp
+                            data={true}
+                          >
+                            <Text>
+                              <Text>
+                                Custom Component
+                              </Text>
+                            </Text>
+                          </Comp>
+                        </DataObserver>
+                      </ThemedComponent>
+                    </DataObserver>
+                  </ErrorObserver>
+                </ThemedComponent>
+              </ErrorObserver>
+            </StatefulComponent>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
 `;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-    }
-  }
->
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 20,
-          "fontWeight": "500",
-        },
-        Object {
-          "marginBottom": 8,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Empty area
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
-        Object {
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    No data found.
-  </Text>
-</View>
+exports[`StatefulComponent should show children nodes 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <StatefulComponent
+              data={true}
+              timeout={10000}
+            >
+              <ErrorObserver
+                rest={
+                  Object {
+                    "data": true,
+                  }
+                }
+              >
+                <ThemedComponent
+                  rest={
+                    Object {
+                      "data": true,
+                    }
+                  }
+                >
+                  <ErrorObserver
+                    checkError={[Function]}
+                    rest={
+                      Object {
+                        "data": true,
+                      }
+                    }
+                  >
+                    <DataObserver
+                      data={true}
+                      rest={
+                        Object {
+                          "data": true,
+                        }
+                      }
+                    >
+                      <ThemedComponent
+                        data={true}
+                        rest={
+                          Object {
+                            "data": true,
+                          }
+                        }
+                      >
+                        <DataObserver
+                          data={true}
+                          isEmpty={[Function]}
+                          isLoading={[Function]}
+                          loading={false}
+                          rest={
+                            Object {
+                              "data": true,
+                            }
+                          }
+                        >
+                          <Text>
+                            <Text>
+                              Content
+                            </Text>
+                          </Text>
+                        </DataObserver>
+                      </ThemedComponent>
+                    </DataObserver>
+                  </ErrorObserver>
+                </ThemedComponent>
+              </ErrorObserver>
+            </StatefulComponent>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
 `;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-    }
-  }
->
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 20,
-          "fontWeight": "500",
-        },
-        Object {
-          "marginBottom": 8,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Empty area
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
-          "fontSize": 16,
-          "fontWeight": "400",
-        },
-        Object {
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    No data found.
-  </Text>
-</View>
+exports[`StatefulComponent should show empty state as data is an empty array 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <StatefulComponent
+              data={Array []}
+              timeout={10000}
+            >
+              <ErrorObserver
+                rest={
+                  Object {
+                    "data": Array [],
+                  }
+                }
+              >
+                <ThemedComponent
+                  rest={
+                    Object {
+                      "data": Array [],
+                    }
+                  }
+                >
+                  <ErrorObserver
+                    checkError={[Function]}
+                    rest={
+                      Object {
+                        "data": Array [],
+                      }
+                    }
+                  >
+                    <DataObserver
+                      data={Array []}
+                      rest={
+                        Object {
+                          "data": Array [],
+                        }
+                      }
+                    >
+                      <ThemedComponent
+                        data={Array []}
+                        rest={
+                          Object {
+                            "data": Array [],
+                          }
+                        }
+                      >
+                        <DataObserver
+                          data={Array []}
+                          isEmpty={[Function]}
+                          isLoading={[Function]}
+                          loading={false}
+                          rest={
+                            Object {
+                              "data": Array [],
+                            }
+                          }
+                        >
+                          <EmptyState>
+                            <ThemedComponent>
+                              <Component>
+                                <ComponentState
+                                  description="No data found."
+                                  title="Empty area"
+                                >
+                                  <ThemedComponent
+                                    description="No data found."
+                                    title="Empty area"
+                                  >
+                                    <ComponentState
+                                      description="No data found."
+                                      styles={
+                                        Object {
+                                          "actionRoot": Object {
+                                            "marginTop": 8,
+                                          },
+                                          "description": Object {
+                                            "textAlign": "center",
+                                          },
+                                          "image": Object {
+                                            "height": 250,
+                                            "marginBottom": 8,
+                                            "width": 250,
+                                          },
+                                          "root": Object {
+                                            "alignItems": "center",
+                                          },
+                                          "title": Object {
+                                            "marginBottom": 8,
+                                            "textAlign": "center",
+                                          },
+                                        }
+                                      }
+                                      title="Empty area"
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                          }
+                                        }
+                                      >
+                                        <ThemedComponent
+                                          style={
+                                            Object {
+                                              "alignItems": "center",
+                                            }
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              Object {
+                                                "alignItems": "center",
+                                              }
+                                            }
+                                          >
+                                            <View
+                                              style={
+                                                Object {
+                                                  "alignItems": "center",
+                                                }
+                                              }
+                                            >
+                                              <H6
+                                                style={
+                                                  Object {
+                                                    "marginBottom": 8,
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
+                                                    Object {
+                                                      "marginBottom": 8,
+                                                      "textAlign": "center",
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
+                                                      Object {
+                                                        "marginBottom": 8,
+                                                        "textAlign": "center",
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": "Roboto",
+                                                          "fontSize": 20,
+                                                          "fontWeight": "500",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": "Roboto",
+                                                            "fontSize": 20,
+                                                            "fontWeight": "500",
+                                                          },
+                                                          Object {
+                                                            "marginBottom": 8,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": "Roboto",
+                                                              "fontSize": 20,
+                                                              "fontWeight": "500",
+                                                            },
+                                                            Object {
+                                                              "marginBottom": 8,
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        Empty area
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </H6>
+                                              <Text
+                                                style={
+                                                  Object {
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
+                                                    Object {
+                                                      "textAlign": "center",
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
+                                                      Object {
+                                                        "textAlign": "center",
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": "Roboto",
+                                                          "fontSize": 16,
+                                                          "fontWeight": "400",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": "Roboto",
+                                                            "fontSize": 16,
+                                                            "fontWeight": "400",
+                                                          },
+                                                          Object {
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": "Roboto",
+                                                              "fontSize": 16,
+                                                              "fontWeight": "400",
+                                                            },
+                                                            Object {
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        No data found.
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </Text>
+                                            </View>
+                                          </View>
+                                        </ThemedComponent>
+                                      </View>
+                                    </ComponentState>
+                                  </ThemedComponent>
+                                </ComponentState>
+                              </Component>
+                            </ThemedComponent>
+                          </EmptyState>
+                        </DataObserver>
+                      </ThemedComponent>
+                    </DataObserver>
+                  </ErrorObserver>
+                </ThemedComponent>
+              </ErrorObserver>
+            </StatefulComponent>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
 `;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true 1`] = `null`;
+exports[`StatefulComponent should show empty state as no data is provided 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <StatefulComponent
+              timeout={10000}
+            >
+              <ErrorObserver
+                rest={
+                  Object {
+                    "data": undefined,
+                  }
+                }
+              >
+                <ThemedComponent
+                  rest={
+                    Object {
+                      "data": undefined,
+                    }
+                  }
+                >
+                  <ErrorObserver
+                    checkError={[Function]}
+                    rest={
+                      Object {
+                        "data": undefined,
+                      }
+                    }
+                  >
+                    <DataObserver
+                      rest={
+                        Object {
+                          "data": undefined,
+                        }
+                      }
+                    >
+                      <ThemedComponent
+                        rest={
+                          Object {
+                            "data": undefined,
+                          }
+                        }
+                      >
+                        <DataObserver
+                          isEmpty={[Function]}
+                          isLoading={[Function]}
+                          loading={false}
+                          rest={
+                            Object {
+                              "data": undefined,
+                            }
+                          }
+                        >
+                          <EmptyState>
+                            <ThemedComponent>
+                              <Component>
+                                <ComponentState
+                                  description="No data found."
+                                  title="Empty area"
+                                >
+                                  <ThemedComponent
+                                    description="No data found."
+                                    title="Empty area"
+                                  >
+                                    <ComponentState
+                                      description="No data found."
+                                      styles={
+                                        Object {
+                                          "actionRoot": Object {
+                                            "marginTop": 8,
+                                          },
+                                          "description": Object {
+                                            "textAlign": "center",
+                                          },
+                                          "image": Object {
+                                            "height": 250,
+                                            "marginBottom": 8,
+                                            "width": 250,
+                                          },
+                                          "root": Object {
+                                            "alignItems": "center",
+                                          },
+                                          "title": Object {
+                                            "marginBottom": 8,
+                                            "textAlign": "center",
+                                          },
+                                        }
+                                      }
+                                      title="Empty area"
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                          }
+                                        }
+                                      >
+                                        <ThemedComponent
+                                          style={
+                                            Object {
+                                              "alignItems": "center",
+                                            }
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              Object {
+                                                "alignItems": "center",
+                                              }
+                                            }
+                                          >
+                                            <View
+                                              style={
+                                                Object {
+                                                  "alignItems": "center",
+                                                }
+                                              }
+                                            >
+                                              <H6
+                                                style={
+                                                  Object {
+                                                    "marginBottom": 8,
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
+                                                    Object {
+                                                      "marginBottom": 8,
+                                                      "textAlign": "center",
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
+                                                      Object {
+                                                        "marginBottom": 8,
+                                                        "textAlign": "center",
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": "Roboto",
+                                                          "fontSize": 20,
+                                                          "fontWeight": "500",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": "Roboto",
+                                                            "fontSize": 20,
+                                                            "fontWeight": "500",
+                                                          },
+                                                          Object {
+                                                            "marginBottom": 8,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": "Roboto",
+                                                              "fontSize": 20,
+                                                              "fontWeight": "500",
+                                                            },
+                                                            Object {
+                                                              "marginBottom": 8,
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        Empty area
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </H6>
+                                              <Text
+                                                style={
+                                                  Object {
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
+                                                    Object {
+                                                      "textAlign": "center",
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
+                                                      Object {
+                                                        "textAlign": "center",
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": "Roboto",
+                                                          "fontSize": 16,
+                                                          "fontWeight": "400",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": "Roboto",
+                                                            "fontSize": 16,
+                                                            "fontWeight": "400",
+                                                          },
+                                                          Object {
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": "Roboto",
+                                                              "fontSize": 16,
+                                                              "fontWeight": "400",
+                                                            },
+                                                            Object {
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        No data found.
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </Text>
+                                            </View>
+                                          </View>
+                                        </ThemedComponent>
+                                      </View>
+                                    </ComponentState>
+                                  </ThemedComponent>
+                                </ComponentState>
+                              </Component>
+                            </ThemedComponent>
+                          </EmptyState>
+                        </DataObserver>
+                      </ThemedComponent>
+                    </DataObserver>
+                  </ErrorObserver>
+                </ThemedComponent>
+              </ErrorObserver>
+            </StatefulComponent>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, isEmpty: () => true, Component 1`] = `null`;
+exports[`StatefulComponent should show loading state if loading is set to true 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <StatefulComponent
+              delay={0}
+              loading={true}
+              timeout={10000}
+            >
+              <ErrorObserver
+                rest={
+                  Object {
+                    "data": undefined,
+                  }
+                }
+              >
+                <ThemedComponent
+                  rest={
+                    Object {
+                      "data": undefined,
+                    }
+                  }
+                >
+                  <ErrorObserver
+                    checkError={[Function]}
+                    rest={
+                      Object {
+                        "data": undefined,
+                      }
+                    }
+                  >
+                    <DataObserver
+                      loading={true}
+                      rest={
+                        Object {
+                          "data": undefined,
+                        }
+                      }
+                    >
+                      <ThemedComponent
+                        loading={true}
+                        rest={
+                          Object {
+                            "data": undefined,
+                          }
+                        }
+                      >
+                        <DataObserver
+                          isEmpty={[Function]}
+                          isLoading={[Function]}
+                          loading={true}
+                          rest={
+                            Object {
+                              "data": undefined,
+                            }
+                          }
+                        >
+                          <WaitObserver
+                            delay={0}
+                            timeout={10000}
+                          >
+                            <ThemedComponent
+                              delay={0}
+                              timeout={10000}
+                            >
+                              <WaitObserver
+                                delay={0}
+                                onRetry={[Function]}
+                                onTimeout={[Function]}
+                                timeout={10000}
+                              >
+                                <LoadingState
+                                  retry={[Function]}
+                                  timedOut={false}
+                                >
+                                  <ThemedComponent
+                                    retry={[Function]}
+                                    timedOut={false}
+                                  >
+                                    <LoadingState
+                                      retry={[Function]}
+                                      timedOut={false}
+                                    >
+                                      <ComponentState
+                                        image={<ActivityIndicator />}
+                                      >
+                                        <ThemedComponent
+                                          image={<ActivityIndicator />}
+                                        >
+                                          <ComponentState
+                                            image={<ActivityIndicator />}
+                                            styles={
+                                              Object {
+                                                "actionRoot": Object {
+                                                  "marginTop": 8,
+                                                },
+                                                "description": Object {
+                                                  "textAlign": "center",
+                                                },
+                                                "image": Object {
+                                                  "height": 250,
+                                                  "marginBottom": 8,
+                                                  "width": 250,
+                                                },
+                                                "root": Object {
+                                                  "alignItems": "center",
+                                                },
+                                                "title": Object {
+                                                  "marginBottom": 8,
+                                                  "textAlign": "center",
+                                                },
+                                              }
+                                            }
+                                          >
+                                            <View
+                                              style={
+                                                Object {
+                                                  "alignItems": "center",
+                                                }
+                                              }
+                                            >
+                                              <ThemedComponent
+                                                style={
+                                                  Object {
+                                                    "alignItems": "center",
+                                                  }
+                                                }
+                                              >
+                                                <View
+                                                  style={
+                                                    Object {
+                                                      "alignItems": "center",
+                                                    }
+                                                  }
+                                                >
+                                                  <View
+                                                    style={
+                                                      Object {
+                                                        "alignItems": "center",
+                                                      }
+                                                    }
+                                                  >
+                                                    <ActivityIndicator>
+                                                      <ThemedComponent>
+                                                        <ActivityIndicator
+                                                          animating={true}
+                                                          color="#999999"
+                                                          hidesWhenStopped={true}
+                                                          size="small"
+                                                        >
+                                                          <ActivityIndicator
+                                                            animating={true}
+                                                            color="#999999"
+                                                            hidesWhenStopped={true}
+                                                            size="small"
+                                                          />
+                                                        </ActivityIndicator>
+                                                      </ThemedComponent>
+                                                    </ActivityIndicator>
+                                                  </View>
+                                                </View>
+                                              </ThemedComponent>
+                                            </View>
+                                          </ComponentState>
+                                        </ThemedComponent>
+                                      </ComponentState>
+                                    </LoadingState>
+                                  </ThemedComponent>
+                                </LoadingState>
+                              </WaitObserver>
+                            </ThemedComponent>
+                          </WaitObserver>
+                        </DataObserver>
+                      </ThemedComponent>
+                    </DataObserver>
+                  </ErrorObserver>
+                </ThemedComponent>
+              </ErrorObserver>
+            </StatefulComponent>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
 
-exports[`StatefulComponent Snapshot StatefulComponent component after complete render with child, loading: true 1`] = `null`;
+exports[`StatefulComponent should show render prop children 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <StatefulComponent
+              data={true}
+              timeout={10000}
+            >
+              <ErrorObserver
+                rest={
+                  Object {
+                    "data": true,
+                  }
+                }
+              >
+                <ThemedComponent
+                  rest={
+                    Object {
+                      "data": true,
+                    }
+                  }
+                >
+                  <ErrorObserver
+                    checkError={[Function]}
+                    rest={
+                      Object {
+                        "data": true,
+                      }
+                    }
+                  >
+                    <DataObserver
+                      data={true}
+                      rest={
+                        Object {
+                          "data": true,
+                        }
+                      }
+                    >
+                      <ThemedComponent
+                        data={true}
+                        rest={
+                          Object {
+                            "data": true,
+                          }
+                        }
+                      >
+                        <DataObserver
+                          data={true}
+                          isEmpty={[Function]}
+                          isLoading={[Function]}
+                          loading={false}
+                          rest={
+                            Object {
+                              "data": true,
+                            }
+                          }
+                        >
+                          <Text>
+                            <Text>
+                              Render prop
+                            </Text>
+                          </Text>
+                        </DataObserver>
+                      </ThemedComponent>
+                    </DataObserver>
+                  </ErrorObserver>
+                </ThemedComponent>
+              </ErrorObserver>
+            </StatefulComponent>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;

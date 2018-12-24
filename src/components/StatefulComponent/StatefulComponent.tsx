@@ -21,6 +21,10 @@ export interface StatefulComponentProps extends DataObserverProps, ErrorObserver
  */
 export class StatefulComponent extends React.PureComponent<StatefulComponentProps> {
 
+	public static defaultProps: Partial<StatefulComponentProps> = {
+		timeout: 10000,
+	};
+
 	render() {
 
 		const {
@@ -57,13 +61,14 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 					{...{ isEmpty, isLoading, loading, data, rest }}
 					children={(event: DataObserverChildrenProps) => {
 
-						if (event.loading) {
-							return (
-								<WaitObserver
-									{...{ delay, timeout, onRetry, onTimeout, rest }}
-									children={(props: WaitObserverChildrenProps) => <LoadingState {...props} />}
-								/>
-							);
+						if (event.loading === true) {
+							return React.createElement(WaitObserver, {
+								children: (props: WaitObserverChildrenProps) => <LoadingState {...props} />,
+								delay,
+								onRetry,
+								onTimeout,
+								timeout,
+							});
 						}
 
 						if (event.empty) {
