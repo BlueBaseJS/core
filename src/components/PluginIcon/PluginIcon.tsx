@@ -16,7 +16,7 @@ export interface PluginIconProps {
 }
 
 /**
- * 🔌 PluginIcon
+ * # 🔌 PluginIcon
  *
  * Displays an icon of a Plugin. The icon properties are taken from plugin.icon property
  * of plugin.
