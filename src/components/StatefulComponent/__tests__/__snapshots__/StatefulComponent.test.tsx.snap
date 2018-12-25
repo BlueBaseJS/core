@@ -227,32 +227,37 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                         >
                           <EmptyState>
                             <ThemedComponent>
-                              <Component>
+                              <EmptyState>
                                 <ComponentState
-                                  description="No data found."
-                                  title="Empty area"
+                                  description="Create new items to fill this area."
+                                  title="Empty Area"
                                 >
                                   <ThemedComponent
-                                    description="No data found."
-                                    title="Empty area"
+                                    description="Create new items to fill this area."
+                                    title="Empty Area"
                                   >
                                     <ComponentState
-                                      description="No data found."
+                                      description="Create new items to fill this area."
                                       styles={
                                         Object {
                                           "actionRoot": Object {
                                             "marginTop": 8,
                                           },
                                           "description": Object {
+                                            "marginBottom": 8,
                                             "textAlign": "center",
                                           },
                                           "image": Object {
                                             "height": 250,
-                                            "marginBottom": 8,
                                             "width": 250,
+                                          },
+                                          "imageRoot": Object {
+                                            "marginBottom": 16,
                                           },
                                           "root": Object {
                                             "alignItems": "center",
+                                            "flex": 1,
+                                            "justifyContent": "center",
                                           },
                                           "title": Object {
                                             "marginBottom": 8,
@@ -260,12 +265,14 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                           },
                                         }
                                       }
-                                      title="Empty area"
+                                      title="Empty Area"
                                     >
                                       <View
                                         style={
                                           Object {
                                             "alignItems": "center",
+                                            "flex": 1,
+                                            "justifyContent": "center",
                                           }
                                         }
                                       >
@@ -273,6 +280,8 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                           style={
                                             Object {
                                               "alignItems": "center",
+                                              "flex": 1,
+                                              "justifyContent": "center",
                                             }
                                           }
                                         >
@@ -280,6 +289,8 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                             style={
                                               Object {
                                                 "alignItems": "center",
+                                                "flex": 1,
+                                                "justifyContent": "center",
                                               }
                                             }
                                           >
@@ -287,6 +298,8 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                               style={
                                                 Object {
                                                   "alignItems": "center",
+                                                  "flex": 1,
+                                                  "justifyContent": "center",
                                                 }
                                               }
                                             >
@@ -356,15 +369,16 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                           ]
                                                         }
                                                       >
-                                                        Empty area
+                                                        Empty Area
                                                       </Text>
                                                     </Text>
                                                   </Component>
                                                 </ThemedComponent>
                                               </H6>
-                                              <Text
+                                              <Body2
                                                 style={
                                                   Object {
+                                                    "marginBottom": 8,
                                                     "textAlign": "center",
                                                   }
                                                 }
@@ -372,6 +386,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                 <ThemedComponent
                                                   style={
                                                     Object {
+                                                      "marginBottom": 8,
                                                       "textAlign": "center",
                                                     }
                                                   }
@@ -379,6 +394,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                   <Component
                                                     style={
                                                       Object {
+                                                        "marginBottom": 8,
                                                         "textAlign": "center",
                                                       }
                                                     }
@@ -387,7 +403,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
                                                           "fontFamily": "Roboto",
-                                                          "fontSize": 16,
+                                                          "fontSize": 14,
                                                           "fontWeight": "400",
                                                         },
                                                       }
@@ -399,10 +415,11 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
                                                             "fontFamily": "Roboto",
-                                                            "fontSize": 16,
+                                                            "fontSize": 14,
                                                             "fontWeight": "400",
                                                           },
                                                           Object {
+                                                            "marginBottom": 8,
                                                             "textAlign": "center",
                                                           },
                                                         ]
@@ -414,21 +431,22 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
                                                               "fontFamily": "Roboto",
-                                                              "fontSize": 16,
+                                                              "fontSize": 14,
                                                               "fontWeight": "400",
                                                             },
                                                             Object {
+                                                              "marginBottom": 8,
                                                               "textAlign": "center",
                                                             },
                                                           ]
                                                         }
                                                       >
-                                                        No data found.
+                                                        Create new items to fill this area.
                                                       </Text>
                                                     </Text>
                                                   </Component>
                                                 </ThemedComponent>
-                                              </Text>
+                                              </Body2>
                                             </View>
                                           </View>
                                         </ThemedComponent>
@@ -436,7 +454,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                     </ComponentState>
                                   </ThemedComponent>
                                 </ComponentState>
-                              </Component>
+                              </EmptyState>
                             </ThemedComponent>
                           </EmptyState>
                         </DataObserver>
@@ -512,32 +530,37 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                         >
                           <EmptyState>
                             <ThemedComponent>
-                              <Component>
+                              <EmptyState>
                                 <ComponentState
-                                  description="No data found."
-                                  title="Empty area"
+                                  description="Create new items to fill this area."
+                                  title="Empty Area"
                                 >
                                   <ThemedComponent
-                                    description="No data found."
-                                    title="Empty area"
+                                    description="Create new items to fill this area."
+                                    title="Empty Area"
                                   >
                                     <ComponentState
-                                      description="No data found."
+                                      description="Create new items to fill this area."
                                       styles={
                                         Object {
                                           "actionRoot": Object {
                                             "marginTop": 8,
                                           },
                                           "description": Object {
+                                            "marginBottom": 8,
                                             "textAlign": "center",
                                           },
                                           "image": Object {
                                             "height": 250,
-                                            "marginBottom": 8,
                                             "width": 250,
+                                          },
+                                          "imageRoot": Object {
+                                            "marginBottom": 16,
                                           },
                                           "root": Object {
                                             "alignItems": "center",
+                                            "flex": 1,
+                                            "justifyContent": "center",
                                           },
                                           "title": Object {
                                             "marginBottom": 8,
@@ -545,12 +568,14 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                           },
                                         }
                                       }
-                                      title="Empty area"
+                                      title="Empty Area"
                                     >
                                       <View
                                         style={
                                           Object {
                                             "alignItems": "center",
+                                            "flex": 1,
+                                            "justifyContent": "center",
                                           }
                                         }
                                       >
@@ -558,6 +583,8 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                           style={
                                             Object {
                                               "alignItems": "center",
+                                              "flex": 1,
+                                              "justifyContent": "center",
                                             }
                                           }
                                         >
@@ -565,6 +592,8 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                             style={
                                               Object {
                                                 "alignItems": "center",
+                                                "flex": 1,
+                                                "justifyContent": "center",
                                               }
                                             }
                                           >
@@ -572,6 +601,8 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                               style={
                                                 Object {
                                                   "alignItems": "center",
+                                                  "flex": 1,
+                                                  "justifyContent": "center",
                                                 }
                                               }
                                             >
@@ -641,15 +672,16 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                           ]
                                                         }
                                                       >
-                                                        Empty area
+                                                        Empty Area
                                                       </Text>
                                                     </Text>
                                                   </Component>
                                                 </ThemedComponent>
                                               </H6>
-                                              <Text
+                                              <Body2
                                                 style={
                                                   Object {
+                                                    "marginBottom": 8,
                                                     "textAlign": "center",
                                                   }
                                                 }
@@ -657,6 +689,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                 <ThemedComponent
                                                   style={
                                                     Object {
+                                                      "marginBottom": 8,
                                                       "textAlign": "center",
                                                     }
                                                   }
@@ -664,6 +697,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                   <Component
                                                     style={
                                                       Object {
+                                                        "marginBottom": 8,
                                                         "textAlign": "center",
                                                       }
                                                     }
@@ -672,7 +706,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
                                                           "fontFamily": "Roboto",
-                                                          "fontSize": 16,
+                                                          "fontSize": 14,
                                                           "fontWeight": "400",
                                                         },
                                                       }
@@ -684,10 +718,11 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
                                                             "fontFamily": "Roboto",
-                                                            "fontSize": 16,
+                                                            "fontSize": 14,
                                                             "fontWeight": "400",
                                                           },
                                                           Object {
+                                                            "marginBottom": 8,
                                                             "textAlign": "center",
                                                           },
                                                         ]
@@ -699,21 +734,22 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
                                                               "fontFamily": "Roboto",
-                                                              "fontSize": 16,
+                                                              "fontSize": 14,
                                                               "fontWeight": "400",
                                                             },
                                                             Object {
+                                                              "marginBottom": 8,
                                                               "textAlign": "center",
                                                             },
                                                           ]
                                                         }
                                                       >
-                                                        No data found.
+                                                        Create new items to fill this area.
                                                       </Text>
                                                     </Text>
                                                   </Component>
                                                 </ThemedComponent>
-                                              </Text>
+                                              </Body2>
                                             </View>
                                           </View>
                                         </ThemedComponent>
@@ -721,7 +757,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                     </ComponentState>
                                   </ThemedComponent>
                                 </ComponentState>
-                              </Component>
+                              </EmptyState>
                             </ThemedComponent>
                           </EmptyState>
                         </DataObserver>
@@ -839,15 +875,20 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                   "marginTop": 8,
                                                 },
                                                 "description": Object {
+                                                  "marginBottom": 8,
                                                   "textAlign": "center",
                                                 },
                                                 "image": Object {
                                                   "height": 250,
-                                                  "marginBottom": 8,
                                                   "width": 250,
+                                                },
+                                                "imageRoot": Object {
+                                                  "marginBottom": 16,
                                                 },
                                                 "root": Object {
                                                   "alignItems": "center",
+                                                  "flex": 1,
+                                                  "justifyContent": "center",
                                                 },
                                                 "title": Object {
                                                   "marginBottom": 8,
@@ -860,6 +901,8 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                               style={
                                                 Object {
                                                   "alignItems": "center",
+                                                  "flex": 1,
+                                                  "justifyContent": "center",
                                                 }
                                               }
                                             >
@@ -867,6 +910,8 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                 style={
                                                   Object {
                                                     "alignItems": "center",
+                                                    "flex": 1,
+                                                    "justifyContent": "center",
                                                   }
                                                 }
                                               >
@@ -874,6 +919,8 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                   style={
                                                     Object {
                                                       "alignItems": "center",
+                                                      "flex": 1,
+                                                      "justifyContent": "center",
                                                     }
                                                   }
                                                 >
@@ -881,26 +928,60 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                     style={
                                                       Object {
                                                         "alignItems": "center",
+                                                        "flex": 1,
+                                                        "justifyContent": "center",
                                                       }
                                                     }
                                                   >
-                                                    <ActivityIndicator>
-                                                      <ThemedComponent>
-                                                        <ActivityIndicator
-                                                          animating={true}
-                                                          color="#999999"
-                                                          hidesWhenStopped={true}
-                                                          size="small"
+                                                    <View
+                                                      style={
+                                                        Object {
+                                                          "marginBottom": 16,
+                                                        }
+                                                      }
+                                                    >
+                                                      <ThemedComponent
+                                                        style={
+                                                          Object {
+                                                            "marginBottom": 16,
+                                                          }
+                                                        }
+                                                      >
+                                                        <View
+                                                          style={
+                                                            Object {
+                                                              "marginBottom": 16,
+                                                            }
+                                                          }
                                                         >
-                                                          <ActivityIndicator
-                                                            animating={true}
-                                                            color="#999999"
-                                                            hidesWhenStopped={true}
-                                                            size="small"
-                                                          />
-                                                        </ActivityIndicator>
+                                                          <View
+                                                            style={
+                                                              Object {
+                                                                "marginBottom": 16,
+                                                              }
+                                                            }
+                                                          >
+                                                            <ActivityIndicator>
+                                                              <ThemedComponent>
+                                                                <ActivityIndicator
+                                                                  animating={true}
+                                                                  color="#999999"
+                                                                  hidesWhenStopped={true}
+                                                                  size="small"
+                                                                >
+                                                                  <ActivityIndicator
+                                                                    animating={true}
+                                                                    color="#999999"
+                                                                    hidesWhenStopped={true}
+                                                                    size="small"
+                                                                  />
+                                                                </ActivityIndicator>
+                                                              </ThemedComponent>
+                                                            </ActivityIndicator>
+                                                          </View>
+                                                        </View>
                                                       </ThemedComponent>
-                                                    </ActivityIndicator>
+                                                    </View>
                                                   </View>
                                                 </View>
                                               </ThemedComponent>

@@ -27,6 +27,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🤡 ComponentState
 - ️⚡️ DataObserver
 - 🗿 DynamicIcon
+- 📭 EmptyState
 - 🚨 ErrorState
 - 🚨 ErrorObserver
 - 🛸 HoverObserver
