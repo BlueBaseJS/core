@@ -42,12 +42,17 @@ export interface DynamicIconProps {
 }
 
 /**
- * 🗿 DynamicIcon
+ * # 🗿 DynamicIcon
  *
  * An enhanced Icon that can render any of the following:
  * - BB.Components.Icon
  * - BB.Components.Image
  * - A custom component
+ *
+ * ## Usage
+ * ```jsx
+ * <DynamicIcon type="image" size={250} source={{ uri: 'https://picsum.photos/200' }} />
+ * ```
  */
 
 export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
