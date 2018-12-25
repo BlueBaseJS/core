@@ -7,10 +7,20 @@ import React from 'react';
 const MISSING_ERROR = 'An unknown error occured.';
 
 export interface ErrorObserverProps {
+
+	/** If an error is passed as a prop, shows an error state. */
 	error?: Error,
+
+	/** A function to check error based on props. */
 	checkError?: (props: ErrorObserverProps & any) => Error,
+
+	/** Component to show the error state. */
 	errorComponent?: React.ComponentType<any>;
+
+	/** Children are rendered when there are no error */
 	children?: MaybeRenderPropChildren;
+
+	[prop: string]: any;
 }
 
 export interface ErrorObserverState {
@@ -19,6 +29,9 @@ export interface ErrorObserverState {
 
 /**
  * 🚨 ErrorObserver
+ *
+ * Observes any exceptions in child tree heirarcy. When an exception is caught, displays
+ * an Error state to gracefully handle it on the frontend.
  */
 export class ErrorObserver extends React.PureComponent<ErrorObserverProps, ErrorObserverState> {
 
