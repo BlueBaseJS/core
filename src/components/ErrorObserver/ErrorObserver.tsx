@@ -28,10 +28,19 @@ export interface ErrorObserverState {
 }
 
 /**
- * 🚨 ErrorObserver
+ * # 🚨 ErrorObserver
  *
  * Observes any exceptions in child tree heirarcy. When an exception is caught, displays
  * an Error state to gracefully handle it on the frontend.
+ *
+ * ## Usage
+ * ```jsx
+ * <ErrorObserver
+ *  errorComponent={ErrorState}
+ * >
+ *  <Text>Rendered if there is no error here</Text>
+ * </ErrorObserver>
+ * ```
  */
 export class ErrorObserver extends React.PureComponent<ErrorObserverProps, ErrorObserverState> {
 
