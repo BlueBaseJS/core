@@ -28,7 +28,7 @@ const LoadingState = (props: any) => {
 	);
 };
 
-describe.only('WaitObserver', () => {
+describe('WaitObserver', () => {
 
 	test(`should change states based on custom delay & timeout`, () => {
 
