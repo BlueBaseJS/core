@@ -60,7 +60,7 @@ export interface ComponentStateProps {
 }
 
 /**
- * 🤡 ComponentState
+ * # 🤡 ComponentState
  *
  * A generic component to show different states of a screen or a view. For example,
  * you may need to:
@@ -71,6 +71,17 @@ export interface ComponentStateProps {
  *
  * These are just a few examples. This component displays a message with an image, a title,
  * a description and a call to action button.
+ *
+ * ## Usage
+ * ```jsx
+ * <ComponentState
+ *  title="Looks like your'e new here!"
+ *  description="Start by creating your first entry."
+ *  imageSource="https://picsum.photos/200"
+ *  styles={{ image: { width: 100, height: 100 } }}
+ *  actionTitle="Tap to Create"
+ * />
+ * ```
  */
 export class ComponentState extends React.PureComponent<ComponentStateProps> {
 

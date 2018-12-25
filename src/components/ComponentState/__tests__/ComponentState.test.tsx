@@ -11,12 +11,12 @@ describe('ComponentState', () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ComponentState
-				title="Looks like your'e new here!"
-				description="Start by creating your first entry."
-				imageSource="https://picsum.photos/200"
-				styles={{ image: { width: 100, height: 100 } }}
-				actionTitle="Tap to Create"
-			/>
+					title="Looks like your'e new here!"
+					description="Start by creating your first entry."
+					imageSource="https://picsum.photos/200"
+					styles={{ image: { width: 100, height: 100 } }}
+					actionTitle="Tap to Create"
+				/>
 		</BlueBaseApp>
 	);
 
