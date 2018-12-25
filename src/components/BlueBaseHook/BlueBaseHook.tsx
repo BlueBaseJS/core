@@ -20,14 +20,21 @@ export interface BlueBaseHookProps<T = any> {
 }
 
 /**
- * 🎣 BlueBaseHook
+ * # 🎣 BlueBaseHook
  *
  * Since hooks in BlueBase are based on promises, it may be tedious to handle loading state,
  * error state, etc. It may also become a repitive task.
  *
  * To solve this issue, we ship BlueBaseHook component. Just pass name of hook, initial value,
  * and hook arguments as props. The final hooked value will be passed to the children function.
- * ThIs component will handle loading and error states itself.
+ * This component will handle loading and error states itself.
+ *
+ * ## Usage
+ * ```jsx
+ * <BlueBaseHook hook="math" value={5} args={{ op: 'add' }} children={(val: number) => {
+ * 	return <Text>{val}</Text>;
+ * }} />
+ * ```
  */
 export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 
