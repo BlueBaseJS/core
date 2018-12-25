@@ -1,4 +1,4 @@
-import { ComponentState, Image } from '../../../index';
+import { ComponentState, Image, View } from '../../../index';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
@@ -6,13 +6,15 @@ storiesOf('ComponentState', module)
 
 
 	.add('Everything', () => (
-		<ComponentState
-			title="Error!"
-			description="A unknown error occured!"
-			imageSource="https://picsum.photos/200"
-			styles={{ image: { width: 100, height: 100 } }}
-			actionTitle="Retry"
-		/>
+		<View style={{ width: '100%', height: 500, backgroundColor: '#fff' }}>
+			<ComponentState
+				title="Looks like your'e new here!"
+				description="Start by creating your first entry."
+				imageSource="https://picsum.photos/200"
+				styles={{ image: { width: 100, height: 100 } }}
+				actionTitle="Tap to Create"
+			/>
+		</View>
 	))
 
 	.add('Only title', () => (
