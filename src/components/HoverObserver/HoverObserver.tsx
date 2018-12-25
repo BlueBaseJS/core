@@ -1,22 +1,23 @@
-import React, { SyntheticEvent } from 'react';
-import { MaybeRenderPropChildren } from '../../utils';
-import { Noop } from '../Noop';
-
-// TODO: fix for react-native, this is web only component
-interface MouseEventObject {
-	e: SyntheticEvent,
-	setIsHovering: () => void,
-	unsetIsHovering: () => void,
-}
+import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
 
 export interface HoverObserverProps {
+
+	/** Milliseconds to delay hover trigger. Defaults to zero. */
 	hoverDelayInMs?: number,
+
+	/** Milliseconds to delay hover-off trigger. Defaults to zero. */
 	hoverOffDelayInMs?: number,
+
+	/** Called with named argument isHovering when isHovering is set or unset. */
 	onHoverChanged?: (state: HoverObserverState) => void,
-	onMouseEnter?: (obj: MouseEventObject) => void,
-	onMouseLeave?: (obj: MouseEventObject) => void,
-	onMouseOver?: (obj: MouseEventObject) => void,
-	onMouseOut?: (obj: MouseEventObject) => void,
+
+	/** Defaults to set isHovering. */
+	onMouseEnter?: (obj: any) => void,
+
+	/** Defaults to unsetting isHovering. */
+	onMouseLeave?: (obj: any) => void,
+	onMouseOver?: (obj: any) => void,
+	onMouseOut?: (obj: any) => void,
 	children?: MaybeRenderPropChildren<HoverObserverState>
 }
 
@@ -24,137 +25,8 @@ export interface HoverObserverState {
 	readonly isHovering: boolean;
 }
 
-/**
- * 🛸 HoverObserver
- *
- * Initial code taken from: https://github.com/ethanselzer/react-hover-observer
- */
-export class HoverObserver extends React.PureComponent<HoverObserverProps, HoverObserverState> {
+export const HoverObserver = (props: HoverObserverProps) => {
+	return renderChildrenWithProps(props.children, { isHovering: false });
+};
 
-	public static defaultProps: Partial<HoverObserverProps> = {
-		hoverDelayInMs: 0,
-		hoverOffDelayInMs: 0,
-		onHoverChanged: Noop,
-		onMouseEnter: ({ setIsHovering }) => setIsHovering(),
-		onMouseLeave: ({ unsetIsHovering }) => unsetIsHovering(),
-		onMouseOut: Noop,
-		onMouseOver: Noop,
-	};
-
-	private timerIds: number[] = [];
-
-	constructor(props: HoverObserverProps) {
-		super(props);
-
-		this.state = {
-			isHovering: false
-		};
-
-		this.onMouseEnter = this.onMouseEnter.bind(this);
-		this.onMouseLeave = this.onMouseLeave.bind(this);
-		this.onMouseOver = this.onMouseOver.bind(this);
-		this.onMouseOut = this.onMouseOut.bind(this);
-		this.setIsHovering = this.setIsHovering.bind(this);
-		this.unsetIsHovering = this.unsetIsHovering.bind(this);
-		this.componentWillUnmount = this.componentWillUnmount.bind(this);
-
-		this.timerIds = [];
-	}
-
-	onMouseEnter(e: SyntheticEvent) {
-		this.props.onMouseEnter!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
-		});
-	}
-
-	onMouseLeave(e: SyntheticEvent) {
-		this.props.onMouseLeave!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
-		});
-	}
-
-	onMouseOver(e: SyntheticEvent) {
-		this.props.onMouseOver!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
-		});
-	}
-
-	onMouseOut(e: SyntheticEvent) {
-		this.props.onMouseOut!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
-		});
-	}
-
-	componentWillUnmount() {
-		this.clearTimers();
-	}
-
-	setIsHovering() {
-		this.clearTimers();
-
-		const hoverScheduleId = setTimeout(() => {
-			const newState = { isHovering: true };
-			this.setState(newState, () => {
-				this.props.onHoverChanged!(newState);
-			});
-		}, this.props.hoverDelayInMs);
-
-		this.timerIds.push(hoverScheduleId);
-	}
-
-	unsetIsHovering() {
-		this.clearTimers();
-
-		const hoverOffScheduleId = setTimeout(() => {
-			const newState = { isHovering: false };
-			this.setState(newState, () => {
-				this.props.onHoverChanged!(newState);
-			});
-		}, this.props.hoverOffDelayInMs);
-
-		this.timerIds.push(hoverOffScheduleId);
-	}
-
-	clearTimers() {
-		const ids = this.timerIds;
-		while (ids.length) {
-			const id = ids.pop();
-
-			if (id) {
-				clearTimeout(id);
-			}
-		}
-	}
-
-	renderChildrenWithProps(children: HoverObserverProps['children'], props: HoverObserverState) {
-		if (typeof children === 'function') {
-			return (children as any)(props);
-		}
-
-		return children;
-	}
-
-
-	render() {
-		const { children } = this.props;
-
-		return (
-			<div {...{
-				onMouseEnter: this.onMouseEnter,
-				onMouseLeave: this.onMouseLeave,
-				onMouseOut: this.onMouseOut,
-				onMouseOver: this.onMouseOver,
-			}}>
-				{this.renderChildrenWithProps(children, this.state)}
-			</div>
-		);
-	}
-}
+HoverObserver.displayName = 'HoverObserver';

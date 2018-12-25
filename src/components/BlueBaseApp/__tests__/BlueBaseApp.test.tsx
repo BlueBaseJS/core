@@ -3,10 +3,6 @@ import { BlueBaseApp } from '../BlueBaseApp';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
-
 const Bang = () => {
 	throw Error('💥 Boom!');
 };
@@ -27,6 +23,7 @@ describe('BlueBaseApp', () => {
 		// After loading
 		setTimeout(() => {
 			expect(rendered).toMatchSnapshot();
+			expect(rendered.toJSON().children[0].children[0].children.join()).toBe('🚀 BlueBase System Content!');
 			done();
 		});
 	});

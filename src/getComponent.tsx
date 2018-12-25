@@ -17,6 +17,24 @@ import { BlueBase } from './BlueBase';
 import { BlueBaseConsumer } from './Context';
 import React from 'react';
 
+
+export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
+export {
+	BlueBaseHookProps,
+	ComponentStateProps,
+	DataObserverProps,
+	DynamicIconProps,
+	ErrorObserverProps,
+	ErrorStateProps,
+	HoverObserverProps,
+	JsonSchemaProps,
+	LoadingStateProps,
+	PluginIconProps,
+	StatefulComponentProps,
+	WaitObserverProps,
+} from './components';
+
+
 export function getComponent<T = any>(...keys: string[]) {
 
 	if (keys.length === 0) {

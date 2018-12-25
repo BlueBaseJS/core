@@ -38,15 +38,16 @@ interface BlueBaseAppState {
 }
 
 /**
- * 🚀 BlueBaseApp
+ * # 🚀 BlueBaseApp
  *
- * This is the Main App used to render at the top level.
+ * The main BlueBase app. This is the top level compoent in BlueBase. Takes care
+ * of initialisation, and renders either children, or app with routing.
  *
- * TODO: Add better docs
+ * ## Usage
+ * ```jsx
+ * <BlueBaseApp BB={BB} plugins={{}} hook={{}} themes={{}} />
+ * ```
  */
-// NOTE FOR DEVELOPERS:
-// Don't use BlueBase context or any data saved in context (e.g. components)
-// here. This is because the context may not be initialized yet.
 export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
 
 	constructor(props: BlueBaseAppProps) {

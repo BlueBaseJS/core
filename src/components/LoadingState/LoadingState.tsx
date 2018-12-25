@@ -4,15 +4,26 @@ import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
 
 export interface LoadingStateProps {
+
+	/** Flag if loading has timedOut. */
 	timedOut?: boolean,
+
+	/** Callback function when Retry button is pressed. */
 	retry?: () => void,
 }
 
 /**
- * ⏳ LoadingState Component
+ * # ⏳ LoadingState
  *
  * A component that is used to show a loading state. Shows a spinner by
  * default. If 'timedOut' flag is set then it shows a timeout version.
+ *
+ * ## Usage
+ * ```jsx
+ * <LoadingState timedOut={false} retry={retryFunction}/>
+ * ```
+ *
+ * TODO: Add a prop to allow custom text for retry button.
  */
 export class LoadingState extends React.Component<LoadingStateProps> {
 

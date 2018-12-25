@@ -2,67 +2,73 @@ import * as Native from '../../../native';
 import { BlueBaseApp } from '../../BlueBaseApp';
 import { ComponentState } from '../ComponentState';
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
-
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
-
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
 describe('ComponentState', () => {
-	const ComponentStateWithProvider = (props: any) => (
-		<BlueBaseApp>
-			<ComponentState {...props}/>
+
+	test(`should render ComponentState with all elements`, async () => {
+		const wrapper = mount(
+			<BlueBaseApp>
+				<ComponentState
+					title="Looks like your'e new here!"
+					description="Start by creating your first entry."
+					imageSource="https://picsum.photos/200"
+					styles={{ image: { width: 100, height: 100 } }}
+					actionTitle="Tap to Create"
+				/>
 		</BlueBaseApp>
 	);
 
-	test(`Snapshot ComponentState component`, (done) => {
-		const component = TestRenderer.create(
-			<ComponentStateWithProvider />
-		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
+		// Wait for render
+		await waitForElement(wrapper, ComponentState);
+		expect(wrapper).toMatchSnapshot();
+
+		// Check Component
+		expect(wrapper.find('ComponentState Image').last().prop('source')).toMatchObject({
+			uri: 'https://picsum.photos/200'
 		});
+		expect(wrapper.find('ComponentState Image').last().prop('style')).toMatchObject({
+			height: 100,
+			width: 100,
+		});
+		expect(wrapper.find('ComponentState H6 Text').last().text()).toBe('Looks like your\'e new here!');
+		expect(wrapper.find('ComponentState Body2 Text').last().text()).toBe('Start by creating your first entry.');
+		expect(wrapper.find('ComponentState Button Text').last().text()).toBe('Tap to Create');
+
 	});
 
-	test(`Snapshot ComponentState component with description`, (done) => {
-		const component = TestRenderer.create(
-			<ComponentStateWithProvider description={'This is just for test'} />
-		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
-	});
-
-	test(`Snapshot ComponentState component with description and image`, (done) => {
-		const component = TestRenderer.create(
-			<ComponentStateWithProvider description={'This is just for test'}
+	test(`should render ComponentState with custom image`, async () => {
+		const wrapper = mount(
+			<BlueBaseApp>
+				<ComponentState
 				image={<Native.Image
+					testID="Custom"
 					style={{ width: 50, height: 50 }}
-					source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
-				/>} />
-		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
-	});
+					source={{ uri: 'https://picsum.photos/200' }}
+				/>}
+				styles={{ image: { width: 100, height: 100 } }}
+			/>
+		</BlueBaseApp>
+	);
 
-	test(`Snapshot ComponentState component with description and imageSource`, (done) => {
-		const component = TestRenderer.create(
-			<ComponentStateWithProvider description={'This is just for test'}
-				imageSource={'hello'} />
-		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
+		// Wait for render
+		await waitForElement(wrapper, ComponentState);
+		expect(wrapper).toMatchSnapshot();
+
+		// Check Component
+		expect(wrapper.find('ComponentState Image').last().prop('source')).toMatchObject({
+			uri: 'https://picsum.photos/200'
 		});
+		expect(wrapper.find('ComponentState Image').last().prop('style')).toMatchObject({
+			height: 50,
+			width: 50,
+		});
+		expect(wrapper.find('ComponentState Image').last().prop('testID')).toBe('Custom');
+		expect(wrapper.exists('ComponentState H6')).toBe(false);
+		expect(wrapper.exists('ComponentState Body2')).toBe(false);
+		expect(wrapper.exists('ComponentState Button')).toBe(false);
+
 	});
 
 });

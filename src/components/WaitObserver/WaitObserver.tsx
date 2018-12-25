@@ -45,7 +45,7 @@ interface WaitObserverState {
 }
 
 /**
- * ⏰ **WaitObserver Component**
+ * # ⏰ WaitObserver
  *
  * This component is used to do the following:
  *
@@ -54,6 +54,17 @@ interface WaitObserverState {
  *
  * A use case for this can be to show a loading state after waiting a certain period
  * of time for data to load, and if the loading takes too long, show a timeout state.
+ *
+ * ## Usage
+ * ```jsx
+ * <WaitObserver
+ *  delay={1000}
+ *  timeout={3000}
+ *  onTimeout={onTimeout}
+ *  onRetry={onRetry}
+ *  children={(props: WaitObserverChildrenProps) => <LoadingState {...props} />}
+ * />
+ * ```
  */
 export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObserverState> {
 

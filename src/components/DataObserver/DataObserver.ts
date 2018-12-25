@@ -4,20 +4,33 @@ import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
 
 export interface DataObserverChildrenProps {
+	/** Initial data that was passed as a prop. */
 	data: any;
+
+	/** Loading flag. */
 	loading: boolean;
+
+	/** Empty flag. */
 	empty: boolean;
 }
 
 export interface DataObserverProps {
-	// Checks
+	/** A function used to check if data is loading. */
 	isLoading?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
+
+	/** A function used to check if data is empty. */
 	isEmpty?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
 
-	// Data Points
+	/** Loading flag. */
 	loading?: boolean;
+
+	/** Input data. */
 	data?: any;
 
+	/**
+	 * Children, data is passed in the param object of the render prop function.
+	 * This object is typed as `DataObserverChildrenProps`.
+	 */
 	children?: MaybeRenderPropChildren<DataObserverChildrenProps>;
 }
 
@@ -28,10 +41,18 @@ export interface DataObserverState {
 }
 
 /**
- * ⚡️ DataObserver Component
+ * # ⚡️ DataObserver
  *
- * Observes data states. Used to check if data is loading, loaded or empty.
- * A use case is to render a different UI for each case.
+ * Observes data to check if it is data is loading, loaded or empty. The resulting flags
+ * are passed on to the children function. These flags may be used to show different UIs,
+ * i.e. loading state, empty state, etc.
+ *
+ * ## Usage
+ * ```jsx
+ * <DataObserver>
+ *  <Text>{data}</Text>
+ * </DataObserver>
+ * ```
  */
 export class DataObserver extends React.PureComponent<DataObserverProps, DataObserverState> {
 	public static defaultProps: Partial<DataObserverProps> = {

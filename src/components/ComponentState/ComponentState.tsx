@@ -1,4 +1,4 @@
-import { Button, H6, Image, Text, View } from '../..';
+import { Body2, Button, H6, Image, View } from '../../getComponent';
 import { ImageStyle, TextStyle, ViewStyle,  } from 'react-native';
 import { ButtonProps } from '../../native';
 import React from 'react';
@@ -14,6 +14,9 @@ export interface ComponentStateStyles {
 
 	/** Image styles */
 	image?: ImageStyle,
+
+	/** Styles of root image view */
+	imageRoot?: ViewStyle,
 
 	/** Root View styles */
 	root?: ViewStyle,
@@ -53,10 +56,33 @@ export interface ComponentStateProps {
 	 */
 	title?: string;
 
-
 	styles?: ComponentStateStyles;
 }
 
+/**
+ * # 🤡 ComponentState
+ *
+ * A generic component to show different states of a screen or a view. For example,
+ * you may need to:
+ *
+ * - Show a loading state when data is loading,
+ * - Show an empty state when there is not data to show on a screen.
+ * - Show an error message when an exception occurs during execution.
+ *
+ * These are just a few examples. This component displays a message with an image, a title,
+ * a description and a call to action button.
+ *
+ * ## Usage
+ * ```jsx
+ * <ComponentState
+ *  title="Looks like your'e new here!"
+ *  description="Start by creating your first entry."
+ *  imageSource="https://picsum.photos/200"
+ *  styles={{ image: { width: 100, height: 100 } }}
+ *  actionTitle="Tap to Create"
+ * />
+ * ```
+ */
 export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
 	static defaultStyles = (theme: Theme) => ({
@@ -64,15 +90,20 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			marginTop: theme.spacing.unit,
 		},
 		description: {
+			marginBottom: theme.spacing.unit,
 			textAlign: 'center',
 		},
 		image: {
 			height: 250,
-			marginBottom: theme.spacing.unit,
 			width: 250,
+		},
+		imageRoot: {
+			marginBottom: theme.spacing.unit * 2,
 		},
 		root: {
 			alignItems: 'center',
+			flex: 1,
+			justifyContent: 'center',
 		},
 		title: {
 			marginBottom: theme.spacing.unit,
@@ -95,9 +126,14 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
 		return (
 			<View style={styles.root}>
-				{image ? image : (imageSource ? <Image style={styles.image} source={{ uri: imageSource }} /> : null)}
+				{image
+					? <View style={styles.imageRoot}>{image}</View>
+					: (imageSource
+						? <View style={styles.imageRoot}><Image style={styles.image} source={{ uri: imageSource }} /></View>
+						: null)
+				}
 				{title ? <H6 style={styles.title} children={title} /> : null}
-				{description ? <Text style={styles.description} children={description} /> : null}
+				{description ? <Body2 style={styles.description} children={description} /> : null}
 				{actionTitle
 					? (
 						<View style={styles.actionRoot}>

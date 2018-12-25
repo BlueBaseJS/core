@@ -17,7 +17,17 @@ export interface StatefulComponentProps extends DataObserverProps, ErrorObserver
 }
 
 /**
- * 👨‍🎨 StatefulComponent
+ * # 👨‍🎨 StatefulComponent
+ *
+ * This is a swiss army knife component. Intended to be used as a single source of UI
+ * state management. It shows empty, loading, error or data states based on the given props.
+ *
+ * ## Usage
+ * ```jsx
+ * <StatefulComponent data={data} loading={true} delay={200} timeout={10000}>
+ *  <Text>Content</Text>
+ * </StatefulComponent>
+ * ```
  */
 export class StatefulComponent extends React.PureComponent<StatefulComponentProps> {
 

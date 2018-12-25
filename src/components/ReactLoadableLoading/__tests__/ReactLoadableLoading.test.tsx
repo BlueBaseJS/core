@@ -24,7 +24,7 @@ describe('ReactLoadableLoading', () => {
 		expect(component).toMatchSnapshot();
 
 		expect(component.exists('ErrorState')).toBe(true);
-		expect(component.find('ErrorState').find('Text').at(4).text()).toBe('Random Error');
+		expect(component.find('ErrorState Body2 Text').last().text()).toBe('Random Error');
 	});
 
 
@@ -68,7 +68,7 @@ describe('ReactLoadableLoading', () => {
 
 		expect(component.exists('LoadingState')).toBe(true);
 		expect(component.find('LoadingState').exists('ActivityIndicator')).toBe(true);
-		expect(component.find('LoadingState').find('Text').at(2).text()).toBe('This is taking longer than usual');
+		expect(component.find('LoadingState Body2 Text').last().text()).toBe('This is taking longer than usual');
 	});
 
 	test(`should show null if isloading = true & pastDelay = false`, async () => {

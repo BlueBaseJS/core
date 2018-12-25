@@ -22,7 +22,6 @@ describe('BlueBaseHook', () => {
 		const rendered: any = TestRenderer.create(
 			<BlueBaseApp hooks={hooks}>
 				<BlueBaseHook hook="math" value={5} args={{ op: 'add' }} children={(val: number) => {
-
 					return <Text>{val}</Text>;
 				}} />
 			</BlueBaseApp>

@@ -5,6 +5,8 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
   style={
     Object {
       "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
     }
   }
 >
@@ -24,7 +26,7 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
       ]
     }
   >
-    Empty area
+    Empty Area
   </Text>
   <Text
     style={
@@ -32,16 +34,17 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
           "fontFamily": "Roboto",
-          "fontSize": 16,
+          "fontSize": 14,
           "fontWeight": "400",
         },
         Object {
+          "marginBottom": 8,
           "textAlign": "center",
         },
       ]
     }
   >
-    No data found.
+    Create new items to fill this area.
   </Text>
 </View>
 `;
