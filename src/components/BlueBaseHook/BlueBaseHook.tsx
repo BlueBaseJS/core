@@ -5,14 +5,29 @@ import React from 'react';
 import { ReactLoadableLoading } from '../ReactLoadableLoading';
 
 export interface BlueBaseHookProps<T = any> {
+
+	/** Event name */
 	hook: string;
+
+	/** Initial value to hook */
 	value: T;
+
+	/** Hook arguments */
 	args?: { [key: string]: any };
+
+	/** render prop function. Final value is passed as param to this function. */
 	children: ((value: any) => React.ReactNode);
 }
 
 /**
- * 🎣 BlueBaseHook Component
+ * 🎣 BlueBaseHook
+ *
+ * Since hooks in BlueBase are based on promises, it may be tedious to handle loading state,
+ * error state, etc. It may also become a repitive task.
+ *
+ * To solve this issue, we ship BlueBaseHook component. Just pass name of hook, initial value,
+ * and hook arguments as props. The final hooked value will be passed to the children function.
+ * ThIs component will handle loading and error states itself.
  */
 export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 
