@@ -1,7 +1,6 @@
+import { DataObserver, EmptyState, ErrorObserver, LoadingState, WaitObserver } from '../../getComponent';
 import { DataObserverChildrenProps, DataObserverProps } from '../DataObserver';
 import { WaitObserverChildrenProps, WaitObserverProps } from '../WaitObserver';
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
 import { ErrorObserverProps } from '../ErrorObserver';
 import { MaybeRenderPropChildren } from '../../utils';
 import React from 'react';
@@ -22,11 +21,11 @@ export interface StatefulComponentProps extends DataObserverProps, ErrorObserver
  */
 export class StatefulComponent extends React.PureComponent<StatefulComponentProps> {
 
-	static contextType = BlueBaseContext;
+	public static defaultProps: Partial<StatefulComponentProps> = {
+		timeout: 10000,
+	};
 
 	render() {
-
-		const BB: BlueBase = this.context;
 
 		const {
 			component: Component,
@@ -57,22 +56,23 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 		const rest = { data, ...other };
 
 		return (
-			<BB.Components.ErrorObserver {...{ error, checkError, errorComponent, rest }}>
-				<BB.Components.DataObserver
+			<ErrorObserver {...{ error, checkError, errorComponent, rest }}>
+				<DataObserver
 					{...{ isEmpty, isLoading, loading, data, rest }}
 					children={(event: DataObserverChildrenProps) => {
 
-						if (event.loading) {
-							return (
-								<BB.Components.WaitObserver
-									{...{ delay, timeout, onRetry, onTimeout, rest }}
-									children={(props: WaitObserverChildrenProps) => <BB.Components.LoadingState {...props} />}
-								/>
-							);
+						if (event.loading === true) {
+							return React.createElement(WaitObserver, {
+								children: (props: WaitObserverChildrenProps) => <LoadingState {...props} />,
+								delay,
+								onRetry,
+								onTimeout,
+								timeout,
+							});
 						}
 
 						if (event.empty) {
-							return (<BB.Components.EmptyState />);
+							return (<EmptyState />);
 						}
 
 						// Render 'component' prop
@@ -86,7 +86,7 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 						// children
 						return children;
 					}} />
-			</BB.Components.ErrorObserver>
+			</ErrorObserver>
 		);
 	}
 }

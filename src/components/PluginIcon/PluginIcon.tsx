@@ -1,5 +1,6 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
+import { DynamicIcon } from '../../getComponent';
 import React from 'react';
 import { resolveThunk } from '../../utils';
 
@@ -34,6 +35,6 @@ export class PluginIcon extends React.PureComponent<PluginIconProps> {
 
 		const iconProps = resolveThunk(plugin.icon, plugin, BB);
 
-		return <BB.Components.DynamicIcon {...iconProps} {...rest} />;
+		return <DynamicIcon {...iconProps} {...rest} />;
 	}
 }

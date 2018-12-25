@@ -4,7 +4,7 @@ import { BlueBase } from '../../BlueBase';
 import { Noop } from '../../getComponent';
 import { createBlueBaseModule } from '../../utils';
 
-describe.only('PluginRegistry', () => {
+describe('PluginRegistry', () => {
 	describe('.register method', () => {
 		it('should register a Plugin', async () => {
 			const BB = new BlueBase();

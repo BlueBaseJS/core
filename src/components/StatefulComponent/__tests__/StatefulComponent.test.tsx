@@ -1,95 +1,106 @@
-import * as Native from '../../../native';
 import { BlueBaseApp } from '../../BlueBaseApp';
 import React from 'react';
 import { StatefulComponent } from '../StatefulComponent';
-import TestRenderer from 'react-test-renderer';
+import { Text } from 'react-native';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
+// import TestRenderer from 'react-test-renderer';
 
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
+// jest.useFakeTimers();
 
 describe('StatefulComponent', () => {
-	const StatefulComponentWithProvider = (props: any) => (
-		<BlueBaseApp>
-			<StatefulComponent {...props} />
-		</BlueBaseApp>
-	);
 
-	test(`Snapshot StatefulComponent component`, () => {
-		const component = TestRenderer.create(
-			<StatefulComponentWithProvider />
+	test(`should show empty state as no data is provided`, async () => {
+		const component = mount(
+			<BlueBaseApp>
+				<StatefulComponent />
+			</BlueBaseApp>
 		);
-		const tree = component.toJSON();
-		expect(tree).toMatchSnapshot();
+
+		await waitForElement(component, StatefulComponent);
+
+		expect(component).toMatchSnapshot();
+
+		expect(component.find('StatefulComponent').find('Text').at(0).text()).toBe('Empty area');
+		expect(component.find('StatefulComponent').find('Text').at(2).text()).toBe('No data found.');
 	});
 
-	test(`Snapshot StatefulComponent component after complete render`, (done) => {
-		const component = TestRenderer.create(
-			<StatefulComponentWithProvider />
+	test(`should show empty state as data is an empty array`, async () => {
+
+		const component = mount(
+			<BlueBaseApp>
+				<StatefulComponent data={[]} />
+			</BlueBaseApp>
 		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
+
+		await waitForElement(component, StatefulComponent);
+
+		expect(component).toMatchSnapshot();
+
+		expect(component.find('StatefulComponent').find('Text').at(0).text()).toBe('Empty area');
+		expect(component.find('StatefulComponent').find('Text').at(2).text()).toBe('No data found.');
+
 	});
 
-	test(`Snapshot StatefulComponent component after complete render with child`, (done) => {
-		const component = TestRenderer.create(
-			<StatefulComponentWithProvider>
-				<Native.Text>Hello</Native.Text>
-			</StatefulComponentWithProvider>
+	test(`should show loading state if loading is set to true`, async () => {
+		const component = mount(
+			<BlueBaseApp>
+				<StatefulComponent loading={true} delay={0} />
+			</BlueBaseApp>
 		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
+
+		await waitForElement(component, StatefulComponent);
+
+		expect(component).toMatchSnapshot();
+		expect(component.exists('LoadingState')).toBe(true);
 	});
 
-	test(`Snapshot StatefulComponent component after complete render with child, loading: true`, (done) => {
-		const component = TestRenderer.create(
-			<StatefulComponentWithProvider loading={true}>
-				<Native.Text>Hello</Native.Text>
-			</StatefulComponentWithProvider>
+	it(`should show children nodes`, async () => {
+		const component = mount(
+			<BlueBaseApp>
+				<StatefulComponent data={true}>
+					<Text>Content</Text>
+				</StatefulComponent>
+			</BlueBaseApp>
 		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
+
+		await waitForElement(component, StatefulComponent);
+
+		expect(component).toMatchSnapshot();
+		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Content');
 	});
 
-	test(`Snapshot StatefulComponent component after complete render with child, isEmpty: () => true`, (done) => {
-		const component = TestRenderer.create(
-			<StatefulComponentWithProvider isEmpty={() => true} loading={true}>
-				<Native.Text>Hello</Native.Text>
-			</StatefulComponentWithProvider>
+	it(`should show render prop children`, async () => {
+		const component = mount(
+			<BlueBaseApp>
+				<StatefulComponent data={true}>
+					{() => <Text>Render prop</Text>}
+				</StatefulComponent>
+			</BlueBaseApp>
 		);
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
+
+		await waitForElement(component, StatefulComponent);
+
+		expect(component).toMatchSnapshot();
+		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Render prop');
 	});
 
-	test(`Snapshot StatefulComponent component after complete render with child, isEmpty: () => true, Component`,
-		(done) => {
-			const Comp: React.ComponentType = () => (
-				<Native.Text>Hello</Native.Text>
-			);
-			const component = TestRenderer.create(
-				<StatefulComponentWithProvider
-					component={Comp}
-					isEmpty={() => true}
-					loading={true}
-					data={[1, 2]}
-				/>
-			);
-			setTimeout(() => {
-				const tree = component.toJSON();
-				expect(tree).toMatchSnapshot();
-				done();
-			});
-		});
+	it(`should show children from Component prop`, async () => {
+
+		const Comp = () => <Text>Custom Component</Text>;
+
+		const component = mount(
+			<BlueBaseApp>
+				<StatefulComponent data={true} component={Comp}>
+					<Text>Content</Text>
+				</StatefulComponent>
+			</BlueBaseApp>
+		);
+
+		await waitForElement(component, StatefulComponent);
+
+		expect(component).toMatchSnapshot();
+		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Custom Component');
+	});
+
 });

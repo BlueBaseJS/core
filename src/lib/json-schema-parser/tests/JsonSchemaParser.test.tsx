@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 const Timeline = ({ children, ...rest }: any) => <Text {...rest}>Timeline: {children}</Text>;
 const Post = ({ content, ...rest }: any) => <Text {...rest}>Post: {content}</Text>;
 
-describe.only('JsonSchemaParser', () => {
+describe('JsonSchemaParser', () => {
 
 	it('should parse schema with a single component', () => {
 

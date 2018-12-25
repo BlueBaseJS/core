@@ -14,6 +14,7 @@ import {
 import { BlueBaseProvider } from './Context';
 import React from 'react';
 import { ThemeProvider } from './themes';
+import { getComponent } from './getComponent';
 import systemHooks from './hooks';
 
 export interface BootOptions {
@@ -58,6 +59,8 @@ export class BlueBase {
 
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
+		const SystemApp = getComponent('SystemApp');
+
 		// Set View
 		// const SystemApp = this.Components.resolve('SystemApp');
 		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
@@ -65,9 +68,9 @@ export class BlueBase {
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-					<this.Components.SystemApp>
+					<SystemApp>
 						{options && options.children}
-					</this.Components.SystemApp>
+					</SystemApp>
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);

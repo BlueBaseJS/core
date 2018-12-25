@@ -27,7 +27,7 @@ export class LoadingState extends React.Component<LoadingStateProps> {
 		};
 
 		if (timedOut === true) {
-			props.title = 'This is taking longer than usual';
+			props.description = 'This is taking longer than usual';
 
 			if (retry) {
 				props.actionTitle = 'Retry';
