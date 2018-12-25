@@ -33,6 +33,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🛸 HoverObserver
 - 🍱 JsonSchema
 - ⏳ LoadingState
+- 😐 Noop
 - 🔌 PluginIcon
 - 👨‍🎨 StatefulComponent
 - ⏰ WaitObserver
