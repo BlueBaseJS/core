@@ -5,12 +5,19 @@ import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
 
 export interface ErrorStateProps {
+	/** The error to display */
 	error?: Error,
+
+	/** Callack function, called when retry button is pressed. */
 	retry?: () => void,
 }
 
 /**
  * 🚨 ErrorState
+ *
+ * Display an error message. Used by UIs when an exception is caught, and an error message
+ * needs to be displayed. If in development mode, the actual error is displayed, otherwise
+ * displays a generic message in production mode.
  */
 export class ErrorState extends React.PureComponent<ErrorStateProps> {
 

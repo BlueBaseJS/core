@@ -3,10 +3,6 @@ import { ErrorState } from '../ErrorState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
-
 describe('ErrorState', () => {
 
 	test(`should render ErrorState`, (done) => {
