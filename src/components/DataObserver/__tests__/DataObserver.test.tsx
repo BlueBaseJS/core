@@ -6,17 +6,15 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
 describe('DataObserver', () => {
-	const DataObserverWithProvider = (props: any) => (
-		<BlueBaseApp>
-			<DataObserver {...props} />
-		</BlueBaseApp>
-	);
 
 	test(`Snapshot DataObserver component with Text`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserverWithProvider>
-				<Native.Text>hello</Native.Text>
-			</DataObserverWithProvider>
+			<BlueBaseApp>
+				<DataObserver>
+					<Native.Text>hello</Native.Text>
+
+				</DataObserver>
+			</BlueBaseApp>
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
@@ -27,7 +25,8 @@ describe('DataObserver', () => {
 
 	test(`should generate states from custom listener functions`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserverWithProvider data="foo" isEmpty={() => false} isLoading={() => true}>
+			<BlueBaseApp>
+				<DataObserver data="foo" isEmpty={() => false} isLoading={() => true}>
 				{({ data, empty, loading }: { data: string, empty: boolean, loading: boolean }) => {
 					return (
 						<View>
@@ -37,7 +36,8 @@ describe('DataObserver', () => {
 						</View>
 					);
 				}}
-			</DataObserverWithProvider>
+				</DataObserver>
+			</BlueBaseApp>
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
@@ -51,7 +51,8 @@ describe('DataObserver', () => {
 
 	test(`should set loading to true`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserverWithProvider data="foo" loading={true}>
+			<BlueBaseApp>
+				<DataObserver data="foo" loading={true}>
 				{({ data, empty, loading }: { data: string, empty: boolean, loading: boolean }) => {
 					return (
 						<View>
@@ -61,7 +62,8 @@ describe('DataObserver', () => {
 						</View>
 					);
 				}}
-			</DataObserverWithProvider>
+				</DataObserver>
+			</BlueBaseApp>
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
@@ -75,7 +77,8 @@ describe('DataObserver', () => {
 
 	test(`should set empty to true if data if an empty array`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserverWithProvider data={[]} loading={true}>
+			<BlueBaseApp>
+				<DataObserver data={[]} loading={true}>
 				{({ data, empty, loading }: { data: string, empty: boolean, loading: boolean }) => {
 					return (
 						<View>
@@ -85,7 +88,8 @@ describe('DataObserver', () => {
 						</View>
 					);
 				}}
-			</DataObserverWithProvider>
+				</DataObserver>
+			</BlueBaseApp>
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
@@ -99,7 +103,8 @@ describe('DataObserver', () => {
 
 	test(`should set empty to false if data if an array`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserverWithProvider data={['a']} loading={true}>
+			<BlueBaseApp>
+				<DataObserver data={['a']} loading={true}>
 				{({ data, empty, loading }: { data: string, empty: boolean, loading: boolean }) => {
 					return (
 						<View>
@@ -109,7 +114,8 @@ describe('DataObserver', () => {
 						</View>
 					);
 				}}
-			</DataObserverWithProvider>
+				</DataObserver>
+			</BlueBaseApp>
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
@@ -123,7 +129,8 @@ describe('DataObserver', () => {
 
 	test(`should set empty and loading to false when there are no listener functions`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserverWithProvider data="a" isEmpty={null} isLoading={null}>
+			<BlueBaseApp>
+				<DataObserver data="a" isEmpty={null as any} isLoading={null as any}>
 				{({ data, empty, loading }: { data: string, empty: boolean, loading: boolean }) => {
 					return (
 						<View>
@@ -133,7 +140,8 @@ describe('DataObserver', () => {
 						</View>
 					);
 				}}
-			</DataObserverWithProvider>
+				</DataObserver>
+			</BlueBaseApp>
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
@@ -147,7 +155,8 @@ describe('DataObserver', () => {
 
 	test(`should set loading to false, if loading prop is not a boolean`, (done) => {
 		const component = TestRenderer.create(
-			<DataObserverWithProvider data="a" loading="true">
+			<BlueBaseApp>
+				<DataObserver data="a" loading={'true' as any}>
 				{({ data, empty, loading }: { data: string, empty: boolean, loading: boolean }) => {
 					return (
 						<View>
@@ -157,7 +166,8 @@ describe('DataObserver', () => {
 						</View>
 					);
 				}}
-			</DataObserverWithProvider>
+				</DataObserver>
+			</BlueBaseApp>
 		);
 		setTimeout(() => {
 			const tree = component.toJSON();
