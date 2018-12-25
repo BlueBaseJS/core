@@ -7,5 +7,5 @@ export function renderChildrenWithProps<T = any>(children: MaybeRenderPropChildr
 		return (children as any)(props);
 	}
 
-	return children;
+	return children || null;
 }

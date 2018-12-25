@@ -14,6 +14,10 @@ describe('Utils', () => {
 
 				expect(renderChildrenWithProps(children, {})).toBe('bar');
 			});
+
+			it('should call children as undefined function and return null', async () => {
+				expect(renderChildrenWithProps(undefined, {})).toBe(null);
+			});
 		});
 	});
 });
