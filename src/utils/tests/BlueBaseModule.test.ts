@@ -57,13 +57,12 @@ describe('Utils', () => {
 		});
 
 		it('should set loaded prop of only the loaded item', () => {
-
 			const module = createBlueBaseModule({ foo: 'bar' });
 			const module1 = createBlueBaseModule({ foo: 'baz' });
 			expect(module.loaded).toBe(false);
 			expect(module1.loaded).toBe(false);
 
-			module.then((obj) => {
+			module.then(obj => {
 				expect(obj.foo).toBe('bar');
 				expect(module.loaded).toBe(true);
 			});
