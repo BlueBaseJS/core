@@ -33,10 +33,10 @@ export interface DataObserverProps {
 	 */
 	children?: MaybeRenderPropChildren<DataObserverChildrenProps>;
 
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
+	/**
+	 * Used to locate this view in end-to-end tests.
+	 */
+	testID?: string;
 }
 
 export interface DataObserverState {
