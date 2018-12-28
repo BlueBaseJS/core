@@ -6,7 +6,7 @@ import { Theme } from '../../registries';
 
 export interface ComponentStateStyles {
 
-	/** Action button styles */
+	/** Action button container styles */
 	actionRoot?: ViewStyle,
 
 	/** Description text styles */
@@ -15,13 +15,13 @@ export interface ComponentStateStyles {
 	/** Image styles */
 	image?: ImageStyle,
 
-	/** Styles of root image view */
+	/** Styles of image container view */
 	imageRoot?: ViewStyle,
 
-	/** Root View styles */
+	/** Main root container styles */
 	root?: ViewStyle,
 
-	/** Title style */
+	/** Title styles */
 	title?: TextStyle,
 }
 export interface ComponentStateProps {
@@ -32,7 +32,7 @@ export interface ComponentStateProps {
 	actionTitle?: string;
 
 	/**
-	 * Action onPress handler
+	 * Action onPress callback function
 	 */
 	actionOnPress?: ButtonProps['onPress'];
 
@@ -42,7 +42,7 @@ export interface ComponentStateProps {
 	description?: string;
 
 	/**
-	 * Image Component, if provided, imageSource will be ignored
+	 * A ReactNode to show custom UI, if provided, imageSource will be ignored
 	 */
 	image?: React.ReactNode;
 
@@ -57,6 +57,11 @@ export interface ComponentStateProps {
 	title?: string;
 
 	styles?: ComponentStateStyles;
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 /**

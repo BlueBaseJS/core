@@ -12,6 +12,11 @@ export interface PluginIconProps {
 	/** Icon size */
 	size?: number,
 
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
+
 	[key: string]: any
 }
 
@@ -21,7 +26,7 @@ export interface PluginIconProps {
  * Displays an icon of a Plugin. The icon properties are taken from plugin.icon property
  * of plugin.
  *
- * If no pluign is found, renders an error message.
+ * If no plugin is found, renders an error message.
  *
  * If a plugin has no icon, renders null.
  *

@@ -13,7 +13,11 @@ export interface StatefulComponentProps extends DataObserverProps, ErrorObserver
 	emptyComponent?: React.ComponentType<any>;
 
 	children?: MaybeRenderPropChildren;
-	// children?: ( (...args: any[]) => any) | React.ReactNode;
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 /**

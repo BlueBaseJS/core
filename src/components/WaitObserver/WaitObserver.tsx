@@ -12,10 +12,10 @@ export interface WaitObserverChildrenProps {
 
 export interface WaitObserverProps {
 
-	/** Delay before rendering a component */
+	/** Delay before rendering a component. */
 	delay?: number,
 
-	/** Timeout duration */
+	/** Timeout duration. */
 	timeout?: number,
 
 	/**
@@ -27,6 +27,11 @@ export interface WaitObserverProps {
 	 * A callback function executed when retry method is called from the child component.
 	 */
 	onRetry?: () => void;
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 
 	children?: MaybeRenderPropChildren<WaitObserverChildrenProps>;
 }

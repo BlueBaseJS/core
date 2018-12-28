@@ -32,6 +32,11 @@ export interface DataObserverProps {
 	 * This object is typed as `DataObserverChildrenProps`.
 	 */
 	children?: MaybeRenderPropChildren<DataObserverChildrenProps>;
+
+	/**
+	 * Used to locate this view in end-to-end tests.
+	 */
+	testID?: string;
 }
 
 export interface DataObserverState {

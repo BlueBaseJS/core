@@ -18,11 +18,22 @@ import { getComponent } from './getComponent';
 import systemHooks from './hooks';
 
 export interface BootOptions {
+
+	/** Collection of components to add in BlueBase's Component Registry. */
 	components: ComponentCollection,
+
+	/** Collection of configs to add in BlueBase's Config Registry. */
 	configs: ConfigCollection,
+
+	/** Collection of hooks to add in BlueBase's Hook Registry. */
 	hooks: HookNestedCollection,
+
+	/** Collection of plugins to add in BlueBase's Plugin Registry. */
 	plugins: PluginCollection,
+
+	/** Collection of themes to add in BlueBase's Theme Registry. */
 	themes: ThemeCollection,
+
 	// routes: Plugin[]
 }
 

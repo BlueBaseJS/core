@@ -10,6 +10,11 @@ export interface ErrorStateProps {
 
 	/** Callack function, called when retry button is pressed. */
 	retry?: () => void,
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 /**
