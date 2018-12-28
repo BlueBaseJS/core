@@ -15,6 +15,11 @@ export interface JsonSchemaProps {
 
 	/** Arguments for the hook. */
 	args?: { [key: string]: any };
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 const getComponent = (BB: BlueBase) => {
@@ -30,7 +35,7 @@ const getComponent = (BB: BlueBase) => {
  * Renders a Component based on JSON schema. This allows developers to create dynamic
  * layouts in their apps, and even save the schema to databases.
  *
- * Moreover, it also makes that schema hookable. So that any plugin can modify that schema
+ * Moreover, it also makes that schema hook-able. So that any plugin can modify that schema
  * on runtime.
  *
  * ## Usage:
