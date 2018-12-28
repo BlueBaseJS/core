@@ -67,7 +67,7 @@
     "tslib": "^1.9.3"
   },
   "devDependencies": {
-    "@bluebase/storybook-addon": "^2.0.0",
+    "@bluebase/storybook-addon": "^3.0.0",
     "@blueeast/bluerain-cli-essentials": "^4.0.0-beta.2",
     "@blueeast/tslint-config-blueeast": "^0.7.0",
     "@storybook/addon-actions": "^4.1.2",
