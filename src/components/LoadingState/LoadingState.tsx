@@ -10,6 +10,11 @@ export interface LoadingStateProps {
 
 	/** Callback function when Retry button is pressed. */
 	retry?: () => void,
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 /**
