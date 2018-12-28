@@ -15,15 +15,20 @@ export interface BlueBaseHookProps<T = any> {
 	/** Hook arguments */
 	args?: { [key: string]: any };
 
-	/** render prop function. Final value is passed as param to this function. */
+	/** Children as function (render prop pattern). Final value is passed as param to this function. */
 	children: ((value: any) => React.ReactNode);
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 /**
  * # 🎣 BlueBaseHook
  *
  * Since hooks in BlueBase are based on promises, it may be tedious to handle loading state,
- * error state, etc. It may also become a repitive task.
+ * error state, etc. It may also become a repetitive task.
  *
  * To solve this issue, we ship BlueBaseHook component. Just pass name of hook, initial value,
  * and hook arguments as props. The final hooked value will be passed to the children function.
