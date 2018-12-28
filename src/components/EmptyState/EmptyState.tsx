@@ -1,7 +1,14 @@
 import { ComponentState, ComponentStateProps } from '../../index';
 import React from 'react';
 
-export interface EmptyStateProps extends ComponentStateProps {}
+export interface EmptyStateProps extends ComponentStateProps {
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
+
+}
 
 /**
  * # 📭 EmptyState
