@@ -17,8 +17,13 @@ export interface ErrorObserverProps {
 	/** Component to show the error state. */
 	errorComponent?: React.ComponentType<any>;
 
-	/** Children are rendered when there are no error */
+	/** Children are rendered when there are no error. */
 	children?: MaybeRenderPropChildren;
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 
 	[prop: string]: any;
 }
@@ -30,7 +35,7 @@ export interface ErrorObserverState {
 /**
  * # 🚨 ErrorObserver
  *
- * Observes any exceptions in child tree heirarcy. When an exception is caught, displays
+ * Observes any exceptions in child tree hierarchy. When an exception is caught, displays
  * an Error state to gracefully handle it on the frontend.
  *
  * ## Usage
