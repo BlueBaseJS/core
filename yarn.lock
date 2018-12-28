@@ -1003,10 +1003,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@bluebase/storybook-addon@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@bluebase/storybook-addon/-/storybook-addon-2.0.0.tgz#2b2dcca561a76904608a8920866494f6abf2df95"
-  integrity sha512-xZByt7DXDj+wJwgLUNkmmTle7KLhZV0uGRCLvZd9ttaBuL7PYucJq1KkJ4eKKZAkArLPDDlZHOZmKyChudTKpQ==
+"@bluebase/storybook-addon@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/storybook-addon/-/storybook-addon-3.0.0.tgz#b38c1bb66f026898f00cbbf8cc4c13fcb0bfe93c"
+  integrity sha512-RdByeuapaJG7Vp8xcu07M5TUy5hXUgYCfmJ+UJ35gJ+R1BjxsQfmGKpcn2antxT74fmAYNob5qcPN4Kta02F3A==
 
 "@blueeast/bluerain-cli-essentials@^4.0.0-beta.2":
   version "4.0.0-beta.2"
