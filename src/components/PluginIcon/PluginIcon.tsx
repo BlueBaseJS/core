@@ -1,16 +1,41 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
+import { DynamicIcon } from '../../getComponent';
 import React from 'react';
 import { resolveThunk } from '../../utils';
 
 export interface PluginIconProps {
+
+	/** Plugin key */
 	id: string;
+
+	/** Icon size */
 	size?: number,
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
+
 	[key: string]: any
 }
 
 /**
- * 🔌 PluginIcon
+ * # 🔌 PluginIcon
+ *
+ * Displays an icon of a Plugin. The icon properties are taken from plugin.icon property
+ * of plugin.
+ *
+ * If no plugin is found, renders an error message.
+ *
+ * If a plugin has no icon, renders null.
+ *
+ * ## Usage:
+ * ```jsx
+ * <PluginIcon id="redux-plugin" />
+ * ```
+ *
+ * TODO: In future, add a default icon.
  */
 export class PluginIcon extends React.PureComponent<PluginIconProps> {
 
@@ -20,7 +45,7 @@ export class PluginIcon extends React.PureComponent<PluginIconProps> {
 
 		const BB: BlueBase = this.context;
 
-		const { id, ...rest } = this.props;
+		const { id, size } = this.props;
 
 		const plugin = BB.Plugins.get(id);
 
@@ -32,8 +57,8 @@ export class PluginIcon extends React.PureComponent<PluginIconProps> {
 			return null;
 		}
 
-		const iconProps = resolveThunk(plugin.icon, plugin, BB);
+		const iconProps = resolveThunk(plugin.icon, { plugin, size }, BB);
 
-		return <BB.Components.DynamicIcon {...iconProps} {...rest} />;
+		return <DynamicIcon {...iconProps} size={size} />;
 	}
 }

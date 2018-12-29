@@ -1,4 +1,4 @@
-import { BlueBase, BlueBaseContext } from '../..';
+import { Text, View } from '../../getComponent';
 import { TextStyle, ViewStyle } from 'react-native';
 import { MaybeThunk } from '../../utils';
 import React from 'react';
@@ -12,8 +12,6 @@ export interface ThemedCardProps {
 }
 
 export class ThemedCard extends React.PureComponent<ThemedCardProps> {
-
-	static contextType = BlueBaseContext;
 
 	static defaultStyles: MaybeThunk<{ root: ViewStyle, text: TextStyle }> = (theme: Theme) => ({
 		root: {
@@ -32,14 +30,13 @@ export class ThemedCard extends React.PureComponent<ThemedCardProps> {
 	})
 
 	render() {
-		const BB: BlueBase = (this as any).context;
 		const { styles, children } = this.props;
 		return (
-			<BB.Components.View style={styles && styles.root}>
-				<BB.Components.Text style={styles && styles.text}>
+			<View style={styles && styles.root}>
+				<Text style={styles && styles.text}>
 					{children}
-				</BB.Components.Text>
-			</BB.Components.View>
+				</Text>
+			</View>
 		);
 	}
 }

@@ -23,13 +23,13 @@ export interface DynamicIconProps {
 
 	/**
 	 * Used when type is 'icon'.
-	 * The name prop of the BB.Components.Icon component
+	 * This is the name prop of the BB.Components.Icon component
 	 */
 	name?: string;
 
 	/**
 	 * Used when type is 'image'.
-	 * The image source
+	 * This is the Image source.
 	 */
 	source?: ImageSourcePropType;
 
@@ -38,16 +38,26 @@ export interface DynamicIconProps {
 	 */
 	size?: number;
 
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
+
 	[key: string]: any;
 }
 
 /**
- * 🗿 DynamicIcon
+ * # 🗿 DynamicIcon
  *
  * An enhanced Icon that can render any of the following:
  * - BB.Components.Icon
  * - BB.Components.Image
  * - A custom component
+ *
+ * ## Usage
+ * ```jsx
+ * <DynamicIcon type="image" size={250} source={{ uri: 'https://picsum.photos/200' }} />
+ * ```
  */
 
 export class DynamicIcon extends React.PureComponent<DynamicIconProps> {

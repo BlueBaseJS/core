@@ -1,4 +1,5 @@
 import { BlueBase, BlueBaseConsumer } from '../../..';
+import { PluginIcon } from '../../../getComponent';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
@@ -16,7 +17,7 @@ storiesOf('PluginIcon', module)
 			});
 
 			return (
-				<BB.Components.PluginIcon slug="some"/>
+				<PluginIcon id="some"/>
 			);
 		}} />
 	));

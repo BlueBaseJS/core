@@ -5,8 +5,19 @@ import { Text } from 'react-native';
 const MISSING_ERROR = 'An unknown error occured.';
 
 export interface BlueBaseAppProps extends Partial<BootOptions> {
+
+	/** BlueBase Context */
 	BB?: BlueBase,
+
+	/**
+	 * If this prop is provided, this tree will be rendered instead of BlueBase's own view.
+	 */
 	children?: React.ReactNode,
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 interface BlueBaseAppState {
@@ -38,15 +49,16 @@ interface BlueBaseAppState {
 }
 
 /**
- * 🚀 BlueBaseApp
+ * # 🚀 BlueBaseApp
  *
- * This is the Main App used to render at the top level.
+ * The main BlueBase app. This is the top level component in BlueBase. Takes care
+ * of initialisation, and renders either children, or app with routing.
  *
- * TODO: Add better docs
+ * ## Usage
+ * ```jsx
+ * <BlueBaseApp BB={BB} plugins={{}} hook={{}} themes={{}} />
+ * ```
  */
-// NOTE FOR DEVELOPERS:
-// Don't use BlueBase context or any data saved in context (e.g. components)
-// here. This is because the context may not be initialized yet.
 export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
 
 	constructor(props: BlueBaseAppProps) {

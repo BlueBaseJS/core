@@ -1644,6 +1644,13 @@
   dependencies:
     "@types/enzyme" "*"
 
+"@types/enzyme-async-helpers@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@types/enzyme-async-helpers/-/enzyme-async-helpers-0.9.0.tgz#391a228e3c2ade43d5e8b1cab105168f8494676d"
+  integrity sha512-Xhjwlo+UA/x6a2By2Xd68SUpTGsXDr1gEVFy/uxutCZZP4hsYcATFhMbCDQtJlvTVfCnIqkoKVwzLTw1arVttQ==
+  dependencies:
+    "@types/enzyme" "*"
+
 "@types/enzyme@*", "@types/enzyme@^3.1.15":
   version "3.1.15"
   resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.1.15.tgz#fc9a9695ba9f90cd50c4967e64a8c66ec96913d1"
@@ -5262,6 +5269,14 @@ enzyme-adapter-utils@^1.9.0:
     prop-types "^15.6.2"
     semver "^5.6.0"
 
+enzyme-async-helpers@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/enzyme-async-helpers/-/enzyme-async-helpers-0.9.1.tgz#a301c43686c30ad0801aa64537b5b6693eaa5769"
+  integrity sha512-eqpdbkFXJP5Ynd3WVsJkMA2/xKDM/MgKzJVWeqfr1vF6LUCeaegledHir0ndJ+rJqV/vZBeCMgRj3YDwxuvHcw==
+  dependencies:
+    enzyme-to-json "^3.3.1"
+    pretty-format "^22.4.0"
+
 enzyme-matchers@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/enzyme-matchers/-/enzyme-matchers-7.0.1.tgz#02e8c3b2bc80a32f19015d058e9a971329519652"
@@ -5270,7 +5285,7 @@ enzyme-matchers@^7.0.1:
     circular-json-es6 "^2.0.1"
     deep-equal-ident "^1.1.1"
 
-enzyme-to-json@^3.3.0:
+enzyme-to-json@^3.3.0, enzyme-to-json@^3.3.1:
   version "3.3.5"
   resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.3.5.tgz#f8eb82bd3d5941c9d8bc6fd9140030777d17d0af"
   integrity sha512-DmH1wJ68HyPqKSYXdQqB33ZotwfUhwQZW3IGXaNXgR69Iodaoj8TF/D9RjLdz4pEhGq2Tx2zwNUIjBuqoZeTgA==
@@ -9982,6 +9997,14 @@ pretty-error@^2.1.1:
   dependencies:
     renderkid "^2.0.1"
     utila "~0.4"
+
+pretty-format@^22.4.0:
+  version "22.4.3"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-22.4.3.tgz#f873d780839a9c02e9664c8a082e9ee79eaac16f"
+  integrity sha512-S4oT9/sT6MN7/3COoOy+ZJeA92VmOnveLHgrwBE3Z1W5N9S2A1QGNYiE1z75DAENbJrXXUb+OWXhpJcg05QKQQ==
+  dependencies:
+    ansi-regex "^3.0.0"
+    ansi-styles "^3.2.0"
 
 pretty-format@^23.4.1, pretty-format@^23.6.0:
   version "23.6.0"

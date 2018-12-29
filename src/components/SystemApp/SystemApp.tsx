@@ -7,6 +7,9 @@ import { renderChildrenWithProps } from '../../utils';
 
 export interface SystemAppProps extends ViewProperties {}
 
+/**
+ * Main SystemApp. This is the component that renders content to the screen.
+ */
 export class SystemApp extends React.PureComponent<SystemAppProps> {
 
 	static contextType = BlueBaseContext;
