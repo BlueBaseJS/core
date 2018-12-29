@@ -2,7 +2,7 @@
   "name": "@bluebase/core",
   "description": "🚀 A modular, pluggable and cross platform app framework.",
   "author": "BlueEast Team <code@blueeast.com>",
-  "version": "4.0.0-aplha.4",
+  "version": "4.0.0-aplha.5",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
   "module": "dist/src/index.js",
