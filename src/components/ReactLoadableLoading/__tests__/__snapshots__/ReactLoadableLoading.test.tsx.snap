@@ -72,7 +72,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                             }
                           }
                         >
-                          <View
+                          <Component
                             style={
                               Object {
                                 "alignItems": "center",
@@ -104,7 +104,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                                     }
                                   }
                                 >
-                                  <View
+                                  <Component
                                     style={
                                       Object {
                                         "marginBottom": 16,
@@ -120,7 +120,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                                     >
                                       <ActivityIndicator>
                                         <ThemedComponent>
-                                          <ActivityIndicator
+                                          <Component
                                             animating={true}
                                             color="#999999"
                                             hidesWhenStopped={true}
@@ -132,15 +132,15 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                                               hidesWhenStopped={true}
                                               size="small"
                                             />
-                                          </ActivityIndicator>
+                                          </Component>
                                         </ThemedComponent>
                                       </ActivityIndicator>
                                     </View>
-                                  </View>
+                                  </Component>
                                 </ThemedComponent>
                               </View>
                             </View>
-                          </View>
+                          </Component>
                         </ThemedComponent>
                       </View>
                     </ComponentState>
@@ -237,7 +237,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                             }
                           }
                         >
-                          <View
+                          <Component
                             style={
                               Object {
                                 "alignItems": "center",
@@ -289,7 +289,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       }
                                     }
                                   >
-                                    <Text
+                                    <Component
                                       style={
                                         Array [
                                           Object {
@@ -323,7 +323,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       >
                                         Error
                                       </Text>
-                                    </Text>
+                                    </Component>
                                   </Component>
                                 </ThemedComponent>
                               </H6>
@@ -361,7 +361,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       }
                                     }
                                   >
-                                    <Text
+                                    <Component
                                       style={
                                         Array [
                                           Object {
@@ -395,7 +395,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       >
                                         Random Error
                                       </Text>
-                                    </Text>
+                                    </Component>
                                   </Component>
                                 </ThemedComponent>
                               </Body2>
@@ -413,7 +413,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     }
                                   }
                                 >
-                                  <View
+                                  <Component
                                     style={
                                       Object {
                                         "marginTop": 8,
@@ -504,7 +504,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                   ]
                                                 }
                                               >
-                                                <View
+                                                <Component
                                                   accessibilityRole="button"
                                                   accessible={true}
                                                   isTVSelectable={true}
@@ -536,7 +536,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                       }
                                                     }
                                                   >
-                                                    <View
+                                                    <Component
                                                       style={
                                                         Array [
                                                           Object {
@@ -570,7 +570,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           ]
                                                         }
                                                       >
-                                                        <Text
+                                                        <Component
                                                           style={
                                                             Array [
                                                               Object {
@@ -606,22 +606,22 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           >
                                                             Retry
                                                           </Text>
-                                                        </Text>
+                                                        </Component>
                                                       </View>
-                                                    </View>
+                                                    </Component>
                                                   </View>
-                                                </View>
+                                                </Component>
                                               </AnimatedComponent>
                                             </TouchableOpacity>
                                           </Button>
                                         </ThemedComponent>
                                       </Button>
                                     </View>
-                                  </View>
+                                  </Component>
                                 </ThemedComponent>
                               </View>
                             </View>
-                          </View>
+                          </Component>
                         </ThemedComponent>
                       </View>
                     </ComponentState>
@@ -718,7 +718,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                             }
                           }
                         >
-                          <View
+                          <Component
                             style={
                               Object {
                                 "alignItems": "center",
@@ -750,7 +750,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     }
                                   }
                                 >
-                                  <View
+                                  <Component
                                     style={
                                       Object {
                                         "marginBottom": 16,
@@ -766,7 +766,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     >
                                       <ActivityIndicator>
                                         <ThemedComponent>
-                                          <ActivityIndicator
+                                          <Component
                                             animating={true}
                                             color="#999999"
                                             hidesWhenStopped={true}
@@ -778,11 +778,11 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                               hidesWhenStopped={true}
                                               size="small"
                                             />
-                                          </ActivityIndicator>
+                                          </Component>
                                         </ThemedComponent>
                                       </ActivityIndicator>
                                     </View>
-                                  </View>
+                                  </Component>
                                 </ThemedComponent>
                               </View>
                               <Body2
@@ -819,7 +819,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       }
                                     }
                                   >
-                                    <Text
+                                    <Component
                                       style={
                                         Array [
                                           Object {
@@ -853,7 +853,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       >
                                         This is taking longer than usual
                                       </Text>
-                                    </Text>
+                                    </Component>
                                   </Component>
                                 </ThemedComponent>
                               </Body2>
@@ -871,7 +871,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     }
                                   }
                                 >
-                                  <View
+                                  <Component
                                     style={
                                       Object {
                                         "marginTop": 8,
@@ -962,7 +962,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                   ]
                                                 }
                                               >
-                                                <View
+                                                <Component
                                                   accessibilityRole="button"
                                                   accessible={true}
                                                   isTVSelectable={true}
@@ -994,7 +994,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                       }
                                                     }
                                                   >
-                                                    <View
+                                                    <Component
                                                       style={
                                                         Array [
                                                           Object {
@@ -1028,7 +1028,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           ]
                                                         }
                                                       >
-                                                        <Text
+                                                        <Component
                                                           style={
                                                             Array [
                                                               Object {
@@ -1064,22 +1064,22 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           >
                                                             Retry
                                                           </Text>
-                                                        </Text>
+                                                        </Component>
                                                       </View>
-                                                    </View>
+                                                    </Component>
                                                   </View>
-                                                </View>
+                                                </Component>
                                               </AnimatedComponent>
                                             </TouchableOpacity>
                                           </Button>
                                         </ThemedComponent>
                                       </Button>
                                     </View>
-                                  </View>
+                                  </Component>
                                 </ThemedComponent>
                               </View>
                             </View>
-                          </View>
+                          </Component>
                         </ThemedComponent>
                       </View>
                     </ComponentState>

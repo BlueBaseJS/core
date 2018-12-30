@@ -84,8 +84,8 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 		timedOut: false,
 	};
 
-	private _delay?: number;
-	private _timeout?: number;
+	private _delay?: any;
+	private _timeout?: any;
 
 	componentWillMount() {
 		this.init();

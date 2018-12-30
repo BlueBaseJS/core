@@ -64,11 +64,11 @@ exports[`StatefulComponent should show children from Component prop 1`] = `
                           <Comp
                             data={true}
                           >
-                            <Text>
+                            <Component>
                               <Text>
                                 Custom Component
                               </Text>
-                            </Text>
+                            </Component>
                           </Comp>
                         </DataObserver>
                       </ThemedComponent>
@@ -145,11 +145,11 @@ exports[`StatefulComponent should show children nodes 1`] = `
                             }
                           }
                         >
-                          <Text>
+                          <Component>
                             <Text>
                               Content
                             </Text>
-                          </Text>
+                          </Component>
                         </DataObserver>
                       </ThemedComponent>
                     </DataObserver>
@@ -285,7 +285,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                             }
                                           }
                                         >
-                                          <View
+                                          <Component
                                             style={
                                               Object {
                                                 "alignItems": "center",
@@ -337,7 +337,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       }
                                                     }
                                                   >
-                                                    <Text
+                                                    <Component
                                                       style={
                                                         Array [
                                                           Object {
@@ -371,7 +371,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       >
                                                         Empty Area
                                                       </Text>
-                                                    </Text>
+                                                    </Component>
                                                   </Component>
                                                 </ThemedComponent>
                                               </H6>
@@ -409,7 +409,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       }
                                                     }
                                                   >
-                                                    <Text
+                                                    <Component
                                                       style={
                                                         Array [
                                                           Object {
@@ -443,12 +443,12 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       >
                                                         Create new items to fill this area.
                                                       </Text>
-                                                    </Text>
+                                                    </Component>
                                                   </Component>
                                                 </ThemedComponent>
                                               </Body2>
                                             </View>
-                                          </View>
+                                          </Component>
                                         </ThemedComponent>
                                       </View>
                                     </ComponentState>
@@ -588,7 +588,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                             }
                                           }
                                         >
-                                          <View
+                                          <Component
                                             style={
                                               Object {
                                                 "alignItems": "center",
@@ -640,7 +640,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       }
                                                     }
                                                   >
-                                                    <Text
+                                                    <Component
                                                       style={
                                                         Array [
                                                           Object {
@@ -674,7 +674,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       >
                                                         Empty Area
                                                       </Text>
-                                                    </Text>
+                                                    </Component>
                                                   </Component>
                                                 </ThemedComponent>
                                               </H6>
@@ -712,7 +712,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       }
                                                     }
                                                   >
-                                                    <Text
+                                                    <Component
                                                       style={
                                                         Array [
                                                           Object {
@@ -746,12 +746,12 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       >
                                                         Create new items to fill this area.
                                                       </Text>
-                                                    </Text>
+                                                    </Component>
                                                   </Component>
                                                 </ThemedComponent>
                                               </Body2>
                                             </View>
-                                          </View>
+                                          </Component>
                                         </ThemedComponent>
                                       </View>
                                     </ComponentState>
@@ -915,7 +915,7 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                   }
                                                 }
                                               >
-                                                <View
+                                                <Component
                                                   style={
                                                     Object {
                                                       "alignItems": "center",
@@ -947,7 +947,7 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                           }
                                                         }
                                                       >
-                                                        <View
+                                                        <Component
                                                           style={
                                                             Object {
                                                               "marginBottom": 16,
@@ -963,7 +963,7 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                           >
                                                             <ActivityIndicator>
                                                               <ThemedComponent>
-                                                                <ActivityIndicator
+                                                                <Component
                                                                   animating={true}
                                                                   color="#999999"
                                                                   hidesWhenStopped={true}
@@ -975,15 +975,15 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                                     hidesWhenStopped={true}
                                                                     size="small"
                                                                   />
-                                                                </ActivityIndicator>
+                                                                </Component>
                                                               </ThemedComponent>
                                                             </ActivityIndicator>
                                                           </View>
-                                                        </View>
+                                                        </Component>
                                                       </ThemedComponent>
                                                     </View>
                                                   </View>
-                                                </View>
+                                                </Component>
                                               </ThemedComponent>
                                             </View>
                                           </ComponentState>
@@ -1070,11 +1070,11 @@ exports[`StatefulComponent should show render prop children 1`] = `
                             }
                           }
                         >
-                          <Text>
+                          <Component>
                             <Text>
                               Render prop
                             </Text>
-                          </Text>
+                          </Component>
                         </DataObserver>
                       </ThemedComponent>
                     </DataObserver>

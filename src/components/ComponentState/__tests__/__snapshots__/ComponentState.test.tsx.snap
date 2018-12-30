@@ -23,11 +23,11 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
             >
               <View>
                 <ThemedComponent>
-                  <View>
+                  <Component>
                     <View>
                       <View>
                         <ThemedComponent>
-                          <View>
+                          <Component>
                             <View>
                               <Image
                                 source={
@@ -85,7 +85,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                 </ThemedComponent>
                               </Image>
                             </View>
-                          </View>
+                          </Component>
                         </ThemedComponent>
                       </View>
                       <H6>
@@ -102,7 +102,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               }
                             }
                           >
-                            <Text
+                            <Component
                               style={
                                 Array [
                                   Object {
@@ -130,7 +130,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               >
                                 Looks like your'e new here!
                               </Text>
-                            </Text>
+                            </Component>
                           </Component>
                         </ThemedComponent>
                       </H6>
@@ -148,7 +148,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               }
                             }
                           >
-                            <Text
+                            <Component
                               style={
                                 Array [
                                   Object {
@@ -176,13 +176,13 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               >
                                 Start by creating your first entry.
                               </Text>
-                            </Text>
+                            </Component>
                           </Component>
                         </ThemedComponent>
                       </Body2>
                       <View>
                         <ThemedComponent>
-                          <View>
+                          <Component>
                             <View>
                               <Button
                                 color="primary"
@@ -257,7 +257,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                           ]
                                         }
                                       >
-                                        <View
+                                        <Component
                                           accessibilityRole="button"
                                           accessible={true}
                                           isTVSelectable={true}
@@ -289,7 +289,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                               }
                                             }
                                           >
-                                            <View
+                                            <Component
                                               style={
                                                 Array [
                                                   Object {
@@ -323,7 +323,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                   ]
                                                 }
                                               >
-                                                <Text
+                                                <Component
                                                   style={
                                                     Array [
                                                       Object {
@@ -359,22 +359,22 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                   >
                                                     Tap to Create
                                                   </Text>
-                                                </Text>
+                                                </Component>
                                               </View>
-                                            </View>
+                                            </Component>
                                           </View>
-                                        </View>
+                                        </Component>
                                       </AnimatedComponent>
                                     </TouchableOpacity>
                                   </Button>
                                 </ThemedComponent>
                               </Button>
                             </View>
-                          </View>
+                          </Component>
                         </ThemedComponent>
                       </View>
                     </View>
-                  </View>
+                  </Component>
                 </ThemedComponent>
               </View>
             </ComponentState>
@@ -421,11 +421,11 @@ exports[`ComponentState should render ComponentState with custom image 1`] = `
             >
               <View>
                 <ThemedComponent>
-                  <View>
+                  <Component>
                     <View>
                       <View>
                         <ThemedComponent>
-                          <View>
+                          <Component>
                             <View>
                               <Component
                                 source={
@@ -457,11 +457,11 @@ exports[`ComponentState should render ComponentState with custom image 1`] = `
                                 />
                               </Component>
                             </View>
-                          </View>
+                          </Component>
                         </ThemedComponent>
                       </View>
                     </View>
-                  </View>
+                  </Component>
                 </ThemedComponent>
               </View>
             </ComponentState>
