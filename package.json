@@ -82,7 +82,8 @@
     "tslib": "^1.9.3"
   },
   "devDependencies": {
-    "@bluebase/storybook-addon": "^2.0.0",
+    "@babel/core": "^7.2.2",
+    "@bluebase/storybook-addon": "^3.0.0",
     "@blueeast/bluerain-cli-essentials": "^4.0.0-beta.2",
     "@blueeast/tslint-config-blueeast": "^0.7.0",
     "@storybook/addon-actions": "^4.1.2",
@@ -109,6 +110,7 @@
     "@types/react-native": "^0.57.7",
     "@types/react-test-renderer": "^16.0.2",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-preset-expo": "^5.0.0",
@@ -132,6 +134,7 @@
     "react-native-typescript-transformer": "^1.2.10",
     "react-native-web": "^0.9.9",
     "react-test-renderer": "^16.6.1",
+    "regenerator-runtime": "^0.13.1",
     "schedule": "^0.4.0",
     "standard-version": "^4.4.0",
     "trash-cli": "^1.4.0",

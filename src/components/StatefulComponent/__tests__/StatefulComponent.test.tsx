@@ -21,8 +21,8 @@ describe('StatefulComponent', () => {
 
 		expect(component).toMatchSnapshot();
 
-		expect(component.find('StatefulComponent').find('Text').at(0).text()).toBe('Empty Area');
-		expect(component.find('StatefulComponent').find('Text').at(2).text()).toBe('Create new items to fill this area.');
+		expect(component.find('StatefulComponent H6 Text').last().text()).toBe('Empty Area');
+		expect(component.find('StatefulComponent Body2 Text').last().text()).toBe('Create new items to fill this area.');
 	});
 
 	test(`should show empty state as data is an empty array`, async () => {
@@ -37,8 +37,8 @@ describe('StatefulComponent', () => {
 
 		expect(component).toMatchSnapshot();
 
-		expect(component.find('StatefulComponent').find('Text').at(0).text()).toBe('Empty Area');
-		expect(component.find('StatefulComponent').find('Text').at(2).text()).toBe('Create new items to fill this area.');
+		expect(component.find('StatefulComponent H6 Text').last().text()).toBe('Empty Area');
+		expect(component.find('StatefulComponent Body2 Text').last().text()).toBe('Create new items to fill this area.');
 
 	});
 

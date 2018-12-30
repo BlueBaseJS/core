@@ -28,7 +28,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "width": 150,
@@ -100,7 +100,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                         />
                       </_class>
                     </View>
-                  </View>
+                  </Component>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -121,7 +121,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "backgroundColor": "#fafafa",
@@ -151,7 +151,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                               }
                             }
                           >
-                            <Text
+                            <Component
                               style={
                                 Array [
                                   Object {
@@ -179,12 +179,12 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                               >
                                 BlueBase Light
                               </Text>
-                            </Text>
+                            </Component>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </View>
+                  </Component>
                 </ThemedComponent>
               </View>
             </ThemeDemo>
@@ -224,7 +224,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "width": 150,
@@ -296,7 +296,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                         />
                       </_class>
                     </View>
-                  </View>
+                  </Component>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -317,7 +317,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "backgroundColor": "#303030",
@@ -347,7 +347,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                               }
                             }
                           >
-                            <Text
+                            <Component
                               style={
                                 Array [
                                   Object {
@@ -375,12 +375,12 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                               >
                                 BlueBase Dark
                               </Text>
-                            </Text>
+                            </Component>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </View>
+                  </Component>
                 </ThemedComponent>
               </View>
             </ThemeDemo>
@@ -428,7 +428,7 @@ exports[`ThemeContext should override a theme 1`] = `
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "backgroundColor": "red",
@@ -458,7 +458,7 @@ exports[`ThemeContext should override a theme 1`] = `
                                 }
                               }
                             >
-                              <Text
+                              <Component
                                 style={
                                   Array [
                                     Object {
@@ -486,12 +486,12 @@ exports[`ThemeContext should override a theme 1`] = `
                                 >
                                   BlueBase Dark
                                 </Text>
-                              </Text>
+                              </Component>
                             </Component>
                           </ThemedComponent>
                         </Body1>
                       </View>
-                    </View>
+                    </Component>
                   </ThemedComponent>
                 </View>
               </ThemeDemo>
@@ -598,7 +598,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "width": 150,
@@ -670,7 +670,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                         />
                       </_class>
                     </View>
-                  </View>
+                  </Component>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -691,7 +691,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "backgroundColor": "#fafafa",
@@ -721,7 +721,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                               }
                             }
                           >
-                            <Text
+                            <Component
                               style={
                                 Array [
                                   Object {
@@ -749,12 +749,12 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                               >
                                 BlueBase Light
                               </Text>
-                            </Text>
+                            </Component>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </View>
+                  </Component>
                 </ThemedComponent>
               </View>
             </ThemeDemo>
@@ -812,7 +812,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "width": 150,
@@ -884,7 +884,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                         />
                       </_class>
                     </View>
-                  </View>
+                  </Component>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -905,7 +905,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "backgroundColor": "#fafafa",
@@ -935,7 +935,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                               }
                             }
                           >
-                            <Text
+                            <Component
                               style={
                                 Array [
                                   Object {
@@ -963,12 +963,12 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                               >
                                 BlueBase Light
                               </Text>
-                            </Text>
+                            </Component>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </View>
+                  </Component>
                 </ThemedComponent>
               </View>
             </ThemeDemo>

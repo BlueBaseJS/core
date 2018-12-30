@@ -29,7 +29,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.0.0", "@babel/core@^7.1.6":
+"@babel/core@^7.0.0", "@babel/core@^7.1.6", "@babel/core@^7.2.2":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.2.2.tgz#07adba6dde27bb5ad8d8672f15fde3e08184a687"
   integrity sha512-59vB0RWt09cAct5EIe58+NzGP4TFSD3Bz//2/ELy3ZeTeKF6VTD1AXlH8BGGbCX0PuobZBsIzO7IAI9PH67eKw==
@@ -998,10 +998,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@bluebase/storybook-addon@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@bluebase/storybook-addon/-/storybook-addon-2.0.0.tgz#2b2dcca561a76904608a8920866494f6abf2df95"
-  integrity sha512-xZByt7DXDj+wJwgLUNkmmTle7KLhZV0uGRCLvZd9ttaBuL7PYucJq1KkJ4eKKZAkArLPDDlZHOZmKyChudTKpQ==
+"@bluebase/storybook-addon@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/storybook-addon/-/storybook-addon-3.0.0.tgz#b38c1bb66f026898f00cbbf8cc4c13fcb0bfe93c"
+  integrity sha512-RdByeuapaJG7Vp8xcu07M5TUy5hXUgYCfmJ+UJ35gJ+R1BjxsQfmGKpcn2antxT74fmAYNob5qcPN4Kta02F3A==
 
 "@blueeast/bluerain-cli-essentials@^4.0.0-beta.2":
   version "4.0.0-beta.2"
@@ -2606,6 +2606,11 @@ babel-core@^6.0.0, babel-core@^6.26.0, babel-core@^6.7.2:
     private "^0.1.8"
     slash "^1.0.0"
     source-map "^0.5.7"
+
+babel-core@^7.0.0-bridge.0:
+  version "7.0.0-bridge.0"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
+  integrity sha512-poPX9mZH/5CSanm50Q+1toVci6pv5KSRv/5TWCwtzQS5XEwn40BcCrgIeMFWP9CKKIniKXNxoIOnOq4VVlGXhg==
 
 babel-generator@^6.18.0, babel-generator@^6.26.0:
   version "6.26.1"
@@ -11593,6 +11598,11 @@ regenerator-runtime@^0.12.0, regenerator-runtime@^0.12.1:
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
   integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
+
+regenerator-runtime@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.1.tgz#522ea2aafd9200a00eee143dc14219a35a0f3991"
+  integrity sha512-5KzMIyPLvfdPmvsdlYsHqITrDfK9k7bmvf97HvHSN4810i254ponbxCQ1NukpRWlu6en2MBWzAlhDExEKISwAA==
 
 regenerator-transform@^0.10.0:
   version "0.10.1"
