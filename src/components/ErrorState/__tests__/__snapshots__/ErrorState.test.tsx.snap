@@ -21,7 +21,7 @@ exports[`ErrorState should render ErrorState 2`] = `
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": "Helvetica",
           "fontSize": 20,
           "fontWeight": "500",
         },
@@ -39,7 +39,7 @@ exports[`ErrorState should render ErrorState 2`] = `
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": "Helvetica",
           "fontSize": 14,
           "fontWeight": "400",
         },
@@ -70,7 +70,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": "Helvetica",
           "fontSize": 20,
           "fontWeight": "500",
         },
@@ -88,7 +88,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": "Helvetica",
           "fontSize": 14,
           "fontWeight": "400",
         },
@@ -146,7 +146,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
             Array [
               Object {
                 "color": "rgba(0, 0, 0, 0.87)",
-                "fontFamily": "Roboto",
+                "fontFamily": "Helvetica",
                 "fontSize": 14,
                 "fontWeight": "500",
                 "textAlign": "center",

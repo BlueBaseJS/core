@@ -23,11 +23,11 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
             >
               <View>
                 <ThemedComponent>
-                  <Component>
+                  <View>
                     <View>
                       <View>
                         <ThemedComponent>
-                          <Component>
+                          <View>
                             <View>
                               <Image
                                 source={
@@ -85,7 +85,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                 </ThemedComponent>
                               </Image>
                             </View>
-                          </Component>
+                          </View>
                         </ThemedComponent>
                       </View>
                       <H6>
@@ -95,19 +95,19 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Roboto",
+                                  "fontFamily": "Helvetica",
                                   "fontSize": 20,
                                   "fontWeight": "500",
                                 },
                               }
                             }
                           >
-                            <Component
+                            <Text
                               style={
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Roboto",
+                                    "fontFamily": "Helvetica",
                                     "fontSize": 20,
                                     "fontWeight": "500",
                                   },
@@ -120,7 +120,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Roboto",
+                                      "fontFamily": "Helvetica",
                                       "fontSize": 20,
                                       "fontWeight": "500",
                                     },
@@ -130,7 +130,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               >
                                 Looks like your'e new here!
                               </Text>
-                            </Component>
+                            </Text>
                           </Component>
                         </ThemedComponent>
                       </H6>
@@ -141,19 +141,19 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Roboto",
+                                  "fontFamily": "Helvetica",
                                   "fontSize": 14,
                                   "fontWeight": "400",
                                 },
                               }
                             }
                           >
-                            <Component
+                            <Text
                               style={
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Roboto",
+                                    "fontFamily": "Helvetica",
                                     "fontSize": 14,
                                     "fontWeight": "400",
                                   },
@@ -166,7 +166,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Roboto",
+                                      "fontFamily": "Helvetica",
                                       "fontSize": 14,
                                       "fontWeight": "400",
                                     },
@@ -176,13 +176,13 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               >
                                 Start by creating your first entry.
                               </Text>
-                            </Component>
+                            </Text>
                           </Component>
                         </ThemedComponent>
                       </Body2>
                       <View>
                         <ThemedComponent>
-                          <Component>
+                          <View>
                             <View>
                               <Button
                                 color="primary"
@@ -225,7 +225,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                         },
                                         "text": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": "Helvetica",
                                           "fontSize": 14,
                                           "fontWeight": "500",
                                           "textAlign": "center",
@@ -257,7 +257,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                           ]
                                         }
                                       >
-                                        <Component
+                                        <View
                                           accessibilityRole="button"
                                           accessible={true}
                                           isTVSelectable={true}
@@ -289,7 +289,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                               }
                                             }
                                           >
-                                            <Component
+                                            <View
                                               style={
                                                 Array [
                                                   Object {
@@ -323,12 +323,12 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                   ]
                                                 }
                                               >
-                                                <Component
+                                                <Text
                                                   style={
                                                     Array [
                                                       Object {
                                                         "color": "rgba(0, 0, 0, 0.87)",
-                                                        "fontFamily": "Roboto",
+                                                        "fontFamily": "Helvetica",
                                                         "fontSize": 14,
                                                         "fontWeight": "500",
                                                         "textAlign": "center",
@@ -345,7 +345,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                       Array [
                                                         Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": "Helvetica",
                                                           "fontSize": 14,
                                                           "fontWeight": "500",
                                                           "textAlign": "center",
@@ -359,22 +359,22 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                   >
                                                     Tap to Create
                                                   </Text>
-                                                </Component>
+                                                </Text>
                                               </View>
-                                            </Component>
+                                            </View>
                                           </View>
-                                        </Component>
+                                        </View>
                                       </AnimatedComponent>
                                     </TouchableOpacity>
                                   </Button>
                                 </ThemedComponent>
                               </Button>
                             </View>
-                          </Component>
+                          </View>
                         </ThemedComponent>
                       </View>
                     </View>
-                  </Component>
+                  </View>
                 </ThemedComponent>
               </View>
             </ComponentState>
@@ -421,11 +421,11 @@ exports[`ComponentState should render ComponentState with custom image 1`] = `
             >
               <View>
                 <ThemedComponent>
-                  <Component>
+                  <View>
                     <View>
                       <View>
                         <ThemedComponent>
-                          <Component>
+                          <View>
                             <View>
                               <Component
                                 source={
@@ -457,11 +457,11 @@ exports[`ComponentState should render ComponentState with custom image 1`] = `
                                 />
                               </Component>
                             </View>
-                          </Component>
+                          </View>
                         </ThemedComponent>
                       </View>
                     </View>
-                  </Component>
+                  </View>
                 </ThemedComponent>
               </View>
             </ComponentState>

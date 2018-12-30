@@ -33,11 +33,11 @@ exports[`ComponentRegistry .resolve method should resolve a Promised component 1
     }
   }
 >
-  <Component>
+  <Text>
     <Text>
       Loading
     </Text>
-  </Component>
+  </Text>
 </BlueBaseApp>
 `;
 
@@ -61,11 +61,11 @@ exports[`ComponentRegistry .resolve method should resolve a Promised component 2
           <SystemApp>
             <Foo>
               <ThemedComponent>
-                <Component>
+                <Text>
                   <Text>
                     Some text
                   </Text>
-                </Component>
+                </Text>
               </ThemedComponent>
             </Foo>
           </SystemApp>

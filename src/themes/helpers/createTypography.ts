@@ -3,6 +3,7 @@ import { Palette } from '../structure';
 import { Platform } from 'react-native';
 
 const isWeb = Platform.OS === 'web';
+const isiOS = Platform.OS === 'ios';
 
 export const FontWeight = {
 	light: '300',
@@ -14,7 +15,15 @@ const caseAllCaps = {
 	textTransform: 'uppercase',
 };
 
-const fontFamily = isWeb ? '"Roboto", "Helvetica", "Arial", sans-serif' : 'Roboto';
+let fontFamily: string;
+
+if (isWeb) {
+	fontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
+} else if (isiOS) {
+	fontFamily = 'Helvetica';
+} else {
+	fontFamily = 'Roboto';
+}
 
 export function createTypography(palette: Palette) {
 	const buildVariant = (

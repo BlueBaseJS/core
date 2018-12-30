@@ -1,9 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JsonSchema should render a null for unknown component 1`] = `
-<Text>
-  Could not parse React JSON Schema. Reason: Could not resolve component.
-</Text>
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+  >
+    🚨 BlueBase Error
+  </Text>
+  <Text>
+    Could not parse React JSON Schema. Reason: Could not resolve component.
+  </Text>
+</View>
 `;
 
 exports[`JsonSchema should render a text component with red color 1`] = `
@@ -18,7 +37,7 @@ exports[`JsonSchema should render a text component with red color 2`] = `
     Array [
       Object {
         "color": "rgba(0, 0, 0, 0.87)",
-        "fontFamily": "Roboto",
+        "fontFamily": "Helvetica",
         "fontSize": 16,
         "fontWeight": "400",
       },
@@ -38,7 +57,7 @@ exports[`JsonSchema should render a text component with red color that is proces
     Array [
       Object {
         "color": "rgba(0, 0, 0, 0.87)",
-        "fontFamily": "Roboto",
+        "fontFamily": "Helvetica",
         "fontSize": 16,
         "fontWeight": "400",
       },

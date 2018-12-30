@@ -62,7 +62,7 @@ exports[`LoadingState should render an ActivityIndicator 1`] = `
                           }
                         }
                       >
-                        <Component
+                        <View
                           style={
                             Object {
                               "alignItems": "center",
@@ -94,7 +94,7 @@ exports[`LoadingState should render an ActivityIndicator 1`] = `
                                   }
                                 }
                               >
-                                <Component
+                                <View
                                   style={
                                     Object {
                                       "marginBottom": 16,
@@ -110,7 +110,7 @@ exports[`LoadingState should render an ActivityIndicator 1`] = `
                                   >
                                     <ActivityIndicator>
                                       <ThemedComponent>
-                                        <Component
+                                        <ActivityIndicator
                                           animating={true}
                                           color="#999999"
                                           hidesWhenStopped={true}
@@ -122,15 +122,15 @@ exports[`LoadingState should render an ActivityIndicator 1`] = `
                                             hidesWhenStopped={true}
                                             size="small"
                                           />
-                                        </Component>
+                                        </ActivityIndicator>
                                       </ThemedComponent>
                                     </ActivityIndicator>
                                   </View>
-                                </Component>
+                                </View>
                               </ThemedComponent>
                             </View>
                           </View>
-                        </Component>
+                        </View>
                       </ThemedComponent>
                     </View>
                   </ComponentState>
@@ -219,7 +219,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                           }
                         }
                       >
-                        <Component
+                        <View
                           style={
                             Object {
                               "alignItems": "center",
@@ -251,7 +251,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                   }
                                 }
                               >
-                                <Component
+                                <View
                                   style={
                                     Object {
                                       "marginBottom": 16,
@@ -267,7 +267,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                   >
                                     <ActivityIndicator>
                                       <ThemedComponent>
-                                        <Component
+                                        <ActivityIndicator
                                           animating={true}
                                           color="#999999"
                                           hidesWhenStopped={true}
@@ -279,11 +279,11 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                             hidesWhenStopped={true}
                                             size="small"
                                           />
-                                        </Component>
+                                        </ActivityIndicator>
                                       </ThemedComponent>
                                     </ActivityIndicator>
                                   </View>
-                                </Component>
+                                </View>
                               </ThemedComponent>
                             </View>
                             <Body2
@@ -313,19 +313,19 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                     Object {
                                       "root": Object {
                                         "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": "Roboto",
+                                        "fontFamily": "Helvetica",
                                         "fontSize": 14,
                                         "fontWeight": "400",
                                       },
                                     }
                                   }
                                 >
-                                  <Component
+                                  <Text
                                     style={
                                       Array [
                                         Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": "Helvetica",
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
@@ -341,7 +341,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Roboto",
+                                            "fontFamily": "Helvetica",
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },
@@ -354,7 +354,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                     >
                                       This is taking longer than usual
                                     </Text>
-                                  </Component>
+                                  </Text>
                                 </Component>
                               </ThemedComponent>
                             </Body2>
@@ -372,7 +372,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                   }
                                 }
                               >
-                                <Component
+                                <View
                                   style={
                                     Object {
                                       "marginTop": 8,
@@ -430,7 +430,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                               },
                                               "text": Object {
                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                "fontFamily": "Roboto",
+                                                "fontFamily": "Helvetica",
                                                 "fontSize": 14,
                                                 "fontWeight": "500",
                                                 "textAlign": "center",
@@ -463,7 +463,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                                 ]
                                               }
                                             >
-                                              <Component
+                                              <View
                                                 accessibilityRole="button"
                                                 accessible={true}
                                                 isTVSelectable={true}
@@ -495,7 +495,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                                     }
                                                   }
                                                 >
-                                                  <Component
+                                                  <View
                                                     style={
                                                       Array [
                                                         Object {
@@ -529,12 +529,12 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                                         ]
                                                       }
                                                     >
-                                                      <Component
+                                                      <Text
                                                         style={
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": "Helvetica",
                                                               "fontSize": 14,
                                                               "fontWeight": "500",
                                                               "textAlign": "center",
@@ -551,7 +551,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                                             Array [
                                                               Object {
                                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                                "fontFamily": "Roboto",
+                                                                "fontFamily": "Helvetica",
                                                                 "fontSize": 14,
                                                                 "fontWeight": "500",
                                                                 "textAlign": "center",
@@ -565,22 +565,22 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                                         >
                                                           Retry
                                                         </Text>
-                                                      </Component>
+                                                      </Text>
                                                     </View>
-                                                  </Component>
+                                                  </View>
                                                 </View>
-                                              </Component>
+                                              </View>
                                             </AnimatedComponent>
                                           </TouchableOpacity>
                                         </Button>
                                       </ThemedComponent>
                                     </Button>
                                   </View>
-                                </Component>
+                                </View>
                               </ThemedComponent>
                             </View>
                           </View>
-                        </Component>
+                        </View>
                       </ThemedComponent>
                     </View>
                   </ComponentState>
@@ -662,7 +662,7 @@ exports[`LoadingState should render timeout message 1`] = `
                           }
                         }
                       >
-                        <Component
+                        <View
                           style={
                             Object {
                               "alignItems": "center",
@@ -694,7 +694,7 @@ exports[`LoadingState should render timeout message 1`] = `
                                   }
                                 }
                               >
-                                <Component
+                                <View
                                   style={
                                     Object {
                                       "marginBottom": 16,
@@ -710,7 +710,7 @@ exports[`LoadingState should render timeout message 1`] = `
                                   >
                                     <ActivityIndicator>
                                       <ThemedComponent>
-                                        <Component
+                                        <ActivityIndicator
                                           animating={true}
                                           color="#999999"
                                           hidesWhenStopped={true}
@@ -722,11 +722,11 @@ exports[`LoadingState should render timeout message 1`] = `
                                             hidesWhenStopped={true}
                                             size="small"
                                           />
-                                        </Component>
+                                        </ActivityIndicator>
                                       </ThemedComponent>
                                     </ActivityIndicator>
                                   </View>
-                                </Component>
+                                </View>
                               </ThemedComponent>
                             </View>
                             <Body2
@@ -756,19 +756,19 @@ exports[`LoadingState should render timeout message 1`] = `
                                     Object {
                                       "root": Object {
                                         "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": "Roboto",
+                                        "fontFamily": "Helvetica",
                                         "fontSize": 14,
                                         "fontWeight": "400",
                                       },
                                     }
                                   }
                                 >
-                                  <Component
+                                  <Text
                                     style={
                                       Array [
                                         Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": "Helvetica",
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
@@ -784,7 +784,7 @@ exports[`LoadingState should render timeout message 1`] = `
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Roboto",
+                                            "fontFamily": "Helvetica",
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },
@@ -797,12 +797,12 @@ exports[`LoadingState should render timeout message 1`] = `
                                     >
                                       This is taking longer than usual
                                     </Text>
-                                  </Component>
+                                  </Text>
                                 </Component>
                               </ThemedComponent>
                             </Body2>
                           </View>
-                        </Component>
+                        </View>
                       </ThemedComponent>
                     </View>
                   </ComponentState>
