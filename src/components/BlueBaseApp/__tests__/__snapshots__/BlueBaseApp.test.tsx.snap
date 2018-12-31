@@ -293,6 +293,190 @@ exports[`BlueBaseApp should render error state when boot throws an error 1`] = `
 </BlueBaseApp>
 `;
 
+exports[`BlueBaseApp should render error state with actual error message when development config is undefined, && isProduction is false 1`] = `
+<BlueBaseApp
+  BB={
+    BlueBase {
+      "Analytics": Analytics {
+        "BB": [Circular],
+      },
+      "Components": ComponentRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Configs": ConfigRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Hooks": HookRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Logger": Logger {
+        "BB": [Circular],
+      },
+      "Plugins": PluginRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Themes": ThemeRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "boot": [Function],
+      "bootOptions": Object {
+        "components": Object {},
+        "configs": Object {},
+        "hooks": Object {},
+        "plugins": Array [],
+        "themes": Array [],
+      },
+      "booted": false,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          Boot Error!
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
+`;
+
+exports[`BlueBaseApp should render error state with custom error message when development config is undefined, && isProduction is true 1`] = `
+<BlueBaseApp
+  BB={
+    BlueBase {
+      "Analytics": Analytics {
+        "BB": [Circular],
+      },
+      "Components": ComponentRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Configs": ConfigRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Hooks": HookRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Logger": Logger {
+        "BB": [Circular],
+      },
+      "Plugins": PluginRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Themes": ThemeRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "boot": [Function],
+      "bootOptions": Object {
+        "components": Object {},
+        "configs": Object {},
+        "hooks": Object {},
+        "plugins": Array [],
+        "themes": Array [],
+      },
+      "booted": false,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          An unknown error occured.
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
+`;
+
 exports[`BlueBaseApp should render error state with custom message when a child throws a null error 1`] = `
 <BlueBaseApp>
   <View

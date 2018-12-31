@@ -5,6 +5,8 @@ import TestRenderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { waitForState } from 'enzyme-async-helpers';
 
+declare const global: any;
+
 const Bang = () => {
 	throw Error('💥 Boom!');
 };
@@ -109,6 +111,38 @@ describe('BlueBaseApp', () => {
 		// Wait for state update
 		await waitForState(wrapper, (state: any) => state.loading === false);
 		wrapper.update();
+
+		expect(wrapper).toMatchSnapshot();
+		expect(wrapper.find('BlueBaseApp Text Text').at(0).text()).toBe('🚨 BlueBase Error');
+		expect(wrapper.find('BlueBaseApp Text Text').at(1).text()).toBe('An unknown error occured.');
+	});
+
+	// tslint:disable-next-line: max-line-length
+	test(`should render error state with actual error message when development config is undefined, && isProduction is false`, async () => {
+
+		const BB = new BlueBase();
+		BB.boot = () => { throw Error('Boot Error!'); };
+
+		const wrapper = mount(
+			<BlueBaseApp BB={BB} />
+		);
+
+		expect(wrapper).toMatchSnapshot();
+		expect(wrapper.find('BlueBaseApp Text Text').at(0).text()).toBe('🚨 BlueBase Error');
+		expect(wrapper.find('BlueBaseApp Text Text').at(1).text()).toBe('Boot Error!');
+	});
+
+	// tslint:disable-next-line: max-line-length
+	test(`should render error state with custom error message when development config is undefined, && isProduction is true`, async () => {
+
+		const BB = new BlueBase();
+		BB.boot = () => { throw Error('Boot Error!'); };
+
+		global.process.env.NODE_ENV = 'production';
+
+		const wrapper = mount(
+			<BlueBaseApp BB={BB} />
+		);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('BlueBaseApp Text Text').at(0).text()).toBe('🚨 BlueBase Error');
