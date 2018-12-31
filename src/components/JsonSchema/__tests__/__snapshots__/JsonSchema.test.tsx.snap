@@ -26,12 +26,6 @@ exports[`JsonSchema should render a null for unknown component 1`] = `
 `;
 
 exports[`JsonSchema should render a text component with red color 1`] = `
-<Text>
-  Loading
-</Text>
-`;
-
-exports[`JsonSchema should render a text component with red color 2`] = `
 <Text
   style={
     Array [

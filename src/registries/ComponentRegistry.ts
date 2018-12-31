@@ -144,6 +144,6 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	protected isInputValue(value: any): value is ComponentRegistryInputItem['value'] {
 		return isBlueBaseModule(value)
 			|| (typeof value === 'function')
-			|| (typeof value === 'object' && typeof value.render !== undefined);
+			|| (typeof value === 'object' && typeof value.render === 'function');
 	}
 }

@@ -11,12 +11,9 @@ describe('ErrorState', () => {
 				<ErrorState />
 			</BlueBaseApp>
 		);
-		let tree = component.toJSON();
-		expect((tree as any).children.join()).toBe('Loading');
-		expect(tree).toMatchSnapshot();
 
 		setTimeout(() => {
-			tree = component.toJSON();
+			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
 			expect((tree as any).children[0].children.join()).toBe('Something broke!');
 			expect((tree as any).children[1].children.join())

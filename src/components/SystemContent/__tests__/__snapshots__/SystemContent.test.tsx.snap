@@ -1,9 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SystemContent Snapshot SystemContent component 1`] = `
-<Text>
-  Loading
-</Text>
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text>
+    Loading
+  </Text>
+</View>
 `;
 
 exports[`SystemContent Snapshot SystemContent component after complete render 1`] = `

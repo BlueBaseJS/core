@@ -19,13 +19,10 @@ describe('JsonSchema', () => {
 				}} />
 			</BlueBaseApp>
 		);
-		let tree = component.toJSON();
-		expect((tree as any).children.join()).toBe('Loading');
-		expect(tree).toMatchSnapshot();
 
 
 		setTimeout(() => {
-			tree = component.toJSON();
+			const tree = component.toJSON();
 			expect((tree as any).props.style[1]).toMatchObject({
 				color: 'red'
 			});
@@ -93,7 +90,8 @@ describe('JsonSchema', () => {
 		setTimeout(() => {
 			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
-			expect((tree as any).children.join())
+			expect((tree as any).children[0].children.join()).toBe('🚨 BlueBase Error');
+				expect((tree as any).children[1].children.join())
 				.toBe('Could not parse React JSON Schema. Reason: Could not resolve component.');
 			done();
 		});

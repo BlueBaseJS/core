@@ -27,13 +27,16 @@ describe('BlueBaseHook', () => {
 			</BlueBaseApp>
 		);
 
-		expect(rendered.toJSON().children.join()).toBe('Loading');
+		let text = rendered.root.findByType(Text);
+
 		expect(rendered.toJSON()).toMatchSnapshot();
+		expect(text.instance.props.children).toBe('Loading');
 
 		setTimeout(() => {
-			const text = rendered.root.findByType(Text);
-			expect(text.children[0].children.join()).toBe('25');
 			expect(rendered.toJSON()).toMatchSnapshot();
+
+			text = rendered.root.findByType(Text);
+			expect(text.instance.props.children).toBe(25);
 			done();
 		});
 	});

@@ -16,13 +16,10 @@ describe('ThemeContext', () => {
 				<ThemeDemo />
 			</BlueBaseApp>
 		);
-		let tree = component.toJSON();
-		expect((tree as any).children.join()).toBe('Loading');
-		expect(tree).toMatchSnapshot();
 
 
 		setTimeout(() => {
-			tree = component.toJSON();
+			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
 			expect((tree as any).props.style.backgroundColor).toBe('#fafafa');
 			done();
@@ -38,13 +35,10 @@ describe('ThemeContext', () => {
 				</ThemeProvider>
 			</BlueBaseApp>
 		);
-		let tree = component.toJSON();
-		expect((tree as any).children.join()).toBe('Loading');
-		expect(tree).toMatchSnapshot();
 
 
 		setTimeout(() => {
-			tree = component.toJSON();
+			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
 			expect((tree as any).props.style.backgroundColor).toBe('red');
 			done();

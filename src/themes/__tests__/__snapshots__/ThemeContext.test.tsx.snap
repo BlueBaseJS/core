@@ -505,12 +505,6 @@ exports[`ThemeContext should override a theme 1`] = `
 `;
 
 exports[`ThemeContext should render a ThemeDemo component with themed background color 1`] = `
-<Text>
-  Loading
-</Text>
-`;
-
-exports[`ThemeContext should render a ThemeDemo component with themed background color 2`] = `
 <View
   style={
     Object {
@@ -538,12 +532,6 @@ exports[`ThemeContext should render a ThemeDemo component with themed background
 `;
 
 exports[`ThemeContext should render a overwritten ThemeDemo component with red background color 1`] = `
-<Text>
-  Loading
-</Text>
-`;
-
-exports[`ThemeContext should render a overwritten ThemeDemo component with red background color 2`] = `
 <View
   style={
     Object {

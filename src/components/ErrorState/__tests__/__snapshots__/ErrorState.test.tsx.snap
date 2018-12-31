@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorState should render ErrorState 1`] = `
-<Text>
-  Loading
-</Text>
-`;
-
-exports[`ErrorState should render ErrorState 2`] = `
 <View
   style={
     Object {
