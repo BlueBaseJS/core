@@ -28,7 +28,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "width": 150,
@@ -100,7 +100,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                         />
                       </_class>
                     </View>
-                  </Component>
+                  </View>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -121,7 +121,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "backgroundColor": "#fafafa",
@@ -144,19 +144,19 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Roboto",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
                               }
                             }
                           >
-                            <Component
+                            <Text
                               style={
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Roboto",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -169,7 +169,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Roboto",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -179,12 +179,12 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                               >
                                 BlueBase Light
                               </Text>
-                            </Component>
+                            </Text>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </Component>
+                  </View>
                 </ThemedComponent>
               </View>
             </ThemeDemo>
@@ -224,7 +224,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "width": 150,
@@ -296,7 +296,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                         />
                       </_class>
                     </View>
-                  </Component>
+                  </View>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -317,7 +317,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "backgroundColor": "#303030",
@@ -340,19 +340,19 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                               Object {
                                 "root": Object {
                                   "color": "#ffffff",
-                                  "fontFamily": "Roboto",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
                               }
                             }
                           >
-                            <Component
+                            <Text
                               style={
                                 Array [
                                   Object {
                                     "color": "#ffffff",
-                                    "fontFamily": "Roboto",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -365,7 +365,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                                   Array [
                                     Object {
                                       "color": "#ffffff",
-                                      "fontFamily": "Roboto",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -375,12 +375,12 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                               >
                                 BlueBase Dark
                               </Text>
-                            </Component>
+                            </Text>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </Component>
+                  </View>
                 </ThemedComponent>
               </View>
             </ThemeDemo>
@@ -428,7 +428,7 @@ exports[`ThemeContext should override a theme 1`] = `
                       }
                     }
                   >
-                    <Component
+                    <View
                       style={
                         Object {
                           "backgroundColor": "red",
@@ -451,19 +451,19 @@ exports[`ThemeContext should override a theme 1`] = `
                                 Object {
                                   "root": Object {
                                     "color": "#ffffff",
-                                    "fontFamily": "Roboto",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
                                 }
                               }
                             >
-                              <Component
+                              <Text
                                 style={
                                   Array [
                                     Object {
                                       "color": "#ffffff",
-                                      "fontFamily": "Roboto",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -476,7 +476,7 @@ exports[`ThemeContext should override a theme 1`] = `
                                     Array [
                                       Object {
                                         "color": "#ffffff",
-                                        "fontFamily": "Roboto",
+                                        "fontFamily": undefined,
                                         "fontSize": 16,
                                         "fontWeight": "400",
                                       },
@@ -486,12 +486,12 @@ exports[`ThemeContext should override a theme 1`] = `
                                 >
                                   BlueBase Dark
                                 </Text>
-                              </Component>
+                              </Text>
                             </Component>
                           </ThemedComponent>
                         </Body1>
                       </View>
-                    </Component>
+                    </View>
                   </ThemedComponent>
                 </View>
               </ThemeDemo>
@@ -505,12 +505,6 @@ exports[`ThemeContext should override a theme 1`] = `
 `;
 
 exports[`ThemeContext should render a ThemeDemo component with themed background color 1`] = `
-<Text>
-  Loading
-</Text>
-`;
-
-exports[`ThemeContext should render a ThemeDemo component with themed background color 2`] = `
 <View
   style={
     Object {
@@ -524,7 +518,7 @@ exports[`ThemeContext should render a ThemeDemo component with themed background
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 16,
           "fontWeight": "400",
         },
@@ -538,12 +532,6 @@ exports[`ThemeContext should render a ThemeDemo component with themed background
 `;
 
 exports[`ThemeContext should render a overwritten ThemeDemo component with red background color 1`] = `
-<Text>
-  Loading
-</Text>
-`;
-
-exports[`ThemeContext should render a overwritten ThemeDemo component with red background color 2`] = `
 <View
   style={
     Object {
@@ -557,7 +545,7 @@ exports[`ThemeContext should render a overwritten ThemeDemo component with red b
       Array [
         Object {
           "color": "#ffffff",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 16,
           "fontWeight": "400",
         },
@@ -598,7 +586,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "width": 150,
@@ -670,7 +658,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                         />
                       </_class>
                     </View>
-                  </Component>
+                  </View>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -691,7 +679,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "backgroundColor": "#fafafa",
@@ -714,19 +702,19 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Roboto",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
                               }
                             }
                           >
-                            <Component
+                            <Text
                               style={
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Roboto",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -739,7 +727,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Roboto",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -749,12 +737,12 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                               >
                                 BlueBase Light
                               </Text>
-                            </Component>
+                            </Text>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </Component>
+                  </View>
                 </ThemedComponent>
               </View>
             </ThemeDemo>
@@ -812,7 +800,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "width": 150,
@@ -884,7 +872,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                         />
                       </_class>
                     </View>
-                  </Component>
+                  </View>
                 </PickerIOS>
               </Picker>
             </ThemePicker>
@@ -905,7 +893,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                     }
                   }
                 >
-                  <Component
+                  <View
                     style={
                       Object {
                         "backgroundColor": "#fafafa",
@@ -928,19 +916,19 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Roboto",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
                               }
                             }
                           >
-                            <Component
+                            <Text
                               style={
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Roboto",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -953,7 +941,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Roboto",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -963,12 +951,12 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                               >
                                 BlueBase Light
                               </Text>
-                            </Component>
+                            </Text>
                           </Component>
                         </ThemedComponent>
                       </Body1>
                     </View>
-                  </Component>
+                  </View>
                 </ThemedComponent>
               </View>
             </ThemeDemo>

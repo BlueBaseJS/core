@@ -34,3 +34,6 @@ dist/
 
 # Cache
 .cache
+
+# Expo
+.expo

@@ -64,11 +64,11 @@ exports[`StatefulComponent should show children from Component prop 1`] = `
                           <Comp
                             data={true}
                           >
-                            <Component>
+                            <Text>
                               <Text>
                                 Custom Component
                               </Text>
-                            </Component>
+                            </Text>
                           </Comp>
                         </DataObserver>
                       </ThemedComponent>
@@ -145,11 +145,11 @@ exports[`StatefulComponent should show children nodes 1`] = `
                             }
                           }
                         >
-                          <Component>
+                          <Text>
                             <Text>
                               Content
                             </Text>
-                          </Component>
+                          </Text>
                         </DataObserver>
                       </ThemedComponent>
                     </DataObserver>
@@ -285,7 +285,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                             }
                                           }
                                         >
-                                          <Component
+                                          <View
                                             style={
                                               Object {
                                                 "alignItems": "center",
@@ -330,19 +330,19 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 20,
                                                           "fontWeight": "500",
                                                         },
                                                       }
                                                     }
                                                   >
-                                                    <Component
+                                                    <Text
                                                       style={
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 20,
                                                             "fontWeight": "500",
                                                           },
@@ -358,7 +358,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 20,
                                                               "fontWeight": "500",
                                                             },
@@ -371,7 +371,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       >
                                                         Empty Area
                                                       </Text>
-                                                    </Component>
+                                                    </Text>
                                                   </Component>
                                                 </ThemedComponent>
                                               </H6>
@@ -402,19 +402,19 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 14,
                                                           "fontWeight": "400",
                                                         },
                                                       }
                                                     }
                                                   >
-                                                    <Component
+                                                    <Text
                                                       style={
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 14,
                                                             "fontWeight": "400",
                                                           },
@@ -430,7 +430,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 14,
                                                               "fontWeight": "400",
                                                             },
@@ -443,12 +443,12 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       >
                                                         Create new items to fill this area.
                                                       </Text>
-                                                    </Component>
+                                                    </Text>
                                                   </Component>
                                                 </ThemedComponent>
                                               </Body2>
                                             </View>
-                                          </Component>
+                                          </View>
                                         </ThemedComponent>
                                       </View>
                                     </ComponentState>
@@ -588,7 +588,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                             }
                                           }
                                         >
-                                          <Component
+                                          <View
                                             style={
                                               Object {
                                                 "alignItems": "center",
@@ -633,19 +633,19 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 20,
                                                           "fontWeight": "500",
                                                         },
                                                       }
                                                     }
                                                   >
-                                                    <Component
+                                                    <Text
                                                       style={
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 20,
                                                             "fontWeight": "500",
                                                           },
@@ -661,7 +661,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 20,
                                                               "fontWeight": "500",
                                                             },
@@ -674,7 +674,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       >
                                                         Empty Area
                                                       </Text>
-                                                    </Component>
+                                                    </Text>
                                                   </Component>
                                                 </ThemedComponent>
                                               </H6>
@@ -705,19 +705,19 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 14,
                                                           "fontWeight": "400",
                                                         },
                                                       }
                                                     }
                                                   >
-                                                    <Component
+                                                    <Text
                                                       style={
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 14,
                                                             "fontWeight": "400",
                                                           },
@@ -733,7 +733,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 14,
                                                               "fontWeight": "400",
                                                             },
@@ -746,12 +746,12 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       >
                                                         Create new items to fill this area.
                                                       </Text>
-                                                    </Component>
+                                                    </Text>
                                                   </Component>
                                                 </ThemedComponent>
                                               </Body2>
                                             </View>
-                                          </Component>
+                                          </View>
                                         </ThemedComponent>
                                       </View>
                                     </ComponentState>
@@ -915,7 +915,7 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                   }
                                                 }
                                               >
-                                                <Component
+                                                <View
                                                   style={
                                                     Object {
                                                       "alignItems": "center",
@@ -947,7 +947,7 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                           }
                                                         }
                                                       >
-                                                        <Component
+                                                        <View
                                                           style={
                                                             Object {
                                                               "marginBottom": 16,
@@ -963,7 +963,7 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                           >
                                                             <ActivityIndicator>
                                                               <ThemedComponent>
-                                                                <Component
+                                                                <ActivityIndicator
                                                                   animating={true}
                                                                   color="#999999"
                                                                   hidesWhenStopped={true}
@@ -975,15 +975,15 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                                     hidesWhenStopped={true}
                                                                     size="small"
                                                                   />
-                                                                </Component>
+                                                                </ActivityIndicator>
                                                               </ThemedComponent>
                                                             </ActivityIndicator>
                                                           </View>
-                                                        </Component>
+                                                        </View>
                                                       </ThemedComponent>
                                                     </View>
                                                   </View>
-                                                </Component>
+                                                </View>
                                               </ThemedComponent>
                                             </View>
                                           </ComponentState>
@@ -1070,11 +1070,11 @@ exports[`StatefulComponent should show render prop children 1`] = `
                             }
                           }
                         >
-                          <Component>
+                          <Text>
                             <Text>
                               Render prop
                             </Text>
-                          </Component>
+                          </Text>
                         </DataObserver>
                       </ThemedComponent>
                     </DataObserver>

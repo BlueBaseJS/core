@@ -33,11 +33,31 @@ exports[`ComponentRegistry .resolve method should resolve a Promised component 1
     }
   }
 >
-  <Component>
-    <Text>
-      Loading
-    </Text>
-  </Component>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text>
+        <Text>
+          Loading
+        </Text>
+      </Text>
+    </View>
+  </View>
 </BlueBaseApp>
 `;
 
@@ -61,11 +81,11 @@ exports[`ComponentRegistry .resolve method should resolve a Promised component 2
           <SystemApp>
             <Foo>
               <ThemedComponent>
-                <Component>
+                <Text>
                   <Text>
                     Some text
                   </Text>
-                </Component>
+                </Text>
               </ThemedComponent>
             </Foo>
           </SystemApp>

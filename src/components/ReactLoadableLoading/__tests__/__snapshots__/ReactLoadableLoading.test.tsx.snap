@@ -72,7 +72,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                             }
                           }
                         >
-                          <Component
+                          <View
                             style={
                               Object {
                                 "alignItems": "center",
@@ -104,7 +104,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                                     }
                                   }
                                 >
-                                  <Component
+                                  <View
                                     style={
                                       Object {
                                         "marginBottom": 16,
@@ -120,7 +120,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                                     >
                                       <ActivityIndicator>
                                         <ThemedComponent>
-                                          <Component
+                                          <ActivityIndicator
                                             animating={true}
                                             color="#999999"
                                             hidesWhenStopped={true}
@@ -132,15 +132,15 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                                               hidesWhenStopped={true}
                                               size="small"
                                             />
-                                          </Component>
+                                          </ActivityIndicator>
                                         </ThemedComponent>
                                       </ActivityIndicator>
                                     </View>
-                                  </Component>
+                                  </View>
                                 </ThemedComponent>
                               </View>
                             </View>
-                          </Component>
+                          </View>
                         </ThemedComponent>
                       </View>
                     </ComponentState>
@@ -237,7 +237,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                             }
                           }
                         >
-                          <Component
+                          <View
                             style={
                               Object {
                                 "alignItems": "center",
@@ -282,19 +282,19 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       Object {
                                         "root": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": undefined,
                                           "fontSize": 20,
                                           "fontWeight": "500",
                                         },
                                       }
                                     }
                                   >
-                                    <Component
+                                    <Text
                                       style={
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Roboto",
+                                            "fontFamily": undefined,
                                             "fontSize": 20,
                                             "fontWeight": "500",
                                           },
@@ -310,7 +310,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                           Array [
                                             Object {
                                               "color": "rgba(0, 0, 0, 0.87)",
-                                              "fontFamily": "Roboto",
+                                              "fontFamily": undefined,
                                               "fontSize": 20,
                                               "fontWeight": "500",
                                             },
@@ -323,7 +323,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       >
                                         Error
                                       </Text>
-                                    </Component>
+                                    </Text>
                                   </Component>
                                 </ThemedComponent>
                               </H6>
@@ -354,19 +354,19 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       Object {
                                         "root": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": undefined,
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
                                       }
                                     }
                                   >
-                                    <Component
+                                    <Text
                                       style={
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Roboto",
+                                            "fontFamily": undefined,
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },
@@ -382,7 +382,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                           Array [
                                             Object {
                                               "color": "rgba(0, 0, 0, 0.87)",
-                                              "fontFamily": "Roboto",
+                                              "fontFamily": undefined,
                                               "fontSize": 14,
                                               "fontWeight": "400",
                                             },
@@ -395,7 +395,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       >
                                         Random Error
                                       </Text>
-                                    </Component>
+                                    </Text>
                                   </Component>
                                 </ThemedComponent>
                               </Body2>
@@ -413,7 +413,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     }
                                   }
                                 >
-                                  <Component
+                                  <View
                                     style={
                                       Object {
                                         "marginTop": 8,
@@ -471,7 +471,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                 },
                                                 "text": Object {
                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                  "fontFamily": "Roboto",
+                                                  "fontFamily": undefined,
                                                   "fontSize": 14,
                                                   "fontWeight": "500",
                                                   "textAlign": "center",
@@ -504,7 +504,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                   ]
                                                 }
                                               >
-                                                <Component
+                                                <View
                                                   accessibilityRole="button"
                                                   accessible={true}
                                                   isTVSelectable={true}
@@ -536,7 +536,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                       }
                                                     }
                                                   >
-                                                    <Component
+                                                    <View
                                                       style={
                                                         Array [
                                                           Object {
@@ -570,12 +570,12 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           ]
                                                         }
                                                       >
-                                                        <Component
+                                                        <Text
                                                           style={
                                                             Array [
                                                               Object {
                                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                                "fontFamily": "Roboto",
+                                                                "fontFamily": undefined,
                                                                 "fontSize": 14,
                                                                 "fontWeight": "500",
                                                                 "textAlign": "center",
@@ -592,7 +592,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                               Array [
                                                                 Object {
                                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                                  "fontFamily": "Roboto",
+                                                                  "fontFamily": undefined,
                                                                   "fontSize": 14,
                                                                   "fontWeight": "500",
                                                                   "textAlign": "center",
@@ -606,22 +606,22 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           >
                                                             Retry
                                                           </Text>
-                                                        </Component>
+                                                        </Text>
                                                       </View>
-                                                    </Component>
+                                                    </View>
                                                   </View>
-                                                </Component>
+                                                </View>
                                               </AnimatedComponent>
                                             </TouchableOpacity>
                                           </Button>
                                         </ThemedComponent>
                                       </Button>
                                     </View>
-                                  </Component>
+                                  </View>
                                 </ThemedComponent>
                               </View>
                             </View>
-                          </Component>
+                          </View>
                         </ThemedComponent>
                       </View>
                     </ComponentState>
@@ -718,7 +718,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                             }
                           }
                         >
-                          <Component
+                          <View
                             style={
                               Object {
                                 "alignItems": "center",
@@ -750,7 +750,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     }
                                   }
                                 >
-                                  <Component
+                                  <View
                                     style={
                                       Object {
                                         "marginBottom": 16,
@@ -766,7 +766,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     >
                                       <ActivityIndicator>
                                         <ThemedComponent>
-                                          <Component
+                                          <ActivityIndicator
                                             animating={true}
                                             color="#999999"
                                             hidesWhenStopped={true}
@@ -778,11 +778,11 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                               hidesWhenStopped={true}
                                               size="small"
                                             />
-                                          </Component>
+                                          </ActivityIndicator>
                                         </ThemedComponent>
                                       </ActivityIndicator>
                                     </View>
-                                  </Component>
+                                  </View>
                                 </ThemedComponent>
                               </View>
                               <Body2
@@ -812,19 +812,19 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       Object {
                                         "root": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": undefined,
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
                                       }
                                     }
                                   >
-                                    <Component
+                                    <Text
                                       style={
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Roboto",
+                                            "fontFamily": undefined,
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },
@@ -840,7 +840,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                           Array [
                                             Object {
                                               "color": "rgba(0, 0, 0, 0.87)",
-                                              "fontFamily": "Roboto",
+                                              "fontFamily": undefined,
                                               "fontSize": 14,
                                               "fontWeight": "400",
                                             },
@@ -853,7 +853,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       >
                                         This is taking longer than usual
                                       </Text>
-                                    </Component>
+                                    </Text>
                                   </Component>
                                 </ThemedComponent>
                               </Body2>
@@ -871,7 +871,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                     }
                                   }
                                 >
-                                  <Component
+                                  <View
                                     style={
                                       Object {
                                         "marginTop": 8,
@@ -929,7 +929,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                 },
                                                 "text": Object {
                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                  "fontFamily": "Roboto",
+                                                  "fontFamily": undefined,
                                                   "fontSize": 14,
                                                   "fontWeight": "500",
                                                   "textAlign": "center",
@@ -962,7 +962,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                   ]
                                                 }
                                               >
-                                                <Component
+                                                <View
                                                   accessibilityRole="button"
                                                   accessible={true}
                                                   isTVSelectable={true}
@@ -994,7 +994,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                       }
                                                     }
                                                   >
-                                                    <Component
+                                                    <View
                                                       style={
                                                         Array [
                                                           Object {
@@ -1028,12 +1028,12 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           ]
                                                         }
                                                       >
-                                                        <Component
+                                                        <Text
                                                           style={
                                                             Array [
                                                               Object {
                                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                                "fontFamily": "Roboto",
+                                                                "fontFamily": undefined,
                                                                 "fontSize": 14,
                                                                 "fontWeight": "500",
                                                                 "textAlign": "center",
@@ -1050,7 +1050,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                               Array [
                                                                 Object {
                                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                                  "fontFamily": "Roboto",
+                                                                  "fontFamily": undefined,
                                                                   "fontSize": 14,
                                                                   "fontWeight": "500",
                                                                   "textAlign": "center",
@@ -1064,22 +1064,22 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           >
                                                             Retry
                                                           </Text>
-                                                        </Component>
+                                                        </Text>
                                                       </View>
-                                                    </Component>
+                                                    </View>
                                                   </View>
-                                                </Component>
+                                                </View>
                                               </AnimatedComponent>
                                             </TouchableOpacity>
                                           </Button>
                                         </ThemedComponent>
                                       </Button>
                                     </View>
-                                  </Component>
+                                  </View>
                                 </ThemedComponent>
                               </View>
                             </View>
-                          </Component>
+                          </View>
                         </ThemedComponent>
                       </View>
                     </ComponentState>

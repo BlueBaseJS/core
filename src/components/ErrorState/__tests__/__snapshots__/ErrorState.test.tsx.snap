@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorState should render ErrorState 1`] = `
-<Text>
-  Loading
-</Text>
-`;
-
-exports[`ErrorState should render ErrorState 2`] = `
 <View
   style={
     Object {
@@ -21,7 +15,7 @@ exports[`ErrorState should render ErrorState 2`] = `
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 20,
           "fontWeight": "500",
         },
@@ -39,7 +33,7 @@ exports[`ErrorState should render ErrorState 2`] = `
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 14,
           "fontWeight": "400",
         },
@@ -70,7 +64,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 20,
           "fontWeight": "500",
         },
@@ -88,7 +82,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 14,
           "fontWeight": "400",
         },
@@ -146,7 +140,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
             Array [
               Object {
                 "color": "rgba(0, 0, 0, 0.87)",
-                "fontFamily": "Roboto",
+                "fontFamily": undefined,
                 "fontSize": 14,
                 "fontWeight": "500",
                 "textAlign": "center",

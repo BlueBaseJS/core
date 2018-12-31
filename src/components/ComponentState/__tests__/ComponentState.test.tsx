@@ -17,8 +17,8 @@ describe('ComponentState', () => {
 					styles={{ image: { width: 100, height: 100 } }}
 					actionTitle="Tap to Create"
 				/>
-		</BlueBaseApp>
-	);
+			</BlueBaseApp>
+		);
 
 		// Wait for render
 		await waitForElement(wrapper, ComponentState);

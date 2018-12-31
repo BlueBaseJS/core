@@ -1,6 +1,7 @@
 import { BlueBase, BootOptions } from '../../BlueBase';
+import { Text, View } from 'react-native';
 import React from 'react';
-import { Text } from 'react-native';
+import { isProduction } from '../../utils';
 
 const MISSING_ERROR = 'An unknown error occured.';
 
@@ -104,14 +105,28 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 		const { loading, error, AppComponent, BB } = this.state;
 
 		if (loading) {
-			return (<Text>Loading</Text>);
+			return (
+				<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+					<Text>Loading</Text>
+				</View>
+			);
 		}
 
 		if (error) {
-			const development = BB.Configs.getValue('development');
+			let development = BB.Configs.getValue('development');
+
+			if (development === undefined) {
+				development = !isProduction();
+			}
+
 			const message = (development === true) ? error.message : MISSING_ERROR;
 
-			return (<Text>{message}</Text>);
+			return (
+				<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+					<Text style={{ fontWeight: 'bold', }}>🚨 BlueBase Error</Text>
+					<Text>{message}</Text>
+				</View>
+			);
 		}
 
 		return <AppComponent children={this.props.children} />;

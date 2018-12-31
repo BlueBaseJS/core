@@ -2,21 +2,21 @@
 
 exports[`HoverObserver should always set isHovering to false on android 1`] = `
 <HoverObserver>
-  <Component>
+  <Text>
     <Text>
       Not Hovering!
     </Text>
-  </Component>
+  </Text>
 </HoverObserver>
 `;
 
 exports[`HoverObserver should always set isHovering to false on android 2`] = `
 <HoverObserver>
-  <Component>
+  <Text>
     <Text>
       Not Hovering!
     </Text>
-  </Component>
+  </Text>
 </HoverObserver>
 `;
 
@@ -36,11 +36,11 @@ exports[`HoverObserver should render a HoverObserver with default props 1`] = `
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
-    <Component>
+    <Text>
       <Text>
         Not Hovering!
       </Text>
-    </Component>
+    </Text>
   </div>
 </HoverObserver>
 `;
@@ -61,11 +61,11 @@ exports[`HoverObserver should render a HoverObserver with default props 2`] = `
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
-    <Component>
+    <Text>
       <Text>
         Hovering!
       </Text>
-    </Component>
+    </Text>
   </div>
 </HoverObserver>
 `;
@@ -86,11 +86,11 @@ exports[`HoverObserver should render a HoverObserver with default props 3`] = `
     onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
-    <Component>
+    <Text>
       <Text>
         Not Hovering!
       </Text>
-    </Component>
+    </Text>
   </div>
 </HoverObserver>
 `;
