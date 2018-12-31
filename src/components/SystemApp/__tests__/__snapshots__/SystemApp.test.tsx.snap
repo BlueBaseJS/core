@@ -24,7 +24,7 @@ exports[`SystemApp Snapshot SystemApp component after complete render 1`] = `
         Array [
           Object {
             "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Helvetica",
+            "fontFamily": undefined,
             "fontSize": 16,
             "fontWeight": "400",
           },

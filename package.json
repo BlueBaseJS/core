@@ -22,7 +22,6 @@
     }
   },
   "scripts": {
-    "storybook-native:start": "bluebase storybook-native:start",
     "start": "yarn run storybook",
     "clean": "rimraf coverage dist tmp",
     "watch": "tsc -w -p tsconfig.json",
@@ -49,6 +48,7 @@
     "all": "run-s reset test cov:check doc:html",
     "prepare-release": "run-s all version doc:publish",
     "storybook:start": "bluerain storybook:start",
+    "storybook-native": "bluebase storybook-native:start",
     "storybook": "start-storybook -p 6006 --config-dir ./bluebase/storybook/configs",
     "build-storybook": "build-storybook"
   },

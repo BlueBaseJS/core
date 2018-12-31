@@ -144,7 +144,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Helvetica",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
@@ -156,7 +156,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Helvetica",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -169,7 +169,7 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Helvetica",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -340,7 +340,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                               Object {
                                 "root": Object {
                                   "color": "#ffffff",
-                                  "fontFamily": "Helvetica",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
@@ -352,7 +352,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                                 Array [
                                   Object {
                                     "color": "#ffffff",
-                                    "fontFamily": "Helvetica",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -365,7 +365,7 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                                   Array [
                                     Object {
                                       "color": "#ffffff",
-                                      "fontFamily": "Helvetica",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -451,7 +451,7 @@ exports[`ThemeContext should override a theme 1`] = `
                                 Object {
                                   "root": Object {
                                     "color": "#ffffff",
-                                    "fontFamily": "Helvetica",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -463,7 +463,7 @@ exports[`ThemeContext should override a theme 1`] = `
                                   Array [
                                     Object {
                                       "color": "#ffffff",
-                                      "fontFamily": "Helvetica",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -476,7 +476,7 @@ exports[`ThemeContext should override a theme 1`] = `
                                     Array [
                                       Object {
                                         "color": "#ffffff",
-                                        "fontFamily": "Helvetica",
+                                        "fontFamily": undefined,
                                         "fontSize": 16,
                                         "fontWeight": "400",
                                       },
@@ -518,7 +518,7 @@ exports[`ThemeContext should render a ThemeDemo component with themed background
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Helvetica",
+          "fontFamily": undefined,
           "fontSize": 16,
           "fontWeight": "400",
         },
@@ -545,7 +545,7 @@ exports[`ThemeContext should render a overwritten ThemeDemo component with red b
       Array [
         Object {
           "color": "#ffffff",
-          "fontFamily": "Helvetica",
+          "fontFamily": undefined,
           "fontSize": 16,
           "fontWeight": "400",
         },
@@ -702,7 +702,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Helvetica",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
@@ -714,7 +714,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Helvetica",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -727,7 +727,7 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Helvetica",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },
@@ -916,7 +916,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Helvetica",
+                                  "fontFamily": undefined,
                                   "fontSize": 16,
                                   "fontWeight": "400",
                                 },
@@ -928,7 +928,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Helvetica",
+                                    "fontFamily": undefined,
                                     "fontSize": 16,
                                     "fontWeight": "400",
                                   },
@@ -941,7 +941,7 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Helvetica",
+                                      "fontFamily": undefined,
                                       "fontSize": 16,
                                       "fontWeight": "400",
                                     },

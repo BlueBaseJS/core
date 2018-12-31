@@ -95,7 +95,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Helvetica",
+                                  "fontFamily": undefined,
                                   "fontSize": 20,
                                   "fontWeight": "500",
                                 },
@@ -107,7 +107,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Helvetica",
+                                    "fontFamily": undefined,
                                     "fontSize": 20,
                                     "fontWeight": "500",
                                   },
@@ -120,7 +120,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Helvetica",
+                                      "fontFamily": undefined,
                                       "fontSize": 20,
                                       "fontWeight": "500",
                                     },
@@ -141,7 +141,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                               Object {
                                 "root": Object {
                                   "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": "Helvetica",
+                                  "fontFamily": undefined,
                                   "fontSize": 14,
                                   "fontWeight": "400",
                                 },
@@ -153,7 +153,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                 Array [
                                   Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": "Helvetica",
+                                    "fontFamily": undefined,
                                     "fontSize": 14,
                                     "fontWeight": "400",
                                   },
@@ -166,7 +166,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                   Array [
                                     Object {
                                       "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": "Helvetica",
+                                      "fontFamily": undefined,
                                       "fontSize": 14,
                                       "fontWeight": "400",
                                     },
@@ -225,7 +225,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                         },
                                         "text": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Helvetica",
+                                          "fontFamily": undefined,
                                           "fontSize": 14,
                                           "fontWeight": "500",
                                           "textAlign": "center",
@@ -328,7 +328,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                     Array [
                                                       Object {
                                                         "color": "rgba(0, 0, 0, 0.87)",
-                                                        "fontFamily": "Helvetica",
+                                                        "fontFamily": undefined,
                                                         "fontSize": 14,
                                                         "fontWeight": "500",
                                                         "textAlign": "center",
@@ -345,7 +345,7 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                       Array [
                                                         Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Helvetica",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 14,
                                                           "fontWeight": "500",
                                                           "textAlign": "center",

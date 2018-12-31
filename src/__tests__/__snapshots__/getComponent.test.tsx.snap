@@ -39,7 +39,7 @@ exports[`getComponent should render a button component 1`] = `
         Array [
           Object {
             "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Helvetica",
+            "fontFamily": undefined,
             "fontSize": 14,
             "fontWeight": "500",
             "textAlign": "center",
@@ -61,7 +61,7 @@ exports[`getComponent should render a text component 1`] = `
     Array [
       Object {
         "color": "rgba(0, 0, 0, 0.87)",
-        "fontFamily": "Helvetica",
+        "fontFamily": undefined,
         "fontSize": 16,
         "fontWeight": "400",
       },

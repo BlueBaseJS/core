@@ -31,7 +31,7 @@ exports[`JsonSchema should render a text component with red color 1`] = `
     Array [
       Object {
         "color": "rgba(0, 0, 0, 0.87)",
-        "fontFamily": "Helvetica",
+        "fontFamily": undefined,
         "fontSize": 16,
         "fontWeight": "400",
       },
@@ -51,7 +51,7 @@ exports[`JsonSchema should render a text component with red color that is proces
     Array [
       Object {
         "color": "rgba(0, 0, 0, 0.87)",
-        "fontFamily": "Helvetica",
+        "fontFamily": undefined,
         "fontSize": 16,
         "fontWeight": "400",
       },

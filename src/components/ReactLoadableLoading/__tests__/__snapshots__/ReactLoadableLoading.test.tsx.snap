@@ -282,7 +282,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       Object {
                                         "root": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Helvetica",
+                                          "fontFamily": undefined,
                                           "fontSize": 20,
                                           "fontWeight": "500",
                                         },
@@ -294,7 +294,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Helvetica",
+                                            "fontFamily": undefined,
                                             "fontSize": 20,
                                             "fontWeight": "500",
                                           },
@@ -310,7 +310,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                           Array [
                                             Object {
                                               "color": "rgba(0, 0, 0, 0.87)",
-                                              "fontFamily": "Helvetica",
+                                              "fontFamily": undefined,
                                               "fontSize": 20,
                                               "fontWeight": "500",
                                             },
@@ -354,7 +354,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       Object {
                                         "root": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Helvetica",
+                                          "fontFamily": undefined,
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
@@ -366,7 +366,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Helvetica",
+                                            "fontFamily": undefined,
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },
@@ -382,7 +382,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                           Array [
                                             Object {
                                               "color": "rgba(0, 0, 0, 0.87)",
-                                              "fontFamily": "Helvetica",
+                                              "fontFamily": undefined,
                                               "fontSize": 14,
                                               "fontWeight": "400",
                                             },
@@ -471,7 +471,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                 },
                                                 "text": Object {
                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                  "fontFamily": "Helvetica",
+                                                  "fontFamily": undefined,
                                                   "fontSize": 14,
                                                   "fontWeight": "500",
                                                   "textAlign": "center",
@@ -575,7 +575,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                             Array [
                                                               Object {
                                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                                "fontFamily": "Helvetica",
+                                                                "fontFamily": undefined,
                                                                 "fontSize": 14,
                                                                 "fontWeight": "500",
                                                                 "textAlign": "center",
@@ -592,7 +592,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                               Array [
                                                                 Object {
                                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                                  "fontFamily": "Helvetica",
+                                                                  "fontFamily": undefined,
                                                                   "fontSize": 14,
                                                                   "fontWeight": "500",
                                                                   "textAlign": "center",
@@ -812,7 +812,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                       Object {
                                         "root": Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Helvetica",
+                                          "fontFamily": undefined,
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
@@ -824,7 +824,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Helvetica",
+                                            "fontFamily": undefined,
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },
@@ -840,7 +840,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                           Array [
                                             Object {
                                               "color": "rgba(0, 0, 0, 0.87)",
-                                              "fontFamily": "Helvetica",
+                                              "fontFamily": undefined,
                                               "fontSize": 14,
                                               "fontWeight": "400",
                                             },
@@ -929,7 +929,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                 },
                                                 "text": Object {
                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                  "fontFamily": "Helvetica",
+                                                  "fontFamily": undefined,
                                                   "fontSize": 14,
                                                   "fontWeight": "500",
                                                   "textAlign": "center",
@@ -1033,7 +1033,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                             Array [
                                                               Object {
                                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                                "fontFamily": "Helvetica",
+                                                                "fontFamily": undefined,
                                                                 "fontSize": 14,
                                                                 "fontWeight": "500",
                                                                 "textAlign": "center",
@@ -1050,7 +1050,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                               Array [
                                                                 Object {
                                                                   "color": "rgba(0, 0, 0, 0.87)",
-                                                                  "fontFamily": "Helvetica",
+                                                                  "fontFamily": undefined,
                                                                   "fontSize": 14,
                                                                   "fontWeight": "500",
                                                                   "textAlign": "center",
