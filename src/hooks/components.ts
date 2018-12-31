@@ -1,11 +1,5 @@
 // tslint:disable: object-literal-sort-keys
-import {
-	ActivityIndicator,
-	Button,
-	Image,
-	Text,
-	View,
-} from '../native';
+import { ActivityIndicator, Button, Image, Text, View } from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
 import {
 	BlueBaseHook,

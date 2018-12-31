@@ -477,7 +477,6 @@ export class Registry<
 		}
 
 		if (finalItem === undefined) {
-			debugger;
 			throw Error('Could not register item. Reason: No item given.');
 		}
 
