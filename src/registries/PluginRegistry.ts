@@ -3,7 +3,7 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { MaybeThunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
+import { MaybeThunk, isBlueBaseModule } from '../utils';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
 import { DynamicIconProps } from '../components/';
@@ -22,7 +22,6 @@ export type PluginCategory =
 
 export interface PluginValue {
 	components: ComponentCollection;
-	defaultConfigs: ConfigCollection;
 	hooks: HookNestedCollection; // HookCollectionInput;
 	themes: ThemeCollection;
 }
@@ -52,6 +51,8 @@ export interface PluginRegistryItemExtras {
 
 	/** Is this plugin currently enabled/ */
 	enabled: boolean;
+
+	defaultConfigs: ConfigCollection;
 
 	[key: string]: any;
 }
@@ -88,19 +89,20 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * @param plugin
  */
 export function createPlugin(plugin: Partial<Plugin>): PluginInput {
-	const { components, defaultConfigs, hooks, themes, value, ...rest } = plugin;
+	const { components, hooks, themes, value, ...rest } = plugin;
 
 	return {
+		categories: [],
+		defaultConfigs: {},
 		enabled: true,
 		name: 'Untitled Plugin',
 
 		...rest,
 
 		value: {
-			components,
-			defaultConfigs,
-			hooks,
-			themes,
+			components: components || {},
+			hooks: hooks || {},
+			themes: themes || {},
 
 			...value,
 		},
@@ -204,14 +206,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param partial
 	 */
 	protected createItem(key: string, partial: any): ItemType {
-		return super.createItem(key, {
-			categories: [],
-			enabled: true,
-			name: 'Untitled Plugin',
-			...partial,
-
-			value: getDefiniteBlueBaseModule(partial.value),
-		});
+		return super.createItem(key, createPlugin(partial));
 	}
 
 	/**
