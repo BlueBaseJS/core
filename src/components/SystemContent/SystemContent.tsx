@@ -1,5 +1,4 @@
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
+import { Text, View } from '../../getComponent';
 import React from 'react';
 import { ViewProperties } from 'react-native';
 
@@ -7,19 +6,15 @@ export interface SystemContentProps extends ViewProperties {}
 
 export class SystemContent extends React.PureComponent<ViewProperties> {
 
-	static contextType = BlueBaseContext;
-
 	render() {
 
-		const BB: BlueBase = this.context;
-
 		return (
-			<BB.Components.View {...this.props}>
-				<BB.Components.Text>
+			<View {...this.props}>
+				<Text>
 					🚀 BlueBase System Content!
-				</BB.Components.Text>
+				</Text>
 				{this.props.children}
-			</BB.Components.View>
+			</View>
 		);
 	}
 }

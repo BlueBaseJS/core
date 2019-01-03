@@ -1,4 +1,4 @@
-import { BlueBase, BlueBaseConsumer } from '../../..';
+import { HoverObserver, Text } from '../../../getComponent';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 // import { SystemApp } from '../SystemApp';
@@ -6,139 +6,87 @@ import storiesOf from '@bluebase/storybook-addon';
 storiesOf('HoverObserver', module)
 
 	.add('Basic Example', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver>
-					<BB.Components.Text>Text as a children</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver>
+			<Text>Text as a children</Text>
+		</HoverObserver>
 	))
 
 	.add('with onHoverChanged', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onHoverChanged={() => console.log('onHoverChanged')}>
-					<BB.Components.Text>Text as a children with onHoverChanged</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onHoverChanged={() => console.log('onHoverChanged')}>
+			<Text>Text as a children with onHoverChanged</Text>
+		</HoverObserver>
 	))
 
 	.add('with onHoverChanged with event object', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onHoverChanged={(e: any) => console.log('onHoverChanged ', e)}>
-					<BB.Components.Text>Text as a children with onHoverChanged with event object</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onHoverChanged={(e: any) => console.log('onHoverChanged ', e)}>
+			<Text>Text as a children with onHoverChanged with event object</Text>
+		</HoverObserver>
 	))
 
 	.add('with onHoverChanged with hoverDelayInMs', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver
-					onHoverChanged={() => console.log('onHoverChanged after one second')}
-					hoverDelayInMs={1000}
-				>
-					<BB.Components.Text>Text as a children with onHoverChanged</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver
+			onHoverChanged={() => console.log('onHoverChanged after one second')}
+			hoverDelayInMs={1000}
+		>
+			<Text>Text as a children with onHoverChanged</Text>
+		</HoverObserver>
 	))
 
 	.add('with onHoverChanged with hoverDelayInMs and hoverOffDelayInMs both', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver
-					onHoverChanged={(e: any) => console.log(`${e.isHovering ? 'onHoverStart' : 'onHoverEnd'} after one second delay `)}
-					hoverDelayInMs={1000}
-					hoverOffDelayInMs={1000}
-				>
-					<BB.Components.Text>Text as a children with onHoverChanged
-						with hoverDelayInMs and hoverOffDelayInMs both</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver
+			onHoverChanged={(e: any) => console.log(`${e.isHovering ? 'onHoverStart' : 'onHoverEnd'} after one second delay `)}
+			hoverDelayInMs={1000}
+			hoverOffDelayInMs={1000}
+		>
+			<Text>Text as a children with onHoverChanged
+				with hoverDelayInMs and hoverOffDelayInMs both</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseEnter', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseEnter={() => console.log('onMouseEnter')}>
-					<BB.Components.Text>Text as a children with onMouseEnter</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseEnter={() => console.log('onMouseEnter')}>
+			<Text>Text as a children with onMouseEnter</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseEnter with event object', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseEnter={(e: any) => console.log('onMouseEnter ', e)}>
-					<BB.Components.Text>Text as a children with onMouseEnter with event object</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseEnter={(e: any) => console.log('onMouseEnter ', e)}>
+			<Text>Text as a children with onMouseEnter with event object</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseLeave', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseLeave={() => console.log('onMouseLeave')}>
-					<BB.Components.Text>Text as a children with onMouseLeave</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseLeave={() => console.log('onMouseLeave')}>
+			<Text>Text as a children with onMouseLeave</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseLeave with event object', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseLeave={(e: any) => console.log('onMouseLeave ', e)}>
-					<BB.Components.Text>Text as a children with onMouseLeave with event object</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseLeave={(e: any) => console.log('onMouseLeave ', e)}>
+			<Text>Text as a children with onMouseLeave with event object</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseOver', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseOver={() => console.log('onMouseOver')}>
-					<BB.Components.Text>Text as a children with onMouseOver</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseOver={() => console.log('onMouseOver')}>
+			<Text>Text as a children with onMouseOver</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseOver with event object', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseOver={(e: any) => console.log('onMouseOver ', e)}>
-					<BB.Components.Text>Text as a children with onMouseOver with event object</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseOver={(e: any) => console.log('onMouseOver ', e)}>
+			<Text>Text as a children with onMouseOver with event object</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseOut', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseOut={() => console.log('onMouseOut')}>
-					<BB.Components.Text>Text as a children with onMouseOut</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseOut={() => console.log('onMouseOut')}>
+			<Text>Text as a children with onMouseOut</Text>
+		</HoverObserver>
 	))
 
 	.add('with onMouseOut with event object', () => (
-		<BlueBaseConsumer>
-			{(BB: BlueBase) => (
-				<BB.Components.HoverObserver onMouseOut={(e: any) => console.log('onMouseOut ', e)}>
-					<BB.Components.Text>Text as a children with onMouseOut with event object</BB.Components.Text>
-				</BB.Components.HoverObserver>
-			)}
-		</BlueBaseConsumer>
+		<HoverObserver onMouseOut={(e: any) => console.log('onMouseOut ', e)}>
+			<Text>Text as a children with onMouseOut with event object</Text>
+		</HoverObserver>
 	));

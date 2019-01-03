@@ -12,10 +12,10 @@ export interface WaitObserverChildrenProps {
 
 export interface WaitObserverProps {
 
-	/** Delay before rendering a component */
+	/** Delay before rendering a component. */
 	delay?: number,
 
-	/** Timeout duration */
+	/** Timeout duration. */
 	timeout?: number,
 
 	/**
@@ -27,6 +27,11 @@ export interface WaitObserverProps {
 	 * A callback function executed when retry method is called from the child component.
 	 */
 	onRetry?: () => void;
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 
 	children?: MaybeRenderPropChildren<WaitObserverChildrenProps>;
 }
@@ -45,7 +50,7 @@ interface WaitObserverState {
 }
 
 /**
- * ⏰ **WaitObserver Component**
+ * # ⏰ WaitObserver
  *
  * This component is used to do the following:
  *
@@ -54,6 +59,17 @@ interface WaitObserverState {
  *
  * A use case for this can be to show a loading state after waiting a certain period
  * of time for data to load, and if the loading takes too long, show a timeout state.
+ *
+ * ## Usage
+ * ```jsx
+ * <WaitObserver
+ *  delay={1000}
+ *  timeout={3000}
+ *  onTimeout={onTimeout}
+ *  onRetry={onRetry}
+ *  children={(props: WaitObserverChildrenProps) => <LoadingState {...props} />}
+ * />
+ * ```
  */
 export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObserverState> {
 
@@ -68,8 +84,8 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 		timedOut: false,
 	};
 
-	private _delay?: number;
-	private _timeout?: number;
+	private _delay?: any;
+	private _timeout?: any;
 
 	componentWillMount() {
 		this.init();
@@ -92,6 +108,7 @@ export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObs
 			}
 
 			return children;
+
 		} else {
 			return null;
 		}

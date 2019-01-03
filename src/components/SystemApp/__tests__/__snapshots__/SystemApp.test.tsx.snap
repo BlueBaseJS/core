@@ -1,9 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SystemApp Snapshot SystemApp component 1`] = `
-<Text>
-  Loading
-</Text>
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text>
+    Loading
+  </Text>
+</View>
 `;
 
 exports[`SystemApp Snapshot SystemApp component after complete render 1`] = `
@@ -14,7 +24,7 @@ exports[`SystemApp Snapshot SystemApp component after complete render 1`] = `
         Array [
           Object {
             "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Roboto",
+            "fontFamily": undefined,
             "fontSize": 16,
             "fontWeight": "400",
           },

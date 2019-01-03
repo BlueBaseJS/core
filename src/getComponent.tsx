@@ -17,7 +17,29 @@ import { BlueBase } from './BlueBase';
 import { BlueBaseConsumer } from './Context';
 import React from 'react';
 
+
+export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
+export {
+	BlueBaseHookProps,
+	ComponentStateProps,
+	DataObserverProps,
+	DynamicIconProps,
+	ErrorObserverProps,
+	ErrorStateProps,
+	HoverObserverProps,
+	JsonSchemaProps,
+	LoadingStateProps,
+	PluginIconProps,
+	StatefulComponentProps,
+	WaitObserverProps,
+} from './components';
+
+
 export function getComponent<T = any>(...keys: string[]) {
+
+	if (keys.length === 0) {
+		throw Error('getComponent method needs at least one key');
+	}
 
 	const BlueBaseComponent = (props: T) => (
 		<BlueBaseConsumer children={(BB: BlueBase) => {
@@ -27,9 +49,7 @@ export function getComponent<T = any>(...keys: string[]) {
 		}} />
 	);
 
-	if (keys.length > 0) {
-		BlueBaseComponent.displayName = keys.join('_');
-	}
+	BlueBaseComponent.displayName = keys.join('_');
 
 	return BlueBaseComponent as React.ComponentType<T>;
 }

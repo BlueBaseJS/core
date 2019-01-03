@@ -1,72 +1,66 @@
-// import * as Native from '../../../native';
 import { BlueBaseApp } from '../../BlueBaseApp';
 import { LoadingState } from '../LoadingState';
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
-// beforeEach(() => {
-// 	jest.resetModules();
-// });
 
 describe('LoadingState', () => {
-	const LoadingStateWithProvider = (props: any) => (
-		<BlueBaseApp>
-			<LoadingState {...props} />
-		</BlueBaseApp>
-	);
 
-	test(`Snapshot LoadingState component`, () => {
-		const component = TestRenderer.create(
-			<LoadingStateWithProvider />
+	test(`should render an ActivityIndicator`, async () => {
+		const component = mount(
+			<BlueBaseApp>
+				<LoadingState />
+			</BlueBaseApp>
 		);
-		const tree = component.toJSON();
-		expect(tree).toMatchSnapshot();
+
+		// Wait for render
+		await waitForElement(component, LoadingState);
+		expect(component).toMatchSnapshot();
+
+		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
+		expect(component.exists('LoadingState Body2')).toBe(false);
+		expect(component.exists('LoadingState Button')).toBe(false);
+
 	});
 
-	test(`Snapshot LoadingState component after complete rendering`, (done) => {
-		const component = TestRenderer.create(
-			<LoadingStateWithProvider />
+	test(`should render timeout message`, async () => {
+		const component = mount(
+			<BlueBaseApp>
+				<LoadingState timedOut={true} />
+			</BlueBaseApp>
 		);
-		setTimeout(() => {
-			const tree: any = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
+
+		// Wait for render
+		await waitForElement(component, LoadingState);
+		expect(component).toMatchSnapshot();
+
+		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
+		expect(component.exists('LoadingState Body2')).toBe(true);
+		expect(component.find('LoadingState Body2 Text').last().text()).toBe('This is taking longer than usual');
+		expect(component.exists('LoadingState Button')).toBe(false);
 	});
 
-	test(`Snapshot LoadingState component after complete rendering with timedOut: true`, (done) => {
-		const component = TestRenderer.create(
-			<LoadingStateWithProvider timedOut={true} />
+	test(`should render timeout message & retry button`, async () => {
+		const mockedFn = jest.fn();
+
+		const component = mount(
+			<BlueBaseApp>
+				<LoadingState timedOut={true} retry={mockedFn} />
+			</BlueBaseApp>
 		);
-		setTimeout(() => {
-			const tree: any = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
+
+		// Wait for render
+		await waitForElement(component, LoadingState);
+		expect(component).toMatchSnapshot();
+
+		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
+		expect(component.exists('LoadingState Body2')).toBe(true);
+		expect(component.find('LoadingState Body2 Text').last().text()).toBe('This is taking longer than usual');
+		expect(component.exists('LoadingState Button')).toBe(true);
+
+		(component as any).find('LoadingState Button').first().props().onPress();
+		expect(mockedFn.mock.calls.length).toBe(1);
 	});
 
-	test(`Snapshot LoadingState component after complete rendering with timedOut: false`, (done) => {
-
-		const component = TestRenderer.create(
-			<LoadingStateWithProvider timedOut={false} />
-		);
-		setTimeout(() => {
-			const tree: any = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			done();
-		});
-	});
-
-	test(`Snapshot LoadingState component after complete rendering with timedOut: true and retry mocked function`,
-		(done) => {
-			const mockedFn = jest.fn();
-			const component = TestRenderer.create(
-				<LoadingStateWithProvider timedOut={true} retry={mockedFn} />
-			);
-			setTimeout(() => {
-				const tree: any = component.toJSON();
-				expect(tree).toMatchSnapshot();
-				done();
-			});
-		});
 });

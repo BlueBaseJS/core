@@ -1,23 +1,17 @@
-import { BlueBase, BlueBaseConsumer } from '../../..';
+import { LoadingState } from '../../../getComponent';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
 storiesOf('LoadingState', module)
 
 	.add('With default props', () => (
-		<BlueBaseConsumer children={(BB: BlueBase) => (
-			<BB.Components.LoadingState />
-		)} />
+		<LoadingState />
 	))
 
 	.add('With timedOut', () => (
-		<BlueBaseConsumer children={(BB: BlueBase) => (
-			<BB.Components.LoadingState timedOut={true} />
-		)} />
+		<LoadingState timedOut={true} />
 	))
 
 	.add('With timedOut and retry', () => (
-		<BlueBaseConsumer children={(BB: BlueBase) => (
-			<BB.Components.LoadingState timedOut={true} retry={() => console.log('Hello')}/>
-		)} />
+		<LoadingState timedOut={true} retry={() => console.log('Hello')}/>
 	));

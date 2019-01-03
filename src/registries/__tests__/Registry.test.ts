@@ -561,7 +561,7 @@ describe('Registry', () => {
 		});
 	});
 
-	// describe.only('.createUniqueSubscriptionId method', () => {
+	// describe('.createUniqueSubscriptionId method', () => {
 
 	// 	it('should successfully unsubscribe a config by subId', async () => {
 	// 		// const BB = new BlueBase();

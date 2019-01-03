@@ -25,13 +25,13 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 			await Components.register('Button', Button);
 
-			expect(Components.Button).toBeTruthy();
+			expect(getComponent('Button')).toBeTruthy();
 		});
 
 		it('should throw for unknown components', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
-			expect(() => Components.Foo).toThrow();
+			expect(() => Components.resolve('Foo')).toThrow();
 		});
 
 	});
@@ -147,7 +147,7 @@ describe('ComponentRegistry', () => {
 			await Components.register('Button', Button);
 
 			// TODO: Add proper dom testing
-			expect(Components.Button).toBeTruthy();
+			expect(getComponent('Button')).toBeTruthy();
 		});
 
 		it('should register a React Functional Component in an ES Module', async () => {
@@ -156,7 +156,7 @@ describe('ComponentRegistry', () => {
 			await Components.register('Button', { default: Button } as any);
 
 			// TODO: Add proper dom testing
-			expect(Components.Button).toBeTruthy();
+			expect(getComponent('Button')).toBeTruthy();
 		});
 
 		it('should register a React Functional Component in an Promised ES Module', async () => {
@@ -166,7 +166,7 @@ describe('ComponentRegistry', () => {
 			await Components.register('Button', Promise.resolve({ default: Button }) as any);
 
 			// TODO: Add proper dom testing
-			expect(Components.Button).toBeTruthy();
+			expect(getComponent('Button')).toBeTruthy();
 		});
 
 		it('should register a React Class Component', async () => {
@@ -176,7 +176,7 @@ describe('ComponentRegistry', () => {
 			await Components.register('Welcome', Welcome);
 
 			// TODO: Add proper dom testing
-			expect(Components.Welcome).toBeTruthy();
+			expect(getComponent('Welcome')).toBeTruthy();
 		});
 
 		it('should register a React Class Component in an ES Module', async () => {
@@ -186,7 +186,7 @@ describe('ComponentRegistry', () => {
 			await Components.register('Welcome', { default: Welcome } as any);
 
 			// TODO: Add proper dom testing
-			expect(Components.Welcome).toBeTruthy();
+			expect(getComponent('Welcome')).toBeTruthy();
 		});
 
 		it('should register a React Class Component in an Promised ES Module', async () => {
@@ -196,7 +196,7 @@ describe('ComponentRegistry', () => {
 			await Components.register('Welcome', Promise.resolve({ default: Welcome }) as any);
 
 			// TODO: Add proper dom testing
-			expect(Components.Welcome).toBeTruthy();
+			expect(getComponent('Welcome')).toBeTruthy();
 		});
 
 		///////////////////////////////////////
@@ -212,7 +212,7 @@ describe('ComponentRegistry', () => {
 			});
 
 			// TODO: Add proper dom testing
-			expect(Components.Button).toBeTruthy();
+			expect(getComponent('Button')).toBeTruthy();
 		});
 
 		it('should register a ComponentRegistryItem, with value in an ES Module', async () => {
@@ -224,7 +224,7 @@ describe('ComponentRegistry', () => {
 			});
 
 			// TODO: Add proper dom testing
-			expect(Components.Button).toBeTruthy();
+			expect(getComponent('Button')).toBeTruthy();
 		});
 
 
@@ -237,7 +237,7 @@ describe('ComponentRegistry', () => {
 			});
 
 			// TODO: Add proper dom testing
-			expect(Components.Button).toBeTruthy();
+			expect(getComponent('Button')).toBeTruthy();
 		});
 
 		it('should register a ComponentRegistryItem, with preload set to true', async () => {

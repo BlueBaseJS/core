@@ -10,9 +10,11 @@ export const ReactLoadableLoading = (props: LoadingComponentProps) => {
 
 	if (props.error) {
 		return <ErrorState error={props.error} retry={props.retry} />;
-	} else if (props.pastDelay) {
+	} else if (props.isLoading && props.pastDelay) {
 		return <LoadingState timedOut={props.timedOut} retry={props.retry} />;
 	} else {
 		return null;
 	}
 };
+
+ReactLoadableLoading.displayName = 'ReactLoadableLoading';

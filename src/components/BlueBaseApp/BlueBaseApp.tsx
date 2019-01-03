@@ -1,12 +1,24 @@
 import { BlueBase, BootOptions } from '../../BlueBase';
+import { Text, View } from 'react-native';
 import React from 'react';
-import { Text } from 'react-native';
+import { isProduction } from '../../utils';
 
 const MISSING_ERROR = 'An unknown error occured.';
 
 export interface BlueBaseAppProps extends Partial<BootOptions> {
+
+	/** BlueBase Context */
 	BB?: BlueBase,
+
+	/**
+	 * If this prop is provided, this tree will be rendered instead of BlueBase's own view.
+	 */
 	children?: React.ReactNode,
+
+  /**
+   * Used to locate this view in end-to-end tests.
+   */
+	testID?: string,
 }
 
 interface BlueBaseAppState {
@@ -38,15 +50,16 @@ interface BlueBaseAppState {
 }
 
 /**
- * 🚀 BlueBaseApp
+ * # 🚀 BlueBaseApp
  *
- * This is the Main App used to render at the top level.
+ * The main BlueBase app. This is the top level component in BlueBase. Takes care
+ * of initialisation, and renders either children, or app with routing.
  *
- * TODO: Add better docs
+ * ## Usage
+ * ```jsx
+ * <BlueBaseApp BB={BB} plugins={{}} hook={{}} themes={{}} />
+ * ```
  */
-// NOTE FOR DEVELOPERS:
-// Don't use BlueBase context or any data saved in context (e.g. components)
-// here. This is because the context may not be initialized yet.
 export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
 
 	constructor(props: BlueBaseAppProps) {
@@ -92,14 +105,28 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 		const { loading, error, AppComponent, BB } = this.state;
 
 		if (loading) {
-			return (<Text>Loading</Text>);
+			return (
+				<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+					<Text>Loading</Text>
+				</View>
+			);
 		}
 
 		if (error) {
-			const development = BB.Configs.getValue('development');
+			let development = BB.Configs.getValue('development');
+
+			if (development === undefined) {
+				development = !isProduction();
+			}
+
 			const message = (development === true) ? error.message : MISSING_ERROR;
 
-			return (<Text>{message}</Text>);
+			return (
+				<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+					<Text style={{ fontWeight: 'bold', }}>🚨 BlueBase Error</Text>
+					<Text>{message}</Text>
+				</View>
+			);
 		}
 
 		return <AppComponent children={this.props.children} />;

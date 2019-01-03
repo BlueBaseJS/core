@@ -14,14 +14,26 @@ import {
 import { BlueBaseProvider } from './Context';
 import React from 'react';
 import { ThemeProvider } from './themes';
+import { getComponent } from './getComponent';
 import systemHooks from './hooks';
 
 export interface BootOptions {
+
+	/** Collection of components to add in BlueBase's Component Registry. */
 	components: ComponentCollection,
+
+	/** Collection of configs to add in BlueBase's Config Registry. */
 	configs: ConfigCollection,
+
+	/** Collection of hooks to add in BlueBase's Hook Registry. */
 	hooks: HookNestedCollection,
+
+	/** Collection of plugins to add in BlueBase's Plugin Registry. */
 	plugins: PluginCollection,
+
+	/** Collection of themes to add in BlueBase's Theme Registry. */
 	themes: ThemeCollection,
+
 	// routes: Plugin[]
 }
 
@@ -58,6 +70,8 @@ export class BlueBase {
 
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
+		const SystemApp = getComponent('SystemApp');
+
 		// Set View
 		// const SystemApp = this.Components.resolve('SystemApp');
 		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
@@ -65,9 +79,9 @@ export class BlueBase {
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-					<this.Components.SystemApp>
+					<SystemApp>
 						{options && options.children}
-					</this.Components.SystemApp>
+					</SystemApp>
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);
