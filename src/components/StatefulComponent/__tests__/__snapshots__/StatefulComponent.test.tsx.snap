@@ -330,7 +330,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 20,
                                                           "fontWeight": "500",
                                                         },
@@ -342,7 +342,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 20,
                                                             "fontWeight": "500",
                                                           },
@@ -358,7 +358,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 20,
                                                               "fontWeight": "500",
                                                             },
@@ -402,7 +402,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 14,
                                                           "fontWeight": "400",
                                                         },
@@ -414,7 +414,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 14,
                                                             "fontWeight": "400",
                                                           },
@@ -430,7 +430,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 14,
                                                               "fontWeight": "400",
                                                             },
@@ -633,7 +633,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 20,
                                                           "fontWeight": "500",
                                                         },
@@ -645,7 +645,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 20,
                                                             "fontWeight": "500",
                                                           },
@@ -661,7 +661,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 20,
                                                               "fontWeight": "500",
                                                             },
@@ -705,7 +705,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                       Object {
                                                         "root": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": "Roboto",
+                                                          "fontFamily": undefined,
                                                           "fontSize": 14,
                                                           "fontWeight": "400",
                                                         },
@@ -717,7 +717,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                         Array [
                                                           Object {
                                                             "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": "Roboto",
+                                                            "fontFamily": undefined,
                                                             "fontSize": 14,
                                                             "fontWeight": "400",
                                                           },
@@ -733,7 +733,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 14,
                                                               "fontWeight": "400",
                                                             },

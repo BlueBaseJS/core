@@ -1,55 +1,644 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BlueBaseApp should render BlueBaseApp 1`] = `
-<Text>
-  Loading
-</Text>
+<BlueBaseApp>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text>
+        <Text>
+          Loading
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
 `;
 
 exports[`BlueBaseApp should render BlueBaseApp 2`] = `
-<View>
-  <View>
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "rgba(0, 0, 0, 0.87)",
-            "fontFamily": "Roboto",
-            "fontSize": 16,
-            "fontWeight": "400",
-          },
-          undefined,
-        ]
-      }
-    >
-      🚀 BlueBase System Content!
-    </Text>
-  </View>
-</View>
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <SystemApp>
+        <ThemedComponent>
+          <SystemApp>
+            <View>
+              <ThemedComponent>
+                <View>
+                  <View>
+                    <ThemedComponent>
+                      <Component />
+                    </ThemedComponent>
+                    <ThemedComponent>
+                      <SystemContent>
+                        <View>
+                          <ThemedComponent>
+                            <View>
+                              <View>
+                                <Text>
+                                  <ThemedComponent>
+                                    <Component
+                                      styles={
+                                        Object {
+                                          "root": Object {
+                                            "color": "rgba(0, 0, 0, 0.87)",
+                                            "fontFamily": undefined,
+                                            "fontSize": 16,
+                                            "fontWeight": "400",
+                                          },
+                                        }
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "rgba(0, 0, 0, 0.87)",
+                                              "fontFamily": undefined,
+                                              "fontSize": 16,
+                                              "fontWeight": "400",
+                                            },
+                                            undefined,
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "rgba(0, 0, 0, 0.87)",
+                                                "fontFamily": undefined,
+                                                "fontSize": 16,
+                                                "fontWeight": "400",
+                                              },
+                                              undefined,
+                                            ]
+                                          }
+                                        >
+                                          🚀 BlueBase System Content!
+                                        </Text>
+                                      </Text>
+                                    </Component>
+                                  </ThemedComponent>
+                                </Text>
+                              </View>
+                            </View>
+                          </ThemedComponent>
+                        </View>
+                      </SystemContent>
+                    </ThemedComponent>
+                    <ThemedComponent>
+                      <Component />
+                    </ThemedComponent>
+                  </View>
+                </View>
+              </ThemedComponent>
+            </View>
+          </SystemApp>
+        </ThemedComponent>
+      </SystemApp>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
 `;
 
 exports[`BlueBaseApp should render default app when boot doesn't return anything 1`] = `null`;
 
 exports[`BlueBaseApp should render error state when a child throws an error 1`] = `
-<Text>
-  💥 Boom!
-</Text>
+<BlueBaseApp>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text>
+        <Text>
+          Loading
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
+`;
+
+exports[`BlueBaseApp should render error state when a child throws an error 2`] = `
+<BlueBaseApp>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          💥 Boom!
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
 `;
 
 exports[`BlueBaseApp should render error state when boot throws an error 1`] = `
-<Text>
-  Boot Error!
-</Text>
+<BlueBaseApp
+  BB={
+    BlueBase {
+      "Analytics": Analytics {
+        "BB": [Circular],
+      },
+      "Components": ComponentRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Configs": ConfigRegistry {
+        "BB": [Circular],
+        "data": Map {
+          "development" => Object {
+            "key": "development",
+            "value": true,
+          },
+        },
+        "subscriptions": Map {},
+      },
+      "Hooks": HookRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Logger": Logger {
+        "BB": [Circular],
+      },
+      "Plugins": PluginRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Themes": ThemeRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "boot": [Function],
+      "bootOptions": Object {
+        "components": Object {},
+        "configs": Object {},
+        "hooks": Object {},
+        "plugins": Array [],
+        "themes": Array [],
+      },
+      "booted": false,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          Boot Error!
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
+`;
+
+exports[`BlueBaseApp should render error state with actual error message when development config is undefined, && isProduction is false 1`] = `
+<BlueBaseApp
+  BB={
+    BlueBase {
+      "Analytics": Analytics {
+        "BB": [Circular],
+      },
+      "Components": ComponentRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Configs": ConfigRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Hooks": HookRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Logger": Logger {
+        "BB": [Circular],
+      },
+      "Plugins": PluginRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Themes": ThemeRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "boot": [Function],
+      "bootOptions": Object {
+        "components": Object {},
+        "configs": Object {},
+        "hooks": Object {},
+        "plugins": Array [],
+        "themes": Array [],
+      },
+      "booted": false,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          Boot Error!
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
+`;
+
+exports[`BlueBaseApp should render error state with custom error message when development config is undefined, && isProduction is true 1`] = `
+<BlueBaseApp
+  BB={
+    BlueBase {
+      "Analytics": Analytics {
+        "BB": [Circular],
+      },
+      "Components": ComponentRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Configs": ConfigRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Hooks": HookRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Logger": Logger {
+        "BB": [Circular],
+      },
+      "Plugins": PluginRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "Themes": ThemeRegistry {
+        "BB": [Circular],
+        "data": Map {},
+        "subscriptions": Map {},
+      },
+      "boot": [Function],
+      "bootOptions": Object {
+        "components": Object {},
+        "configs": Object {},
+        "hooks": Object {},
+        "plugins": Array [],
+        "themes": Array [],
+      },
+      "booted": false,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          An unknown error occured.
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
 `;
 
 exports[`BlueBaseApp should render error state with custom message when a child throws a null error 1`] = `
-<Text>
-  An unknown error occured.
-</Text>
+<BlueBaseApp>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text>
+        <Text>
+          Loading
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
+`;
+
+exports[`BlueBaseApp should render error state with custom message when a child throws a null error 2`] = `
+<BlueBaseApp>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          An unknown error occured.
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
 `;
 
 exports[`BlueBaseApp should render error state with custom message when in production mode 1`] = `
-<Text>
-  An unknown error occured.
-</Text>
+<BlueBaseApp
+  configs={
+    Object {
+      "development": false,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text>
+        <Text>
+          Loading
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
+`;
+
+exports[`BlueBaseApp should render error state with custom message when in production mode 2`] = `
+<BlueBaseApp
+  configs={
+    Object {
+      "development": false,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          🚨 BlueBase Error
+        </Text>
+      </Text>
+      <Text>
+        <Text>
+          An unknown error occured.
+        </Text>
+      </Text>
+    </View>
+  </View>
+</BlueBaseApp>
 `;

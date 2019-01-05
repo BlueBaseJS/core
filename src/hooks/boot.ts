@@ -11,8 +11,8 @@ export const boot: HookNestedCollection = {
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Hooks.run('bluebase.boot.start', bootOptions);
 
-				await BB.Hooks.run('bluebase.components.register', bootOptions);
 				await BB.Hooks.run('bluebase.configs.register', bootOptions);
+				await BB.Hooks.run('bluebase.components.register', bootOptions);
 				await BB.Hooks.run('bluebase.hooks.register', bootOptions.hooks);
 				await BB.Hooks.run('bluebase.routes.register', bootOptions);
 				await BB.Hooks.run('bluebase.themes.register', bootOptions);

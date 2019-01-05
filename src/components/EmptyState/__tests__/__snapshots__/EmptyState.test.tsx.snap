@@ -15,7 +15,7 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 20,
           "fontWeight": "500",
         },
@@ -33,7 +33,7 @@ exports[`EmptyState Snapshot EmptyState 1`] = `
       Array [
         Object {
           "color": "rgba(0, 0, 0, 0.87)",
-          "fontFamily": "Roboto",
+          "fontFamily": undefined,
           "fontSize": 14,
           "fontWeight": "400",
         },

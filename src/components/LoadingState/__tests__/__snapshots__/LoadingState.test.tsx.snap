@@ -313,7 +313,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                     Object {
                                       "root": Object {
                                         "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": "Roboto",
+                                        "fontFamily": undefined,
                                         "fontSize": 14,
                                         "fontWeight": "400",
                                       },
@@ -325,7 +325,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                       Array [
                                         Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": undefined,
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
@@ -341,7 +341,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Roboto",
+                                            "fontFamily": undefined,
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },
@@ -430,7 +430,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                               },
                                               "text": Object {
                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                "fontFamily": "Roboto",
+                                                "fontFamily": undefined,
                                                 "fontSize": 14,
                                                 "fontWeight": "500",
                                                 "textAlign": "center",
@@ -534,7 +534,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                                           Array [
                                                             Object {
                                                               "color": "rgba(0, 0, 0, 0.87)",
-                                                              "fontFamily": "Roboto",
+                                                              "fontFamily": undefined,
                                                               "fontSize": 14,
                                                               "fontWeight": "500",
                                                               "textAlign": "center",
@@ -551,7 +551,7 @@ exports[`LoadingState should render timeout message & retry button 1`] = `
                                                             Array [
                                                               Object {
                                                                 "color": "rgba(0, 0, 0, 0.87)",
-                                                                "fontFamily": "Roboto",
+                                                                "fontFamily": undefined,
                                                                 "fontSize": 14,
                                                                 "fontWeight": "500",
                                                                 "textAlign": "center",
@@ -756,7 +756,7 @@ exports[`LoadingState should render timeout message 1`] = `
                                     Object {
                                       "root": Object {
                                         "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": "Roboto",
+                                        "fontFamily": undefined,
                                         "fontSize": 14,
                                         "fontWeight": "400",
                                       },
@@ -768,7 +768,7 @@ exports[`LoadingState should render timeout message 1`] = `
                                       Array [
                                         Object {
                                           "color": "rgba(0, 0, 0, 0.87)",
-                                          "fontFamily": "Roboto",
+                                          "fontFamily": undefined,
                                           "fontSize": 14,
                                           "fontWeight": "400",
                                         },
@@ -784,7 +784,7 @@ exports[`LoadingState should render timeout message 1`] = `
                                         Array [
                                           Object {
                                             "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": "Roboto",
+                                            "fontFamily": undefined,
                                             "fontSize": 14,
                                             "fontWeight": "400",
                                           },

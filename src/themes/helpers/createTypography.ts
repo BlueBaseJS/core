@@ -2,8 +2,6 @@
 import { Palette } from '../structure';
 import { Platform } from 'react-native';
 
-const isWeb = Platform.OS === 'web';
-
 export const FontWeight = {
 	light: '300',
 	regular: '400',
@@ -14,8 +12,6 @@ const caseAllCaps = {
 	textTransform: 'uppercase',
 };
 
-const fontFamily = isWeb ? '"Roboto", "Helvetica", "Arial", sans-serif' : 'Roboto';
-
 export function createTypography(palette: Palette) {
 	const buildVariant = (
 		fontWeight: string,
@@ -25,7 +21,7 @@ export function createTypography(palette: Palette) {
 		casing: any = {}
 	) => ({
 		color: palette.text.primary,
-		fontFamily,
+		fontFamily: Platform.OS === 'web' ? '"Roboto", "Helvetica", "Arial", sans-serif' : undefined,
 		fontWeight,
 		fontSize: size,
 
