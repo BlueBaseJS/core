@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "deepmerge": "^3.0.0",
-    "expo": "^31.0.6",
+    "expo": "^32.0.0",
     "lodash.flowright": "^3.5.0",
     "lodash.isboolean": "^3.0.3",
     "lodash.isfunction": "^3.0.9",
