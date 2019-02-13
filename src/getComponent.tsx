@@ -10,6 +10,9 @@ import {
 	JsonSchemaProps,
 	LoadingStateProps,
 	PluginIconProps,
+	RouteAsyncProps,
+	RouteProps,
+	RouterProviderProps,
 	StatefulComponentProps,
 	WaitObserverProps,
 } from './components';
@@ -34,7 +37,13 @@ export {
 	WaitObserverProps,
 } from './components';
 
-
+/**
+ * Resolves a component from BlueBase context, and returns it.
+ * It is possible to pass multiple keys as backup. So if one component
+ * is not found, the function will fallback and try to find next component.
+ *
+ * @param keys
+ */
 export function getComponent<T = any>(...keys: string[]) {
 
 	if (keys.length === 0) {
@@ -67,6 +76,9 @@ export const JsonSchema = getComponent<JsonSchemaProps>('JsonSchema');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
 export const Noop = getComponent('Noop');
 export const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
+export const Route = getComponent<RouteProps>('Route');
+export const RouteAsync = getComponent<RouteAsyncProps>('RouteAsync');
+export const RouterProvider = getComponent<RouterProviderProps>('RouterProvider');
 export const StatefulComponent = getComponent<StatefulComponentProps>('StatefulComponent');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 

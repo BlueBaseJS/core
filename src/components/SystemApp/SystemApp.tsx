@@ -3,7 +3,6 @@ import { BlueBaseContext } from '../../Context';
 import React from 'react';
 import { View } from '../../';
 import { ViewProperties } from 'react-native';
-import { renderChildrenWithProps } from '../../utils';
 
 export interface SystemAppProps extends ViewProperties {}
 
@@ -19,10 +18,6 @@ export class SystemApp extends React.PureComponent<SystemAppProps> {
 		const BB: BlueBase = this.context;
 
 		const { children, ...rest } = this.props;
-
-		if (children) {
-			return renderChildrenWithProps(children, { BB });
-		}
 
 		const SystemHeader = BB.Components.resolve('SystemHeader');
 		const SystemContent = BB.Components.resolve('SystemContent');
