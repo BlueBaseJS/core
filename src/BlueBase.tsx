@@ -12,8 +12,8 @@ import {
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
+import { Navigation } from './components/Navigation';
 import React from 'react';
-import { RouterProviderProps } from './components';
 import { ThemeProvider } from './themes';
 import { renderChildrenWithProps } from './utils';
 import systemHooks from './hooks';
@@ -76,17 +76,6 @@ export class BlueBase {
 		// 🚀 Boot!
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
-		// If children prop is given, use it. Otherwise use build-in routing and SystemApp
-		let children: React.ReactNode;
-
-		if (this.bootOptions.children) {
-			children = renderChildrenWithProps(this.bootOptions.children, { BB: this });
-		} else {
-			const routes: RouterProviderProps = await this.Hooks.run('bluebase.routes.root', {} as any);
-			const RouterProvider = this.Components.resolve('RouterProvider');
-			children = <RouterProvider routes={routes} />;
-		}
-
 		// const SystemApp = getComponent('SystemApp');
 		// Set View
 		// const SystemApp = this.Components.resolve('SystemApp');
@@ -95,7 +84,11 @@ export class BlueBase {
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-				{children}
+				{
+					(this.bootOptions.children)
+					? renderChildrenWithProps(this.bootOptions.children, { BB: this })
+					: <Navigation />
+				}
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);

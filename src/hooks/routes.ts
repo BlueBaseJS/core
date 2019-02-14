@@ -1,21 +1,23 @@
 import { BlueBase, BootOptions } from '../BlueBase';
 import { HookNestedCollection } from '../registries';
+import { NavigatorProps } from '../components';
 
+// tslint:disable:object-literal-sort-keys
 export const routes: HookNestedCollection = {
-	'bluebase.routes.root': [
+	'bluebase.navigator.root': [
 		{
-			key: 'bluebase-routes-root-internal-default',
+			key: 'bluebase-navigator-root-internal-default',
 			priority: 5,
 
-			// tslint:disable-line:object-literal-sort-keys
-			value: async (_bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+			value: async (_bootOptions: BootOptions, _ctx: {}, _BB: BlueBase) => {
 
-				const rootRoutes = {
-					component: 'SystemApp',
-					name: 'Root',
-					navigator: 'stack',
-					path: '/',
-					routes: BB.Hooks.run('bluebase.routes.app', [])
+				const rootRoutes: NavigatorProps = {
+					type: 'stack',
+					routes: [{
+						name: 'Root',
+						path: '/',
+						screen: 'SystemApp',
+					}]
 				};
 
 				return rootRoutes;
@@ -33,22 +35,24 @@ export const routes: HookNestedCollection = {
 			// tslint:disable-line:object-literal-sort-keys
 			value: async (_bootOptions: BootOptions, _ctx: {}, _BB: BlueBase) => {
 
-				const rootRoutes = [
-					// Apps
-					{
-						name: 'AppsListing',
-						navigator: 'switch',
-						path: '/app',
-						routes: [{
-							name: 'SettingsAppRoutes',
-							navigator: 'stack',
-							path: '/app/settings',
-							routes: []
-						}]
-					}
-				];
+				// const rootRoutes = [
+				// 	// Apps
+				// 	{
+				// 		component: 'Noop',
+				// 		name: 'AppsListing',
+				// 		navigator: 'switch',
+				// 		path: '/app',
+				// 		routes: [{
+				// 			component: 'Noop',
+				// 			name: 'SettingsAppRoutes',
+				// 			navigator: 'stack',
+				// 			path: '/app/settings',
+				// 			routes: []
+				// 		}]
+				// 	}
+				// ];
 
-				return rootRoutes;
+				return [];
 
 			},
 		},
