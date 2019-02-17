@@ -105,7 +105,7 @@ describe('ThemeContext', () => {
 		expect(wrapper).toMatchSnapshot();
 
 		// Verify that background color is dark
-		const error = wrapper.find('ErrorState').prop('error') as Error;
+		const error = wrapper.find('ErrorState').last().prop('error') as Error;
 		expect(error.message).toBe('Could not change theme. Reason: Theme with the key "does-not-exist" does not exist.');
 
 		// Unmount to unsubscribe
@@ -132,7 +132,7 @@ describe('ThemeContext', () => {
 		expect(wrapper).toMatchSnapshot();
 
 		// Verify that background color is dark
-		const error = wrapper.find('ErrorState').prop('error') as Error;
+		const error = wrapper.find('ErrorState').last().prop('error') as Error;
 		expect(error.message).toBe('Could not load theme.');
 	});
 
