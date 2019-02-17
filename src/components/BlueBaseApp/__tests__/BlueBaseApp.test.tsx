@@ -2,6 +2,7 @@ import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../BlueBaseApp';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForState } from 'enzyme-async-helpers';
 
@@ -18,7 +19,11 @@ const BangNull = () => {
 describe('BlueBaseApp', () => {
 
 	test(`should render BlueBaseApp`, async () => {
-		const wrapper = mount(<BlueBaseApp />);
+		const wrapper = mount(
+			<BlueBaseApp>
+				<Text>🚀 BlueBase System Content!</Text>
+			</BlueBaseApp>
+		);
 
 		// Will show loading
 		expect(wrapper).toMatchSnapshot();
