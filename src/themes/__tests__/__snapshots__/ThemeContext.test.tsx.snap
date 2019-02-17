@@ -4,107 +4,128 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <SystemApp>
-        <ThemedComponent>
-          <SystemApp>
-            <ThemePicker>
-              <Picker
-                mode="dialog"
-                onValueChange={[Function]}
-                selectedValue="bluebase-light"
+      <ThemePicker>
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue="bluebase-light"
+          style={
+            Object {
+              "width": 150,
+            }
+          }
+        >
+          <PickerIOS
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="bluebase-light"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "width": 150,
+                }
+              }
+            >
+              <View
                 style={
                   Object {
                     "width": 150,
                   }
                 }
               >
-                <PickerIOS
-                  mode="dialog"
-                  onValueChange={[Function]}
-                  selectedValue="bluebase-light"
+                <_class
+                  items={
+                    Array [
+                      Object {
+                        "label": "BlueBase Light",
+                        "textColor": undefined,
+                        "value": "bluebase-light",
+                      },
+                      Object {
+                        "label": "BlueBase Dark",
+                        "textColor": undefined,
+                        "value": "bluebase-dark",
+                      },
+                    ]
+                  }
+                  onChange={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  selectedIndex={0}
                   style={
-                    Object {
-                      "width": 150,
-                    }
+                    Array [
+                      Object {
+                        "height": 216,
+                      },
+                      undefined,
+                    ]
                   }
                 >
-                  <View
-                    style={
-                      Object {
-                        "width": 150,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                  <RCTPicker
+                    items={
+                      Array [
                         Object {
-                          "width": 150,
-                        }
-                      }
-                    >
-                      <_class
-                        items={
-                          Array [
-                            Object {
-                              "label": "BlueBase Light",
-                              "textColor": undefined,
-                              "value": "bluebase-light",
-                            },
-                            Object {
-                              "label": "BlueBase Dark",
-                              "textColor": undefined,
-                              "value": "bluebase-dark",
-                            },
-                          ]
-                        }
-                        onChange={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        selectedIndex={0}
-                        style={
-                          Array [
-                            Object {
-                              "height": 216,
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <RCTPicker
-                          items={
-                            Array [
-                              Object {
-                                "label": "BlueBase Light",
-                                "textColor": undefined,
-                                "value": "bluebase-light",
-                              },
-                              Object {
-                                "label": "BlueBase Dark",
-                                "textColor": undefined,
-                                "value": "bluebase-dark",
-                              },
-                            ]
-                          }
-                          onChange={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          selectedIndex={0}
-                          style={
-                            Array [
-                              Object {
-                                "height": 216,
-                              },
-                              undefined,
-                            ]
-                          }
-                        />
-                      </_class>
-                    </View>
-                  </View>
-                </PickerIOS>
-              </Picker>
-            </ThemePicker>
-            <ThemeDemo>
+                          "label": "BlueBase Light",
+                          "textColor": undefined,
+                          "value": "bluebase-light",
+                        },
+                        Object {
+                          "label": "BlueBase Dark",
+                          "textColor": undefined,
+                          "value": "bluebase-dark",
+                        },
+                      ]
+                    }
+                    onChange={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    selectedIndex={0}
+                    style={
+                      Array [
+                        Object {
+                          "height": 216,
+                        },
+                        undefined,
+                      ]
+                    }
+                  />
+                </_class>
+              </View>
+            </View>
+          </PickerIOS>
+        </Picker>
+      </ThemePicker>
+      <ThemeDemo>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#fafafa",
+              "padding": 8,
+            }
+          }
+        >
+          <ThemedComponent
+            style={
+              Object {
+                "backgroundColor": "#fafafa",
+                "padding": 8,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#fafafa",
+                  "padding": 8,
+                }
+              }
+            >
               <View
                 style={
                   Object {
@@ -113,84 +134,57 @@ exports[`ThemeContext should change theme based on callback function 1`] = `
                   }
                 }
               >
-                <ThemedComponent
-                  style={
-                    Object {
-                      "backgroundColor": "#fafafa",
-                      "padding": 8,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#fafafa",
-                        "padding": 8,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                <Body1>
+                  <ThemedComponent>
+                    <Component
+                      styles={
                         Object {
-                          "backgroundColor": "#fafafa",
-                          "padding": 8,
+                          "root": Object {
+                            "color": "rgba(0, 0, 0, 0.87)",
+                            "fontFamily": undefined,
+                            "fontSize": 16,
+                            "fontWeight": "400",
+                          },
                         }
                       }
                     >
-                      <Body1>
-                        <ThemedComponent>
-                          <Component
-                            styles={
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                              "fontFamily": undefined,
+                              "fontSize": 16,
+                              "fontWeight": "400",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
                               Object {
-                                "root": Object {
-                                  "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": undefined,
-                                  "fontSize": 16,
-                                  "fontWeight": "400",
-                                },
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": undefined,
-                                    "fontSize": 16,
-                                    "fontWeight": "400",
-                                  },
-                                  undefined,
-                                ]
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": undefined,
-                                      "fontSize": 16,
-                                      "fontWeight": "400",
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              >
-                                BlueBase Light
-                              </Text>
-                            </Text>
-                          </Component>
-                        </ThemedComponent>
-                      </Body1>
-                    </View>
-                  </View>
-                </ThemedComponent>
+                                "color": "rgba(0, 0, 0, 0.87)",
+                                "fontFamily": undefined,
+                                "fontSize": 16,
+                                "fontWeight": "400",
+                              },
+                              undefined,
+                            ]
+                          }
+                        >
+                          BlueBase Light
+                        </Text>
+                      </Text>
+                    </Component>
+                  </ThemedComponent>
+                </Body1>
               </View>
-            </ThemeDemo>
-          </SystemApp>
-        </ThemedComponent>
-      </SystemApp>
+            </View>
+          </ThemedComponent>
+        </View>
+      </ThemeDemo>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>
@@ -200,107 +194,128 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <SystemApp>
-        <ThemedComponent>
-          <SystemApp>
-            <ThemePicker>
-              <Picker
-                mode="dialog"
-                onValueChange={[Function]}
-                selectedValue="bluebase-dark"
+      <ThemePicker>
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue="bluebase-dark"
+          style={
+            Object {
+              "width": 150,
+            }
+          }
+        >
+          <PickerIOS
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="bluebase-dark"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "width": 150,
+                }
+              }
+            >
+              <View
                 style={
                   Object {
                     "width": 150,
                   }
                 }
               >
-                <PickerIOS
-                  mode="dialog"
-                  onValueChange={[Function]}
-                  selectedValue="bluebase-dark"
+                <_class
+                  items={
+                    Array [
+                      Object {
+                        "label": "BlueBase Light",
+                        "textColor": undefined,
+                        "value": "bluebase-light",
+                      },
+                      Object {
+                        "label": "BlueBase Dark",
+                        "textColor": undefined,
+                        "value": "bluebase-dark",
+                      },
+                    ]
+                  }
+                  onChange={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  selectedIndex={1}
                   style={
-                    Object {
-                      "width": 150,
-                    }
+                    Array [
+                      Object {
+                        "height": 216,
+                      },
+                      undefined,
+                    ]
                   }
                 >
-                  <View
-                    style={
-                      Object {
-                        "width": 150,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                  <RCTPicker
+                    items={
+                      Array [
                         Object {
-                          "width": 150,
-                        }
-                      }
-                    >
-                      <_class
-                        items={
-                          Array [
-                            Object {
-                              "label": "BlueBase Light",
-                              "textColor": undefined,
-                              "value": "bluebase-light",
-                            },
-                            Object {
-                              "label": "BlueBase Dark",
-                              "textColor": undefined,
-                              "value": "bluebase-dark",
-                            },
-                          ]
-                        }
-                        onChange={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        selectedIndex={1}
-                        style={
-                          Array [
-                            Object {
-                              "height": 216,
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <RCTPicker
-                          items={
-                            Array [
-                              Object {
-                                "label": "BlueBase Light",
-                                "textColor": undefined,
-                                "value": "bluebase-light",
-                              },
-                              Object {
-                                "label": "BlueBase Dark",
-                                "textColor": undefined,
-                                "value": "bluebase-dark",
-                              },
-                            ]
-                          }
-                          onChange={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          selectedIndex={1}
-                          style={
-                            Array [
-                              Object {
-                                "height": 216,
-                              },
-                              undefined,
-                            ]
-                          }
-                        />
-                      </_class>
-                    </View>
-                  </View>
-                </PickerIOS>
-              </Picker>
-            </ThemePicker>
-            <ThemeDemo>
+                          "label": "BlueBase Light",
+                          "textColor": undefined,
+                          "value": "bluebase-light",
+                        },
+                        Object {
+                          "label": "BlueBase Dark",
+                          "textColor": undefined,
+                          "value": "bluebase-dark",
+                        },
+                      ]
+                    }
+                    onChange={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    selectedIndex={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 216,
+                        },
+                        undefined,
+                      ]
+                    }
+                  />
+                </_class>
+              </View>
+            </View>
+          </PickerIOS>
+        </Picker>
+      </ThemePicker>
+      <ThemeDemo>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#303030",
+              "padding": 8,
+            }
+          }
+        >
+          <ThemedComponent
+            style={
+              Object {
+                "backgroundColor": "#303030",
+                "padding": 8,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#303030",
+                  "padding": 8,
+                }
+              }
+            >
               <View
                 style={
                   Object {
@@ -309,84 +324,57 @@ exports[`ThemeContext should change theme based on callback function 2`] = `
                   }
                 }
               >
-                <ThemedComponent
-                  style={
-                    Object {
-                      "backgroundColor": "#303030",
-                      "padding": 8,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#303030",
-                        "padding": 8,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                <Body1>
+                  <ThemedComponent>
+                    <Component
+                      styles={
                         Object {
-                          "backgroundColor": "#303030",
-                          "padding": 8,
+                          "root": Object {
+                            "color": "#ffffff",
+                            "fontFamily": undefined,
+                            "fontSize": 16,
+                            "fontWeight": "400",
+                          },
                         }
                       }
                     >
-                      <Body1>
-                        <ThemedComponent>
-                          <Component
-                            styles={
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": undefined,
+                              "fontSize": 16,
+                              "fontWeight": "400",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
                               Object {
-                                "root": Object {
-                                  "color": "#ffffff",
-                                  "fontFamily": undefined,
-                                  "fontSize": 16,
-                                  "fontWeight": "400",
-                                },
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#ffffff",
-                                    "fontFamily": undefined,
-                                    "fontSize": 16,
-                                    "fontWeight": "400",
-                                  },
-                                  undefined,
-                                ]
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#ffffff",
-                                      "fontFamily": undefined,
-                                      "fontSize": 16,
-                                      "fontWeight": "400",
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              >
-                                BlueBase Dark
-                              </Text>
-                            </Text>
-                          </Component>
-                        </ThemedComponent>
-                      </Body1>
-                    </View>
-                  </View>
-                </ThemedComponent>
+                                "color": "#ffffff",
+                                "fontFamily": undefined,
+                                "fontSize": 16,
+                                "fontWeight": "400",
+                              },
+                              undefined,
+                            ]
+                          }
+                        >
+                          BlueBase Dark
+                        </Text>
+                      </Text>
+                    </Component>
+                  </ThemedComponent>
+                </Body1>
               </View>
-            </ThemeDemo>
-          </SystemApp>
-        </ThemedComponent>
-      </SystemApp>
+            </View>
+          </ThemedComponent>
+        </View>
+      </ThemeDemo>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>
@@ -396,22 +384,43 @@ exports[`ThemeContext should override a theme 1`] = `
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <SystemApp>
-        <ThemedComponent>
-          <SystemApp>
-            <ThemeProvider
-              overrides={
+      <ThemeProvider
+        overrides={
+          Object {
+            "palette": Object {
+              "background": Object {
+                "default": "red",
+              },
+            },
+          }
+        }
+        theme="bluebase-dark"
+      >
+        <ThemeDemo>
+          <View
+            style={
+              Object {
+                "backgroundColor": "red",
+                "padding": 8,
+              }
+            }
+          >
+            <ThemedComponent
+              style={
                 Object {
-                  "palette": Object {
-                    "background": Object {
-                      "default": "red",
-                    },
-                  },
+                  "backgroundColor": "red",
+                  "padding": 8,
                 }
               }
-              theme="bluebase-dark"
             >
-              <ThemeDemo>
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "red",
+                    "padding": 8,
+                  }
+                }
+              >
                 <View
                   style={
                     Object {
@@ -420,85 +429,58 @@ exports[`ThemeContext should override a theme 1`] = `
                     }
                   }
                 >
-                  <ThemedComponent
-                    style={
-                      Object {
-                        "backgroundColor": "red",
-                        "padding": 8,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        Object {
-                          "backgroundColor": "red",
-                          "padding": 8,
-                        }
-                      }
-                    >
-                      <View
-                        style={
+                  <Body1>
+                    <ThemedComponent>
+                      <Component
+                        styles={
                           Object {
-                            "backgroundColor": "red",
-                            "padding": 8,
+                            "root": Object {
+                              "color": "#ffffff",
+                              "fontFamily": undefined,
+                              "fontSize": 16,
+                              "fontWeight": "400",
+                            },
                           }
                         }
                       >
-                        <Body1>
-                          <ThemedComponent>
-                            <Component
-                              styles={
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#ffffff",
+                                "fontFamily": undefined,
+                                "fontSize": 16,
+                                "fontWeight": "400",
+                              },
+                              undefined,
+                            ]
+                          }
+                        >
+                          <Text
+                            style={
+                              Array [
                                 Object {
-                                  "root": Object {
-                                    "color": "#ffffff",
-                                    "fontFamily": undefined,
-                                    "fontSize": 16,
-                                    "fontWeight": "400",
-                                  },
-                                }
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#ffffff",
-                                      "fontFamily": undefined,
-                                      "fontSize": 16,
-                                      "fontWeight": "400",
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "#ffffff",
-                                        "fontFamily": undefined,
-                                        "fontSize": 16,
-                                        "fontWeight": "400",
-                                      },
-                                      undefined,
-                                    ]
-                                  }
-                                >
-                                  BlueBase Dark
-                                </Text>
-                              </Text>
-                            </Component>
-                          </ThemedComponent>
-                        </Body1>
-                      </View>
-                    </View>
-                  </ThemedComponent>
+                                  "color": "#ffffff",
+                                  "fontFamily": undefined,
+                                  "fontSize": 16,
+                                  "fontWeight": "400",
+                                },
+                                undefined,
+                              ]
+                            }
+                          >
+                            BlueBase Dark
+                          </Text>
+                        </Text>
+                      </Component>
+                    </ThemedComponent>
+                  </Body1>
                 </View>
-              </ThemeDemo>
-            </ThemeProvider>
-          </SystemApp>
-        </ThemedComponent>
-      </SystemApp>
+              </View>
+            </ThemedComponent>
+          </View>
+        </ThemeDemo>
+      </ThemeProvider>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>
@@ -562,107 +544,128 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <SystemApp>
-        <ThemedComponent>
-          <SystemApp>
-            <ThemePicker>
-              <Picker
-                mode="dialog"
-                onValueChange={[Function]}
-                selectedValue="bluebase-light"
+      <ThemePicker>
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue="bluebase-light"
+          style={
+            Object {
+              "width": 150,
+            }
+          }
+        >
+          <PickerIOS
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="bluebase-light"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "width": 150,
+                }
+              }
+            >
+              <View
                 style={
                   Object {
                     "width": 150,
                   }
                 }
               >
-                <PickerIOS
-                  mode="dialog"
-                  onValueChange={[Function]}
-                  selectedValue="bluebase-light"
+                <_class
+                  items={
+                    Array [
+                      Object {
+                        "label": "BlueBase Light",
+                        "textColor": undefined,
+                        "value": "bluebase-light",
+                      },
+                      Object {
+                        "label": "BlueBase Dark",
+                        "textColor": undefined,
+                        "value": "bluebase-dark",
+                      },
+                    ]
+                  }
+                  onChange={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  selectedIndex={0}
                   style={
-                    Object {
-                      "width": 150,
-                    }
+                    Array [
+                      Object {
+                        "height": 216,
+                      },
+                      undefined,
+                    ]
                   }
                 >
-                  <View
-                    style={
-                      Object {
-                        "width": 150,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                  <RCTPicker
+                    items={
+                      Array [
                         Object {
-                          "width": 150,
-                        }
-                      }
-                    >
-                      <_class
-                        items={
-                          Array [
-                            Object {
-                              "label": "BlueBase Light",
-                              "textColor": undefined,
-                              "value": "bluebase-light",
-                            },
-                            Object {
-                              "label": "BlueBase Dark",
-                              "textColor": undefined,
-                              "value": "bluebase-dark",
-                            },
-                          ]
-                        }
-                        onChange={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        selectedIndex={0}
-                        style={
-                          Array [
-                            Object {
-                              "height": 216,
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <RCTPicker
-                          items={
-                            Array [
-                              Object {
-                                "label": "BlueBase Light",
-                                "textColor": undefined,
-                                "value": "bluebase-light",
-                              },
-                              Object {
-                                "label": "BlueBase Dark",
-                                "textColor": undefined,
-                                "value": "bluebase-dark",
-                              },
-                            ]
-                          }
-                          onChange={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          selectedIndex={0}
-                          style={
-                            Array [
-                              Object {
-                                "height": 216,
-                              },
-                              undefined,
-                            ]
-                          }
-                        />
-                      </_class>
-                    </View>
-                  </View>
-                </PickerIOS>
-              </Picker>
-            </ThemePicker>
-            <ThemeDemo>
+                          "label": "BlueBase Light",
+                          "textColor": undefined,
+                          "value": "bluebase-light",
+                        },
+                        Object {
+                          "label": "BlueBase Dark",
+                          "textColor": undefined,
+                          "value": "bluebase-dark",
+                        },
+                      ]
+                    }
+                    onChange={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    selectedIndex={0}
+                    style={
+                      Array [
+                        Object {
+                          "height": 216,
+                        },
+                        undefined,
+                      ]
+                    }
+                  />
+                </_class>
+              </View>
+            </View>
+          </PickerIOS>
+        </Picker>
+      </ThemePicker>
+      <ThemeDemo>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#fafafa",
+              "padding": 8,
+            }
+          }
+        >
+          <ThemedComponent
+            style={
+              Object {
+                "backgroundColor": "#fafafa",
+                "padding": 8,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#fafafa",
+                  "padding": 8,
+                }
+              }
+            >
               <View
                 style={
                   Object {
@@ -671,84 +674,57 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
                   }
                 }
               >
-                <ThemedComponent
-                  style={
-                    Object {
-                      "backgroundColor": "#fafafa",
-                      "padding": 8,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#fafafa",
-                        "padding": 8,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                <Body1>
+                  <ThemedComponent>
+                    <Component
+                      styles={
                         Object {
-                          "backgroundColor": "#fafafa",
-                          "padding": 8,
+                          "root": Object {
+                            "color": "rgba(0, 0, 0, 0.87)",
+                            "fontFamily": undefined,
+                            "fontSize": 16,
+                            "fontWeight": "400",
+                          },
                         }
                       }
                     >
-                      <Body1>
-                        <ThemedComponent>
-                          <Component
-                            styles={
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                              "fontFamily": undefined,
+                              "fontSize": 16,
+                              "fontWeight": "400",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
                               Object {
-                                "root": Object {
-                                  "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": undefined,
-                                  "fontSize": 16,
-                                  "fontWeight": "400",
-                                },
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": undefined,
-                                    "fontSize": 16,
-                                    "fontWeight": "400",
-                                  },
-                                  undefined,
-                                ]
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": undefined,
-                                      "fontSize": 16,
-                                      "fontWeight": "400",
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              >
-                                BlueBase Light
-                              </Text>
-                            </Text>
-                          </Component>
-                        </ThemedComponent>
-                      </Body1>
-                    </View>
-                  </View>
-                </ThemedComponent>
+                                "color": "rgba(0, 0, 0, 0.87)",
+                                "fontFamily": undefined,
+                                "fontSize": 16,
+                                "fontWeight": "400",
+                              },
+                              undefined,
+                            ]
+                          }
+                        >
+                          BlueBase Light
+                        </Text>
+                      </Text>
+                    </Component>
+                  </ThemedComponent>
+                </Body1>
               </View>
-            </ThemeDemo>
-          </SystemApp>
-        </ThemedComponent>
-      </SystemApp>
+            </View>
+          </ThemedComponent>
+        </View>
+      </ThemeDemo>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>
@@ -765,7 +741,466 @@ exports[`ThemeContext should throw an error when changing theme based to unknown
         <ThemedComponent
           error={[Error: Could not change theme. Reason: Theme with the key "does-not-exist" does not exist.]}
           retry={[Function]}
-        />
+        >
+          <ErrorState
+            error={[Error: Could not change theme. Reason: Theme with the key "does-not-exist" does not exist.]}
+            retry={[Function]}
+          >
+            <ComponentState
+              actionOnPress={[Function]}
+              actionTitle="Retry"
+              description="Could not change theme. Reason: Theme with the key \\"does-not-exist\\" does not exist."
+              title="Error"
+            >
+              <ThemedComponent
+                actionOnPress={[Function]}
+                actionTitle="Retry"
+                description="Could not change theme. Reason: Theme with the key \\"does-not-exist\\" does not exist."
+                title="Error"
+              >
+                <ComponentState
+                  actionOnPress={[Function]}
+                  actionTitle="Retry"
+                  description="Could not change theme. Reason: Theme with the key \\"does-not-exist\\" does not exist."
+                  styles={
+                    Object {
+                      "actionRoot": Object {
+                        "marginTop": 8,
+                      },
+                      "description": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
+                      "image": Object {
+                        "height": 250,
+                        "width": 250,
+                      },
+                      "imageRoot": Object {
+                        "marginBottom": 16,
+                      },
+                      "root": Object {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      },
+                      "title": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
+                    }
+                  }
+                  title="Error"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <ThemedComponent
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "flex": 1,
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "justifyContent": "center",
+                            }
+                          }
+                        >
+                          <H6
+                            style={
+                              Object {
+                                "marginBottom": 8,
+                                "textAlign": "center",
+                              }
+                            }
+                          >
+                            <ThemedComponent
+                              style={
+                                Object {
+                                  "marginBottom": 8,
+                                  "textAlign": "center",
+                                }
+                              }
+                            >
+                              <Component
+                                style={
+                                  Object {
+                                    "marginBottom": 8,
+                                    "textAlign": "center",
+                                  }
+                                }
+                                styles={
+                                  Object {
+                                    "root": Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": undefined,
+                                      "fontSize": 20,
+                                      "fontWeight": "500",
+                                    },
+                                  }
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "rgba(0, 0, 0, 0.87)",
+                                        "fontFamily": undefined,
+                                        "fontSize": 20,
+                                        "fontWeight": "500",
+                                      },
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "rgba(0, 0, 0, 0.87)",
+                                          "fontFamily": undefined,
+                                          "fontSize": 20,
+                                          "fontWeight": "500",
+                                        },
+                                        Object {
+                                          "marginBottom": 8,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Error
+                                  </Text>
+                                </Text>
+                              </Component>
+                            </ThemedComponent>
+                          </H6>
+                          <Body2
+                            style={
+                              Object {
+                                "marginBottom": 8,
+                                "textAlign": "center",
+                              }
+                            }
+                          >
+                            <ThemedComponent
+                              style={
+                                Object {
+                                  "marginBottom": 8,
+                                  "textAlign": "center",
+                                }
+                              }
+                            >
+                              <Component
+                                style={
+                                  Object {
+                                    "marginBottom": 8,
+                                    "textAlign": "center",
+                                  }
+                                }
+                                styles={
+                                  Object {
+                                    "root": Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": undefined,
+                                      "fontSize": 14,
+                                      "fontWeight": "400",
+                                    },
+                                  }
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "rgba(0, 0, 0, 0.87)",
+                                        "fontFamily": undefined,
+                                        "fontSize": 14,
+                                        "fontWeight": "400",
+                                      },
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "rgba(0, 0, 0, 0.87)",
+                                          "fontFamily": undefined,
+                                          "fontSize": 14,
+                                          "fontWeight": "400",
+                                        },
+                                        Object {
+                                          "marginBottom": 8,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Could not change theme. Reason: Theme with the key "does-not-exist" does not exist.
+                                  </Text>
+                                </Text>
+                              </Component>
+                            </ThemedComponent>
+                          </Body2>
+                          <View
+                            style={
+                              Object {
+                                "marginTop": 8,
+                              }
+                            }
+                          >
+                            <ThemedComponent
+                              style={
+                                Object {
+                                  "marginTop": 8,
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Object {
+                                    "marginTop": 8,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "marginTop": 8,
+                                    }
+                                  }
+                                >
+                                  <Button
+                                    color="primary"
+                                    onPress={[Function]}
+                                  >
+                                    <ThemedComponent
+                                      color="primary"
+                                      onPress={[Function]}
+                                    >
+                                      <Button
+                                        color="primary"
+                                        onPress={[Function]}
+                                        styles={
+                                          Object {
+                                            "default": Object {
+                                              "backgroundColor": "#fafafa",
+                                            },
+                                            "defaultText": Object {},
+                                            "fullWidth": Object {
+                                              "alignSelf": "stretch",
+                                            },
+                                            "link": Object {},
+                                            "linkText": Object {},
+                                            "primary": Object {
+                                              "backgroundColor": "#3f51b5",
+                                            },
+                                            "primaryText": Object {
+                                              "color": "#fff",
+                                            },
+                                            "root": Object {
+                                              "alignSelf": "flex-start",
+                                              "borderRadius": 4,
+                                              "paddingBottom": 8,
+                                              "paddingLeft": 16,
+                                              "paddingRight": 16,
+                                              "paddingTop": 8,
+                                            },
+                                            "secondary": Object {
+                                              "backgroundColor": "#f50057",
+                                            },
+                                            "secondaryText": Object {
+                                              "color": "#fff",
+                                            },
+                                            "text": Object {
+                                              "color": "rgba(0, 0, 0, 0.87)",
+                                              "fontFamily": undefined,
+                                              "fontSize": 14,
+                                              "fontWeight": "500",
+                                              "textAlign": "center",
+                                              "textTransform": "uppercase",
+                                            },
+                                          }
+                                        }
+                                      >
+                                        <TouchableOpacity
+                                          accessibilityRole="button"
+                                          activeOpacity={0.2}
+                                          onPress={[Function]}
+                                        >
+                                          <AnimatedComponent
+                                            accessibilityRole="button"
+                                            accessible={true}
+                                            isTVSelectable={true}
+                                            onResponderGrant={[Function]}
+                                            onResponderMove={[Function]}
+                                            onResponderRelease={[Function]}
+                                            onResponderTerminate={[Function]}
+                                            onResponderTerminationRequest={[Function]}
+                                            onStartShouldSetResponder={[Function]}
+                                            style={
+                                              Array [
+                                                undefined,
+                                                Object {
+                                                  "opacity": 1,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <View
+                                              accessibilityRole="button"
+                                              accessible={true}
+                                              isTVSelectable={true}
+                                              onResponderGrant={[Function]}
+                                              onResponderMove={[Function]}
+                                              onResponderRelease={[Function]}
+                                              onResponderTerminate={[Function]}
+                                              onResponderTerminationRequest={[Function]}
+                                              onStartShouldSetResponder={[Function]}
+                                              style={
+                                                Object {
+                                                  "opacity": 1,
+                                                }
+                                              }
+                                            >
+                                              <View
+                                                accessibilityRole="button"
+                                                accessible={true}
+                                                isTVSelectable={true}
+                                                onResponderGrant={[Function]}
+                                                onResponderMove={[Function]}
+                                                onResponderRelease={[Function]}
+                                                onResponderTerminate={[Function]}
+                                                onResponderTerminationRequest={[Function]}
+                                                onStartShouldSetResponder={[Function]}
+                                                style={
+                                                  Object {
+                                                    "opacity": 1,
+                                                  }
+                                                }
+                                              >
+                                                <View
+                                                  style={
+                                                    Array [
+                                                      Object {
+                                                        "alignSelf": "flex-start",
+                                                        "borderRadius": 4,
+                                                        "paddingBottom": 8,
+                                                        "paddingLeft": 16,
+                                                        "paddingRight": 16,
+                                                        "paddingTop": 8,
+                                                      },
+                                                      Object {
+                                                        "backgroundColor": "#3f51b5",
+                                                      },
+                                                    ]
+                                                  }
+                                                >
+                                                  <View
+                                                    style={
+                                                      Array [
+                                                        Object {
+                                                          "alignSelf": "flex-start",
+                                                          "borderRadius": 4,
+                                                          "paddingBottom": 8,
+                                                          "paddingLeft": 16,
+                                                          "paddingRight": 16,
+                                                          "paddingTop": 8,
+                                                        },
+                                                        Object {
+                                                          "backgroundColor": "#3f51b5",
+                                                        },
+                                                      ]
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": undefined,
+                                                            "fontSize": 14,
+                                                            "fontWeight": "500",
+                                                            "textAlign": "center",
+                                                            "textTransform": "uppercase",
+                                                          },
+                                                          Object {
+                                                            "color": "#fff",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": undefined,
+                                                              "fontSize": 14,
+                                                              "fontWeight": "500",
+                                                              "textAlign": "center",
+                                                              "textTransform": "uppercase",
+                                                            },
+                                                            Object {
+                                                              "color": "#fff",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        Retry
+                                                      </Text>
+                                                    </Text>
+                                                  </View>
+                                                </View>
+                                              </View>
+                                            </View>
+                                          </AnimatedComponent>
+                                        </TouchableOpacity>
+                                      </Button>
+                                    </ThemedComponent>
+                                  </Button>
+                                </View>
+                              </View>
+                            </ThemedComponent>
+                          </View>
+                        </View>
+                      </View>
+                    </ThemedComponent>
+                  </View>
+                </ComponentState>
+              </ThemedComponent>
+            </ComponentState>
+          </ErrorState>
+        </ThemedComponent>
       </ErrorState>
     </ThemeProvider>
   </BlueBaseRoot>
@@ -776,107 +1211,128 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <SystemApp>
-        <ThemedComponent>
-          <SystemApp>
-            <ThemePicker>
-              <Picker
-                mode="dialog"
-                onValueChange={[Function]}
-                selectedValue="bluebase-light"
+      <ThemePicker>
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue="bluebase-light"
+          style={
+            Object {
+              "width": 150,
+            }
+          }
+        >
+          <PickerIOS
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="bluebase-light"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "width": 150,
+                }
+              }
+            >
+              <View
                 style={
                   Object {
                     "width": 150,
                   }
                 }
               >
-                <PickerIOS
-                  mode="dialog"
-                  onValueChange={[Function]}
-                  selectedValue="bluebase-light"
+                <_class
+                  items={
+                    Array [
+                      Object {
+                        "label": "BlueBase Light",
+                        "textColor": undefined,
+                        "value": "bluebase-light",
+                      },
+                      Object {
+                        "label": "BlueBase Dark",
+                        "textColor": undefined,
+                        "value": "bluebase-dark",
+                      },
+                    ]
+                  }
+                  onChange={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  selectedIndex={0}
                   style={
-                    Object {
-                      "width": 150,
-                    }
+                    Array [
+                      Object {
+                        "height": 216,
+                      },
+                      undefined,
+                    ]
                   }
                 >
-                  <View
-                    style={
-                      Object {
-                        "width": 150,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                  <RCTPicker
+                    items={
+                      Array [
                         Object {
-                          "width": 150,
-                        }
-                      }
-                    >
-                      <_class
-                        items={
-                          Array [
-                            Object {
-                              "label": "BlueBase Light",
-                              "textColor": undefined,
-                              "value": "bluebase-light",
-                            },
-                            Object {
-                              "label": "BlueBase Dark",
-                              "textColor": undefined,
-                              "value": "bluebase-dark",
-                            },
-                          ]
-                        }
-                        onChange={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        selectedIndex={0}
-                        style={
-                          Array [
-                            Object {
-                              "height": 216,
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <RCTPicker
-                          items={
-                            Array [
-                              Object {
-                                "label": "BlueBase Light",
-                                "textColor": undefined,
-                                "value": "bluebase-light",
-                              },
-                              Object {
-                                "label": "BlueBase Dark",
-                                "textColor": undefined,
-                                "value": "bluebase-dark",
-                              },
-                            ]
-                          }
-                          onChange={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          selectedIndex={0}
-                          style={
-                            Array [
-                              Object {
-                                "height": 216,
-                              },
-                              undefined,
-                            ]
-                          }
-                        />
-                      </_class>
-                    </View>
-                  </View>
-                </PickerIOS>
-              </Picker>
-            </ThemePicker>
-            <ThemeDemo>
+                          "label": "BlueBase Light",
+                          "textColor": undefined,
+                          "value": "bluebase-light",
+                        },
+                        Object {
+                          "label": "BlueBase Dark",
+                          "textColor": undefined,
+                          "value": "bluebase-dark",
+                        },
+                      ]
+                    }
+                    onChange={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    selectedIndex={0}
+                    style={
+                      Array [
+                        Object {
+                          "height": 216,
+                        },
+                        undefined,
+                      ]
+                    }
+                  />
+                </_class>
+              </View>
+            </View>
+          </PickerIOS>
+        </Picker>
+      </ThemePicker>
+      <ThemeDemo>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#fafafa",
+              "padding": 8,
+            }
+          }
+        >
+          <ThemedComponent
+            style={
+              Object {
+                "backgroundColor": "#fafafa",
+                "padding": 8,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#fafafa",
+                  "padding": 8,
+                }
+              }
+            >
               <View
                 style={
                   Object {
@@ -885,84 +1341,57 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
                   }
                 }
               >
-                <ThemedComponent
-                  style={
-                    Object {
-                      "backgroundColor": "#fafafa",
-                      "padding": 8,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#fafafa",
-                        "padding": 8,
-                      }
-                    }
-                  >
-                    <View
-                      style={
+                <Body1>
+                  <ThemedComponent>
+                    <Component
+                      styles={
                         Object {
-                          "backgroundColor": "#fafafa",
-                          "padding": 8,
+                          "root": Object {
+                            "color": "rgba(0, 0, 0, 0.87)",
+                            "fontFamily": undefined,
+                            "fontSize": 16,
+                            "fontWeight": "400",
+                          },
                         }
                       }
                     >
-                      <Body1>
-                        <ThemedComponent>
-                          <Component
-                            styles={
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                              "fontFamily": undefined,
+                              "fontSize": 16,
+                              "fontWeight": "400",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
                               Object {
-                                "root": Object {
-                                  "color": "rgba(0, 0, 0, 0.87)",
-                                  "fontFamily": undefined,
-                                  "fontSize": 16,
-                                  "fontWeight": "400",
-                                },
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": undefined,
-                                    "fontSize": 16,
-                                    "fontWeight": "400",
-                                  },
-                                  undefined,
-                                ]
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": undefined,
-                                      "fontSize": 16,
-                                      "fontWeight": "400",
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              >
-                                BlueBase Light
-                              </Text>
-                            </Text>
-                          </Component>
-                        </ThemedComponent>
-                      </Body1>
-                    </View>
-                  </View>
-                </ThemedComponent>
+                                "color": "rgba(0, 0, 0, 0.87)",
+                                "fontFamily": undefined,
+                                "fontSize": 16,
+                                "fontWeight": "400",
+                              },
+                              undefined,
+                            ]
+                          }
+                        >
+                          BlueBase Light
+                        </Text>
+                      </Text>
+                    </Component>
+                  </ThemedComponent>
+                </Body1>
               </View>
-            </ThemeDemo>
-          </SystemApp>
-        </ThemedComponent>
-      </SystemApp>
+            </View>
+          </ThemedComponent>
+        </View>
+      </ThemeDemo>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>
@@ -977,7 +1406,238 @@ exports[`ThemeContext should throw render error state if state.theme is undefine
       >
         <ThemedComponent
           error={[Error: Could not load theme.]}
-        />
+        >
+          <ErrorState
+            error={[Error: Could not load theme.]}
+          >
+            <ComponentState
+              description="Could not load theme."
+              title="Error"
+            >
+              <ThemedComponent
+                description="Could not load theme."
+                title="Error"
+              >
+                <ComponentState
+                  description="Could not load theme."
+                  styles={
+                    Object {
+                      "actionRoot": Object {
+                        "marginTop": 8,
+                      },
+                      "description": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
+                      "image": Object {
+                        "height": 250,
+                        "width": 250,
+                      },
+                      "imageRoot": Object {
+                        "marginBottom": 16,
+                      },
+                      "root": Object {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      },
+                      "title": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
+                    }
+                  }
+                  title="Error"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <ThemedComponent
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "flex": 1,
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "justifyContent": "center",
+                            }
+                          }
+                        >
+                          <H6
+                            style={
+                              Object {
+                                "marginBottom": 8,
+                                "textAlign": "center",
+                              }
+                            }
+                          >
+                            <ThemedComponent
+                              style={
+                                Object {
+                                  "marginBottom": 8,
+                                  "textAlign": "center",
+                                }
+                              }
+                            >
+                              <Component
+                                style={
+                                  Object {
+                                    "marginBottom": 8,
+                                    "textAlign": "center",
+                                  }
+                                }
+                                styles={
+                                  Object {
+                                    "root": Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": undefined,
+                                      "fontSize": 20,
+                                      "fontWeight": "500",
+                                    },
+                                  }
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "rgba(0, 0, 0, 0.87)",
+                                        "fontFamily": undefined,
+                                        "fontSize": 20,
+                                        "fontWeight": "500",
+                                      },
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "rgba(0, 0, 0, 0.87)",
+                                          "fontFamily": undefined,
+                                          "fontSize": 20,
+                                          "fontWeight": "500",
+                                        },
+                                        Object {
+                                          "marginBottom": 8,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Error
+                                  </Text>
+                                </Text>
+                              </Component>
+                            </ThemedComponent>
+                          </H6>
+                          <Body2
+                            style={
+                              Object {
+                                "marginBottom": 8,
+                                "textAlign": "center",
+                              }
+                            }
+                          >
+                            <ThemedComponent
+                              style={
+                                Object {
+                                  "marginBottom": 8,
+                                  "textAlign": "center",
+                                }
+                              }
+                            >
+                              <Component
+                                style={
+                                  Object {
+                                    "marginBottom": 8,
+                                    "textAlign": "center",
+                                  }
+                                }
+                                styles={
+                                  Object {
+                                    "root": Object {
+                                      "color": "rgba(0, 0, 0, 0.87)",
+                                      "fontFamily": undefined,
+                                      "fontSize": 14,
+                                      "fontWeight": "400",
+                                    },
+                                  }
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "rgba(0, 0, 0, 0.87)",
+                                        "fontFamily": undefined,
+                                        "fontSize": 14,
+                                        "fontWeight": "400",
+                                      },
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "rgba(0, 0, 0, 0.87)",
+                                          "fontFamily": undefined,
+                                          "fontSize": 14,
+                                          "fontWeight": "400",
+                                        },
+                                        Object {
+                                          "marginBottom": 8,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Could not load theme.
+                                  </Text>
+                                </Text>
+                              </Component>
+                            </ThemedComponent>
+                          </Body2>
+                        </View>
+                      </View>
+                    </ThemedComponent>
+                  </View>
+                </ComponentState>
+              </ThemedComponent>
+            </ComponentState>
+          </ErrorState>
+        </ThemedComponent>
       </ErrorState>
     </ThemeProvider>
   </BlueBaseRoot>

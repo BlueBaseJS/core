@@ -31,9 +31,11 @@ export {
 	HoverObserverProps,
 	JsonSchemaProps,
 	LoadingStateProps,
+	NavigationOptions,
 	NavigationProviderProps,
 	NavigatorProps,
 	PluginIconProps,
+	RouteConfig,
 	StatefulComponentProps,
 	WaitObserverProps,
 } from './components';

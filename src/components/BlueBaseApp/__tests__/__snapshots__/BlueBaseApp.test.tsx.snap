@@ -34,84 +34,168 @@ exports[`BlueBaseApp should render BlueBaseApp 2`] = `
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <SystemApp>
-        <ThemedComponent>
-          <SystemApp>
-            <View>
-              <ThemedComponent>
-                <View>
-                  <View>
-                    <ThemedComponent>
-                      <Component />
-                    </ThemedComponent>
-                    <ThemedComponent>
-                      <SystemContent>
-                        <View>
-                          <ThemedComponent>
-                            <View>
-                              <View>
-                                <Text>
-                                  <ThemedComponent>
-                                    <Component
-                                      styles={
-                                        Object {
-                                          "root": Object {
-                                            "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": undefined,
-                                            "fontSize": 16,
-                                            "fontWeight": "400",
-                                          },
-                                        }
-                                      }
-                                    >
-                                      <Text
-                                        style={
-                                          Array [
-                                            Object {
-                                              "color": "rgba(0, 0, 0, 0.87)",
-                                              "fontFamily": undefined,
-                                              "fontSize": 16,
-                                              "fontWeight": "400",
-                                            },
-                                            undefined,
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "rgba(0, 0, 0, 0.87)",
-                                                "fontFamily": undefined,
-                                                "fontSize": 16,
-                                                "fontWeight": "400",
-                                              },
-                                              undefined,
-                                            ]
-                                          }
-                                        >
-                                          🚀 BlueBase System Content!
-                                        </Text>
-                                      </Text>
-                                    </Component>
-                                  </ThemedComponent>
-                                </Text>
+      <ThemedComponent
+        navigator={
+          Object {
+            "initialRouteName": "Root",
+            "routes": Array [
+              Object {
+                "name": "Root",
+                "path": "",
+                "screen": "SystemApp",
+              },
+            ],
+            "type": "stack",
+          }
+        }
+      >
+        <NavigationProvider
+          navigator={
+            Object {
+              "initialRouteName": "Root",
+              "routes": Array [
+                Object {
+                  "name": "Root",
+                  "path": "",
+                  "screen": "SystemApp",
+                },
+              ],
+              "type": "stack",
+            }
+          }
+        >
+          <ThemedComponent
+            initialRouteName="Root"
+            routes={
+              Array [
+                Object {
+                  "name": "Root",
+                  "path": "",
+                  "screen": "SystemApp",
+                },
+              ]
+            }
+            type="stack"
+          >
+            <Navigator
+              initialRouteName="Root"
+              routes={
+                Array [
+                  Object {
+                    "name": "Root",
+                    "path": "",
+                    "screen": "SystemApp",
+                  },
+                ]
+              }
+              type="stack"
+            >
+              <ThemedComponent
+                key="Root"
+              >
+                <SystemApp
+                  styles={
+                    Object {
+                      "content": Object {
+                        "flex": 1,
+                      },
+                      "footer": Object {},
+                      "header": Object {},
+                      "root": Object {
+                        "flex": 1,
+                      },
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flex": 1,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "flex": 1,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <ThemedComponent
+                        style={Object {}}
+                      >
+                        <Component
+                          style={Object {}}
+                        />
+                      </ThemedComponent>
+                      <ThemedComponent
+                        style={
+                          Object {
+                            "flex": 1,
+                          }
+                        }
+                      >
+                        <Component
+                          style={
+                            Object {
+                              "flex": 1,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "flex": 1,
+                              }
+                            }
+                          >
+                            <ThemedComponent
+                              style={
+                                Object {
+                                  "flex": 1,
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Object {
+                                    "flex": 1,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "flex": 1,
+                                    }
+                                  }
+                                />
                               </View>
-                            </View>
-                          </ThemedComponent>
-                        </View>
-                      </SystemContent>
-                    </ThemedComponent>
-                    <ThemedComponent>
-                      <Component />
-                    </ThemedComponent>
+                            </ThemedComponent>
+                          </View>
+                        </Component>
+                      </ThemedComponent>
+                      <ThemedComponent
+                        style={Object {}}
+                      >
+                        <Component
+                          style={Object {}}
+                        />
+                      </ThemedComponent>
+                    </View>
                   </View>
-                </View>
+                </SystemApp>
               </ThemedComponent>
-            </View>
-          </SystemApp>
-        </ThemedComponent>
-      </SystemApp>
+            </Navigator>
+          </ThemedComponent>
+        </NavigationProvider>
+      </ThemedComponent>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>

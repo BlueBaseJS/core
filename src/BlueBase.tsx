@@ -12,7 +12,6 @@ import {
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
-import { Navigation } from './components/Navigation';
 import React from 'react';
 import { ThemeProvider } from './themes';
 import { renderChildrenWithProps } from './utils';
@@ -76,10 +75,13 @@ export class BlueBase {
 		// 🚀 Boot!
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
-		// const SystemApp = getComponent('SystemApp');
 		// Set View
 		// const SystemApp = this.Components.resolve('SystemApp');
+		// const SystemApp = this.Components.resolve('SystemApp');
 		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
+
+		const NavigationProvider = this.Components.resolve('NavigationProvider');
+		const navigatorConfigs = await this.Hooks.run('bluebase.navigator.root', {});
 
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
@@ -87,7 +89,7 @@ export class BlueBase {
 				{
 					(this.bootOptions.children)
 					? renderChildrenWithProps(this.bootOptions.children, { BB: this })
-					: <Navigation />
+					: <NavigationProvider navigator={navigatorConfigs} />
 				}
 				</ThemeProvider>
 			</BlueBaseProvider>

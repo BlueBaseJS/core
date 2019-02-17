@@ -63,8 +63,8 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 			? Loadable({ loader: () => item.value, loading: ReactLoadableLoading })
 			: (item.value.module as React.ComponentType<any>);
 
-		// Add withStyles HOC
-		rawComponent = applyStyles(item.key, rawComponent, item.styles);
+		// Add applyStyles HOC
+		rawComponent = applyStyles(rawComponent, { name: item.key, styles: item.styles });
 
 		const hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 

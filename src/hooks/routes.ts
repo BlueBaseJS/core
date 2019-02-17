@@ -1,6 +1,8 @@
 import { BlueBase, BootOptions } from '../BlueBase';
 import { HookNestedCollection } from '../registries';
 import { NavigatorProps } from '../components';
+import React from 'react';
+import deepmerge from 'deepmerge';
 
 // tslint:disable:object-literal-sort-keys
 export const routes: HookNestedCollection = {
@@ -9,50 +11,45 @@ export const routes: HookNestedCollection = {
 			key: 'bluebase-navigator-root-internal-default',
 			priority: 5,
 
-			value: async (_bootOptions: BootOptions, _ctx: {}, _BB: BlueBase) => {
+			value: async (inputRoutes: NavigatorProps, _ctx: {}, _BB: BlueBase) => {
 
 				const rootRoutes: NavigatorProps = {
 					type: 'stack',
+					initialRouteName: 'Root',
+					// headerMode: 'none',
+
 					routes: [{
 						name: 'Root',
-						path: '/',
+						path: '',
 						screen: 'SystemApp',
 					}]
 				};
 
-				return rootRoutes;
+				return deepmerge(inputRoutes, rootRoutes);
 
 			},
 		},
 	],
 
 
-	'bluebase.routes.app': [
+	'bluebase.navigator.main': [
 		{
-			key: 'bluebase-routes-app-internal-default',
+			key: 'bluebase-navigator-main-internal-default',
 			priority: 5,
 
 			// tslint:disable-line:object-literal-sort-keys
 			value: async (_bootOptions: BootOptions, _ctx: {}, _BB: BlueBase) => {
 
-				// const rootRoutes = [
-				// 	// Apps
-				// 	{
-				// 		component: 'Noop',
-				// 		name: 'AppsListing',
-				// 		navigator: 'switch',
-				// 		path: '/app',
-				// 		routes: [{
-				// 			component: 'Noop',
-				// 			name: 'SettingsAppRoutes',
-				// 			navigator: 'stack',
-				// 			path: '/app/settings',
-				// 			routes: []
-				// 		}]
-				// 	}
-				// ];
+				const mainRoutes: NavigatorProps = {
+					type: 'stack',
+					routes: [{
+						name: 'App',
+						path: '/app',
+						screen: () => React.createElement('div', { children: 'Hello World' }),
+					}]
+				};
 
-				return [];
+				return mainRoutes;
 
 			},
 		},
