@@ -7,7 +7,11 @@ exports[`ComponentRegistry .resolve method should add an HOC that makes backgrou
       "backgroundColor": "green",
     }
   }
-/>
+>
+  <View>
+    A Button
+  </View>
+</View>
 `;
 
 exports[`ComponentRegistry .resolve method should add an HOC with its arguments that makes background orange 1`] = `
@@ -17,7 +21,11 @@ exports[`ComponentRegistry .resolve method should add an HOC with its arguments 
       "backgroundColor": "orange",
     }
   }
-/>
+>
+  <View>
+    A Button
+  </View>
+</View>
 `;
 
 exports[`ComponentRegistry .resolve method should resolve a Promised component 1`] = `

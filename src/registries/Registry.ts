@@ -1,4 +1,4 @@
-import { getDefiniteModule, makeId } from '../utils';
+import { getDefiniteModule, makeId, isPromise } from '../utils';
 import { BlueBase } from '../BlueBase';
 import isNil from 'lodash.isnil';
 import merge from 'deepmerge';
@@ -96,7 +96,20 @@ export class Registry<
 		const existingItem = this.get(key);
 
 		if (existingItem) {
+
+			let value;
+
+			// If value is a promise, deepmerge messes it up
+			if (isPromise(existingItem.value) || isPromise(item.value)) {
+				value = item.value || existingItem.value;
+			}
+
 			item = merge(existingItem, item) as ItemType;
+
+			if (value) {
+				item.value = value;
+			}
+
 		}
 
 		// Override existing or create an new one
