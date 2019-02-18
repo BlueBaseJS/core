@@ -7,7 +7,11 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
       <ComponentState
         actionTitle="Tap to Create"
         description="Start by creating your first entry."
-        imageSource="https://picsum.photos/200"
+        imageSource={
+          Object {
+            "uri": "https://picsum.photos/200",
+          }
+        }
         styles={
           Object {
             "image": Object {

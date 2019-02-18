@@ -10,7 +10,7 @@ storiesOf('ComponentState', module)
 			<ComponentState
 				title="Looks like your'e new here!"
 				description="Start by creating your first entry."
-				imageSource="https://picsum.photos/200"
+				imageSource={{ uri: 'https://picsum.photos/200' }}
 				styles={{ image: { width: 100, height: 100 } }}
 				actionTitle="Tap to Create"
 			/>
@@ -65,7 +65,7 @@ storiesOf('ComponentState', module)
 
 	.add('Image with source path', () => (
 		<ComponentState
-			imageSource="https://picsum.photos/200/200/?random"
+			imageSource={{ uri: 'https://picsum.photos/200/200/?random' }}
 			styles={{ image: { width: 100, height: 100 } }}
 		/>
 	));
