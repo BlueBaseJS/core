@@ -32,12 +32,11 @@ export interface ThemedComponentProps {
  * @param stylesParam
  */
 export const applyStyles = (
-	Component: ComponentWithDefaultStyles,
 	{ name, styles: stylesParam }: {
 		name?: string,
 		styles?: MaybeThunk<ComponentStyles>
 	} = {}
-)
+) => (Component: ComponentWithDefaultStyles)
 : React.ComponentType<any> =>
 {
 

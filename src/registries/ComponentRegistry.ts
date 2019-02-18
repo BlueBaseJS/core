@@ -26,10 +26,21 @@ export interface ComponentSource {
 }
 
 interface ComponentRegistryItemExtras {
+
+	/** Higher Order Components. BlueBase will wrap the component during resolution */
 	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>;
+
+	/** The source of this component */
 	source: ComponentSource;
+
+	/** Style rules for this component. May also be a thunk. */
 	styles: MaybeThunk<ComponentStyles>;
+
+	/** Is this component's code split? Mean's it's bundle will have to be split. */
 	isAsync: boolean;
+
+	/** Should apply styles and theming to this component? true by default */
+	applyStyles: boolean;
 }
 
 export type ComponentRegistryItem = BlueBaseModuleRegistryItem<React.ComponentType<any>> &
@@ -59,15 +70,24 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 			throw Error(`Could not resolve any of the following components: [${keys.join(', ')}].`);
 		}
 
-		let rawComponent = item.value.isAsync
+		// If component bundle has to be downloaded, wrap into lazy
+		const rawComponent = item.value.isAsync
 			? Loadable({ loader: () => item.value, loading: ReactLoadableLoading })
 			: (item.value.module as React.ComponentType<any>);
 
-		// Add applyStyles HOC
-		rawComponent = applyStyles(rawComponent, { name: item.key, styles: item.styles });
+		// HOCs
+		let hocs = item.hocs;
 
-		const hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
+		// Do we apply styles and theming to this component?
+		if (item.applyStyles === true) {
+			// If yes, then append applyStyles hoc
+			hocs.push([applyStyles, { name: item.key, styles: item.styles }]);
+		}
 
+		// Process delayed HOCs
+		hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
+
+		// Wrap
 		return flowRight([...hocs])(rawComponent);
 	}
 
@@ -129,6 +149,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		const value = getDefiniteBlueBaseModule(partial.value);
 
 		return super.createItem(key, {
+			applyStyles: true,
 			hocs: [],
 			isAsync: value.isAsync,
 			preload: false,
