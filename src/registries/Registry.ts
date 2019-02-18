@@ -1,4 +1,4 @@
-import { getDefiniteModule, makeId, isPromise } from '../utils';
+import { getDefiniteModule, isPromise, makeId } from '../utils';
 import { BlueBase } from '../BlueBase';
 import isNil from 'lodash.isnil';
 import merge from 'deepmerge';

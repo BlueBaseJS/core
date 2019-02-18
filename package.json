@@ -50,7 +50,8 @@
     "storybook:start": "bluerain storybook:start",
     "storybook-native": "bluebase storybook-native:start",
     "storybook": "start-storybook -p 6006 --config-dir ./bluebase/storybook/configs",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "web:start": "bluebase web:start"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -113,6 +114,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
+    "babel-preset-bluebase": "^1.0.0",
     "babel-preset-expo": "^5.0.0",
     "codecov": "^3.0.2",
     "commitizen": "^3.0.4",

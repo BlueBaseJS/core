@@ -1,7 +1,6 @@
 import { BlueBase, BootOptions } from '../BlueBase';
 import { HookNestedCollection } from '../registries';
 import { NavigatorProps } from '../components';
-import React from 'react';
 import deepmerge from 'deepmerge';
 
 // tslint:disable:object-literal-sort-keys
@@ -46,7 +45,7 @@ export const routes: HookNestedCollection = {
 					routes: [{
 						name: 'App',
 						path: '/app',
-						screen: () => React.createElement('div', { children: 'Hello World' }),
+						screen: 'HomeScreen',
 					}]
 				};
 

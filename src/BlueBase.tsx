@@ -75,12 +75,8 @@ export class BlueBase {
 		// 🚀 Boot!
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
-		// Set View
-		// const SystemApp = this.Components.resolve('SystemApp');
-		// const SystemApp = this.Components.resolve('SystemApp');
-		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
-
-		const NavigationProvider = this.Components.resolve('NavigationProvider');
+		// Navigation
+		const Navigation = this.Components.resolve('Navigation');
 		const navigatorConfigs = await this.Hooks.run('bluebase.navigator.root', {});
 
 		const BlueBaseRoot = () => (
@@ -89,7 +85,7 @@ export class BlueBase {
 				{
 					(this.bootOptions.children)
 					? renderChildrenWithProps(this.bootOptions.children, { BB: this })
-					: <NavigationProvider navigator={navigatorConfigs} />
+					: <Navigation navigator={navigatorConfigs} />
 				}
 				</ThemeProvider>
 			</BlueBaseProvider>

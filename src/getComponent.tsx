@@ -9,8 +9,7 @@ import {
 	HoverObserverProps,
 	JsonSchemaProps,
 	LoadingStateProps,
-	NavigationProviderProps,
-	NavigatorProps,
+	NavigationProps,
 	PluginIconProps,
 	StatefulComponentProps,
 	WaitObserverProps,
@@ -32,8 +31,7 @@ export {
 	JsonSchemaProps,
 	LoadingStateProps,
 	NavigationOptions,
-	NavigationProviderProps,
-	NavigatorProps,
+	NavigationProps,
 	PluginIconProps,
 	RouteConfig,
 	StatefulComponentProps,
@@ -79,8 +77,7 @@ export const JsonSchema = getComponent<JsonSchemaProps>('JsonSchema');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
 export const Noop = getComponent('Noop');
 export const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
-export const NavigationProvider = getComponent<NavigationProviderProps>('NavigationProvider');
-export const Navigator = getComponent<NavigatorProps>('Navigator');
+export const Navigation = getComponent<NavigationProps>('NavigationProvider');
 export const StatefulComponent = getComponent<StatefulComponentProps>('StatefulComponent');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 
