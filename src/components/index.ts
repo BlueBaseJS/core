@@ -15,6 +15,4 @@ export * from './Noop';
 export * from './ReactLoadableLoading';
 export * from './PluginIcon';
 export * from './StatefulComponent';
-export * from './SystemApp';
-export * from './SystemContent';
 export * from './WaitObserver';

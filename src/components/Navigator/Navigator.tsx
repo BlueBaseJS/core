@@ -39,7 +39,7 @@ export interface RouteConfig {
 	name: string,
 
 	/** Screen component */
-	screen: React.ComponentType<any> | string,
+	screen?: React.ComponentType<any> | string,
 
 	/** URL */
 	path: string,
@@ -120,6 +120,10 @@ export class Navigator extends React.PureComponent<NavigatorProps> {
 		const route = routes[0];
 
 		if (!route) {
+			return null;
+		}
+
+		if (!route.screen) {
 			return null;
 		}
 

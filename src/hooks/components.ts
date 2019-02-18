@@ -17,8 +17,6 @@ import {
 	Noop,
 	PluginIcon,
 	StatefulComponent,
-	SystemApp,
-	SystemContent,
 	WaitObserver,
 } from '../components/';
 import { HookNestedCollection } from '../registries';
@@ -52,10 +50,6 @@ export const components: HookNestedCollection = {
 					Noop,
 					PluginIcon,
 					StatefulComponent,
-					SystemApp,
-					SystemContent,
-					SystemFooter: Noop,
-					SystemHeader: Noop,
 					WaitObserver,
 
 					// Native

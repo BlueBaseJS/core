@@ -20,293 +20,205 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
       >
         <View>
           <ThemedComponent>
-            <View>
-              <View>
+            <ThemedComponent>
+              <ThemedComponent>
                 <View>
-                  <ThemedComponent>
+                  <View>
                     <View>
-                      <View>
-                        <Image
-                          source={
-                            Object {
-                              "uri": "https://picsum.photos/200",
-                            }
-                          }
-                          style={
-                            Object {
-                              "height": 100,
-                              "width": 100,
-                            }
-                          }
-                        >
-                          <ThemedComponent
-                            source={
-                              Object {
-                                "uri": "https://picsum.photos/200",
-                              }
-                            }
-                            style={
-                              Object {
-                                "height": 100,
-                                "width": 100,
-                              }
-                            }
-                          >
-                            <Component
-                              source={
-                                Object {
-                                  "uri": "https://picsum.photos/200",
-                                }
-                              }
-                              style={
-                                Object {
-                                  "height": 100,
-                                  "width": 100,
-                                }
-                              }
-                            >
-                              <Image
-                                source={
-                                  Object {
-                                    "uri": "https://picsum.photos/200",
-                                  }
-                                }
-                                style={
-                                  Object {
-                                    "height": 100,
-                                    "width": 100,
-                                  }
-                                }
-                              />
-                            </Component>
+                      <ThemedComponent>
+                        <ThemedComponent>
+                          <ThemedComponent>
+                            <ThemedComponent>
+                              <View>
+                                <View>
+                                  <Image
+                                    source={
+                                      Object {
+                                        "uri": "https://picsum.photos/200",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "height": 100,
+                                        "width": 100,
+                                      }
+                                    }
+                                  >
+                                    <ThemedComponent
+                                      source={
+                                        Object {
+                                          "uri": "https://picsum.photos/200",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "height": 100,
+                                          "width": 100,
+                                        }
+                                      }
+                                    >
+                                      <Component
+                                        source={
+                                          Object {
+                                            "uri": "https://picsum.photos/200",
+                                          }
+                                        }
+                                        style={
+                                          Object {
+                                            "height": 100,
+                                            "width": 100,
+                                          }
+                                        }
+                                      >
+                                        <Image
+                                          source={
+                                            Object {
+                                              "uri": "https://picsum.photos/200",
+                                            }
+                                          }
+                                          style={
+                                            Object {
+                                              "height": 100,
+                                              "width": 100,
+                                            }
+                                          }
+                                        />
+                                      </Component>
+                                    </ThemedComponent>
+                                  </Image>
+                                </View>
+                              </View>
+                            </ThemedComponent>
                           </ThemedComponent>
-                        </Image>
-                      </View>
+                        </ThemedComponent>
+                      </ThemedComponent>
                     </View>
-                  </ThemedComponent>
-                </View>
-                <H6>
-                  <ThemedComponent>
-                    <Component
-                      styles={
-                        Object {
-                          "root": Object {
-                            "color": "rgba(0, 0, 0, 0.87)",
-                            "fontFamily": undefined,
-                            "fontSize": 20,
-                            "fontWeight": "500",
-                          },
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          Array [
+                    <H6>
+                      <ThemedComponent>
+                        <Component
+                          styles={
                             Object {
-                              "color": "rgba(0, 0, 0, 0.87)",
-                              "fontFamily": undefined,
-                              "fontSize": 20,
-                              "fontWeight": "500",
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            Array [
-                              Object {
+                              "root": Object {
                                 "color": "rgba(0, 0, 0, 0.87)",
                                 "fontFamily": undefined,
                                 "fontSize": 20,
                                 "fontWeight": "500",
                               },
-                              undefined,
-                            ]
+                            }
                           }
                         >
-                          Looks like your'e new here!
-                        </Text>
-                      </Text>
-                    </Component>
-                  </ThemedComponent>
-                </H6>
-                <Body2>
-                  <ThemedComponent>
-                    <Component
-                      styles={
-                        Object {
-                          "root": Object {
-                            "color": "rgba(0, 0, 0, 0.87)",
-                            "fontFamily": undefined,
-                            "fontSize": 14,
-                            "fontWeight": "400",
-                          },
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          Array [
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "rgba(0, 0, 0, 0.87)",
+                                  "fontFamily": undefined,
+                                  "fontSize": 20,
+                                  "fontWeight": "500",
+                                },
+                                undefined,
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "rgba(0, 0, 0, 0.87)",
+                                    "fontFamily": undefined,
+                                    "fontSize": 20,
+                                    "fontWeight": "500",
+                                  },
+                                  undefined,
+                                ]
+                              }
+                            >
+                              Looks like your'e new here!
+                            </Text>
+                          </Text>
+                        </Component>
+                      </ThemedComponent>
+                    </H6>
+                    <Body2>
+                      <ThemedComponent>
+                        <Component
+                          styles={
                             Object {
-                              "color": "rgba(0, 0, 0, 0.87)",
-                              "fontFamily": undefined,
-                              "fontSize": 14,
-                              "fontWeight": "400",
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            Array [
-                              Object {
+                              "root": Object {
                                 "color": "rgba(0, 0, 0, 0.87)",
                                 "fontFamily": undefined,
                                 "fontSize": 14,
                                 "fontWeight": "400",
                               },
-                              undefined,
-                            ]
+                            }
                           }
                         >
-                          Start by creating your first entry.
-                        </Text>
-                      </Text>
-                    </Component>
-                  </ThemedComponent>
-                </Body2>
-                <View>
-                  <ThemedComponent>
-                    <View>
-                      <View>
-                        <Button
-                          color="primary"
-                        >
-                          <ThemedComponent
-                            color="primary"
-                          >
-                            <Button
-                              color="primary"
-                              styles={
+                          <Text
+                            style={
+                              Array [
                                 Object {
-                                  "default": Object {
-                                    "backgroundColor": "#fafafa",
-                                  },
-                                  "defaultText": Object {},
-                                  "fullWidth": Object {
-                                    "alignSelf": "stretch",
-                                  },
-                                  "link": Object {},
-                                  "linkText": Object {},
-                                  "primary": Object {
-                                    "backgroundColor": "#3f51b5",
-                                  },
-                                  "primaryText": Object {
-                                    "color": "#fff",
-                                  },
-                                  "root": Object {
-                                    "alignSelf": "flex-start",
-                                    "borderRadius": 4,
-                                    "paddingBottom": 8,
-                                    "paddingLeft": 16,
-                                    "paddingRight": 16,
-                                    "paddingTop": 8,
-                                  },
-                                  "secondary": Object {
-                                    "backgroundColor": "#f50057",
-                                  },
-                                  "secondaryText": Object {
-                                    "color": "#fff",
-                                  },
-                                  "text": Object {
+                                  "color": "rgba(0, 0, 0, 0.87)",
+                                  "fontFamily": undefined,
+                                  "fontSize": 14,
+                                  "fontWeight": "400",
+                                },
+                                undefined,
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
                                     "color": "rgba(0, 0, 0, 0.87)",
                                     "fontFamily": undefined,
                                     "fontSize": 14,
-                                    "fontWeight": "500",
-                                    "textAlign": "center",
-                                    "textTransform": "uppercase",
+                                    "fontWeight": "400",
                                   },
-                                }
+                                  undefined,
+                                ]
                               }
                             >
-                              <TouchableOpacity
-                                accessibilityRole="button"
-                                activeOpacity={0.2}
-                              >
-                                <AnimatedComponent
-                                  accessibilityRole="button"
-                                  accessible={true}
-                                  isTVSelectable={true}
-                                  onResponderGrant={[Function]}
-                                  onResponderMove={[Function]}
-                                  onResponderRelease={[Function]}
-                                  onResponderTerminate={[Function]}
-                                  onResponderTerminationRequest={[Function]}
-                                  onStartShouldSetResponder={[Function]}
-                                  style={
-                                    Array [
-                                      undefined,
-                                      Object {
-                                        "opacity": 1,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    accessibilityRole="button"
-                                    accessible={true}
-                                    isTVSelectable={true}
-                                    onResponderGrant={[Function]}
-                                    onResponderMove={[Function]}
-                                    onResponderRelease={[Function]}
-                                    onResponderTerminate={[Function]}
-                                    onResponderTerminationRequest={[Function]}
-                                    onStartShouldSetResponder={[Function]}
-                                    style={
-                                      Object {
-                                        "opacity": 1,
-                                      }
-                                    }
-                                  >
-                                    <View
-                                      accessibilityRole="button"
-                                      accessible={true}
-                                      isTVSelectable={true}
-                                      onResponderGrant={[Function]}
-                                      onResponderMove={[Function]}
-                                      onResponderRelease={[Function]}
-                                      onResponderTerminate={[Function]}
-                                      onResponderTerminationRequest={[Function]}
-                                      onStartShouldSetResponder={[Function]}
-                                      style={
-                                        Object {
-                                          "opacity": 1,
-                                        }
-                                      }
+                              Start by creating your first entry.
+                            </Text>
+                          </Text>
+                        </Component>
+                      </ThemedComponent>
+                    </Body2>
+                    <View>
+                      <ThemedComponent>
+                        <ThemedComponent>
+                          <ThemedComponent>
+                            <ThemedComponent>
+                              <ThemedComponent>
+                                <View>
+                                  <View>
+                                    <Button
+                                      color="primary"
                                     >
-                                      <View
-                                        style={
-                                          Array [
-                                            Object {
-                                              "alignSelf": "flex-start",
-                                              "borderRadius": 4,
-                                              "paddingBottom": 8,
-                                              "paddingLeft": 16,
-                                              "paddingRight": 16,
-                                              "paddingTop": 8,
-                                            },
-                                            Object {
-                                              "backgroundColor": "#3f51b5",
-                                            },
-                                          ]
-                                        }
+                                      <ThemedComponent
+                                        color="primary"
                                       >
-                                        <View
-                                          style={
-                                            Array [
-                                              Object {
+                                        <Button
+                                          color="primary"
+                                          styles={
+                                            Object {
+                                              "default": Object {
+                                                "backgroundColor": "#fafafa",
+                                              },
+                                              "defaultText": Object {},
+                                              "fullWidth": Object {
+                                                "alignSelf": "stretch",
+                                              },
+                                              "link": Object {},
+                                              "linkText": Object {},
+                                              "primary": Object {
+                                                "backgroundColor": "#3f51b5",
+                                              },
+                                              "primaryText": Object {
+                                                "color": "#fff",
+                                              },
+                                              "root": Object {
                                                 "alignSelf": "flex-start",
                                                 "borderRadius": 4,
                                                 "paddingBottom": 8,
@@ -314,64 +226,170 @@ exports[`ComponentState should render ComponentState with all elements 1`] = `
                                                 "paddingRight": 16,
                                                 "paddingTop": 8,
                                               },
-                                              Object {
-                                                "backgroundColor": "#3f51b5",
+                                              "secondary": Object {
+                                                "backgroundColor": "#f50057",
                                               },
-                                            ]
+                                              "secondaryText": Object {
+                                                "color": "#fff",
+                                              },
+                                              "text": Object {
+                                                "color": "rgba(0, 0, 0, 0.87)",
+                                                "fontFamily": undefined,
+                                                "fontSize": 14,
+                                                "fontWeight": "500",
+                                                "textAlign": "center",
+                                                "textTransform": "uppercase",
+                                              },
+                                            }
                                           }
                                         >
-                                          <Text
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "rgba(0, 0, 0, 0.87)",
-                                                  "fontFamily": undefined,
-                                                  "fontSize": 14,
-                                                  "fontWeight": "500",
-                                                  "textAlign": "center",
-                                                  "textTransform": "uppercase",
-                                                },
-                                                Object {
-                                                  "color": "#fff",
-                                                },
-                                              ]
-                                            }
+                                          <TouchableOpacity
+                                            accessibilityRole="button"
+                                            activeOpacity={0.2}
                                           >
-                                            <Text
+                                            <AnimatedComponent
+                                              accessibilityRole="button"
+                                              accessible={true}
+                                              isTVSelectable={true}
+                                              onResponderGrant={[Function]}
+                                              onResponderMove={[Function]}
+                                              onResponderRelease={[Function]}
+                                              onResponderTerminate={[Function]}
+                                              onResponderTerminationRequest={[Function]}
+                                              onStartShouldSetResponder={[Function]}
                                               style={
                                                 Array [
+                                                  undefined,
                                                   Object {
-                                                    "color": "rgba(0, 0, 0, 0.87)",
-                                                    "fontFamily": undefined,
-                                                    "fontSize": 14,
-                                                    "fontWeight": "500",
-                                                    "textAlign": "center",
-                                                    "textTransform": "uppercase",
-                                                  },
-                                                  Object {
-                                                    "color": "#fff",
+                                                    "opacity": 1,
                                                   },
                                                 ]
                                               }
                                             >
-                                              Tap to Create
-                                            </Text>
-                                          </Text>
-                                        </View>
-                                      </View>
-                                    </View>
+                                              <View
+                                                accessibilityRole="button"
+                                                accessible={true}
+                                                isTVSelectable={true}
+                                                onResponderGrant={[Function]}
+                                                onResponderMove={[Function]}
+                                                onResponderRelease={[Function]}
+                                                onResponderTerminate={[Function]}
+                                                onResponderTerminationRequest={[Function]}
+                                                onStartShouldSetResponder={[Function]}
+                                                style={
+                                                  Object {
+                                                    "opacity": 1,
+                                                  }
+                                                }
+                                              >
+                                                <View
+                                                  accessibilityRole="button"
+                                                  accessible={true}
+                                                  isTVSelectable={true}
+                                                  onResponderGrant={[Function]}
+                                                  onResponderMove={[Function]}
+                                                  onResponderRelease={[Function]}
+                                                  onResponderTerminate={[Function]}
+                                                  onResponderTerminationRequest={[Function]}
+                                                  onStartShouldSetResponder={[Function]}
+                                                  style={
+                                                    Object {
+                                                      "opacity": 1,
+                                                    }
+                                                  }
+                                                >
+                                                  <View
+                                                    style={
+                                                      Array [
+                                                        Object {
+                                                          "alignSelf": "flex-start",
+                                                          "borderRadius": 4,
+                                                          "paddingBottom": 8,
+                                                          "paddingLeft": 16,
+                                                          "paddingRight": 16,
+                                                          "paddingTop": 8,
+                                                        },
+                                                        Object {
+                                                          "backgroundColor": "#3f51b5",
+                                                        },
+                                                      ]
+                                                    }
+                                                  >
+                                                    <View
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "alignSelf": "flex-start",
+                                                            "borderRadius": 4,
+                                                            "paddingBottom": 8,
+                                                            "paddingLeft": 16,
+                                                            "paddingRight": 16,
+                                                            "paddingTop": 8,
+                                                          },
+                                                          Object {
+                                                            "backgroundColor": "#3f51b5",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": undefined,
+                                                              "fontSize": 14,
+                                                              "fontWeight": "500",
+                                                              "textAlign": "center",
+                                                              "textTransform": "uppercase",
+                                                            },
+                                                            Object {
+                                                              "color": "#fff",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        <Text
+                                                          style={
+                                                            Array [
+                                                              Object {
+                                                                "color": "rgba(0, 0, 0, 0.87)",
+                                                                "fontFamily": undefined,
+                                                                "fontSize": 14,
+                                                                "fontWeight": "500",
+                                                                "textAlign": "center",
+                                                                "textTransform": "uppercase",
+                                                              },
+                                                              Object {
+                                                                "color": "#fff",
+                                                              },
+                                                            ]
+                                                          }
+                                                        >
+                                                          Tap to Create
+                                                        </Text>
+                                                      </Text>
+                                                    </View>
+                                                  </View>
+                                                </View>
+                                              </View>
+                                            </AnimatedComponent>
+                                          </TouchableOpacity>
+                                        </Button>
+                                      </ThemedComponent>
+                                    </Button>
                                   </View>
-                                </AnimatedComponent>
-                              </TouchableOpacity>
-                            </Button>
+                                </View>
+                              </ThemedComponent>
+                            </ThemedComponent>
                           </ThemedComponent>
-                        </Button>
-                      </View>
+                        </ThemedComponent>
+                      </ThemedComponent>
                     </View>
-                  </ThemedComponent>
+                  </View>
                 </View>
-              </View>
-            </View>
+              </ThemedComponent>
+            </ThemedComponent>
           </ThemedComponent>
         </View>
       </ComponentState>
@@ -412,47 +430,57 @@ exports[`ComponentState should render ComponentState with custom image 1`] = `
       >
         <View>
           <ThemedComponent>
-            <View>
-              <View>
+            <ThemedComponent>
+              <ThemedComponent>
                 <View>
-                  <ThemedComponent>
+                  <View>
                     <View>
-                      <View>
-                        <Component
-                          source={
-                            Object {
-                              "uri": "https://picsum.photos/200",
-                            }
-                          }
-                          style={
-                            Object {
-                              "height": 50,
-                              "width": 50,
-                            }
-                          }
-                          testID="Custom"
-                        >
-                          <Image
-                            source={
-                              Object {
-                                "uri": "https://picsum.photos/200",
-                              }
-                            }
-                            style={
-                              Object {
-                                "height": 50,
-                                "width": 50,
-                              }
-                            }
-                            testID="Custom"
-                          />
-                        </Component>
-                      </View>
+                      <ThemedComponent>
+                        <ThemedComponent>
+                          <ThemedComponent>
+                            <ThemedComponent>
+                              <View>
+                                <View>
+                                  <Component
+                                    source={
+                                      Object {
+                                        "uri": "https://picsum.photos/200",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "height": 50,
+                                        "width": 50,
+                                      }
+                                    }
+                                    testID="Custom"
+                                  >
+                                    <Image
+                                      source={
+                                        Object {
+                                          "uri": "https://picsum.photos/200",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "height": 50,
+                                          "width": 50,
+                                        }
+                                      }
+                                      testID="Custom"
+                                    />
+                                  </Component>
+                                </View>
+                              </View>
+                            </ThemedComponent>
+                          </ThemedComponent>
+                        </ThemedComponent>
+                      </ThemedComponent>
                     </View>
-                  </ThemedComponent>
+                  </View>
                 </View>
-              </View>
-            </View>
+              </ThemedComponent>
+            </ThemedComponent>
           </ThemedComponent>
         </View>
       </ComponentState>

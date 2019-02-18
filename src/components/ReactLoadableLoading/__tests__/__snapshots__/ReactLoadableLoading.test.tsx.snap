@@ -21,46 +21,40 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
             <ThemedComponent
               image={<ActivityIndicator />}
             >
-              <ComponentState
+              <ThemedComponent
                 image={<ActivityIndicator />}
-                styles={
-                  Object {
-                    "actionRoot": Object {
-                      "marginTop": 8,
-                    },
-                    "description": Object {
-                      "marginBottom": 8,
-                      "textAlign": "center",
-                    },
-                    "image": Object {
-                      "height": 250,
-                      "width": 250,
-                    },
-                    "imageRoot": Object {
-                      "marginBottom": 16,
-                    },
-                    "root": Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
-                    },
-                    "title": Object {
-                      "marginBottom": 8,
-                      "textAlign": "center",
-                    },
-                  }
-                }
               >
-                <View
-                  style={
+                <ComponentState
+                  image={<ActivityIndicator />}
+                  styles={
                     Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
+                      "actionRoot": Object {
+                        "marginTop": 8,
+                      },
+                      "description": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
+                      "image": Object {
+                        "height": 250,
+                        "width": 250,
+                      },
+                      "imageRoot": Object {
+                        "marginBottom": 16,
+                      },
+                      "root": Object {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      },
+                      "title": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
                     }
                   }
                 >
-                  <ThemedComponent
+                  <View
                     style={
                       Object {
                         "alignItems": "center",
@@ -69,7 +63,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                       }
                     }
                   >
-                    <View
+                    <ThemedComponent
                       style={
                         Object {
                           "alignItems": "center",
@@ -78,7 +72,7 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                         }
                       }
                     >
-                      <View
+                      <ThemedComponent
                         style={
                           Object {
                             "alignItems": "center",
@@ -87,24 +81,30 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                           }
                         }
                       >
-                        <View
+                        <ThemedComponent
                           style={
                             Object {
-                              "marginBottom": 16,
+                              "alignItems": "center",
+                              "flex": 1,
+                              "justifyContent": "center",
                             }
                           }
                         >
-                          <ThemedComponent
+                          <View
                             style={
                               Object {
-                                "marginBottom": 16,
+                                "alignItems": "center",
+                                "flex": 1,
+                                "justifyContent": "center",
                               }
                             }
                           >
                             <View
                               style={
                                 Object {
-                                  "marginBottom": 16,
+                                  "alignItems": "center",
+                                  "flex": 1,
+                                  "justifyContent": "center",
                                 }
                               }
                             >
@@ -115,32 +115,82 @@ exports[`ReactLoadableLoading should show loading state if isloading = true & pa
                                   }
                                 }
                               >
-                                <ActivityIndicator>
-                                  <ThemedComponent>
-                                    <ActivityIndicator
-                                      animating={true}
-                                      color="#999999"
-                                      hidesWhenStopped={true}
-                                      size="small"
+                                <ThemedComponent
+                                  style={
+                                    Object {
+                                      "marginBottom": 16,
+                                    }
+                                  }
+                                >
+                                  <ThemedComponent
+                                    style={
+                                      Object {
+                                        "marginBottom": 16,
+                                      }
+                                    }
+                                  >
+                                    <ThemedComponent
+                                      style={
+                                        Object {
+                                          "marginBottom": 16,
+                                        }
+                                      }
                                     >
-                                      <ActivityIndicator
-                                        animating={true}
-                                        color="#999999"
-                                        hidesWhenStopped={true}
-                                        size="small"
-                                      />
-                                    </ActivityIndicator>
+                                      <ThemedComponent
+                                        style={
+                                          Object {
+                                            "marginBottom": 16,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Object {
+                                              "marginBottom": 16,
+                                            }
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              Object {
+                                                "marginBottom": 16,
+                                              }
+                                            }
+                                          >
+                                            <ActivityIndicator>
+                                              <ThemedComponent>
+                                                <ThemedComponent>
+                                                  <ActivityIndicator
+                                                    animating={true}
+                                                    color="#999999"
+                                                    hidesWhenStopped={true}
+                                                    size="small"
+                                                  >
+                                                    <ActivityIndicator
+                                                      animating={true}
+                                                      color="#999999"
+                                                      hidesWhenStopped={true}
+                                                      size="small"
+                                                    />
+                                                  </ActivityIndicator>
+                                                </ThemedComponent>
+                                              </ThemedComponent>
+                                            </ActivityIndicator>
+                                          </View>
+                                        </View>
+                                      </ThemedComponent>
+                                    </ThemedComponent>
                                   </ThemedComponent>
-                                </ActivityIndicator>
+                                </ThemedComponent>
                               </View>
                             </View>
-                          </ThemedComponent>
-                        </View>
-                      </View>
-                    </View>
-                  </ThemedComponent>
-                </View>
-              </ComponentState>
+                          </View>
+                        </ThemedComponent>
+                      </ThemedComponent>
+                    </ThemedComponent>
+                  </View>
+                </ComponentState>
+              </ThemedComponent>
             </ThemedComponent>
           </ComponentState>
         </LoadingState>
@@ -177,49 +227,46 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
               description="Random Error"
               title="Error"
             >
-              <ComponentState
+              <ThemedComponent
                 actionOnPress={[Function]}
                 actionTitle="Retry"
                 description="Random Error"
-                styles={
-                  Object {
-                    "actionRoot": Object {
-                      "marginTop": 8,
-                    },
-                    "description": Object {
-                      "marginBottom": 8,
-                      "textAlign": "center",
-                    },
-                    "image": Object {
-                      "height": 250,
-                      "width": 250,
-                    },
-                    "imageRoot": Object {
-                      "marginBottom": 16,
-                    },
-                    "root": Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
-                    },
-                    "title": Object {
-                      "marginBottom": 8,
-                      "textAlign": "center",
-                    },
-                  }
-                }
                 title="Error"
               >
-                <View
-                  style={
+                <ComponentState
+                  actionOnPress={[Function]}
+                  actionTitle="Retry"
+                  description="Random Error"
+                  styles={
                     Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
+                      "actionRoot": Object {
+                        "marginTop": 8,
+                      },
+                      "description": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
+                      "image": Object {
+                        "height": 250,
+                        "width": 250,
+                      },
+                      "imageRoot": Object {
+                        "marginBottom": 16,
+                      },
+                      "root": Object {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      },
+                      "title": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
                     }
                   }
+                  title="Error"
                 >
-                  <ThemedComponent
+                  <View
                     style={
                       Object {
                         "alignItems": "center",
@@ -228,7 +275,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                       }
                     }
                   >
-                    <View
+                    <ThemedComponent
                       style={
                         Object {
                           "alignItems": "center",
@@ -237,7 +284,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                         }
                       }
                     >
-                      <View
+                      <ThemedComponent
                         style={
                           Object {
                             "alignItems": "center",
@@ -246,171 +293,177 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                           }
                         }
                       >
-                        <H6
+                        <ThemedComponent
                           style={
                             Object {
-                              "marginBottom": 8,
-                              "textAlign": "center",
+                              "alignItems": "center",
+                              "flex": 1,
+                              "justifyContent": "center",
                             }
                           }
                         >
-                          <ThemedComponent
+                          <View
                             style={
                               Object {
-                                "marginBottom": 8,
-                                "textAlign": "center",
-                              }
-                            }
-                          >
-                            <Component
-                              style={
-                                Object {
-                                  "marginBottom": 8,
-                                  "textAlign": "center",
-                                }
-                              }
-                              styles={
-                                Object {
-                                  "root": Object {
-                                    "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": undefined,
-                                    "fontSize": 20,
-                                    "fontWeight": "500",
-                                  },
-                                }
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": undefined,
-                                      "fontSize": 20,
-                                      "fontWeight": "500",
-                                    },
-                                    Object {
-                                      "marginBottom": 8,
-                                      "textAlign": "center",
-                                    },
-                                  ]
-                                }
-                              >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": undefined,
-                                        "fontSize": 20,
-                                        "fontWeight": "500",
-                                      },
-                                      Object {
-                                        "marginBottom": 8,
-                                        "textAlign": "center",
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Error
-                                </Text>
-                              </Text>
-                            </Component>
-                          </ThemedComponent>
-                        </H6>
-                        <Body2
-                          style={
-                            Object {
-                              "marginBottom": 8,
-                              "textAlign": "center",
-                            }
-                          }
-                        >
-                          <ThemedComponent
-                            style={
-                              Object {
-                                "marginBottom": 8,
-                                "textAlign": "center",
-                              }
-                            }
-                          >
-                            <Component
-                              style={
-                                Object {
-                                  "marginBottom": 8,
-                                  "textAlign": "center",
-                                }
-                              }
-                              styles={
-                                Object {
-                                  "root": Object {
-                                    "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": undefined,
-                                    "fontSize": 14,
-                                    "fontWeight": "400",
-                                  },
-                                }
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": undefined,
-                                      "fontSize": 14,
-                                      "fontWeight": "400",
-                                    },
-                                    Object {
-                                      "marginBottom": 8,
-                                      "textAlign": "center",
-                                    },
-                                  ]
-                                }
-                              >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": undefined,
-                                        "fontSize": 14,
-                                        "fontWeight": "400",
-                                      },
-                                      Object {
-                                        "marginBottom": 8,
-                                        "textAlign": "center",
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Random Error
-                                </Text>
-                              </Text>
-                            </Component>
-                          </ThemedComponent>
-                        </Body2>
-                        <View
-                          style={
-                            Object {
-                              "marginTop": 8,
-                            }
-                          }
-                        >
-                          <ThemedComponent
-                            style={
-                              Object {
-                                "marginTop": 8,
+                                "alignItems": "center",
+                                "flex": 1,
+                                "justifyContent": "center",
                               }
                             }
                           >
                             <View
                               style={
                                 Object {
-                                  "marginTop": 8,
+                                  "alignItems": "center",
+                                  "flex": 1,
+                                  "justifyContent": "center",
                                 }
                               }
                             >
+                              <H6
+                                style={
+                                  Object {
+                                    "marginBottom": 8,
+                                    "textAlign": "center",
+                                  }
+                                }
+                              >
+                                <ThemedComponent
+                                  style={
+                                    Object {
+                                      "marginBottom": 8,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  <Component
+                                    style={
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      }
+                                    }
+                                    styles={
+                                      Object {
+                                        "root": Object {
+                                          "color": "rgba(0, 0, 0, 0.87)",
+                                          "fontFamily": undefined,
+                                          "fontSize": 20,
+                                          "fontWeight": "500",
+                                        },
+                                      }
+                                    }
+                                  >
+                                    <Text
+                                      style={
+                                        Array [
+                                          Object {
+                                            "color": "rgba(0, 0, 0, 0.87)",
+                                            "fontFamily": undefined,
+                                            "fontSize": 20,
+                                            "fontWeight": "500",
+                                          },
+                                          Object {
+                                            "marginBottom": 8,
+                                            "textAlign": "center",
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "rgba(0, 0, 0, 0.87)",
+                                              "fontFamily": undefined,
+                                              "fontSize": 20,
+                                              "fontWeight": "500",
+                                            },
+                                            Object {
+                                              "marginBottom": 8,
+                                              "textAlign": "center",
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Error
+                                      </Text>
+                                    </Text>
+                                  </Component>
+                                </ThemedComponent>
+                              </H6>
+                              <Body2
+                                style={
+                                  Object {
+                                    "marginBottom": 8,
+                                    "textAlign": "center",
+                                  }
+                                }
+                              >
+                                <ThemedComponent
+                                  style={
+                                    Object {
+                                      "marginBottom": 8,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  <Component
+                                    style={
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      }
+                                    }
+                                    styles={
+                                      Object {
+                                        "root": Object {
+                                          "color": "rgba(0, 0, 0, 0.87)",
+                                          "fontFamily": undefined,
+                                          "fontSize": 14,
+                                          "fontWeight": "400",
+                                        },
+                                      }
+                                    }
+                                  >
+                                    <Text
+                                      style={
+                                        Array [
+                                          Object {
+                                            "color": "rgba(0, 0, 0, 0.87)",
+                                            "fontFamily": undefined,
+                                            "fontSize": 14,
+                                            "fontWeight": "400",
+                                          },
+                                          Object {
+                                            "marginBottom": 8,
+                                            "textAlign": "center",
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "rgba(0, 0, 0, 0.87)",
+                                              "fontFamily": undefined,
+                                              "fontSize": 14,
+                                              "fontWeight": "400",
+                                            },
+                                            Object {
+                                              "marginBottom": 8,
+                                              "textAlign": "center",
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Random Error
+                                      </Text>
+                                    </Text>
+                                  </Component>
+                                </ThemedComponent>
+                              </Body2>
                               <View
                                 style={
                                   Object {
@@ -418,136 +471,77 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                   }
                                 }
                               >
-                                <Button
-                                  color="primary"
-                                  onPress={[Function]}
+                                <ThemedComponent
+                                  style={
+                                    Object {
+                                      "marginTop": 8,
+                                    }
+                                  }
                                 >
                                   <ThemedComponent
-                                    color="primary"
-                                    onPress={[Function]}
+                                    style={
+                                      Object {
+                                        "marginTop": 8,
+                                      }
+                                    }
                                   >
-                                    <Button
-                                      color="primary"
-                                      onPress={[Function]}
-                                      styles={
+                                    <ThemedComponent
+                                      style={
                                         Object {
-                                          "default": Object {
-                                            "backgroundColor": "#fafafa",
-                                          },
-                                          "defaultText": Object {},
-                                          "fullWidth": Object {
-                                            "alignSelf": "stretch",
-                                          },
-                                          "link": Object {},
-                                          "linkText": Object {},
-                                          "primary": Object {
-                                            "backgroundColor": "#3f51b5",
-                                          },
-                                          "primaryText": Object {
-                                            "color": "#fff",
-                                          },
-                                          "root": Object {
-                                            "alignSelf": "flex-start",
-                                            "borderRadius": 4,
-                                            "paddingBottom": 8,
-                                            "paddingLeft": 16,
-                                            "paddingRight": 16,
-                                            "paddingTop": 8,
-                                          },
-                                          "secondary": Object {
-                                            "backgroundColor": "#f50057",
-                                          },
-                                          "secondaryText": Object {
-                                            "color": "#fff",
-                                          },
-                                          "text": Object {
-                                            "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": undefined,
-                                            "fontSize": 14,
-                                            "fontWeight": "500",
-                                            "textAlign": "center",
-                                            "textTransform": "uppercase",
-                                          },
+                                          "marginTop": 8,
                                         }
                                       }
                                     >
-                                      <TouchableOpacity
-                                        accessibilityRole="button"
-                                        activeOpacity={0.2}
-                                        onPress={[Function]}
+                                      <ThemedComponent
+                                        style={
+                                          Object {
+                                            "marginTop": 8,
+                                          }
+                                        }
                                       >
-                                        <AnimatedComponent
-                                          accessibilityRole="button"
-                                          accessible={true}
-                                          isTVSelectable={true}
-                                          onResponderGrant={[Function]}
-                                          onResponderMove={[Function]}
-                                          onResponderRelease={[Function]}
-                                          onResponderTerminate={[Function]}
-                                          onResponderTerminationRequest={[Function]}
-                                          onStartShouldSetResponder={[Function]}
+                                        <View
                                           style={
-                                            Array [
-                                              undefined,
-                                              Object {
-                                                "opacity": 1,
-                                              },
-                                            ]
+                                            Object {
+                                              "marginTop": 8,
+                                            }
                                           }
                                         >
                                           <View
-                                            accessibilityRole="button"
-                                            accessible={true}
-                                            isTVSelectable={true}
-                                            onResponderGrant={[Function]}
-                                            onResponderMove={[Function]}
-                                            onResponderRelease={[Function]}
-                                            onResponderTerminate={[Function]}
-                                            onResponderTerminationRequest={[Function]}
-                                            onStartShouldSetResponder={[Function]}
                                             style={
                                               Object {
-                                                "opacity": 1,
+                                                "marginTop": 8,
                                               }
                                             }
                                           >
-                                            <View
-                                              accessibilityRole="button"
-                                              accessible={true}
-                                              isTVSelectable={true}
-                                              onResponderGrant={[Function]}
-                                              onResponderMove={[Function]}
-                                              onResponderRelease={[Function]}
-                                              onResponderTerminate={[Function]}
-                                              onResponderTerminationRequest={[Function]}
-                                              onStartShouldSetResponder={[Function]}
-                                              style={
-                                                Object {
-                                                  "opacity": 1,
-                                                }
-                                              }
+                                            <Button
+                                              color="primary"
+                                              onPress={[Function]}
                                             >
-                                              <View
-                                                style={
-                                                  Array [
-                                                    Object {
-                                                      "alignSelf": "flex-start",
-                                                      "borderRadius": 4,
-                                                      "paddingBottom": 8,
-                                                      "paddingLeft": 16,
-                                                      "paddingRight": 16,
-                                                      "paddingTop": 8,
-                                                    },
-                                                    Object {
-                                                      "backgroundColor": "#3f51b5",
-                                                    },
-                                                  ]
-                                                }
+                                              <ThemedComponent
+                                                color="primary"
+                                                onPress={[Function]}
                                               >
-                                                <View
-                                                  style={
-                                                    Array [
-                                                      Object {
+                                                <Button
+                                                  color="primary"
+                                                  onPress={[Function]}
+                                                  styles={
+                                                    Object {
+                                                      "default": Object {
+                                                        "backgroundColor": "#fafafa",
+                                                      },
+                                                      "defaultText": Object {},
+                                                      "fullWidth": Object {
+                                                        "alignSelf": "stretch",
+                                                      },
+                                                      "link": Object {},
+                                                      "linkText": Object {},
+                                                      "primary": Object {
+                                                        "backgroundColor": "#3f51b5",
+                                                      },
+                                                      "primaryText": Object {
+                                                        "color": "#fff",
+                                                      },
+                                                      "root": Object {
                                                         "alignSelf": "flex-start",
                                                         "borderRadius": 4,
                                                         "paddingBottom": 8,
@@ -555,67 +549,174 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                         "paddingRight": 16,
                                                         "paddingTop": 8,
                                                       },
-                                                      Object {
-                                                        "backgroundColor": "#3f51b5",
+                                                      "secondary": Object {
+                                                        "backgroundColor": "#f50057",
                                                       },
-                                                    ]
+                                                      "secondaryText": Object {
+                                                        "color": "#fff",
+                                                      },
+                                                      "text": Object {
+                                                        "color": "rgba(0, 0, 0, 0.87)",
+                                                        "fontFamily": undefined,
+                                                        "fontSize": 14,
+                                                        "fontWeight": "500",
+                                                        "textAlign": "center",
+                                                        "textTransform": "uppercase",
+                                                      },
+                                                    }
                                                   }
                                                 >
-                                                  <Text
-                                                    style={
-                                                      Array [
-                                                        Object {
-                                                          "color": "rgba(0, 0, 0, 0.87)",
-                                                          "fontFamily": undefined,
-                                                          "fontSize": 14,
-                                                          "fontWeight": "500",
-                                                          "textAlign": "center",
-                                                          "textTransform": "uppercase",
-                                                        },
-                                                        Object {
-                                                          "color": "#fff",
-                                                        },
-                                                      ]
-                                                    }
+                                                  <TouchableOpacity
+                                                    accessibilityRole="button"
+                                                    activeOpacity={0.2}
+                                                    onPress={[Function]}
                                                   >
-                                                    <Text
+                                                    <AnimatedComponent
+                                                      accessibilityRole="button"
+                                                      accessible={true}
+                                                      isTVSelectable={true}
+                                                      onResponderGrant={[Function]}
+                                                      onResponderMove={[Function]}
+                                                      onResponderRelease={[Function]}
+                                                      onResponderTerminate={[Function]}
+                                                      onResponderTerminationRequest={[Function]}
+                                                      onStartShouldSetResponder={[Function]}
                                                       style={
                                                         Array [
+                                                          undefined,
                                                           Object {
-                                                            "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": undefined,
-                                                            "fontSize": 14,
-                                                            "fontWeight": "500",
-                                                            "textAlign": "center",
-                                                            "textTransform": "uppercase",
-                                                          },
-                                                          Object {
-                                                            "color": "#fff",
+                                                            "opacity": 1,
                                                           },
                                                         ]
                                                       }
                                                     >
-                                                      Retry
-                                                    </Text>
-                                                  </Text>
-                                                </View>
-                                              </View>
-                                            </View>
+                                                      <View
+                                                        accessibilityRole="button"
+                                                        accessible={true}
+                                                        isTVSelectable={true}
+                                                        onResponderGrant={[Function]}
+                                                        onResponderMove={[Function]}
+                                                        onResponderRelease={[Function]}
+                                                        onResponderTerminate={[Function]}
+                                                        onResponderTerminationRequest={[Function]}
+                                                        onStartShouldSetResponder={[Function]}
+                                                        style={
+                                                          Object {
+                                                            "opacity": 1,
+                                                          }
+                                                        }
+                                                      >
+                                                        <View
+                                                          accessibilityRole="button"
+                                                          accessible={true}
+                                                          isTVSelectable={true}
+                                                          onResponderGrant={[Function]}
+                                                          onResponderMove={[Function]}
+                                                          onResponderRelease={[Function]}
+                                                          onResponderTerminate={[Function]}
+                                                          onResponderTerminationRequest={[Function]}
+                                                          onStartShouldSetResponder={[Function]}
+                                                          style={
+                                                            Object {
+                                                              "opacity": 1,
+                                                            }
+                                                          }
+                                                        >
+                                                          <View
+                                                            style={
+                                                              Array [
+                                                                Object {
+                                                                  "alignSelf": "flex-start",
+                                                                  "borderRadius": 4,
+                                                                  "paddingBottom": 8,
+                                                                  "paddingLeft": 16,
+                                                                  "paddingRight": 16,
+                                                                  "paddingTop": 8,
+                                                                },
+                                                                Object {
+                                                                  "backgroundColor": "#3f51b5",
+                                                                },
+                                                              ]
+                                                            }
+                                                          >
+                                                            <View
+                                                              style={
+                                                                Array [
+                                                                  Object {
+                                                                    "alignSelf": "flex-start",
+                                                                    "borderRadius": 4,
+                                                                    "paddingBottom": 8,
+                                                                    "paddingLeft": 16,
+                                                                    "paddingRight": 16,
+                                                                    "paddingTop": 8,
+                                                                  },
+                                                                  Object {
+                                                                    "backgroundColor": "#3f51b5",
+                                                                  },
+                                                                ]
+                                                              }
+                                                            >
+                                                              <Text
+                                                                style={
+                                                                  Array [
+                                                                    Object {
+                                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                                      "fontFamily": undefined,
+                                                                      "fontSize": 14,
+                                                                      "fontWeight": "500",
+                                                                      "textAlign": "center",
+                                                                      "textTransform": "uppercase",
+                                                                    },
+                                                                    Object {
+                                                                      "color": "#fff",
+                                                                    },
+                                                                  ]
+                                                                }
+                                                              >
+                                                                <Text
+                                                                  style={
+                                                                    Array [
+                                                                      Object {
+                                                                        "color": "rgba(0, 0, 0, 0.87)",
+                                                                        "fontFamily": undefined,
+                                                                        "fontSize": 14,
+                                                                        "fontWeight": "500",
+                                                                        "textAlign": "center",
+                                                                        "textTransform": "uppercase",
+                                                                      },
+                                                                      Object {
+                                                                        "color": "#fff",
+                                                                      },
+                                                                    ]
+                                                                  }
+                                                                >
+                                                                  Retry
+                                                                </Text>
+                                                              </Text>
+                                                            </View>
+                                                          </View>
+                                                        </View>
+                                                      </View>
+                                                    </AnimatedComponent>
+                                                  </TouchableOpacity>
+                                                </Button>
+                                              </ThemedComponent>
+                                            </Button>
                                           </View>
-                                        </AnimatedComponent>
-                                      </TouchableOpacity>
-                                    </Button>
+                                        </View>
+                                      </ThemedComponent>
+                                    </ThemedComponent>
                                   </ThemedComponent>
-                                </Button>
+                                </ThemedComponent>
                               </View>
                             </View>
-                          </ThemedComponent>
-                        </View>
-                      </View>
-                    </View>
-                  </ThemedComponent>
-                </View>
-              </ComponentState>
+                          </View>
+                        </ThemedComponent>
+                      </ThemedComponent>
+                    </ThemedComponent>
+                  </View>
+                </ComponentState>
+              </ThemedComponent>
             </ThemedComponent>
           </ComponentState>
         </ErrorState>
@@ -652,49 +753,46 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
               description="This is taking longer than usual"
               image={<ActivityIndicator />}
             >
-              <ComponentState
+              <ThemedComponent
                 actionOnPress={[Function]}
                 actionTitle="Retry"
                 description="This is taking longer than usual"
                 image={<ActivityIndicator />}
-                styles={
-                  Object {
-                    "actionRoot": Object {
-                      "marginTop": 8,
-                    },
-                    "description": Object {
-                      "marginBottom": 8,
-                      "textAlign": "center",
-                    },
-                    "image": Object {
-                      "height": 250,
-                      "width": 250,
-                    },
-                    "imageRoot": Object {
-                      "marginBottom": 16,
-                    },
-                    "root": Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
-                    },
-                    "title": Object {
-                      "marginBottom": 8,
-                      "textAlign": "center",
-                    },
-                  }
-                }
               >
-                <View
-                  style={
+                <ComponentState
+                  actionOnPress={[Function]}
+                  actionTitle="Retry"
+                  description="This is taking longer than usual"
+                  image={<ActivityIndicator />}
+                  styles={
                     Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
+                      "actionRoot": Object {
+                        "marginTop": 8,
+                      },
+                      "description": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
+                      "image": Object {
+                        "height": 250,
+                        "width": 250,
+                      },
+                      "imageRoot": Object {
+                        "marginBottom": 16,
+                      },
+                      "root": Object {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      },
+                      "title": Object {
+                        "marginBottom": 8,
+                        "textAlign": "center",
+                      },
                     }
                   }
                 >
-                  <ThemedComponent
+                  <View
                     style={
                       Object {
                         "alignItems": "center",
@@ -703,7 +801,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                       }
                     }
                   >
-                    <View
+                    <ThemedComponent
                       style={
                         Object {
                           "alignItems": "center",
@@ -712,7 +810,7 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                         }
                       }
                     >
-                      <View
+                      <ThemedComponent
                         style={
                           Object {
                             "alignItems": "center",
@@ -721,24 +819,30 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                           }
                         }
                       >
-                        <View
+                        <ThemedComponent
                           style={
                             Object {
-                              "marginBottom": 16,
+                              "alignItems": "center",
+                              "flex": 1,
+                              "justifyContent": "center",
                             }
                           }
                         >
-                          <ThemedComponent
+                          <View
                             style={
                               Object {
-                                "marginBottom": 16,
+                                "alignItems": "center",
+                                "flex": 1,
+                                "justifyContent": "center",
                               }
                             }
                           >
                             <View
                               style={
                                 Object {
-                                  "marginBottom": 16,
+                                  "alignItems": "center",
+                                  "flex": 1,
+                                  "justifyContent": "center",
                                 }
                               }
                             >
@@ -749,120 +853,146 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                   }
                                 }
                               >
-                                <ActivityIndicator>
-                                  <ThemedComponent>
-                                    <ActivityIndicator
-                                      animating={true}
-                                      color="#999999"
-                                      hidesWhenStopped={true}
-                                      size="small"
-                                    >
-                                      <ActivityIndicator
-                                        animating={true}
-                                        color="#999999"
-                                        hidesWhenStopped={true}
-                                        size="small"
-                                      />
-                                    </ActivityIndicator>
-                                  </ThemedComponent>
-                                </ActivityIndicator>
-                              </View>
-                            </View>
-                          </ThemedComponent>
-                        </View>
-                        <Body2
-                          style={
-                            Object {
-                              "marginBottom": 8,
-                              "textAlign": "center",
-                            }
-                          }
-                        >
-                          <ThemedComponent
-                            style={
-                              Object {
-                                "marginBottom": 8,
-                                "textAlign": "center",
-                              }
-                            }
-                          >
-                            <Component
-                              style={
-                                Object {
-                                  "marginBottom": 8,
-                                  "textAlign": "center",
-                                }
-                              }
-                              styles={
-                                Object {
-                                  "root": Object {
-                                    "color": "rgba(0, 0, 0, 0.87)",
-                                    "fontFamily": undefined,
-                                    "fontSize": 14,
-                                    "fontWeight": "400",
-                                  },
-                                }
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
+                                <ThemedComponent
+                                  style={
                                     Object {
-                                      "color": "rgba(0, 0, 0, 0.87)",
-                                      "fontFamily": undefined,
-                                      "fontSize": 14,
-                                      "fontWeight": "400",
-                                    },
+                                      "marginBottom": 16,
+                                    }
+                                  }
+                                >
+                                  <ThemedComponent
+                                    style={
+                                      Object {
+                                        "marginBottom": 16,
+                                      }
+                                    }
+                                  >
+                                    <ThemedComponent
+                                      style={
+                                        Object {
+                                          "marginBottom": 16,
+                                        }
+                                      }
+                                    >
+                                      <ThemedComponent
+                                        style={
+                                          Object {
+                                            "marginBottom": 16,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Object {
+                                              "marginBottom": 16,
+                                            }
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              Object {
+                                                "marginBottom": 16,
+                                              }
+                                            }
+                                          >
+                                            <ActivityIndicator>
+                                              <ThemedComponent>
+                                                <ThemedComponent>
+                                                  <ActivityIndicator
+                                                    animating={true}
+                                                    color="#999999"
+                                                    hidesWhenStopped={true}
+                                                    size="small"
+                                                  >
+                                                    <ActivityIndicator
+                                                      animating={true}
+                                                      color="#999999"
+                                                      hidesWhenStopped={true}
+                                                      size="small"
+                                                    />
+                                                  </ActivityIndicator>
+                                                </ThemedComponent>
+                                              </ThemedComponent>
+                                            </ActivityIndicator>
+                                          </View>
+                                        </View>
+                                      </ThemedComponent>
+                                    </ThemedComponent>
+                                  </ThemedComponent>
+                                </ThemedComponent>
+                              </View>
+                              <Body2
+                                style={
+                                  Object {
+                                    "marginBottom": 8,
+                                    "textAlign": "center",
+                                  }
+                                }
+                              >
+                                <ThemedComponent
+                                  style={
                                     Object {
                                       "marginBottom": 8,
                                       "textAlign": "center",
-                                    },
-                                  ]
-                                }
-                              >
-                                <Text
-                                  style={
-                                    Array [
-                                      Object {
-                                        "color": "rgba(0, 0, 0, 0.87)",
-                                        "fontFamily": undefined,
-                                        "fontSize": 14,
-                                        "fontWeight": "400",
-                                      },
+                                    }
+                                  }
+                                >
+                                  <Component
+                                    style={
                                       Object {
                                         "marginBottom": 8,
                                         "textAlign": "center",
-                                      },
-                                    ]
-                                  }
-                                >
-                                  This is taking longer than usual
-                                </Text>
-                              </Text>
-                            </Component>
-                          </ThemedComponent>
-                        </Body2>
-                        <View
-                          style={
-                            Object {
-                              "marginTop": 8,
-                            }
-                          }
-                        >
-                          <ThemedComponent
-                            style={
-                              Object {
-                                "marginTop": 8,
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                Object {
-                                  "marginTop": 8,
-                                }
-                              }
-                            >
+                                      }
+                                    }
+                                    styles={
+                                      Object {
+                                        "root": Object {
+                                          "color": "rgba(0, 0, 0, 0.87)",
+                                          "fontFamily": undefined,
+                                          "fontSize": 14,
+                                          "fontWeight": "400",
+                                        },
+                                      }
+                                    }
+                                  >
+                                    <Text
+                                      style={
+                                        Array [
+                                          Object {
+                                            "color": "rgba(0, 0, 0, 0.87)",
+                                            "fontFamily": undefined,
+                                            "fontSize": 14,
+                                            "fontWeight": "400",
+                                          },
+                                          Object {
+                                            "marginBottom": 8,
+                                            "textAlign": "center",
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "rgba(0, 0, 0, 0.87)",
+                                              "fontFamily": undefined,
+                                              "fontSize": 14,
+                                              "fontWeight": "400",
+                                            },
+                                            Object {
+                                              "marginBottom": 8,
+                                              "textAlign": "center",
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        This is taking longer than usual
+                                      </Text>
+                                    </Text>
+                                  </Component>
+                                </ThemedComponent>
+                              </Body2>
                               <View
                                 style={
                                   Object {
@@ -870,153 +1000,98 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                   }
                                 }
                               >
-                                <Button
-                                  color="primary"
-                                  onPress={[Function]}
+                                <ThemedComponent
+                                  style={
+                                    Object {
+                                      "marginTop": 8,
+                                    }
+                                  }
                                 >
                                   <ThemedComponent
-                                    color="primary"
-                                    onPress={[Function]}
+                                    style={
+                                      Object {
+                                        "marginTop": 8,
+                                      }
+                                    }
                                   >
-                                    <Button
-                                      color="primary"
-                                      onPress={[Function]}
-                                      styles={
+                                    <ThemedComponent
+                                      style={
                                         Object {
-                                          "default": Object {
-                                            "backgroundColor": "#fafafa",
-                                          },
-                                          "defaultText": Object {},
-                                          "fullWidth": Object {
-                                            "alignSelf": "stretch",
-                                          },
-                                          "link": Object {},
-                                          "linkText": Object {},
-                                          "primary": Object {
-                                            "backgroundColor": "#3f51b5",
-                                          },
-                                          "primaryText": Object {
-                                            "color": "#fff",
-                                          },
-                                          "root": Object {
-                                            "alignSelf": "flex-start",
-                                            "borderRadius": 4,
-                                            "paddingBottom": 8,
-                                            "paddingLeft": 16,
-                                            "paddingRight": 16,
-                                            "paddingTop": 8,
-                                          },
-                                          "secondary": Object {
-                                            "backgroundColor": "#f50057",
-                                          },
-                                          "secondaryText": Object {
-                                            "color": "#fff",
-                                          },
-                                          "text": Object {
-                                            "color": "rgba(0, 0, 0, 0.87)",
-                                            "fontFamily": undefined,
-                                            "fontSize": 14,
-                                            "fontWeight": "500",
-                                            "textAlign": "center",
-                                            "textTransform": "uppercase",
-                                          },
+                                          "marginTop": 8,
                                         }
                                       }
                                     >
-                                      <TouchableOpacity
-                                        accessibilityRole="button"
-                                        activeOpacity={0.2}
-                                        onPress={[Function]}
+                                      <ThemedComponent
+                                        style={
+                                          Object {
+                                            "marginTop": 8,
+                                          }
+                                        }
                                       >
-                                        <AnimatedComponent
-                                          accessibilityRole="button"
-                                          accessible={true}
-                                          isTVSelectable={true}
-                                          onResponderGrant={[Function]}
-                                          onResponderMove={[Function]}
-                                          onResponderRelease={[Function]}
-                                          onResponderTerminate={[Function]}
-                                          onResponderTerminationRequest={[Function]}
-                                          onStartShouldSetResponder={[Function]}
+                                        <ThemedComponent
                                           style={
-                                            Array [
-                                              undefined,
-                                              Object {
-                                                "opacity": 1,
-                                              },
-                                            ]
+                                            Object {
+                                              "marginTop": 8,
+                                            }
                                           }
                                         >
                                           <View
-                                            accessibilityRole="button"
-                                            accessible={true}
-                                            isTVSelectable={true}
-                                            onResponderGrant={[Function]}
-                                            onResponderMove={[Function]}
-                                            onResponderRelease={[Function]}
-                                            onResponderTerminate={[Function]}
-                                            onResponderTerminationRequest={[Function]}
-                                            onStartShouldSetResponder={[Function]}
                                             style={
                                               Object {
-                                                "opacity": 1,
+                                                "marginTop": 8,
                                               }
                                             }
                                           >
                                             <View
-                                              accessibilityRole="button"
-                                              accessible={true}
-                                              isTVSelectable={true}
-                                              onResponderGrant={[Function]}
-                                              onResponderMove={[Function]}
-                                              onResponderRelease={[Function]}
-                                              onResponderTerminate={[Function]}
-                                              onResponderTerminationRequest={[Function]}
-                                              onStartShouldSetResponder={[Function]}
                                               style={
                                                 Object {
-                                                  "opacity": 1,
+                                                  "marginTop": 8,
                                                 }
                                               }
                                             >
-                                              <View
-                                                style={
-                                                  Array [
-                                                    Object {
-                                                      "alignSelf": "flex-start",
-                                                      "borderRadius": 4,
-                                                      "paddingBottom": 8,
-                                                      "paddingLeft": 16,
-                                                      "paddingRight": 16,
-                                                      "paddingTop": 8,
-                                                    },
-                                                    Object {
-                                                      "backgroundColor": "#3f51b5",
-                                                    },
-                                                  ]
-                                                }
+                                              <Button
+                                                color="primary"
+                                                onPress={[Function]}
                                               >
-                                                <View
-                                                  style={
-                                                    Array [
-                                                      Object {
-                                                        "alignSelf": "flex-start",
-                                                        "borderRadius": 4,
-                                                        "paddingBottom": 8,
-                                                        "paddingLeft": 16,
-                                                        "paddingRight": 16,
-                                                        "paddingTop": 8,
-                                                      },
-                                                      Object {
-                                                        "backgroundColor": "#3f51b5",
-                                                      },
-                                                    ]
-                                                  }
+                                                <ThemedComponent
+                                                  color="primary"
+                                                  onPress={[Function]}
                                                 >
-                                                  <Text
-                                                    style={
-                                                      Array [
-                                                        Object {
+                                                  <Button
+                                                    color="primary"
+                                                    onPress={[Function]}
+                                                    styles={
+                                                      Object {
+                                                        "default": Object {
+                                                          "backgroundColor": "#fafafa",
+                                                        },
+                                                        "defaultText": Object {},
+                                                        "fullWidth": Object {
+                                                          "alignSelf": "stretch",
+                                                        },
+                                                        "link": Object {},
+                                                        "linkText": Object {},
+                                                        "primary": Object {
+                                                          "backgroundColor": "#3f51b5",
+                                                        },
+                                                        "primaryText": Object {
+                                                          "color": "#fff",
+                                                        },
+                                                        "root": Object {
+                                                          "alignSelf": "flex-start",
+                                                          "borderRadius": 4,
+                                                          "paddingBottom": 8,
+                                                          "paddingLeft": 16,
+                                                          "paddingRight": 16,
+                                                          "paddingTop": 8,
+                                                        },
+                                                        "secondary": Object {
+                                                          "backgroundColor": "#f50057",
+                                                        },
+                                                        "secondaryText": Object {
+                                                          "color": "#fff",
+                                                        },
+                                                        "text": Object {
                                                           "color": "rgba(0, 0, 0, 0.87)",
                                                           "fontFamily": undefined,
                                                           "fontSize": 14,
@@ -1024,50 +1099,161 @@ exports[`ReactLoadableLoading should show loading state with timeout if isloadin
                                                           "textAlign": "center",
                                                           "textTransform": "uppercase",
                                                         },
-                                                        Object {
-                                                          "color": "#fff",
-                                                        },
-                                                      ]
+                                                      }
                                                     }
                                                   >
-                                                    <Text
-                                                      style={
-                                                        Array [
-                                                          Object {
-                                                            "color": "rgba(0, 0, 0, 0.87)",
-                                                            "fontFamily": undefined,
-                                                            "fontSize": 14,
-                                                            "fontWeight": "500",
-                                                            "textAlign": "center",
-                                                            "textTransform": "uppercase",
-                                                          },
-                                                          Object {
-                                                            "color": "#fff",
-                                                          },
-                                                        ]
-                                                      }
+                                                    <TouchableOpacity
+                                                      accessibilityRole="button"
+                                                      activeOpacity={0.2}
+                                                      onPress={[Function]}
                                                     >
-                                                      Retry
-                                                    </Text>
-                                                  </Text>
-                                                </View>
-                                              </View>
+                                                      <AnimatedComponent
+                                                        accessibilityRole="button"
+                                                        accessible={true}
+                                                        isTVSelectable={true}
+                                                        onResponderGrant={[Function]}
+                                                        onResponderMove={[Function]}
+                                                        onResponderRelease={[Function]}
+                                                        onResponderTerminate={[Function]}
+                                                        onResponderTerminationRequest={[Function]}
+                                                        onStartShouldSetResponder={[Function]}
+                                                        style={
+                                                          Array [
+                                                            undefined,
+                                                            Object {
+                                                              "opacity": 1,
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        <View
+                                                          accessibilityRole="button"
+                                                          accessible={true}
+                                                          isTVSelectable={true}
+                                                          onResponderGrant={[Function]}
+                                                          onResponderMove={[Function]}
+                                                          onResponderRelease={[Function]}
+                                                          onResponderTerminate={[Function]}
+                                                          onResponderTerminationRequest={[Function]}
+                                                          onStartShouldSetResponder={[Function]}
+                                                          style={
+                                                            Object {
+                                                              "opacity": 1,
+                                                            }
+                                                          }
+                                                        >
+                                                          <View
+                                                            accessibilityRole="button"
+                                                            accessible={true}
+                                                            isTVSelectable={true}
+                                                            onResponderGrant={[Function]}
+                                                            onResponderMove={[Function]}
+                                                            onResponderRelease={[Function]}
+                                                            onResponderTerminate={[Function]}
+                                                            onResponderTerminationRequest={[Function]}
+                                                            onStartShouldSetResponder={[Function]}
+                                                            style={
+                                                              Object {
+                                                                "opacity": 1,
+                                                              }
+                                                            }
+                                                          >
+                                                            <View
+                                                              style={
+                                                                Array [
+                                                                  Object {
+                                                                    "alignSelf": "flex-start",
+                                                                    "borderRadius": 4,
+                                                                    "paddingBottom": 8,
+                                                                    "paddingLeft": 16,
+                                                                    "paddingRight": 16,
+                                                                    "paddingTop": 8,
+                                                                  },
+                                                                  Object {
+                                                                    "backgroundColor": "#3f51b5",
+                                                                  },
+                                                                ]
+                                                              }
+                                                            >
+                                                              <View
+                                                                style={
+                                                                  Array [
+                                                                    Object {
+                                                                      "alignSelf": "flex-start",
+                                                                      "borderRadius": 4,
+                                                                      "paddingBottom": 8,
+                                                                      "paddingLeft": 16,
+                                                                      "paddingRight": 16,
+                                                                      "paddingTop": 8,
+                                                                    },
+                                                                    Object {
+                                                                      "backgroundColor": "#3f51b5",
+                                                                    },
+                                                                  ]
+                                                                }
+                                                              >
+                                                                <Text
+                                                                  style={
+                                                                    Array [
+                                                                      Object {
+                                                                        "color": "rgba(0, 0, 0, 0.87)",
+                                                                        "fontFamily": undefined,
+                                                                        "fontSize": 14,
+                                                                        "fontWeight": "500",
+                                                                        "textAlign": "center",
+                                                                        "textTransform": "uppercase",
+                                                                      },
+                                                                      Object {
+                                                                        "color": "#fff",
+                                                                      },
+                                                                    ]
+                                                                  }
+                                                                >
+                                                                  <Text
+                                                                    style={
+                                                                      Array [
+                                                                        Object {
+                                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                                          "fontFamily": undefined,
+                                                                          "fontSize": 14,
+                                                                          "fontWeight": "500",
+                                                                          "textAlign": "center",
+                                                                          "textTransform": "uppercase",
+                                                                        },
+                                                                        Object {
+                                                                          "color": "#fff",
+                                                                        },
+                                                                      ]
+                                                                    }
+                                                                  >
+                                                                    Retry
+                                                                  </Text>
+                                                                </Text>
+                                                              </View>
+                                                            </View>
+                                                          </View>
+                                                        </View>
+                                                      </AnimatedComponent>
+                                                    </TouchableOpacity>
+                                                  </Button>
+                                                </ThemedComponent>
+                                              </Button>
                                             </View>
                                           </View>
-                                        </AnimatedComponent>
-                                      </TouchableOpacity>
-                                    </Button>
+                                        </ThemedComponent>
+                                      </ThemedComponent>
+                                    </ThemedComponent>
                                   </ThemedComponent>
-                                </Button>
+                                </ThemedComponent>
                               </View>
                             </View>
-                          </ThemedComponent>
-                        </View>
-                      </View>
-                    </View>
-                  </ThemedComponent>
-                </View>
-              </ComponentState>
+                          </View>
+                        </ThemedComponent>
+                      </ThemedComponent>
+                    </ThemedComponent>
+                  </View>
+                </ComponentState>
+              </ThemedComponent>
             </ThemedComponent>
           </ComponentState>
         </LoadingState>

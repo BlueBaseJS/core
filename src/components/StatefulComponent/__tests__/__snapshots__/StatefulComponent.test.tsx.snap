@@ -221,47 +221,42 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                               description="Create new items to fill this area."
                               title="Empty Area"
                             >
-                              <ComponentState
+                              <ThemedComponent
                                 description="Create new items to fill this area."
-                                styles={
-                                  Object {
-                                    "actionRoot": Object {
-                                      "marginTop": 8,
-                                    },
-                                    "description": Object {
-                                      "marginBottom": 8,
-                                      "textAlign": "center",
-                                    },
-                                    "image": Object {
-                                      "height": 250,
-                                      "width": 250,
-                                    },
-                                    "imageRoot": Object {
-                                      "marginBottom": 16,
-                                    },
-                                    "root": Object {
-                                      "alignItems": "center",
-                                      "flex": 1,
-                                      "justifyContent": "center",
-                                    },
-                                    "title": Object {
-                                      "marginBottom": 8,
-                                      "textAlign": "center",
-                                    },
-                                  }
-                                }
                                 title="Empty Area"
                               >
-                                <View
-                                  style={
+                                <ComponentState
+                                  description="Create new items to fill this area."
+                                  styles={
                                     Object {
-                                      "alignItems": "center",
-                                      "flex": 1,
-                                      "justifyContent": "center",
+                                      "actionRoot": Object {
+                                        "marginTop": 8,
+                                      },
+                                      "description": Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
+                                      "image": Object {
+                                        "height": 250,
+                                        "width": 250,
+                                      },
+                                      "imageRoot": Object {
+                                        "marginBottom": 16,
+                                      },
+                                      "root": Object {
+                                        "alignItems": "center",
+                                        "flex": 1,
+                                        "justifyContent": "center",
+                                      },
+                                      "title": Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
                                     }
                                   }
+                                  title="Empty Area"
                                 >
-                                  <ThemedComponent
+                                  <View
                                     style={
                                       Object {
                                         "alignItems": "center",
@@ -270,7 +265,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                       }
                                     }
                                   >
-                                    <View
+                                    <ThemedComponent
                                       style={
                                         Object {
                                           "alignItems": "center",
@@ -279,7 +274,7 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                         }
                                       }
                                     >
-                                      <View
+                                      <ThemedComponent
                                         style={
                                           Object {
                                             "alignItems": "center",
@@ -288,155 +283,185 @@ exports[`StatefulComponent should show empty state as data is an empty array 1`]
                                           }
                                         }
                                       >
-                                        <H6
+                                        <ThemedComponent
                                           style={
                                             Object {
-                                              "marginBottom": 8,
-                                              "textAlign": "center",
+                                              "alignItems": "center",
+                                              "flex": 1,
+                                              "justifyContent": "center",
                                             }
                                           }
                                         >
-                                          <ThemedComponent
+                                          <View
                                             style={
                                               Object {
-                                                "marginBottom": 8,
-                                                "textAlign": "center",
+                                                "alignItems": "center",
+                                                "flex": 1,
+                                                "justifyContent": "center",
                                               }
                                             }
                                           >
-                                            <Component
+                                            <View
                                               style={
                                                 Object {
-                                                  "marginBottom": 8,
-                                                  "textAlign": "center",
-                                                }
-                                              }
-                                              styles={
-                                                Object {
-                                                  "root": Object {
-                                                    "color": "rgba(0, 0, 0, 0.87)",
-                                                    "fontFamily": undefined,
-                                                    "fontSize": 20,
-                                                    "fontWeight": "500",
-                                                  },
+                                                  "alignItems": "center",
+                                                  "flex": 1,
+                                                  "justifyContent": "center",
                                                 }
                                               }
                                             >
-                                              <Text
+                                              <H6
                                                 style={
-                                                  Array [
-                                                    Object {
-                                                      "color": "rgba(0, 0, 0, 0.87)",
-                                                      "fontFamily": undefined,
-                                                      "fontSize": 20,
-                                                      "fontWeight": "500",
-                                                    },
+                                                  Object {
+                                                    "marginBottom": 8,
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
                                                     Object {
                                                       "marginBottom": 8,
                                                       "textAlign": "center",
-                                                    },
-                                                  ]
-                                                }
-                                              >
-                                                <Text
-                                                  style={
-                                                    Array [
-                                                      Object {
-                                                        "color": "rgba(0, 0, 0, 0.87)",
-                                                        "fontFamily": undefined,
-                                                        "fontSize": 20,
-                                                        "fontWeight": "500",
-                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
                                                       Object {
                                                         "marginBottom": 8,
                                                         "textAlign": "center",
-                                                      },
-                                                    ]
-                                                  }
-                                                >
-                                                  Empty Area
-                                                </Text>
-                                              </Text>
-                                            </Component>
-                                          </ThemedComponent>
-                                        </H6>
-                                        <Body2
-                                          style={
-                                            Object {
-                                              "marginBottom": 8,
-                                              "textAlign": "center",
-                                            }
-                                          }
-                                        >
-                                          <ThemedComponent
-                                            style={
-                                              Object {
-                                                "marginBottom": 8,
-                                                "textAlign": "center",
-                                              }
-                                            }
-                                          >
-                                            <Component
-                                              style={
-                                                Object {
-                                                  "marginBottom": 8,
-                                                  "textAlign": "center",
-                                                }
-                                              }
-                                              styles={
-                                                Object {
-                                                  "root": Object {
-                                                    "color": "rgba(0, 0, 0, 0.87)",
-                                                    "fontFamily": undefined,
-                                                    "fontSize": 14,
-                                                    "fontWeight": "400",
-                                                  },
-                                                }
-                                              }
-                                            >
-                                              <Text
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": undefined,
+                                                          "fontSize": 20,
+                                                          "fontWeight": "500",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": undefined,
+                                                            "fontSize": 20,
+                                                            "fontWeight": "500",
+                                                          },
+                                                          Object {
+                                                            "marginBottom": 8,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": undefined,
+                                                              "fontSize": 20,
+                                                              "fontWeight": "500",
+                                                            },
+                                                            Object {
+                                                              "marginBottom": 8,
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        Empty Area
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </H6>
+                                              <Body2
                                                 style={
-                                                  Array [
-                                                    Object {
-                                                      "color": "rgba(0, 0, 0, 0.87)",
-                                                      "fontFamily": undefined,
-                                                      "fontSize": 14,
-                                                      "fontWeight": "400",
-                                                    },
+                                                  Object {
+                                                    "marginBottom": 8,
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
                                                     Object {
                                                       "marginBottom": 8,
                                                       "textAlign": "center",
-                                                    },
-                                                  ]
-                                                }
-                                              >
-                                                <Text
-                                                  style={
-                                                    Array [
-                                                      Object {
-                                                        "color": "rgba(0, 0, 0, 0.87)",
-                                                        "fontFamily": undefined,
-                                                        "fontSize": 14,
-                                                        "fontWeight": "400",
-                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
                                                       Object {
                                                         "marginBottom": 8,
                                                         "textAlign": "center",
-                                                      },
-                                                    ]
-                                                  }
-                                                >
-                                                  Create new items to fill this area.
-                                                </Text>
-                                              </Text>
-                                            </Component>
-                                          </ThemedComponent>
-                                        </Body2>
-                                      </View>
-                                    </View>
-                                  </ThemedComponent>
-                                </View>
-                              </ComponentState>
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": undefined,
+                                                          "fontSize": 14,
+                                                          "fontWeight": "400",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": undefined,
+                                                            "fontSize": 14,
+                                                            "fontWeight": "400",
+                                                          },
+                                                          Object {
+                                                            "marginBottom": 8,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": undefined,
+                                                              "fontSize": 14,
+                                                              "fontWeight": "400",
+                                                            },
+                                                            Object {
+                                                              "marginBottom": 8,
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        Create new items to fill this area.
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </Body2>
+                                            </View>
+                                          </View>
+                                        </ThemedComponent>
+                                      </ThemedComponent>
+                                    </ThemedComponent>
+                                  </View>
+                                </ComponentState>
+                              </ThemedComponent>
                             </ThemedComponent>
                           </ComponentState>
                         </EmptyState>
@@ -518,47 +543,42 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                               description="Create new items to fill this area."
                               title="Empty Area"
                             >
-                              <ComponentState
+                              <ThemedComponent
                                 description="Create new items to fill this area."
-                                styles={
-                                  Object {
-                                    "actionRoot": Object {
-                                      "marginTop": 8,
-                                    },
-                                    "description": Object {
-                                      "marginBottom": 8,
-                                      "textAlign": "center",
-                                    },
-                                    "image": Object {
-                                      "height": 250,
-                                      "width": 250,
-                                    },
-                                    "imageRoot": Object {
-                                      "marginBottom": 16,
-                                    },
-                                    "root": Object {
-                                      "alignItems": "center",
-                                      "flex": 1,
-                                      "justifyContent": "center",
-                                    },
-                                    "title": Object {
-                                      "marginBottom": 8,
-                                      "textAlign": "center",
-                                    },
-                                  }
-                                }
                                 title="Empty Area"
                               >
-                                <View
-                                  style={
+                                <ComponentState
+                                  description="Create new items to fill this area."
+                                  styles={
                                     Object {
-                                      "alignItems": "center",
-                                      "flex": 1,
-                                      "justifyContent": "center",
+                                      "actionRoot": Object {
+                                        "marginTop": 8,
+                                      },
+                                      "description": Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
+                                      "image": Object {
+                                        "height": 250,
+                                        "width": 250,
+                                      },
+                                      "imageRoot": Object {
+                                        "marginBottom": 16,
+                                      },
+                                      "root": Object {
+                                        "alignItems": "center",
+                                        "flex": 1,
+                                        "justifyContent": "center",
+                                      },
+                                      "title": Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      },
                                     }
                                   }
+                                  title="Empty Area"
                                 >
-                                  <ThemedComponent
+                                  <View
                                     style={
                                       Object {
                                         "alignItems": "center",
@@ -567,7 +587,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                       }
                                     }
                                   >
-                                    <View
+                                    <ThemedComponent
                                       style={
                                         Object {
                                           "alignItems": "center",
@@ -576,7 +596,7 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                         }
                                       }
                                     >
-                                      <View
+                                      <ThemedComponent
                                         style={
                                           Object {
                                             "alignItems": "center",
@@ -585,155 +605,185 @@ exports[`StatefulComponent should show empty state as no data is provided 1`] = 
                                           }
                                         }
                                       >
-                                        <H6
+                                        <ThemedComponent
                                           style={
                                             Object {
-                                              "marginBottom": 8,
-                                              "textAlign": "center",
+                                              "alignItems": "center",
+                                              "flex": 1,
+                                              "justifyContent": "center",
                                             }
                                           }
                                         >
-                                          <ThemedComponent
+                                          <View
                                             style={
                                               Object {
-                                                "marginBottom": 8,
-                                                "textAlign": "center",
+                                                "alignItems": "center",
+                                                "flex": 1,
+                                                "justifyContent": "center",
                                               }
                                             }
                                           >
-                                            <Component
+                                            <View
                                               style={
                                                 Object {
-                                                  "marginBottom": 8,
-                                                  "textAlign": "center",
-                                                }
-                                              }
-                                              styles={
-                                                Object {
-                                                  "root": Object {
-                                                    "color": "rgba(0, 0, 0, 0.87)",
-                                                    "fontFamily": undefined,
-                                                    "fontSize": 20,
-                                                    "fontWeight": "500",
-                                                  },
+                                                  "alignItems": "center",
+                                                  "flex": 1,
+                                                  "justifyContent": "center",
                                                 }
                                               }
                                             >
-                                              <Text
+                                              <H6
                                                 style={
-                                                  Array [
-                                                    Object {
-                                                      "color": "rgba(0, 0, 0, 0.87)",
-                                                      "fontFamily": undefined,
-                                                      "fontSize": 20,
-                                                      "fontWeight": "500",
-                                                    },
+                                                  Object {
+                                                    "marginBottom": 8,
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
                                                     Object {
                                                       "marginBottom": 8,
                                                       "textAlign": "center",
-                                                    },
-                                                  ]
-                                                }
-                                              >
-                                                <Text
-                                                  style={
-                                                    Array [
-                                                      Object {
-                                                        "color": "rgba(0, 0, 0, 0.87)",
-                                                        "fontFamily": undefined,
-                                                        "fontSize": 20,
-                                                        "fontWeight": "500",
-                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
                                                       Object {
                                                         "marginBottom": 8,
                                                         "textAlign": "center",
-                                                      },
-                                                    ]
-                                                  }
-                                                >
-                                                  Empty Area
-                                                </Text>
-                                              </Text>
-                                            </Component>
-                                          </ThemedComponent>
-                                        </H6>
-                                        <Body2
-                                          style={
-                                            Object {
-                                              "marginBottom": 8,
-                                              "textAlign": "center",
-                                            }
-                                          }
-                                        >
-                                          <ThemedComponent
-                                            style={
-                                              Object {
-                                                "marginBottom": 8,
-                                                "textAlign": "center",
-                                              }
-                                            }
-                                          >
-                                            <Component
-                                              style={
-                                                Object {
-                                                  "marginBottom": 8,
-                                                  "textAlign": "center",
-                                                }
-                                              }
-                                              styles={
-                                                Object {
-                                                  "root": Object {
-                                                    "color": "rgba(0, 0, 0, 0.87)",
-                                                    "fontFamily": undefined,
-                                                    "fontSize": 14,
-                                                    "fontWeight": "400",
-                                                  },
-                                                }
-                                              }
-                                            >
-                                              <Text
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": undefined,
+                                                          "fontSize": 20,
+                                                          "fontWeight": "500",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": undefined,
+                                                            "fontSize": 20,
+                                                            "fontWeight": "500",
+                                                          },
+                                                          Object {
+                                                            "marginBottom": 8,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": undefined,
+                                                              "fontSize": 20,
+                                                              "fontWeight": "500",
+                                                            },
+                                                            Object {
+                                                              "marginBottom": 8,
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        Empty Area
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </H6>
+                                              <Body2
                                                 style={
-                                                  Array [
-                                                    Object {
-                                                      "color": "rgba(0, 0, 0, 0.87)",
-                                                      "fontFamily": undefined,
-                                                      "fontSize": 14,
-                                                      "fontWeight": "400",
-                                                    },
+                                                  Object {
+                                                    "marginBottom": 8,
+                                                    "textAlign": "center",
+                                                  }
+                                                }
+                                              >
+                                                <ThemedComponent
+                                                  style={
                                                     Object {
                                                       "marginBottom": 8,
                                                       "textAlign": "center",
-                                                    },
-                                                  ]
-                                                }
-                                              >
-                                                <Text
-                                                  style={
-                                                    Array [
-                                                      Object {
-                                                        "color": "rgba(0, 0, 0, 0.87)",
-                                                        "fontFamily": undefined,
-                                                        "fontSize": 14,
-                                                        "fontWeight": "400",
-                                                      },
+                                                    }
+                                                  }
+                                                >
+                                                  <Component
+                                                    style={
                                                       Object {
                                                         "marginBottom": 8,
                                                         "textAlign": "center",
-                                                      },
-                                                    ]
-                                                  }
-                                                >
-                                                  Create new items to fill this area.
-                                                </Text>
-                                              </Text>
-                                            </Component>
-                                          </ThemedComponent>
-                                        </Body2>
-                                      </View>
-                                    </View>
-                                  </ThemedComponent>
-                                </View>
-                              </ComponentState>
+                                                      }
+                                                    }
+                                                    styles={
+                                                      Object {
+                                                        "root": Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": undefined,
+                                                          "fontSize": 14,
+                                                          "fontWeight": "400",
+                                                        },
+                                                      }
+                                                    }
+                                                  >
+                                                    <Text
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "rgba(0, 0, 0, 0.87)",
+                                                            "fontFamily": undefined,
+                                                            "fontSize": 14,
+                                                            "fontWeight": "400",
+                                                          },
+                                                          Object {
+                                                            "marginBottom": 8,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      <Text
+                                                        style={
+                                                          Array [
+                                                            Object {
+                                                              "color": "rgba(0, 0, 0, 0.87)",
+                                                              "fontFamily": undefined,
+                                                              "fontSize": 14,
+                                                              "fontWeight": "400",
+                                                            },
+                                                            Object {
+                                                              "marginBottom": 8,
+                                                              "textAlign": "center",
+                                                            },
+                                                          ]
+                                                        }
+                                                      >
+                                                        Create new items to fill this area.
+                                                      </Text>
+                                                    </Text>
+                                                  </Component>
+                                                </ThemedComponent>
+                                              </Body2>
+                                            </View>
+                                          </View>
+                                        </ThemedComponent>
+                                      </ThemedComponent>
+                                    </ThemedComponent>
+                                  </View>
+                                </ComponentState>
+                              </ThemedComponent>
                             </ThemedComponent>
                           </ComponentState>
                         </EmptyState>
@@ -830,61 +880,50 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                               retry={[Function]}
                               timedOut={false}
                             >
-                              <LoadingState
+                              <ThemedComponent
                                 retry={[Function]}
                                 timedOut={false}
                               >
-                                <ComponentState
-                                  image={<ActivityIndicator />}
+                                <LoadingState
+                                  retry={[Function]}
+                                  timedOut={false}
                                 >
-                                  <ThemedComponent
+                                  <ComponentState
                                     image={<ActivityIndicator />}
                                   >
-                                    <ComponentState
+                                    <ThemedComponent
                                       image={<ActivityIndicator />}
-                                      styles={
-                                        Object {
-                                          "actionRoot": Object {
-                                            "marginTop": 8,
-                                          },
-                                          "description": Object {
-                                            "marginBottom": 8,
-                                            "textAlign": "center",
-                                          },
-                                          "image": Object {
-                                            "height": 250,
-                                            "width": 250,
-                                          },
-                                          "imageRoot": Object {
-                                            "marginBottom": 16,
-                                          },
-                                          "root": Object {
-                                            "alignItems": "center",
-                                            "flex": 1,
-                                            "justifyContent": "center",
-                                          },
-                                          "title": Object {
-                                            "marginBottom": 8,
-                                            "textAlign": "center",
-                                          },
-                                        }
-                                      }
                                     >
-                                      <View
-                                        style={
-                                          Object {
-                                            "alignItems": "center",
-                                            "flex": 1,
-                                            "justifyContent": "center",
-                                          }
-                                        }
+                                      <ThemedComponent
+                                        image={<ActivityIndicator />}
                                       >
-                                        <ThemedComponent
-                                          style={
+                                        <ComponentState
+                                          image={<ActivityIndicator />}
+                                          styles={
                                             Object {
-                                              "alignItems": "center",
-                                              "flex": 1,
-                                              "justifyContent": "center",
+                                              "actionRoot": Object {
+                                                "marginTop": 8,
+                                              },
+                                              "description": Object {
+                                                "marginBottom": 8,
+                                                "textAlign": "center",
+                                              },
+                                              "image": Object {
+                                                "height": 250,
+                                                "width": 250,
+                                              },
+                                              "imageRoot": Object {
+                                                "marginBottom": 16,
+                                              },
+                                              "root": Object {
+                                                "alignItems": "center",
+                                                "flex": 1,
+                                                "justifyContent": "center",
+                                              },
+                                              "title": Object {
+                                                "marginBottom": 8,
+                                                "textAlign": "center",
+                                              },
                                             }
                                           }
                                         >
@@ -897,7 +936,7 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                               }
                                             }
                                           >
-                                            <View
+                                            <ThemedComponent
                                               style={
                                                 Object {
                                                   "alignItems": "center",
@@ -906,63 +945,129 @@ exports[`StatefulComponent should show loading state if loading is set to true 1
                                                 }
                                               }
                                             >
-                                              <View
+                                              <ThemedComponent
                                                 style={
                                                   Object {
-                                                    "marginBottom": 16,
+                                                    "alignItems": "center",
+                                                    "flex": 1,
+                                                    "justifyContent": "center",
                                                   }
                                                 }
                                               >
                                                 <ThemedComponent
                                                   style={
                                                     Object {
-                                                      "marginBottom": 16,
+                                                      "alignItems": "center",
+                                                      "flex": 1,
+                                                      "justifyContent": "center",
                                                     }
                                                   }
                                                 >
                                                   <View
                                                     style={
                                                       Object {
-                                                        "marginBottom": 16,
+                                                        "alignItems": "center",
+                                                        "flex": 1,
+                                                        "justifyContent": "center",
                                                       }
                                                     }
                                                   >
                                                     <View
                                                       style={
                                                         Object {
-                                                          "marginBottom": 16,
+                                                          "alignItems": "center",
+                                                          "flex": 1,
+                                                          "justifyContent": "center",
                                                         }
                                                       }
                                                     >
-                                                      <ActivityIndicator>
-                                                        <ThemedComponent>
-                                                          <ActivityIndicator
-                                                            animating={true}
-                                                            color="#999999"
-                                                            hidesWhenStopped={true}
-                                                            size="small"
+                                                      <View
+                                                        style={
+                                                          Object {
+                                                            "marginBottom": 16,
+                                                          }
+                                                        }
+                                                      >
+                                                        <ThemedComponent
+                                                          style={
+                                                            Object {
+                                                              "marginBottom": 16,
+                                                            }
+                                                          }
+                                                        >
+                                                          <ThemedComponent
+                                                            style={
+                                                              Object {
+                                                                "marginBottom": 16,
+                                                              }
+                                                            }
                                                           >
-                                                            <ActivityIndicator
-                                                              animating={true}
-                                                              color="#999999"
-                                                              hidesWhenStopped={true}
-                                                              size="small"
-                                                            />
-                                                          </ActivityIndicator>
+                                                            <ThemedComponent
+                                                              style={
+                                                                Object {
+                                                                  "marginBottom": 16,
+                                                                }
+                                                              }
+                                                            >
+                                                              <ThemedComponent
+                                                                style={
+                                                                  Object {
+                                                                    "marginBottom": 16,
+                                                                  }
+                                                                }
+                                                              >
+                                                                <View
+                                                                  style={
+                                                                    Object {
+                                                                      "marginBottom": 16,
+                                                                    }
+                                                                  }
+                                                                >
+                                                                  <View
+                                                                    style={
+                                                                      Object {
+                                                                        "marginBottom": 16,
+                                                                      }
+                                                                    }
+                                                                  >
+                                                                    <ActivityIndicator>
+                                                                      <ThemedComponent>
+                                                                        <ThemedComponent>
+                                                                          <ActivityIndicator
+                                                                            animating={true}
+                                                                            color="#999999"
+                                                                            hidesWhenStopped={true}
+                                                                            size="small"
+                                                                          >
+                                                                            <ActivityIndicator
+                                                                              animating={true}
+                                                                              color="#999999"
+                                                                              hidesWhenStopped={true}
+                                                                              size="small"
+                                                                            />
+                                                                          </ActivityIndicator>
+                                                                        </ThemedComponent>
+                                                                      </ThemedComponent>
+                                                                    </ActivityIndicator>
+                                                                  </View>
+                                                                </View>
+                                                              </ThemedComponent>
+                                                            </ThemedComponent>
+                                                          </ThemedComponent>
                                                         </ThemedComponent>
-                                                      </ActivityIndicator>
+                                                      </View>
                                                     </View>
                                                   </View>
                                                 </ThemedComponent>
-                                              </View>
-                                            </View>
+                                              </ThemedComponent>
+                                            </ThemedComponent>
                                           </View>
-                                        </ThemedComponent>
-                                      </View>
-                                    </ComponentState>
-                                  </ThemedComponent>
-                                </ComponentState>
-                              </LoadingState>
+                                        </ComponentState>
+                                      </ThemedComponent>
+                                    </ThemedComponent>
+                                  </ComponentState>
+                                </LoadingState>
+                              </ThemedComponent>
                             </ThemedComponent>
                           </LoadingState>
                         </WaitObserver>

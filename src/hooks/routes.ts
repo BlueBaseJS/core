@@ -11,7 +11,7 @@ export const routes: HookNestedCollection = {
 			key: 'bluebase-navigator-root-internal-default',
 			priority: 5,
 
-			value: async (inputRoutes: NavigatorProps, _ctx: {}, _BB: BlueBase) => {
+			value: async (inputRoutes: NavigatorProps, _ctx: {}, BB: BlueBase) => {
 
 				const rootRoutes: NavigatorProps = {
 					type: 'stack',
@@ -21,7 +21,8 @@ export const routes: HookNestedCollection = {
 					routes: [{
 						name: 'Root',
 						path: '',
-						screen: 'SystemApp',
+						// screen: 'SystemApp',
+						navigator: await BB.Hooks.run('bluebase.navigator.main', {} as any)
 					}]
 				};
 
