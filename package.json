@@ -124,6 +124,7 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-async-helpers": "^0.9.1",
     "gh-pages": "^2.0.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "jest-enzyme": "^7.0.1",
     "jsdom": "^13.1.0",
