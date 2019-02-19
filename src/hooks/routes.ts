@@ -1,31 +1,35 @@
-import { BlueBase, BootOptions } from '../BlueBase';
+import { BlueBase } from '../BlueBase';
 import { HookNestedCollection } from '../registries';
 import { NavigatorProps } from '../components';
 import deepmerge from 'deepmerge';
+import isnil from 'lodash.isnil';
+import { resolveThunk } from '../utils';
 
 // tslint:disable:object-literal-sort-keys
 export const routes: HookNestedCollection = {
+
 	'bluebase.navigator.root': [
 		{
 			key: 'bluebase-navigator-root-internal-default',
 			priority: 5,
 
-			value: async (inputRoutes: NavigatorProps, _ctx: {}, BB: BlueBase) => {
+			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
 
-				const rootRoutes: NavigatorProps = {
+				const navigator: NavigatorProps = {
 					type: 'stack',
 					initialRouteName: 'Root',
-					// headerMode: 'none',
 
 					routes: [{
 						name: 'Root',
 						path: '',
-						// screen: 'SystemApp',
-						navigator: await BB.Hooks.run('bluebase.navigator.main', {} as any)
+						navigator: await BB.Hooks.run('bluebase.navigator.main', {} as any),
+						navigationOptions: {
+							header: null,
+						}
 					}]
 				};
 
-				return deepmerge(inputRoutes, rootRoutes);
+				return deepmerge(inputNavigator, navigator);
 
 			},
 		},
@@ -38,19 +42,56 @@ export const routes: HookNestedCollection = {
 			priority: 5,
 
 			// tslint:disable-line:object-literal-sort-keys
-			value: async (_bootOptions: BootOptions, _ctx: {}, _BB: BlueBase) => {
+			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
 
-				const mainRoutes: NavigatorProps = {
+				const navigator: NavigatorProps = {
 					type: 'stack',
+					initialRouteName: 'Home',
 					routes: [{
-						name: 'App',
-						path: '/app',
+						name: 'Home',
+						path: '',
 						screen: 'HomeScreen',
+					}, {
+						name: 'Plugins',
+						path: 'p',
+						navigator: await BB.Hooks.run('bluebase.navigator.plugins', {} as any),
 					}]
 				};
 
-				return mainRoutes;
+				return deepmerge(inputNavigator, navigator);
+			},
+		},
+	],
 
+
+	/**
+	 * Returns a navigator with plugin routes
+	 */
+	'bluebase.navigator.plugins': [
+		{
+			key: 'bluebase-navigator-plugins-internal-default',
+			priority: 5,
+
+			// tslint:disable-line:object-literal-sort-keys
+			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
+
+				const pluginRoutes = [];
+				for (const [key, item] of BB.Plugins.entries()) {
+					const plugin = await item.value;
+					if(BB.Plugins.isEnabled(key) && !isnil(plugin.route)) {
+						pluginRoutes.push(resolveThunk(plugin.route));
+					}
+				}
+
+				const navigator: NavigatorProps = {
+					type: 'stack',
+					routes: pluginRoutes,
+					navigationOptions: {
+						// header: null,
+					}
+				};
+
+				return deepmerge(inputNavigator, navigator);
 			},
 		},
 	],

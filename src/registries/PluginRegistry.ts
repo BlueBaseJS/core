@@ -3,10 +3,10 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
+import { DynamicIconProps, RouteConfig } from '../components/';
 import { MaybeThunk, isBlueBaseModule } from '../utils';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
-import { DynamicIconProps } from '../components/';
 import { HookNestedCollection } from './HookRegistry';
 import { ItemCollection } from './Registry';
 import { ThemeCollection } from './ThemeRegistry';
@@ -24,6 +24,7 @@ export interface PluginValue {
 	components: ComponentCollection;
 	hooks: HookNestedCollection; // HookCollectionInput;
 	themes: ThemeCollection;
+	route?: MaybeThunk<RouteConfig>;
 }
 
 export type PluginValueInput = Partial<PluginValue>;
@@ -89,7 +90,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * @param plugin
  */
 export function createPlugin(plugin: Partial<Plugin>): PluginInput {
-	const { components, hooks, themes, value, ...rest } = plugin;
+	const { components, hooks, themes, route, value, ...rest } = plugin;
 
 	return {
 		categories: [],
@@ -102,6 +103,7 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 		value: {
 			components: components || {},
 			hooks: hooks || {},
+			route,
 			themes: themes || {},
 
 			...value,
