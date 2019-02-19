@@ -7,34 +7,32 @@ import { resolveThunk } from '../utils';
 
 // tslint:disable:object-literal-sort-keys
 export const routes: HookNestedCollection = {
-
 	'bluebase.navigator.root': [
 		{
 			key: 'bluebase-navigator-root-internal-default',
 			priority: 5,
 
 			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
-
 				const navigator: NavigatorProps = {
 					type: 'stack',
 					initialRouteName: 'Root',
 
-					routes: [{
-						name: 'Root',
-						path: '',
-						navigator: await BB.Hooks.run('bluebase.navigator.main', {} as any),
-						navigationOptions: {
-							header: null,
-						}
-					}]
+					routes: [
+						{
+							name: 'Root',
+							path: '',
+							navigator: await BB.Hooks.run('bluebase.navigator.main', {} as any),
+							navigationOptions: {
+								header: null,
+							},
+						},
+					],
 				};
 
 				return deepmerge(inputNavigator, navigator);
-
 			},
 		},
 	],
-
 
 	'bluebase.navigator.main': [
 		{
@@ -43,26 +41,27 @@ export const routes: HookNestedCollection = {
 
 			// tslint:disable-line:object-literal-sort-keys
 			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
-
 				const navigator: NavigatorProps = {
 					type: 'stack',
 					initialRouteName: 'Home',
-					routes: [{
-						name: 'Home',
-						path: '',
-						screen: 'HomeScreen',
-					}, {
-						name: 'Plugins',
-						path: 'p',
-						navigator: await BB.Hooks.run('bluebase.navigator.plugins', {} as any),
-					}]
+					routes: [
+						{
+							name: 'Home',
+							path: '',
+							screen: 'HomeScreen',
+						},
+						{
+							name: 'Plugins',
+							path: 'p',
+							navigator: await BB.Hooks.run('bluebase.navigator.plugins', {} as any),
+						},
+					],
 				};
 
 				return deepmerge(inputNavigator, navigator);
 			},
 		},
 	],
-
 
 	/**
 	 * Returns a navigator with plugin routes
@@ -74,11 +73,10 @@ export const routes: HookNestedCollection = {
 
 			// tslint:disable-line:object-literal-sort-keys
 			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
-
 				const pluginRoutes = [];
 				for (const [key, item] of BB.Plugins.entries()) {
 					const plugin = await item.value;
-					if(BB.Plugins.isEnabled(key) && !isnil(plugin.route)) {
+					if (BB.Plugins.isEnabled(key) && !isnil(plugin.route)) {
 						pluginRoutes.push(resolveThunk(plugin.route));
 					}
 				}
@@ -88,7 +86,7 @@ export const routes: HookNestedCollection = {
 					routes: pluginRoutes,
 					navigationOptions: {
 						// header: null,
-					}
+					},
 				};
 
 				return deepmerge(inputNavigator, navigator);

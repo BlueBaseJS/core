@@ -96,7 +96,6 @@ export class Registry<
 		const existingItem = this.get(key);
 
 		if (existingItem) {
-
 			let value;
 
 			// If value is a promise, deepmerge messes it up
@@ -109,7 +108,6 @@ export class Registry<
 			if (value) {
 				item.value = value;
 			}
-
 		}
 
 		// Override existing or create an new one

@@ -26,7 +26,6 @@ export interface ComponentSource {
 }
 
 interface ComponentRegistryItemExtras {
-
 	/** Higher Order Components. BlueBase will wrap the component during resolution */
 	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>;
 
