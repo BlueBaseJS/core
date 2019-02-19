@@ -129,7 +129,7 @@ export class Navigation extends React.PureComponent<NavigationProps> {
 
 		const BB: BlueBase = this.context;
 
-		const routes = resolveThunk<RouteConfig[]>(this.props.navigator.routes, BB);
+		const routes = resolveThunk<RouteConfig[]>(this.props.navigator.routes, BB) || [];
 
 		const route = routes[0];
 

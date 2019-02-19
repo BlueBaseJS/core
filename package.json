@@ -28,7 +28,7 @@
     "watch:test": "jest --watch",
     "lint": "tslint -t stylish --project \"tsconfig.json\"",
     "info": "npm-scripts-info",
-    "build": "run-s clean && run-p build:*",
+    "build": "run-s clean && run-p build:* && cp -r ./dist/src/* ./dist && rm -r ./dist/src",
     "build:main": "tsc -p tsconfig.json",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
