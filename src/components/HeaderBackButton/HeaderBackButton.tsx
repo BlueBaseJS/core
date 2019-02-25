@@ -9,14 +9,15 @@ import {
   View,
 	ViewStyle,
 } from 'react-native';
-import React from 'react';
 
-import TouchableItem from './TouchableItem';
-import { Theme } from '../../registries';
 import { NavigationActions } from '../../getComponent';
 import { NavigationActionsObject } from '../NavigationActions';
+import React from 'react';
+import { Theme } from '../../registries';
+import TouchableItem from './TouchableItem';
 
 // import defaultBackImage from '../assets/back-icon.png';
+// tslint:disable-next-line: no-var-requires
 const defaultBackImage = require('../../../assets/common/back-icon.png');
 
 export interface HeaderBackButtonProps {
@@ -54,6 +55,8 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
 		truncatedTitle: 'Back',
 	};
 
+	state: HeaderBackButtonState = {};
+
 	static defaultStyles = (theme: Theme) => {
 
 		const iconIosStyles = {
@@ -66,7 +69,7 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
 			transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
 			width: 13,
 		};
-		
+
 		const iconDefaultStyles = {
 			backgroundColor: 'transparent',
 			height: 24,
@@ -89,14 +92,12 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
 				flexDirection: 'row',
 			},
 			title: {
+				color: theme.palette.primary.contrastText,// || Platform.select({ ios: '#037aff' })
 				fontSize: 17,
 				paddingRight: 10,
-				color: theme.palette.primary.contrastText,// || Platform.select({ ios: '#037aff' })
 			},
 		};
 	}
-
-	state: HeaderBackButtonState = {};
 
 	_onTextLayout = (e: any) => {
 		if (this.state.initialTextWidth) {
@@ -178,7 +179,7 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
 		} else if (!!style) {
 			wrapperStyles.push(style);
 		}
-		
+
 		const button = (
 			<NavigationActions children={({ goBack }: NavigationActionsObject) => (
 				<TouchableItem
@@ -202,7 +203,7 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
     );
 
 		if (Platform.OS === 'android') {
-			return <View testID='header-android-wrapper' style={styles.androidButtonWrapper}>{button}</View>;
+			return <View testID="header-android-wrapper" style={styles.androidButtonWrapper}>{button}</View>;
 		} else {
 			return button;
 		}
