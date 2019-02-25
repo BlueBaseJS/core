@@ -1,37 +1,42 @@
 import { MaybeThunk, resolveThunk } from '../../utils';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import React from 'react';
 
+type renderFunction<T = any> = ((props: T) => React.ReactElement<T>);
 
 export interface NavigationOptions {
 	title?: string;
-	// header?:
-	// | React.ReactElement<any>
-	// | ((headerProps: HeaderProps) => React.ReactElement<any>)
-	// | null;
-	// headerTransparent?: boolean;
-	// headerTitle?: string | React.ReactElement<any>;
-	// headerTitleStyle?: StyleProp<TextStyle>;
-	// headerTitleAllowFontScaling?: boolean;
-	// headerTintColor?: string;
-	// headerLeft?:
-	// | React.ReactElement<any>
-	// | ((backButtonProps: HeaderBackButtonProps) => React.ReactElement<any>)
-	// | null;
-	// headerBackTitle?: string | null;
-	// headerBackImage?: React.ReactElement<any>;
-	// headerTruncatedBackTitle?: string;
-	// headerBackTitleStyle?: StyleProp<TextStyle>;
-	// headerPressColorAndroid?: string;
-	// headerRight?: React.ReactElement<any> | null;
-	// headerStyle?: StyleProp<ViewStyle>;
-	// headerForceInset?: HeaderForceInset;
-	// headerBackground?: React.ReactNode | React.ReactType;
-	// gesturesEnabled?: boolean;
-	// gestureResponseDistance?: { vertical?: number; horizontal?: number };
-	// gestureDirection?: 'default' | 'inverted';
-	[key: string]: any,
+	header?:
+	| React.ReactElement<any>
+	| renderFunction<any /*HeaderProps*/>
+	| null;
+	headerTransparent?: boolean;
+	headerTitle?: string | React.ReactElement<any>;
+	headerTitleStyle?: StyleProp<TextStyle>;
+	headerTitleAllowFontScaling?: boolean;
+	headerTintColor?: string;
+	headerLeft?:
+	| React.ReactElement<any>
+	| ((backButtonProps: any /*HeaderBackButtonProps*/) => React.ReactElement<any>)
+	| null;
+	headerBackTitle?: string | null;
+	headerBackImage?: React.ReactElement<any>;
+	headerTruncatedBackTitle?: string;
+	headerBackTitleStyle?: StyleProp<TextStyle>;
+	headerPressColorAndroid?: string;
+	headerRight?: React.ReactElement<any> | null;
+	headerStyle?: StyleProp<ViewStyle>;
+	headerForceInset?: any /*HeaderForceInset*/;
+	headerBackground?:
+	| React.ReactElement<any>
+	| renderFunction<any /*HeaderProps*/>
+	| null;
+	gesturesEnabled?: boolean;
+	gestureResponseDistance?: { vertical?: number; horizontal?: number };
+	gestureDirection?: 'default' | 'inverted';
+	// [key: string]: any,
 }
 
 export interface RouteConfig {

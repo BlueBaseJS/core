@@ -48,11 +48,13 @@ export const routes: HookNestedCollection = {
 						{
 							name: 'Home',
 							path: '',
+							exact: true,
 							screen: 'HomeScreen',
 						},
 						{
 							name: 'Plugins',
 							path: 'p',
+							exact: false,
 							navigator: await BB.Hooks.run('bluebase.navigator.plugins', {} as any),
 						},
 					],
