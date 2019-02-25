@@ -8,6 +8,6 @@
     "no-implicit-dependencies": false,
     "jsx-alignment": false,
     "jsx-no-lambda": false,
-    "jsx-boolean-value": false,
+    "jsx-boolean-value": false
   }
 }
