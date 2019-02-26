@@ -4,7 +4,7 @@ import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 import { Text } from 'react-native';
 
-const Right = () => { return <Text>Right</Text> };
+const Right = () => { return <Text>Right</Text>; };
 
 storiesOf('Header', module)
 
@@ -17,14 +17,14 @@ storiesOf('Header', module)
 ))
 
 .add('No back button', () => (
-	<Header 
+	<Header
 		title="Foo"
 		headerLeft={null}
 	/>
 ))
 
 .add('With title & back custom button text', () => (
-	<Header 
+	<Header
 		title="Foo"
 		backTitleVisible
 		headerBackTitle="Go Back"
@@ -32,15 +32,26 @@ storiesOf('Header', module)
 ))
 
 .add('With title & right element', () => (
-	<Header 
+	<Header
 		title="Foo"
 		headerRight={<Right />}
 	/>
 ))
 
 .add('layoutPreset center', () => (
-	<Header 
-		title="This is going to be a very very long title"
+	<Header
+		title="Settings"
+		headerBackTitle="Go Back"
+		headerRight={<Right />}
+		layoutPreset="center"
+		backTitleVisible
+	/>
+))
+
+
+.add('layoutPreset center long text', () => (
+	<Header
+		title="This is going to be a very very long title sentence"
 		headerBackTitle="Go Back, this is a very long sentence"
 		headerRight={<Right />}
 		layoutPreset="center"
@@ -49,7 +60,7 @@ storiesOf('Header', module)
 ))
 
 .add('Transparent Background', () => (
-	<Header 
+	<Header
 		title="This is going to be a very very long title"
 		headerBackTitle="Go Back"
 		headerRight={<Right />}
@@ -59,7 +70,7 @@ storiesOf('Header', module)
 ))
 
 .add('header prop is null', () => (
-	<Header 
+	<Header
 		header={null}
 		title="This is going to be a very very long title"
 		headerBackTitle="Go Back"
@@ -70,14 +81,14 @@ storiesOf('Header', module)
 ))
 
 .add('right container style', () => (
-	<Header 
+	<Header
 		headerRight={<Right />}
 		headerRightContainerStyle={{ backgroundColor: 'yellow' }}
 	/>
 ))
 
 .add('left container style', () => (
-	<Header 
+	<Header
 		backTitleVisible
 		headerRight={<Right />}
 		headerBackTitle="Go Back"
@@ -86,7 +97,7 @@ storiesOf('Header', module)
 ))
 
 .add('tint color', () => (
-	<Header 
+	<Header
 		backTitleVisible
 		headerTintColor="yellow"
 		headerBackTitle="Go Back"
@@ -95,13 +106,13 @@ storiesOf('Header', module)
 ))
 
 .add('title component', () => (
-	<Header 
+	<Header
 		headerTitle={<Right />}
 	/>
 ))
 
 .add('headerTitle as a string', () => (
-	<Header 
+	<Header
 		headerTitle="Bar"
 		title="Foo"
 	/>

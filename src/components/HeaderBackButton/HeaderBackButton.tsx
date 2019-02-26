@@ -44,7 +44,7 @@ export interface HeaderBackButtonStyles {
 	androidButtonWrapper: StyleProp<ViewStyle>,
 	icon: StyleProp<ImageStyle>,
 	iconWithTitle: StyleProp<ImageStyle>,
-	root: StyleProp<ViewStyle>,
+	wrapper: StyleProp<ViewStyle>,
 	title: StyleProp<TextStyle>,
 }
 
@@ -86,15 +86,15 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
 			},
 			icon: Platform.OS === 'ios' ? iconIosStyles : iconDefaultStyles,
 			iconWithTitle: Platform.OS === 'ios' ? { marginRight: 6, } : {},
-			root: {
-				alignItems: 'center',
-				backgroundColor: 'transparent',
-				flexDirection: 'row',
-			},
 			title: {
 				color: theme.palette.primary.contrastText,// || Platform.select({ ios: '#037aff' })
 				fontSize: 17,
 				paddingRight: 10,
+			},
+			wrapper: {
+				alignItems: 'center',
+				backgroundColor: 'transparent',
+				flexDirection: 'row',
 			},
 		};
 	}
@@ -172,13 +172,13 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
 
 		const styles = this.props.styles as HeaderBackButtonStyles;
 
-		let wrapperStyles = [styles.root];
+		// const wrapperStyles = [styles.wrapper];
 
-		if (style && Array.isArray(style)) {
-			wrapperStyles = [...wrapperStyles, ...style];
-		} else if (!!style) {
-			wrapperStyles.push(style);
-		}
+		// if (style && Array.isArray(style)) {
+		// 	wrapperStyles = [...wrapperStyles, ...style];
+		// } else if (!!style) {
+		// 	wrapperStyles.push(style);
+		// }
 
 		const button = (
 			<NavigationActions children={({ goBack }: NavigationActionsObject) => (
@@ -193,8 +193,9 @@ class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, Header
 					onPress={onPress || goBack}
 					pressColor={pressColorAndroid}
 					borderless={true}
+					style={style}
 				>
-					<View testID="header-back-wrapper" style={wrapperStyles}>
+					<View testID="header-back-wrapper" style={styles.wrapper}>
 						{this._renderBackImage()}
 						{this._maybeRenderTitle()}
 					</View>

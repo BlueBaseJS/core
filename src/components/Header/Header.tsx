@@ -19,61 +19,15 @@ import {
 import React from 'react';
 import { Theme } from '../../registries';
 
-// const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
-// const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
 
-
-const getTitleOffsets = (
-  layoutPreset: 'left' | 'center',
-  hasLeftComponent: boolean,
-  hasRightComponent: boolean
-) => {
-
-  // These can be adjusted by using headerTitleContainerStyle on navigationOptions
-	const TITLE_OFFSET_CENTER_ALIGN = Platform.OS === 'ios' ? 70 : 56;
-	const TITLE_OFFSET_LEFT_ALIGN = Platform.OS === 'ios' ? 20 : 56;
-
-	if (layoutPreset === 'left') {
-    // Maybe at some point we should do something different if the back title is
-    // explicitly enabled, for now people can control it manually
-
-		const style = {
-			left: TITLE_OFFSET_LEFT_ALIGN,
-			right: TITLE_OFFSET_LEFT_ALIGN,
-		};
-
-		if (!hasLeftComponent) {
-			style.left = 0;
-		}
-		if (!hasRightComponent) {
-			style.right = 0;
-		}
-
-		return style;
-	} else if (layoutPreset === 'center') {
-		const style = {
-			left: TITLE_OFFSET_CENTER_ALIGN,
-			right: TITLE_OFFSET_CENTER_ALIGN,
-		};
-		if (!hasLeftComponent && !hasRightComponent) {
-			style.left = 0;
-			style.right = 0;
-		}
-
-		return style;
-	}
-
-	return null;
-};
-
-const getAppBarHeight = (isLandscape: boolean) => {
-	return Platform.OS === 'ios'
-    ? isLandscape
-    // && !Platform.isPad
-      ? 32
-      : 44
-    : 56;
-};
+// const getAppBarHeight = (isLandscape: boolean) => {
+// 	return Platform.OS === 'ios'
+//     ? isLandscape
+//     // && !Platform.isPad
+//       ? 32
+//       : 44
+//     : 56;
+// };
 
 export interface HeaderProps extends NavigationOptions {
 	headerTitleContainerStyle?: StyleProp<ViewStyle>,
@@ -127,19 +81,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 
 	static defaultStyles = (theme: Theme): HeaderStyles => {
 
-    // TODO: Add shadows
-		// let platformContainerStyles;
-		// if (Platform.OS === 'ios') {
-		// 	platformContainerStyles = {
-    //     // borderBottomColor: '#A7A7AA',
-    //     // borderBottomWidth: StyleSheet.hairlineWidth,
-		// 	};
-		// } else {
-		// 	platformContainerStyles = {
-		// 		elevation: 4,
-		// 	};
-		// }
-
 		return {
 			flexOne: {
 				flex: 1,
@@ -174,48 +115,45 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 				backgroundColor: 'transparent',
 			},
 			left: {
-        // left: 0,
-        // bottom: 0,
-        // top: 0,
-        // position: 'absolute',
 				alignItems: 'center',
+				// bottom: 0,
 				flexDirection: 'row',
+				// left: 0,
 				marginRight: theme.spacing.unit * 2,
+				// position: 'absolute',
+				// top: 0,
 			},
 			right: {
-				// bottom: 0,
-        // top: 0,
 				alignItems: 'center',
+				bottom: 0,
 				flexDirection: 'row',
 				marginLeft: theme.spacing.unit * 2,
 				position: 'absolute',
 				right: 0,
+				top: 0,
 			},
 			root: {
-				backgroundColor: theme.palette.primary.main ,// || '#FFF',
+				backgroundColor: theme.palette.primary.main,
 				...theme.elevation(4),
-				// ...platformContainerStyles,
 			},
 			title: {
         // bottom: 0,
         // top: 0,
-        // left: 0,
-        // right: 0,
-        // position: 'absolute',
 				alignItems: 'center',
 				flexDirection: 'row',
+				// left: 0,
 				marginHorizontal: theme.spacing.unit * 2,
+				// position: 'absolute',
+				// right: 0,
 			},
 			transparentContainer: {
 				borderBottomColor: 'transparent',
 				borderBottomWidth: 0,
-				// elevation: 0,
 				left: 0,
 				position: 'absolute',
 				right: 0,
 				top: 0,
 				...theme.elevation(0),
-				// ...platformContainerStyles,
 			},
 			wrapper: {
 				paddingHorizontal: theme.spacing.unit * 2,
@@ -231,7 +169,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 			return null;
 		}
 
-		const appBarHeight = getAppBarHeight(false);
 		// const appBarHeight = getAppBarHeight(isLandscape);
 
 		const rootStyles = [
@@ -241,7 +178,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 
 		const wrapperStyles = [
 			styles.wrapper,
-			{ height: appBarHeight },
+			// { height: appBarHeight },
 		];
 
 		const onLayout = layoutPreset === 'center'
@@ -283,9 +220,10 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		return this.props.headerTruncatedBackTitle;
 	}
 
-	private _renderTitleComponent = () => {
+	private _renderTitle = (_options: { hasLeftComponent: boolean, hasRightComponent: boolean }) => {
 		const {
 			headerTitle,
+			headerTitleContainerStyle,
 			headerTitleStyle: titleStyle,
 			headerTintColor: color,
 			headerTitleAllowFontScaling: allowFontScaling,
@@ -293,6 +231,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		} = this.props;
 
 		const styles = this.props.styles as HeaderStyles;
+
 
     // If headerTitle is a react element, return it
 		const HeaderTitleComponent = (headerTitle && typeof headerTitle !== 'string')
@@ -312,32 +251,41 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		? (e: any) => { this.setState({ titleWidth: e.nativeEvent.layout.width }); }
     : undefined;
 
-    // Styles
-		const stylesheet = [
+		// Styles
+
+		const containerStyles = [
 			styles.title,
-			color ? { color } : null,
+      { justifyContent: layoutPreset === 'center' ? 'center' : 'flex-start' },
+			// layoutPreset ? getTitleOffsets(layoutPreset, options.hasLeftComponent, options.hasRightComponent) : null,
+			headerTitleContainerStyle,
 			layoutPreset === 'center'
       ? {
 	left: 0,
 	position: 'absolute',
 	right: 0,
-	textAlign: 'center',
 }
       : {
-	textAlign: 'left'
-} as any,
+}
+		];
+
+		const stylesheet = [
+			color ? { color } : null,
+			layoutPreset === 'center' ? { textAlign: 'center' } : { textAlign: 'left' } as any,
 			titleStyle,
 		];
 
 		return (
-      <HeaderTitleComponent
-        testID="header-title"
-        onLayout={onLayout}
-        allowFontScaling={allowFontScaling}
-        style={stylesheet}
-      >
-        {titleString}
-      </HeaderTitleComponent>
+			<View style={containerStyles as any}>
+				<HeaderTitleComponent
+					testID="header-title"
+					key="header-title"
+					onLayout={onLayout}
+					allowFontScaling={allowFontScaling}
+					style={stylesheet}
+				>
+					{titleString}
+				</HeaderTitleComponent>
+			</View>
 		);
 	}
 
@@ -379,7 +327,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		const backButtonTitle = this._getBackButtonTitleString();
 		const truncatedBackButtonTitle = this._getTruncatedBackButtonTitle();
 
-    // Calculate width, works if layoutPreset === 'center'
+		// Calculate width, works if layoutPreset === 'center'
 		const width = (this.state.initWidth && this.state.titleWidth)
       ? (this.state.initWidth - this.state.titleWidth) / 2
       : undefined;
@@ -387,6 +335,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		return (
       <RenderedLeftComponent
         testId="header-left"
+        key="header-left"
         pressColorAndroid={headerPressColorAndroid}
         tintColor={headerTintColor}
         backImage={headerBackImage}
@@ -402,24 +351,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		);
 	}
 
-	private _renderTitle(
-		options: { hasLeftComponent: boolean, hasRightComponent: boolean, headerTitleContainerStyle: StyleProp<ViewStyle> }
-	) {
-
-		const styles = this.props.styles as HeaderStyles;
-
-		const { layoutPreset } = this.props;
-
-		const style = [
-			styles.title,
-      { justifyContent: layoutPreset === 'center' ? 'center' : 'flex-start' },
-			layoutPreset ? getTitleOffsets(layoutPreset, options.hasLeftComponent, options.hasRightComponent) : null,
-			options.headerTitleContainerStyle,
-		];
-
-		return this._renderSubView(this._renderTitleComponent, { ...this.props, style },);
-	}
-
 	private _renderRight() {
 
 		const { headerRight, headerRightContainerStyle } = this.props;
@@ -432,7 +363,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		}
 
 		return (
-      <View testID="header-right-container" style={style}>
+      <View testID="header-right-container" key="header-right" style={style}>
         {this._renderSubView(headerRight || null, { ...this.props })}
       </View>
 		);
@@ -457,7 +388,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 	}
 
 	private _renderHeader() {
-		const { headerTitleContainerStyle } = this.props;
+		const { layoutPreset } = this.props;
 		const styles = this.props.styles as HeaderStyles;
 
 		const left = this._renderLeft();
@@ -466,7 +397,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		const title = this._renderTitle({
 			hasLeftComponent: !!left,
 			hasRightComponent: !!right,
-			headerTitleContainerStyle: headerTitleContainerStyle,
 		});
 
 		// const { transitionPreset } = this.props;
@@ -481,9 +411,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
     ) {
 			return (
         <View {...wrapperProps}>
-          {left}
-          {title}
-          {right}
+          {layoutPreset === 'center' ? [title, left, right] : [left, title, right]}
         </View>
 			);
 		} else {
@@ -499,8 +427,8 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
               <View style={styles.iconMaskFillerRect} />
             </View>}
         >
-          {left}
           {title}
+          {left}
           {right}
         </MaskedViewIOS>
 			);

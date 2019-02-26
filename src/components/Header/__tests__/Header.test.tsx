@@ -171,7 +171,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper, Header);
 
-		const view = wrapper.find('Header [testID="header-back-wrapper"]').first().prop('style') as any;
+		const view = wrapper.find('Header [testID="header-back"]').first().prop('style') as any;
 		const styles = deepmerge.all(view.filter((a: any) => a !== undefined)) as any;
 
 		expect(wrapper).toMatchSnapshot();

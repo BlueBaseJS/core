@@ -39,15 +39,15 @@ exports[`HeaderBackButton should not render title when title prop is null 1`] = 
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -173,25 +173,21 @@ exports[`HeaderBackButton should not render title when title prop is null 1`] = 
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "backgroundColor": "transparent",
-                                    "flexDirection": "row",
-                                  },
-                                ]
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "flexDirection": "row",
+                                }
                               }
                               testID="header-back-wrapper"
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
@@ -302,15 +298,15 @@ exports[`HeaderBackButton should only render back image 1`] = `
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -435,25 +431,21 @@ exports[`HeaderBackButton should only render back image 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "backgroundColor": "transparent",
-                                    "flexDirection": "row",
-                                  },
-                                ]
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "flexDirection": "row",
+                                }
                               }
                               testID="header-back-wrapper"
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
@@ -567,15 +559,15 @@ exports[`HeaderBackButton should only render back image and custom title 1`] = `
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -701,25 +693,21 @@ exports[`HeaderBackButton should only render back image and custom title 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "backgroundColor": "transparent",
-                                    "flexDirection": "row",
-                                  },
-                                ]
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "flexDirection": "row",
+                                }
                               }
                               testID="header-back-wrapper"
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
@@ -880,15 +868,15 @@ exports[`HeaderBackButton should only render back image and custom truncated tit
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -1016,25 +1004,21 @@ exports[`HeaderBackButton should only render back image and custom truncated tit
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      },
-                                    ]
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "flexDirection": "row",
+                                    }
                                   }
                                   testID="header-back-wrapper"
                                 >
@@ -1196,15 +1180,15 @@ exports[`HeaderBackButton should only render back image and custom truncated tit
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -1332,25 +1316,21 @@ exports[`HeaderBackButton should only render back image and custom truncated tit
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      },
-                                    ]
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "flexDirection": "row",
+                                    }
                                   }
                                   testID="header-back-wrapper"
                                 >
@@ -1506,15 +1486,15 @@ exports[`HeaderBackButton should only render back image and standard title 1`] =
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -1639,25 +1619,21 @@ exports[`HeaderBackButton should only render back image and standard title 1`] =
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "backgroundColor": "transparent",
-                                    "flexDirection": "row",
-                                  },
-                                ]
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "flexDirection": "row",
+                                }
                               }
                               testID="header-back-wrapper"
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
@@ -1814,15 +1790,15 @@ exports[`HeaderBackButton should only render back image and title with custom ti
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -1949,25 +1925,21 @@ exports[`HeaderBackButton should only render back image and title with custom ti
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      },
-                                    ]
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "flexDirection": "row",
+                                    }
                                   }
                                   testID="header-back-wrapper"
                                 >
@@ -2131,15 +2103,15 @@ exports[`HeaderBackButton should only render back image and truncated title 1`] 
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -2267,25 +2239,21 @@ exports[`HeaderBackButton should only render back image and truncated title 1`] 
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      },
-                                    ]
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "flexDirection": "row",
+                                    }
                                   }
                                   testID="header-back-wrapper"
                                 >
@@ -2432,15 +2400,15 @@ exports[`HeaderBackButton should only render back image on android platform 1`] 
                   "width": 24,
                 },
                 "iconWithTitle": Object {},
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -2551,25 +2519,21 @@ exports[`HeaderBackButton should only render back image on android platform 1`] 
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      },
-                                    ]
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "flexDirection": "row",
+                                    }
                                   }
                                   testID="header-back-wrapper"
                                 >
                                   <View
                                     style={
-                                      Array [
-                                        Object {
-                                          "alignItems": "center",
-                                          "backgroundColor": "transparent",
-                                          "flexDirection": "row",
-                                        },
-                                      ]
+                                      Object {
+                                        "alignItems": "center",
+                                        "backgroundColor": "transparent",
+                                        "flexDirection": "row",
+                                      }
                                     }
                                     testID="header-back-wrapper"
                                   >
@@ -2670,15 +2634,15 @@ exports[`HeaderBackButton should only render back image on android platform 2`] 
                   "width": 24,
                 },
                 "iconWithTitle": Object {},
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -2789,25 +2753,21 @@ exports[`HeaderBackButton should only render back image on android platform 2`] 
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      },
-                                    ]
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "flexDirection": "row",
+                                    }
                                   }
                                   testID="header-back-wrapper"
                                 >
                                   <View
                                     style={
-                                      Array [
-                                        Object {
-                                          "alignItems": "center",
-                                          "backgroundColor": "transparent",
-                                          "flexDirection": "row",
-                                        },
-                                      ]
+                                      Object {
+                                        "alignItems": "center",
+                                        "backgroundColor": "transparent",
+                                        "flexDirection": "row",
+                                      }
                                     }
                                     testID="header-back-wrapper"
                                   >
@@ -2908,15 +2868,15 @@ exports[`HeaderBackButton should only render reverse back image on rtl layout 1`
                   "width": 24,
                 },
                 "iconWithTitle": Object {},
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -3027,25 +2987,21 @@ exports[`HeaderBackButton should only render reverse back image on rtl layout 1`
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      },
-                                    ]
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "flexDirection": "row",
+                                    }
                                   }
                                   testID="header-back-wrapper"
                                 >
                                   <View
                                     style={
-                                      Array [
-                                        Object {
-                                          "alignItems": "center",
-                                          "backgroundColor": "transparent",
-                                          "flexDirection": "row",
-                                        },
-                                      ]
+                                      Object {
+                                        "alignItems": "center",
+                                        "backgroundColor": "transparent",
+                                        "flexDirection": "row",
+                                      }
                                     }
                                     testID="header-back-wrapper"
                                   >
@@ -3173,15 +3129,15 @@ exports[`HeaderBackButton should render custom back image 1`] = `
                 "iconWithTitle": Object {
                   "marginRight": 6,
                 },
-                "root": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "flexDirection": "row",
-                },
                 "title": Object {
                   "color": "#fff",
                   "fontSize": 17,
                   "paddingRight": 10,
+                },
+                "wrapper": Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flexDirection": "row",
                 },
               }
             }
@@ -3306,25 +3262,21 @@ exports[`HeaderBackButton should render custom back image 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "backgroundColor": "transparent",
-                                    "flexDirection": "row",
-                                  },
-                                ]
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "flexDirection": "row",
+                                }
                               }
                               testID="header-back-wrapper"
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "flexDirection": "row",
+                                  }
                                 }
                                 testID="header-back-wrapper"
                               >
