@@ -63,7 +63,13 @@ exports[`Header android enviornment should only render on android platform 1`] =
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
-                  "elevation": 4,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -73,10 +79,16 @@ exports[`Header android enviornment should only render on android platform 1`] =
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -90,7 +102,13 @@ exports[`Header android enviornment should only render on android platform 1`] =
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
-                    "elevation": 4,
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -101,7 +119,13 @@ exports[`Header android enviornment should only render on android platform 1`] =
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
-                      "elevation": 4,
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -112,7 +136,13 @@ exports[`Header android enviornment should only render on android platform 1`] =
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
-                        "elevation": 4,
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -796,7 +826,13 @@ exports[`Header should handler rtl layout 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
-                  "elevation": 4,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -806,10 +842,16 @@ exports[`Header should handler rtl layout 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -823,7 +865,13 @@ exports[`Header should handler rtl layout 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
-                    "elevation": 4,
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -834,7 +882,13 @@ exports[`Header should handler rtl layout 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
-                      "elevation": 4,
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -845,7 +899,13 @@ exports[`Header should handler rtl layout 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
-                        "elevation": 4,
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -1536,6 +1596,13 @@ exports[`Header should not render a back button 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -1545,10 +1612,16 @@ exports[`Header should not render a back button 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -1564,6 +1637,13 @@ exports[`Header should not render a back button 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -1575,6 +1655,13 @@ exports[`Header should not render a back button 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -1586,6 +1673,13 @@ exports[`Header should not render a back button 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -2200,6 +2294,13 @@ exports[`Header should not render a back button with custom button text 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -2209,10 +2310,16 @@ exports[`Header should not render a back button with custom button text 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -2228,6 +2335,13 @@ exports[`Header should not render a back button with custom button text 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -2239,6 +2353,13 @@ exports[`Header should not render a back button with custom button text 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -2250,6 +2371,13 @@ exports[`Header should not render a back button with custom button text 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -3210,6 +3338,13 @@ exports[`Header should not render a left element with custom styles 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -3219,10 +3354,16 @@ exports[`Header should not render a left element with custom styles 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -3238,6 +3379,13 @@ exports[`Header should not render a left element with custom styles 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -3249,6 +3397,13 @@ exports[`Header should not render a left element with custom styles 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -3260,6 +3415,13 @@ exports[`Header should not render a left element with custom styles 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -4192,6 +4354,13 @@ exports[`Header should not render a right element 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -4201,10 +4370,16 @@ exports[`Header should not render a right element 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -4220,6 +4395,13 @@ exports[`Header should not render a right element 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -4231,6 +4413,13 @@ exports[`Header should not render a right element 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -4242,6 +4431,13 @@ exports[`Header should not render a right element 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -5168,6 +5364,13 @@ exports[`Header should not render a right element with custom styles 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -5177,10 +5380,16 @@ exports[`Header should not render a right element with custom styles 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -5196,6 +5405,13 @@ exports[`Header should not render a right element with custom styles 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -5207,6 +5423,13 @@ exports[`Header should not render a right element with custom styles 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -5218,6 +5441,13 @@ exports[`Header should not render a right element with custom styles 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -6135,6 +6365,13 @@ exports[`Header should not render anything when header prop is null 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -6144,10 +6381,16 @@ exports[`Header should not render anything when header prop is null 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -6227,6 +6470,13 @@ exports[`Header should only render back image 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -6236,10 +6486,16 @@ exports[`Header should only render back image 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -6254,6 +6510,13 @@ exports[`Header should only render back image 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -6265,6 +6528,13 @@ exports[`Header should only render back image 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -6276,6 +6546,13 @@ exports[`Header should only render back image 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -7173,6 +7450,13 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -7182,10 +7466,16 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -7201,6 +7491,13 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -7212,6 +7509,13 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -7223,6 +7527,13 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -8276,6 +8587,13 @@ exports[`Header should only render back image and title 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -8285,10 +8603,16 @@ exports[`Header should only render back image and title 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -8304,6 +8628,13 @@ exports[`Header should only render back image and title 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -8315,6 +8646,13 @@ exports[`Header should only render back image and title 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -8326,6 +8664,13 @@ exports[`Header should only render back image and title 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -9225,6 +9570,13 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -9234,10 +9586,16 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -9253,6 +9611,13 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -9264,6 +9629,13 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -9275,6 +9647,13 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -10180,6 +10559,13 @@ exports[`Header should render back button and title with tint color 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -10189,10 +10575,16 @@ exports[`Header should render back button and title with tint color 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -10208,6 +10600,13 @@ exports[`Header should render back button and title with tint color 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -10219,6 +10618,13 @@ exports[`Header should render back button and title with tint color 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -10230,6 +10636,13 @@ exports[`Header should render back button and title with tint color 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -11204,6 +11617,13 @@ exports[`Header should render back button and title with tint color 2`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -11213,10 +11633,16 @@ exports[`Header should render back button and title with tint color 2`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -11232,6 +11658,13 @@ exports[`Header should render back button and title with tint color 2`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -11243,6 +11676,13 @@ exports[`Header should render back button and title with tint color 2`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -11254,6 +11694,13 @@ exports[`Header should render back button and title with tint color 2`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -12220,6 +12667,13 @@ exports[`Header should render custom title component 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -12229,10 +12683,16 @@ exports[`Header should render custom title component 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -12247,6 +12707,13 @@ exports[`Header should render custom title component 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   },
                   undefined,
                 ]
@@ -12258,6 +12725,13 @@ exports[`Header should render custom title component 1`] = `
                   Array [
                     Object {
                       "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
                     },
                     undefined,
                   ]
@@ -12269,6 +12743,13 @@ exports[`Header should render custom title component 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
                       },
                       undefined,
                     ]
@@ -12908,6 +13389,13 @@ exports[`Header should render transparent Header 1`] = `
                 },
                 "root": Object {
                   "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
                 },
                 "title": Object {
                   "alignItems": "center",
@@ -12917,10 +13405,16 @@ exports[`Header should render transparent Header 1`] = `
                 "transparentContainer": Object {
                   "borderBottomColor": "transparent",
                   "borderBottomWidth": 0,
-                  "elevation": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
                   "top": 0,
                 },
                 "wrapper": Object {
@@ -12937,10 +13431,16 @@ exports[`Header should render transparent Header 1`] = `
                   Object {
                     "borderBottomColor": "transparent",
                     "borderBottomWidth": 0,
-                    "elevation": 0,
                     "left": 0,
                     "position": "absolute",
                     "right": 0,
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": -1,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 0,
                     "top": 0,
                   },
                   undefined,
@@ -12954,10 +13454,16 @@ exports[`Header should render transparent Header 1`] = `
                     Object {
                       "borderBottomColor": "transparent",
                       "borderBottomWidth": 0,
-                      "elevation": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": -1,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 0,
                       "top": 0,
                     },
                     undefined,
@@ -12971,10 +13477,16 @@ exports[`Header should render transparent Header 1`] = `
                       Object {
                         "borderBottomColor": "transparent",
                         "borderBottomWidth": 0,
-                        "elevation": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": -1,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 0,
                         "top": 0,
                       },
                       undefined,

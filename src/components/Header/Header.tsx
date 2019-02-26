@@ -128,17 +128,17 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 	static defaultStyles = (theme: Theme): HeaderStyles => {
 
     // TODO: Add shadows
-		let platformContainerStyles;
-		if (Platform.OS === 'ios') {
-			platformContainerStyles = {
-        // borderBottomColor: '#A7A7AA',
-        // borderBottomWidth: StyleSheet.hairlineWidth,
-			};
-		} else {
-			platformContainerStyles = {
-				elevation: 4,
-			};
-		}
+		// let platformContainerStyles;
+		// if (Platform.OS === 'ios') {
+		// 	platformContainerStyles = {
+    //     // borderBottomColor: '#A7A7AA',
+    //     // borderBottomWidth: StyleSheet.hairlineWidth,
+		// 	};
+		// } else {
+		// 	platformContainerStyles = {
+		// 		elevation: 4,
+		// 	};
+		// }
 
 		return {
 			flexOne: {
@@ -193,7 +193,8 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 			},
 			root: {
 				backgroundColor: theme.palette.primary.main ,// || '#FFF',
-				...platformContainerStyles,
+				...theme.elevation(4),
+				// ...platformContainerStyles,
 			},
 			title: {
         // bottom: 0,
@@ -208,12 +209,13 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 			transparentContainer: {
 				borderBottomColor: 'transparent',
 				borderBottomWidth: 0,
+				// elevation: 0,
 				left: 0,
 				position: 'absolute',
 				right: 0,
 				top: 0,
-				...platformContainerStyles,
-				elevation: 0,
+				...theme.elevation(0),
+				// ...platformContainerStyles,
 			},
 			wrapper: {
 				paddingHorizontal: theme.spacing.unit * 2,
