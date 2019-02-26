@@ -1,4 +1,3 @@
-
 export function elevation(value: number) {
 	let height, radius;
 
@@ -25,7 +24,6 @@ export function elevation(value: number) {
 		shadowOpacity: 0.24,
 		shadowRadius: radius,
 	};
-
 
 	// return {
 	// 	shadowOffset: {

@@ -1,19 +1,18 @@
-import React from 'react';
-// import TestRenderer from 'react-test-renderer';
-import { Header } from '../../..';
-import { mount } from 'enzyme';
 import { BlueBaseApp } from '../../BlueBaseApp';
-import { waitForElement } from 'enzyme-async-helpers';
+import { Header } from '../../..';
+import React from 'react';
 import { Text } from 'react-native';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 import deepmerge = require('deepmerge');
 
-const Right = () => { return <Text testID="right-element">Right</Text> };
+const Right = () => { return <Text testID="right-element">Right</Text>; };
 
 describe('Header', () => {
 
 	test(`should only render back image`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <Header />
       </BlueBaseApp>
@@ -29,7 +28,7 @@ describe('Header', () => {
 
 	test(`should only render back image and title`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <Header title="Foo" />
       </BlueBaseApp>
@@ -45,7 +44,7 @@ describe('Header', () => {
 
 	test(`should not render anything when header prop is null`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <Header header={null} title="Foo" />
       </BlueBaseApp>
@@ -61,7 +60,7 @@ describe('Header', () => {
 
 	test(`should render transparent Header`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <Header title="Foo" headerTransparent />
       </BlueBaseApp>
@@ -80,9 +79,9 @@ describe('Header', () => {
 
 	test(`should not render a back button`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					title="Foo"
 					headerLeft={null}
 				/>
@@ -99,9 +98,9 @@ describe('Header', () => {
 
 	test(`should not render a back button with custom button text`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					title="Foo"
 					backTitleVisible
 					headerBackTitle="Go Back"
@@ -119,9 +118,9 @@ describe('Header', () => {
 
 	test(`should not render a right element`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					title="Foo"
 					headerRight={<Right />}
 				/>
@@ -137,9 +136,9 @@ describe('Header', () => {
 
 	test(`should not render a right element with custom styles`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					title="Foo"
 					headerRight={<Right />}
 					headerRightContainerStyle={{ backgroundColor: 'yellow' }}
@@ -159,9 +158,9 @@ describe('Header', () => {
 
 	test(`should not render a left element with custom styles`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					title="Foo"
 					headerRight={<Right />}
 					headerLeftContainerStyle={{ backgroundColor: 'orange' }}
@@ -182,9 +181,9 @@ describe('Header', () => {
 
 	test(`should only render back image and custom truncated title`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					title="Foo"
 					headerRight={<Right />}
 				/>
@@ -216,9 +215,9 @@ describe('Header', () => {
 
 	test(`should render back button and title with tint color`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					backTitleVisible
 					headerTintColor="yellow"
 					headerBackTitle="Go Back"
@@ -229,7 +228,7 @@ describe('Header', () => {
 
 		// Wait for render
 		await waitForElement(wrapper, Header);
-		
+
 		expect(wrapper).toMatchSnapshot();
 
 		const title = wrapper.find('HeaderTitle').last().prop('style') as any;
@@ -250,9 +249,9 @@ describe('Header', () => {
 
 	test(`should render custom title component`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					headerTitle={<Right />}
 				/>
       </BlueBaseApp>
@@ -260,7 +259,7 @@ describe('Header', () => {
 
 		// Wait for render
 		await waitForElement(wrapper, Header);
-		
+
 		expect(wrapper).toMatchSnapshot();
 
 		expect(wrapper.find('Header Right').last().length).toBeGreaterThan(0);
@@ -268,9 +267,9 @@ describe('Header', () => {
 
 	test(`should prefer headerTitle prop over title prop`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
-        <Header 
+        <Header
 					headerTitle="Bar"
 					title="Foo"
 				/>
@@ -279,7 +278,7 @@ describe('Header', () => {
 
 		// Wait for render
 		await waitForElement(wrapper, Header);
-		
+
 		expect(wrapper).toMatchSnapshot();
 
 		expect(wrapper.find('Header [testID="header-title"] Text').last().text()).toBe('Bar');
@@ -303,15 +302,15 @@ describe('Header', () => {
 					<Header />
 				</BlueBaseApp>
 			);
-	
+
 			// Wait for render
 			await waitForElement(wrapper, Header);
-	
+
 			expect(wrapper).toMatchSnapshot();
 			expect(wrapper.find('Header MaskedViewIOS').length).toBe(0);
 		});
 	});
-	
+
 	test(`should handler rtl layout`, async () => {
 
 		jest.mock('I18nManager', () => {
@@ -320,7 +319,7 @@ describe('Header', () => {
 			return I18nManager;
 		});
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <Header />
       </BlueBaseApp>
