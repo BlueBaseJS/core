@@ -1,8 +1,8 @@
 // tslint:disable:no-console
+import { Image, Text } from 'react-native';
 import { Header } from '../../..';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
-import { Text } from 'react-native';
 
 const Right = () => { return <Text>Right</Text>; };
 
@@ -115,6 +115,14 @@ storiesOf('Header', module)
 	<Header
 		headerTitle="Bar"
 		title="Foo"
+	/>
+))
+
+.add('header background', () => (
+	<Header
+		headerTitle="Bar"
+		title="Foo"
+		headerBackground={(props) => <Image source={{ uri: 'https://picsum.photos/1000x100' }} {...props} />}
 	/>
 ))
 ;

@@ -4,11 +4,15 @@ exports[`Header android enviornment should only render on android platform 1`] =
 <BlueBaseApp>
   <BlueBaseRoot>
     <ThemeProvider>
-      <Header>
-        <ThemedComponent>
+      <Header
+        layoutPreset="center"
+      >
+        <ThemedComponent
+          layoutPreset="center"
+        >
           <Header
             headerTitleAllowFontScaling={true}
-            layoutPreset="left"
+            layoutPreset="center"
             styles={
               Object {
                 "flexOne": Object {
@@ -100,6 +104,7 @@ exports[`Header android enviornment should only render on android platform 1`] =
             }
           >
             <SafeAreaView
+              onLayout={[Function]}
               style={
                 Array [
                   Object {
@@ -117,6 +122,7 @@ exports[`Header android enviornment should only render on android platform 1`] =
               }
             >
               <_class
+                onLayout={[Function]}
                 style={
                   Array [
                     Object {
@@ -134,6 +140,7 @@ exports[`Header android enviornment should only render on android platform 1`] =
                 }
               >
                 <RCTSafeAreaView
+                  onLayout={[Function]}
                   style={
                     Array [
                       Object {
@@ -156,6 +163,9 @@ exports[`Header android enviornment should only render on android platform 1`] =
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 56,
+                        },
                       ]
                     }
                   >
@@ -164,6 +174,9 @@ exports[`Header android enviornment should only render on android platform 1`] =
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 56,
                           },
                         ]
                       }
@@ -208,6 +221,254 @@ exports[`Header android enviornment should only render on android platform 1`] =
                                 }
                               }
                             >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "flexDirection": "row",
+                                      "marginHorizontal": 16,
+                                    },
+                                    Object {
+                                      "justifyContent": "center",
+                                    },
+                                    undefined,
+                                    Object {
+                                      "left": 0,
+                                      "position": "absolute",
+                                      "right": 0,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "flexDirection": "row",
+                                        "marginHorizontal": 16,
+                                      },
+                                      Object {
+                                        "justifyContent": "center",
+                                      },
+                                      undefined,
+                                      Object {
+                                        "left": 0,
+                                        "position": "absolute",
+                                        "right": 0,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <HeaderTitle
+                                    allowFontScaling={true}
+                                    key="header-title"
+                                    onLayout={[Function]}
+                                    style={
+                                      Array [
+                                        null,
+                                        Object {
+                                          "textAlign": "center",
+                                        },
+                                        undefined,
+                                      ]
+                                    }
+                                    testID="header-title"
+                                  >
+                                    <ThemedComponent
+                                      allowFontScaling={true}
+                                      onLayout={[Function]}
+                                      style={
+                                        Array [
+                                          null,
+                                          Object {
+                                            "textAlign": "center",
+                                          },
+                                          undefined,
+                                        ]
+                                      }
+                                      testID="header-title"
+                                    >
+                                      <HeaderTitle
+                                        allowFontScaling={true}
+                                        onLayout={[Function]}
+                                        style={
+                                          Array [
+                                            null,
+                                            Object {
+                                              "textAlign": "center",
+                                            },
+                                            undefined,
+                                          ]
+                                        }
+                                        styles={
+                                          Object {
+                                            "root": Object {
+                                              "color": "#fff",
+                                              "fontFamily": undefined,
+                                              "fontSize": 20,
+                                              "fontWeight": "500",
+                                            },
+                                          }
+                                        }
+                                        testID="header-title"
+                                      >
+                                        <Text
+                                          accessibilityTraits="header"
+                                          allowFontScaling={true}
+                                          numberOfLines={1}
+                                          onLayout={[Function]}
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "#fff",
+                                                "fontFamily": undefined,
+                                                "fontSize": 20,
+                                                "fontWeight": "500",
+                                              },
+                                              Array [
+                                                null,
+                                                Object {
+                                                  "textAlign": "center",
+                                                },
+                                                undefined,
+                                              ],
+                                            ]
+                                          }
+                                          testID="header-title"
+                                        >
+                                          <ThemedComponent
+                                            accessibilityTraits="header"
+                                            allowFontScaling={true}
+                                            numberOfLines={1}
+                                            onLayout={[Function]}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#fff",
+                                                  "fontFamily": undefined,
+                                                  "fontSize": 20,
+                                                  "fontWeight": "500",
+                                                },
+                                                Array [
+                                                  null,
+                                                  Object {
+                                                    "textAlign": "center",
+                                                  },
+                                                  undefined,
+                                                ],
+                                              ]
+                                            }
+                                            testID="header-title"
+                                          >
+                                            <Component
+                                              accessibilityTraits="header"
+                                              allowFontScaling={true}
+                                              numberOfLines={1}
+                                              onLayout={[Function]}
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "color": "#fff",
+                                                    "fontFamily": undefined,
+                                                    "fontSize": 20,
+                                                    "fontWeight": "500",
+                                                  },
+                                                  Array [
+                                                    null,
+                                                    Object {
+                                                      "textAlign": "center",
+                                                    },
+                                                    undefined,
+                                                  ],
+                                                ]
+                                              }
+                                              styles={
+                                                Object {
+                                                  "root": Object {
+                                                    "color": "rgba(0, 0, 0, 0.87)",
+                                                    "fontFamily": undefined,
+                                                    "fontSize": 16,
+                                                    "fontWeight": "400",
+                                                  },
+                                                }
+                                              }
+                                              testID="header-title"
+                                            >
+                                              <Text
+                                                accessibilityTraits="header"
+                                                allowFontScaling={true}
+                                                numberOfLines={1}
+                                                onLayout={[Function]}
+                                                style={
+                                                  Array [
+                                                    Object {
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "fontFamily": undefined,
+                                                      "fontSize": 16,
+                                                      "fontWeight": "400",
+                                                    },
+                                                    Array [
+                                                      Object {
+                                                        "color": "#fff",
+                                                        "fontFamily": undefined,
+                                                        "fontSize": 20,
+                                                        "fontWeight": "500",
+                                                      },
+                                                      Array [
+                                                        null,
+                                                        Object {
+                                                          "textAlign": "center",
+                                                        },
+                                                        undefined,
+                                                      ],
+                                                    ],
+                                                  ]
+                                                }
+                                                testID="header-title"
+                                              >
+                                                <Text
+                                                  accessibilityTraits="header"
+                                                  allowFontScaling={true}
+                                                  numberOfLines={1}
+                                                  onLayout={[Function]}
+                                                  style={
+                                                    Array [
+                                                      Object {
+                                                        "color": "rgba(0, 0, 0, 0.87)",
+                                                        "fontFamily": undefined,
+                                                        "fontSize": 16,
+                                                        "fontWeight": "400",
+                                                      },
+                                                      Array [
+                                                        Object {
+                                                          "color": "#fff",
+                                                          "fontFamily": undefined,
+                                                          "fontSize": 20,
+                                                          "fontWeight": "500",
+                                                        },
+                                                        Array [
+                                                          null,
+                                                          Object {
+                                                            "textAlign": "center",
+                                                          },
+                                                          undefined,
+                                                        ],
+                                                      ],
+                                                    ]
+                                                  }
+                                                  testID="header-title"
+                                                />
+                                              </Text>
+                                            </Component>
+                                          </ThemedComponent>
+                                        </Text>
+                                      </HeaderTitle>
+                                    </ThemedComponent>
+                                  </HeaderTitle>
+                                </View>
+                              </View>
                               <HeaderBackButton
                                 key="header-left"
                                 style={
@@ -488,238 +749,6 @@ exports[`Header android enviornment should only render on android platform 1`] =
                                 </ThemedComponent>
                               </HeaderBackButton>
                               <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "flexDirection": "row",
-                                      "marginHorizontal": 16,
-                                    },
-                                    Object {
-                                      "justifyContent": "flex-start",
-                                    },
-                                    undefined,
-                                    Object {},
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    Array [
-                                      Object {
-                                        "alignItems": "center",
-                                        "flexDirection": "row",
-                                        "marginHorizontal": 16,
-                                      },
-                                      Object {
-                                        "justifyContent": "flex-start",
-                                      },
-                                      undefined,
-                                      Object {},
-                                    ]
-                                  }
-                                >
-                                  <HeaderTitle
-                                    allowFontScaling={true}
-                                    key="header-title"
-                                    style={
-                                      Array [
-                                        null,
-                                        Object {
-                                          "textAlign": "left",
-                                        },
-                                        undefined,
-                                      ]
-                                    }
-                                    testID="header-title"
-                                  >
-                                    <ThemedComponent
-                                      allowFontScaling={true}
-                                      style={
-                                        Array [
-                                          null,
-                                          Object {
-                                            "textAlign": "left",
-                                          },
-                                          undefined,
-                                        ]
-                                      }
-                                      testID="header-title"
-                                    >
-                                      <HeaderTitle
-                                        allowFontScaling={true}
-                                        style={
-                                          Array [
-                                            null,
-                                            Object {
-                                              "textAlign": "left",
-                                            },
-                                            undefined,
-                                          ]
-                                        }
-                                        styles={
-                                          Object {
-                                            "root": Object {
-                                              "color": "#fff",
-                                              "fontFamily": undefined,
-                                              "fontSize": 20,
-                                              "fontWeight": "500",
-                                            },
-                                          }
-                                        }
-                                        testID="header-title"
-                                      >
-                                        <Text
-                                          accessibilityTraits="header"
-                                          allowFontScaling={true}
-                                          numberOfLines={1}
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "#fff",
-                                                "fontFamily": undefined,
-                                                "fontSize": 20,
-                                                "fontWeight": "500",
-                                              },
-                                              Array [
-                                                null,
-                                                Object {
-                                                  "textAlign": "left",
-                                                },
-                                                undefined,
-                                              ],
-                                            ]
-                                          }
-                                          testID="header-title"
-                                        >
-                                          <ThemedComponent
-                                            accessibilityTraits="header"
-                                            allowFontScaling={true}
-                                            numberOfLines={1}
-                                            style={
-                                              Array [
-                                                Object {
-                                                  "color": "#fff",
-                                                  "fontFamily": undefined,
-                                                  "fontSize": 20,
-                                                  "fontWeight": "500",
-                                                },
-                                                Array [
-                                                  null,
-                                                  Object {
-                                                    "textAlign": "left",
-                                                  },
-                                                  undefined,
-                                                ],
-                                              ]
-                                            }
-                                            testID="header-title"
-                                          >
-                                            <Component
-                                              accessibilityTraits="header"
-                                              allowFontScaling={true}
-                                              numberOfLines={1}
-                                              style={
-                                                Array [
-                                                  Object {
-                                                    "color": "#fff",
-                                                    "fontFamily": undefined,
-                                                    "fontSize": 20,
-                                                    "fontWeight": "500",
-                                                  },
-                                                  Array [
-                                                    null,
-                                                    Object {
-                                                      "textAlign": "left",
-                                                    },
-                                                    undefined,
-                                                  ],
-                                                ]
-                                              }
-                                              styles={
-                                                Object {
-                                                  "root": Object {
-                                                    "color": "rgba(0, 0, 0, 0.87)",
-                                                    "fontFamily": undefined,
-                                                    "fontSize": 16,
-                                                    "fontWeight": "400",
-                                                  },
-                                                }
-                                              }
-                                              testID="header-title"
-                                            >
-                                              <Text
-                                                accessibilityTraits="header"
-                                                allowFontScaling={true}
-                                                numberOfLines={1}
-                                                style={
-                                                  Array [
-                                                    Object {
-                                                      "color": "rgba(0, 0, 0, 0.87)",
-                                                      "fontFamily": undefined,
-                                                      "fontSize": 16,
-                                                      "fontWeight": "400",
-                                                    },
-                                                    Array [
-                                                      Object {
-                                                        "color": "#fff",
-                                                        "fontFamily": undefined,
-                                                        "fontSize": 20,
-                                                        "fontWeight": "500",
-                                                      },
-                                                      Array [
-                                                        null,
-                                                        Object {
-                                                          "textAlign": "left",
-                                                        },
-                                                        undefined,
-                                                      ],
-                                                    ],
-                                                  ]
-                                                }
-                                                testID="header-title"
-                                              >
-                                                <Text
-                                                  accessibilityTraits="header"
-                                                  allowFontScaling={true}
-                                                  numberOfLines={1}
-                                                  style={
-                                                    Array [
-                                                      Object {
-                                                        "color": "rgba(0, 0, 0, 0.87)",
-                                                        "fontFamily": undefined,
-                                                        "fontSize": 16,
-                                                        "fontWeight": "400",
-                                                      },
-                                                      Array [
-                                                        Object {
-                                                          "color": "#fff",
-                                                          "fontFamily": undefined,
-                                                          "fontSize": 20,
-                                                          "fontWeight": "500",
-                                                        },
-                                                        Array [
-                                                          null,
-                                                          Object {
-                                                            "textAlign": "left",
-                                                          },
-                                                          undefined,
-                                                        ],
-                                                      ],
-                                                    ]
-                                                  }
-                                                  testID="header-title"
-                                                />
-                                              </Text>
-                                            </Component>
-                                          </ThemedComponent>
-                                        </Text>
-                                      </HeaderTitle>
-                                    </ThemedComponent>
-                                  </HeaderTitle>
-                                </View>
-                              </View>
-                              <View
                                 key="header-right"
                                 style={
                                   Array [
@@ -926,6 +955,9 @@ exports[`Header should handler rtl layout 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 56,
+                        },
                       ]
                     }
                   >
@@ -934,6 +966,9 @@ exports[`Header should handler rtl layout 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 56,
                           },
                         ]
                       }
@@ -1707,6 +1742,9 @@ exports[`Header should not render a back button 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -1715,6 +1753,9 @@ exports[`Header should not render a back button 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -2385,6 +2426,9 @@ exports[`Header should not render a back button with custom button text 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -2393,6 +2437,9 @@ exports[`Header should not render a back button with custom button text 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -3420,6 +3467,9 @@ exports[`Header should not render a left element with custom styles 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -3428,6 +3478,9 @@ exports[`Header should not render a left element with custom styles 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -4438,6 +4491,9 @@ exports[`Header should not render a right element 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -4446,6 +4502,9 @@ exports[`Header should not render a right element 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -5439,6 +5498,9 @@ exports[`Header should not render a right element with custom styles 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -5447,6 +5509,9 @@ exports[`Header should not render a right element with custom styles 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -6537,6 +6602,9 @@ exports[`Header should only render back image 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -6545,6 +6613,9 @@ exports[`Header should only render back image 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -7509,6 +7580,9 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -7517,6 +7591,9 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -8605,6 +8682,9 @@ exports[`Header should only render back image and title 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -8613,6 +8693,9 @@ exports[`Header should only render back image and title 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -9579,6 +9662,9 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -9588,9 +9674,1218 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                           Object {
                             "paddingHorizontal": 16,
                           },
+                          Object {
+                            "height": 44,
+                          },
                         ]
                       }
                     >
+                      <View
+                        style={
+                          Object {
+                            "flex": 1,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "flex": 1,
+                            }
+                          }
+                        >
+                          <MaskedViewIOS
+                            maskElement={
+                              <View
+                                style={
+                                  Object {
+                                    "flex": 1,
+                                    "flexDirection": "row",
+                                    "justifyContent": "center",
+                                  }
+                                }
+                              >
+                                <Component
+                                  source="test-file-stub"
+                                  style={
+                                    Object {
+                                      "alignSelf": "center",
+                                      "height": 23,
+                                      "marginLeft": 8.5,
+                                      "marginTop": -2.5,
+                                      "resizeMode": "contain",
+                                      "transform": Array [
+                                        Object {
+                                          "scaleX": 1,
+                                        },
+                                      ],
+                                      "width": 14.5,
+                                    }
+                                  }
+                                />
+                                <View
+                                  style={
+                                    Object {
+                                      "backgroundColor": "#d8d8d8",
+                                      "flex": 1,
+                                      "marginLeft": -5,
+                                    }
+                                  }
+                                />
+                              </View>
+                            }
+                            style={
+                              Object {
+                                "alignItems": "center",
+                                "bottom": 0,
+                                "flexDirection": "row",
+                                "left": 0,
+                                "position": "absolute",
+                                "right": 0,
+                                "top": 0,
+                              }
+                            }
+                          >
+                            <_class
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "bottom": 0,
+                                  "flexDirection": "row",
+                                  "left": 0,
+                                  "position": "absolute",
+                                  "right": 0,
+                                  "top": 0,
+                                }
+                              }
+                            >
+                              <RCTMaskedView
+                                style={
+                                  Object {
+                                    "alignItems": "center",
+                                    "bottom": 0,
+                                    "flexDirection": "row",
+                                    "left": 0,
+                                    "position": "absolute",
+                                    "right": 0,
+                                    "top": 0,
+                                  }
+                                }
+                              >
+                                <View
+                                  pointerEvents="none"
+                                  style={
+                                    Object {
+                                      "bottom": 0,
+                                      "left": 0,
+                                      "position": "absolute",
+                                      "right": 0,
+                                      "top": 0,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    pointerEvents="none"
+                                    style={
+                                      Object {
+                                        "bottom": 0,
+                                        "left": 0,
+                                        "position": "absolute",
+                                        "right": 0,
+                                        "top": 0,
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      style={
+                                        Object {
+                                          "flex": 1,
+                                          "flexDirection": "row",
+                                          "justifyContent": "center",
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                            "flexDirection": "row",
+                                            "justifyContent": "center",
+                                          }
+                                        }
+                                      >
+                                        <Component
+                                          source="test-file-stub"
+                                          style={
+                                            Object {
+                                              "alignSelf": "center",
+                                              "height": 23,
+                                              "marginLeft": 8.5,
+                                              "marginTop": -2.5,
+                                              "resizeMode": "contain",
+                                              "transform": Array [
+                                                Object {
+                                                  "scaleX": 1,
+                                                },
+                                              ],
+                                              "width": 14.5,
+                                            }
+                                          }
+                                        >
+                                          <Image
+                                            source="test-file-stub"
+                                            style={
+                                              Object {
+                                                "alignSelf": "center",
+                                                "height": 23,
+                                                "marginLeft": 8.5,
+                                                "marginTop": -2.5,
+                                                "resizeMode": "contain",
+                                                "transform": Array [
+                                                  Object {
+                                                    "scaleX": 1,
+                                                  },
+                                                ],
+                                                "width": 14.5,
+                                              }
+                                            }
+                                          />
+                                        </Component>
+                                        <View
+                                          style={
+                                            Object {
+                                              "backgroundColor": "#d8d8d8",
+                                              "flex": 1,
+                                              "marginLeft": -5,
+                                            }
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              Object {
+                                                "backgroundColor": "#d8d8d8",
+                                                "flex": 1,
+                                                "marginLeft": -5,
+                                              }
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "flexDirection": "row",
+                                        "marginHorizontal": 16,
+                                      },
+                                      Object {
+                                        "justifyContent": "center",
+                                      },
+                                      undefined,
+                                      Object {
+                                        "left": 0,
+                                        "position": "absolute",
+                                        "right": 0,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Array [
+                                        Object {
+                                          "alignItems": "center",
+                                          "flexDirection": "row",
+                                          "marginHorizontal": 16,
+                                        },
+                                        Object {
+                                          "justifyContent": "center",
+                                        },
+                                        undefined,
+                                        Object {
+                                          "left": 0,
+                                          "position": "absolute",
+                                          "right": 0,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <HeaderTitle
+                                      allowFontScaling={true}
+                                      key="header-title"
+                                      onLayout={[Function]}
+                                      style={
+                                        Array [
+                                          null,
+                                          Object {
+                                            "textAlign": "center",
+                                          },
+                                          undefined,
+                                        ]
+                                      }
+                                      testID="header-title"
+                                    >
+                                      <ThemedComponent
+                                        allowFontScaling={true}
+                                        onLayout={[Function]}
+                                        style={
+                                          Array [
+                                            null,
+                                            Object {
+                                              "textAlign": "center",
+                                            },
+                                            undefined,
+                                          ]
+                                        }
+                                        testID="header-title"
+                                      >
+                                        <HeaderTitle
+                                          allowFontScaling={true}
+                                          onLayout={[Function]}
+                                          style={
+                                            Array [
+                                              null,
+                                              Object {
+                                                "textAlign": "center",
+                                              },
+                                              undefined,
+                                            ]
+                                          }
+                                          styles={
+                                            Object {
+                                              "root": Object {
+                                                "color": "#fff",
+                                                "fontFamily": undefined,
+                                                "fontSize": 20,
+                                                "fontWeight": "500",
+                                              },
+                                            }
+                                          }
+                                          testID="header-title"
+                                        >
+                                          <Text
+                                            accessibilityTraits="header"
+                                            allowFontScaling={true}
+                                            numberOfLines={1}
+                                            onLayout={[Function]}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#fff",
+                                                  "fontFamily": undefined,
+                                                  "fontSize": 20,
+                                                  "fontWeight": "500",
+                                                },
+                                                Array [
+                                                  null,
+                                                  Object {
+                                                    "textAlign": "center",
+                                                  },
+                                                  undefined,
+                                                ],
+                                              ]
+                                            }
+                                            testID="header-title"
+                                          >
+                                            <ThemedComponent
+                                              accessibilityTraits="header"
+                                              allowFontScaling={true}
+                                              numberOfLines={1}
+                                              onLayout={[Function]}
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "color": "#fff",
+                                                    "fontFamily": undefined,
+                                                    "fontSize": 20,
+                                                    "fontWeight": "500",
+                                                  },
+                                                  Array [
+                                                    null,
+                                                    Object {
+                                                      "textAlign": "center",
+                                                    },
+                                                    undefined,
+                                                  ],
+                                                ]
+                                              }
+                                              testID="header-title"
+                                            >
+                                              <Component
+                                                accessibilityTraits="header"
+                                                allowFontScaling={true}
+                                                numberOfLines={1}
+                                                onLayout={[Function]}
+                                                style={
+                                                  Array [
+                                                    Object {
+                                                      "color": "#fff",
+                                                      "fontFamily": undefined,
+                                                      "fontSize": 20,
+                                                      "fontWeight": "500",
+                                                    },
+                                                    Array [
+                                                      null,
+                                                      Object {
+                                                        "textAlign": "center",
+                                                      },
+                                                      undefined,
+                                                    ],
+                                                  ]
+                                                }
+                                                styles={
+                                                  Object {
+                                                    "root": Object {
+                                                      "color": "rgba(0, 0, 0, 0.87)",
+                                                      "fontFamily": undefined,
+                                                      "fontSize": 16,
+                                                      "fontWeight": "400",
+                                                    },
+                                                  }
+                                                }
+                                                testID="header-title"
+                                              >
+                                                <Text
+                                                  accessibilityTraits="header"
+                                                  allowFontScaling={true}
+                                                  numberOfLines={1}
+                                                  onLayout={[Function]}
+                                                  style={
+                                                    Array [
+                                                      Object {
+                                                        "color": "rgba(0, 0, 0, 0.87)",
+                                                        "fontFamily": undefined,
+                                                        "fontSize": 16,
+                                                        "fontWeight": "400",
+                                                      },
+                                                      Array [
+                                                        Object {
+                                                          "color": "#fff",
+                                                          "fontFamily": undefined,
+                                                          "fontSize": 20,
+                                                          "fontWeight": "500",
+                                                        },
+                                                        Array [
+                                                          null,
+                                                          Object {
+                                                            "textAlign": "center",
+                                                          },
+                                                          undefined,
+                                                        ],
+                                                      ],
+                                                    ]
+                                                  }
+                                                  testID="header-title"
+                                                >
+                                                  <Text
+                                                    accessibilityTraits="header"
+                                                    allowFontScaling={true}
+                                                    numberOfLines={1}
+                                                    onLayout={[Function]}
+                                                    style={
+                                                      Array [
+                                                        Object {
+                                                          "color": "rgba(0, 0, 0, 0.87)",
+                                                          "fontFamily": undefined,
+                                                          "fontSize": 16,
+                                                          "fontWeight": "400",
+                                                        },
+                                                        Array [
+                                                          Object {
+                                                            "color": "#fff",
+                                                            "fontFamily": undefined,
+                                                            "fontSize": 20,
+                                                            "fontWeight": "500",
+                                                          },
+                                                          Array [
+                                                            null,
+                                                            Object {
+                                                              "textAlign": "center",
+                                                            },
+                                                            undefined,
+                                                          ],
+                                                        ],
+                                                      ]
+                                                    }
+                                                    testID="header-title"
+                                                  >
+                                                    Bar
+                                                  </Text>
+                                                </Text>
+                                              </Component>
+                                            </ThemedComponent>
+                                          </Text>
+                                        </HeaderTitle>
+                                      </ThemedComponent>
+                                    </HeaderTitle>
+                                  </View>
+                                </View>
+                                <HeaderBackButton
+                                  key="header-left"
+                                  style={
+                                    Object {
+                                      "alignItems": "center",
+                                      "flexDirection": "row",
+                                      "marginRight": 16,
+                                    }
+                                  }
+                                  testId="header-left"
+                                  title={null}
+                                >
+                                  <ThemedComponent
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "flexDirection": "row",
+                                        "marginRight": 16,
+                                      }
+                                    }
+                                    testId="header-left"
+                                    title={null}
+                                  >
+                                    <HeaderBackButton
+                                      defaultStyles={Object {}}
+                                      pressColorAndroid="rgba(0, 0, 0, .32)"
+                                      style={
+                                        Object {
+                                          "alignItems": "center",
+                                          "flexDirection": "row",
+                                          "marginRight": 16,
+                                        }
+                                      }
+                                      styles={
+                                        Object {
+                                          "androidButtonWrapper": Object {
+                                            "backgroundColor": "transparent",
+                                            "margin": 13,
+                                          },
+                                          "icon": Object {
+                                            "backgroundColor": "transparent",
+                                            "height": 21,
+                                            "marginLeft": 9,
+                                            "marginRight": 22,
+                                            "marginVertical": 12,
+                                            "resizeMode": "contain",
+                                            "transform": Array [
+                                              Object {
+                                                "scaleX": 1,
+                                              },
+                                            ],
+                                            "width": 13,
+                                          },
+                                          "iconWithTitle": Object {
+                                            "marginRight": 6,
+                                          },
+                                          "title": Object {
+                                            "color": "#fff",
+                                            "fontSize": 17,
+                                            "paddingRight": 10,
+                                          },
+                                          "wrapper": Object {
+                                            "alignItems": "center",
+                                            "backgroundColor": "transparent",
+                                            "flexDirection": "row",
+                                          },
+                                        }
+                                      }
+                                      testId="header-left"
+                                      title={null}
+                                      truncatedTitle="Back"
+                                    >
+                                      <NavigationActions>
+                                        <ThemedComponent>
+                                          <Component>
+                                            <TouchableItem
+                                              accessibilityComponentType="button"
+                                              accessibilityLabel="Go back"
+                                              accessibilityRole="button"
+                                              accessibilityTraits="button"
+                                              accessible={true}
+                                              borderless={true}
+                                              delayPressIn={0}
+                                              onPress={[Function]}
+                                              pressColor="rgba(0, 0, 0, .32)"
+                                              style={
+                                                Object {
+                                                  "alignItems": "center",
+                                                  "flexDirection": "row",
+                                                  "marginRight": 16,
+                                                }
+                                              }
+                                              testID="header-back"
+                                            >
+                                              <TouchableOpacity
+                                                accessibilityComponentType="button"
+                                                accessibilityLabel="Go back"
+                                                accessibilityRole="button"
+                                                accessibilityTraits="button"
+                                                accessible={true}
+                                                activeOpacity={0.2}
+                                                borderless={true}
+                                                delayPressIn={0}
+                                                hitSlop={
+                                                  Object {
+                                                    "bottom": 10,
+                                                    "left": 10,
+                                                    "right": 10,
+                                                    "top": 10,
+                                                  }
+                                                }
+                                                onPress={[Function]}
+                                                pressColor="rgba(0, 0, 0, .32)"
+                                                style={
+                                                  Object {
+                                                    "alignItems": "center",
+                                                    "flexDirection": "row",
+                                                    "marginRight": 16,
+                                                  }
+                                                }
+                                                testID="header-back"
+                                              >
+                                                <AnimatedComponent
+                                                  accessibilityLabel="Go back"
+                                                  accessibilityRole="button"
+                                                  accessible={true}
+                                                  hitSlop={
+                                                    Object {
+                                                      "bottom": 10,
+                                                      "left": 10,
+                                                      "right": 10,
+                                                      "top": 10,
+                                                    }
+                                                  }
+                                                  isTVSelectable={true}
+                                                  onResponderGrant={[Function]}
+                                                  onResponderMove={[Function]}
+                                                  onResponderRelease={[Function]}
+                                                  onResponderTerminate={[Function]}
+                                                  onResponderTerminationRequest={[Function]}
+                                                  onStartShouldSetResponder={[Function]}
+                                                  style={
+                                                    Array [
+                                                      Object {
+                                                        "alignItems": "center",
+                                                        "flexDirection": "row",
+                                                        "marginRight": 16,
+                                                      },
+                                                      Object {
+                                                        "opacity": 1,
+                                                      },
+                                                    ]
+                                                  }
+                                                  testID="header-back"
+                                                >
+                                                  <View
+                                                    accessibilityLabel="Go back"
+                                                    accessibilityRole="button"
+                                                    accessible={true}
+                                                    hitSlop={
+                                                      Object {
+                                                        "bottom": 10,
+                                                        "left": 10,
+                                                        "right": 10,
+                                                        "top": 10,
+                                                      }
+                                                    }
+                                                    isTVSelectable={true}
+                                                    onResponderGrant={[Function]}
+                                                    onResponderMove={[Function]}
+                                                    onResponderRelease={[Function]}
+                                                    onResponderTerminate={[Function]}
+                                                    onResponderTerminationRequest={[Function]}
+                                                    onStartShouldSetResponder={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "alignItems": "center",
+                                                        "flexDirection": "row",
+                                                        "marginRight": 16,
+                                                        "opacity": 1,
+                                                      }
+                                                    }
+                                                    testID="header-back"
+                                                  >
+                                                    <View
+                                                      accessibilityLabel="Go back"
+                                                      accessibilityRole="button"
+                                                      accessible={true}
+                                                      hitSlop={
+                                                        Object {
+                                                          "bottom": 10,
+                                                          "left": 10,
+                                                          "right": 10,
+                                                          "top": 10,
+                                                        }
+                                                      }
+                                                      isTVSelectable={true}
+                                                      onResponderGrant={[Function]}
+                                                      onResponderMove={[Function]}
+                                                      onResponderRelease={[Function]}
+                                                      onResponderTerminate={[Function]}
+                                                      onResponderTerminationRequest={[Function]}
+                                                      onStartShouldSetResponder={[Function]}
+                                                      style={
+                                                        Object {
+                                                          "alignItems": "center",
+                                                          "flexDirection": "row",
+                                                          "marginRight": 16,
+                                                          "opacity": 1,
+                                                        }
+                                                      }
+                                                      testID="header-back"
+                                                    >
+                                                      <View
+                                                        style={
+                                                          Object {
+                                                            "alignItems": "center",
+                                                            "backgroundColor": "transparent",
+                                                            "flexDirection": "row",
+                                                          }
+                                                        }
+                                                        testID="header-back-wrapper"
+                                                      >
+                                                        <View
+                                                          style={
+                                                            Object {
+                                                              "alignItems": "center",
+                                                              "backgroundColor": "transparent",
+                                                              "flexDirection": "row",
+                                                            }
+                                                          }
+                                                          testID="header-back-wrapper"
+                                                        >
+                                                          <Component
+                                                            fadeDuration={0}
+                                                            source="test-file-stub"
+                                                            style={
+                                                              Array [
+                                                                Object {
+                                                                  "backgroundColor": "transparent",
+                                                                  "height": 21,
+                                                                  "marginLeft": 9,
+                                                                  "marginRight": 22,
+                                                                  "marginVertical": 12,
+                                                                  "resizeMode": "contain",
+                                                                  "transform": Array [
+                                                                    Object {
+                                                                      "scaleX": 1,
+                                                                    },
+                                                                  ],
+                                                                  "width": 13,
+                                                                },
+                                                                false,
+                                                                Object {
+                                                                  "tintColor": "#fff",
+                                                                },
+                                                              ]
+                                                            }
+                                                          >
+                                                            <Image
+                                                              fadeDuration={0}
+                                                              source="test-file-stub"
+                                                              style={
+                                                                Array [
+                                                                  Object {
+                                                                    "backgroundColor": "transparent",
+                                                                    "height": 21,
+                                                                    "marginLeft": 9,
+                                                                    "marginRight": 22,
+                                                                    "marginVertical": 12,
+                                                                    "resizeMode": "contain",
+                                                                    "transform": Array [
+                                                                      Object {
+                                                                        "scaleX": 1,
+                                                                      },
+                                                                    ],
+                                                                    "width": 13,
+                                                                  },
+                                                                  false,
+                                                                  Object {
+                                                                    "tintColor": "#fff",
+                                                                  },
+                                                                ]
+                                                              }
+                                                            />
+                                                          </Component>
+                                                        </View>
+                                                      </View>
+                                                    </View>
+                                                  </View>
+                                                </AnimatedComponent>
+                                              </TouchableOpacity>
+                                            </TouchableItem>
+                                          </Component>
+                                        </ThemedComponent>
+                                      </NavigationActions>
+                                    </HeaderBackButton>
+                                  </ThemedComponent>
+                                </HeaderBackButton>
+                                <View
+                                  key="header-right"
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "bottom": 0,
+                                        "flexDirection": "row",
+                                        "marginLeft": 16,
+                                        "position": "absolute",
+                                        "right": 0,
+                                        "top": 0,
+                                      },
+                                    ]
+                                  }
+                                  testID="header-right-container"
+                                >
+                                  <View
+                                    style={
+                                      Array [
+                                        Object {
+                                          "alignItems": "center",
+                                          "bottom": 0,
+                                          "flexDirection": "row",
+                                          "marginLeft": 16,
+                                          "position": "absolute",
+                                          "right": 0,
+                                          "top": 0,
+                                        },
+                                      ]
+                                    }
+                                    testID="header-right-container"
+                                  />
+                                </View>
+                              </RCTMaskedView>
+                            </_class>
+                          </MaskedViewIOS>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </RCTSafeAreaView>
+              </_class>
+            </SafeAreaView>
+          </Header>
+        </ThemedComponent>
+      </Header>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
+
+exports[`Header should render a header background 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <Header
+        headerBackground={[Function]}
+        headerTitle="Bar"
+        title="Foo"
+      >
+        <ThemedComponent
+          headerBackground={[Function]}
+          headerTitle="Bar"
+          title="Foo"
+        >
+          <Header
+            headerBackground={[Function]}
+            headerTitle="Bar"
+            headerTitleAllowFontScaling={true}
+            layoutPreset="center"
+            styles={
+              Object {
+                "flexOne": Object {
+                  "flex": 1,
+                },
+                "header": Object {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                "iconMask": Object {
+                  "alignSelf": "center",
+                  "height": 23,
+                  "marginLeft": 8.5,
+                  "marginTop": -2.5,
+                  "resizeMode": "contain",
+                  "transform": Array [
+                    Object {
+                      "scaleX": 1,
+                    },
+                  ],
+                  "width": 14.5,
+                },
+                "iconMaskContainer": Object {
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                },
+                "iconMaskFillerRect": Object {
+                  "backgroundColor": "#d8d8d8",
+                  "flex": 1,
+                  "marginLeft": -5,
+                },
+                "item": Object {
+                  "backgroundColor": "transparent",
+                },
+                "left": Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginRight": 16,
+                },
+                "right": Object {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "marginLeft": 16,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 4,
+                },
+                "title": Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginHorizontal": 16,
+                },
+                "transparentContainer": Object {
+                  "borderBottomColor": "transparent",
+                  "borderBottomWidth": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": -1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.24,
+                  "shadowRadius": 0,
+                  "top": 0,
+                },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
+              }
+            }
+            title="Foo"
+          >
+            <SafeAreaView
+              onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <_class
+                onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.24,
+                      "shadowRadius": 4,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <RCTSafeAreaView
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 4,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "paddingHorizontal": 16,
+                        },
+                        Object {
+                          "height": 44,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
+                          },
+                        ]
+                      }
+                    >
+                      <Component
+                        headerBackground={[Function]}
+                        headerTitle="Bar"
+                        headerTitleAllowFontScaling={true}
+                        layoutPreset="center"
+                        source={
+                          Object {
+                            "uri": "https://picsum.photos/1000x100",
+                          }
+                        }
+                        style={
+                          Object {
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                          }
+                        }
+                        styles={
+                          Object {
+                            "flexOne": Object {
+                              "flex": 1,
+                            },
+                            "header": Object {
+                              "alignItems": "center",
+                              "bottom": 0,
+                              "flexDirection": "row",
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            "iconMask": Object {
+                              "alignSelf": "center",
+                              "height": 23,
+                              "marginLeft": 8.5,
+                              "marginTop": -2.5,
+                              "resizeMode": "contain",
+                              "transform": Array [
+                                Object {
+                                  "scaleX": 1,
+                                },
+                              ],
+                              "width": 14.5,
+                            },
+                            "iconMaskContainer": Object {
+                              "flex": 1,
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                            },
+                            "iconMaskFillerRect": Object {
+                              "backgroundColor": "#d8d8d8",
+                              "flex": 1,
+                              "marginLeft": -5,
+                            },
+                            "item": Object {
+                              "backgroundColor": "transparent",
+                            },
+                            "left": Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginRight": 16,
+                            },
+                            "right": Object {
+                              "alignItems": "center",
+                              "bottom": 0,
+                              "flexDirection": "row",
+                              "marginLeft": 16,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            "root": Object {
+                              "backgroundColor": "#3f51b5",
+                              "shadowColor": "#000",
+                              "shadowOffset": Object {
+                                "height": 3,
+                                "width": 0,
+                              },
+                              "shadowOpacity": 0.24,
+                              "shadowRadius": 4,
+                            },
+                            "title": Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginHorizontal": 16,
+                            },
+                            "transparentContainer": Object {
+                              "borderBottomColor": "transparent",
+                              "borderBottomWidth": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "shadowColor": "#000",
+                              "shadowOffset": Object {
+                                "height": -1,
+                                "width": 0,
+                              },
+                              "shadowOpacity": 0.24,
+                              "shadowRadius": 0,
+                              "top": 0,
+                            },
+                            "wrapper": Object {
+                              "paddingHorizontal": 16,
+                            },
+                          }
+                        }
+                        testID="header-bg"
+                        title="Foo"
+                      >
+                        <Image
+                          headerBackground={[Function]}
+                          headerTitle="Bar"
+                          headerTitleAllowFontScaling={true}
+                          layoutPreset="center"
+                          source={
+                            Object {
+                              "uri": "https://picsum.photos/1000x100",
+                            }
+                          }
+                          style={
+                            Object {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                          styles={
+                            Object {
+                              "flexOne": Object {
+                                "flex": 1,
+                              },
+                              "header": Object {
+                                "alignItems": "center",
+                                "bottom": 0,
+                                "flexDirection": "row",
+                                "left": 0,
+                                "position": "absolute",
+                                "right": 0,
+                                "top": 0,
+                              },
+                              "iconMask": Object {
+                                "alignSelf": "center",
+                                "height": 23,
+                                "marginLeft": 8.5,
+                                "marginTop": -2.5,
+                                "resizeMode": "contain",
+                                "transform": Array [
+                                  Object {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                                "width": 14.5,
+                              },
+                              "iconMaskContainer": Object {
+                                "flex": 1,
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                              },
+                              "iconMaskFillerRect": Object {
+                                "backgroundColor": "#d8d8d8",
+                                "flex": 1,
+                                "marginLeft": -5,
+                              },
+                              "item": Object {
+                                "backgroundColor": "transparent",
+                              },
+                              "left": Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "marginRight": 16,
+                              },
+                              "right": Object {
+                                "alignItems": "center",
+                                "bottom": 0,
+                                "flexDirection": "row",
+                                "marginLeft": 16,
+                                "position": "absolute",
+                                "right": 0,
+                                "top": 0,
+                              },
+                              "root": Object {
+                                "backgroundColor": "#3f51b5",
+                                "shadowColor": "#000",
+                                "shadowOffset": Object {
+                                  "height": 3,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.24,
+                                "shadowRadius": 4,
+                              },
+                              "title": Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "marginHorizontal": 16,
+                              },
+                              "transparentContainer": Object {
+                                "borderBottomColor": "transparent",
+                                "borderBottomWidth": 0,
+                                "left": 0,
+                                "position": "absolute",
+                                "right": 0,
+                                "shadowColor": "#000",
+                                "shadowOffset": Object {
+                                  "height": -1,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.24,
+                                "shadowRadius": 0,
+                                "top": 0,
+                              },
+                              "wrapper": Object {
+                                "paddingHorizontal": 16,
+                              },
+                            }
+                          }
+                          testID="header-bg"
+                          title="Foo"
+                        />
+                      </Component>
                       <View
                         style={
                           Object {
@@ -10559,6 +11854,9 @@ exports[`Header should render back button and title with tint color 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -10567,6 +11865,9 @@ exports[`Header should render back button and title with tint color 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -11608,6 +12909,9 @@ exports[`Header should render back button and title with tint color 2`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -11616,6 +12920,9 @@ exports[`Header should render back button and title with tint color 2`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -12648,6 +13955,9 @@ exports[`Header should render custom title component 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -12656,6 +13966,9 @@ exports[`Header should render custom title component 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }
@@ -13398,6 +14711,9 @@ exports[`Header should render transparent Header 1`] = `
                         Object {
                           "paddingHorizontal": 16,
                         },
+                        Object {
+                          "height": 44,
+                        },
                       ]
                     }
                   >
@@ -13406,6 +14722,9 @@ exports[`Header should render transparent Header 1`] = `
                         Array [
                           Object {
                             "paddingHorizontal": 16,
+                          },
+                          Object {
+                            "height": 44,
                           },
                         ]
                       }

@@ -20,14 +20,14 @@ import React from 'react';
 import { Theme } from '../../registries';
 
 
-// const getAppBarHeight = (isLandscape: boolean) => {
-// 	return Platform.OS === 'ios'
-//     ? isLandscape
-//     // && !Platform.isPad
-//       ? 32
-//       : 44
-//     : 56;
-// };
+const getAppBarHeight = (isLandscape: boolean) => {
+	return Platform.OS === 'ios'
+    ? isLandscape
+    // && !Platform.isPad
+      ? 32
+      : 44
+    : 56;
+};
 
 export interface HeaderProps extends NavigationOptions {
 	headerTitleContainerStyle?: StyleProp<ViewStyle>,
@@ -169,7 +169,12 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 			return null;
 		}
 
-		// const appBarHeight = getAppBarHeight(isLandscape);
+		const onLayout = layoutPreset === 'center'
+		? (e: any) => { this.setState({ initWidth: e.nativeEvent.layout.width, }); }
+    : undefined;
+
+		const appBar = this._renderHeader();
+		const background = this._renderBackground();
 
 		const rootStyles = [
 			headerTransparent ? styles.transparentContainer : styles.root,
@@ -178,15 +183,8 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 
 		const wrapperStyles = [
 			styles.wrapper,
-			// { height: appBarHeight },
+			{ height: getAppBarHeight(false /* TODO: isLandscape */) },
 		];
-
-		const onLayout = layoutPreset === 'center'
-		? (e: any) => { this.setState({ initWidth: e.nativeEvent.layout.width, }); }
-    : undefined;
-
-		const appBar = this._renderHeader();
-		const background = this._renderBackground();
 
 		return (
       <SafeAreaView onLayout={onLayout} style={rootStyles} >

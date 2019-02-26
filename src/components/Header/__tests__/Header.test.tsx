@@ -1,7 +1,7 @@
 import { BlueBaseApp } from '../../BlueBaseApp';
 import { Header } from '../../..';
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 import deepmerge = require('deepmerge');
@@ -284,6 +284,27 @@ describe('Header', () => {
 		expect(wrapper.find('Header [testID="header-title"] Text').last().text()).toBe('Bar');
 	});
 
+	test(`should render a header background`, async () => {
+
+		const wrapper = mount(
+			<BlueBaseApp>
+        <Header
+					headerTitle="Bar"
+					title="Foo"
+					// tslint:disable-next-line: max-line-length
+					headerBackground={(props) => <Image testID="header-bg" source={{ uri: 'https://picsum.photos/1000x100' }} {...props} />}
+				/>
+      </BlueBaseApp>
+		);
+
+		// Wait for render
+		await waitForElement(wrapper, Header);
+
+		expect(wrapper).toMatchSnapshot();
+
+		expect(wrapper.find('Header [testID="header-bg"]').length).toBeGreaterThan(0);
+	});
+
 	describe('android enviornment', () => {
 
 		beforeEach(() => {
@@ -299,7 +320,7 @@ describe('Header', () => {
 
 			const wrapper = mount(
 				<BlueBaseApp>
-					<Header />
+					<Header layoutPreset="center" />
 				</BlueBaseApp>
 			);
 
