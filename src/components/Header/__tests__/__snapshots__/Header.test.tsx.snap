@@ -11,11 +11,6 @@ exports[`Header android enviornment should only render on android platform 1`] =
             layoutPreset="left"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "elevation": 4,
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -66,6 +61,10 @@ exports[`Header android enviornment should only render on android platform 1`] =
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                  "elevation": 4,
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -80,24 +79,54 @@ exports[`Header android enviornment should only render on android platform 1`] =
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
           >
-            <SafeAreaView>
-              <_class>
-                <RCTSafeAreaView>
+            <SafeAreaView
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                    "elevation": 4,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                      "elevation": 4,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <RCTSafeAreaView
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                        "elevation": 4,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
-                          "elevation": 4,
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 56,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -105,14 +134,11 @@ exports[`Header android enviornment should only render on android platform 1`] =
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
-                            "elevation": 4,
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 56,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -718,11 +744,6 @@ exports[`Header should handler rtl layout 1`] = `
             layoutPreset="left"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "elevation": 4,
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -773,6 +794,10 @@ exports[`Header should handler rtl layout 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                  "elevation": 4,
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -787,24 +812,54 @@ exports[`Header should handler rtl layout 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
           >
-            <SafeAreaView>
-              <_class>
-                <RCTSafeAreaView>
+            <SafeAreaView
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                    "elevation": 4,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                      "elevation": 4,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <RCTSafeAreaView
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                        "elevation": 4,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
-                          "elevation": 4,
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 56,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -812,14 +867,11 @@ exports[`Header should handler rtl layout 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
-                            "elevation": 4,
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 56,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -1432,10 +1484,6 @@ exports[`Header should not render a back button 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -1486,6 +1534,9 @@ exports[`Header should not render a back button 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -1500,30 +1551,55 @@ exports[`Header should not render a back button 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -1531,13 +1607,11 @@ exports[`Header should not render a back button 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -2074,10 +2148,6 @@ exports[`Header should not render a back button with custom button text 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -2128,6 +2198,9 @@ exports[`Header should not render a back button with custom button text 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -2142,30 +2215,55 @@ exports[`Header should not render a back button with custom button text 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -2173,13 +2271,11 @@ exports[`Header should not render a back button with custom button text 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -3062,10 +3158,6 @@ exports[`Header should not render a left element with custom styles 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -3116,6 +3208,9 @@ exports[`Header should not render a left element with custom styles 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -3130,30 +3225,55 @@ exports[`Header should not render a left element with custom styles 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -3161,13 +3281,11 @@ exports[`Header should not render a left element with custom styles 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -4022,10 +4140,6 @@ exports[`Header should not render a right element 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -4076,6 +4190,9 @@ exports[`Header should not render a right element 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -4090,30 +4207,55 @@ exports[`Header should not render a right element 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -4121,13 +4263,11 @@ exports[`Header should not render a right element 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -4976,10 +5116,6 @@ exports[`Header should not render a right element with custom styles 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -5030,6 +5166,9 @@ exports[`Header should not render a right element with custom styles 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -5044,30 +5183,55 @@ exports[`Header should not render a right element with custom styles 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -5075,13 +5239,11 @@ exports[`Header should not render a right element with custom styles 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -5921,10 +6083,6 @@ exports[`Header should not render anything when header prop is null 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -5975,6 +6133,9 @@ exports[`Header should not render anything when header prop is null 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -5988,6 +6149,9 @@ exports[`Header should not render anything when header prop is null 1`] = `
                   "position": "absolute",
                   "right": 0,
                   "top": 0,
+                },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
                 },
               }
             }
@@ -6011,10 +6175,6 @@ exports[`Header should only render back image 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -6065,6 +6225,9 @@ exports[`Header should only render back image 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -6079,29 +6242,54 @@ exports[`Header should only render back image 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -6109,13 +6297,11 @@ exports[`Header should only render back image 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -6935,10 +7121,6 @@ exports[`Header should only render back image and custom truncated title 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -6989,6 +7171,9 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -7003,30 +7188,55 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -7034,13 +7244,11 @@ exports[`Header should only render back image and custom truncated title 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -8016,10 +8224,6 @@ exports[`Header should only render back image and title 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -8070,6 +8274,9 @@ exports[`Header should only render back image and title 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -8084,30 +8291,55 @@ exports[`Header should only render back image and title 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -8115,13 +8347,11 @@ exports[`Header should only render back image and title 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -8943,10 +9173,6 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -8997,6 +9223,9 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -9011,30 +9240,55 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -9042,13 +9296,11 @@ exports[`Header should prefer headerTitle prop over title prop 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -9876,10 +10128,6 @@ exports[`Header should render back button and title with tint color 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -9930,6 +10178,9 @@ exports[`Header should render back button and title with tint color 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -9944,30 +10195,55 @@ exports[`Header should render back button and title with tint color 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -9975,13 +10251,11 @@ exports[`Header should render back button and title with tint color 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -10878,10 +11152,6 @@ exports[`Header should render back button and title with tint color 2`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -10932,6 +11202,9 @@ exports[`Header should render back button and title with tint color 2`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -10946,30 +11219,55 @@ exports[`Header should render back button and title with tint color 2`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -10977,13 +11275,11 @@ exports[`Header should render back button and title with tint color 2`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -11872,10 +12168,6 @@ exports[`Header should render custom title component 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -11926,6 +12218,9 @@ exports[`Header should render custom title component 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -11940,29 +12235,54 @@ exports[`Header should render custom title component 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#3f51b5",
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#3f51b5",
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#3f51b5",
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#3f51b5",
                           "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -11970,13 +12290,11 @@ exports[`Header should render custom title component 1`] = `
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#3f51b5",
                             "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -12538,10 +12856,6 @@ exports[`Header should render transparent Header 1`] = `
             layoutPreset="center"
             styles={
               Object {
-                "container": Object {
-                  "backgroundColor": "#3f51b5",
-                  "paddingHorizontal": 16,
-                },
                 "flexOne": Object {
                   "flex": 1,
                 },
@@ -12592,6 +12906,9 @@ exports[`Header should render transparent Header 1`] = `
                   "position": "absolute",
                   "right": 0,
                 },
+                "root": Object {
+                  "backgroundColor": "#3f51b5",
+                },
                 "title": Object {
                   "alignItems": "center",
                   "flexDirection": "row",
@@ -12606,35 +12923,73 @@ exports[`Header should render transparent Header 1`] = `
                   "right": 0,
                   "top": 0,
                 },
+                "wrapper": Object {
+                  "paddingHorizontal": 16,
+                },
               }
             }
             title="Foo"
           >
             <SafeAreaView
               onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "borderBottomColor": "transparent",
+                    "borderBottomWidth": 0,
+                    "elevation": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  undefined,
+                ]
+              }
             >
               <_class
                 onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "borderBottomColor": "transparent",
+                      "borderBottomWidth": 0,
+                      "elevation": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    },
+                    undefined,
+                  ]
+                }
               >
                 <RCTSafeAreaView
                   onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "borderBottomColor": "transparent",
+                        "borderBottomWidth": 0,
+                        "elevation": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      undefined,
+                    ]
+                  }
                 >
                   <View
                     style={
                       Array [
                         Object {
-                          "borderBottomColor": "transparent",
-                          "borderBottomWidth": 0,
-                          "elevation": 0,
-                          "left": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
+                          "paddingHorizontal": 16,
                         },
                         Object {
                           "height": 44,
                         },
-                        undefined,
                       ]
                     }
                   >
@@ -12642,18 +12997,11 @@ exports[`Header should render transparent Header 1`] = `
                       style={
                         Array [
                           Object {
-                            "borderBottomColor": "transparent",
-                            "borderBottomWidth": 0,
-                            "elevation": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
+                            "paddingHorizontal": 16,
                           },
                           Object {
                             "height": 44,
                           },
-                          undefined,
                         ]
                       }
                     >

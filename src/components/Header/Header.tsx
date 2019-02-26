@@ -93,7 +93,8 @@ export interface HeaderState {
 }
 
 export interface HeaderStyles {
-	container: StyleProp<ViewStyle>,
+	root: StyleProp<ViewStyle>,
+	wrapper: StyleProp<ViewStyle>,
 	transparentContainer: StyleProp<ViewStyle>,
 	header: StyleProp<ViewStyle>,
 	item: StyleProp<ViewStyle>,
@@ -140,11 +141,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		}
 
 		return {
-			container: {
-				backgroundColor: theme.palette.primary.main ,// || '#FFF',
-				paddingHorizontal: theme.spacing.unit * 2,
-				...platformContainerStyles,
-			},
 			flexOne: {
 				flex: 1,
 			},
@@ -195,6 +191,10 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 				position: 'absolute',
 				right: 0,
 			},
+			root: {
+				backgroundColor: theme.palette.primary.main ,// || '#FFF',
+				...platformContainerStyles,
+			},
 			title: {
         // bottom: 0,
         // top: 0,
@@ -215,10 +215,51 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 				...platformContainerStyles,
 				elevation: 0,
 			},
+			wrapper: {
+				paddingHorizontal: theme.spacing.unit * 2,
+			},
 		};
 	}
 
-	_getHeaderTitleString() {
+	render() {
+		const { header, headerStyle, headerTransparent, layoutPreset } = this.props;
+		const styles = this.props.styles as HeaderStyles;
+
+		if (header === null) {
+			return null;
+		}
+
+		const appBarHeight = getAppBarHeight(false);
+		// const appBarHeight = getAppBarHeight(isLandscape);
+
+		const rootStyles = [
+			headerTransparent ? styles.transparentContainer : styles.root,
+			headerStyle,
+		];
+
+		const wrapperStyles = [
+			styles.wrapper,
+			{ height: appBarHeight },
+		];
+
+		const onLayout = layoutPreset === 'center'
+		? (e: any) => { this.setState({ initWidth: e.nativeEvent.layout.width, }); }
+    : undefined;
+
+		const appBar = this._renderHeader();
+		const background = this._renderBackground();
+
+		return (
+      <SafeAreaView onLayout={onLayout} style={rootStyles} >
+        <View style={wrapperStyles}>
+          {background}
+          <View style={styles.flexOne}>{appBar}</View>
+        </View>
+			</SafeAreaView>
+		);
+	}
+
+	private _getHeaderTitleString() {
 		const { headerTitle, title } = this.props;
 
 		if (typeof headerTitle === 'string') {
@@ -228,7 +269,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		return title;
 	}
 
-	_getBackButtonTitleString() {
+	private _getBackButtonTitleString() {
 		const { headerBackTitle } = this.props;
 		if (headerBackTitle || headerBackTitle === null) {
 			return headerBackTitle;
@@ -236,11 +277,11 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		return null;
 	}
 
-	_getTruncatedBackButtonTitle() {
+	private _getTruncatedBackButtonTitle() {
 		return this.props.headerTruncatedBackTitle;
 	}
 
-	_renderTitleComponent = () => {
+	private _renderTitleComponent = () => {
 		const {
 			headerTitle,
 			headerTitleStyle: titleStyle,
@@ -295,40 +336,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
       >
         {titleString}
       </HeaderTitleComponent>
-		);
-	}
-
-	render() {
-		const { header, headerStyle, headerTransparent, layoutPreset } = this.props;
-		const styles = this.props.styles as HeaderStyles;
-
-		if (header === null) {
-			return null;
-		}
-
-		const appBarHeight = getAppBarHeight(false);
-		// const appBarHeight = getAppBarHeight(isLandscape);
-
-		const containerStyles = [
-			headerTransparent ? styles.transparentContainer : styles.container,
-      { height: appBarHeight },
-			headerStyle,
-		];
-
-		const onLayout = layoutPreset === 'center'
-		? (e: any) => { this.setState({ initWidth: e.nativeEvent.layout.width, }); }
-    : undefined;
-
-		const appBar = this._renderHeader();
-		const background = this._renderBackground();
-
-		return (
-      <SafeAreaView onLayout={onLayout}>
-        <View style={containerStyles}>
-          {background}
-          <View style={styles.flexOne}>{appBar}</View>
-        </View>
-			</SafeAreaView>
 		);
 	}
 
