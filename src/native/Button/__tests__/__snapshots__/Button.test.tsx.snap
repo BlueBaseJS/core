@@ -331,3 +331,109 @@ exports[`Button should render Button with secondary color styles 1`] = `
   </View>
 </View>
 `;
+
+exports[`Button should use TouchableNativeFeedback on android platform 1`] = `
+<Button
+  styles={
+    Object {
+      "default": Object {
+        "backgroundColor": "#fafafa",
+      },
+      "defaultText": Object {},
+      "fullWidth": Object {
+        "alignSelf": "stretch",
+      },
+      "link": Object {},
+      "linkText": Object {},
+      "primary": Object {
+        "backgroundColor": "#3f51b5",
+      },
+      "primaryText": Object {
+        "color": "#fff",
+      },
+      "root": Object {
+        "alignSelf": "flex-start",
+        "borderRadius": 4,
+        "paddingBottom": 8,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+        "paddingTop": 8,
+      },
+      "secondary": Object {
+        "backgroundColor": "#f50057",
+      },
+      "secondaryText": Object {
+        "color": "#fff",
+      },
+      "text": Object {
+        "color": "rgba(0, 0, 0, 0.87)",
+        "fontFamily": undefined,
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textAlign": "center",
+        "textTransform": "uppercase",
+      },
+    }
+  }
+>
+  <DummyTouchableNativeFeedback
+    accessibilityRole="button"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffbcbc",
+            "borderColor": "red",
+            "borderWidth": 1,
+            "height": 100,
+            "justifyContent": "center",
+            "margin": 10,
+            "width": 300,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffbcbc",
+              "borderColor": "red",
+              "borderWidth": 1,
+              "height": 100,
+              "justifyContent": "center",
+              "margin": 10,
+              "width": 300,
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#333333",
+              "margin": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#333333",
+                "margin": 20,
+              }
+            }
+          >
+            TouchableNativeFeedback is not supported on this platform!
+          </Text>
+        </Text>
+      </View>
+    </View>
+  </DummyTouchableNativeFeedback>
+</Button>
+`;

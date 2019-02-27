@@ -11,7 +11,7 @@ describe('HeaderBackButton', () => {
 
 	test(`should only render back image`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton />
       </BlueBaseApp>
@@ -27,7 +27,7 @@ describe('HeaderBackButton', () => {
 
 	test(`should only render back image and standard title`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton backTitleVisible />
       </BlueBaseApp>
@@ -43,7 +43,7 @@ describe('HeaderBackButton', () => {
 
 	test(`should render custom back image`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton backTitleVisible backImage={React.createElement(Button, { title: 'Far', onPress: () => {} })} />
       </BlueBaseApp>
@@ -59,7 +59,7 @@ describe('HeaderBackButton', () => {
 
 	test(`should not render title when title prop is null`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton title={null} backTitleVisible />
       </BlueBaseApp>
@@ -75,7 +75,7 @@ describe('HeaderBackButton', () => {
 
 	test(`should only render back image and custom title`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton backTitleVisible title="Foo" />
       </BlueBaseApp>
@@ -91,11 +91,11 @@ describe('HeaderBackButton', () => {
 
 	test(`should only render back image and truncated title`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton
-					backTitleVisible 
-					title="A very very long title sentence" 
+					backTitleVisible
+					title="A very very long title sentence"
 					width={100}
 				/>
       </BlueBaseApp>
@@ -113,11 +113,11 @@ describe('HeaderBackButton', () => {
 
 	test(`should only render back image and custom truncated title`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton
-					backTitleVisible 
-					title="A very very long title sentence" 
+					backTitleVisible
+					title="A very very long title sentence"
 					truncatedTitle="What? lol"
 					width={100}
 				/>
@@ -163,7 +163,7 @@ describe('HeaderBackButton', () => {
 
 	test(`should only render back image and title with custom tint color`, async () => {
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton backTitleVisible tintColor="red" />
       </BlueBaseApp>
@@ -196,7 +196,7 @@ describe('HeaderBackButton', () => {
 			return Platform;
 		});
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton />
       </BlueBaseApp>
@@ -218,7 +218,7 @@ describe('HeaderBackButton', () => {
 			return Platform;
 		});
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton />
       </BlueBaseApp>
@@ -240,7 +240,7 @@ describe('HeaderBackButton', () => {
 			return I18nManager;
 		});
 
-    const wrapper = mount(
+		const wrapper = mount(
 			<BlueBaseApp>
         <HeaderBackButton />
       </BlueBaseApp>
