@@ -20,6 +20,23 @@ describe('BlueBaseApp', () => {
 
 	test(`should render BlueBaseApp`, async () => {
 		const wrapper = mount(
+			<BlueBaseApp />
+		);
+
+		// Will show loading
+		expect(wrapper).toMatchSnapshot();
+		expect(wrapper.find('BlueBaseApp Text').last().text()).toBe('Loading');
+
+		// Wait for state update
+		await waitForState(wrapper, (state: any) => state.loading === false);
+		wrapper.update();
+
+		expect(wrapper).toMatchSnapshot();
+		expect(wrapper.find('BlueBaseApp HomeScreen Text').last().text()).toBe('Welcome to BlueBase Framework!');
+	});
+
+	test(`should render BlueBaseApp with custom child`, async () => {
+		const wrapper = mount(
 			<BlueBaseApp>
 				<Text>🚀 BlueBase System Content!</Text>
 			</BlueBaseApp>
