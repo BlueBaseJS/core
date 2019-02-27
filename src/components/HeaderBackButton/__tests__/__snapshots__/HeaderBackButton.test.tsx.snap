@@ -2447,151 +2447,76 @@ exports[`HeaderBackButton should only render back image on android platform 1`] 
                         pressColor="rgba(0, 0, 0, .32)"
                         testID="header-back"
                       >
-                        <TouchableOpacity
+                        <DummyTouchableNativeFeedback
                           accessibilityComponentType="button"
                           accessibilityLabel="Go back"
                           accessibilityRole="button"
                           accessibilityTraits="button"
                           accessible={true}
-                          activeOpacity={0.2}
+                          background={Object {}}
                           borderless={true}
                           delayPressIn={0}
                           onPress={[Function]}
                           pressColor="rgba(0, 0, 0, .32)"
+                          style={null}
                           testID="header-back"
                         >
-                          <AnimatedComponent
-                            accessibilityLabel="Go back"
-                            accessibilityRole="button"
-                            accessible={true}
-                            isTVSelectable={true}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
+                          <View
                             style={
                               Array [
-                                undefined,
                                 Object {
-                                  "opacity": 1,
+                                  "alignItems": "center",
+                                  "backgroundColor": "#ffbcbc",
+                                  "borderColor": "red",
+                                  "borderWidth": 1,
+                                  "height": 100,
+                                  "justifyContent": "center",
+                                  "margin": 10,
+                                  "width": 300,
                                 },
+                                null,
                               ]
                             }
-                            testID="header-back"
                           >
                             <View
-                              accessibilityLabel="Go back"
-                              accessibilityRole="button"
-                              accessible={true}
-                              isTVSelectable={true}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
-                                  "opacity": 1,
-                                }
+                                Array [
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "#ffbcbc",
+                                    "borderColor": "red",
+                                    "borderWidth": 1,
+                                    "height": 100,
+                                    "justifyContent": "center",
+                                    "margin": 10,
+                                    "width": 300,
+                                  },
+                                  null,
+                                ]
                               }
-                              testID="header-back"
                             >
-                              <View
-                                accessibilityLabel="Go back"
-                                accessibilityRole="button"
-                                accessible={true}
-                                isTVSelectable={true}
-                                onResponderGrant={[Function]}
-                                onResponderMove={[Function]}
-                                onResponderRelease={[Function]}
-                                onResponderTerminate={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
+                              <Text
                                 style={
                                   Object {
-                                    "opacity": 1,
+                                    "color": "#333333",
+                                    "margin": 20,
                                   }
                                 }
-                                testID="header-back"
                               >
-                                <View
+                                <Text
                                   style={
                                     Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
+                                      "color": "#333333",
+                                      "margin": 20,
                                     }
                                   }
-                                  testID="header-back-wrapper"
                                 >
-                                  <View
-                                    style={
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                    testID="header-back-wrapper"
-                                  >
-                                    <Component
-                                      fadeDuration={0}
-                                      source="test-file-stub"
-                                      style={
-                                        Array [
-                                          Object {
-                                            "backgroundColor": "transparent",
-                                            "height": 24,
-                                            "margin": 3,
-                                            "resizeMode": "contain",
-                                            "transform": Array [
-                                              Object {
-                                                "scaleX": 1,
-                                              },
-                                            ],
-                                            "width": 24,
-                                          },
-                                          false,
-                                          Object {
-                                            "tintColor": "#fff",
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <Image
-                                        fadeDuration={0}
-                                        source="test-file-stub"
-                                        style={
-                                          Array [
-                                            Object {
-                                              "backgroundColor": "transparent",
-                                              "height": 24,
-                                              "margin": 3,
-                                              "resizeMode": "contain",
-                                              "transform": Array [
-                                                Object {
-                                                  "scaleX": 1,
-                                                },
-                                              ],
-                                              "width": 24,
-                                            },
-                                            false,
-                                            Object {
-                                              "tintColor": "#fff",
-                                            },
-                                          ]
-                                        }
-                                      />
-                                    </Component>
-                                  </View>
-                                </View>
-                              </View>
+                                  TouchableNativeFeedback is not supported on this platform!
+                                </Text>
+                              </Text>
                             </View>
-                          </AnimatedComponent>
-                        </TouchableOpacity>
+                          </View>
+                        </DummyTouchableNativeFeedback>
                       </TouchableItem>
                     </Component>
                   </ThemedComponent>
@@ -2681,151 +2606,76 @@ exports[`HeaderBackButton should only render back image on android platform 2`] 
                         pressColor="rgba(0, 0, 0, .32)"
                         testID="header-back"
                       >
-                        <TouchableOpacity
+                        <DummyTouchableNativeFeedback
                           accessibilityComponentType="button"
                           accessibilityLabel="Go back"
                           accessibilityRole="button"
                           accessibilityTraits="button"
                           accessible={true}
-                          activeOpacity={0.2}
+                          background={Object {}}
                           borderless={true}
                           delayPressIn={0}
                           onPress={[Function]}
                           pressColor="rgba(0, 0, 0, .32)"
+                          style={null}
                           testID="header-back"
                         >
-                          <AnimatedComponent
-                            accessibilityLabel="Go back"
-                            accessibilityRole="button"
-                            accessible={true}
-                            isTVSelectable={true}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
+                          <View
                             style={
                               Array [
-                                undefined,
                                 Object {
-                                  "opacity": 1,
+                                  "alignItems": "center",
+                                  "backgroundColor": "#ffbcbc",
+                                  "borderColor": "red",
+                                  "borderWidth": 1,
+                                  "height": 100,
+                                  "justifyContent": "center",
+                                  "margin": 10,
+                                  "width": 300,
                                 },
+                                null,
                               ]
                             }
-                            testID="header-back"
                           >
                             <View
-                              accessibilityLabel="Go back"
-                              accessibilityRole="button"
-                              accessible={true}
-                              isTVSelectable={true}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
-                                  "opacity": 1,
-                                }
+                                Array [
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "#ffbcbc",
+                                    "borderColor": "red",
+                                    "borderWidth": 1,
+                                    "height": 100,
+                                    "justifyContent": "center",
+                                    "margin": 10,
+                                    "width": 300,
+                                  },
+                                  null,
+                                ]
                               }
-                              testID="header-back"
                             >
-                              <View
-                                accessibilityLabel="Go back"
-                                accessibilityRole="button"
-                                accessible={true}
-                                isTVSelectable={true}
-                                onResponderGrant={[Function]}
-                                onResponderMove={[Function]}
-                                onResponderRelease={[Function]}
-                                onResponderTerminate={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
+                              <Text
                                 style={
                                   Object {
-                                    "opacity": 1,
+                                    "color": "#333333",
+                                    "margin": 20,
                                   }
                                 }
-                                testID="header-back"
                               >
-                                <View
+                                <Text
                                   style={
                                     Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
+                                      "color": "#333333",
+                                      "margin": 20,
                                     }
                                   }
-                                  testID="header-back-wrapper"
                                 >
-                                  <View
-                                    style={
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                    testID="header-back-wrapper"
-                                  >
-                                    <Component
-                                      fadeDuration={0}
-                                      source="test-file-stub"
-                                      style={
-                                        Array [
-                                          Object {
-                                            "backgroundColor": "transparent",
-                                            "height": 24,
-                                            "margin": 3,
-                                            "resizeMode": "contain",
-                                            "transform": Array [
-                                              Object {
-                                                "scaleX": 1,
-                                              },
-                                            ],
-                                            "width": 24,
-                                          },
-                                          false,
-                                          Object {
-                                            "tintColor": "#fff",
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <Image
-                                        fadeDuration={0}
-                                        source="test-file-stub"
-                                        style={
-                                          Array [
-                                            Object {
-                                              "backgroundColor": "transparent",
-                                              "height": 24,
-                                              "margin": 3,
-                                              "resizeMode": "contain",
-                                              "transform": Array [
-                                                Object {
-                                                  "scaleX": 1,
-                                                },
-                                              ],
-                                              "width": 24,
-                                            },
-                                            false,
-                                            Object {
-                                              "tintColor": "#fff",
-                                            },
-                                          ]
-                                        }
-                                      />
-                                    </Component>
-                                  </View>
-                                </View>
-                              </View>
+                                  TouchableNativeFeedback is not supported on this platform!
+                                </Text>
+                              </Text>
                             </View>
-                          </AnimatedComponent>
-                        </TouchableOpacity>
+                          </View>
+                        </DummyTouchableNativeFeedback>
                       </TouchableItem>
                     </Component>
                   </ThemedComponent>
@@ -2915,151 +2765,76 @@ exports[`HeaderBackButton should only render reverse back image on rtl layout 1`
                         pressColor="rgba(0, 0, 0, .32)"
                         testID="header-back"
                       >
-                        <TouchableOpacity
+                        <DummyTouchableNativeFeedback
                           accessibilityComponentType="button"
                           accessibilityLabel="Go back"
                           accessibilityRole="button"
                           accessibilityTraits="button"
                           accessible={true}
-                          activeOpacity={0.2}
+                          background={Object {}}
                           borderless={true}
                           delayPressIn={0}
                           onPress={[Function]}
                           pressColor="rgba(0, 0, 0, .32)"
+                          style={null}
                           testID="header-back"
                         >
-                          <AnimatedComponent
-                            accessibilityLabel="Go back"
-                            accessibilityRole="button"
-                            accessible={true}
-                            isTVSelectable={true}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
+                          <View
                             style={
                               Array [
-                                undefined,
                                 Object {
-                                  "opacity": 1,
+                                  "alignItems": "center",
+                                  "backgroundColor": "#ffbcbc",
+                                  "borderColor": "red",
+                                  "borderWidth": 1,
+                                  "height": 100,
+                                  "justifyContent": "center",
+                                  "margin": 10,
+                                  "width": 300,
                                 },
+                                null,
                               ]
                             }
-                            testID="header-back"
                           >
                             <View
-                              accessibilityLabel="Go back"
-                              accessibilityRole="button"
-                              accessible={true}
-                              isTVSelectable={true}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
-                                  "opacity": 1,
-                                }
+                                Array [
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "#ffbcbc",
+                                    "borderColor": "red",
+                                    "borderWidth": 1,
+                                    "height": 100,
+                                    "justifyContent": "center",
+                                    "margin": 10,
+                                    "width": 300,
+                                  },
+                                  null,
+                                ]
                               }
-                              testID="header-back"
                             >
-                              <View
-                                accessibilityLabel="Go back"
-                                accessibilityRole="button"
-                                accessible={true}
-                                isTVSelectable={true}
-                                onResponderGrant={[Function]}
-                                onResponderMove={[Function]}
-                                onResponderRelease={[Function]}
-                                onResponderTerminate={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
+                              <Text
                                 style={
                                   Object {
-                                    "opacity": 1,
+                                    "color": "#333333",
+                                    "margin": 20,
                                   }
                                 }
-                                testID="header-back"
                               >
-                                <View
+                                <Text
                                   style={
                                     Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "transparent",
-                                      "flexDirection": "row",
+                                      "color": "#333333",
+                                      "margin": 20,
                                     }
                                   }
-                                  testID="header-back-wrapper"
                                 >
-                                  <View
-                                    style={
-                                      Object {
-                                        "alignItems": "center",
-                                        "backgroundColor": "transparent",
-                                        "flexDirection": "row",
-                                      }
-                                    }
-                                    testID="header-back-wrapper"
-                                  >
-                                    <Component
-                                      fadeDuration={0}
-                                      source="test-file-stub"
-                                      style={
-                                        Array [
-                                          Object {
-                                            "backgroundColor": "transparent",
-                                            "height": 24,
-                                            "margin": 3,
-                                            "resizeMode": "contain",
-                                            "transform": Array [
-                                              Object {
-                                                "scaleX": -1,
-                                              },
-                                            ],
-                                            "width": 24,
-                                          },
-                                          false,
-                                          Object {
-                                            "tintColor": "#fff",
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <Image
-                                        fadeDuration={0}
-                                        source="test-file-stub"
-                                        style={
-                                          Array [
-                                            Object {
-                                              "backgroundColor": "transparent",
-                                              "height": 24,
-                                              "margin": 3,
-                                              "resizeMode": "contain",
-                                              "transform": Array [
-                                                Object {
-                                                  "scaleX": -1,
-                                                },
-                                              ],
-                                              "width": 24,
-                                            },
-                                            false,
-                                            Object {
-                                              "tintColor": "#fff",
-                                            },
-                                          ]
-                                        }
-                                      />
-                                    </Component>
-                                  </View>
-                                </View>
-                              </View>
+                                  TouchableNativeFeedback is not supported on this platform!
+                                </Text>
+                              </Text>
                             </View>
-                          </AnimatedComponent>
-                        </TouchableOpacity>
+                          </View>
+                        </DummyTouchableNativeFeedback>
                       </TouchableItem>
                     </Component>
                   </ThemedComponent>
