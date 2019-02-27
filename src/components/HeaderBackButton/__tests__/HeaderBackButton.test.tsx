@@ -1,11 +1,11 @@
+import { BlueBaseApp } from '../../BlueBaseApp';
+import { Button } from 'react-native';
 import React from 'react';
 // import TestRenderer from 'react-test-renderer';
 import { HeaderBackButton } from '../../..';
-import { mount } from 'enzyme';
-import { BlueBaseApp } from '../../BlueBaseApp';
-import { waitForElement } from 'enzyme-async-helpers';
 import deepmerge from 'deepmerge';
-import { Button } from 'react-native';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
 describe('HeaderBackButton', () => {
 

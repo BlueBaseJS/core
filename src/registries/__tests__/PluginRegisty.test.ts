@@ -1,5 +1,5 @@
 // tslint:disable:max-classes-per-file
-import { PluginRegistry, createPlugin } from '../PluginRegistry';
+import { PluginInput, PluginRegistry, createPlugin } from '../PluginRegistry';
 import { BlueBase } from '../../BlueBase';
 import { Noop } from '../../getComponent';
 import { createBlueBaseModule } from '../../utils';
@@ -395,6 +395,186 @@ describe('PluginRegistry', () => {
 			expect(input.hooks).toBe(undefined);
 			expect((input as any).value.components.Foo).toBeTruthy();
 			expect((input as any).value.hooks.Baz).toBeTruthy();
+		});
+	});
+
+	describe('.getRoutes method', () => {
+		it('should create a routes map with plugin key as prefixs', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			const p1: PluginInput = {
+				key: 'p1',
+				name: 'P1',
+				value: {
+					routes: {
+						name: 'P1_Route',
+						path: '/',
+					},
+				},
+			};
+
+			const p2: Promise<PluginInput> = Promise.resolve({
+				key: 'p2',
+				name: 'P2',
+				value: {
+					routes: [
+						{
+							name: 'P2_Route_A',
+							path: '',
+						},
+						{
+							name: 'P2_Route_B',
+							path: 'b',
+						},
+					],
+				},
+			});
+
+			// should be skipped as not enabled
+			const p3: PluginInput = {
+				key: 'p3',
+				name: 'P3',
+				value: { routes: { name: 'P3_Route', path: 'p3' } },
+			};
+
+			// should be skipped as there are no routes
+			const p4: PluginInput = {
+				key: 'p4',
+				name: 'P4',
+				value: {},
+			};
+
+			// should be skipped as it will not be resolved
+			const p5: Promise<PluginInput> = Promise.resolve({
+				key: 'p5',
+				name: 'P5',
+				value: { routes: { name: 'P5_Route', path: 'p5' } },
+			});
+
+			await Plugins.register(p1);
+			await Plugins.register(p2 as any);
+			await Plugins.register(p3);
+			await Plugins.register(p4);
+			await Plugins.register(p5 as any);
+
+			// Resolve so its loaded
+			await Plugins.resolve('p2');
+
+			// Disbale so it gets skipped
+			Plugins.disable('p3');
+
+			const routes = Plugins.getRouteMap();
+
+			expect(routes).toMatchObject({
+				p1: [
+					{
+						name: 'P1_Route',
+						path: 'p1',
+					},
+				],
+				p2: [
+					{
+						name: 'P2_Route_A',
+						path: 'p2',
+					},
+					{
+						name: 'P2_Route_B',
+						path: 'p2/b',
+					},
+				],
+			});
+		});
+
+		it('should create a routes map without plugin key as prefixs', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			const p1: PluginInput = {
+				key: 'p1',
+				name: 'P1',
+				value: {
+					routes: {
+						name: 'P1_Route',
+						path: '/',
+					},
+				},
+			};
+
+			const p2: Promise<PluginInput> = Promise.resolve({
+				key: 'p2',
+				name: 'P2',
+				value: {
+					routes: [
+						{
+							name: 'P2_Route_A',
+							path: '',
+						},
+						{
+							name: 'P2_Route_B',
+							path: 'b',
+						},
+					],
+				},
+			});
+
+			await Plugins.register(p1);
+			await Plugins.register(p2 as any);
+
+			// Resolve so its loaded
+			await Plugins.resolve('p2');
+
+			const routes = Plugins.getRouteMap(false);
+
+			expect(routes).toMatchObject({
+				p1: [
+					{
+						name: 'P1_Route',
+						path: '',
+					},
+				],
+				p2: [
+					{
+						name: 'P2_Route_A',
+						path: '',
+					},
+					{
+						name: 'P2_Route_B',
+						path: 'b',
+					},
+				],
+			});
+		});
+
+		it('should create a routes map with pluginRoutePathPrefix and plugin key as prefixs', async () => {
+			const BB = new BlueBase();
+
+			BB.Configs.setValue('pluginRoutePathPrefix', 'app');
+			const Plugins = new PluginRegistry(BB);
+
+			const p1: PluginInput = {
+				key: 'p1',
+				name: 'P1',
+				value: {
+					routes: {
+						name: 'P1_Route',
+						path: 'b',
+					},
+				},
+			};
+
+			await Plugins.register(p1);
+
+			const routes = Plugins.getRouteMap();
+
+			expect(routes).toMatchObject({
+				p1: [
+					{
+						name: 'P1_Route',
+						path: 'app/p1/b',
+					},
+				],
+			});
 		});
 	});
 

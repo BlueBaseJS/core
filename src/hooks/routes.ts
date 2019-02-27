@@ -1,9 +1,7 @@
+import { NavigatorProps, RouteConfig } from '../components';
 import { BlueBase } from '../BlueBase';
 import { HookNestedCollection } from '../registries';
-import { NavigatorProps } from '../components';
 import deepmerge from 'deepmerge';
-import isnil from 'lodash.isnil';
-import { resolveThunk } from '../utils';
 
 // tslint:disable:object-literal-sort-keys
 export const routes: HookNestedCollection = {
@@ -41,54 +39,22 @@ export const routes: HookNestedCollection = {
 
 			// tslint:disable-line:object-literal-sort-keys
 			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
+				let mainRoutes: RouteConfig[] = [
+					{
+						name: 'Home',
+						path: '',
+						exact: true,
+						screen: 'HomeScreen',
+					},
+				];
+
+				const routeMap = BB.Plugins.getRouteMap();
+				Object.values(routeMap).forEach(routesArr => (mainRoutes = mainRoutes.concat(routesArr)));
+
 				const navigator: NavigatorProps = {
 					type: 'stack',
 					initialRouteName: 'Home',
-					routes: [
-						{
-							name: 'Home',
-							path: '',
-							exact: true,
-							screen: 'HomeScreen',
-						},
-						{
-							name: 'Plugins',
-							path: 'p',
-							exact: false,
-							navigator: await BB.Hooks.run('bluebase.navigator.plugins', {} as any),
-						},
-					],
-				};
-
-				return deepmerge(inputNavigator, navigator);
-			},
-		},
-	],
-
-	/**
-	 * Returns a navigator with plugin routes
-	 */
-	'bluebase.navigator.plugins': [
-		{
-			key: 'bluebase-navigator-plugins-internal-default',
-			priority: 5,
-
-			// tslint:disable-line:object-literal-sort-keys
-			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
-				const pluginRoutes = [];
-				for (const [key, item] of BB.Plugins.entries()) {
-					const plugin = await item.value;
-					if (BB.Plugins.isEnabled(key) && !isnil(plugin.route)) {
-						pluginRoutes.push(resolveThunk(plugin.route));
-					}
-				}
-
-				const navigator: NavigatorProps = {
-					type: 'stack',
-					routes: pluginRoutes,
-					navigationOptions: {
-						// header: null,
-					},
+					routes: mainRoutes,
 				};
 
 				return deepmerge(inputNavigator, navigator);

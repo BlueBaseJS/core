@@ -17,6 +17,9 @@ export interface Configs {
 	/** Development mode */
 	development: boolean;
 
+	/** Prefix that is added to top level plugin route paths */
+	pluginRoutePathPrefix: string;
+
 	/**
 	 * Name of selected theme.
 	 * FIXME: This key contains the slug, but is called name. This is confusing.
@@ -43,6 +46,7 @@ export const BlueBaseDefaultConfigs: Configs = {
 	development: !isProduction(),
 	direction: 'ltr',
 	locale: 'en',
+	pluginRoutePathPrefix: 'p',
 	'theme.mode': 'light',
 	'theme.name': 'bluebase-light',
 	'theme.overrides': {},

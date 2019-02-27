@@ -4,7 +4,14 @@ import {
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
 import { DynamicIconProps, RouteConfig } from '../components/';
-import { MaybeThunk, isBlueBaseModule } from '../utils';
+import {
+	MaybeArray,
+	MaybeThunk,
+	getDefiniteArray,
+	isBlueBaseModule,
+	joinPaths,
+	resolveThunk,
+} from '../utils';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
 import { HookNestedCollection } from './HookRegistry';
@@ -24,7 +31,7 @@ export interface PluginValue {
 	components: ComponentCollection;
 	hooks: HookNestedCollection; // HookCollectionInput;
 	themes: ThemeCollection;
-	route?: MaybeThunk<RouteConfig>;
+	routes?: MaybeThunk<MaybeArray<RouteConfig>>;
 }
 
 export type PluginValueInput = Partial<PluginValue>;
@@ -90,7 +97,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * @param plugin
  */
 export function createPlugin(plugin: Partial<Plugin>): PluginInput {
-	const { components, hooks, themes, route, value, ...rest } = plugin;
+	const { components, hooks, themes, routes, value, ...rest } = plugin;
 
 	return {
 		categories: [],
@@ -103,7 +110,7 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 		value: {
 			components: components || {},
 			hooks: hooks || {},
-			route,
+			routes,
 			themes: themes || {},
 
 			...value,
@@ -200,6 +207,50 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			config.startsWith(`plugin.${key}.`) ||
 			Object.keys(plugin.defaultConfigs).findIndex(k => k === config) >= 0
 		);
+	}
+
+	/**
+	 * Creates a map of routes for each plugin
+	 *
+	 * Ignores plugins if:
+	 *
+	 * - Plugin is not enabled
+	 * - Plugin is not resolved
+	 */
+	public getRouteMap(prefixPluginKey: boolean = true): { [key: string]: RouteConfig[] } {
+		const pluginRoutes: { [key: string]: RouteConfig[] } = {};
+
+		const pluginRoutePathPrefix = this.BB.Configs.getValue('pluginRoutePathPrefix') || '';
+
+		for (const [key, item] of this.entries()) {
+			// Skip if pluign is not loaded, or plugin is not enabled
+			if ((item.value.isAsync && !item.value.loaded) || !item.enabled) {
+				continue;
+			}
+
+			// Resolve plugin
+			const plugin = inputToPlugin(item.value.module as any);
+
+			// Skip if plugin doesn't have any routes
+			if (!plugin.routes) {
+				continue;
+			}
+
+			// Resolve routes, if it's a thunk
+			// Put the resovled value in an array, if it's a single item
+			let routes = getDefiniteArray(resolveThunk(plugin.routes, this.BB));
+
+			// Add plugin slug as prefix to top level routes
+			routes = routes.map(route => ({
+				...route,
+				path: joinPaths(pluginRoutePathPrefix, prefixPluginKey ? key : '', route.path),
+			}));
+
+			// Put the result in the collective result
+			pluginRoutes[key] = routes;
+		}
+
+		return pluginRoutes;
 	}
 
 	/**
