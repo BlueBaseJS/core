@@ -60,7 +60,7 @@ export const applyStyles = (
 			// Extract component style rules from theme
 			let themedStyles;
 			if (name) {
-				const themeComponentStyles = theme.components || {};
+				const themeComponentStyles = theme.components;
 
 				// Extract style rules for this component
 				themedStyles = themeComponentStyles[name];
