@@ -4,19 +4,39 @@ export interface NavigationParams {
 	[key: string]: any;
 }
 
+export interface NavitionActionRouteNamePayload {
+	routeName: string,
+	params?: NavigationParams;
+}
+
+export interface NavitionActionPathPayload {
+	path: string,
+	params?: NavigationParams;
+}
+
+export type NavitionActionPayload = string | NavitionActionRouteNamePayload | NavitionActionPathPayload;
+
 export interface NavigationActionsObject {
 
-	navigate: (path: string, params?: NavigationParams) => void,
+	navigate: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
 	goBack: () => void,
 
-	replace: (path: string, params?: NavigationParams) => void,
-	push: (path: string, params?: NavigationParams) => void,
+	replace: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
+	push: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
 	pop: (steps?: number) => void,
 
 	setParams: (params: NavigationParams) => void,
 	getParam: (key: string) => any,
 
 	source: any,
+
+	state: {
+		key: string,
+		routeName: string,
+		url: string,
+		search?: string,
+		params: NavigationParams,
+	}
 }
 
 const stubAction = () => { return; };
@@ -29,7 +49,13 @@ const stubActions: NavigationActionsObject = {
 	push: stubAction,
 	replace: stubAction,
 	setParams: stubAction,
-	source: null
+	source: null,
+	state: {
+		key: '',
+		params: {},
+		routeName: '',
+		url: '',
+	}
 };
 
 export interface NavigationActionsProps {

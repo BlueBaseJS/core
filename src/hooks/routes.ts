@@ -45,6 +45,10 @@ export const routes: HookNestedCollection = {
 						path: '',
 						exact: true,
 						screen: 'HomeScreen',
+						navigationOptions: {
+							headerLeft: null,
+							title: BB.Configs.getValue('title'),
+						},
 					},
 				];
 
