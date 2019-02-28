@@ -9,6 +9,7 @@ import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../components/';
 import flowRight from 'lodash.flowright';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
 /**
  * Definition of the HOC
@@ -87,7 +88,9 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		// Wrap
-		return flowRight([...hocs])(rawComponent);
+		const wrappedComponent = flowRight([...hocs])(rawComponent);
+
+		return hoistNonReactStatics(wrappedComponent, rawComponent);
 	}
 
 	/**

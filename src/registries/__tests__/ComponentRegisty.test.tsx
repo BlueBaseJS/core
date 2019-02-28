@@ -8,6 +8,7 @@ import { getComponent } from '../../getComponent';
 import { mount } from 'enzyme';
 
 const Button: React.StatelessComponent<{}> = () => <View>A Button</View>;
+(Button as any).foo = 'bar';
 
 class Welcome extends React.Component<{ name: string }> {
 	render() {
@@ -131,6 +132,45 @@ describe('ComponentRegistry', () => {
 			const tree = rendered.toJSON() as any;
 			expect(tree.props.style.backgroundColor).toBe('orange');
 			expect(tree).toMatchSnapshot();
+		});
+
+		it('should not apply styles if applyStyles flag is set false', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			await Components.register({
+				applyStyles: false,
+				key: 'Button',
+				value: Button,
+			});
+
+			const ResolvedComponent = Components.resolve('Button');
+
+			const rendered = TestRenderer.create(<ResolvedComponent />);
+			const tree = rendered.toJSON() as any;
+			expect(tree.props.styles).toBeUndefined();
+			expect(tree).toMatchSnapshot();
+		});
+
+		it('should hoist static properties of the original component', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			await Components.register('Button', Button);
+
+			const hoc = (args: { backgroundColor: string }) =>
+			(Comp: React.ComponentType) =>
+			() => (
+				<View style={{ backgroundColor: args.backgroundColor }}>
+					<Comp />
+				</View>
+			);
+
+			Components.addHocs('Button', [hoc, { backgroundColor: 'orange' }]);
+
+			const ResolvedComponent = Components.resolve('Button');
+
+			expect((ResolvedComponent as any).foo).toBe('bar');
 		});
 
 	});
