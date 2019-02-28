@@ -1,0 +1,410 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation should render a screen component 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <Navigation
+        navigator={
+          Object {
+            "routes": Array [
+              Object {
+                "name": "Home",
+                "path": "",
+                "screen": [Function],
+              },
+            ],
+            "type": "stack",
+          }
+        }
+      >
+        <SomeComponent
+          key="Home"
+        >
+          <Text>
+            <Text>
+              SomeComponent
+            </Text>
+          </Text>
+        </SomeComponent>
+      </Navigation>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
+
+exports[`Navigation should render a screen component from component registry 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <Navigation
+        navigator={
+          Object {
+            "routes": Array [
+              Object {
+                "name": "Home",
+                "path": "",
+                "screen": "EmptyState",
+              },
+            ],
+            "type": "stack",
+          }
+        }
+      >
+        <ThemedComponent
+          key="Home"
+        >
+          <EmptyState>
+            <ComponentState
+              description="Create new items to fill this area."
+              title="Empty Area"
+            >
+              <ThemedComponent
+                description="Create new items to fill this area."
+                title="Empty Area"
+              >
+                <ThemedComponent
+                  description="Create new items to fill this area."
+                  title="Empty Area"
+                >
+                  <ComponentState
+                    description="Create new items to fill this area."
+                    styles={
+                      Object {
+                        "actionRoot": Object {
+                          "marginTop": 8,
+                        },
+                        "description": Object {
+                          "marginBottom": 8,
+                          "textAlign": "center",
+                        },
+                        "image": Object {
+                          "height": 250,
+                          "width": 250,
+                        },
+                        "imageRoot": Object {
+                          "marginBottom": 16,
+                        },
+                        "root": Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        },
+                        "title": Object {
+                          "marginBottom": 8,
+                          "textAlign": "center",
+                        },
+                      }
+                    }
+                    title="Empty Area"
+                  >
+                    <View
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <ThemedComponent
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "flex": 1,
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <ThemedComponent
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "justifyContent": "center",
+                            }
+                          }
+                        >
+                          <ThemedComponent
+                            style={
+                              Object {
+                                "alignItems": "center",
+                                "flex": 1,
+                                "justifyContent": "center",
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "flex": 1,
+                                  "justifyContent": "center",
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Object {
+                                    "alignItems": "center",
+                                    "flex": 1,
+                                    "justifyContent": "center",
+                                  }
+                                }
+                              >
+                                <H6
+                                  style={
+                                    Object {
+                                      "marginBottom": 8,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  <ThemedComponent
+                                    style={
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      }
+                                    }
+                                  >
+                                    <Component
+                                      style={
+                                        Object {
+                                          "marginBottom": 8,
+                                          "textAlign": "center",
+                                        }
+                                      }
+                                      styles={
+                                        Object {
+                                          "root": Object {
+                                            "color": "rgba(0, 0, 0, 0.87)",
+                                            "fontFamily": undefined,
+                                            "fontSize": 20,
+                                            "fontWeight": "500",
+                                          },
+                                        }
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "rgba(0, 0, 0, 0.87)",
+                                              "fontFamily": undefined,
+                                              "fontSize": 20,
+                                              "fontWeight": "500",
+                                            },
+                                            Object {
+                                              "marginBottom": 8,
+                                              "textAlign": "center",
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "rgba(0, 0, 0, 0.87)",
+                                                "fontFamily": undefined,
+                                                "fontSize": 20,
+                                                "fontWeight": "500",
+                                              },
+                                              Object {
+                                                "marginBottom": 8,
+                                                "textAlign": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Empty Area
+                                        </Text>
+                                      </Text>
+                                    </Component>
+                                  </ThemedComponent>
+                                </H6>
+                                <Body2
+                                  style={
+                                    Object {
+                                      "marginBottom": 8,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  <ThemedComponent
+                                    style={
+                                      Object {
+                                        "marginBottom": 8,
+                                        "textAlign": "center",
+                                      }
+                                    }
+                                  >
+                                    <Component
+                                      style={
+                                        Object {
+                                          "marginBottom": 8,
+                                          "textAlign": "center",
+                                        }
+                                      }
+                                      styles={
+                                        Object {
+                                          "root": Object {
+                                            "color": "rgba(0, 0, 0, 0.87)",
+                                            "fontFamily": undefined,
+                                            "fontSize": 14,
+                                            "fontWeight": "400",
+                                          },
+                                        }
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "rgba(0, 0, 0, 0.87)",
+                                              "fontFamily": undefined,
+                                              "fontSize": 14,
+                                              "fontWeight": "400",
+                                            },
+                                            Object {
+                                              "marginBottom": 8,
+                                              "textAlign": "center",
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "rgba(0, 0, 0, 0.87)",
+                                                "fontFamily": undefined,
+                                                "fontSize": 14,
+                                                "fontWeight": "400",
+                                              },
+                                              Object {
+                                                "marginBottom": 8,
+                                                "textAlign": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Create new items to fill this area.
+                                        </Text>
+                                      </Text>
+                                    </Component>
+                                  </ThemedComponent>
+                                </Body2>
+                              </View>
+                            </View>
+                          </ThemedComponent>
+                        </ThemedComponent>
+                      </ThemedComponent>
+                    </View>
+                  </ComponentState>
+                </ThemedComponent>
+              </ThemedComponent>
+            </ComponentState>
+          </EmptyState>
+        </ThemedComponent>
+      </Navigation>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
+
+exports[`Navigation should render a screen component in a nested navigator 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <Navigation
+        navigator={
+          Object {
+            "routes": Array [
+              Object {
+                "name": "Home",
+                "navigator": Object {
+                  "routes": Array [
+                    Object {
+                      "name": "Nested",
+                      "path": "",
+                      "screen": [Function],
+                    },
+                  ],
+                  "type": "stack",
+                },
+                "path": "",
+              },
+            ],
+            "type": "stack",
+          }
+        }
+      >
+        <Navigation
+          navigator={
+            Object {
+              "routes": Array [
+                Object {
+                  "name": "Nested",
+                  "path": "",
+                  "screen": [Function],
+                },
+              ],
+              "type": "stack",
+            }
+          }
+        >
+          <SomeComponent
+            key="Nested"
+          >
+            <Text>
+              <Text>
+                SomeComponent
+              </Text>
+            </Text>
+          </SomeComponent>
+        </Navigation>
+      </Navigation>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
+
+exports[`Navigation should render null if theres no route 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <Navigation
+        navigator={
+          Object {
+            "type": "stack",
+          }
+        }
+      />
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;
+
+exports[`Navigation should render null if theres no screen or navigator prop in route 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <Navigation
+        navigator={
+          Object {
+            "routes": Array [
+              Object {
+                "name": "Home",
+                "path": "",
+              },
+            ],
+            "type": "stack",
+          }
+        }
+      />
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;

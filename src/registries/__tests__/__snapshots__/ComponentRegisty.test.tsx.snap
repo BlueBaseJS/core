@@ -7,7 +7,11 @@ exports[`ComponentRegistry .resolve method should add an HOC that makes backgrou
       "backgroundColor": "green",
     }
   }
-/>
+>
+  <View>
+    A Button
+  </View>
+</View>
 `;
 
 exports[`ComponentRegistry .resolve method should add an HOC with its arguments that makes background orange 1`] = `
@@ -17,7 +21,17 @@ exports[`ComponentRegistry .resolve method should add an HOC with its arguments 
       "backgroundColor": "orange",
     }
   }
-/>
+>
+  <View>
+    A Button
+  </View>
+</View>
+`;
+
+exports[`ComponentRegistry .resolve method should not apply styles if applyStyles flag is set false 1`] = `
+<View>
+  A Button
+</View>
 `;
 
 exports[`ComponentRegistry .resolve method should resolve a Promised component 1`] = `
@@ -76,24 +90,22 @@ exports[`ComponentRegistry .resolve method should resolve a Promised component 2
 >
   <BlueBaseRoot>
     <ThemeProvider>
-      <SystemApp>
+      <Foo>
         <ThemedComponent>
-          <SystemApp>
-            <Foo>
-              <ThemedComponent>
-                <Text>
-                  <Text>
-                    Some text
-                  </Text>
-                </Text>
-              </ThemedComponent>
-            </Foo>
-          </SystemApp>
+          <Text>
+            <Text>
+              Some text
+            </Text>
+          </Text>
         </ThemedComponent>
-      </SystemApp>
+      </Foo>
     </ThemeProvider>
   </BlueBaseRoot>
 </BlueBaseApp>
 `;
 
-exports[`ComponentRegistry .resolve method should resolve a component 1`] = `null`;
+exports[`ComponentRegistry .resolve method should resolve a component 1`] = `
+<Text>
+  Some text
+</Text>
+`;

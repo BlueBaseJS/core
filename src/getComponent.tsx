@@ -6,9 +6,14 @@ import {
 	DynamicIconProps,
 	ErrorObserverProps,
 	ErrorStateProps,
+	HeaderBackButtonProps,
+	HeaderProps,
+	HeaderTitleProps,
 	HoverObserverProps,
 	JsonSchemaProps,
 	LoadingStateProps,
+	NavigationActionsProps,
+	NavigationProps,
 	PluginIconProps,
 	StatefulComponentProps,
 	WaitObserverProps,
@@ -26,15 +31,29 @@ export {
 	DynamicIconProps,
 	ErrorObserverProps,
 	ErrorStateProps,
+	HeaderProps,
+	HeaderBackButtonProps,
+	HeaderTitleProps,
 	HoverObserverProps,
 	JsonSchemaProps,
 	LoadingStateProps,
+	NavigationOptions,
+	NavigationProps,
+	NavigationActionsObject,
+	NavigationActionsProps,
 	PluginIconProps,
+	RouteConfig,
 	StatefulComponentProps,
 	WaitObserverProps,
 } from './components';
 
-
+/**
+ * Resolves a component from BlueBase context, and returns it.
+ * It is possible to pass multiple keys as backup. So if one component
+ * is not found, the function will fallback and try to find next component.
+ *
+ * @param keys
+ */
 export function getComponent<T = any>(...keys: string[]) {
 
 	if (keys.length === 0) {
@@ -62,11 +81,16 @@ export const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
 export const EmptyState = getComponent<{}>('EmptyState');
 export const ErrorObserver = getComponent<ErrorObserverProps>('ErrorObserver');
 export const ErrorState = getComponent<ErrorStateProps>('ErrorState');
+export const Header = getComponent<HeaderProps>('Header');
+export const HeaderTitle = getComponent<HeaderTitleProps>('HeaderTitle');
+export const HeaderBackButton = getComponent<HeaderBackButtonProps>('HeaderBackButton');
 export const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
 export const JsonSchema = getComponent<JsonSchemaProps>('JsonSchema');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
 export const Noop = getComponent('Noop');
 export const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
+export const Navigation = getComponent<NavigationProps>('Navigation');
+export const NavigationActions = getComponent<NavigationActionsProps>('NavigationActions');
 export const StatefulComponent = getComponent<StatefulComponentProps>('StatefulComponent');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 

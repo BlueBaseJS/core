@@ -1,5 +1,5 @@
 import { Body2, Button, H6, Image, View } from '../../getComponent';
-import { ImageStyle, TextStyle, ViewStyle,  } from 'react-native';
+import { ImageProps, ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { ButtonProps } from '../../native';
 import React from 'react';
 import { Theme } from '../../registries';
@@ -49,7 +49,7 @@ export interface ComponentStateProps {
 	/**
 	 * Image source
 	 */
-	imageSource?: string;
+	imageSource?: ImageProps['source'];
 
 	/**
 	 * Title text
@@ -134,7 +134,7 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 				{image
 					? <View style={styles.imageRoot}>{image}</View>
 					: (imageSource
-						? <View style={styles.imageRoot}><Image style={styles.image} source={{ uri: imageSource }} /></View>
+						? <View style={styles.imageRoot}><Image style={styles.image} source={imageSource} /></View>
 						: null)
 				}
 				{title ? <H6 style={styles.title} children={title} /> : null}

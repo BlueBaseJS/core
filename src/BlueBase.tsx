@@ -14,7 +14,7 @@ import {
 import { BlueBaseProvider } from './Context';
 import React from 'react';
 import { ThemeProvider } from './themes';
-import { getComponent } from './getComponent';
+import { renderChildrenWithProps } from './utils';
 import systemHooks from './hooks';
 
 export interface BootOptions {
@@ -35,6 +35,8 @@ export interface BootOptions {
 	themes: ThemeCollection,
 
 	// routes: Plugin[]
+
+	children?: React.ReactNode,
 }
 
 export class BlueBase {
@@ -63,25 +65,28 @@ export class BlueBase {
 
 	public async boot(options?: Partial<BootOptions> & { children?: React.ReactNode }) {
 
+		// Update boot options
 		this.bootOptions = { ...this.bootOptions, ...options };
 
+		// Register basic hooks here, so they can be used in boot
 		await this.Hooks.registerNestedCollection(systemHooks);
 		await this.Hooks.registerNestedCollection(this.bootOptions.hooks);
 
+		// 🚀 Boot!
 		await this.Hooks.run('bluebase.boot', this.bootOptions);
 
-		const SystemApp = getComponent('SystemApp');
-
-		// Set View
-		// const SystemApp = this.Components.resolve('SystemApp');
-		// SystemApp = await this.Hooks.run('bluebase.system.app', SystemApp);
+		// Navigation
+		const Navigation = this.Components.resolve('Navigation');
+		const navigatorConfigs = await this.Hooks.run('bluebase.navigator.root', {});
 
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-					<SystemApp>
-						{options && options.children}
-					</SystemApp>
+				{
+					(this.bootOptions.children)
+					? renderChildrenWithProps(this.bootOptions.children, { BB: this })
+					: <Navigation navigator={navigatorConfigs} />
+				}
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);
