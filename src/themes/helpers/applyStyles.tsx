@@ -2,6 +2,7 @@ import { ComponentStyles, ThemeValue } from '../structure/Theme';
 import { MaybeThunk, resolveThunk } from '../../utils';
 import React from 'react';
 import { ThemeContext } from '..';
+import { buildTheme } from './buildTheme';
 import deepmerge from 'deepmerge';
 import isNil from 'lodash.isnil';
 
@@ -31,48 +32,59 @@ export interface ThemedComponentProps {
  * @param stylesParam
  */
 export const applyStyles = (
-	name: string,
-	Component: ComponentWithDefaultStyles,
-	stylesParam: MaybeThunk<ComponentStyles>)
+	{ name, styles: stylesParam }: {
+		name?: string,
+		styles?: MaybeThunk<ComponentStyles>
+	} = {}
+) => (Component: ComponentWithDefaultStyles)
 : React.ComponentType<any> =>
 {
 
-	return class ThemedComponent extends React.PureComponent<ThemedComponentProps> {
+	return class ThemedComponent extends React.Component<ThemedComponentProps> {
+
+		static contextType = ThemeContext;
 
 		render() {
 
+			const context: { theme: ThemeValue } = this.context;
 			const { styles: stylesProp, ...rest } = this.props;
 
-			return (
-				<ThemeContext.Consumer children={(args?: { theme: ThemeValue }) => {
+			// Extract defaultStyles from component
+			const defaultStyles = Component.defaultStyles;
 
-					if(!args) {
-						// We return null here because the component may depend on the styles prop,
-						// and may crash without it.
-						return null;
-					}
+			// Extract theme, or use default theme as placeholder
+			// We need to do this, because when the actual theme is being resolved,
+			// we may need to show Loading state. That state may need some styles as well.
+			const theme = context ? context.theme : buildTheme()();
 
-					const { theme } = args;
+			// Extract component style rules from theme
+			let themedStyles;
+			if (name) {
+				const themeComponentStyles = theme.components;
 
-					const defaultStyles = Component.defaultStyles;
-					const themedStyles = theme.components[name];
+				// Extract style rules for this component
+				themedStyles = themeComponentStyles[name];
+			}
 
-					const stylesArr: any[] = [
-						defaultStyles,
-						stylesParam,
-						themedStyles,
-						stylesProp,
-					]
-					.filter(a => !isNil(a))
-					.map(a => a && resolveThunk(a, theme));
+			// Put all style rules in an array
+			const stylesArr: any[] = [
+				defaultStyles,
+				stylesParam,
+				themedStyles,
+				stylesProp,
+			]
+			// Remove those styles which are nil
+			.filter(a => !isNil(a))
+			// If any item is a thunk, resolve it
+			.map(a => a && resolveThunk(a, theme));
 
-					const styles = deepmerge.all(stylesArr);
+			// Merge all into a single object
+			const styles = deepmerge.all(stylesArr);
 
-					const props = stylesArr.length > 0 ? { ...rest, styles } : rest;
+			// If we were able to extract any rules, pass them forward in the styles prop
+			const props = stylesArr.length > 0 ? { ...rest, styles } : rest;
 
-					return React.createElement(Component, props);
-				}} />
-			);
+			return React.createElement(Component, props);
 		}
 	};
 };

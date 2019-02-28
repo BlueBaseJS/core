@@ -1,8 +1,11 @@
 import { Button, ButtonStyles } from '../Button';
+// import { BlueBaseApp } from '../../../';
 import { BlueBaseLightTheme } from '../../../themes';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Text } from 'react-native';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
 describe('Button', () => {
 
@@ -132,6 +135,41 @@ describe('Button', () => {
 		expect(text.props.testID).toBe('custom');
 
 		expect(rendered).toMatchSnapshot();
+	});
+
+	test(`should use TouchableNativeFeedback on android platform`, async () => {
+
+		jest.mock('Platform', () => {
+			const Platform = (require as any).requireActual('Platform');
+			Platform.OS = 'android';
+			return Platform;
+		});
+
+		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+
+		// const rendered = TestRenderer.create(
+		// 	<Button styles={styles}>
+		// 		Hello
+		// 	</Button>
+		// );
+
+		// // const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
+		// const touchable = rendered.root.findByType(TouchableNativeFeedback);
+
+		// expect(rendered).toMatchSnapshot();
+		// expect(touchable.type).toBe('TouchableNativeFeedback');
+
+		const wrapper = mount(
+			<Button styles={styles}>
+				Hello
+			</Button>
+		);
+
+		// Wait for render
+		await waitForElement(wrapper, Button);
+
+		expect(wrapper).toMatchSnapshot();
+		expect(wrapper.find('Button DummyTouchableNativeFeedback').length).toBe(1);
 	});
 
 });

@@ -15,6 +15,8 @@ export interface ThemeValue {
 		[key: string]: MaybeThunk<ComponentStyles>;
 	};
 
+	elevation: (value: number) => Partial<ViewStyle>;
+
 	shape: {
 		borderRadius: number;
 		[key: string]: any;

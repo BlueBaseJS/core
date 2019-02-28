@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderTitle should render simple test 1`] = `
+<BlueBaseApp>
+  <BlueBaseRoot>
+    <ThemeProvider>
+      <HeaderTitle>
+        <ThemedComponent>
+          <HeaderTitle
+            styles={
+              Object {
+                "root": Object {
+                  "color": "#fff",
+                  "fontFamily": undefined,
+                  "fontSize": 20,
+                  "fontWeight": "500",
+                },
+              }
+            }
+          >
+            <Text
+              accessibilityTraits="header"
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#fff",
+                    "fontFamily": undefined,
+                    "fontSize": 20,
+                    "fontWeight": "500",
+                  },
+                  undefined,
+                ]
+              }
+              testID="header-title"
+            >
+              <ThemedComponent
+                accessibilityTraits="header"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fff",
+                      "fontFamily": undefined,
+                      "fontSize": 20,
+                      "fontWeight": "500",
+                    },
+                    undefined,
+                  ]
+                }
+                testID="header-title"
+              >
+                <Component
+                  accessibilityTraits="header"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#fff",
+                        "fontFamily": undefined,
+                        "fontSize": 20,
+                        "fontWeight": "500",
+                      },
+                      undefined,
+                    ]
+                  }
+                  styles={
+                    Object {
+                      "root": Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                        "fontFamily": undefined,
+                        "fontSize": 16,
+                        "fontWeight": "400",
+                      },
+                    }
+                  }
+                  testID="header-title"
+                >
+                  <Text
+                    accessibilityTraits="header"
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(0, 0, 0, 0.87)",
+                          "fontFamily": undefined,
+                          "fontSize": 16,
+                          "fontWeight": "400",
+                        },
+                        Array [
+                          Object {
+                            "color": "#fff",
+                            "fontFamily": undefined,
+                            "fontSize": 20,
+                            "fontWeight": "500",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                    testID="header-title"
+                  >
+                    <Text
+                      accessibilityTraits="header"
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "rgba(0, 0, 0, 0.87)",
+                            "fontFamily": undefined,
+                            "fontSize": 16,
+                            "fontWeight": "400",
+                          },
+                          Array [
+                            Object {
+                              "color": "#fff",
+                              "fontFamily": undefined,
+                              "fontSize": 20,
+                              "fontWeight": "500",
+                            },
+                            undefined,
+                          ],
+                        ]
+                      }
+                      testID="header-title"
+                    >
+                      A very long heading title sentence.
+                    </Text>
+                  </Text>
+                </Component>
+              </ThemedComponent>
+            </Text>
+          </HeaderTitle>
+        </ThemedComponent>
+      </HeaderTitle>
+    </ThemeProvider>
+  </BlueBaseRoot>
+</BlueBaseApp>
+`;

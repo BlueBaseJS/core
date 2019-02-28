@@ -45,8 +45,7 @@
 		"typeRoots": ["node_modules/@types"],
 		"baseUrl": ".",
 		"paths": {
-			"@blueeast/bluerain": ["src"],
-			"@blueeast/bluerain-os": ["src"],
+			"@bluebase/core": ["src"],
 			"*": ["typings/*"]
 		}
 	},

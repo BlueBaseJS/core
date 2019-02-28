@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`applyStyles apply styles without theme & unknown component name 1`] = `
+<ThemedComponent>
+  <Demo
+    styles={
+      Object {
+        "root": Object {
+          "backgroundColor": "red",
+        },
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "backgroundColor": "red",
+          }
+        }
+      >
+        Demo Text
+      </Text>
+    </Text>
+  </Demo>
+</ThemedComponent>
+`;
+
+exports[`applyStyles apply styles without theme 1`] = `
+<ThemedComponent>
+  <Demo
+    styles={
+      Object {
+        "root": Object {
+          "backgroundColor": "red",
+        },
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "backgroundColor": "red",
+          }
+        }
+      >
+        Demo Text
+      </Text>
+    </Text>
+  </Demo>
+</ThemedComponent>
+`;
