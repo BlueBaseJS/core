@@ -28,6 +28,12 @@ exports[`ComponentRegistry .resolve method should add an HOC with its arguments 
 </View>
 `;
 
+exports[`ComponentRegistry .resolve method should not apply styles if applyStyles flag is set false 1`] = `
+<View>
+  A Button
+</View>
+`;
+
 exports[`ComponentRegistry .resolve method should resolve a Promised component 1`] = `
 <BlueBaseApp
   components={
