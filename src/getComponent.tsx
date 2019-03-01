@@ -41,6 +41,7 @@ export {
 	NavigationProps,
 	NavigationActionsObject,
 	NavigationActionsProps,
+	NavigationActionPayload,
 	PluginIconProps,
 	RouteConfig,
 	StatefulComponentProps,

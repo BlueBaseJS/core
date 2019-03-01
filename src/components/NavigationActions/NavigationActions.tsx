@@ -14,19 +14,19 @@ export interface NavitionActionPathPayload {
 	params?: NavigationParams;
 }
 
-export type NavitionActionPayload = string | NavitionActionRouteNamePayload | NavitionActionPathPayload;
+export type NavigationActionPayload = string | NavitionActionRouteNamePayload | NavitionActionPathPayload;
 
 export interface NavigationActionsObject {
 
-	navigate: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
+	navigate: (routeName: NavigationActionPayload, params?: NavigationParams) => void,
 	goBack: () => void,
 
-	replace: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
-	push: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
+	replace: (routeName: NavigationActionPayload, params?: NavigationParams) => void,
+	push: (routeName: NavigationActionPayload, params?: NavigationParams) => void,
 	pop: (steps?: number) => void,
 
 	setParams: (params: NavigationParams) => void,
-	getParam: (key: string) => any,
+	getParam: (key: string, defaultValue: any) => any,
 
 	source: any,
 
