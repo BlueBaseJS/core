@@ -1,5 +1,5 @@
 import { NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
-import { NavigationActionsObject, NavigationParams } from '../NavigationActions';
+import { NavigationActionParams, NavigationActionsObject } from '../NavigationActions';
 import { NavigationActions } from '../../getComponent';
 import React from 'react';
 import TouchableItem from '../HeaderBackButton/TouchableItem';
@@ -7,7 +7,7 @@ import TouchableItem from '../HeaderBackButton/TouchableItem';
 export interface LinkProps {
 	routeName?: string,
 	path?: string,
-	params?: NavigationParams;
+	params?: NavigationActionParams;
 	replace?: boolean,
 	onPress?: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
 	component: React.ComponentType<any>

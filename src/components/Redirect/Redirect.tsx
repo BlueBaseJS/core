@@ -1,11 +1,11 @@
+import { NavigationActionParams } from '../NavigationActions';
 import { NavigationActions } from '../../getComponent';
-import { NavigationParams } from '../NavigationActions';
 import React from 'react';
 
 export interface RedirectProps {
 	routeName?: string,
 	path?: string,
-	params?: NavigationParams;
+	params?: NavigationActionParams;
 	push?: boolean,
 }
 
