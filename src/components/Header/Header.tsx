@@ -276,7 +276,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 			<View style={containerStyles as any}>
 				<HeaderTitleComponent
 					testID="header-title"
-					key="header-title"
 					onLayout={onLayout}
 					allowFontScaling={allowFontScaling}
 					style={stylesheet}
@@ -306,10 +305,14 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 
 		const styles = this.props.styles as HeaderStyles;
 
+		if (headerLeft === null) {
+			return null;
+		}
+
     // If headerLeft is an element or null, return as is
 		const RenderedLeftComponent = headerLeft || HeaderBackButton;
 
-		if (React.isValidElement<any>(RenderedLeftComponent) || headerLeft === null) {
+		if (React.isValidElement<any>(RenderedLeftComponent)) {
 			return RenderedLeftComponent;
 		}
 
@@ -333,7 +336,6 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		return (
       <RenderedLeftComponent
         testId="header-left"
-        key="header-left"
         pressColorAndroid={headerPressColorAndroid}
         tintColor={headerTintColor}
         backImage={headerBackImage}
@@ -361,7 +363,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 		}
 
 		return (
-      <View testID="header-right-container" key="header-right" style={style}>
+      <View testID="header-right-container" style={style}>
         {this._renderSubView(headerRight || null, { ...this.props })}
       </View>
 		);
@@ -409,7 +411,9 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
     ) {
 			return (
         <View {...wrapperProps}>
-          {layoutPreset === 'center' ? [title, left, right] : [left, title, right]}
+					{layoutPreset === 'center' ? title : left}
+					{layoutPreset === 'center' ? left : title}
+					{right}
         </View>
 			);
 		} else {
