@@ -29,6 +29,7 @@ export class Link extends React.PureComponent<LinkProps> {
 		const { routeName, path, params, replace } = this.props;
 
 		if (!event.defaultPrevented) {
+			event.preventDefault();
 			const fn = (replace === true) ? navigation.replace : navigation.push;
 
 			if (typeof routeName === 'string') {
