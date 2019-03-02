@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Redirect should call the push function with the given routeName 1`] = `
+Object {
+  "getParam": [MockFunction],
+  "goBack": [MockFunction],
+  "navigate": [MockFunction],
+  "pop": [MockFunction],
+  "push": [MockFunction] {
+    "calls": Array [
+      Array [
+        "Foo",
+        undefined,
+      ],
+    ],
+    "results": Array [
+      Object {
+        "isThrow": false,
+        "value": undefined,
+      },
+    ],
+  },
+  "replace": [MockFunction],
+  "setParams": [MockFunction],
+  "source": null,
+  "state": Object {
+    "key": "",
+    "params": Object {},
+    "routeName": "",
+    "url": "",
+  },
+}
+`;
+
+exports[`Redirect should call the replace function with the given path 1`] = `
+Object {
+  "getParam": [MockFunction],
+  "goBack": [MockFunction],
+  "navigate": [MockFunction],
+  "pop": [MockFunction],
+  "push": [MockFunction],
+  "replace": [MockFunction] {
+    "calls": Array [
+      Array [
+        Object {
+          "path": "/foo",
+        },
+        undefined,
+      ],
+    ],
+    "results": Array [
+      Object {
+        "isThrow": false,
+        "value": undefined,
+      },
+    ],
+  },
+  "setParams": [MockFunction],
+  "source": null,
+  "state": Object {
+    "key": "",
+    "params": Object {},
+    "routeName": "",
+    "url": "",
+  },
+}
+`;
+
+exports[`Redirect should call the replace function with the given routeName 1`] = `
+Object {
+  "getParam": [MockFunction],
+  "goBack": [MockFunction],
+  "navigate": [MockFunction],
+  "pop": [MockFunction],
+  "push": [MockFunction],
+  "replace": [MockFunction] {
+    "calls": Array [
+      Array [
+        "Foo",
+        undefined,
+      ],
+    ],
+    "results": Array [
+      Object {
+        "isThrow": false,
+        "value": undefined,
+      },
+    ],
+  },
+  "setParams": [MockFunction],
+  "source": null,
+  "state": Object {
+    "key": "",
+    "params": Object {},
+    "routeName": "",
+    "url": "",
+  },
+}
+`;
+
+exports[`Redirect should not do anything if there is no routeName or path prop 1`] = `
+Object {
+  "getParam": [MockFunction],
+  "goBack": [MockFunction],
+  "navigate": [MockFunction],
+  "pop": [MockFunction],
+  "push": [MockFunction],
+  "replace": [MockFunction],
+  "setParams": [MockFunction],
+  "source": null,
+  "state": Object {
+    "key": "",
+    "params": Object {},
+    "routeName": "",
+    "url": "",
+  },
+}
+`;

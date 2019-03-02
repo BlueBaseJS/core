@@ -4,7 +4,7 @@ import { HookNestedCollection } from '../registries';
 import deepmerge from 'deepmerge';
 
 // tslint:disable:object-literal-sort-keys
-export const routes: HookNestedCollection = {
+export const navigation: HookNestedCollection = {
 	'bluebase.navigator.root': [
 		{
 			key: 'bluebase-navigator-root-internal-default',

@@ -1,12 +1,13 @@
+import { Image, Text } from 'react-native';
 import { BlueBaseApp } from '../../BlueBaseApp';
 import { Header } from '../../..';
 import React from 'react';
-import { Text, Image } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 import deepmerge = require('deepmerge');
 
 const Right = () => { return <Text testID="right-element">Right</Text>; };
+const Left = () => { return <Text testID="left-element">Left</Text>; };
 
 describe('Header', () => {
 
@@ -94,6 +95,24 @@ describe('Header', () => {
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton').length).toBe(0);
 		expect(wrapper.find('Header [testID="header-title"] Text').last().text()).toBe('Foo');
+	});
+
+	test(`should not render a left element`, async () => {
+
+		const wrapper = mount(
+			<BlueBaseApp>
+        <Header
+					title="Foo"
+					headerLeft={<Left />}
+				/>
+      </BlueBaseApp>
+		);
+
+		// Wait for render
+		await waitForElement(wrapper, Header);
+
+		expect(wrapper).toMatchSnapshot();
+		expect(wrapper.find('Header Left Text').last().text()).toBe('Left');
 	});
 
 	test(`should not render a back button with custom button text`, async () => {

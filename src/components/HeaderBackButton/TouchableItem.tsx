@@ -15,6 +15,7 @@ import {
 import React from 'react';
 
 import { View } from '../../';
+import isnil from 'lodash.isnil';
 
 // import BorderlessButton from './BorderlessButton';
 
@@ -24,6 +25,7 @@ export interface TouchableItemProps {
 	borderless?: boolean,
 	pressColor?: string,
 	children: React.ReactNode,
+	href?: string,
 
 	[key: string]: any,
 }
@@ -61,7 +63,8 @@ export default class TouchableItem extends React.Component<TouchableItemProps> {
           <View style={style}>{React.Children.only(this.props.children)}</View>
         </TouchableNativeFeedback>
 			);
-		} else if (Platform.OS === 'ios') {
+		}
+		else if (Platform.OS === 'ios') {
 			// FIXME: Add borderless button
 			return (
         <TouchableOpacity
@@ -81,7 +84,16 @@ export default class TouchableItem extends React.Component<TouchableItemProps> {
       //     {this.props.children}
       //   </BorderlessButton>
 			// );
-		} else {
+		} else if (
+				Platform.OS === 'web' &&
+				!isnil(this.props.href) &&
+				this.props.href !== ''
+			) {
+			return (
+				<a {...this.props} />
+			);
+		}
+		else {
 			return (
         <TouchableOpacity {...this.props}>
           {this.props.children}
