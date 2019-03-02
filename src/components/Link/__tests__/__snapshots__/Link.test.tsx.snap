@@ -58,96 +58,12 @@ exports[`Link should call the push function with the given path 2`] = `
                 onPress={[Function]}
                 pressColor="rgba(0, 0, 0, .32)"
               >
-                <TouchableOpacity
-                  activeOpacity={0.2}
+                <a
                   borderless={false}
-                  hitSlop={
-                    Object {
-                      "bottom": 10,
-                      "left": 10,
-                      "right": 10,
-                      "top": 10,
-                    }
-                  }
                   href="/foo"
                   onPress={[Function]}
                   pressColor="rgba(0, 0, 0, .32)"
-                >
-                  <AnimatedComponent
-                    accessible={true}
-                    hitSlop={
-                      Object {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
-                    isTVSelectable={true}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        undefined,
-                        Object {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      hitSlop={
-                        Object {
-                          "bottom": 10,
-                          "left": 10,
-                          "right": 10,
-                          "top": 10,
-                        }
-                      }
-                      isTVSelectable={true}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "opacity": 1,
-                        }
-                      }
-                    >
-                      <View
-                        accessible={true}
-                        hitSlop={
-                          Object {
-                            "bottom": 10,
-                            "left": 10,
-                            "right": 10,
-                            "top": 10,
-                          }
-                        }
-                        isTVSelectable={true}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                          }
-                        }
-                      />
-                    </View>
-                  </AnimatedComponent>
-                </TouchableOpacity>
+                />
               </TouchableItem>
             </Component>
           </ThemedComponent>
@@ -262,17 +178,8 @@ exports[`Link should call the push function with the given path 4`] = `
                 }
                 pressColor="rgba(0, 0, 0, .32)"
               >
-                <TouchableOpacity
-                  activeOpacity={0.2}
+                <a
                   borderless={false}
-                  hitSlop={
-                    Object {
-                      "bottom": 10,
-                      "left": 10,
-                      "right": 10,
-                      "top": 10,
-                    }
-                  }
                   href="/foo"
                   onPress={
                     [MockFunction] {
@@ -309,82 +216,7 @@ exports[`Link should call the push function with the given path 4`] = `
                     }
                   }
                   pressColor="rgba(0, 0, 0, .32)"
-                >
-                  <AnimatedComponent
-                    accessible={true}
-                    hitSlop={
-                      Object {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
-                    isTVSelectable={true}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        undefined,
-                        Object {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      hitSlop={
-                        Object {
-                          "bottom": 10,
-                          "left": 10,
-                          "right": 10,
-                          "top": 10,
-                        }
-                      }
-                      isTVSelectable={true}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "opacity": 1,
-                        }
-                      }
-                    >
-                      <View
-                        accessible={true}
-                        hitSlop={
-                          Object {
-                            "bottom": 10,
-                            "left": 10,
-                            "right": 10,
-                            "top": 10,
-                          }
-                        }
-                        isTVSelectable={true}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                          }
-                        }
-                      />
-                    </View>
-                  </AnimatedComponent>
-                </TouchableOpacity>
+                />
               </TouchableItem>
             </Component>
           </ThemedComponent>
@@ -609,96 +441,12 @@ exports[`Link should call the replace function with the given path 2`] = `
                 onPress={[Function]}
                 pressColor="rgba(0, 0, 0, .32)"
               >
-                <TouchableOpacity
-                  activeOpacity={0.2}
+                <a
                   borderless={false}
-                  hitSlop={
-                    Object {
-                      "bottom": 10,
-                      "left": 10,
-                      "right": 10,
-                      "top": 10,
-                    }
-                  }
                   href="/foo"
                   onPress={[Function]}
                   pressColor="rgba(0, 0, 0, .32)"
-                >
-                  <AnimatedComponent
-                    accessible={true}
-                    hitSlop={
-                      Object {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
-                    isTVSelectable={true}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        undefined,
-                        Object {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      hitSlop={
-                        Object {
-                          "bottom": 10,
-                          "left": 10,
-                          "right": 10,
-                          "top": 10,
-                        }
-                      }
-                      isTVSelectable={true}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "opacity": 1,
-                        }
-                      }
-                    >
-                      <View
-                        accessible={true}
-                        hitSlop={
-                          Object {
-                            "bottom": 10,
-                            "left": 10,
-                            "right": 10,
-                            "top": 10,
-                          }
-                        }
-                        isTVSelectable={true}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                          }
-                        }
-                      />
-                    </View>
-                  </AnimatedComponent>
-                </TouchableOpacity>
+                />
               </TouchableItem>
             </Component>
           </ThemedComponent>
@@ -752,96 +500,12 @@ exports[`Link should not do anything if event.defaultPrevented is true 2`] = `
                 onPress={[Function]}
                 pressColor="rgba(0, 0, 0, .32)"
               >
-                <TouchableOpacity
-                  activeOpacity={0.2}
+                <a
                   borderless={false}
-                  hitSlop={
-                    Object {
-                      "bottom": 10,
-                      "left": 10,
-                      "right": 10,
-                      "top": 10,
-                    }
-                  }
                   href="/foo"
                   onPress={[Function]}
                   pressColor="rgba(0, 0, 0, .32)"
-                >
-                  <AnimatedComponent
-                    accessible={true}
-                    hitSlop={
-                      Object {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
-                    isTVSelectable={true}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        undefined,
-                        Object {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      hitSlop={
-                        Object {
-                          "bottom": 10,
-                          "left": 10,
-                          "right": 10,
-                          "top": 10,
-                        }
-                      }
-                      isTVSelectable={true}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "opacity": 1,
-                        }
-                      }
-                    >
-                      <View
-                        accessible={true}
-                        hitSlop={
-                          Object {
-                            "bottom": 10,
-                            "left": 10,
-                            "right": 10,
-                            "top": 10,
-                          }
-                        }
-                        isTVSelectable={true}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                          }
-                        }
-                      />
-                    </View>
-                  </AnimatedComponent>
-                </TouchableOpacity>
+                />
               </TouchableItem>
             </Component>
           </ThemedComponent>
@@ -891,28 +555,12 @@ exports[`Link should not do anything if there is no path or routeName prop 2`] =
                 <TouchableOpacity
                   activeOpacity={0.2}
                   borderless={false}
-                  hitSlop={
-                    Object {
-                      "bottom": 10,
-                      "left": 10,
-                      "right": 10,
-                      "top": 10,
-                    }
-                  }
                   href=""
                   onPress={[Function]}
                   pressColor="rgba(0, 0, 0, .32)"
                 >
                   <AnimatedComponent
                     accessible={true}
-                    hitSlop={
-                      Object {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
                     isTVSelectable={true}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -931,14 +579,6 @@ exports[`Link should not do anything if there is no path or routeName prop 2`] =
                   >
                     <View
                       accessible={true}
-                      hitSlop={
-                        Object {
-                          "bottom": 10,
-                          "left": 10,
-                          "right": 10,
-                          "top": 10,
-                        }
-                      }
                       isTVSelectable={true}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -954,14 +594,6 @@ exports[`Link should not do anything if there is no path or routeName prop 2`] =
                     >
                       <View
                         accessible={true}
-                        hitSlop={
-                          Object {
-                            "bottom": 10,
-                            "left": 10,
-                            "right": 10,
-                            "top": 10,
-                          }
-                        }
                         isTVSelectable={true}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}

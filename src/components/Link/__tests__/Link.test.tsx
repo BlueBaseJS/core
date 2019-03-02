@@ -61,6 +61,12 @@ describe('Link', () => {
 
 	test(`should call the push function with the given path`, async () => {
 
+		jest.mock('Platform', () => {
+			const Platform = (require as any).requireActual('Platform');
+			Platform.OS = 'web';
+			return Platform;
+		});
+
 		const components = {
 			NavigationActions,
 		};
