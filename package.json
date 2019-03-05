@@ -95,7 +95,7 @@
     "@storybook/addon-links": "^5.0.0",
     "@storybook/addon-viewport": "^4.1.2",
     "@storybook/addons": "^5.0.0",
-    "@storybook/react": "^4.1.2",
+    "@storybook/react": "^5.0.0",
     "@storybook/react-native": "^4.1.4",
     "@types/deepmerge": "^2.2.0",
     "@types/enzyme": "^3.1.15",
