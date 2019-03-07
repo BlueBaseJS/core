@@ -1,6 +1,6 @@
 import { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 import {
-	BlueBaseHookProps,
+	BlueBaseFilterProps,
 	ComponentStateProps,
 	DataObserverProps,
 	DynamicIconProps,
@@ -60,7 +60,7 @@ export function getComponent<T = any>(...keys: string[]) {
 }
 
 // System Components
-export const BlueBaseHook = getComponent<BlueBaseHookProps>('BlueBaseHook');
+export const BlueBaseFilter = getComponent<BlueBaseFilterProps>('BlueBaseFilter');
 export const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 export const DataObserver = getComponent<DataObserverProps>('DataObserver');
 export const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');

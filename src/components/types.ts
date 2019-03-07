@@ -1,5 +1,5 @@
 export {
-	BlueBaseHookProps,
+	BlueBaseFilterProps,
 	ComponentStateProps,
 	DataObserverProps,
 	DynamicIconProps,

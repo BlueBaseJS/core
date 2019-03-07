@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BlueBaseHook should render a hooked value 1`] = `
+exports[`BlueBaseFilter should render a hooked value 1`] = `
 <View
   style={
     Object {
@@ -16,7 +16,7 @@ exports[`BlueBaseHook should render a hooked value 1`] = `
 </View>
 `;
 
-exports[`BlueBaseHook should render a hooked value 2`] = `
+exports[`BlueBaseFilter should render a hooked value 2`] = `
 <Text>
   25
 </Text>

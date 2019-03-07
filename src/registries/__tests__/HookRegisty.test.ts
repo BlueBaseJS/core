@@ -1,6 +1,6 @@
 // declare var global: any;
 
-import { DEFAULT_HOOK_PRIORITY, HookNestedCollection, FilterRegistry } from '../FilterRegistry';
+import { DEFAULT_HOOK_PRIORITY, FilterNestedCollection, FilterRegistry } from '../FilterRegistry';
 import { BlueBase } from '../../BlueBase';
 
 describe('FilterRegistry', () => {
@@ -64,7 +64,7 @@ describe('FilterRegistry', () => {
 			const BB = new BlueBase();
 			const Filters = new FilterRegistry(BB);
 
-			const collection: HookNestedCollection = {
+			const collection: FilterNestedCollection = {
 				hook1: [{ key: 'add-fifteen', value: (val: number) => val + 15 }, (val: number) => val],
 				hook2: { key: 'add-five', value: (val: number) => val + 5 },
 				hook3: (val: number) => val + 10,
@@ -74,21 +74,21 @@ describe('FilterRegistry', () => {
 
 			expect(Filters.size()).toBe(4);
 
-			const valHook1 = await Filters.run('hook1', 5);
-			expect(valHook1).toBe(20);
+			const valFilter1 = await Filters.run('hook1', 5);
+			expect(valFilter1).toBe(20);
 
-			const valHook2 = await Filters.run('hook2', 5);
-			expect(valHook2).toBe(10);
+			const valFilter2 = await Filters.run('hook2', 5);
+			expect(valFilter2).toBe(10);
 
-			const valHook3 = await Filters.run('hook3', 5);
-			expect(valHook3).toBe(15);
+			const valFilter3 = await Filters.run('hook3', 5);
+			expect(valFilter3).toBe(15);
 		});
 
 		it('should register promised hooks', async () => {
 			const BB = new BlueBase();
 			const Filters = new FilterRegistry(BB);
 
-			const collection: HookNestedCollection = {
+			const collection: FilterNestedCollection = {
 				hook1: [
 					Promise.resolve({ key: 'add-fifteen', value: (val: number) => val + 15 }),
 					Promise.resolve((val: number) => val),
@@ -101,21 +101,21 @@ describe('FilterRegistry', () => {
 
 			expect(Filters.size()).toBe(4);
 
-			const valHook1 = await Filters.run('hook1', 5);
-			expect(valHook1).toBe(20);
+			const valFilter1 = await Filters.run('hook1', 5);
+			expect(valFilter1).toBe(20);
 
-			const valHook2 = await Filters.run('hook2', 5);
-			expect(valHook2).toBe(10);
+			const valFilter2 = await Filters.run('hook2', 5);
+			expect(valFilter2).toBe(10);
 
-			const valHook3 = await Filters.run('hook3', 5);
-			expect(valHook3).toBe(15);
+			const valFilter3 = await Filters.run('hook3', 5);
+			expect(valFilter3).toBe(15);
 		});
 
 		it('should register hooks in a thunk', async () => {
 			const BB = new BlueBase();
 			const Filters = new FilterRegistry(BB);
 
-			const collection: HookNestedCollection = () => ({
+			const collection: FilterNestedCollection = () => ({
 				hook1: [{ key: 'add-fifteen', value: (val: number) => val + 15 }, (val: number) => val],
 				hook2: { key: 'add-five', value: (val: number) => val + 5 },
 				hook3: (val: number) => val + 10,
@@ -125,28 +125,28 @@ describe('FilterRegistry', () => {
 
 			expect(Filters.size()).toBe(4);
 
-			const valHook1 = await Filters.run('hook1', 5);
-			expect(valHook1).toBe(20);
+			const valFilter1 = await Filters.run('hook1', 5);
+			expect(valFilter1).toBe(20);
 
-			const valHook2 = await Filters.run('hook2', 5);
-			expect(valHook2).toBe(10);
+			const valFilter2 = await Filters.run('hook2', 5);
+			expect(valFilter2).toBe(10);
 
-			const valHook3 = await Filters.run('hook3', 5);
-			expect(valHook3).toBe(15);
+			const valFilter3 = await Filters.run('hook3', 5);
+			expect(valFilter3).toBe(15);
 		});
 
 		it('should throw an error for unknown hook type', async () => {
 			const BB = new BlueBase();
 			const Filters = new FilterRegistry(BB);
 
-			const collection: HookNestedCollection = () => ({
+			const collection: FilterNestedCollection = () => ({
 				hook1: [{ key: 'add-fifteen' }],
 			});
 
 			try {
 				await Filters.registerNestedCollection(collection);
 			} catch (error) {
-				expect(error.message).toBe('Could not register Hook. Reason: Input is not a hook item.');
+				expect(error.message).toBe('Could not register Filter. Reason: Input is not a hook item.');
 			}
 		});
 

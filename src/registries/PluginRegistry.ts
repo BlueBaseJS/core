@@ -14,7 +14,7 @@ import {
 } from '../utils';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
-import { HookNestedCollection } from './FilterRegistry';
+import { FilterNestedCollection } from './FilterRegistry';
 import { ItemCollection } from './Registry';
 import { ThemeCollection } from './ThemeRegistry';
 
@@ -29,7 +29,7 @@ export type PluginCategory =
 
 export interface PluginValue {
 	components: ComponentCollection;
-	hooks: HookNestedCollection; // HookCollectionInput;
+	hooks: FilterNestedCollection; // FilterCollectionInput;
 	themes: ThemeCollection;
 	routes?: MaybeThunk<MaybeArray<RouteConfig>>;
 }

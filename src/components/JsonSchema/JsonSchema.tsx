@@ -1,7 +1,7 @@
 import { JsonComponentNode, JsonSchemaParser } from '../../lib/json-schema-parser';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
-import { BlueBaseHook } from '../../index';
+import { BlueBaseFilter } from '../../index';
 import { MaybeArray } from '../../utils';
 import React from 'react';
 
@@ -72,7 +72,7 @@ export class JsonSchema extends React.PureComponent<JsonSchemaProps> {
 		}
 
 		return (
-			<BlueBaseHook hook={hook} value={schema} args={args} children={(loadedSchema) => parser.parseSchema(loadedSchema)} />
+			<BlueBaseFilter hook={hook} value={schema} args={args} children={(loadedSchema) => parser.parseSchema(loadedSchema)} />
 		);
 	}
 }

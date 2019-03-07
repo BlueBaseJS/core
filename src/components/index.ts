@@ -1,5 +1,5 @@
 export * from './BlueBaseApp';
-export * from './BlueBaseHook';
+export * from './BlueBaseFilter';
 export * from './ComponentState';
 export * from './DataObserver';
 export * from './DynamicIcon';

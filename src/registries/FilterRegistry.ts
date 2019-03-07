@@ -34,14 +34,14 @@ export const DEFAULT_HOOK_PRIORITY = 10;
  *
  * @returns Original or mutated version of input value. May be a promise that resolves the value.
  */
-export type HookHandlerFn<T = any> = (
+export type FilterHandlerFn<T = any> = (
 	value: T,
 	args: { [key: string]: any },
 	BB: BlueBase
 ) => T | Promise<T>;
 
 /**
- * Properties of a Hook item.
+ * Properties of a Filter item.
  */
 export interface FilterRegistryItemProps {
 	/**
@@ -59,8 +59,8 @@ export interface FilterRegistryItemProps {
 	[key: string]: any;
 }
 
-export type FilterRegistryItem = BlueBaseModuleRegistryItem<HookHandlerFn> & FilterRegistryItemProps;
-export interface FilterRegistryInputItem extends BlueBaseModuleRegistryInputItem<HookHandlerFn> {
+export type FilterRegistryItem = BlueBaseModuleRegistryItem<FilterHandlerFn> & FilterRegistryItemProps;
+export interface FilterRegistryInputItem extends BlueBaseModuleRegistryInputItem<FilterHandlerFn> {
 	/**
 	 * ID of event to subscribe to
 	 */
@@ -71,21 +71,21 @@ type ItemType = FilterRegistryItem;
 type ItemInputType = FilterRegistryInputItem;
 
 /**
- * Hook Type.
+ * Filter Type.
  */
-export type Hook = FilterRegistryItemProps & { value: HookHandlerFn };
+export type Filter = FilterRegistryItemProps & { value: FilterHandlerFn };
 
 /**
- * HookInput.
+ * FilterInput.
  */
-export type HookInput = FilterRegistryInputItem;
+export type FilterInput = FilterRegistryInputItem;
 
-export type HookInputCollection = ItemCollection<HookInput>;
+export type FilterInputCollection = ItemCollection<FilterInput>;
 
 /**
  * A nested hook collection.
  */
-export type HookNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn> = MaybeThunk<{
+export type FilterNestedCollection<T = Omit<FilterInput, 'event'> | FilterHandlerFn> = MaybeThunk<{
 	[event: string]: MaybeArray<MaybeBlueBaseModule<T>>;
 }>;
 
@@ -98,7 +98,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 *
 	 * @param collections
 	 */
-	public async registerNestedCollection(collections: HookNestedCollection = {}) {
+	public async registerNestedCollection(collections: FilterNestedCollection = {}) {
 		// If hooks field is a thunk, then call the thunk function
 		collections = resolveThunk(collections, this.BB);
 
@@ -123,7 +123,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 				const newItem: FilterRegistryInputItem = { event: eventName, ...item } as any;
 
 				if (!this.isInputItem(newItem)) {
-					throw Error(`Could not register Hook. Reason: Input is not a hook item.`);
+					throw Error(`Could not register Filter. Reason: Input is not a hook item.`);
 				}
 
 				await this.register(newItem);
@@ -180,7 +180,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			// Check if handler is a valid function
 			if (!isFunction(handler)) {
 				throw Error(
-					`Handler of HookListener "${item.key}" in hook "${eventName}" is not a function.`
+					`Handler of FilterListener "${item.key}" in hook "${eventName}" is not a function.`
 				);
 			}
 
@@ -191,7 +191,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			if (typeof result === 'undefined' && typeof initialValue !== 'undefined') {
 				// if result of current iteration is undefined, don't pass it on
 				this.BB.Logger.warn(
-					`HookListener "${item.key}" in hook "${eventName}" did not return a result.`,
+					`FilterListener "${item.key}" in hook "${eventName}" did not return a result.`,
 					item
 				);
 			} else {

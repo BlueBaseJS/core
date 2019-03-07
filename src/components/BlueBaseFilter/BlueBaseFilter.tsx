@@ -4,7 +4,7 @@ import Loadable from 'react-loadable';
 import React from 'react';
 import { ReactLoadableLoading } from '../ReactLoadableLoading';
 
-export interface BlueBaseHookProps<T = any> {
+export interface BlueBaseFilterProps<T = any> {
 
 	/** Event name */
 	hook: string;
@@ -12,7 +12,7 @@ export interface BlueBaseHookProps<T = any> {
 	/** Initial value to hook */
 	value: T;
 
-	/** Hook arguments */
+	/** Filter arguments */
 	args?: { [key: string]: any };
 
 	/** Children as function (render prop pattern). Final value is passed as param to this function. */
@@ -25,23 +25,23 @@ export interface BlueBaseHookProps<T = any> {
 }
 
 /**
- * # 🎣 BlueBaseHook
+ * # 🎣 BlueBaseFilter
  *
  * Since hooks in BlueBase are based on promises, it may be tedious to handle loading state,
  * error state, etc. It may also become a repetitive task.
  *
- * To solve this issue, we ship BlueBaseHook component. Just pass name of hook, initial value,
+ * To solve this issue, we ship BlueBaseFilter component. Just pass name of hook, initial value,
  * and hook arguments as props. The final hooked value will be passed to the children function.
  * This component will handle loading and error states itself.
  *
  * ## Usage
  * ```jsx
- * <BlueBaseHook hook="math" value={5} args={{ op: 'add' }} children={(val: number) => {
+ * <BlueBaseFilter hook="math" value={5} args={{ op: 'add' }} children={(val: number) => {
  * 	return <Text>{val}</Text>;
  * }} />
  * ```
  */
-export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
+export class BlueBaseFilter extends React.PureComponent<BlueBaseFilterProps> {
 
 	static contextType = BlueBaseContext;
 
@@ -55,7 +55,7 @@ export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 
 		const BB: BlueBase = this.context;
 
-		const AsyncBlueBaseHook = Loadable({
+		const AsyncBlueBaseFilter = Loadable({
 			loader: () => BB.Filters.run(hook, value, args),
 			loading: ReactLoadableLoading,
 			render(loadedValue: any) {
@@ -63,6 +63,6 @@ export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 			}
 		});
 
-		return <AsyncBlueBaseHook />;
+		return <AsyncBlueBaseFilter />;
 	}
 }

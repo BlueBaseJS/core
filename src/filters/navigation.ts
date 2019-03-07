@@ -1,10 +1,10 @@
 import { NavigatorProps, RouteConfig } from '../components';
 import { BlueBase } from '../BlueBase';
-import { HookNestedCollection } from '../registries';
+import { FilterNestedCollection } from '../registries';
 import deepmerge from 'deepmerge';
 
 // tslint:disable:object-literal-sort-keys
-export const navigation: HookNestedCollection = {
+export const navigation: FilterNestedCollection = {
 	'bluebase.navigator.root': [
 		{
 			key: 'bluebase-navigator-root-internal-default',

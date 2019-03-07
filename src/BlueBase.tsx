@@ -4,8 +4,8 @@ import {
 	ComponentRegistry,
 	ConfigCollection,
 	ConfigRegistry,
+	FilterNestedCollection,
 	FilterRegistry,
-	HookNestedCollection,
 	PluginCollection,
 	PluginRegistry,
 	ThemeCollection,
@@ -25,8 +25,8 @@ export interface BootOptions {
 	/** Collection of configs to add in BlueBase's Config Registry. */
 	configs: ConfigCollection,
 
-	/** Collection of hooks to add in BlueBase's Hook Registry. */
-	hooks: HookNestedCollection,
+	/** Collection of hooks to add in BlueBase's Filter Registry. */
+	hooks: FilterNestedCollection,
 
 	/** Collection of plugins to add in BlueBase's Plugin Registry. */
 	plugins: PluginCollection,

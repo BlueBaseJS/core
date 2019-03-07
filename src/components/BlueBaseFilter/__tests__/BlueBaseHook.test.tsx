@@ -1,5 +1,5 @@
 import { BlueBaseApp } from '../../BlueBaseApp';
-import { BlueBaseHook } from '../BlueBaseHook';
+import { BlueBaseFilter } from '../BlueBaseFilter';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Text } from 'react-native';
@@ -8,7 +8,7 @@ import { Text } from 'react-native';
 // 	jest.resetModules();
 // });
 
-describe('BlueBaseHook', () => {
+describe('BlueBaseFilter', () => {
 
 	test(`should render a hooked value`, (done) => {
 
@@ -21,7 +21,7 @@ describe('BlueBaseHook', () => {
 
 		const rendered: any = TestRenderer.create(
 			<BlueBaseApp hooks={hooks}>
-				<BlueBaseHook hook="math" value={5} args={{ op: 'add' }} children={(val: number) => {
+				<BlueBaseFilter hook="math" value={5} args={{ op: 'add' }} children={(val: number) => {
 					return <Text>{val}</Text>;
 				}} />
 			</BlueBaseApp>
