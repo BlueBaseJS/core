@@ -17,7 +17,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 
@@ -33,7 +33,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 
@@ -49,7 +49,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.exists('LoadingState')).toBe(true);
@@ -64,7 +64,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Content');
@@ -79,7 +79,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Render prop');
@@ -97,7 +97,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Custom Component');

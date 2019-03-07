@@ -17,7 +17,7 @@ Object {
     ],
     "results": Array [
       Object {
-        "isThrow": false,
+        "type": "return",
         "value": undefined,
       },
     ],
@@ -127,7 +127,7 @@ exports[`Link should call the push function with the given path 4`] = `
             ],
             "results": Array [
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": undefined,
               },
             ],
@@ -170,7 +170,7 @@ exports[`Link should call the push function with the given path 4`] = `
                     ],
                     "results": Array [
                       Object {
-                        "isThrow": false,
+                        "type": "return",
                         "value": undefined,
                       },
                     ],
@@ -209,7 +209,7 @@ exports[`Link should call the push function with the given path 4`] = `
                       ],
                       "results": Array [
                         Object {
-                          "isThrow": false,
+                          "type": "return",
                           "value": undefined,
                         },
                       ],
@@ -242,7 +242,7 @@ Object {
     ],
     "results": Array [
       Object {
-        "isThrow": false,
+        "type": "return",
         "value": undefined,
       },
     ],
@@ -401,7 +401,7 @@ Object {
     ],
     "results": Array [
       Object {
-        "isThrow": false,
+        "type": "return",
         "value": undefined,
       },
     ],

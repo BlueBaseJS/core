@@ -54,7 +54,7 @@ describe('ThemeContext', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, ThemeDemo);
+		await waitForElement(wrapper as any, ThemeDemo);
 		expect(wrapper).toMatchSnapshot();
 
 		// Check theme
@@ -66,7 +66,7 @@ describe('ThemeContext', () => {
 		const onValueChange: any = wrapper.find('Picker').prop('onValueChange');
 		onValueChange('bluebase-dark');
 
-		await waitForElement(wrapper, ThemeDemo);
+		await waitForElement(wrapper as any, ThemeDemo);
 		expect(wrapper).toMatchSnapshot();
 
 		// Verify that background color is dark
@@ -84,7 +84,7 @@ describe('ThemeContext', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, ThemeDemo);
+		await waitForElement(wrapper as any, ThemeDemo);
 		expect(wrapper).toMatchSnapshot();
 
 		// Check theme
@@ -101,7 +101,7 @@ describe('ThemeContext', () => {
 		const onValueChange: any = wrapper.find('Picker').prop('onValueChange');
 		onValueChange('does-not-exist');
 
-		await waitForElement(wrapper, ErrorState);
+		await waitForElement(wrapper as any, ErrorState);
 		expect(wrapper).toMatchSnapshot();
 
 		// Verify that background color is dark
@@ -122,13 +122,13 @@ describe('ThemeContext', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, ThemeDemo);
+		await waitForElement(wrapper as any, ThemeDemo);
 		expect(wrapper).toMatchSnapshot();
 
 		// Check theme
 		wrapper.find('ThemeProvider').setState({ theme: undefined });
 
-		await waitForElement(wrapper, ErrorState);
+		await waitForElement(wrapper as any, ErrorState);
 		expect(wrapper).toMatchSnapshot();
 
 		// Verify that background color is dark
@@ -146,7 +146,7 @@ describe('ThemeContext', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, ThemeDemo);
+		await waitForElement(wrapper as any, ThemeDemo);
 		expect(wrapper).toMatchSnapshot();
 
 		// Check theme

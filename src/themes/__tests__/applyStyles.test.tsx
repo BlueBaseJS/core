@@ -18,7 +18,7 @@ describe('applyStyles', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, ThemedDemo);
+		await waitForElement(wrapper as any, ThemedDemo);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -35,7 +35,7 @@ describe('applyStyles', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, ThemedDemo);
+		await waitForElement(wrapper as any, ThemedDemo);
 
 		expect(wrapper).toMatchSnapshot();
 
