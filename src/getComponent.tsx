@@ -44,9 +44,9 @@ export function getComponent<T = any>(...keys: string[]) {
 	const BlueBaseComponent = (props: T) => (
 		<BlueBaseConsumer children={(BB: BlueBase) => {
 
-			if (!BB) {
-				throw Error('Could not resolve component in "getComponent" command. Reason: BlueBase context not found.');
-			}
+			// if (!BB) {
+			// 	throw Error('Could not resolve component in "getComponent" command. Reason: BlueBase context not found.');
+			// }
 
 			const Component = BB.Components.resolve(...keys);
 

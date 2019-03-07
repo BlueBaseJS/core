@@ -326,9 +326,7 @@ describe('PluginRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe(
-				'Could not disable plugin. Reason: No plugin registered by key "foo".'
-			);
+			expect(message).toBe('Could not disable plugin. Reason: No plugin registered by key "foo".');
 		});
 	});
 
