@@ -1,4 +1,5 @@
 export {
+	BlueBaseContentProps,
 	BlueBaseFilterProps,
 	ComponentStateProps,
 	DataObserverProps,
