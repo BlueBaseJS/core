@@ -1,6 +1,19 @@
+import React from 'react';
+
+export interface NoopProps {
+	children?: React.ReactNode,
+}
+
 /**
  * # 😐 Noop
  *
- * A component/function that does... nothing!
+ * A component that does... nothing!
  */
-export const Noop = () => null;
+export const Noop: React.FunctionComponent<NoopProps> = ({ children }) => {
+
+	if (children && React.isValidElement(children)) {
+		return children;
+	}
+
+	return null;
+};

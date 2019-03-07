@@ -15,6 +15,7 @@ import {
 	LoadingStateProps,
 	NavigationActionsProps,
 	NavigationProps,
+	NoopProps,
 	PluginIconProps,
 	RedirectProps,
 	StatefulComponentProps,
@@ -42,6 +43,11 @@ export function getComponent<T = any>(...keys: string[]) {
 
 	const BlueBaseComponent = (props: T) => (
 		<BlueBaseConsumer children={(BB: BlueBase) => {
+
+			if (!BB) {
+				throw Error('Could not resolve component in "getComponent" command. Reason: BlueBase context not found.');
+			}
+
 			const Component = BB.Components.resolve(...keys);
 
 			return React.createElement(Component, props);
@@ -68,7 +74,7 @@ export const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
 export const JsonSchema = getComponent<JsonSchemaProps>('JsonSchema');
 export const Link = getComponent<LinkProps>('Link');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
-export const Noop = getComponent('Noop');
+export const Noop = getComponent<NoopProps>('Noop');
 export const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
 export const Navigation = getComponent<NavigationProps>('Navigation');
 export const NavigationActions = getComponent<NavigationActionsProps>('NavigationActions');
