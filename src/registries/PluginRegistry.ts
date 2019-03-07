@@ -14,7 +14,7 @@ import {
 } from '../utils';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
-import { HookNestedCollection } from './HookRegistry';
+import { FilterNestedCollection } from './FilterRegistry';
 import { ItemCollection } from './Registry';
 import { ThemeCollection } from './ThemeRegistry';
 
@@ -29,7 +29,7 @@ export type PluginCategory =
 
 export interface PluginValue {
 	components: ComponentCollection;
-	hooks: HookNestedCollection; // HookCollectionInput;
+	filters: FilterNestedCollection; // FilterCollectionInput;
 	themes: ThemeCollection;
 	routes?: MaybeThunk<MaybeArray<RouteConfig>>;
 }
@@ -83,7 +83,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
 		components: {},
 		defaultConfigs: {},
 		enabled: true,
-		hooks: {},
+		filters: {},
 		name: 'Untitled Plugin',
 		themes: {},
 
@@ -97,7 +97,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * @param plugin
  */
 export function createPlugin(plugin: Partial<Plugin>): PluginInput {
-	const { components, hooks, themes, routes, value, ...rest } = plugin;
+	const { components, filters, themes, routes, value, ...rest } = plugin;
 
 	return {
 		categories: [],
@@ -109,7 +109,7 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 
 		value: {
 			components: components || {},
-			hooks: hooks || {},
+			filters: filters || {},
 			routes,
 			themes: themes || {},
 
@@ -177,7 +177,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		const item = this.get(key);
 
 		if (!item) {
-			throw Error(`Could not disbale plugin. Reason: No plugin registered by key "${key}".`);
+			throw Error(`Could not disable plugin. Reason: No plugin registered by key "${key}".`);
 		}
 
 		item.enabled = false;

@@ -15,7 +15,7 @@ describe('LoadingState', () => {
 		);
 
 		// Wait for render
-		await waitForElement(component, LoadingState);
+		await waitForElement(component as any, LoadingState);
 		expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
@@ -32,7 +32,7 @@ describe('LoadingState', () => {
 		);
 
 		// Wait for render
-		await waitForElement(component, LoadingState);
+		await waitForElement(component as any, LoadingState);
 		expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
@@ -51,7 +51,7 @@ describe('LoadingState', () => {
 		);
 
 		// Wait for render
-		await waitForElement(component, LoadingState);
+		await waitForElement(component as any, LoadingState);
 		expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);

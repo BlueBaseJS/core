@@ -21,7 +21,7 @@ describe('ComponentState', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, ComponentState);
+		await waitForElement(wrapper as any, ComponentState);
 		expect(wrapper).toMatchSnapshot();
 
 		// Check Component
@@ -53,7 +53,7 @@ describe('ComponentState', () => {
 	);
 
 		// Wait for render
-		await waitForElement(wrapper, ComponentState);
+		await waitForElement(wrapper as any, ComponentState);
 		expect(wrapper).toMatchSnapshot();
 
 		// Check Component

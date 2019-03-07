@@ -20,21 +20,21 @@ describe('ConfigRegistry', () => {
 			expect(Configs.getValue('foo')).toBe('bar');
 		});
 
-		// it('should hook a config property and then register it', async () => {
+		// it('should filter a config property and then register it', async () => {
 		// 	const BB = new BlueBase();
 		// 	const Configs = new ConfigRegistry(BB);
 
-		// 	await BB.Hooks.register('bluebase.config.beforeSave', {
+		// 	await BB.Filters.register('bluebase.config.beforeSave', {
 		// 		name: 'change-config',
 		// 		handler: ({ key }: { key: string, value: any }) => {
 		// 			return {
 		// 				key,
-		// 				value: 'changed value in a hook'
+		// 				value: 'changed value in a filter'
 		// 			};
 		// 		}
 		// 	});
 		// 	await Configs.register('foo', 'bar');
-		// 	expect(Configs.getValue('foo')).toBe('changed value in a hook');
+		// 	expect(Configs.getValue('foo')).toBe('changed value in a filter');
 		// });
 	});
 
@@ -49,11 +49,11 @@ describe('ConfigRegistry', () => {
 			expect(Configs.size()).toBe(5);
 		});
 
-		// it('should hook a config collection during register', async () => {
+		// it('should filter a config collection during register', async () => {
 		// 	const BB = new BlueBase();
 		// 	const Configs = new ConfigRegistry(BB);
 
-		// 	await BB.Hooks.register('bluebase.config.beforeSave', {
+		// 	await BB.Filters.register('bluebase.config.beforeSave', {
 		// 		name: 'change-config',
 		// 		handler: ({ key, value }: { key: string, value: any }) => {
 

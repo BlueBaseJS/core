@@ -653,7 +653,7 @@ exports[`BlueBaseApp should render error state when boot throws an error 1`] = `
         },
         "subscriptions": Map {},
       },
-      "Hooks": HookRegistry {
+      "Filters": FilterRegistry {
         "BB": [Circular],
         "data": Map {},
         "subscriptions": Map {},
@@ -675,7 +675,7 @@ exports[`BlueBaseApp should render error state when boot throws an error 1`] = `
       "bootOptions": Object {
         "components": Object {},
         "configs": Object {},
-        "hooks": Object {},
+        "filters": Object {},
         "plugins": Array [],
         "themes": Array [],
       },
@@ -745,7 +745,7 @@ exports[`BlueBaseApp should render error state with actual error message when de
         "data": Map {},
         "subscriptions": Map {},
       },
-      "Hooks": HookRegistry {
+      "Filters": FilterRegistry {
         "BB": [Circular],
         "data": Map {},
         "subscriptions": Map {},
@@ -767,7 +767,7 @@ exports[`BlueBaseApp should render error state with actual error message when de
       "bootOptions": Object {
         "components": Object {},
         "configs": Object {},
-        "hooks": Object {},
+        "filters": Object {},
         "plugins": Array [],
         "themes": Array [],
       },
@@ -837,7 +837,7 @@ exports[`BlueBaseApp should render error state with custom error message when de
         "data": Map {},
         "subscriptions": Map {},
       },
-      "Hooks": HookRegistry {
+      "Filters": FilterRegistry {
         "BB": [Circular],
         "data": Map {},
         "subscriptions": Map {},
@@ -859,7 +859,7 @@ exports[`BlueBaseApp should render error state with custom error message when de
       "bootOptions": Object {
         "components": Object {},
         "configs": Object {},
-        "hooks": Object {},
+        "filters": Object {},
         "plugins": Array [],
         "themes": Array [],
       },

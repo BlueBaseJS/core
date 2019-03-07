@@ -17,7 +17,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 
@@ -33,7 +33,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 
@@ -45,11 +45,11 @@ describe('StatefulComponent', () => {
 	test(`should show loading state if loading is set to true`, async () => {
 		const component = mount(
 			<BlueBaseApp>
-				<StatefulComponent loading={true} delay={0} />
+				<StatefulComponent loading={true} delay={0} timeout={0} />
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.exists('LoadingState')).toBe(true);
@@ -64,7 +64,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Content');
@@ -79,7 +79,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Render prop');
@@ -97,7 +97,7 @@ describe('StatefulComponent', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
 		expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Custom Component');

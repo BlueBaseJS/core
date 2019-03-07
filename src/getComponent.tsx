@@ -1,6 +1,6 @@
 import { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 import {
-	BlueBaseHookProps,
+	BlueBaseFilterProps,
 	ComponentStateProps,
 	DataObserverProps,
 	DynamicIconProps,
@@ -11,10 +11,13 @@ import {
 	HeaderTitleProps,
 	HoverObserverProps,
 	JsonSchemaProps,
+	LinkProps,
 	LoadingStateProps,
 	NavigationActionsProps,
 	NavigationProps,
+	NoopProps,
 	PluginIconProps,
+	RedirectProps,
 	StatefulComponentProps,
 	WaitObserverProps,
 } from './components';
@@ -24,28 +27,6 @@ import React from 'react';
 
 
 export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
-export {
-	BlueBaseHookProps,
-	ComponentStateProps,
-	DataObserverProps,
-	DynamicIconProps,
-	ErrorObserverProps,
-	ErrorStateProps,
-	HeaderProps,
-	HeaderBackButtonProps,
-	HeaderTitleProps,
-	HoverObserverProps,
-	JsonSchemaProps,
-	LoadingStateProps,
-	NavigationOptions,
-	NavigationProps,
-	NavigationActionsObject,
-	NavigationActionsProps,
-	PluginIconProps,
-	RouteConfig,
-	StatefulComponentProps,
-	WaitObserverProps,
-} from './components';
 
 /**
  * Resolves a component from BlueBase context, and returns it.
@@ -62,6 +43,11 @@ export function getComponent<T = any>(...keys: string[]) {
 
 	const BlueBaseComponent = (props: T) => (
 		<BlueBaseConsumer children={(BB: BlueBase) => {
+
+			// if (!BB) {
+			// 	throw Error('Could not resolve component in "getComponent" command. Reason: BlueBase context not found.');
+			// }
+
 			const Component = BB.Components.resolve(...keys);
 
 			return React.createElement(Component, props);
@@ -74,7 +60,7 @@ export function getComponent<T = any>(...keys: string[]) {
 }
 
 // System Components
-export const BlueBaseHook = getComponent<BlueBaseHookProps>('BlueBaseHook');
+export const BlueBaseFilter = getComponent<BlueBaseFilterProps>('BlueBaseFilter');
 export const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 export const DataObserver = getComponent<DataObserverProps>('DataObserver');
 export const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
@@ -86,11 +72,13 @@ export const HeaderTitle = getComponent<HeaderTitleProps>('HeaderTitle');
 export const HeaderBackButton = getComponent<HeaderBackButtonProps>('HeaderBackButton');
 export const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
 export const JsonSchema = getComponent<JsonSchemaProps>('JsonSchema');
+export const Link = getComponent<LinkProps>('Link');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
-export const Noop = getComponent('Noop');
+export const Noop = getComponent<NoopProps>('Noop');
 export const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
 export const Navigation = getComponent<NavigationProps>('Navigation');
 export const NavigationActions = getComponent<NavigationActionsProps>('NavigationActions');
+export const Redirect = getComponent<RedirectProps>('Redirect');
 export const StatefulComponent = getComponent<StatefulComponentProps>('StatefulComponent');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 

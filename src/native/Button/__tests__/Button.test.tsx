@@ -166,7 +166,7 @@ describe('Button', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Button);
+		await waitForElement(wrapper as any, Button);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Button DummyTouchableNativeFeedback').length).toBe(1);

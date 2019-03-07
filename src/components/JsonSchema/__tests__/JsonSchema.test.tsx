@@ -32,9 +32,9 @@ describe('JsonSchema', () => {
 		});
 	});
 
-	test(`should render a text component with red color that is processed by hooks`, (done) => {
+	test(`should render a text component with red color that is processed by filters`, (done) => {
 
-		const hook = (schema: any, args: { style: any }) => ({
+		const filter = (schema: any, args: { style: any }) => ({
 			...schema,
 			props: {
 				...schema.props,
@@ -43,13 +43,13 @@ describe('JsonSchema', () => {
 					...args.style,
 				}
 			},
-			text: 'Content changed by hook!',
+			text: 'Content changed by filter!',
 		});
 
 		const component = TestRenderer.create(
-			<BlueBaseApp hooks={{ 'content-hook': hook }}>
+			<BlueBaseApp filters={{ 'content-filter': filter }}>
 				<JsonSchema
-					hook="content-hook"
+					filter="content-filter"
 					args={{ style: { color: 'blue' } }}
 					schema={{
 						component: 'Text',
@@ -69,7 +69,7 @@ describe('JsonSchema', () => {
 			expect((tree as any).props.style[1]).toMatchObject({
 				color: 'blue'
 			});
-			expect((tree as any).children.join()).toBe('Content changed by hook!');
+			expect((tree as any).children.join()).toBe('Content changed by filter!');
 			expect(tree).toMatchSnapshot();
 			done();
 		});

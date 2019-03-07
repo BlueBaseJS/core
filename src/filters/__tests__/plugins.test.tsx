@@ -1,4 +1,4 @@
-import { HookHandlerFn, PluginCollection } from '../../registries';
+import { FilterHandlerFn, PluginCollection } from '../../registries';
 import { BlueBase } from '../../BlueBase';
 // import React from 'react';
 // import TestRenderer from 'react-test-renderer';
@@ -27,7 +27,7 @@ const collection: PluginCollection = [{
 	},
 }];
 
-describe('hooks', () => {
+describe('filters', () => {
 
 	describe('plugins', () => {
 
@@ -36,10 +36,10 @@ describe('hooks', () => {
 
 			it(`should register plugins collection`, async () => {
 
-				const hook: HookHandlerFn = (plugins as any)['bluebase.plugins.register'][0].value;
+				const filter: FilterHandlerFn = (plugins as any)['bluebase.plugins.register'][0].value;
 				const BB = new BlueBase();
 
-				await hook(collection, {}, BB);
+				await filter(collection, {}, BB);
 
 				expect(BB.Plugins.size()).toBe(3);
 			});
@@ -54,10 +54,10 @@ describe('hooks', () => {
 				const BB = new BlueBase();
 				// await BB.boot();
 				await BB.Plugins.registerCollection(collection);
-				await BB.Hooks.registerNestedCollection(plugins);
+				await BB.Filters.registerNestedCollection(plugins);
 
-				const hook: HookHandlerFn = (plugins as any)['bluebase.plugins.initialize.all'][0].value;
-				await hook(null, {}, BB);
+				const filter: FilterHandlerFn = (plugins as any)['bluebase.plugins.initialize.all'][0].value;
+				await filter(null, {}, BB);
 
 				expect(BB.Components.has('A')).toBe(true);
 				expect(BB.Components.has('B')).toBe(false);

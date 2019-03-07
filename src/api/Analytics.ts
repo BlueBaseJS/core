@@ -25,6 +25,6 @@ export class Analytics {
 	}
 
 	public track(data: AnalyticsTrackData) {
-		this.BB.Hooks.run('bluebase.analytics.track', data);
+		this.BB.Filters.run('bluebase.analytics.track', data);
 	}
 }

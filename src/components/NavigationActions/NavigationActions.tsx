@@ -1,32 +1,32 @@
 import { renderChildrenWithProps } from '../../utils';
 
-export interface NavigationParams {
+export interface NavigationActionParams {
 	[key: string]: any;
 }
 
 export interface NavitionActionRouteNamePayload {
 	routeName: string,
-	params?: NavigationParams;
+	params?: NavigationActionParams;
 }
 
 export interface NavitionActionPathPayload {
 	path: string,
-	params?: NavigationParams;
+	params?: NavigationActionParams;
 }
 
-export type NavitionActionPayload = string | NavitionActionRouteNamePayload | NavitionActionPathPayload;
+export type NavigationActionPayload = string | NavitionActionRouteNamePayload | NavitionActionPathPayload;
 
 export interface NavigationActionsObject {
 
-	navigate: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
+	navigate: (routeName: NavigationActionPayload, params?: NavigationActionParams) => void,
 	goBack: () => void,
 
-	replace: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
-	push: (routeName: NavitionActionPayload, params?: NavigationParams) => void,
+	replace: (routeName: NavigationActionPayload, params?: NavigationActionParams) => void,
+	push: (routeName: NavigationActionPayload, params?: NavigationActionParams) => void,
 	pop: (steps?: number) => void,
 
-	setParams: (params: NavigationParams) => void,
-	getParam: (key: string) => any,
+	setParams: (params: NavigationActionParams) => void,
+	getParam: (key: string, defaultValue: any) => any,
 
 	source: any,
 
@@ -35,8 +35,12 @@ export interface NavigationActionsObject {
 		routeName: string,
 		url: string,
 		search?: string,
-		params: NavigationParams,
+		params: NavigationActionParams,
 	}
+}
+
+export interface NavigationActionsProps {
+	children: ((actions: NavigationActionsObject) => React.ReactNode)
 }
 
 const stubAction = () => { return; };
@@ -57,10 +61,6 @@ const stubActions: NavigationActionsObject = {
 		url: '',
 	}
 };
-
-export interface NavigationActionsProps {
-	children: ((actions: NavigationActionsObject) => React.ReactNode)
-}
 
 export const NavigationActions
  = ({ children }: NavigationActionsProps) => renderChildrenWithProps(children, stubActions);

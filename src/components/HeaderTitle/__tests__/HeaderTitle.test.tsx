@@ -17,7 +17,7 @@ describe('HeaderTitle', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderTitle);
+		await waitForElement(wrapper as any, HeaderTitle);
 
 		// Should render null
 		expect(wrapper).toMatchSnapshot();

@@ -2,7 +2,7 @@
 import { ActivityIndicator, Button, Image, Text, View } from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
 import {
-	BlueBaseHook,
+	BlueBaseFilter,
 	ComponentState,
 	DataObserver,
 	DynamicIcon,
@@ -15,18 +15,20 @@ import {
 	HomeScreen,
 	HoverObserver,
 	JsonSchema,
+	Link,
 	LoadingState,
 	Navigation,
 	NavigationActions,
 	Noop,
 	PluginIcon,
+	Redirect,
 	StatefulComponent,
 	WaitObserver,
 } from '../components/';
-import { HookNestedCollection } from '../registries';
+import { FilterNestedCollection } from '../registries';
 import { ThemeValue } from '../themes';
 
-export const components: HookNestedCollection = {
+export const components: FilterNestedCollection = {
 	/**
 	 * Registers all components that ship with BlueBase
 	 */
@@ -38,7 +40,7 @@ export const components: HookNestedCollection = {
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Components.registerCollection({
 					// BlueBase Components
-					BlueBaseHook,
+					BlueBaseFilter,
 					ComponentState,
 					DataObserver,
 					DynamicIcon,
@@ -52,11 +54,13 @@ export const components: HookNestedCollection = {
 					HoverObserver,
 					Icon: Noop,
 					JsonSchema,
+					Link,
 					LoadingState,
 					Navigation,
 					NavigationActions,
 					Noop,
 					PluginIcon,
+					Redirect,
 					StatefulComponent,
 					WaitObserver,
 
@@ -124,7 +128,7 @@ export const components: HookNestedCollection = {
 	],
 
 	/**
-	 * This hook registers components from bootOptions.components property.
+	 * This filter registers components from bootOptions.components property.
 	 * These are the components typically set in the bluebase.js file.
 	 */
 	'bluebase.components.register': [
