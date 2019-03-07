@@ -597,6 +597,14 @@ describe('PluginRegistry', () => {
 
 			expect(Plugins.size()).toBe(2);
 		});
+		it('should register an empty array collection if no params are provided', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			await Plugins.registerCollection();
+
+			expect(Plugins.size()).toBe(0);
+		});
 
 		it('should register an object collection', async () => {
 			const BB = new BlueBase();
