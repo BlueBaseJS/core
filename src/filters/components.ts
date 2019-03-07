@@ -128,7 +128,7 @@ export const components: FilterNestedCollection = {
 	],
 
 	/**
-	 * This hook registers components from bootOptions.components property.
+	 * This filter registers components from bootOptions.components property.
 	 * These are the components typically set in the bluebase.js file.
 	 */
 	'bluebase.components.register': [

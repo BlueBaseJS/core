@@ -6,7 +6,7 @@ import TestRenderer from 'react-test-renderer';
 
 const theme = BlueBaseLightTheme.value as any;
 
-describe('hooks', () => {
+describe('filters', () => {
 
 	describe('components', () => {
 

@@ -18,13 +18,13 @@ import isFunction from 'lodash.isfunction';
 import isNil from 'lodash.isnil';
 
 /**
- * Default priority for a hook.
+ * Default priority for a filter.
  */
 export const DEFAULT_HOOK_PRIORITY = 10;
 
 /**
- * The handler function of a hook object. This is the function that is
- * called for each hook, during execution.
+ * The handler function of a filter object. This is the function that is
+ * called for each filter, during execution.
  *
  * This may or may not be an async function.
  *
@@ -83,7 +83,7 @@ export type FilterInput = FilterRegistryInputItem;
 export type FilterInputCollection = ItemCollection<FilterInput>;
 
 /**
- * A nested hook collection.
+ * A nested filter collection.
  */
 export type FilterNestedCollection<T = Omit<FilterInput, 'event'> | FilterHandlerFn> = MaybeThunk<{
 	[event: string]: MaybeArray<MaybeBlueBaseModule<T>>;
@@ -94,18 +94,18 @@ export type FilterNestedCollection<T = Omit<FilterInput, 'event'> | FilterHandle
  */
 export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
 	/**
-	 * Registers a nested hook collection.
+	 * Registers a nested filter collection.
 	 *
 	 * @param collections
 	 */
 	public async registerNestedCollection(collections: FilterNestedCollection = {}) {
-		// If hooks field is a thunk, then call the thunk function
+		// If filters field is a thunk, then call the thunk function
 		collections = resolveThunk(collections, this.BB);
 
-		// Extract hook names. These are events that are being subscribed to
+		// Extract filter names. These are events that are being subscribed to
 		const eventNames = Object.keys(collections);
 
-		// Iterate over each hook name
+		// Iterate over each filter name
 		for (const eventName of eventNames) {
 			// Extract collection for each event
 			const singleCollection = getDefiniteArray(collections[eventName]);
@@ -123,7 +123,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 				const newItem: FilterRegistryInputItem = { event: eventName, ...item } as any;
 
 				if (!this.isInputItem(newItem)) {
-					throw Error(`Could not register Filter. Reason: Input is not a hook item.`);
+					throw Error(`Could not register Filter. Reason: Input is not a filter item.`);
 				}
 
 				await this.register(newItem);
@@ -132,7 +132,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	}
 
 	/**
-	 * Get all hooks for a specific event
+	 * Get all filters for a specific event
 	 * @param event
 	 */
 	public findAllByEvent(event: string) {
@@ -140,7 +140,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	}
 
 	/**
-	 * Run all hook listeners in a waterfall.
+	 * Run all filter listeners in a waterfall.
 	 * Each listener function gets 3 arguments:
 	 * 	- value
 	 * 	- args
@@ -148,11 +148,11 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 *
 	 * Each listener function is expected to return a value.
 	 *
-	 * Example Usage: BB.Filters.run('hook-name', val, args);
+	 * Example Usage: BB.Filters.run('filter-name', val, args);
 	 *
-	 * @param eventName Name of the hook
-	 * @param value Initial value to send to the hook
-	 * @param args Any extra arguments to pass to the hook
+	 * @param eventName Name of the filter
+	 * @param value Initial value to send to the filter
+	 * @param args Any extra arguments to pass to the filter
 	 */
 	public async run<T = any>(
 		eventName: string,
@@ -161,37 +161,37 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	): Promise<T> {
 		let value = initialValue;
 
-		// Get all hook items registered for this event
-		const hookItems = Object.values(this.findAllByEvent(eventName));
+		// Get all filter items registered for this event
+		const filterItems = Object.values(this.findAllByEvent(eventName));
 
-		// If there are no hook items registered for this hook
-		if (hookItems.length === 0) {
+		// If there are no filter items registered for this filter
+		if (filterItems.length === 0) {
 			return value;
 		}
 
 		// Sort items based on priority
-		hookItems.sort((a, b) => a.priority - b.priority);
+		filterItems.sort((a, b) => a.priority - b.priority);
 
 		// Run waterfall
-		for (const item of hookItems) {
+		for (const item of filterItems) {
 			// Resolve handler functions
 			const handler = await item.value;
 
 			// Check if handler is a valid function
 			if (!isFunction(handler)) {
 				throw Error(
-					`Handler of FilterListener "${item.key}" in hook "${eventName}" is not a function.`
+					`Handler of FilterListener "${item.key}" in filter "${eventName}" is not a function.`
 				);
 			}
 
-			// Execute hook function
+			// Execute filter function
 			const result = await handler(value, { ...args }, this.BB);
 
-			// If the hook didn't return any value, return previous accumulator
+			// If the filter didn't return any value, return previous accumulator
 			if (typeof result === 'undefined' && typeof initialValue !== 'undefined') {
 				// if result of current iteration is undefined, don't pass it on
 				this.BB.Logger.warn(
-					`FilterListener "${item.key}" in hook "${eventName}" did not return a result.`,
+					`FilterListener "${item.key}" in filter "${eventName}" did not return a result.`,
 					item
 				);
 			} else {

@@ -3,7 +3,7 @@
 import { BlueBase } from '../../BlueBase';
 
 describe('Logger', () => {
-	it('should send "log" data through hook', async () => {
+	it('should send "log" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A log message';
@@ -21,7 +21,7 @@ describe('Logger', () => {
 		BB.Logger.log(testMessage, testData);
 	});
 
-	it('should send "info" data through hook', async () => {
+	it('should send "info" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A info message';
@@ -39,7 +39,7 @@ describe('Logger', () => {
 		BB.Logger.info(testMessage, testData);
 	});
 
-	it('should send "warn" data through hook', async () => {
+	it('should send "warn" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A warn message';
@@ -57,7 +57,7 @@ describe('Logger', () => {
 		BB.Logger.warn(testMessage, testData);
 	});
 
-	it('should send "error" data through hook', async () => {
+	it('should send "error" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A error message';
@@ -75,7 +75,7 @@ describe('Logger', () => {
 		BB.Logger.error(testMessage, testData);
 	});
 
-	it('should send "debug" data through hook', async () => {
+	it('should send "debug" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A debug message';

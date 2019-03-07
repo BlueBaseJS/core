@@ -27,7 +27,7 @@ const collection: PluginCollection = [{
 	},
 }];
 
-describe('hooks', () => {
+describe('filters', () => {
 
 	describe('plugins', () => {
 
@@ -36,10 +36,10 @@ describe('hooks', () => {
 
 			it(`should register plugins collection`, async () => {
 
-				const hook: FilterHandlerFn = (plugins as any)['bluebase.plugins.register'][0].value;
+				const filter: FilterHandlerFn = (plugins as any)['bluebase.plugins.register'][0].value;
 				const BB = new BlueBase();
 
-				await hook(collection, {}, BB);
+				await filter(collection, {}, BB);
 
 				expect(BB.Plugins.size()).toBe(3);
 			});
@@ -56,8 +56,8 @@ describe('hooks', () => {
 				await BB.Plugins.registerCollection(collection);
 				await BB.Filters.registerNestedCollection(plugins);
 
-				const hook: FilterHandlerFn = (plugins as any)['bluebase.plugins.initialize.all'][0].value;
-				await hook(null, {}, BB);
+				const filter: FilterHandlerFn = (plugins as any)['bluebase.plugins.initialize.all'][0].value;
+				await filter(null, {}, BB);
 
 				expect(BB.Components.has('A')).toBe(true);
 				expect(BB.Components.has('B')).toBe(false);

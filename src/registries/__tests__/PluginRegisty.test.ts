@@ -381,10 +381,10 @@ describe('PluginRegistry', () => {
 				name: 'Foo',
 
 				components: { Foo: Noop },
-				hooks: { Bar: Noop },
+				filters: { Bar: Noop },
 
 				value: {
-					hooks: { Baz: Noop },
+					filters: { Baz: Noop },
 				},
 			});
 
@@ -392,9 +392,9 @@ describe('PluginRegistry', () => {
 			expect(input.name).toBe('Foo');
 			expect(input.enabled).toBe(true);
 			expect(input.components).toBe(undefined);
-			expect(input.hooks).toBe(undefined);
+			expect(input.filters).toBe(undefined);
 			expect((input as any).value.components.Foo).toBeTruthy();
-			expect((input as any).value.hooks.Baz).toBeTruthy();
+			expect((input as any).value.filters.Baz).toBeTruthy();
 		});
 	});
 
@@ -591,7 +591,7 @@ describe('PluginRegistry', () => {
 	// 				name: 'Dummy Plugin',
 	// 			},
 	// 			value: {
-	// 				hooks: {
+	// 				filters: {
 	// 					'an.event': (val: number) => val,
 	// 					'another.event': (val: number) => val,
 	// 				},
@@ -605,12 +605,12 @@ describe('PluginRegistry', () => {
 	// 				name: 'Dummy Plugin 2',
 	// 			},
 	// 			value: {
-	// 				hooks: {
+	// 				filters: {
 	// 					'an.event': (val: number) => val,
 	// 				},
 	// 			},
 
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 			},
 	// 		});
@@ -630,7 +630,7 @@ describe('PluginRegistry', () => {
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
 	// 			enabled: false,
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			},
@@ -639,7 +639,7 @@ describe('PluginRegistry', () => {
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 			},
 	// 			name: 'DummyPlugin2',
@@ -653,13 +653,13 @@ describe('PluginRegistry', () => {
 	// 		expect(BB.Filters.get('another.event')).toBe(undefined);
 	// 	});
 
-	// 	it('should not initialize plugins with hooks in a thunk', async () => {
+	// 	it('should not initialize plugins with filters in a thunk', async () => {
 	// 		const BB = new BlueBase();
 	// 		const Plugins = new PluginRegistry(BB);
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: () => ({
+	// 			filters: () => ({
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			}),
@@ -668,7 +668,7 @@ describe('PluginRegistry', () => {
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: () => ({
+	// 			filters: () => ({
 	// 				'an.event': (val: number) => val,
 	// 			}),
 	// 			name: 'DummyPlugin2',
@@ -692,7 +692,7 @@ describe('PluginRegistry', () => {
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			},
@@ -717,7 +717,7 @@ describe('PluginRegistry', () => {
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
 	// 			enabled: false,
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			},

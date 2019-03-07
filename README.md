@@ -15,7 +15,7 @@
 ## 🏆 Features
 
 - 🔌 Plugins
-- 🎣 Lifecycle events and hooks
+- 🎣 Lifecycle events and filters
 - 🎁 Dynamic Components
 - 📔 Logging API
 

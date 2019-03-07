@@ -13,7 +13,7 @@ export const boot: FilterNestedCollection = {
 
 				await BB.Filters.run('bluebase.configs.register', bootOptions);
 				await BB.Filters.run('bluebase.components.register', bootOptions);
-				await BB.Filters.run('bluebase.hooks.register', bootOptions.hooks);
+				await BB.Filters.run('bluebase.filters.register', bootOptions.filters);
 				await BB.Filters.run('bluebase.routes.register', bootOptions);
 				await BB.Filters.run('bluebase.themes.register', bootOptions);
 				await BB.Filters.run('bluebase.plugins.register', bootOptions.plugins);

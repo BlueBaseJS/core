@@ -10,9 +10,9 @@ import { Text } from 'react-native';
 
 describe('BlueBaseFilter', () => {
 
-	test(`should render a hooked value`, (done) => {
+	test(`should render a filtered value`, (done) => {
 
-		const hooks = {
+		const filters = {
 			math: [
 				{ key: 'add-fifteen', value: (val: number) => val + 15 },
 				(val: number, { op }: { op: 'add' | 'subtract' } = { op: 'subtract' }) => (op === 'subtract' ? val - 5 : val + 5)
@@ -20,8 +20,8 @@ describe('BlueBaseFilter', () => {
 		};
 
 		const rendered: any = TestRenderer.create(
-			<BlueBaseApp hooks={hooks}>
-				<BlueBaseFilter hook="math" value={5} args={{ op: 'add' }} children={(val: number) => {
+			<BlueBaseApp filters={filters}>
+				<BlueBaseFilter filter="math" value={5} args={{ op: 'add' }} children={(val: number) => {
 					return <Text>{val}</Text>;
 				}} />
 			</BlueBaseApp>

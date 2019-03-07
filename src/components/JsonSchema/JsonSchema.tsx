@@ -10,10 +10,10 @@ export interface JsonSchemaProps {
 	/** JSON Schema. */
 	schema: MaybeArray<JsonComponentNode>;
 
-	/** Event name to hook this schema. If this is not provided, the schema is not hooked. */
-	hook?: string;
+	/** Event name to filter this schema. If this is not provided, the schema is not filtered. */
+	filter?: string;
 
-	/** Arguments for the hook. */
+	/** Arguments for the filter. */
 	args?: { [key: string]: any };
 
   /**
@@ -35,13 +35,13 @@ const getComponent = (BB: BlueBase) => {
  * Renders a Component based on JSON schema. This allows developers to create dynamic
  * layouts in their apps, and even save the schema to databases.
  *
- * Moreover, it also makes that schema hook-able. So that any plugin can modify that schema
+ * Moreover, it also makes that schema filter-able. So that any plugin can modify that schema
  * on runtime.
  *
  * ## Usage:
  * ```jsx
  * <JsonSchema
- * 	hook="content-hook"
+ * 	filter="content-filter"
  * 	args={{ style: { color: 'blue' } }}
  *  schema={{
  * 	 component: 'Text',
@@ -63,16 +63,16 @@ export class JsonSchema extends React.PureComponent<JsonSchemaProps> {
 
 		const BB: BlueBase = this.context;
 
-		const { hook, schema, args } = this.props;
+		const { filter, schema, args } = this.props;
 		const parser = new JsonSchemaParser(getComponent(BB));
 
-		// There's no hook, we don't need to do complex async handling
-		if (!hook) {
+		// There's no filter, we don't need to do complex async handling
+		if (!filter) {
 			return parser.parseSchema(schema);
 		}
 
 		return (
-			<BlueBaseFilter hook={hook} value={schema} args={args} children={(loadedSchema) => parser.parseSchema(loadedSchema)} />
+			<BlueBaseFilter filter={filter} value={schema} args={args} children={(loadedSchema) => parser.parseSchema(loadedSchema)} />
 		);
 	}
 }

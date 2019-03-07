@@ -29,7 +29,7 @@ export type PluginCategory =
 
 export interface PluginValue {
 	components: ComponentCollection;
-	hooks: FilterNestedCollection; // FilterCollectionInput;
+	filters: FilterNestedCollection; // FilterCollectionInput;
 	themes: ThemeCollection;
 	routes?: MaybeThunk<MaybeArray<RouteConfig>>;
 }
@@ -83,7 +83,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
 		components: {},
 		defaultConfigs: {},
 		enabled: true,
-		hooks: {},
+		filters: {},
 		name: 'Untitled Plugin',
 		themes: {},
 
@@ -97,7 +97,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * @param plugin
  */
 export function createPlugin(plugin: Partial<Plugin>): PluginInput {
-	const { components, hooks, themes, routes, value, ...rest } = plugin;
+	const { components, filters, themes, routes, value, ...rest } = plugin;
 
 	return {
 		categories: [],
@@ -109,7 +109,7 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 
 		value: {
 			components: components || {},
-			hooks: hooks || {},
+			filters: filters || {},
 			routes,
 			themes: themes || {},
 
