@@ -15,7 +15,7 @@ import { BlueBaseProvider } from './Context';
 import React from 'react';
 import { ThemeProvider } from './themes';
 import { renderChildrenWithProps } from './utils';
-import systemFilters from './hooks';
+import systemFilters from './filters';
 
 export interface BootOptions {
 
