@@ -4,8 +4,8 @@ import {
 	ComponentRegistry,
 	ConfigCollection,
 	ConfigRegistry,
+	FilterRegistry,
 	HookNestedCollection,
-	HookRegistry,
 	PluginCollection,
 	PluginRegistry,
 	ThemeCollection,
@@ -48,7 +48,7 @@ export class BlueBase {
 	// Registries
 	public Components = new ComponentRegistry(this);
 	public Configs = new ConfigRegistry(this);
-	public Hooks = new HookRegistry(this);
+	public Hooks = new FilterRegistry(this);
 	public Plugins = new PluginRegistry(this);
 	public Themes = new ThemeRegistry(this);
 

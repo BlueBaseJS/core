@@ -43,7 +43,7 @@ export type HookHandlerFn<T = any> = (
 /**
  * Properties of a Hook item.
  */
-export interface HookRegistryItemProps {
+export interface FilterRegistryItemProps {
 	/**
 	 * Priority of exeuction.
 	 *
@@ -59,26 +59,26 @@ export interface HookRegistryItemProps {
 	[key: string]: any;
 }
 
-export type HookRegistryItem = BlueBaseModuleRegistryItem<HookHandlerFn> & HookRegistryItemProps;
-export interface HookRegistryInputItem extends BlueBaseModuleRegistryInputItem<HookHandlerFn> {
+export type FilterRegistryItem = BlueBaseModuleRegistryItem<HookHandlerFn> & FilterRegistryItemProps;
+export interface FilterRegistryInputItem extends BlueBaseModuleRegistryInputItem<HookHandlerFn> {
 	/**
 	 * ID of event to subscribe to
 	 */
 	event: string;
 }
 
-type ItemType = HookRegistryItem;
-type ItemInputType = HookRegistryInputItem;
+type ItemType = FilterRegistryItem;
+type ItemInputType = FilterRegistryInputItem;
 
 /**
  * Hook Type.
  */
-export type Hook = HookRegistryItemProps & { value: HookHandlerFn };
+export type Hook = FilterRegistryItemProps & { value: HookHandlerFn };
 
 /**
  * HookInput.
  */
-export type HookInput = HookRegistryInputItem;
+export type HookInput = FilterRegistryInputItem;
 
 export type HookInputCollection = ItemCollection<HookInput>;
 
@@ -90,9 +90,9 @@ export type HookNestedCollection<T = Omit<HookInput, 'event'> | HookHandlerFn> =
 }>;
 
 /**
- * 🎣 HookRegistry
+ * 🚇 FilterRegistry
  */
-export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
+export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
 	/**
 	 * Registers a nested hook collection.
 	 *
@@ -120,7 +120,7 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 					continue;
 				}
 
-				const newItem: HookRegistryInputItem = { event: eventName, ...item } as any;
+				const newItem: FilterRegistryInputItem = { event: eventName, ...item } as any;
 
 				if (!this.isInputItem(newItem)) {
 					throw Error(`Could not register Hook. Reason: Input is not a hook item.`);
@@ -223,7 +223,7 @@ export class HookRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType
 	 * @param key
 	 * @param partial
 	 */
-	protected createItem(key: string, partial: any): HookRegistryItem {
+	protected createItem(key: string, partial: any): FilterRegistryItem {
 		return super.createItem(key, {
 			priority: DEFAULT_HOOK_PRIORITY,
 			...partial,

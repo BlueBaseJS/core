@@ -14,7 +14,7 @@ import {
 } from '../utils';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
-import { HookNestedCollection } from './HookRegistry';
+import { HookNestedCollection } from './FilterRegistry';
 import { ItemCollection } from './Registry';
 import { ThemeCollection } from './ThemeRegistry';
 
