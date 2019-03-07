@@ -59,7 +59,8 @@ export interface FilterRegistryItemProps {
 	[key: string]: any;
 }
 
-export type FilterRegistryItem = BlueBaseModuleRegistryItem<FilterHandlerFn> & FilterRegistryItemProps;
+export type FilterRegistryItem = BlueBaseModuleRegistryItem<FilterHandlerFn> &
+	FilterRegistryItemProps;
 export interface FilterRegistryInputItem extends BlueBaseModuleRegistryInputItem<FilterHandlerFn> {
 	/**
 	 * ID of event to subscribe to

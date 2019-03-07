@@ -71,8 +71,15 @@ export class JsonSchema extends React.PureComponent<JsonSchemaProps> {
 			return parser.parseSchema(schema);
 		}
 
+		const children = (loadedSchema: MaybeArray<JsonComponentNode>) => parser.parseSchema(loadedSchema);
+
 		return (
-			<BlueBaseFilter filter={filter} value={schema} args={args} children={(loadedSchema) => parser.parseSchema(loadedSchema)} />
+			<BlueBaseFilter
+				filter={filter}
+				value={schema}
+				args={args}
+				children={children}
+			/>
 		);
 	}
 }

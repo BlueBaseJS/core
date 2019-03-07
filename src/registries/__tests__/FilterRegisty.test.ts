@@ -146,7 +146,9 @@ describe('FilterRegistry', () => {
 			try {
 				await Filters.registerNestedCollection(collection);
 			} catch (error) {
-				expect(error.message).toBe('Could not register Filter. Reason: Input is not a filter item.');
+				expect(error.message).toBe(
+					'Could not register Filter. Reason: Input is not a filter item.'
+				);
 			}
 		});
 
@@ -300,9 +302,15 @@ describe('FilterRegistry', () => {
 		it('should run a filter even if a listener doesnt return a promise', async () => {
 			const BB = new BlueBase();
 			const Filters = new FilterRegistry(BB);
-			await Filters.register('return-self', { event: 'filter1', value: async (val: number) => val });
+			await Filters.register('return-self', {
+				event: 'filter1',
+				value: async (val: number) => val,
+			});
 			await Filters.register('add-five', { event: 'filter1', value: (val: number) => val + 5 });
-			await Filters.register('add-ten', { event: 'filter1', value: async (val: number) => val + 10 });
+			await Filters.register('add-ten', {
+				event: 'filter1',
+				value: async (val: number) => val + 10,
+			});
 
 			const value = await Filters.run('filter1', 2);
 			expect(value).toBe(17);
