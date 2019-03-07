@@ -18,7 +18,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('HeaderBackButton Image').length).toBe(1);
@@ -34,7 +34,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('HeaderBackButton Image').length).toBe(1);
@@ -50,7 +50,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('HeaderBackButton Button').prop('title')).toBe('Far');
@@ -66,7 +66,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('HeaderBackButton Image').length).toBe(1);
@@ -82,7 +82,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('HeaderBackButton Image').length).toBe(1);
@@ -102,7 +102,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		wrapper.find('HeaderBackButton').last().setState({ initialTextWidth: 200 });
 
@@ -125,7 +125,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		// Update layout
 		(wrapper.find('HeaderBackButton').last().instance() as any)._onTextLayout({
@@ -170,7 +170,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		wrapper.find('HeaderBackButton').last().setState({ initialTextWidth: 200 });
 
@@ -207,7 +207,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -233,7 +233,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -259,7 +259,7 @@ describe('HeaderBackButton', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, HeaderBackButton);
+		await waitForElement(wrapper as any, HeaderBackButton);
 
 		expect(wrapper).toMatchSnapshot();
 

@@ -48,7 +48,7 @@ exports[`WaitObserver should change states based on custom delay & timeout 3`] =
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -87,7 +87,7 @@ exports[`WaitObserver should change states based on custom delay & timeout 4`] =
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -100,7 +100,7 @@ exports[`WaitObserver should change states based on custom delay & timeout 4`] =
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -139,7 +139,7 @@ exports[`WaitObserver should change states based on custom delay & timeout 5`] =
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -153,11 +153,11 @@ exports[`WaitObserver should change states based on custom delay & timeout 5`] =
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],

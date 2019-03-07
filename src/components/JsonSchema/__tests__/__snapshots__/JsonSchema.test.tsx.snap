@@ -45,7 +45,7 @@ exports[`JsonSchema should render a text component with red color 1`] = `
 </Text>
 `;
 
-exports[`JsonSchema should render a text component with red color that is processed by hooks 1`] = `
+exports[`JsonSchema should render a text component with red color that is processed by filters 1`] = `
 <Text
   style={
     Array [
@@ -61,6 +61,6 @@ exports[`JsonSchema should render a text component with red color that is proces
     ]
   }
 >
-  Content changed by hook!
+  Content changed by filter!
 </Text>
 `;

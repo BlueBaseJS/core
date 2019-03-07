@@ -4,8 +4,8 @@ import {
 	ComponentRegistry,
 	ConfigCollection,
 	ConfigRegistry,
-	HookNestedCollection,
-	HookRegistry,
+	FilterNestedCollection,
+	FilterRegistry,
 	PluginCollection,
 	PluginRegistry,
 	ThemeCollection,
@@ -15,7 +15,7 @@ import { BlueBaseProvider } from './Context';
 import React from 'react';
 import { ThemeProvider } from './themes';
 import { renderChildrenWithProps } from './utils';
-import systemHooks from './hooks';
+import systemFilters from './filters';
 
 export interface BootOptions {
 
@@ -25,8 +25,8 @@ export interface BootOptions {
 	/** Collection of configs to add in BlueBase's Config Registry. */
 	configs: ConfigCollection,
 
-	/** Collection of hooks to add in BlueBase's Hook Registry. */
-	hooks: HookNestedCollection,
+	/** Collection of filters to add in BlueBase's Filter Registry. */
+	filters: FilterNestedCollection,
 
 	/** Collection of plugins to add in BlueBase's Plugin Registry. */
 	plugins: PluginCollection,
@@ -48,7 +48,7 @@ export class BlueBase {
 	// Registries
 	public Components = new ComponentRegistry(this);
 	public Configs = new ConfigRegistry(this);
-	public Hooks = new HookRegistry(this);
+	public Filters = new FilterRegistry(this);
 	public Plugins = new PluginRegistry(this);
 	public Themes = new ThemeRegistry(this);
 
@@ -58,7 +58,7 @@ export class BlueBase {
 	private bootOptions: BootOptions = {
 		components: {},
 		configs: {},
-		hooks: {},
+		filters: {},
 		plugins: [],
 		themes: [],
 	};
@@ -68,16 +68,16 @@ export class BlueBase {
 		// Update boot options
 		this.bootOptions = { ...this.bootOptions, ...options };
 
-		// Register basic hooks here, so they can be used in boot
-		await this.Hooks.registerNestedCollection(systemHooks);
-		await this.Hooks.registerNestedCollection(this.bootOptions.hooks);
+		// Register basic filters here, so they can be used in boot
+		await this.Filters.registerNestedCollection(systemFilters);
+		await this.Filters.registerNestedCollection(this.bootOptions.filters);
 
 		// 🚀 Boot!
-		await this.Hooks.run('bluebase.boot', this.bootOptions);
+		await this.Filters.run('bluebase.boot', this.bootOptions);
 
 		// Navigation
 		const Navigation = this.Components.resolve('Navigation');
-		const navigatorConfigs = await this.Hooks.run('bluebase.navigator.root', {});
+		const navigatorConfigs = await this.Filters.run('bluebase.navigator.root', {});
 
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>

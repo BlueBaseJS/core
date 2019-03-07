@@ -295,10 +295,10 @@ describe('PluginRegistry', () => {
 
 			await Plugins.register('foo', { enabled: false, value: {} });
 
-			Plugins.enable('foo');
+			await Plugins.enable('foo');
 			expect(Plugins.isEnabled('foo')).toBe(true);
 
-			Plugins.disable('foo');
+			await Plugins.disable('foo');
 			expect(Plugins.isEnabled('foo')).toBe(false);
 		});
 
@@ -307,7 +307,7 @@ describe('PluginRegistry', () => {
 			const Plugins = new PluginRegistry(BB);
 
 			try {
-				Plugins.enable('foo');
+				await Plugins.enable('foo');
 			} catch (e) {
 				expect(e.message).toBe(
 					'Could not enable plugin. Reason: No plugin registered by key "foo".'
@@ -319,13 +319,14 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
+			let message;
 			try {
-				Plugins.disable('foo');
+				await Plugins.disable('foo');
 			} catch (e) {
-				expect(e.message).toBe(
-					'Could not disable plugin. Reason: No plugin registered by key "foo".'
-				);
+				message = e.message;
 			}
+
+			expect(message).toBe('Could not disable plugin. Reason: No plugin registered by key "foo".');
 		});
 	});
 
@@ -381,10 +382,10 @@ describe('PluginRegistry', () => {
 				name: 'Foo',
 
 				components: { Foo: Noop },
-				hooks: { Bar: Noop },
+				filters: { Bar: Noop },
 
 				value: {
-					hooks: { Baz: Noop },
+					filters: { Baz: Noop },
 				},
 			});
 
@@ -392,9 +393,9 @@ describe('PluginRegistry', () => {
 			expect(input.name).toBe('Foo');
 			expect(input.enabled).toBe(true);
 			expect(input.components).toBe(undefined);
-			expect(input.hooks).toBe(undefined);
+			expect(input.filters).toBe(undefined);
 			expect((input as any).value.components.Foo).toBeTruthy();
-			expect((input as any).value.hooks.Baz).toBeTruthy();
+			expect((input as any).value.filters.Baz).toBeTruthy();
 		});
 	});
 
@@ -462,7 +463,7 @@ describe('PluginRegistry', () => {
 			await Plugins.resolve('p2');
 
 			// Disbale so it gets skipped
-			Plugins.disable('p3');
+			await Plugins.disable('p3');
 
 			const routes = Plugins.getRouteMap();
 
@@ -591,7 +592,7 @@ describe('PluginRegistry', () => {
 	// 				name: 'Dummy Plugin',
 	// 			},
 	// 			value: {
-	// 				hooks: {
+	// 				filters: {
 	// 					'an.event': (val: number) => val,
 	// 					'another.event': (val: number) => val,
 	// 				},
@@ -605,22 +606,22 @@ describe('PluginRegistry', () => {
 	// 				name: 'Dummy Plugin 2',
 	// 			},
 	// 			value: {
-	// 				hooks: {
+	// 				filters: {
 	// 					'an.event': (val: number) => val,
 	// 				},
 	// 			},
 
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 			},
 	// 		});
 
-	// 		expect(BB.Hooks.size()).toBe(0);
+	// 		expect(BB.Filters.size()).toBe(0);
 
 	// 		await BB.boot();
 
-	// 		expect(BB.Hooks.get('an.event')).toHaveLength(2);
-	// 		expect(BB.Hooks.get('another.event')).toHaveLength(1);
+	// 		expect(BB.Filters.get('an.event')).toHaveLength(2);
+	// 		expect(BB.Filters.get('another.event')).toHaveLength(1);
 	// 	});
 
 	// 	it('should not initialize disabled plugins', async () => {
@@ -630,7 +631,7 @@ describe('PluginRegistry', () => {
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
 	// 			enabled: false,
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			},
@@ -639,27 +640,27 @@ describe('PluginRegistry', () => {
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 			},
 	// 			name: 'DummyPlugin2',
 	// 		});
 
-	// 		expect(BB.Hooks.size()).toBe(0);
+	// 		expect(BB.Filters.size()).toBe(0);
 
 	// 		await BB.boot();
 
-	// 		expect(BB.Hooks.get('an.event')).toHaveLength(1);
-	// 		expect(BB.Hooks.get('another.event')).toBe(undefined);
+	// 		expect(BB.Filters.get('an.event')).toHaveLength(1);
+	// 		expect(BB.Filters.get('another.event')).toBe(undefined);
 	// 	});
 
-	// 	it('should not initialize plugins with hooks in a thunk', async () => {
+	// 	it('should not initialize plugins with filters in a thunk', async () => {
 	// 		const BB = new BlueBase();
 	// 		const Plugins = new PluginRegistry(BB);
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: () => ({
+	// 			filters: () => ({
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			}),
@@ -668,18 +669,18 @@ describe('PluginRegistry', () => {
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: () => ({
+	// 			filters: () => ({
 	// 				'an.event': (val: number) => val,
 	// 			}),
 	// 			name: 'DummyPlugin2',
 	// 		});
 
-	// 		expect(BB.Hooks.size()).toBe(0);
+	// 		expect(BB.Filters.size()).toBe(0);
 
 	// 		await BB.boot();
 
-	// 		expect(BB.Hooks.get('an.event')).toHaveLength(2);
-	// 		expect(BB.Hooks.get('another.event')).toHaveLength(1);
+	// 		expect(BB.Filters.get('an.event')).toHaveLength(2);
+	// 		expect(BB.Filters.get('another.event')).toHaveLength(1);
 	// 	});
 
 	// });
@@ -692,7 +693,7 @@ describe('PluginRegistry', () => {
 
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			},
@@ -717,7 +718,7 @@ describe('PluginRegistry', () => {
 	// 		// const Plugins = new PluginRegistry(BB);
 	// 		await Plugins.register({
 	// 			enabled: false,
-	// 			hooks: {
+	// 			filters: {
 	// 				'an.event': (val: number) => val,
 	// 				'another.event': (val: number) => val,
 	// 			},

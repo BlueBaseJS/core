@@ -45,7 +45,7 @@ describe('Redirect', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Redirect);
+		await waitForElement(wrapper as any, Redirect);
 
 		expect(stubActions.replace).toBeCalledTimes(1);
 		expect(stubActions.replace).toBeCalledWith('Foo', undefined);
@@ -68,7 +68,7 @@ describe('Redirect', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Redirect);
+		await waitForElement(wrapper as any, Redirect);
 
 		expect(stubActions.replace).toBeCalledTimes(1);
 		expect(stubActions.replace).toBeCalledWith({ path: '/foo' }, undefined);
@@ -91,7 +91,7 @@ describe('Redirect', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Redirect);
+		await waitForElement(wrapper as any, Redirect);
 
 		expect(stubActions.push).toBeCalledTimes(1);
 		expect(stubActions.push).toBeCalledWith('Foo', undefined);
@@ -114,7 +114,7 @@ describe('Redirect', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Redirect);
+		await waitForElement(wrapper as any, Redirect);
 
 		expect(stubActions.push).toBeCalledTimes(0);
 		expect(stubActions.replace).toBeCalledTimes(0);

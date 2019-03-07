@@ -19,7 +19,7 @@ describe('ReactLoadableLoading', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, ReactLoadableLoading);
+		await waitForElement(component as any, ReactLoadableLoading);
 
 		expect(component).toMatchSnapshot();
 
@@ -41,7 +41,7 @@ describe('ReactLoadableLoading', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, ReactLoadableLoading);
+		await waitForElement(component as any, ReactLoadableLoading);
 
 		expect(component).toMatchSnapshot();
 
@@ -62,7 +62,7 @@ describe('ReactLoadableLoading', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, ReactLoadableLoading);
+		await waitForElement(component as any, ReactLoadableLoading);
 
 		expect(component).toMatchSnapshot();
 
@@ -84,7 +84,7 @@ describe('ReactLoadableLoading', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, ReactLoadableLoading);
+		await waitForElement(component as any, ReactLoadableLoading);
 
 		expect(component).toMatchSnapshot();
 
@@ -104,7 +104,7 @@ describe('ReactLoadableLoading', () => {
 			</BlueBaseApp>
 		);
 
-		await waitForElement(component, ReactLoadableLoading);
+		await waitForElement(component as any, ReactLoadableLoading);
 
 		expect(component).toMatchSnapshot();
 

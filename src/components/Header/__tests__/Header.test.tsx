@@ -20,7 +20,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton Image').length).toBe(1);
@@ -36,7 +36,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton Image').length).toBe(1);
@@ -52,7 +52,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -68,7 +68,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -90,7 +90,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton').length).toBe(0);
@@ -109,7 +109,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header Left Text').last().text()).toBe('Left');
@@ -128,7 +128,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton Text').last().text()).toBe('Go Back');
@@ -147,7 +147,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header Right Text').last().text()).toBe('Right');
@@ -166,7 +166,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		const view = wrapper.find('Header [testID="header-right-container"]').last().prop('style') as any;
 		const styles = deepmerge.all(view.filter((a: any) => a !== undefined)) as any;
@@ -188,7 +188,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		const view = wrapper.find('Header [testID="header-back"]').first().prop('style') as any;
 		const styles = deepmerge.all(view.filter((a: any) => a !== undefined)) as any;
@@ -210,7 +210,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		// Update layout
 		(wrapper.find('Header SafeAreaView').last().prop('onLayout') as any)({
@@ -246,7 +246,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -277,7 +277,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -296,7 +296,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -317,7 +317,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 
@@ -344,7 +344,7 @@ describe('Header', () => {
 			);
 
 			// Wait for render
-			await waitForElement(wrapper, Header);
+			await waitForElement(wrapper as any, Header);
 
 			expect(wrapper).toMatchSnapshot();
 			expect(wrapper.find('Header MaskedViewIOS').length).toBe(0);
@@ -366,7 +366,7 @@ describe('Header', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Header);
+		await waitForElement(wrapper as any, Header);
 
 		expect(wrapper).toMatchSnapshot();
 

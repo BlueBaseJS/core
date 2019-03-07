@@ -45,7 +45,7 @@ describe('Link', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Link);
+		await waitForElement(wrapper as any, Link);
 
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
@@ -78,7 +78,7 @@ describe('Link', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Link);
+		await waitForElement(wrapper as any, Link);
 
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
@@ -105,7 +105,7 @@ describe('Link', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Link);
+		await waitForElement(wrapper as any, Link);
 
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
@@ -132,7 +132,7 @@ describe('Link', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Link);
+		await waitForElement(wrapper as any, Link);
 
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress({ defaultPrevented: true, preventDefault: () => { return; } }, stubActions);
@@ -155,7 +155,7 @@ describe('Link', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Link);
+		await waitForElement(wrapper as any, Link);
 
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
@@ -178,7 +178,7 @@ describe('Link', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, Link);
+		await waitForElement(wrapper as any, Link);
 
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);

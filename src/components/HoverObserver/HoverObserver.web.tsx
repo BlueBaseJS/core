@@ -1,6 +1,5 @@
 import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
 import React, { SyntheticEvent } from 'react';
-import { Noop } from '../Noop';
 
 // TODO: fix for react-native, this is web only component
 interface MouseEventObject {
@@ -33,6 +32,8 @@ export interface HoverObserverProps {
 export interface HoverObserverState {
 	readonly isHovering: boolean;
 }
+
+const Noop = () => { return; };
 
 /**
  * # 🛸 HoverObserver

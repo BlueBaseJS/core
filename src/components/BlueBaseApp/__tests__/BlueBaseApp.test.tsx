@@ -28,7 +28,7 @@ describe('BlueBaseApp', () => {
 		expect(wrapper.find('BlueBaseApp Text').last().text()).toBe('Loading');
 
 		// Wait for state update
-		await waitForState(wrapper, (state: any) => state.loading === false);
+		await waitForState(wrapper as any, (state: any) => state.loading === false);
 		wrapper.update();
 
 		expect(wrapper).toMatchSnapshot();
@@ -47,7 +47,7 @@ describe('BlueBaseApp', () => {
 		expect(wrapper.find('BlueBaseApp Text').last().text()).toBe('Loading');
 
 		// Wait for state update
-		await waitForState(wrapper, (state: any) => state.loading === false);
+		await waitForState(wrapper as any, (state: any) => state.loading === false);
 		wrapper.update();
 
 		expect(wrapper).toMatchSnapshot();
@@ -94,7 +94,7 @@ describe('BlueBaseApp', () => {
 		expect(wrapper.find('BlueBaseApp Text').last().text()).toBe('Loading');
 
 		// Wait for state update
-		await waitForState(wrapper, (state: any) => state.loading === false);
+		await waitForState(wrapper as any, (state: any) => state.loading === false);
 		wrapper.update();
 
 		expect(wrapper).toMatchSnapshot();
@@ -110,7 +110,7 @@ describe('BlueBaseApp', () => {
 		expect(wrapper.find('BlueBaseApp Text').last().text()).toBe('Loading');
 
 		// Wait for state update
-		await waitForState(wrapper, (state: any) => state.loading === false);
+		await waitForState(wrapper as any, (state: any) => state.loading === false);
 		wrapper.update();
 
 		expect(wrapper).toMatchSnapshot();
@@ -131,7 +131,7 @@ describe('BlueBaseApp', () => {
 		expect(wrapper.find('BlueBaseApp Text').last().text()).toBe('Loading');
 
 		// Wait for state update
-		await waitForState(wrapper, (state: any) => state.loading === false);
+		await waitForState(wrapper as any, (state: any) => state.loading === false);
 		wrapper.update();
 
 		expect(wrapper).toMatchSnapshot();

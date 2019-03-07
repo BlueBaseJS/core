@@ -1,5 +1,5 @@
 export {
-	BlueBaseHookProps,
+	BlueBaseFilterProps,
 	ComponentStateProps,
 	DataObserverProps,
 	DynamicIconProps,
@@ -27,6 +27,7 @@ export {
 	NavigationActionsProps,
 	NavigationActionPayload,
 	NavigationActionParams,
+	NoopProps,
 	PluginIconProps,
 	RedirectProps,
 	StatefulComponentProps,

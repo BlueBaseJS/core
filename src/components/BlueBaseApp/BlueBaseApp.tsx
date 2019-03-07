@@ -57,7 +57,7 @@ interface BlueBaseAppState {
  *
  * ## Usage
  * ```jsx
- * <BlueBaseApp BB={BB} plugins={{}} hook={{}} themes={{}} />
+ * <BlueBaseApp BB={BB} plugins={{}} filter={{}} themes={{}} />
  * ```
  */
 export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {

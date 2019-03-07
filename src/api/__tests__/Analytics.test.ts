@@ -4,7 +4,7 @@ import { AnalyticsTrackData } from '../Analytics';
 import { BlueBase } from '../../BlueBase';
 
 describe('Analytics', () => {
-	it('should send track data through hook', async () => {
+	it('should send track data through filter', async () => {
 		const BB = new BlueBase();
 		const testData: AnalyticsTrackData = {
 			name: 'click',
@@ -17,7 +17,7 @@ describe('Analytics', () => {
 			},
 		};
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.analytics.track',
 			value: (data: AnalyticsTrackData) => {

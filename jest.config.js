@@ -47,5 +47,5 @@ module.exports = {
     // 'src/*/output/**',
     // 'output/'
   ],
-  setupTestFrameworkScriptFile: "<rootDir>/tests/setup.js"
+  setupFilesAfterEnv: ["<rootDir>/tests/setup.js"]
 };

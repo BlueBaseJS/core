@@ -3,13 +3,13 @@
 import { BlueBase } from '../../BlueBase';
 
 describe('Logger', () => {
-	it('should send "log" data through hook', async () => {
+	it('should send "log" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A log message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -21,13 +21,13 @@ describe('Logger', () => {
 		BB.Logger.log(testMessage, testData);
 	});
 
-	it('should send "info" data through hook', async () => {
+	it('should send "info" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A info message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -39,13 +39,13 @@ describe('Logger', () => {
 		BB.Logger.info(testMessage, testData);
 	});
 
-	it('should send "warn" data through hook', async () => {
+	it('should send "warn" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A warn message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -57,13 +57,13 @@ describe('Logger', () => {
 		BB.Logger.warn(testMessage, testData);
 	});
 
-	it('should send "error" data through hook', async () => {
+	it('should send "error" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A error message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -75,13 +75,13 @@ describe('Logger', () => {
 		BB.Logger.error(testMessage, testData);
 	});
 
-	it('should send "debug" data through hook', async () => {
+	it('should send "debug" data through filter', async () => {
 		const BB = new BlueBase();
 
 		const testMessage = 'A debug message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
