@@ -579,6 +579,83 @@ describe('PluginRegistry', () => {
 		});
 	});
 
+	describe('.registerCollection', () => {
+		it('should register an array collection', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			await Plugins.registerCollection([
+				{ key: 'p1', name: 'P1', routes: { name: 'P1_Route', path: 'a' } },
+				{ key: 'p2', name: 'P2', routes: { name: 'P2_Route', path: 'b' } },
+			]);
+
+			const item = Plugins.get('p1');
+			expect((item as any).name).toBe('P1');
+
+			const item2 = Plugins.get('p2');
+			expect((item2 as any).name).toBe('P2');
+
+			expect(Plugins.size()).toBe(2);
+		});
+
+		it('should register an object collection', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			await Plugins.registerCollection({
+				p1: { name: 'P1', routes: { name: 'P1_Route', path: 'a' } },
+				p2: { name: 'P2', routes: { name: 'P2_Route', path: 'b' } },
+			});
+
+			const item = Plugins.get('p1');
+			expect((item as any).name).toBe('P1');
+
+			const item2 = Plugins.get('p2');
+			expect((item2 as any).name).toBe('P2');
+
+			expect(Plugins.size()).toBe(2);
+		});
+
+		// it('should register an object value collection', async () => {
+		// 	const BB = new BlueBase();
+		// 	const Plugins = new PluginRegistry(BB);
+
+		// 	await Plugins.registerCollection({
+		// 		baz: 'boo',
+		// 		foo: 'bar',
+		// 	});
+
+		// 	const item = Plugins.get('foo');
+		// 	expect((item as any).value).toBe('bar');
+
+		// 	const item2 = Plugins.get('baz');
+		// 	expect((item2 as any).value).toBe('boo');
+
+		// 	expect(Plugins.size()).toBe(2);
+		// });
+
+		// it('should throw an error for unknown collection format', async () => {
+		// 	const BB = new BlueBase();
+		// 	const Plugins = new PluginRegistry(BB);
+
+		// 	try {
+		// 		await Plugins.registerCollection('boom' as any);
+		// 	} catch (error) {
+		// 		expect(error.message).toBe(
+		// 			'Could not register collection. Reason: Unknown collection type.'
+		// 		);
+		// 	}
+		// });
+
+		// it('should not do anything if no param given', async () => {
+		// 	const BB = new BlueBase();
+		// 	const Plugins = new PluginRegistry(BB);
+
+		// 	await Plugins.registerCollection();
+		// 	expect(Plugins.size()).toBe(0);
+		// });
+	});
+
 	// describe('Initialization', () => {
 
 	// 	it('should initialize plugins', async () => {

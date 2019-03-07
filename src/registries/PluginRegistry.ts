@@ -254,6 +254,31 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	}
 
 	/**
+	 * Register a collection of items.
+	 * @param collection
+	 */
+	public async registerCollection(collection: ItemCollection<ItemInputType> = []) {
+		// If its an array
+		if (Array.isArray(collection)) {
+			for (const item of collection) {
+				await this.register(createPlugin(item));
+			}
+
+			return;
+		}
+		// If its an object
+		else if (collection === Object(collection)) {
+			for (const key of Object.keys(collection)) {
+				await this.register(key, createPlugin(collection[key]));
+			}
+
+			return;
+		}
+
+		throw Error('Could not register collection. Reason: Unknown collection type.');
+	}
+
+	/**
 	 * Convert any input value to an item. This is where you transform inputs and add defualts
 	 * @param key
 	 * @param partial
