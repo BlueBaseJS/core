@@ -22,7 +22,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton Image').length).toBe(1);
 		expect(wrapper.find('Header [testID="header-back-title"]').length).toBe(0);
 	});
@@ -38,7 +38,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton Image').length).toBe(1);
 		expect(wrapper.find('Header [testID="header-title"] Text').last().text()).toBe('Foo');
 	});
@@ -54,7 +54,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		expect(wrapper.find('Header').last().html()).toBe(null);
 	});
@@ -70,7 +70,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		const text = wrapper.find('Header View').first().prop('style') as any;
 		const textStyles = deepmerge.all(text.filter((a: any) => a !== undefined)) as any;
@@ -92,7 +92,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton').length).toBe(0);
 		expect(wrapper.find('Header [testID="header-title"] Text').last().text()).toBe('Foo');
 	});
@@ -111,7 +111,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header Left Text').last().text()).toBe('Left');
 	});
 
@@ -130,7 +130,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header HeaderBackButton Text').last().text()).toBe('Go Back');
 		expect(wrapper.find('Header [testID="header-title"] Text').last().text()).toBe('Foo');
 	});
@@ -149,7 +149,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Header Right Text').last().text()).toBe('Right');
 	});
 
@@ -171,7 +171,7 @@ describe('Header', () => {
 		const view = wrapper.find('Header [testID="header-right-container"]').last().prop('style') as any;
 		const styles = deepmerge.all(view.filter((a: any) => a !== undefined)) as any;
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(styles.backgroundColor).toBe('yellow');
 	});
 
@@ -193,7 +193,7 @@ describe('Header', () => {
 		const view = wrapper.find('Header [testID="header-back"]').first().prop('style') as any;
 		const styles = deepmerge.all(view.filter((a: any) => a !== undefined)) as any;
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 		expect(styles.backgroundColor).toBe('orange');
 	});
 
@@ -225,7 +225,7 @@ describe('Header', () => {
 		wrapper.update();
 		wrapper.update();
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		expect(wrapper.find('Header').last().state('initWidth')).toBe(200);
 		expect(wrapper.find('Header').last().state('titleWidth')).toBe(50);
@@ -248,7 +248,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		const title = wrapper.find('HeaderTitle').last().prop('style') as any;
 		const image = wrapper.find('HeaderBackButton Image').last().prop('style') as any;
@@ -259,7 +259,7 @@ describe('Header', () => {
 		const titleStyles = deepmerge.all(title.filter((a: any) => a !== undefined)) as any;
 		const textStyles = deepmerge.all(text.filter((a: any) => a !== undefined)) as any;
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		expect(titleStyles.color).toBe('yellow');
 		expect(imageStyles.tintColor).toBe('yellow');
@@ -279,7 +279,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		expect(wrapper.find('Header Right').last().length).toBeGreaterThan(0);
 	});
@@ -298,7 +298,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		expect(wrapper.find('Header [testID="header-title"] Text').last().text()).toBe('Bar');
 	});
@@ -319,7 +319,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		expect(wrapper.find('Header [testID="header-bg"]').length).toBeGreaterThan(0);
 	});
@@ -346,7 +346,7 @@ describe('Header', () => {
 			// Wait for render
 			await waitForElement(wrapper as any, Header);
 
-			expect(wrapper).toMatchSnapshot();
+			// expect(wrapper).toMatchSnapshot();
 			expect(wrapper.find('Header MaskedViewIOS').length).toBe(0);
 		});
 	});
@@ -368,7 +368,7 @@ describe('Header', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Header);
 
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 
 		const styles = wrapper.find('Header').last().prop('styles') as any;
 		expect(styles.iconMask.transform[0].scaleX).toBe(-1);

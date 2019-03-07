@@ -2,6 +2,7 @@
 import { ActivityIndicator, Button, Image, Text, View } from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
 import {
+	BlueBaseContent,
 	BlueBaseFilter,
 	ComponentState,
 	DataObserver,
@@ -40,6 +41,7 @@ export const components: FilterNestedCollection = {
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Components.registerCollection({
 					// BlueBase Components
+					BlueBaseContent,
 					BlueBaseFilter,
 					ComponentState,
 					DataObserver,

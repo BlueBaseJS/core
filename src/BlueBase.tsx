@@ -12,9 +12,9 @@ import {
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
+import { MaybeRenderPropChildren } from './utils';
 import React from 'react';
 import { ThemeProvider } from './themes';
-import { renderChildrenWithProps } from './utils';
 import systemFilters from './filters';
 
 export interface BootOptions {
@@ -36,7 +36,7 @@ export interface BootOptions {
 
 	// routes: Plugin[]
 
-	children?: React.ReactNode,
+	children?: MaybeRenderPropChildren<{ BB: BlueBase }>,
 }
 
 export class BlueBase {
@@ -75,18 +75,19 @@ export class BlueBase {
 		// 🚀 Boot!
 		await this.Filters.run('bluebase.boot', this.bootOptions);
 
+		const BlueBaseContent = this.Components.resolve('BlueBaseContent');
+
 		// Navigation
-		const Navigation = this.Components.resolve('Navigation');
 		const navigatorConfigs = await this.Filters.run('bluebase.navigator.root', {});
 
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-				{
-					(this.bootOptions.children)
-					? renderChildrenWithProps(this.bootOptions.children, { BB: this })
-					: <Navigation navigator={navigatorConfigs} />
-				}
+					<BlueBaseContent
+						BB={this}
+						children={this.bootOptions.children}
+						navigator={navigatorConfigs}
+					/>
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);

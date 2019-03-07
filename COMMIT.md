@@ -23,7 +23,8 @@ Emoji reference of Commitizen scopes for this repo:
 ## 🎁 Components
 
 - 🚀 BlueBaseApp
-- 🎣 BlueBaseFilter
+- 🏡 BlueBaseContent
+- 🚇 BlueBaseFilter
 - 🤡 ComponentState
 - ️⚡️ DataObserver
 - 🗿 DynamicIcon

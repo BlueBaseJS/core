@@ -56,7 +56,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 
 		expect(stubActions).toMatchSnapshot();
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should call the push function with the given path`, async () => {
@@ -89,7 +89,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 
 		expect(stubActions).toMatchSnapshot();
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should call the replace function with the given path`, async () => {
@@ -116,7 +116,7 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 
 		expect(stubActions).toMatchSnapshot();
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should not do anything if event.defaultPrevented is true`, async () => {
@@ -141,7 +141,7 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 
 		expect(stubActions).toMatchSnapshot();
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should call the push function with the given path`, async () => {
@@ -166,7 +166,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 
 		expect(stubActions).toMatchSnapshot();
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should not do anything if there is no path or routeName prop`, async () => {
@@ -187,7 +187,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 
 		expect(stubActions).toMatchSnapshot();
-		expect(wrapper).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
 	});
 
 });
