@@ -56,7 +56,7 @@ export class BlueBaseHook extends React.PureComponent<BlueBaseHookProps> {
 		const BB: BlueBase = this.context;
 
 		const AsyncBlueBaseHook = Loadable({
-			loader: () => BB.Hooks.run(hook, value, args),
+			loader: () => BB.Filters.run(hook, value, args),
 			loading: ReactLoadableLoading,
 			render(loadedValue: any) {
 				return children(loadedValue);

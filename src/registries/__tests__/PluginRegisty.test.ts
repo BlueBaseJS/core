@@ -615,12 +615,12 @@ describe('PluginRegistry', () => {
 	// 			},
 	// 		});
 
-	// 		expect(BB.Hooks.size()).toBe(0);
+	// 		expect(BB.Filters.size()).toBe(0);
 
 	// 		await BB.boot();
 
-	// 		expect(BB.Hooks.get('an.event')).toHaveLength(2);
-	// 		expect(BB.Hooks.get('another.event')).toHaveLength(1);
+	// 		expect(BB.Filters.get('an.event')).toHaveLength(2);
+	// 		expect(BB.Filters.get('another.event')).toHaveLength(1);
 	// 	});
 
 	// 	it('should not initialize disabled plugins', async () => {
@@ -645,12 +645,12 @@ describe('PluginRegistry', () => {
 	// 			name: 'DummyPlugin2',
 	// 		});
 
-	// 		expect(BB.Hooks.size()).toBe(0);
+	// 		expect(BB.Filters.size()).toBe(0);
 
 	// 		await BB.boot();
 
-	// 		expect(BB.Hooks.get('an.event')).toHaveLength(1);
-	// 		expect(BB.Hooks.get('another.event')).toBe(undefined);
+	// 		expect(BB.Filters.get('an.event')).toHaveLength(1);
+	// 		expect(BB.Filters.get('another.event')).toBe(undefined);
 	// 	});
 
 	// 	it('should not initialize plugins with hooks in a thunk', async () => {
@@ -674,12 +674,12 @@ describe('PluginRegistry', () => {
 	// 			name: 'DummyPlugin2',
 	// 		});
 
-	// 		expect(BB.Hooks.size()).toBe(0);
+	// 		expect(BB.Filters.size()).toBe(0);
 
 	// 		await BB.boot();
 
-	// 		expect(BB.Hooks.get('an.event')).toHaveLength(2);
-	// 		expect(BB.Hooks.get('another.event')).toHaveLength(1);
+	// 		expect(BB.Filters.get('an.event')).toHaveLength(2);
+	// 		expect(BB.Filters.get('another.event')).toHaveLength(1);
 	// 	});
 
 	// });

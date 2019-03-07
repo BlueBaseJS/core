@@ -7,41 +7,41 @@ describe('FilterRegistry', () => {
 	describe('.register method', () => {
 		it('should register listener', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo1' });
-			const hook = Hooks.get('listener1');
+			await Filters.register('listener1', { event: 'hook1', value: () => 'foo1' });
+			const hook = Filters.get('listener1');
 
 			expect((hook as any).event).toBe('hook1');
 		});
 
 		it('should register listener with auto generated ID', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			const key = await Hooks.register({ event: 'hook1', value: () => 'foo1' });
-			const hook = Hooks.get(key);
+			const key = await Filters.register({ event: 'hook1', value: () => 'foo1' });
+			const hook = Filters.get(key);
 
 			expect((hook as any).event).toBe('hook1');
 		});
 
 		it('should override if duplicate listener is registered', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo1' });
-			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo2' });
-			const hook = await Hooks.getValue('listener1');
+			await Filters.register('listener1', { event: 'hook1', value: () => 'foo1' });
+			await Filters.register('listener1', { event: 'hook1', value: () => 'foo2' });
+			const hook = await Filters.getValue('listener1');
 
 			expect((hook as any)()).toBe('foo2');
 		});
 
 		it('should register listener with given priority', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo1', priority: 5 });
-			const hook = Hooks.get('listener1');
+			await Filters.register('listener1', { event: 'hook1', value: () => 'foo1', priority: 5 });
+			const hook = Filters.get('listener1');
 
 			expect((hook as any).event).toBe('hook1');
 			expect((hook as any).priority).toBe(5);
@@ -49,10 +49,10 @@ describe('FilterRegistry', () => {
 
 		it('should register listener with default priority', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo1' });
-			const hook = Hooks.get('listener1');
+			await Filters.register('listener1', { event: 'hook1', value: () => 'foo1' });
+			const hook = Filters.get('listener1');
 
 			expect((hook as any).event).toBe('hook1');
 			expect((hook as any).priority).toBe(DEFAULT_HOOK_PRIORITY);
@@ -62,7 +62,7 @@ describe('FilterRegistry', () => {
 	describe('.registerNestedCollection method', () => {
 		it('should register hooks', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
 			const collection: HookNestedCollection = {
 				hook1: [{ key: 'add-fifteen', value: (val: number) => val + 15 }, (val: number) => val],
@@ -70,23 +70,23 @@ describe('FilterRegistry', () => {
 				hook3: (val: number) => val + 10,
 			};
 
-			await Hooks.registerNestedCollection(collection);
+			await Filters.registerNestedCollection(collection);
 
-			expect(Hooks.size()).toBe(4);
+			expect(Filters.size()).toBe(4);
 
-			const valHook1 = await Hooks.run('hook1', 5);
+			const valHook1 = await Filters.run('hook1', 5);
 			expect(valHook1).toBe(20);
 
-			const valHook2 = await Hooks.run('hook2', 5);
+			const valHook2 = await Filters.run('hook2', 5);
 			expect(valHook2).toBe(10);
 
-			const valHook3 = await Hooks.run('hook3', 5);
+			const valHook3 = await Filters.run('hook3', 5);
 			expect(valHook3).toBe(15);
 		});
 
 		it('should register promised hooks', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
 			const collection: HookNestedCollection = {
 				hook1: [
@@ -97,23 +97,23 @@ describe('FilterRegistry', () => {
 				hook3: Promise.resolve((val: number) => val + 10),
 			};
 
-			await Hooks.registerNestedCollection(collection);
+			await Filters.registerNestedCollection(collection);
 
-			expect(Hooks.size()).toBe(4);
+			expect(Filters.size()).toBe(4);
 
-			const valHook1 = await Hooks.run('hook1', 5);
+			const valHook1 = await Filters.run('hook1', 5);
 			expect(valHook1).toBe(20);
 
-			const valHook2 = await Hooks.run('hook2', 5);
+			const valHook2 = await Filters.run('hook2', 5);
 			expect(valHook2).toBe(10);
 
-			const valHook3 = await Hooks.run('hook3', 5);
+			const valHook3 = await Filters.run('hook3', 5);
 			expect(valHook3).toBe(15);
 		});
 
 		it('should register hooks in a thunk', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
 			const collection: HookNestedCollection = () => ({
 				hook1: [{ key: 'add-fifteen', value: (val: number) => val + 15 }, (val: number) => val],
@@ -121,30 +121,30 @@ describe('FilterRegistry', () => {
 				hook3: (val: number) => val + 10,
 			});
 
-			await Hooks.registerNestedCollection(collection);
+			await Filters.registerNestedCollection(collection);
 
-			expect(Hooks.size()).toBe(4);
+			expect(Filters.size()).toBe(4);
 
-			const valHook1 = await Hooks.run('hook1', 5);
+			const valHook1 = await Filters.run('hook1', 5);
 			expect(valHook1).toBe(20);
 
-			const valHook2 = await Hooks.run('hook2', 5);
+			const valHook2 = await Filters.run('hook2', 5);
 			expect(valHook2).toBe(10);
 
-			const valHook3 = await Hooks.run('hook3', 5);
+			const valHook3 = await Filters.run('hook3', 5);
 			expect(valHook3).toBe(15);
 		});
 
 		it('should throw an error for unknown hook type', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
 			const collection: HookNestedCollection = () => ({
 				hook1: [{ key: 'add-fifteen' }],
 			});
 
 			try {
-				await Hooks.registerNestedCollection(collection);
+				await Filters.registerNestedCollection(collection);
 			} catch (error) {
 				expect(error.message).toBe('Could not register Hook. Reason: Input is not a hook item.');
 			}
@@ -152,23 +152,23 @@ describe('FilterRegistry', () => {
 
 		it('should not do anything if no param given', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.registerNestedCollection();
-			expect(Hooks.size()).toBe(0);
+			await Filters.registerNestedCollection();
+			expect(Filters.size()).toBe(0);
 		});
 	});
 
 	describe('.findAllByEvent method', () => {
 		it('should register listener mulitple listeners', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('listener1', { event: 'hook1', value: () => 'foo1' });
-			await Hooks.register('listener2', { event: 'hook2', value: () => 'foo2' });
-			await Hooks.register('listener3', { event: 'hook1', value: () => 'foo3' });
+			await Filters.register('listener1', { event: 'hook1', value: () => 'foo1' });
+			await Filters.register('listener2', { event: 'hook2', value: () => 'foo2' });
+			await Filters.register('listener3', { event: 'hook1', value: () => 'foo3' });
 
-			const hooks = Hooks.findAllByEvent('hook1');
+			const hooks = Filters.findAllByEvent('hook1');
 
 			const fn = await hooks.listener3.value;
 
@@ -180,38 +180,38 @@ describe('FilterRegistry', () => {
 	describe('.run method', () => {
 		it('should run a hook with no listeners', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			const value = await Hooks.run('hook1', 20);
+			const value = await Filters.run('hook1', 20);
 			expect(value).toBe(20);
 		});
 
 		it('should run a hook with a single listener', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('listener1', { event: 'hook1', value: (val: number) => val + 5 });
+			await Filters.register('listener1', { event: 'hook1', value: (val: number) => val + 5 });
 
-			const value = await Hooks.run('hook1', 20);
+			const value = await Filters.run('hook1', 20);
 			expect(value).toBe(25);
 		});
 
 		it('should run a hook with a multiple listeners', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
-			await Hooks.register('return-self', { event: 'hook1', value: (val: number) => val });
-			await Hooks.register('add-five', { event: 'hook1', value: (val: number) => val + 5 });
-			await Hooks.register('add-ten', { event: 'hook1', value: (val: number) => val + 10 });
+			const Filters = new FilterRegistry(BB);
+			await Filters.register('return-self', { event: 'hook1', value: (val: number) => val });
+			await Filters.register('add-five', { event: 'hook1', value: (val: number) => val + 5 });
+			await Filters.register('add-ten', { event: 'hook1', value: (val: number) => val + 10 });
 
-			const value = await Hooks.run('hook1', 2);
+			const value = await Filters.run('hook1', 2);
 			expect(value).toBe(17);
 		});
 
 		it('should run a hook with a handler imported from ES module', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('add-five', {
+			await Filters.register('add-five', {
 				event: 'hook1',
 				value: {
 					__esModule: true,
@@ -219,15 +219,15 @@ describe('FilterRegistry', () => {
 				} as any,
 			});
 
-			const value = await Hooks.run('hook1', 30);
+			const value = await Filters.run('hook1', 30);
 			expect(value).toBe(35);
 		});
 
 		it('should run a hook with a handler imported from Promised ES module', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('add-five', {
+			await Filters.register('add-five', {
 				event: 'hook1',
 				value: Promise.resolve({
 					__esModule: true,
@@ -235,88 +235,88 @@ describe('FilterRegistry', () => {
 				}) as any,
 			});
 
-			const value = await Hooks.run('hook1', 40);
+			const value = await Filters.run('hook1', 40);
 			expect(value).toBe(35);
 		});
 
 		it('should run a hook with a handler imported from a Promise', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('add-five', {
+			await Filters.register('add-five', {
 				event: 'hook1',
 				value: Promise.resolve((val: number) => val * 2) as any,
 			});
 
-			const value = await Hooks.run('hook1', 40);
+			const value = await Filters.run('hook1', 40);
 			expect(value).toBe(80);
 		});
 
 		it('should run a hook with proper priorities', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
+			const Filters = new FilterRegistry(BB);
 
-			await Hooks.register('right', {
+			await Filters.register('right', {
 				event: 'hook1',
 				priority: 3,
 				value: async (val: string) => `${val} right!`,
 			});
-			await Hooks.register('priorities', {
+			await Filters.register('priorities', {
 				event: 'hook1',
 				priority: 1,
 				value: (val: string) => `${val} priorities`,
 			});
-			await Hooks.register('my', {
+			await Filters.register('my', {
 				event: 'hook1',
 				priority: 0,
 				value: async (val: string) => `${val}, my`,
 			});
-			await Hooks.register('are', {
+			await Filters.register('are', {
 				event: 'hook1',
 				priority: 2,
 				value: (val: string) => `${val} are`,
 			});
 
-			const value = await Hooks.run('hook1', 'Hello ART');
+			const value = await Filters.run('hook1', 'Hello ART');
 			expect(value).toBe('Hello ART, my priorities are right!');
 		});
 
 		it('should run a hook even if a listener doesnt return any value', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
-			await Hooks.register('return-self', { event: 'hook1', value: (val: number) => val });
-			await Hooks.register('do-nothing', {
+			const Filters = new FilterRegistry(BB);
+			await Filters.register('return-self', { event: 'hook1', value: (val: number) => val });
+			await Filters.register('do-nothing', {
 				event: 'hook1',
 				value: () => {
 					return;
 				},
 			});
-			await Hooks.register('add-five', { event: 'hook1', value: (val: number) => val + 5 });
+			await Filters.register('add-five', { event: 'hook1', value: (val: number) => val + 5 });
 
-			const value = await Hooks.run('hook1', 2);
+			const value = await Filters.run('hook1', 2);
 			expect(value).toBe(7);
 		});
 
 		it('should run a hook even if a listener doesnt return a promise', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
-			await Hooks.register('return-self', { event: 'hook1', value: async (val: number) => val });
-			await Hooks.register('add-five', { event: 'hook1', value: (val: number) => val + 5 });
-			await Hooks.register('add-ten', { event: 'hook1', value: async (val: number) => val + 10 });
+			const Filters = new FilterRegistry(BB);
+			await Filters.register('return-self', { event: 'hook1', value: async (val: number) => val });
+			await Filters.register('add-five', { event: 'hook1', value: (val: number) => val + 5 });
+			await Filters.register('add-ten', { event: 'hook1', value: async (val: number) => val + 10 });
 
-			const value = await Hooks.run('hook1', 2);
+			const value = await Filters.run('hook1', 2);
 			expect(value).toBe(17);
 		});
 
 		it('should throw an error if handler is not a function', async () => {
 			const BB = new BlueBase();
-			const Hooks = new FilterRegistry(BB);
-			await Hooks.register('listener1', { event: 'hook1', value: 'foo1' as any });
+			const Filters = new FilterRegistry(BB);
+			await Filters.register('listener1', { event: 'hook1', value: 'foo1' as any });
 
 			let message = false;
 
 			try {
-				await Hooks.run('hook1', 2);
+				await Filters.run('hook1', 2);
 			} catch (e) {
 				message = e.message;
 			}

@@ -17,7 +17,7 @@ describe('Analytics', () => {
 			},
 		};
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.analytics.track',
 			value: (data: AnalyticsTrackData) => {

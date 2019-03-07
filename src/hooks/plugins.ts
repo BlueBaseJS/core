@@ -33,7 +33,7 @@ export const plugins: HookNestedCollection = {
 				const enabledPlugins = BB.Plugins.filter((_value, key) => BB.Plugins.isEnabled(key));
 
 				for (const plugin of Object.values(enabledPlugins)) {
-					await BB.Hooks.run('bluebase.plugins.initialize', await BB.Plugins.resolve(plugin.key));
+					await BB.Filters.run('bluebase.plugins.initialize', await BB.Plugins.resolve(plugin.key));
 				}
 
 				// return
@@ -53,10 +53,10 @@ export const plugins: HookNestedCollection = {
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (plugin: Plugin, _args: any, BB: BlueBase) => {
 				//////////////////////////
-				///// Register Hooks /////
+				///// Register Filters /////
 				//////////////////////////
 
-				await BB.Hooks.registerNestedCollection(plugin.hooks);
+				await BB.Filters.registerNestedCollection(plugin.hooks);
 
 				///////////////////////////////
 				///// Register Components /////

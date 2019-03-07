@@ -9,7 +9,7 @@ describe('Logger', () => {
 		const testMessage = 'A log message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -27,7 +27,7 @@ describe('Logger', () => {
 		const testMessage = 'A info message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -45,7 +45,7 @@ describe('Logger', () => {
 		const testMessage = 'A warn message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -63,7 +63,7 @@ describe('Logger', () => {
 		const testMessage = 'A error message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {
@@ -81,7 +81,7 @@ describe('Logger', () => {
 		const testMessage = 'A debug message';
 		const testData = { foo: 'hello' };
 
-		await BB.Hooks.register({
+		await BB.Filters.register({
 			key: 'analytics-test',
 			event: 'bluebase.logger.log',
 			value: (message: string, data: any) => {

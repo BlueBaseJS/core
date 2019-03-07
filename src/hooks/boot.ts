@@ -9,18 +9,18 @@ export const boot: HookNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Hooks.run('bluebase.boot.start', bootOptions);
+				await BB.Filters.run('bluebase.boot.start', bootOptions);
 
-				await BB.Hooks.run('bluebase.configs.register', bootOptions);
-				await BB.Hooks.run('bluebase.components.register', bootOptions);
-				await BB.Hooks.run('bluebase.hooks.register', bootOptions.hooks);
-				await BB.Hooks.run('bluebase.routes.register', bootOptions);
-				await BB.Hooks.run('bluebase.themes.register', bootOptions);
-				await BB.Hooks.run('bluebase.plugins.register', bootOptions.plugins);
+				await BB.Filters.run('bluebase.configs.register', bootOptions);
+				await BB.Filters.run('bluebase.components.register', bootOptions);
+				await BB.Filters.run('bluebase.hooks.register', bootOptions.hooks);
+				await BB.Filters.run('bluebase.routes.register', bootOptions);
+				await BB.Filters.run('bluebase.themes.register', bootOptions);
+				await BB.Filters.run('bluebase.plugins.register', bootOptions.plugins);
 
-				await BB.Hooks.run('bluebase.plugins.initialize.all', bootOptions);
+				await BB.Filters.run('bluebase.plugins.initialize.all', bootOptions);
 
-				await BB.Hooks.run('bluebase.boot.end', bootOptions);
+				await BB.Filters.run('bluebase.boot.end', bootOptions);
 
 				return bootOptions;
 			},
@@ -34,7 +34,7 @@ export const boot: HookNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Hooks.run('bluebase.components.register.internal', bootOptions);
+				await BB.Filters.run('bluebase.components.register.internal', bootOptions);
 
 				return bootOptions;
 			},

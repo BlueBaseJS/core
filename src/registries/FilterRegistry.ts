@@ -148,7 +148,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 *
 	 * Each listener function is expected to return a value.
 	 *
-	 * Example Usage: BB.Hooks.run('hook-name', val, args);
+	 * Example Usage: BB.Filters.run('hook-name', val, args);
 	 *
 	 * @param eventName Name of the hook
 	 * @param value Initial value to send to the hook

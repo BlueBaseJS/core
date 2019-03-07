@@ -19,7 +19,7 @@ export const navigation: HookNestedCollection = {
 						{
 							name: 'Root',
 							path: '',
-							navigator: await BB.Hooks.run('bluebase.navigator.main', {} as any),
+							navigator: await BB.Filters.run('bluebase.navigator.main', {} as any),
 							navigationOptions: {
 								header: null,
 							},

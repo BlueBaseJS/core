@@ -15,7 +15,7 @@ import { BlueBaseProvider } from './Context';
 import React from 'react';
 import { ThemeProvider } from './themes';
 import { renderChildrenWithProps } from './utils';
-import systemHooks from './hooks';
+import systemFilters from './hooks';
 
 export interface BootOptions {
 
@@ -48,7 +48,7 @@ export class BlueBase {
 	// Registries
 	public Components = new ComponentRegistry(this);
 	public Configs = new ConfigRegistry(this);
-	public Hooks = new FilterRegistry(this);
+	public Filters = new FilterRegistry(this);
 	public Plugins = new PluginRegistry(this);
 	public Themes = new ThemeRegistry(this);
 
@@ -69,15 +69,15 @@ export class BlueBase {
 		this.bootOptions = { ...this.bootOptions, ...options };
 
 		// Register basic hooks here, so they can be used in boot
-		await this.Hooks.registerNestedCollection(systemHooks);
-		await this.Hooks.registerNestedCollection(this.bootOptions.hooks);
+		await this.Filters.registerNestedCollection(systemFilters);
+		await this.Filters.registerNestedCollection(this.bootOptions.hooks);
 
 		// 🚀 Boot!
-		await this.Hooks.run('bluebase.boot', this.bootOptions);
+		await this.Filters.run('bluebase.boot', this.bootOptions);
 
 		// Navigation
 		const Navigation = this.Components.resolve('Navigation');
-		const navigatorConfigs = await this.Hooks.run('bluebase.navigator.root', {});
+		const navigatorConfigs = await this.Filters.run('bluebase.navigator.root', {});
 
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>

@@ -653,7 +653,7 @@ exports[`BlueBaseApp should render error state when boot throws an error 1`] = `
         },
         "subscriptions": Map {},
       },
-      "Hooks": FilterRegistry {
+      "Filters": FilterRegistry {
         "BB": [Circular],
         "data": Map {},
         "subscriptions": Map {},
@@ -745,7 +745,7 @@ exports[`BlueBaseApp should render error state with actual error message when de
         "data": Map {},
         "subscriptions": Map {},
       },
-      "Hooks": FilterRegistry {
+      "Filters": FilterRegistry {
         "BB": [Circular],
         "data": Map {},
         "subscriptions": Map {},
@@ -837,7 +837,7 @@ exports[`BlueBaseApp should render error state with custom error message when de
         "data": Map {},
         "subscriptions": Map {},
       },
-      "Hooks": FilterRegistry {
+      "Filters": FilterRegistry {
         "BB": [Circular],
         "data": Map {},
         "subscriptions": Map {},

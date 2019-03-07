@@ -54,7 +54,7 @@ describe('hooks', () => {
 				const BB = new BlueBase();
 				// await BB.boot();
 				await BB.Plugins.registerCollection(collection);
-				await BB.Hooks.registerNestedCollection(plugins);
+				await BB.Filters.registerNestedCollection(plugins);
 
 				const hook: HookHandlerFn = (plugins as any)['bluebase.plugins.initialize.all'][0].value;
 				await hook(null, {}, BB);

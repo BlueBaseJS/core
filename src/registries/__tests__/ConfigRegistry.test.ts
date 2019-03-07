@@ -24,7 +24,7 @@ describe('ConfigRegistry', () => {
 		// 	const BB = new BlueBase();
 		// 	const Configs = new ConfigRegistry(BB);
 
-		// 	await BB.Hooks.register('bluebase.config.beforeSave', {
+		// 	await BB.Filters.register('bluebase.config.beforeSave', {
 		// 		name: 'change-config',
 		// 		handler: ({ key }: { key: string, value: any }) => {
 		// 			return {
@@ -53,7 +53,7 @@ describe('ConfigRegistry', () => {
 		// 	const BB = new BlueBase();
 		// 	const Configs = new ConfigRegistry(BB);
 
-		// 	await BB.Hooks.register('bluebase.config.beforeSave', {
+		// 	await BB.Filters.register('bluebase.config.beforeSave', {
 		// 		name: 'change-config',
 		// 		handler: ({ key, value }: { key: string, value: any }) => {
 
