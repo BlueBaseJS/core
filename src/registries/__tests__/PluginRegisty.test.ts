@@ -634,18 +634,18 @@ describe('PluginRegistry', () => {
 		// 	expect(Plugins.size()).toBe(2);
 		// });
 
-		// it('should throw an error for unknown collection format', async () => {
-		// 	const BB = new BlueBase();
-		// 	const Plugins = new PluginRegistry(BB);
+		it('should throw an error for unknown collection format', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
 
-		// 	try {
-		// 		await Plugins.registerCollection('boom' as any);
-		// 	} catch (error) {
-		// 		expect(error.message).toBe(
-		// 			'Could not register collection. Reason: Unknown collection type.'
-		// 		);
-		// 	}
-		// });
+			try {
+				await Plugins.registerCollection('boom' as any);
+			} catch (error) {
+				expect(error.message).toBe(
+					'Could not register collection. Reason: Unknown collection type.'
+				);
+			}
+		});
 
 		// it('should not do anything if no param given', async () => {
 		// 	const BB = new BlueBase();
