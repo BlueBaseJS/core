@@ -177,7 +177,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		const item = this.get(key);
 
 		if (!item) {
-			throw Error(`Could not disbale plugin. Reason: No plugin registered by key "${key}".`);
+			throw Error(`Could not disable plugin. Reason: No plugin registered by key "${key}".`);
 		}
 
 		item.enabled = false;

@@ -295,10 +295,10 @@ describe('PluginRegistry', () => {
 
 			await Plugins.register('foo', { enabled: false, value: {} });
 
-			Plugins.enable('foo');
+			await Plugins.enable('foo');
 			expect(Plugins.isEnabled('foo')).toBe(true);
 
-			Plugins.disable('foo');
+			await Plugins.disable('foo');
 			expect(Plugins.isEnabled('foo')).toBe(false);
 		});
 
@@ -307,7 +307,7 @@ describe('PluginRegistry', () => {
 			const Plugins = new PluginRegistry(BB);
 
 			try {
-				Plugins.enable('foo');
+				await Plugins.enable('foo');
 			} catch (e) {
 				expect(e.message).toBe(
 					'Could not enable plugin. Reason: No plugin registered by key "foo".'
@@ -319,13 +319,16 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
+			let message;
 			try {
-				Plugins.disable('foo');
+				await Plugins.disable('foo');
 			} catch (e) {
-				expect(e.message).toBe(
-					'Could not disable plugin. Reason: No plugin registered by key "foo".'
-				);
+				message = e.message;
 			}
+
+			expect(message).toBe(
+				'Could not disable plugin. Reason: No plugin registered by key "foo".'
+			);
 		});
 	});
 
@@ -462,7 +465,7 @@ describe('PluginRegistry', () => {
 			await Plugins.resolve('p2');
 
 			// Disbale so it gets skipped
-			Plugins.disable('p3');
+			await Plugins.disable('p3');
 
 			const routes = Plugins.getRouteMap();
 
