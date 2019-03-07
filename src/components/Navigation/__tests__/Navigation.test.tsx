@@ -33,7 +33,7 @@ describe('Navigation', () => {
 
 		// Wait for render
 		await waitForElement(component as any, SomeComponent);
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('Navigation SomeComponent')).toBe(true);
 	});
@@ -57,7 +57,7 @@ describe('Navigation', () => {
 
 		// Wait for render
 		await waitForElement(component as any, EmptyState);
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('Navigation EmptyState')).toBe(true);
 	});
@@ -88,7 +88,7 @@ describe('Navigation', () => {
 
 		// Wait for render
 		await waitForElement(component as any, SomeComponent);
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('Navigation SomeComponent')).toBe(true);
 	});
@@ -111,7 +111,7 @@ describe('Navigation', () => {
 
 		// Wait for render
 		await waitForElement(component as any, Navigation);
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.find('Navigation').children()).toHaveLength(0);
 	});
@@ -130,7 +130,7 @@ describe('Navigation', () => {
 
 		// Wait for render
 		await waitForElement(component as any, Navigation);
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.find('Navigation').children()).toHaveLength(0);
 	});

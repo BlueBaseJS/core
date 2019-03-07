@@ -19,7 +19,7 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.find('StatefulComponent H6 Text').last().text()).toBe('Empty Area');
 		expect(component.find('StatefulComponent Body2 Text').last().text()).toBe('Create new items to fill this area.');
@@ -35,7 +35,7 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.find('StatefulComponent H6 Text').last().text()).toBe('Empty Area');
 		expect(component.find('StatefulComponent Body2 Text').last().text()).toBe('Create new items to fill this area.');
@@ -51,7 +51,7 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 		expect(component.exists('LoadingState')).toBe(true);
 	});
 
@@ -66,7 +66,7 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Content');
 	});
 
@@ -81,7 +81,7 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Render prop');
 	});
 
@@ -99,7 +99,7 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Custom Component');
 	});
 
