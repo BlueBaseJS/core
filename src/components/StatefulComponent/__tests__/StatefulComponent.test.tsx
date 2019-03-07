@@ -42,18 +42,18 @@ describe('StatefulComponent', () => {
 
 	});
 
-	// test(`should show loading state if loading is set to true`, async () => {
-	// 	const component = mount(
-	// 		<BlueBaseApp>
-	// 			<StatefulComponent loading={true} delay={0} />
-	// 		</BlueBaseApp>
-	// 	);
+	test(`should show loading state if loading is set to true`, async () => {
+		const component = mount(
+			<BlueBaseApp>
+				<StatefulComponent loading={true} delay={0} timeout={0} />
+			</BlueBaseApp>
+		);
 
-	// 	await waitForElement(component as any, StatefulComponent);
+		await waitForElement(component as any, StatefulComponent);
 
-	// 	expect(component).toMatchSnapshot();
-	// 	expect(component.exists('LoadingState')).toBe(true);
-	// });
+		expect(component).toMatchSnapshot();
+		expect(component.exists('LoadingState')).toBe(true);
+	});
 
 	it(`should show children nodes`, async () => {
 		const component = mount(
