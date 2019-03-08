@@ -13,14 +13,19 @@
     "react-native-storybook-loader": {
       "searchDir": [
         "src",
-        "bluebase/storybook-native",
-        "src",
         "bluebase/storybook-native"
       ],
       "pattern": "**/*.stories.tsx",
       "outputFile": "bluebase/storybook-native/storybook/storyLoader.js"
     }
   },
+  "size-limit": [
+    {
+      "limit": "20 KB",
+      "webpack": false,
+      "path": "dist/**/!(*.test).js"
+    }
+  ],
   "scripts": {
     "start": "yarn run storybook",
     "clean": "rimraf coverage dist tmp",
@@ -47,6 +52,7 @@
     "reset": "git clean -dfx && git reset --hard && npm i",
     "all": "run-s reset test cov:check doc:html",
     "prepare-release": "run-s all version doc:publish",
+    "size": "size-limit",
     "storybook:start": "bluerain storybook:start",
     "storybook-native": "bluebase storybook-native:start",
     "storybook": "start-storybook -p 6006 --config-dir ./bluebase/storybook/configs",
@@ -117,7 +123,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.3.1",
     "babel-loader": "^8.0.5",
-    "babel-preset-bluebase": "^2.3.0",
     "babel-preset-expo": "^5.0.0",
     "codecov": "^3.2.0",
     "commitizen": "^3.0.7",
@@ -141,6 +146,7 @@
     "react-test-renderer": "^16.8.4",
     "regenerator-runtime": "^0.13.1",
     "schedule": "^0.4.0",
+    "size-limit": "^0.21.1",
     "standard-version": "^5.0.1",
     "trash-cli": "^1.4.0",
     "ts-jest": "^24.0.0",
