@@ -1,9 +1,5 @@
-> ⚠️ This branch has the code for the upcoming Version 4 for BlueBase. 
-
-> ⚠️ V4 is currently a work in progress. For production apps, use V3. 
-
 <div align="center">
-	<img width=125 height=125 src="assets/icon.png">
+	<img width=125 height=125 src="assets/common/icon.png">
   <h1>
 		BlueBase
 	</h1>
@@ -15,9 +11,10 @@
 ## 🏆 Features
 
 - 🔌 Plugins
-- 🎣 Lifecycle events and filters
+- 🎨 Themes
 - 🎁 Dynamic Components
 - 📔 Logging API
+- 📈 Analytics API
 
 ## 🙌 Acknowledgements
 

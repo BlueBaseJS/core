@@ -1,5 +1,6 @@
 import { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 import {
+	BlueBaseContentProps,
 	BlueBaseFilterProps,
 	ComponentStateProps,
 	DataObserverProps,
@@ -41,12 +42,15 @@ export function getComponent<T = any>(...keys: string[]) {
 		throw Error('getComponent method needs at least one key');
 	}
 
+	const displayName = keys.join('_');
+
 	const BlueBaseComponent = (props: T) => (
 		<BlueBaseConsumer children={(BB: BlueBase) => {
 
-			// if (!BB) {
-			// 	throw Error('Could not resolve component in "getComponent" command. Reason: BlueBase context not found.');
-			// }
+			if (!BB) {
+				// tslint:disable-next-line: max-line-length
+				throw Error(`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`);
+			}
 
 			const Component = BB.Components.resolve(...keys);
 
@@ -54,12 +58,13 @@ export function getComponent<T = any>(...keys: string[]) {
 		}} />
 	);
 
-	BlueBaseComponent.displayName = keys.join('_');
+	BlueBaseComponent.displayName = displayName;
 
 	return BlueBaseComponent as React.ComponentType<T>;
 }
 
 // System Components
+export const BlueBaseContent = getComponent<BlueBaseContentProps>('BlueBaseContent');
 export const BlueBaseFilter = getComponent<BlueBaseFilterProps>('BlueBaseFilter');
 export const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 export const DataObserver = getComponent<DataObserverProps>('DataObserver');

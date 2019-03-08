@@ -25,7 +25,7 @@ export interface BlueBaseFilterProps<T = any> {
 }
 
 /**
- * # 🎣 BlueBaseFilter
+ * # 🚇 BlueBaseFilter
  *
  * Since filters in BlueBase are based on promises, it may be tedious to handle loading state,
  * error state, etc. It may also become a repetitive task.

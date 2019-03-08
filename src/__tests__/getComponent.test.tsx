@@ -54,19 +54,19 @@ describe('getComponent', () => {
 		expect(message).toBe('getComponent method needs at least one key');
 	});
 
-	// test(`should throw an Error when there is not BlueBase context`, () => {
+	test(`should throw an Error when there is not BlueBase context`, () => {
 
-	// 	const Foo = getComponent('Foo');
+		const Foo = getComponent('Foo');
 
-	// 	let message;
-	// 	try {
-	// 		TestRenderer.create(<Foo />);
-	// 	} catch (error) {
-	// 		message = error.message;
-	// 	}
+		let message;
+		try {
+			TestRenderer.create(<Foo />);
+		} catch (error) {
+			message = error.message;
+		}
 
-	// 	expect(message)
-	// 	.toBe('Could not resolve component in "getComponent" command. Reason: BlueBase context not found.');
-	// });
+		expect(message)
+		.toBe('Could not resolve component "Foo" in "getComponent" command. Reason: BlueBase context not found.');
+	});
 
 });

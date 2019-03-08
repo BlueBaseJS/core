@@ -21,7 +21,7 @@ describe('ReactLoadableLoading', () => {
 
 		await waitForElement(component as any, ReactLoadableLoading);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('ErrorState')).toBe(true);
 		expect(component.find('ErrorState Body2 Text').last().text()).toBe('Random Error');
@@ -43,7 +43,7 @@ describe('ReactLoadableLoading', () => {
 
 		await waitForElement(component as any, ReactLoadableLoading);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState')).toBe(true);
 		expect(component.find('LoadingState').exists('ActivityIndicator')).toBe(true);
@@ -64,7 +64,7 @@ describe('ReactLoadableLoading', () => {
 
 		await waitForElement(component as any, ReactLoadableLoading);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState')).toBe(true);
 		expect(component.find('LoadingState').exists('ActivityIndicator')).toBe(true);
@@ -86,7 +86,7 @@ describe('ReactLoadableLoading', () => {
 
 		await waitForElement(component as any, ReactLoadableLoading);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.find('ReactLoadableLoading').children()).toHaveLength(0);
 	});
@@ -106,7 +106,7 @@ describe('ReactLoadableLoading', () => {
 
 		await waitForElement(component as any, ReactLoadableLoading);
 
-		expect(component).toMatchSnapshot();
+		// expect(component).toMatchSnapshot();
 
 		expect(component.find('ReactLoadableLoading').children()).toHaveLength(0);
 	});
