@@ -43,7 +43,7 @@
     "test:lint": "npm run lint",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
     "commit": "git-cz",
-    "report-coverage": "codecov && codacy-coverage",
+    "report-coverage": "codecov && cat ./coverage/lcov.info | codacy-coverage",
     "doc": "run-s doc:html && opn docs/index.html",
     "doc:html": "typedoc src/ --target ES6 --mode file --out docs",
     "doc:json": "typedoc src/ --target ES6 --mode file --json docs/typedoc.json",
