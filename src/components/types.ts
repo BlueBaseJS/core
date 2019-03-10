@@ -15,7 +15,6 @@ export {
 	// HeaderTitle
 	HeaderTitleProps,
 	HoverObserverProps,
-	JsonSchemaProps,
 	LinkProps,
 	LoadingStateProps,
 	// Navigation
