@@ -11,7 +11,6 @@ import {
 	HeaderProps,
 	HeaderTitleProps,
 	HoverObserverProps,
-	JsonSchemaProps,
 	LinkProps,
 	LoadingStateProps,
 	NavigationActionsProps,
@@ -76,7 +75,6 @@ export const Header = getComponent<HeaderProps>('Header');
 export const HeaderTitle = getComponent<HeaderTitleProps>('HeaderTitle');
 export const HeaderBackButton = getComponent<HeaderBackButtonProps>('HeaderBackButton');
 export const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
-export const JsonSchema = getComponent<JsonSchemaProps>('JsonSchema');
 export const Link = getComponent<LinkProps>('Link');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
 export const Noop = getComponent<NoopProps>('Noop');
