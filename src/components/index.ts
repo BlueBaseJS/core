@@ -12,7 +12,6 @@ export * from './HeaderBackButton';
 export * from './HeaderTitle';
 export * from './HomeScreen';
 export * from './HoverObserver';
-export * from './JsonSchema';
 export * from './Link';
 export * from './LoadingState';
 export * from './Navigation';

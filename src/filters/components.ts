@@ -1,5 +1,15 @@
 // tslint:disable: object-literal-sort-keys
-import { ActivityIndicator, Button, Image, Text, View } from '../native';
+import {
+	ActivityIndicator,
+	Button,
+	Image,
+	ImageBackground,
+	Picker,
+	Slider,
+	Switch,
+	Text,
+	View,
+} from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
 import {
 	BlueBaseContent,
@@ -15,7 +25,6 @@ import {
 	HeaderTitle,
 	HomeScreen,
 	HoverObserver,
-	JsonSchema,
 	Link,
 	LoadingState,
 	Navigation,
@@ -55,7 +64,6 @@ export const components: FilterNestedCollection = {
 					HomeScreen,
 					HoverObserver,
 					Icon: Noop,
-					JsonSchema,
 					Link,
 					LoadingState,
 					Navigation,
@@ -70,6 +78,10 @@ export const components: FilterNestedCollection = {
 					ActivityIndicator,
 					Button,
 					Image,
+					ImageBackground,
+					Picker,
+					Slider,
+					Switch,
 					Text,
 					View,
 
