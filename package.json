@@ -52,7 +52,7 @@
     "reset": "git clean -dfx && git reset --hard && npm i",
     "all": "run-s reset test cov:check doc:html",
     "prepare-release": "run-s all version doc:publish",
-    "prepublishOnly": "npm uninstall expo react-native --save",
+    "prepublishOnly": "yarn remove expo react-native",
     "size": "size-limit",
     "storybook:start": "bluerain storybook:start",
     "storybook-native": "bluebase storybook-native:start",
