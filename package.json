@@ -148,7 +148,7 @@
     "react-test-renderer": "^16.8.4",
     "regenerator-runtime": "^0.13.1",
     "schedule": "^0.4.0",
-    "size-limit": "^0.21.1",
+    "size-limit": "^1.0.1",
     "standard-version": "^5.0.1",
     "trash-cli": "^1.4.0",
     "ts-jest": "^24.0.0",
