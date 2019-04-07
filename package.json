@@ -2,23 +2,13 @@
   "name": "@bluebase/core",
   "description": "🚀 A modular, pluggable and cross platform app framework.",
   "author": "BlueEast Team <code@blueeast.com>",
-  "version": "4.0.0-aplha.12",
+  "version": "4.0.0-aplha.13",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.js",
   "repository": "https://github.com/BlueBaseJS/core",
   "license": "MIT",
   "keywords": [],
-  "config": {
-    "react-native-storybook-loader": {
-      "searchDir": [
-        "src",
-        "bluebase/storybook-native"
-      ],
-      "pattern": "**/*.stories.tsx",
-      "outputFile": "bluebase/storybook-native/storybook/storyLoader.js"
-    }
-  },
   "size-limit": [
     {
       "limit": "20 KB",
@@ -26,7 +16,25 @@
       "path": "dist/**/!(*.test).js"
     }
   ],
+  "files": [
+    "assets",
+    "dist",
+    "docs"
+  ],
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "src",
+        "bluebase/storybook-native",
+        "src",
+        "bluebase/storybook-native"
+      ],
+      "pattern": "**/*.stories.tsx",
+      "outputFile": "bluebase/storybook-native/storybook/storyLoader.js"
+    }
+  },
   "scripts": {
+    "storybook-native:start": "bluebase storybook-native:start",
     "start": "yarn run storybook",
     "clean": "rimraf coverage dist tmp",
     "watch": "tsc -w -p tsconfig.json",
@@ -79,7 +87,7 @@
   },
   "dependencies": {
     "deepmerge": "^3.2.0",
-    "expo": "^31.0.6",
+    "expo": "^32.0.0",
     "hoist-non-react-statics": "^3.3.0",
     "lodash.flowright": "^3.5.0",
     "lodash.isboolean": "^3.0.3",
@@ -93,6 +101,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "@bluebase/core": "^4.0.0-aplha.13",
     "@bluebase/storybook-addon": "^3.0.0",
     "@blueeast/bluerain-cli-essentials": "^4.0.0-beta.2",
     "@blueeast/tslint-config-blueeast": "^0.7.0",
@@ -124,6 +133,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.3.1",
     "babel-loader": "^8.0.5",
+    "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-expo": "^5.0.0",
     "codacy-coverage": "^3.4.0",
     "codecov": "^3.2.0",
