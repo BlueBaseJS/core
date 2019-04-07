@@ -1,11 +1,7 @@
-import { BlueBase, BlueBaseApp } from '@bluebase/core';
+import { BlueBaseApp } from '../../src';
 import React from 'react';
 
 export const BlueBaseDecorator = (maybeEsConfigs) => (storyFn) => {
-
 	const configs = maybeEsConfigs.default ? maybeEsConfigs.default : maybeEsConfigs;
-
-	return (
-		<BlueBaseApp {...configs} children={storyFn()} />
-	);
+	return React.createElement(BlueBaseApp, configs, storyFn());
 };
