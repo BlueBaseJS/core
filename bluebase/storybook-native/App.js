@@ -1,7 +1,3 @@
-import React from 'react';
-import { BlueBaseApp } from '../../src';
-import bootConfig from './../../bluebase/storybook-native/bluebase';
+import StorybookUI from './storybook';
 
-const App = () => React.createElement(BlueBaseApp, bootConfig);
-
-export default App;
+export default StorybookUI;

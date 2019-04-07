@@ -6,7 +6,7 @@ import './rn-addons';
 
 // Custom
 import { loadStories } from './storyLoader';
-import { BlueBaseDecorator } from '@bluebase/storybook-addon';
+import { BlueBaseDecorator } from '../../common/BlueRainDecorator';
 import BRConfigs from '../bluebase';
 
 // BlueBase
