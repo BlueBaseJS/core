@@ -8,6 +8,7 @@ import {
 	Slider,
 	Switch,
 	Text,
+	TextInput,
 	View,
 } from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
@@ -83,6 +84,7 @@ export const components: FilterNestedCollection = {
 					Slider,
 					Switch,
 					Text,
+					TextInput,
 					View,
 
 					// Typography

@@ -6,4 +6,5 @@ export * from './Picker';
 export * from './Slider';
 export * from './Switch';
 export * from './Text';
+export * from './TextInput';
 export * from './View';
