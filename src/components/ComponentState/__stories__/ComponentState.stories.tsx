@@ -1,4 +1,4 @@
-import { ComponentState, Image, View } from '../../../index';
+import { ComponentState, Image, View } from '../../../getComponent';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 

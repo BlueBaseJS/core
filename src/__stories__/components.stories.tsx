@@ -13,7 +13,7 @@ import {
 	Subtitle2,
 	Text,
 	View,
-} from '../index';
+} from '../getComponent';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 

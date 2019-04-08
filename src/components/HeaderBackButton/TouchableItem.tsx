@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import { View } from '../../';
+import { View } from '../../getComponent';
 import isnil from 'lodash.isnil';
 
 // import BorderlessButton from './BorderlessButton';

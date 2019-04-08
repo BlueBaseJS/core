@@ -1,6 +1,6 @@
 import { Image, Text } from 'react-native';
 import { BlueBaseApp } from '../../BlueBaseApp';
-import { Header } from '../../..';
+import { Header } from '../../../getComponent';
 import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';

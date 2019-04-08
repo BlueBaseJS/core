@@ -1,7 +1,7 @@
-import { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 import {
-	BlueBaseContentProps,
+	ActivityIndicatorProps,
 	BlueBaseFilterProps,
+	ButtonProps,
 	ComponentStateProps,
 	DataObserverProps,
 	DynamicIconProps,
@@ -11,6 +11,7 @@ import {
 	HeaderProps,
 	HeaderTitleProps,
 	HoverObserverProps,
+	ImageProps,
 	LinkProps,
 	LoadingStateProps,
 	NavigationActionsProps,
@@ -19,10 +20,13 @@ import {
 	PluginIconProps,
 	RedirectProps,
 	StatefulComponentProps,
+	TextProps,
+	ViewProps,
 	WaitObserverProps,
-} from './components';
+} from '@bluebase/components';
 import { BlueBase } from './BlueBase';
 import { BlueBaseConsumer } from './Context';
+import { BlueBaseContentProps } from './components';
 import React from 'react';
 
 

@@ -1,68 +1,7 @@
 import { Body2, Button, H6, Image, View } from '../../getComponent';
-import { ImageProps, ImageStyle, TextStyle, ViewStyle } from 'react-native';
-import { ButtonProps } from '../../native';
+import { ComponentStateProps, ComponentStateStyles } from '@bluebase/components';
 import React from 'react';
 import { Theme } from '../../registries';
-
-export interface ComponentStateStyles {
-
-	/** Action button container styles */
-	actionRoot?: ViewStyle,
-
-	/** Description text styles */
-	description?: TextStyle,
-
-	/** Image styles */
-	image?: ImageStyle,
-
-	/** Styles of image container view */
-	imageRoot?: ViewStyle,
-
-	/** Main root container styles */
-	root?: ViewStyle,
-
-	/** Title styles */
-	title?: TextStyle,
-}
-export interface ComponentStateProps {
-
-	/**
-	 * Action title
-	 */
-	actionTitle?: string;
-
-	/**
-	 * Action onPress callback function
-	 */
-	actionOnPress?: ButtonProps['onPress'];
-
-	/**
-	 * Description Text
-	 */
-	description?: string;
-
-	/**
-	 * A ReactNode to show custom UI, if provided, imageSource will be ignored
-	 */
-	image?: React.ReactNode;
-
-	/**
-	 * Image source
-	 */
-	imageSource?: ImageProps['source'];
-
-	/**
-	 * Title text
-	 */
-	title?: string;
-
-	styles?: ComponentStateStyles;
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-}
 
 /**
  * # 🤡 ComponentState

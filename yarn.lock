@@ -1154,6 +1154,14 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@bluebase/components@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-2.7.0.tgz#b706c32eb51bb099f73de78da33754315159a1e9"
+  integrity sha512-DiKuuSJpRCROuxh9abi+pHAvnYBHqDjfq+8ZuBwbcZ8sPRV+IIJb6qDz0wN1fJOnO602H2Hj0jGiSpm5UoDuQQ==
+  dependencies:
+    deepmerge "^3.2.0"
+    tslib "^1.9.3"
+
 "@bluebase/core@^4.0.0-aplha.13":
   version "4.0.0-aplha.13"
   resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-4.0.0-aplha.13.tgz#37422944ca7eb7904fd8366ac9c1ca18effe75d4"

@@ -1,4 +1,4 @@
-import { NavigationActionParams } from '../NavigationActions';
+import { NavigationActionParams } from '@bluebase/components';
 import { NavigationActions } from '../../getComponent';
 import React from 'react';
 
