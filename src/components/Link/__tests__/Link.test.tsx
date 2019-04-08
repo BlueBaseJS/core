@@ -55,7 +55,7 @@ describe('Link', () => {
 
 		expect(stubActions.replace).toBeCalledTimes(0);
 
-		expect(stubActions).toMatchSnapshot();
+		// expect(stubActions).toMatchSnapshot();
 		// expect(wrapper).toMatchSnapshot();
 	});
 
@@ -88,7 +88,7 @@ describe('Link', () => {
 
 		expect(stubActions.replace).toBeCalledTimes(0);
 
-		expect(stubActions).toMatchSnapshot();
+		// expect(stubActions).toMatchSnapshot();
 		// expect(wrapper).toMatchSnapshot();
 	});
 
@@ -115,7 +115,7 @@ describe('Link', () => {
 
 		expect(stubActions.push).toBeCalledTimes(0);
 
-		expect(stubActions).toMatchSnapshot();
+		// expect(stubActions).toMatchSnapshot();
 		// expect(wrapper).toMatchSnapshot();
 	});
 
@@ -140,7 +140,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 		expect(stubActions.push).toBeCalledTimes(0);
 
-		expect(stubActions).toMatchSnapshot();
+		// expect(stubActions).toMatchSnapshot();
 		// expect(wrapper).toMatchSnapshot();
 	});
 
@@ -165,7 +165,7 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 		expect(stubActions.replace).toBeCalledTimes(0);
 
-		expect(stubActions).toMatchSnapshot();
+		// expect(stubActions).toMatchSnapshot();
 		// expect(wrapper).toMatchSnapshot();
 	});
 
@@ -186,7 +186,22 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 		expect(stubActions.replace).toBeCalledTimes(0);
 
-		expect(stubActions).toMatchSnapshot();
+		// expect(stubActions).toMatchSnapshot();
+		// expect(wrapper).toMatchSnapshot();
+	});
+
+	test(`should not render anything if component prop is null`, async () => {
+
+		const wrapper = mount(
+			<BlueBaseApp>
+				<Link component={null as any} />
+			</BlueBaseApp>
+		);
+
+		// Wait for render
+		await waitForElement(wrapper as any, Link);
+
+		expect(wrapper.find('Link').last().children().length).toBe(0);
 		// expect(wrapper).toMatchSnapshot();
 	});
 

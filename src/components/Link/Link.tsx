@@ -35,22 +35,22 @@ export class Link extends React.PureComponent<LinkProps> {
 
 		const { component: Component, routeName, path, params, onPress, replace, ...rest } = this.props;
 
-		return (
+		return Component ? (
 			<NavigationActions>
 				{( navigation ) => {
 
 					const href = path ? path : '';
 					const onPressDefault = (e: any) => this.handlePress(e, navigation);
 
-					return Component ? (
+					return (
 						<Component
 							{...rest}
 							href={href}
 							onPress={onPress || onPressDefault}
 						/>
-					) : null;
+					);
 				}}
 			</NavigationActions>
-		);
+		): null;
 	}
 }
