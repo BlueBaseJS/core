@@ -20,10 +20,6 @@ storiesOf('Button', module)
 		<View style={{ padding: 8 }}>
 			<Button color="secondary">Secondary</Button>
 		</View>
-		<View style={{ padding: 8 }}>
-			<Button color="link">Link</Button>
-		</View>
-
 	</View>
 ))
 
