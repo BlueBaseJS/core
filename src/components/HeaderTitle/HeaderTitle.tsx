@@ -1,6 +1,7 @@
 
-import { Text, TextProps, Theme } from '../../';
+import { Text, TextProps } from '../../getComponent';
 import React from 'react';
+import { Theme } from '../../';
 
 export interface HeaderTitleProps extends TextProps {
 }

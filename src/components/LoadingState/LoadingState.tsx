@@ -1,4 +1,4 @@
-import { ActivityIndicator, ComponentState } from '../../index';
+import { ActivityIndicator, ComponentState } from '../../getComponent';
 import { BlueBaseContext } from '../../Context';
 import { ComponentStateProps } from '../ComponentState';
 import React from 'react';

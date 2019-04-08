@@ -1,6 +1,6 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
-import { ComponentState } from '../../index';
+import { ComponentState } from '../../getComponent';
 import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
 

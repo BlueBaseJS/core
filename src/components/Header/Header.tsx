@@ -2,8 +2,7 @@
 import {
 	HeaderBackButton,
 	HeaderTitle,
-	NavigationOptions,
-} from '../../index';
+} from '../../getComponent';
 import {
 	I18nManager,
   Image,
@@ -16,6 +15,7 @@ import {
 	View,
 	ViewStyle,
 } from 'react-native';
+import { NavigationOptions } from '../Navigation';
 import React from 'react';
 import { Theme } from '../../registries';
 
