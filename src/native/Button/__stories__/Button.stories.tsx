@@ -1,4 +1,4 @@
-import { Button } from '../../../';
+import { Button } from '../../../getComponent';
 import React from 'react';
 import { View } from '../../View';
 import storiesOf from '@bluebase/storybook-addon';
