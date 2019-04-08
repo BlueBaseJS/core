@@ -1154,10 +1154,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@bluebase/components@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-2.6.0.tgz#8384a5b23debe7957e4a9886b737ab59b815c385"
-  integrity sha512-9mkPAWdpqxXvzQT88ZfBa7E1QVOQE45wLloZ+MujWz6ijbhR7CQ4tUWM1IJaCzyI+k3biTzaklG87He+7a85AA==
+"@bluebase/components@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-2.7.0.tgz#b706c32eb51bb099f73de78da33754315159a1e9"
+  integrity sha512-DiKuuSJpRCROuxh9abi+pHAvnYBHqDjfq+8ZuBwbcZ8sPRV+IIJb6qDz0wN1fJOnO602H2Hj0jGiSpm5UoDuQQ==
   dependencies:
     deepmerge "^3.2.0"
     tslib "^1.9.3"

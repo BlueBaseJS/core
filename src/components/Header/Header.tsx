@@ -15,7 +15,7 @@ import {
 	View,
 	ViewStyle,
 } from 'react-native';
-import { NavigationOptions } from '../Navigation';
+import { NavigationOptions } from '@bluebase/components';
 import React from 'react';
 import { Theme } from '../../registries';
 

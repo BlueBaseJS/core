@@ -1,33 +1,6 @@
-import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
 import React, { SyntheticEvent } from 'react';
-
-// TODO: fix for react-native, this is web only component
-interface MouseEventObject {
-	e: SyntheticEvent,
-	setIsHovering: () => void,
-	unsetIsHovering: () => void,
-}
-
-export interface HoverObserverProps {
-
-	/** Milliseconds to delay hover trigger. Defaults to zero. */
-	hoverDelayInMs?: number,
-
-	/** Milliseconds to delay hover-off trigger. Defaults to zero. */
-	hoverOffDelayInMs?: number,
-
-	/** Called with named argument isHovering when isHovering is set or unset. */
-	onHoverChanged?: (state: HoverObserverState) => void,
-
-	/** Defaults to set isHovering. */
-	onMouseEnter?: (obj: MouseEventObject) => void,
-
-	/** Defaults to unsetting isHovering. */
-	onMouseLeave?: (obj: MouseEventObject) => void,
-	onMouseOver?: (obj: MouseEventObject) => void,
-	onMouseOut?: (obj: MouseEventObject) => void,
-	children?: MaybeRenderPropChildren<HoverObserverState>
-}
+import { HoverObserverProps } from '@bluebase/components';
+import { renderChildrenWithProps } from '../../utils';
 
 export interface HoverObserverState {
 	readonly isHovering: boolean;

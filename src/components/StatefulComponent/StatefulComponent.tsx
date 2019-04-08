@@ -1,24 +1,10 @@
 import { DataObserver, EmptyState, ErrorObserver, LoadingState, WaitObserver } from '../../getComponent';
-import { DataObserverChildrenProps, DataObserverProps } from '../DataObserver';
-import { WaitObserverChildrenProps, WaitObserverProps } from '../WaitObserver';
-import { ErrorObserverProps } from '../ErrorObserver';
-import { MaybeRenderPropChildren } from '../../utils';
+import {
+	DataObserverChildrenProps,
+	StatefulComponentProps,
+	WaitObserverChildrenProps,
+} from '@bluebase/components';
 import React from 'react';
-
-export interface StatefulComponentProps extends DataObserverProps, ErrorObserverProps, WaitObserverProps {
-
-	// Components
-	component?: React.ComponentType<any>;
-	loadingComponent?: React.ComponentType<any>;
-	emptyComponent?: React.ComponentType<any>;
-
-	children?: MaybeRenderPropChildren;
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-}
 
 /**
  * # 👨‍🎨 StatefulComponent

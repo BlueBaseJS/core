@@ -1,21 +1,8 @@
 import { ActivityIndicator, ComponentState } from '../../getComponent';
+import { ComponentStateProps, LoadingStateProps } from '@bluebase/components';
 import { BlueBaseContext } from '../../Context';
-import { ComponentStateProps } from '../ComponentState';
 import React from 'react';
 
-export interface LoadingStateProps {
-
-	/** Flag if loading has timedOut. */
-	timedOut?: boolean,
-
-	/** Callback function when Retry button is pressed. */
-	retry?: () => void,
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-}
 
 /**
  * # ⏳ LoadingState

@@ -1,18 +1,8 @@
+import { LinkProps, NavigationActionsObject } from '@bluebase/components';
 import { NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
-import { NavigationActionParams, NavigationActionsObject } from '../NavigationActions';
 import { NavigationActions } from '../../getComponent';
 import React from 'react';
 import TouchableItem from '../HeaderBackButton/TouchableItem';
-
-export interface LinkProps {
-	routeName?: string,
-	path?: string,
-	params?: NavigationActionParams;
-	replace?: boolean,
-	onPress?: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
-	component: React.ComponentType<any>
-}
-
 
 /**
  * 🔗 Link
@@ -52,13 +42,13 @@ export class Link extends React.PureComponent<LinkProps> {
 					const href = path ? path : '';
 					const onPressDefault = (e: any) => this.handlePress(e, navigation);
 
-					return (
+					return Component ? (
 						<Component
 							{...rest}
 							href={href}
 							onPress={onPress || onPressDefault}
 						/>
-					);
+					) : null;
 				}}
 			</NavigationActions>
 		);

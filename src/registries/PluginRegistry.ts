@@ -3,7 +3,7 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { DynamicIconProps, RouteConfig } from '../components/';
+import { DynamicIconProps, RouteConfig } from '@bluebase/components';
 import {
 	MaybeArray,
 	MaybeThunk,
