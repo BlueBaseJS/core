@@ -1,21 +1,8 @@
+import { ComponentStateProps, ErrorStateProps } from '@bluebase/components';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
-import { ComponentState } from '../../index';
-import { ComponentStateProps } from '../ComponentState';
+import { ComponentState } from '../../getComponent';
 import React from 'react';
-
-export interface ErrorStateProps {
-	/** The error to display */
-	error?: Error,
-
-	/** Callack function, called when retry button is pressed. */
-	retry?: () => void,
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-}
 
 /**
  * # 🚨 ErrorState

@@ -1,17 +1,12 @@
+import { HeaderBackButtonProps, HeaderBackButtonStyles, NavigationActionsObject } from '@bluebase/components';
 import {
 	I18nManager,
   Image,
-	ImageStyle,
   Platform,
-	StyleProp,
   Text,
-	TextStyle,
   View,
-	ViewStyle,
 } from 'react-native';
-
 import { NavigationActions } from '../../getComponent';
-import { NavigationActionsObject } from '../NavigationActions';
 import React from 'react';
 import { Theme } from '../../registries';
 import TouchableItem from './TouchableItem';
@@ -20,32 +15,8 @@ import TouchableItem from './TouchableItem';
 // tslint:disable-next-line: no-var-requires
 const defaultBackImage = require('../../../assets/common/back-icon.png');
 
-export interface HeaderBackButtonProps {
-	tintColor?: string;
-	backTitleVisible?: boolean,
-	title?: string | null;
-	backImage?: React.ReactElement<any>;
-	truncatedTitle?: string;
-	titleStyle?: StyleProp<TextStyle>;
-	pressColorAndroid?: string;
-	onPress?: () => void,
-	width?: number,
-	allowFontScaling?: boolean,
-	styles?: Partial<HeaderBackButtonStyles>,
-	style?: StyleProp<ViewStyle>,
-	testId?: string,
-}
-
 export interface HeaderBackButtonState {
 	initialTextWidth?: number,
-}
-
-export interface HeaderBackButtonStyles {
-	androidButtonWrapper: StyleProp<ViewStyle>,
-	icon: StyleProp<ImageStyle>,
-	iconWithTitle: StyleProp<ImageStyle>,
-	wrapper: StyleProp<ViewStyle>,
-	title: StyleProp<TextStyle>,
 }
 
 class HeaderBackButton extends React.PureComponent<HeaderBackButtonProps, HeaderBackButtonState> {

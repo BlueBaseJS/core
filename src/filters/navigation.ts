@@ -1,4 +1,4 @@
-import { NavigatorProps, RouteConfig } from '../components';
+import { NavigatorProps, RouteConfig } from '@bluebase/components';
 import { BlueBase } from '../BlueBase';
 import { FilterNestedCollection } from '../registries';
 import deepmerge from 'deepmerge';

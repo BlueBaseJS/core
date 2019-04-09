@@ -1,5 +1,5 @@
 import { BlueBaseApp } from '../../BlueBaseApp';
-import { HeaderTitle } from '../../../';
+import { HeaderTitle } from '../../../getComponent';
 import React from 'react';
 // import TestRenderer from 'react-test-renderer';
 import { mount } from 'enzyme';

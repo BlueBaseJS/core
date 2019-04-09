@@ -1,6 +1,6 @@
 // import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import { BlueBaseDecorator } from './BlueRainDecorator';
+import { BlueBaseDecorator } from '../../common/BlueRainDecorator';
 import { withInfo } from '@storybook/addon-info';
 // import { BlueBaseDecorator } from '@bluebase/storybook-addon';
 

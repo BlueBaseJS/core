@@ -1,40 +1,5 @@
-import { MaybeRenderPropChildren } from '../../utils';
 import React from 'react';
-
-export interface WaitObserverChildrenProps {
-
-	/** A flag that tells if a timeout has occured */
-	timedOut: boolean,
-
-	/** A function the resets timers */
-	retry: () => void
-}
-
-export interface WaitObserverProps {
-
-	/** Delay before rendering a component. */
-	delay?: number,
-
-	/** Timeout duration. */
-	timeout?: number,
-
-	/**
-	 * A callback function executed when a timeout occurs.
-	 */
-	onTimeout?: () => void;
-
-	/**
-	 * A callback function executed when retry method is called from the child component.
-	 */
-	onRetry?: () => void;
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-
-	children?: MaybeRenderPropChildren<WaitObserverChildrenProps>;
-}
+import { WaitObserverProps } from '@bluebase/components';
 
 interface WaitObserverState {
 

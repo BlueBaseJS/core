@@ -1,43 +1,7 @@
-import { MaybeRenderPropChildren } from '../../utils';
+import { DataObserverProps } from '@bluebase/components';
 import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
-
-export interface DataObserverChildrenProps {
-	/** Initial data that was passed as a prop. */
-	data: any;
-
-	/** Loading flag. */
-	loading: boolean;
-
-	/** Empty flag. */
-	empty: boolean;
-}
-
-export interface DataObserverProps {
-	/** A function used to check if data is loading. */
-	isLoading?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
-
-	/** A function used to check if data is empty. */
-	isEmpty?: (props: DataObserverProps & { [prop: string]: any }) => boolean;
-
-	/** Loading flag. */
-	loading?: boolean;
-
-	/** Input data. */
-	data?: any;
-
-	/**
-	 * Children, data is passed in the param object of the render prop function.
-	 * This object is typed as `DataObserverChildrenProps`.
-	 */
-	children?: MaybeRenderPropChildren<DataObserverChildrenProps>;
-
-	/**
-	 * Used to locate this view in end-to-end tests.
-	 */
-	testID?: string;
-}
 
 export interface DataObserverState {
 	// Check
