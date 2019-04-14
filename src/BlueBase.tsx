@@ -16,6 +16,7 @@ import {
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
+import { IntlProvider } from './intl';
 import { MaybeRenderPropChildren } from './utils';
 import React from 'react';
 import { ThemeProvider } from './themes';
@@ -97,14 +98,17 @@ export class BlueBase {
 		// Navigation
 		const navigatorConfigs = await this.Filters.run('bluebase.navigator.root', {});
 
+		// TODO: Move this to BlueBaseApp component
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-					<BlueBaseContent
-						BB={this}
-						children={this.bootOptions.children}
-						navigator={navigatorConfigs}
-					/>
+					<IntlProvider>
+						<BlueBaseContent
+							BB={this}
+							children={this.bootOptions.children}
+							navigator={navigatorConfigs}
+						/>
+					</IntlProvider>
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);

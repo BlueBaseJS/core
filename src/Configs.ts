@@ -8,6 +8,9 @@ export interface Configs {
 	/** Project locale. Defaults to 'en' */
 	locale: string;
 
+	/** Selectable locale options to show in the app */
+	'locale.options': { [key: string]: string };
+
 	/** Text direction of content */
 	direction: 'ltr' | 'rtl';
 
@@ -46,6 +49,10 @@ export const BlueBaseDefaultConfigs: Configs = {
 	development: !isProduction(),
 	direction: 'ltr',
 	locale: 'en',
+	'locale.options': {
+		en: 'English',
+		ur: 'اُردُو',
+	},
 	pluginRoutePathPrefix: 'p',
 	'theme.mode': 'light',
 	'theme.name': 'bluebase-light',
