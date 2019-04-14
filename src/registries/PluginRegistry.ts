@@ -117,7 +117,7 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 			assets: assets || {},
 			components: components || {},
 			filters: filters || {},
-			fonts: filters || {},
+			fonts: fonts || {},
 			routes,
 			themes: themes || {},
 
