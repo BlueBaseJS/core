@@ -8,6 +8,8 @@ import {
 	ConfigRegistry,
 	FilterNestedCollection,
 	FilterRegistry,
+	FontCollection,
+	FontRegistry,
 	PluginCollection,
 	PluginRegistry,
 	ThemeCollection,
@@ -33,6 +35,9 @@ export interface BootOptions {
 	/** Collection of filters to add in BlueBase's Filter Registry. */
 	filters: FilterNestedCollection,
 
+	/** Collection of filters to add in BlueBase's Filter Registry. */
+	fonts: FontCollection,
+
 	/** Collection of plugins to add in BlueBase's Plugin Registry. */
 	plugins: PluginCollection,
 
@@ -55,6 +60,7 @@ export class BlueBase {
 	public Components = new ComponentRegistry(this);
 	public Configs = new ConfigRegistry(this);
 	public Filters = new FilterRegistry(this);
+	public Fonts = new FontRegistry(this);
 	public Plugins = new PluginRegistry(this);
 	public Themes = new ThemeRegistry(this);
 
@@ -69,6 +75,7 @@ export class BlueBase {
 		components: {},
 		configs: {},
 		filters: {},
+		fonts: {},
 		plugins: [],
 		themes: [],
 	};

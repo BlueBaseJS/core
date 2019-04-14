@@ -18,6 +18,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🎁 ComponentRegistry
 - 🎛 ConfigRegistry
 - 🚇 FilterRegistry
+- 🔠 FontRegistry
 - 🔌 PluginRegistry
 - 🎨 ThemeRegistry
 

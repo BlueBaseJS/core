@@ -42,7 +42,8 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '.*\\.d\\.ts', 
     '<rootDir>/node_modules/',
-  ],
+    '<rootDir>/src/registries/helpers/',
+],
   watchPathIgnorePatterns: [
     // 'src/*/output/**',
     // 'output/'

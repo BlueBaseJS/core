@@ -16,6 +16,7 @@ import { AssetCollection } from './AssetRegistry';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
 import { FilterNestedCollection } from './FilterRegistry';
+import { FontCollection } from './FontRegistry';
 import { ItemCollection } from './Registry';
 import { ThemeCollection } from './ThemeRegistry';
 
@@ -31,7 +32,8 @@ export type PluginCategory =
 export interface PluginValue {
 	assets: AssetCollection;
 	components: ComponentCollection;
-	filters: FilterNestedCollection; // FilterCollectionInput;
+	filters: FilterNestedCollection;
+	fonts: FontCollection;
 	themes: ThemeCollection;
 	routes?: MaybeThunk<MaybeArray<RouteConfig>>;
 }
@@ -87,6 +89,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
 		defaultConfigs: {},
 		enabled: true,
 		filters: {},
+		fonts: {},
 		name: 'Untitled Plugin',
 		themes: {},
 
@@ -100,7 +103,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * @param plugin
  */
 export function createPlugin(plugin: Partial<Plugin>): PluginInput {
-	const { assets, components, filters, themes, routes, value, ...rest } = plugin;
+	const { assets, components, filters, fonts, themes, routes, value, ...rest } = plugin;
 
 	return {
 		categories: [],
@@ -114,6 +117,7 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 			assets: assets || {},
 			components: components || {},
 			filters: filters || {},
+			fonts: filters || {},
 			routes,
 			themes: themes || {},
 
