@@ -1,24 +1,9 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import { DynamicIcon } from '../../getComponent';
+import { PluginIconProps } from '@bluebase/components';
 import React from 'react';
 import { resolveThunk } from '../../utils';
-
-export interface PluginIconProps {
-
-	/** Plugin key */
-	id: string;
-
-	/** Icon size */
-	size?: number,
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-
-	[key: string]: any
-}
 
 /**
  * # 🔌 PluginIcon

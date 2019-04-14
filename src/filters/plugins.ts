@@ -58,6 +58,18 @@ export const plugins: FilterNestedCollection = {
 
 				await BB.Filters.registerNestedCollection(plugin.filters);
 
+				///////////////////////////
+				///// Register Assets /////
+				///////////////////////////
+
+				await BB.Assets.registerCollection(plugin.assets);
+
+				///////////////////////////
+				///// Register Fonts /////
+				///////////////////////////
+
+				await BB.Fonts.registerCollection(plugin.fonts);
+
 				///////////////////////////////
 				///// Register Components /////
 				///////////////////////////////

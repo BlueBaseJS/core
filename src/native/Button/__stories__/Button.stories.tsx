@@ -1,4 +1,4 @@
-import { Button } from '../../../';
+import { Button } from '../../../getComponent';
 import React from 'react';
 import { View } from '../../View';
 import storiesOf from '@bluebase/storybook-addon';
@@ -20,10 +20,6 @@ storiesOf('Button', module)
 		<View style={{ padding: 8 }}>
 			<Button color="secondary">Secondary</Button>
 		</View>
-		<View style={{ padding: 8 }}>
-			<Button color="link">Link</Button>
-		</View>
-
 	</View>
 ))
 

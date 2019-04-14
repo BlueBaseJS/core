@@ -1,4 +1,4 @@
-import { ComponentState } from '../../index';
+import { ComponentState } from '../../getComponent';
 import React from 'react';
 
 export interface HomeScreenProps {

@@ -1,23 +1,31 @@
 import { Analytics, Logger } from './api';
 import {
+	AssetCollection,
+	AssetRegistry,
 	ComponentCollection,
 	ComponentRegistry,
 	ConfigCollection,
 	ConfigRegistry,
 	FilterNestedCollection,
 	FilterRegistry,
+	FontCollection,
+	FontRegistry,
 	PluginCollection,
 	PluginRegistry,
 	ThemeCollection,
 	ThemeRegistry,
 } from './registries';
 import { BlueBaseProvider } from './Context';
+import { IntlProvider } from './intl';
 import { MaybeRenderPropChildren } from './utils';
 import React from 'react';
 import { ThemeProvider } from './themes';
 import systemFilters from './filters';
 
 export interface BootOptions {
+
+	/** Collection of assets to add in BlueBase's Asset Registry. */
+	assets: AssetCollection,
 
 	/** Collection of components to add in BlueBase's Component Registry. */
 	components: ComponentCollection,
@@ -27,6 +35,9 @@ export interface BootOptions {
 
 	/** Collection of filters to add in BlueBase's Filter Registry. */
 	filters: FilterNestedCollection,
+
+	/** Collection of filters to add in BlueBase's Filter Registry. */
+	fonts: FontCollection,
 
 	/** Collection of plugins to add in BlueBase's Plugin Registry. */
 	plugins: PluginCollection,
@@ -46,19 +57,26 @@ export class BlueBase {
 	public Logger = new Logger(this);
 
 	// Registries
+	public Assets = new AssetRegistry(this);
 	public Components = new ComponentRegistry(this);
 	public Configs = new ConfigRegistry(this);
 	public Filters = new FilterRegistry(this);
+	public Fonts = new FontRegistry(this);
 	public Plugins = new PluginRegistry(this);
 	public Themes = new ThemeRegistry(this);
+
+	// Allow other props
+	[key: string]: any;
 
 	// Flags
 	public booted = false;
 
 	private bootOptions: BootOptions = {
+		assets: {},
 		components: {},
 		configs: {},
 		filters: {},
+		fonts: {},
 		plugins: [],
 		themes: [],
 	};
@@ -80,14 +98,17 @@ export class BlueBase {
 		// Navigation
 		const navigatorConfigs = await this.Filters.run('bluebase.navigator.root', {});
 
+		// TODO: Move this to BlueBaseApp component
 		const BlueBaseRoot = () => (
 			<BlueBaseProvider value={this}>
 				<ThemeProvider>
-					<BlueBaseContent
-						BB={this}
-						children={this.bootOptions.children}
-						navigator={navigatorConfigs}
-					/>
+					<IntlProvider>
+						<BlueBaseContent
+							BB={this}
+							children={this.bootOptions.children}
+							navigator={navigatorConfigs}
+						/>
+					</IntlProvider>
 				</ThemeProvider>
 			</BlueBaseProvider>
 		);

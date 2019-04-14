@@ -1,28 +1,9 @@
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
+import { BlueBaseFilterProps } from '@bluebase/components';
 import Loadable from 'react-loadable';
 import React from 'react';
 import { ReactLoadableLoading } from '../ReactLoadableLoading';
-
-export interface BlueBaseFilterProps<T = any> {
-
-	/** Event name */
-	filter: string;
-
-	/** Initial value to filter */
-	value: T;
-
-	/** Filter arguments */
-	args?: { [key: string]: any };
-
-	/** Children as function (render prop pattern). Final value is passed as param to this function. */
-	children: ((value: any) => React.ReactNode);
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-}
 
 /**
  * # 🚇 BlueBaseFilter

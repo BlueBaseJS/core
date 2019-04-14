@@ -1,9 +1,8 @@
 
-import { Text, TextProps, Theme } from '../../';
+import { HeaderTitleProps } from '@bluebase/components';
 import React from 'react';
-
-export interface HeaderTitleProps extends TextProps {
-}
+import { Text } from '../../getComponent';
+import { Theme } from '../../';
 
 const HeaderTitle: React.FunctionComponent<HeaderTitleProps> = ({ style, styles, ...rest }: HeaderTitleProps) => (
   <Text

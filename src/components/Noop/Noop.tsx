@@ -1,8 +1,5 @@
+import { NoopProps } from '@bluebase/components';
 import React from 'react';
-
-export interface NoopProps {
-	children?: React.ReactNode,
-}
 
 /**
  * # 😐 Noop

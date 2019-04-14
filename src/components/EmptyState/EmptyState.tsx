@@ -1,14 +1,6 @@
-import { ComponentState, ComponentStateProps } from '../../index';
+import { ComponentState } from '../../getComponent';
+import { EmptyStateProps } from '@bluebase/components';
 import React from 'react';
-
-export interface EmptyStateProps extends ComponentStateProps {
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-
-}
 
 /**
  * # 📭 EmptyState

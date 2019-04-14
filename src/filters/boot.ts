@@ -12,6 +12,8 @@ export const boot: FilterNestedCollection = {
 				await BB.Filters.run('bluebase.boot.start', bootOptions);
 
 				await BB.Filters.run('bluebase.configs.register', bootOptions);
+				await BB.Filters.run('bluebase.assets.register', bootOptions);
+				await BB.Filters.run('bluebase.fonts.register', bootOptions);
 				await BB.Filters.run('bluebase.components.register', bootOptions);
 				await BB.Filters.run('bluebase.filters.register', bootOptions.filters);
 				await BB.Filters.run('bluebase.routes.register', bootOptions);
@@ -19,6 +21,8 @@ export const boot: FilterNestedCollection = {
 				await BB.Filters.run('bluebase.plugins.register', bootOptions.plugins);
 
 				await BB.Filters.run('bluebase.plugins.initialize.all', bootOptions);
+
+				await BB.Filters.run('bluebase.preload', bootOptions);
 
 				await BB.Filters.run('bluebase.boot.end', bootOptions);
 
@@ -29,12 +33,26 @@ export const boot: FilterNestedCollection = {
 
 	'bluebase.boot.start': [
 		{
-			key: 'system-initialize-default',
+			key: 'system-boot-start-default',
 			priority: 5,
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Filters.run('bluebase.components.register.internal', bootOptions);
+
+				return bootOptions;
+			},
+		},
+	],
+
+	'bluebase.preload': [
+		{
+			key: 'system-preload-default',
+			priority: 5,
+
+			// tslint:disable-next-line:object-literal-sort-keys
+			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+				await BB.Fonts.load();
 
 				return bootOptions;
 			},

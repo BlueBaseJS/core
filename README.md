@@ -20,15 +20,15 @@
 
 ## 🏆 Features
 
-- 🔌 Plugins
-- 🎨 Themes
-- 🎁 Dynamic Components
-- 📔 Logging API
-- 📈 Analytics API
+-   🔌 Plugins
+-   🎨 Themes
+-   🎁 Dynamic Components
+-   📔 Logging API
+-   📈 Analytics API
 
 ## 🙌 Acknowledgements
 
 Some of the initial code for this project was taken from:
 
-- [VulcanJS](http://vulcanjs.org/)
-- [react-json-schema](https://github.com/TechniqueSoftware/react-json-schema)
+-   [VulcanJS](http://vulcanjs.org/)
+-   [react-json-schema](https://github.com/TechniqueSoftware/react-json-schema)

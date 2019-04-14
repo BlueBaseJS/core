@@ -1,16 +1,18 @@
-import { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 import {
-	BlueBaseContentProps,
+	ActivityIndicatorProps,
 	BlueBaseFilterProps,
+	ButtonProps,
 	ComponentStateProps,
 	DataObserverProps,
 	DynamicIconProps,
 	ErrorObserverProps,
 	ErrorStateProps,
+	FormattedMessageProps,
 	HeaderBackButtonProps,
 	HeaderProps,
 	HeaderTitleProps,
 	HoverObserverProps,
+	ImageProps,
 	LinkProps,
 	LoadingStateProps,
 	NavigationActionsProps,
@@ -19,10 +21,13 @@ import {
 	PluginIconProps,
 	RedirectProps,
 	StatefulComponentProps,
+	TextProps,
+	ViewProps,
 	WaitObserverProps,
-} from './components';
+} from '@bluebase/components';
 import { BlueBase } from './BlueBase';
 import { BlueBaseConsumer } from './Context';
+import { BlueBaseContentProps } from './components';
 import React from 'react';
 
 
@@ -71,6 +76,7 @@ export const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
 export const EmptyState = getComponent<{}>('EmptyState');
 export const ErrorObserver = getComponent<ErrorObserverProps>('ErrorObserver');
 export const ErrorState = getComponent<ErrorStateProps>('ErrorState');
+export const FormattedMessage = getComponent<FormattedMessageProps>('FormattedMessage');
 export const Header = getComponent<HeaderProps>('Header');
 export const HeaderTitle = getComponent<HeaderTitleProps>('HeaderTitle');
 export const HeaderBackButton = getComponent<HeaderBackButtonProps>('HeaderBackButton');
