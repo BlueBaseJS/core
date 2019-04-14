@@ -7,6 +7,7 @@ import {
 	DynamicIconProps,
 	ErrorObserverProps,
 	ErrorStateProps,
+	FormattedMessageProps,
 	HeaderBackButtonProps,
 	HeaderProps,
 	HeaderTitleProps,
@@ -75,6 +76,7 @@ export const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
 export const EmptyState = getComponent<{}>('EmptyState');
 export const ErrorObserver = getComponent<ErrorObserverProps>('ErrorObserver');
 export const ErrorState = getComponent<ErrorStateProps>('ErrorState');
+export const FormattedMessage = getComponent<FormattedMessageProps>('FormattedMessage');
 export const Header = getComponent<HeaderProps>('Header');
 export const HeaderTitle = getComponent<HeaderTitleProps>('HeaderTitle');
 export const HeaderBackButton = getComponent<HeaderBackButtonProps>('HeaderBackButton');

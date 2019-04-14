@@ -1226,10 +1226,10 @@
     tslint-react "^3.6.0"
     typescript "^3.1.4"
 
-"@bluebase/components@^3.4.1":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-3.4.1.tgz#e1efa7c60ae29c5a4874e5ee0a47e88327c179ac"
-  integrity sha512-OCDb1GTLdREEaTmboEuvzIaq+9I5jPnWOGoILt63FAF+4cy9h++6RbRFyxduLaguplxjxlu1idU67hRqNQ6AAg==
+"@bluebase/components@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-3.5.0.tgz#9cf1f765bef89112e223e07c5a8fddd673e6a875"
+  integrity sha512-LXwitjUzXhasW9aKr45+b1VhCcorS6wIqAAHU1owsfuj6bTTCP17xPiTHjRkJLmqkHyTSCyPbxyN9J1fkRhcqw==
   dependencies:
     deepmerge "^3.2.0"
     tslib "^1.9.3"
@@ -2305,6 +2305,11 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+"@types/rtl-detect@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/rtl-detect/-/rtl-detect-1.0.0.tgz#5791e18a111f2b8b5b328160af97f3991a5697a5"
+  integrity sha512-lyYh44YgrejEK9/5rhASghvRUOxrSJyyyQmqK7L6F/V5qs6PY1RfCi1VbjSkY6kuDt7lzQyhd006slhda4Oypg==
 
 "@types/shelljs@^0.8.0":
   version "0.8.1"

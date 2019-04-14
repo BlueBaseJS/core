@@ -8,6 +8,7 @@ export * from './DynamicIcon';
 export * from './EmptyState';
 export * from './ErrorObserver';
 export * from './ErrorState';
+export * from './FormattedMessage';
 export * from './Header';
 export * from './HeaderBackButton';
 export * from './HeaderTitle';

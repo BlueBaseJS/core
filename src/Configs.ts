@@ -8,8 +8,15 @@ export interface Configs {
 	/** Project locale. Defaults to 'en' */
 	locale: string;
 
-	/** Text direction of content */
-	direction: 'ltr' | 'rtl';
+	/** Selectable locale options to show in the app */
+	'locale.options': { [key: string]: string };
+
+	/**
+	 * Content direction.
+	 *
+	 * If auto is selected, direction is changed with locale.
+	 */
+	direction: 'ltr' | 'rtl' | 'auto';
 
 	/** Debug mode. By default it's true in development enviornment */
 	debug: boolean;
@@ -44,8 +51,12 @@ export interface Configs {
 export const BlueBaseDefaultConfigs: Configs = {
 	debug: !isProduction(),
 	development: !isProduction(),
-	direction: 'ltr',
+	direction: 'auto',
 	locale: 'en',
+	'locale.options': {
+		en: 'English',
+		ur: 'اُردُو',
+	},
 	pluginRoutePathPrefix: 'p',
 	'theme.mode': 'light',
 	'theme.name': 'bluebase-light',

@@ -12,7 +12,7 @@ export const navigation: FilterNestedCollection = {
 
 			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
 				const navigator: NavigatorProps = {
-					type: 'stack',
+					type: 'switch',
 					initialRouteName: 'Root',
 
 					routes: [
