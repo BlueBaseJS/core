@@ -42,7 +42,6 @@ describe('AssetRegistry', () => {
 			expect(item.preload).toBe(true);
 			expect(item.value).toMatchObject({ uri: './foo/bar.jpg' });
 		});
-
 	});
 
 	describe('.resolve method', () => {
@@ -75,28 +74,23 @@ describe('AssetRegistry', () => {
 			const item = Assets.resolve('bar');
 			expect(item).toBeUndefined();
 		});
-
 	});
 
 	describe('.registerCollection method', () => {
 		// it('should register a config collection', async () => {
 		// 	const BB = new BlueBase();
 		// 	const Assets = new AssetRegistry(BB);
-
 		// 	await Assets.registerCollection(configs);
 		// 	expect(Assets.getValue('title')).toBe('Asset Registry Test');
 		// 	expect(Assets.getValue('subtitle')).toBe('We are just testing');
 		// 	expect(Assets.size()).toBe(5);
 		// });
-
 		// it('should filter a config collection during register', async () => {
 		// 	const BB = new BlueBase();
 		// 	const Assets = new AssetRegistry(BB);
-
 		// 	await BB.Filters.register('bluebase.config.beforeSave', {
 		// 		name: 'change-config',
 		// 		handler: ({ key, value }: { key: string, value: any }) => {
-
 		// 			if (key === 'title') {
 		// 				return { key, value: 'Changed title' };
 		// 			}
@@ -113,5 +107,4 @@ describe('AssetRegistry', () => {
 		// 	expect(Assets.size()).toBe(5);
 		// });
 	});
-
 });

@@ -20,7 +20,6 @@ export type AssetCollection = ItemCollection<AssetInput>;
  * 🖼 AssetRegistry
  */
 export class AssetRegistry extends Registry<Asset, AssetInput> {
-
 	/**
 	 * Resolves an Asset.
 	 * @param keys
@@ -35,12 +34,9 @@ export class AssetRegistry extends Registry<Asset, AssetInput> {
 	 * @param partial
 	 */
 	protected createItem(key: string, partial: any): Asset {
-
 		// On web, require returns a string (webpack).
 		// So we need to convert it to an object.
-		const value = typeof partial.value === 'string'
-		? { uri: partial.value }
-		: partial.value;
+		const value = typeof partial.value === 'string' ? { uri: partial.value } : partial.value;
 
 		return super.createItem(key, {
 			preload: false,
@@ -65,5 +61,4 @@ export class AssetRegistry extends Registry<Asset, AssetInput> {
 	protected isInputValue(value: any): value is AssetInput['value'] {
 		return this.isValue(value) || typeof value === 'string';
 	}
-
 }
