@@ -15,6 +15,7 @@ import { BlueBase, BootOptions } from '../BlueBase';
 import {
 	BlueBaseContent,
 	BlueBaseFilter,
+	BlueBaseImage,
 	ComponentState,
 	DataObserver,
 	DynamicIcon,
@@ -53,6 +54,7 @@ export const components: FilterNestedCollection = {
 					// BlueBase Components
 					BlueBaseContent,
 					BlueBaseFilter,
+					BlueBaseImage,
 					ComponentState,
 					DataObserver,
 					DynamicIcon,

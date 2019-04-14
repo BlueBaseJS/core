@@ -9,6 +9,8 @@ function loadStories() {
   require('../../../src/__stories__/components.stories');
   require('../../../src/components/BlueBaseApp/__stories__/BlueRainApp.stories');
   require('../../../src/components/BlueBaseApp/__stories__/BlueRainApp.stories');
+  require('../../../src/components/BlueBaseImage/__stories__/BlueBaseImage.stories');
+  require('../../../src/components/BlueBaseImage/__stories__/BlueBaseImage.stories');
   require('../../../src/components/ComponentState/__stories__/ComponentState.stories');
   require('../../../src/components/ComponentState/__stories__/ComponentState.stories');
   require('../../../src/components/DataObserver/__stories__/DataObserver.stories');
@@ -47,10 +49,10 @@ function loadStories() {
   require('../../../src/native/Button/__stories__/Button.stories');
   require('../../../src/registries/__stories__/ComponentRegistry.stories');
   require('../../../src/registries/__stories__/ComponentRegistry.stories');
+  require('../../../src/registries/__stories__/FontRegistry.stories');
+  require('../../../src/registries/__stories__/FontRegistry.stories');
   require('../../../src/themes/__stories__/ThemeContext.stories');
   require('../../../src/themes/__stories__/ThemeContext.stories');
-  require('../sample/DummyComponent.stories');
-  require('../sample/DummyComponent.stories');
   
 }
 
@@ -59,6 +61,8 @@ const stories = [
   '../../../src/__stories__/components.stories',
   '../../../src/components/BlueBaseApp/__stories__/BlueRainApp.stories',
   '../../../src/components/BlueBaseApp/__stories__/BlueRainApp.stories',
+  '../../../src/components/BlueBaseImage/__stories__/BlueBaseImage.stories',
+  '../../../src/components/BlueBaseImage/__stories__/BlueBaseImage.stories',
   '../../../src/components/ComponentState/__stories__/ComponentState.stories',
   '../../../src/components/ComponentState/__stories__/ComponentState.stories',
   '../../../src/components/DataObserver/__stories__/DataObserver.stories',
@@ -97,10 +101,10 @@ const stories = [
   '../../../src/native/Button/__stories__/Button.stories',
   '../../../src/registries/__stories__/ComponentRegistry.stories',
   '../../../src/registries/__stories__/ComponentRegistry.stories',
+  '../../../src/registries/__stories__/FontRegistry.stories',
+  '../../../src/registries/__stories__/FontRegistry.stories',
   '../../../src/themes/__stories__/ThemeContext.stories',
   '../../../src/themes/__stories__/ThemeContext.stories',
-  '../sample/DummyComponent.stories',
-  '../sample/DummyComponent.stories',
   
 ];
 

@@ -14,27 +14,30 @@ Emoji reference of Commitizen scopes for this repo:
 
 ## Registries
 
-- 🎁 ComponentRegistry
-- 🎛 ConfigRegistry
-- 🚇 FilterRegistry
-- 🔌 PluginRegistry
-- 🎨 ThemeRegistry
+-   🖼 AssetRegistry
+-   🎁 ComponentRegistry
+-   🎛 ConfigRegistry
+-   🚇 FilterRegistry
+-   🔠 FontRegistry
+-   🔌 PluginRegistry
+-   🎨 ThemeRegistry
 
 ## 🎁 Components
 
-- 🚀 BlueBaseApp
-- 🏡 BlueBaseContent
-- 🚇 BlueBaseFilter
-- 🤡 ComponentState
-- ️⚡️ DataObserver
-- 🗿 DynamicIcon
-- 📭 EmptyState
-- 🚨 ErrorState
-- 🚨 ErrorObserver
-- 🛸 HoverObserver
-- 🍱 JsonSchema
-- ⏳ LoadingState
-- 😐 Noop
-- 🔌 PluginIcon
-- 👨‍🎨 StatefulComponent
-- ⏰ WaitObserver
+-   🚀 BlueBaseApp
+-   🏡 BlueBaseContent
+-   🚇 BlueBaseFilter
+-   🖼 BlueBaseImage
+-   🤡 ComponentState
+-   ️⚡️ DataObserver
+-   🗿 DynamicIcon
+-   📭 EmptyState
+-   🚨 ErrorState
+-   🚨 ErrorObserver
+-   🛸 HoverObserver
+-   🍱 JsonSchema
+-   ⏳ LoadingState
+-   😐 Noop
+-   🔌 PluginIcon
+-   👨‍🎨 StatefulComponent
+-   ⏰ WaitObserver

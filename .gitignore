@@ -37,3 +37,6 @@ dist/
 
 # Expo
 .expo
+
+# Jest
+.jest
