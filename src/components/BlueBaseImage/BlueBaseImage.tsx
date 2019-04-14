@@ -1,14 +1,9 @@
+import { BlueBaseImageProps, ImageProps } from '@bluebase/components';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import { Image } from '../../getComponent';
-import { ImageProps } from '@bluebase/components';
-import { Omit } from '../../utils';
 import React from 'react';
 
-export interface BlueBaseImageProps extends Omit<ImageProps, 'source'> {
-	resolve?: string | string[]
-	source?: ImageProps['source']
-}
 
 // tslint:disable: jsdoc-format
 /**
