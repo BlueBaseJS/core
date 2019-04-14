@@ -9,7 +9,6 @@ export const fonts: FilterNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				debugger;
 				await BB.Fonts.registerCollection(bootOptions.fonts);
 
 				return bootOptions;

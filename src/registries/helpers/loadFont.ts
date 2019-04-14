@@ -8,7 +8,7 @@ export const loadFont = (fontName: string, font: string) => {
 		font-family: ${fontName};
 	}`;
 
-  // Create stylesheet
+	// Create stylesheet
 	const style: any = document.createElement('style');
 	style.type = 'text/css';
 
@@ -18,7 +18,7 @@ export const loadFont = (fontName: string, font: string) => {
 		style.appendChild(document.createTextNode(iconFontStyles));
 	}
 
-  // Inject stylesheet
+	// Inject stylesheet
 	document.head.appendChild(style);
 };
 

@@ -17,9 +17,8 @@ export type FontCollection = { [key: string]: FontInput };
  * 🔠 FontRegistry
  */
 export class FontRegistry extends Registry<Font, FontInput> {
-
 	public async load() {
-		const items = this.filterValues((value) => !!value);
+		const items = this.filterValues(value => !!value);
 		await loadAllFonts(items as any);
 	}
 
