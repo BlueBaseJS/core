@@ -1,5 +1,7 @@
 import { Analytics, Logger } from './api';
 import {
+	AssetCollection,
+	AssetRegistry,
 	ComponentCollection,
 	ComponentRegistry,
 	ConfigCollection,
@@ -18,6 +20,9 @@ import { ThemeProvider } from './themes';
 import systemFilters from './filters';
 
 export interface BootOptions {
+
+	/** Collection of assets to add in BlueBase's Asset Registry. */
+	assets: AssetCollection,
 
 	/** Collection of components to add in BlueBase's Component Registry. */
 	components: ComponentCollection,
@@ -46,16 +51,21 @@ export class BlueBase {
 	public Logger = new Logger(this);
 
 	// Registries
+	public Assets = new AssetRegistry(this);
 	public Components = new ComponentRegistry(this);
 	public Configs = new ConfigRegistry(this);
 	public Filters = new FilterRegistry(this);
 	public Plugins = new PluginRegistry(this);
 	public Themes = new ThemeRegistry(this);
 
+	// Allow other props
+	[key: string]: any;
+
 	// Flags
 	public booted = false;
 
 	private bootOptions: BootOptions = {
+		assets: {},
 		components: {},
 		configs: {},
 		filters: {},

@@ -14,6 +14,7 @@ Emoji reference of Commitizen scopes for this repo:
 
 ## Registries
 
+- 🖼 AssetRegistry
 - 🎁 ComponentRegistry
 - 🎛 ConfigRegistry
 - 🚇 FilterRegistry
@@ -25,6 +26,7 @@ Emoji reference of Commitizen scopes for this repo:
 - 🚀 BlueBaseApp
 - 🏡 BlueBaseContent
 - 🚇 BlueBaseFilter
+- 🖼 BlueBaseImage
 - 🤡 ComponentState
 - ️⚡️ DataObserver
 - 🗿 DynamicIcon

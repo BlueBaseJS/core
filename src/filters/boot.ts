@@ -11,6 +11,7 @@ export const boot: FilterNestedCollection = {
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Filters.run('bluebase.boot.start', bootOptions);
 
+				await BB.Filters.run('bluebase.assets.register', bootOptions);
 				await BB.Filters.run('bluebase.configs.register', bootOptions);
 				await BB.Filters.run('bluebase.components.register', bootOptions);
 				await BB.Filters.run('bluebase.filters.register', bootOptions.filters);

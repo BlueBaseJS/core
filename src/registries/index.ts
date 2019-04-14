@@ -1,3 +1,4 @@
+export * from './AssetRegistry';
 export * from './ComponentRegistry';
 export * from './ConfigRegistry';
 export * from './FilterRegistry';

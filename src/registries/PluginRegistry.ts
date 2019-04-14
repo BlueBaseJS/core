@@ -12,6 +12,7 @@ import {
 	joinPaths,
 	resolveThunk,
 } from '../utils';
+import { AssetCollection } from './AssetRegistry';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
 import { FilterNestedCollection } from './FilterRegistry';
@@ -28,6 +29,7 @@ export type PluginCategory =
 	| string;
 
 export interface PluginValue {
+	assets: AssetCollection;
 	components: ComponentCollection;
 	filters: FilterNestedCollection; // FilterCollectionInput;
 	themes: ThemeCollection;
@@ -80,6 +82,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
 	const { value, ...rest } = plugin;
 
 	return {
+		assets: {},
 		components: {},
 		defaultConfigs: {},
 		enabled: true,
@@ -97,7 +100,7 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
  * @param plugin
  */
 export function createPlugin(plugin: Partial<Plugin>): PluginInput {
-	const { components, filters, themes, routes, value, ...rest } = plugin;
+	const { assets, components, filters, themes, routes, value, ...rest } = plugin;
 
 	return {
 		categories: [],
@@ -108,6 +111,7 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 		...rest,
 
 		value: {
+			assets: assets || {},
 			components: components || {},
 			filters: filters || {},
 			routes,
