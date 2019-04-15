@@ -14,7 +14,7 @@ export class FormattedMessage extends React.PureComponent<FormattedMessageProps>
 
 	render() {
 		const { children, component, ...rest } = this.props;
-		const { messages }: IntlContextData = this.context;
+		const { __ }: IntlContextData = this.context;
 
 		const Component = component as any;
 
@@ -22,8 +22,6 @@ export class FormattedMessage extends React.PureComponent<FormattedMessageProps>
 			return React.createElement(Component, rest, children);
 		}
 
-		const message = messages[children] || children;
-
-		return React.createElement(Component, rest, message);
+		return React.createElement(Component, rest, __(children));
 	}
 }
