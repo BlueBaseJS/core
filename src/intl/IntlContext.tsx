@@ -1,8 +1,8 @@
+import { BlueBaseDefaultConfigs, Configs } from '../Configs';
 import { ErrorState, LoadingState } from '../getComponent';
 import React, { createContext } from 'react';
 import { BlueBase } from '../BlueBase';
 import { BlueBaseContext } from '../Context';
-import { Configs } from '../Configs';
 import { I18nManager } from 'react-native';
 import rtlDetect from 'rtl-detect';
 
@@ -19,6 +19,7 @@ export interface IntlProviderProps {
 
 export interface IntlProviderState {
 	readonly direction: Configs['direction'];
+	readonly rtl: boolean;
 	readonly locale: string;
 	readonly loading: boolean,
 	readonly messages: IntlMessages,
@@ -29,11 +30,13 @@ export interface IntlProviderState {
  * Interface of object passed as param to the IntlConsumer render prop method.
  */
 export interface IntlContextData {
+	__: (message: string) => string;
 	changeLocale: (slug: string) => void,
 	changeDirection: (direction: Configs['direction']) => void,
 	direction: Configs['direction'];
 	locale: string;
 	messages: IntlMessages
+	rtl: boolean;
 }
 
 /**
@@ -54,15 +57,23 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	static contextType = BlueBaseContext;
 
 	readonly state: IntlProviderState = {
-		direction: 'ltr',
+		direction: BlueBaseDefaultConfigs.direction,
 		loading: true,
-		locale: 'en',
+		locale: BlueBaseDefaultConfigs.locale,
 		messages: {},
+		rtl: false, // We set this in componentWillMount (setDirection)
 	};
 
 	/** Stores configuration subscription ID */
 	private localeSubscriptionId?: string;
 	private directionSubscriptionId?: string;
+
+	constructor(props: IntlProviderProps) {
+		super(props);
+
+    // This binding is necessary to make `this` work in the callback
+		this.__ = this.__.bind(this);
+	}
 
 	async componentWillMount() {
 		const BB: BlueBase = (this as any).context;
@@ -128,24 +139,44 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 
 		const direction = BB.Configs.getValue('direction');
 
+		// Decide if layout should be RTL or not
+		let shouldBeRtl = false;
+
 		if (direction === 'ltr') {
-			I18nManager.forceRTL(false);
+			shouldBeRtl = false;
 		}
 		else if (direction === 'rtl') {
-			I18nManager.forceRTL(true);
+			shouldBeRtl = true;
 		}
 		else if (direction === 'auto') {
-			const rtl = rtlDetect.isRtlLang(this.state.locale);
-			I18nManager.forceRTL(!!rtl);
+			shouldBeRtl = !!rtlDetect.isRtlLang(this.state.locale);
 		}
 
-		this.setState({ direction });
+		// Everything is it should be, so do nothing
+		if (shouldBeRtl === this.state.rtl && direction === this.state.direction) {
+			return;
+		}
+
+		// Update layout
+		I18nManager.forceRTL(shouldBeRtl);
+
+		// Update state
+		this.setState({ direction, rtl: shouldBeRtl });
 	}
 
+	__(message: string) {
+
+		// We do this to keep a list off all messages in the app
+		if (!this.state.messages[message]) {
+			this.state.messages[message] = message;
+		}
+
+		return this.state.messages[message];
+	}
 	render() {
 
 		const BB: BlueBase = (this as any).context;
-		const { direction, error, loading, locale, messages } = this.state;
+		const { direction, error, loading, locale, messages, rtl } = this.state;
 
 		const retry = () => this.setLocale(locale, BB);
 
@@ -158,11 +189,13 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 		}
 
 		const value: IntlContextData = {
+			__: this.__,
 			changeDirection: (dir: Configs['direction']) => { BB.Configs.setValue('direction', dir); },
 			changeLocale: (newLocale: string) => { BB.Configs.setValue('locale', newLocale); },
 			direction,
 			locale,
-			messages
+			messages,
+			rtl,
 		};
 
 		return (
