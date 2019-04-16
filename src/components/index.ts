@@ -23,4 +23,5 @@ export * from './PluginIcon';
 export * from './ReactLoadableLoading';
 export * from './Redirect';
 export * from './StatefulComponent';
+export * from './TouchableItem';
 export * from './WaitObserver';

@@ -36,6 +36,7 @@ import {
 	PluginIcon,
 	Redirect,
 	StatefulComponent,
+	TouchableItem,
 	WaitObserver,
 } from '../components/';
 import { FilterNestedCollection } from '../registries';
@@ -77,6 +78,7 @@ export const components: FilterNestedCollection = {
 					PluginIcon,
 					Redirect,
 					StatefulComponent,
+					TouchableItem,
 					WaitObserver,
 
 					// Native
