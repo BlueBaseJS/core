@@ -54,9 +54,6 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledWith('Foo', undefined);
 
 		expect(stubActions.replace).toBeCalledTimes(0);
-
-		// expect(stubActions).toMatchSnapshot();
-		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should call the push function with the given path`, async () => {
@@ -80,16 +77,13 @@ describe('Link', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Link);
 
-		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
+		const onPress: any = wrapper.find('Link a').prop('onClick');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
 
 		expect(stubActions.push).toBeCalledTimes(1);
 		expect(stubActions.push).toBeCalledWith({ path: '/foo' }, undefined);
 
 		expect(stubActions.replace).toBeCalledTimes(0);
-
-		// expect(stubActions).toMatchSnapshot();
-		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should call the replace function with the given path`, async () => {
@@ -107,7 +101,7 @@ describe('Link', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Link);
 
-		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
+		const onPress: any = wrapper.find('Link a').prop('onClick');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
 
 		expect(stubActions.replace).toBeCalledTimes(1);
@@ -134,14 +128,11 @@ describe('Link', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Link);
 
-		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
+		const onPress: any = wrapper.find('Link a').prop('onClick');
 		onPress({ defaultPrevented: true, preventDefault: () => { return; } }, stubActions);
 
 		expect(stubActions.replace).toBeCalledTimes(0);
 		expect(stubActions.push).toBeCalledTimes(0);
-
-		// expect(stubActions).toMatchSnapshot();
-		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should call the push function with the given path`, async () => {
@@ -157,16 +148,14 @@ describe('Link', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Link);
 
-		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
+		// expect(wrapper.find('Link')).toMatchSnapshot();
+		const onPress: any = wrapper.find('Link a').prop('onClick');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
 
 		expect(customOnPress).toBeCalledTimes(1);
 
 		expect(stubActions.push).toBeCalledTimes(0);
 		expect(stubActions.replace).toBeCalledTimes(0);
-
-		// expect(stubActions).toMatchSnapshot();
-		// expect(wrapper).toMatchSnapshot();
 	});
 
 	test(`should not do anything if there is no path or routeName prop`, async () => {

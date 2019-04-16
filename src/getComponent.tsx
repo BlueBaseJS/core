@@ -22,6 +22,7 @@ import {
 	RedirectProps,
 	StatefulComponentProps,
 	TextProps,
+	TouchableItemProps,
 	ViewProps,
 	WaitObserverProps,
 } from '@bluebase/components';
@@ -89,6 +90,7 @@ export const Navigation = getComponent<NavigationProps>('Navigation');
 export const NavigationActions = getComponent<NavigationActionsProps>('NavigationActions');
 export const Redirect = getComponent<RedirectProps>('Redirect');
 export const StatefulComponent = getComponent<StatefulComponentProps>('StatefulComponent');
+export const TouchableItem = getComponent<TouchableItemProps>('TouchableItem');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 
 // Native

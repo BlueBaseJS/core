@@ -64,7 +64,11 @@ export interface PluginRegistryItemExtras {
 	/** Is this plugin currently enabled/ */
 	enabled: boolean;
 
+	/** Default plugin configs */
 	defaultConfigs: ConfigCollection;
+
+	/** Plugin Path */
+	path?: string;
 
 	[key: string]: any;
 }
@@ -239,14 +243,14 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			// Resolve plugin
 			const plugin = inputToPlugin(item.value.module as any);
 
-			// Skip if plugin doesn't have any routes
-			if (!plugin.routes) {
-				continue;
-			}
-
 			// Resolve routes, if it's a thunk
 			// Put the resovled value in an array, if it's a single item
-			let routes = getDefiniteArray(resolveThunk(plugin.routes, this.BB));
+			let routes = getDefiniteArray(resolveThunk(plugin.routes || [], this.BB));
+
+			// Skip if plugin doesn't have any routes
+			if (!routes || routes.length === 0) {
+				continue;
+			}
 
 			// Add plugin slug as prefix to top level routes
 			routes = routes.map(route => ({
@@ -292,7 +296,32 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param partial
 	 */
 	protected createItem(key: string, partial: any): ItemType {
-		return super.createItem(key, createPlugin(partial));
+		return super.createItem(key, {
+			...createPlugin(partial),
+			path: this.createPath(key, partial),
+		});
+	}
+
+	/**
+	 * Generates a path for the given plugin
+	 * @param key
+	 * @param plugin
+	 */
+	protected createPath(key: string, plugin: Partial<Plugin>) {
+		const pluginRoutePathPrefix = this.BB.Configs.getValue('pluginRoutePathPrefix') || '';
+
+		// Resolve routes, if it's a thunk
+		// Put the resovled value in an array, if it's a single item
+		const routes = getDefiniteArray(
+			resolveThunk(plugin.routes || plugin.value.routes || [], this.BB)
+		);
+
+		// Skip if plugin doesn't have any routes
+		if (!routes || routes.length === 0) {
+			return;
+		}
+
+		return joinPaths(pluginRoutePathPrefix, key);
 	}
 
 	/**

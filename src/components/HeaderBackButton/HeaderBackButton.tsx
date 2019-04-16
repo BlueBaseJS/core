@@ -9,7 +9,7 @@ import {
 import { NavigationActions } from '../../getComponent';
 import React from 'react';
 import { Theme } from '../../registries';
-import TouchableItem from './TouchableItem';
+import { TouchableItem } from '../TouchableItem';
 
 // import defaultBackImage from '../assets/back-icon.png';
 // tslint:disable-next-line: no-var-requires

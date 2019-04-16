@@ -1,3 +1,16 @@
+import {
+	Platform,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+} from 'react-native';
+import React from 'react';
+import { TouchableItemProps } from '@bluebase/components';
+import { View } from '../../getComponent';
+
+// import BorderlessButton from './BorderlessButton';
+
+const ANDROID_VERSION_LOLLIPOP = 21;
+
 /**
  * TouchableItem renders a touchable that looks native on both iOS and Android.
  *
@@ -6,35 +19,14 @@
  *
  * On iOS you can pass the props of TouchableOpacity, on Android pass the props
  * of TouchableNativeFeedback.
+ *
+ * Code taken from react-navigation project
  */
-import {
-	Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-} from 'react-native';
-import React from 'react';
-
-import { View } from '../../getComponent';
-import isnil from 'lodash.isnil';
-
-// import BorderlessButton from './BorderlessButton';
-
-const ANDROID_VERSION_LOLLIPOP = 21;
-
-export interface TouchableItemProps {
-	borderless?: boolean,
-	pressColor?: string,
-	children: React.ReactNode,
-	href?: string,
-
-	[key: string]: any,
-}
-
-export default class TouchableItem extends React.Component<TouchableItemProps> {
+export class TouchableItem extends React.Component<TouchableItemProps> {
 
 	public static defaultProps: Partial<TouchableItemProps> = {
 		borderless: false,
-		pressColor: 'rgba(0, 0, 0, .32)',
+		pressColor: 'rgba(0, 0, 0, .32)', // TODO: Extract this from theme
 	};
 
 	render() {
@@ -84,16 +76,7 @@ export default class TouchableItem extends React.Component<TouchableItemProps> {
       //     {this.props.children}
       //   </BorderlessButton>
 			// );
-		} else if (
-				Platform.OS === 'web' &&
-				!isnil(this.props.href) &&
-				this.props.href !== ''
-			) {
-			return (
-				<a {...this.props} />
-			);
-		}
-		else {
+		} else {
 			return (
         <TouchableOpacity {...this.props}>
           {this.props.children}
