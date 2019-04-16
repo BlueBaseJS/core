@@ -298,7 +298,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	protected createItem(key: string, partial: any): ItemType {
 		return super.createItem(key, {
 			...createPlugin(partial),
-			path: this.createPath(key, partial)
+			path: this.createPath(key, partial),
 		});
 	}
 
