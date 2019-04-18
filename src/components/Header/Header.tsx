@@ -81,6 +81,8 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 
 	static defaultStyles = (theme: Theme): HeaderStyles => {
 
+		const root = Platform.OS === 'web' ? { zIndex: 1100 } : {};
+
 		return {
 			flexOne: {
 				flex: 1,
@@ -134,6 +136,7 @@ export class Header extends React.PureComponent<HeaderProps, HeaderState> {
 			},
 			root: {
 				backgroundColor: theme.palette.primary.main,
+				...root,
 				...theme.elevation(4),
 			},
 			title: {
