@@ -1,5 +1,5 @@
 import { BlueBase, BootOptions } from '../../BlueBase';
-import { Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, Text, View, } from 'react-native';
 import React from 'react';
 import { isProduction } from '../../utils';
 
@@ -122,10 +122,14 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 			const message = (development === true) ? error.message : MISSING_ERROR;
 
 			return (
-				<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-					<Text style={{ fontWeight: 'bold', }}>🚨 BlueBase Error</Text>
-					<Text>{message}</Text>
-				</View>
+				<ScrollView>
+					<SafeAreaView>
+						<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+							<Text style={{ fontWeight: 'bold', }}>🚨 BlueBase Error</Text>
+							<Text>{message}</Text>
+						</View>
+					</SafeAreaView>
+				</ScrollView>
 			);
 		}
 

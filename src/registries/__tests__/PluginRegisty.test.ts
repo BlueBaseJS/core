@@ -465,7 +465,7 @@ describe('PluginRegistry', () => {
 			// Disbale so it gets skipped
 			await Plugins.disable('p3');
 
-			const routes = Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap();
 
 			expect(routes).toMatchObject({
 				p1: [
@@ -525,7 +525,7 @@ describe('PluginRegistry', () => {
 			// Resolve so its loaded
 			await Plugins.resolve('p2');
 
-			const routes = Plugins.getRouteMap(false);
+			const routes = await Plugins.getRouteMap(false);
 
 			expect(routes).toMatchObject({
 				p1: [
@@ -566,7 +566,7 @@ describe('PluginRegistry', () => {
 
 			await Plugins.register(p1);
 
-			const routes = Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap();
 
 			expect(routes).toMatchObject({
 				p1: [

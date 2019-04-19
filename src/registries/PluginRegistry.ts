@@ -6,13 +6,17 @@ import {
 import { DynamicIconProps, RouteConfig } from '@bluebase/components';
 import {
 	MaybeArray,
+	MaybePromise,
 	MaybeThunk,
 	getDefiniteArray,
+	getDefinitePromise,
 	isBlueBaseModule,
+	isPromise,
 	joinPaths,
 	resolveThunk,
 } from '../utils';
 import { AssetCollection } from './AssetRegistry';
+import { BlueBase } from '../BlueBase';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
 import { FilterNestedCollection } from './FilterRegistry';
@@ -35,7 +39,7 @@ export interface PluginValue {
 	filters: FilterNestedCollection;
 	fonts: FontCollection;
 	themes: ThemeCollection;
-	routes?: MaybeThunk<MaybeArray<RouteConfig>>;
+	routes?: MaybeThunk<MaybePromise<MaybeArray<RouteConfig>>>;
 }
 
 export type PluginValueInput = Partial<PluginValue>;
@@ -74,7 +78,7 @@ export interface PluginRegistryItemExtras {
 }
 
 export type PluginRegistryItem = BlueBaseModuleRegistryItem<PluginValue> & PluginRegistryItemExtras;
-export type PluginRegistryInputItem = BlueBaseModuleRegistryInputItem<PluginValueInput>;
+export type PluginRegistryInputItem = BlueBaseModuleRegistryInputItem<PluginValueInput, PluginRegistryItemExtras>;
 
 type ItemType = PluginRegistryItem;
 type ItemInputType = PluginRegistryInputItem;
@@ -84,10 +88,14 @@ export type PluginInput = PluginRegistryInputItem;
 
 export type PluginCollection = ItemCollection<PluginInput>;
 
-export function inputToPlugin(plugin: PluginInput): Plugin {
+export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<Plugin> {
 	const { value, ...rest } = plugin;
 
-	return {
+	const resolvedValue = await value;
+
+	const routes = await resolveRoutes(resolvedValue.routes || [], BB);
+
+	const final = {
 		assets: {},
 		components: {},
 		defaultConfigs: {},
@@ -99,7 +107,12 @@ export function inputToPlugin(plugin: PluginInput): Plugin {
 
 		...rest,
 		...value,
+
+		routes,
 	};
+
+	// FIXME: Fix typing hell in this project please
+	return final as any;
 }
 
 /**
@@ -130,6 +143,20 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 	};
 }
 
+export async function resolveRoutes(routes: PluginValue['routes'], BB: BlueBase): Promise<RouteConfig[]> {
+
+	// If thunk resolve it
+	let finalRoutes = resolveThunk(routes || [], BB);
+
+	// If result is a promise, resolve it too
+	if (isPromise(finalRoutes)) {
+		finalRoutes = await getDefinitePromise(finalRoutes);
+	}
+
+	// Make sure we have an array
+	return getDefiniteArray(finalRoutes);
+}
+
 /**
  * 🔌 PluginRegistry
  */
@@ -145,9 +172,9 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			throw Error(`Could not resolve any of the following plugins: [${keys.join(', ')}].`);
 		}
 
-		const input: PluginInput = { ...item, value: await item.value };
+		const input = { ...item, value: await item.value };
 
-		return inputToPlugin(input);
+		return inputToPlugin(input, this.BB);
 	}
 
 	/**
@@ -229,7 +256,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * - Plugin is not enabled
 	 * - Plugin is not resolved
 	 */
-	public getRouteMap(prefixPluginKey: boolean = true): { [key: string]: RouteConfig[] } {
+	public async getRouteMap(prefixPluginKey: boolean = true): Promise<{ [key: string]: RouteConfig[] }> {
 		const pluginRoutes: { [key: string]: RouteConfig[] } = {};
 
 		const pluginRoutePathPrefix = this.BB.Configs.getValue('pluginRoutePathPrefix') || '';
@@ -241,11 +268,13 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			}
 
 			// Resolve plugin
-			const plugin = inputToPlugin(item.value.module as any);
+			const plugin = await inputToPlugin(item.value.module as any, this.BB);
 
 			// Resolve routes, if it's a thunk
 			// Put the resovled value in an array, if it's a single item
-			let routes = getDefiniteArray(resolveThunk(plugin.routes || [], this.BB));
+			// FIXME: Actually, inputToPlugin return value as routes prop resolved.
+			// Remove typecasting in future and fix typings
+			let routes = plugin.routes as RouteConfig[];
 
 			// Skip if plugin doesn't have any routes
 			if (!routes || routes.length === 0) {
