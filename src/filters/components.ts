@@ -54,8 +54,8 @@ export const components: FilterNestedCollection = {
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Components.registerCollection({
 					// BlueBase Components
-					BlueBaseContent,
-					BlueBaseFilter,
+					BlueBaseContent: { applyStyles: false, value: BlueBaseContent },
+					BlueBaseFilter: { applyStyles: false, value: BlueBaseFilter },
 					BlueBaseImage,
 					ComponentState,
 					DataObserver,
@@ -74,9 +74,9 @@ export const components: FilterNestedCollection = {
 					LoadingState,
 					Navigation,
 					NavigationActions,
-					Noop,
+					Noop: { applyStyles: false, value: Noop },
 					PluginIcon,
-					Redirect,
+					Redirect: { applyStyles: false, value: Redirect },
 					StatefulComponent,
 					TouchableItem,
 					WaitObserver,
@@ -91,7 +91,7 @@ export const components: FilterNestedCollection = {
 					Switch,
 					Text,
 					TextInput,
-					View,
+					View: { applyStyles: false, value: View },
 
 					// Typography
 					H1: {

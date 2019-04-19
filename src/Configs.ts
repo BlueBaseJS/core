@@ -44,6 +44,21 @@ export interface Configs {
 	 */
 	'theme.overrides': ThemeValueInput;
 
+	/**
+	 * App version
+	 */
+	version?: string;
+
+	/**
+	 * Author Name
+	 */
+	author?: string;
+
+	/**
+	 * Author Website or Email URL
+	 */
+	authorUrl?: string;
+
 	// others
 	[key: string]: any;
 }
