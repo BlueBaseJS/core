@@ -78,8 +78,10 @@ export interface PluginRegistryItemExtras {
 }
 
 export type PluginRegistryItem = BlueBaseModuleRegistryItem<PluginValue> & PluginRegistryItemExtras;
-export type PluginRegistryInputItem = 
-	BlueBaseModuleRegistryInputItem<PluginValueInput, Partial<PluginRegistryItemExtras>>;
+export type PluginRegistryInputItem = BlueBaseModuleRegistryInputItem<
+	PluginValueInput,
+	Partial<PluginRegistryItemExtras>
+>;
 
 type ItemType = PluginRegistryItem;
 type ItemInputType = PluginRegistryInputItem;
@@ -94,7 +96,10 @@ export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<
 
 	const resolvedValue = await value;
 
-	const routes = await resolveRoutes(plugin.routes || (resolvedValue && resolvedValue.routes) || [], BB);
+	const routes = await resolveRoutes(
+		plugin.routes || (resolvedValue && resolvedValue.routes) || [],
+		BB
+	);
 
 	const final = {
 		assets: {},
@@ -144,8 +149,10 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 	};
 }
 
-export async function resolveRoutes(routes: PluginValue['routes'], BB: BlueBase): Promise<RouteConfig[]> {
-
+export async function resolveRoutes(
+	routes: PluginValue['routes'],
+	BB: BlueBase
+): Promise<RouteConfig[]> {
 	// If thunk resolve it
 	let finalRoutes = resolveThunk(routes || [], BB);
 
@@ -257,7 +264,9 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * - Plugin is not enabled
 	 * - Plugin is not resolved
 	 */
-	public async getRouteMap(prefixPluginKey: boolean = true): Promise<{ [key: string]: RouteConfig[] }> {
+	public async getRouteMap(
+		prefixPluginKey: boolean = true
+	): Promise<{ [key: string]: RouteConfig[] }> {
 		const pluginRoutes: { [key: string]: RouteConfig[] } = {};
 
 		const pluginRoutePathPrefix = this.BB.Configs.getValue('pluginRoutePathPrefix') || '';
