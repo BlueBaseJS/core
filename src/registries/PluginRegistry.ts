@@ -78,7 +78,8 @@ export interface PluginRegistryItemExtras {
 }
 
 export type PluginRegistryItem = BlueBaseModuleRegistryItem<PluginValue> & PluginRegistryItemExtras;
-export type PluginRegistryInputItem = BlueBaseModuleRegistryInputItem<PluginValueInput, PluginRegistryItemExtras>;
+export type PluginRegistryInputItem = 
+	BlueBaseModuleRegistryInputItem<PluginValueInput, Partial<PluginRegistryItemExtras>>;
 
 type ItemType = PluginRegistryItem;
 type ItemInputType = PluginRegistryInputItem;
@@ -93,7 +94,7 @@ export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<
 
 	const resolvedValue = await value;
 
-	const routes = await resolveRoutes(resolvedValue.routes || [], BB);
+	const routes = await resolveRoutes(plugin.routes || (resolvedValue && resolvedValue.routes) || [], BB);
 
 	const final = {
 		assets: {},
