@@ -28,7 +28,7 @@ exports[`ErrorObserver should catch an error when thrown by a child component 1`
 <View
   style={
     Object {
-      "justifyContent": "center",
+      "alignItems": "center",
     }
   }
 >
@@ -81,7 +81,7 @@ exports[`ErrorObserver should catch an error when thrown null by a child compone
 <View
   style={
     Object {
-      "justifyContent": "center",
+      "alignItems": "center",
     }
   }
 >

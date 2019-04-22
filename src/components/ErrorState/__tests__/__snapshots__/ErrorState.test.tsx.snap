@@ -4,7 +4,7 @@ exports[`ErrorState should render ErrorState 1`] = `
 <View
   style={
     Object {
-      "justifyContent": "center",
+      "alignItems": "center",
     }
   }
 >
@@ -57,7 +57,7 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
 <View
   style={
     Object {
-      "justifyContent": "center",
+      "alignItems": "center",
     }
   }
 >
