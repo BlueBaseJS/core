@@ -17,7 +17,11 @@ exports[`HomeScreen Snapshot HomeScreen 1`] = `
   >
     <Image
       args={Object {}}
-      source="test-file-stub"
+      source={
+        Object {
+          "uri": "test-file-stub",
+        }
+      }
       style={
         Array [
           Object {

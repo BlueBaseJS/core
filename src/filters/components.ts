@@ -86,7 +86,7 @@ export const components: FilterNestedCollection = {
 
 					// Native
 					ActivityIndicator: { applyStyles: false, value: ActivityIndicator },
-					Button: { applyStyles: false, value: Button },
+					Button,
 					FlatList: { applyStyles: false, value: FlatList },
 					Image: { applyStyles: false, value: Image },
 					ImageBackground: { applyStyles: false, value: ImageBackground },

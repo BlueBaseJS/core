@@ -66,7 +66,7 @@ describe('BlueBaseImage', () => {
 		await waitForElement(wrapper as any, BlueBaseImage);
 
 		expect(wrapper.find('Image').first().prop('source')).toMatchObject({
-			'uri': 'ignore.png',
+			'uri': 'test-file-stub',
 		});
 	});
 
