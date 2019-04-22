@@ -52,7 +52,7 @@ export const navigation: FilterNestedCollection = {
 					},
 				];
 
-				const routeMap = BB.Plugins.getRouteMap();
+				const routeMap = await BB.Plugins.getRouteMap();
 				Object.values(routeMap).forEach(routesArr => (mainRoutes = mainRoutes.concat(routesArr)));
 
 				const navigator: NavigatorProps = {

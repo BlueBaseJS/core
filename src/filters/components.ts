@@ -2,9 +2,12 @@
 import {
 	ActivityIndicator,
 	Button,
+	FlatList,
 	Image,
 	ImageBackground,
 	Picker,
+	SafeAreaView,
+	ScrollView,
 	Slider,
 	Switch,
 	Text,
@@ -54,7 +57,7 @@ export const components: FilterNestedCollection = {
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Components.registerCollection({
 					// BlueBase Components
-					BlueBaseContent: { applyStyles: false, value: BlueBaseContent },
+					BlueBaseContent,
 					BlueBaseFilter: { applyStyles: false, value: BlueBaseFilter },
 					BlueBaseImage,
 					ComponentState,
@@ -82,15 +85,18 @@ export const components: FilterNestedCollection = {
 					WaitObserver,
 
 					// Native
-					ActivityIndicator,
+					ActivityIndicator: { applyStyles: false, value: ActivityIndicator },
 					Button,
-					Image,
-					ImageBackground,
-					Picker,
-					Slider,
-					Switch,
+					FlatList: { applyStyles: false, value: FlatList },
+					Image: { applyStyles: false, value: Image },
+					ImageBackground: { applyStyles: false, value: ImageBackground },
+					Picker: { applyStyles: false, value: Picker },
+					SafeAreaView: { applyStyles: false, value: SafeAreaView },
+					ScrollView: { applyStyles: false, value: ScrollView },
+					Slider: { applyStyles: false, value: Slider },
+					Switch: { applyStyles: false, value: Switch },
 					Text,
-					TextInput,
+					TextInput: { applyStyles: false, value: TextInput },
 					View: { applyStyles: false, value: View },
 
 					// Typography

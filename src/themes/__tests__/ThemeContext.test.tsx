@@ -21,7 +21,7 @@ describe('ThemeContext', () => {
 		setTimeout(() => {
 			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
-			expect((tree as any).props.style.backgroundColor).toBe('#fafafa');
+			expect((tree as any).props.style.backgroundColor).toBe('#f5f5f5');
 			done();
 		});
 	});
@@ -59,7 +59,7 @@ describe('ThemeContext', () => {
 
 		// Check theme
 		let view = wrapper.find('ThemeDemo').childAt(0).first();
-		expect((view.prop('style') as any).backgroundColor).toBe('#fafafa');
+		expect((view.prop('style') as any).backgroundColor).toBe('#f5f5f5');
 		expect(wrapper.find('ThemeDemo').find('Text').last().text()).toBe('BlueBase Light');
 
 		// Change theme
@@ -89,7 +89,7 @@ describe('ThemeContext', () => {
 
 		// Check theme
 		const view = wrapper.find('ThemeDemo').childAt(0).first();
-		expect((view.prop('style') as any).backgroundColor).toBe('#fafafa');
+		expect((view.prop('style') as any).backgroundColor).toBe('#f5f5f5');
 		expect(wrapper.find('ThemeDemo').find('Text').last().text()).toBe('BlueBase Light');
 
 		// Check Subscription

@@ -28,7 +28,9 @@ describe('ComponentState', () => {
 		expect(wrapper.find('ComponentState Image').last().prop('source')).toMatchObject({
 			uri: 'https://picsum.photos/200'
 		});
-		expect(wrapper.find('ComponentState Image').last().prop('style')).toMatchObject({
+
+		const styles = wrapper.find('ComponentState Image').last().prop('style');
+		expect((styles as any)[0]).toMatchObject({
 			height: 100,
 			width: 100,
 		});

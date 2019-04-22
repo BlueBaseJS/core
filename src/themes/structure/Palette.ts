@@ -24,6 +24,13 @@ export interface TypeAction {
 
 export interface TypeBackground {
 	default: string;
+
+	/** Lighter shade of background */
+	light: string;
+
+	/** Darker share of background */
+	dark: string;
+
 	card: string;
 }
 
@@ -32,6 +39,8 @@ export type TypeDivider = string;
 export interface Palette {
 	primary: PaletteColor;
 	secondary: PaletteColor;
+	success: PaletteColor;
+	warning: PaletteColor;
 	error: PaletteColor;
 	action: TypeAction;
 	divider: TypeDivider;
@@ -42,6 +51,8 @@ export interface Palette {
 export interface PaletteInput {
 	primary?: Partial<PaletteColor>;
 	secondary?: Partial<PaletteColor>;
+	success?: Partial<PaletteColor>;
+	warning?: Partial<PaletteColor>;
 	error?: Partial<PaletteColor>;
 	action?: Partial<TypeAction>;
 	divider?: TypeDivider;

@@ -29,7 +29,7 @@ exports[`getComponent should render a button component 1`] = `
           "paddingTop": 8,
         },
         Object {
-          "backgroundColor": "#fafafa",
+          "backgroundColor": "#f5f5f5",
         },
       ]
     }

@@ -399,6 +399,86 @@ describe('PluginRegistry', () => {
 		});
 	});
 
+	describe('routes prop in plugins', () => {
+		it('should register routes from routes object', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			await Plugins.register(createPlugin({ key: 'P1', routes: { name: 'P1_Route', path: 'a' } }));
+
+			const routes = await Plugins.getRouteMap();
+
+			expect(routes).toMatchObject({
+				P1: [
+					{
+						name: 'P1_Route',
+						path: 'P1/a',
+					},
+				],
+			});
+		});
+
+		it('should register routes from routes thunk', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			await Plugins.register(
+				createPlugin({ key: 'P1', routes: () => ({ name: 'P1_Route', path: 'a' }) })
+			);
+
+			const routes = await Plugins.getRouteMap();
+
+			expect(routes).toMatchObject({
+				P1: [
+					{
+						name: 'P1_Route',
+						path: 'P1/a',
+					},
+				],
+			});
+		});
+
+		it('should register routes from routes that is a promise', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			await Plugins.register(
+				createPlugin({ key: 'P1', routes: Promise.resolve({ name: 'P1_Route', path: 'a' }) })
+			);
+
+			const routes = await Plugins.getRouteMap();
+
+			expect(routes).toMatchObject({
+				P1: [
+					{
+						name: 'P1_Route',
+						path: 'P1/a',
+					},
+				],
+			});
+		});
+
+		it('should register routes from routes thunk that returns a promise', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			await Plugins.register(
+				createPlugin({ key: 'P1', routes: () => Promise.resolve({ name: 'P1_Route', path: 'a' }) })
+			);
+
+			const routes = await Plugins.getRouteMap();
+
+			expect(routes).toMatchObject({
+				P1: [
+					{
+						name: 'P1_Route',
+						path: 'P1/a',
+					},
+				],
+			});
+		});
+	});
+
 	describe('.getRoutes method', () => {
 		it('should create a routes map with plugin key as prefixs', async () => {
 			const BB = new BlueBase();
@@ -465,7 +545,7 @@ describe('PluginRegistry', () => {
 			// Disbale so it gets skipped
 			await Plugins.disable('p3');
 
-			const routes = Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap();
 
 			expect(routes).toMatchObject({
 				p1: [
@@ -525,7 +605,7 @@ describe('PluginRegistry', () => {
 			// Resolve so its loaded
 			await Plugins.resolve('p2');
 
-			const routes = Plugins.getRouteMap(false);
+			const routes = await Plugins.getRouteMap(false);
 
 			expect(routes).toMatchObject({
 				p1: [
@@ -566,7 +646,7 @@ describe('PluginRegistry', () => {
 
 			await Plugins.register(p1);
 
-			const routes = Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap();
 
 			expect(routes).toMatchObject({
 				p1: [
@@ -585,8 +665,8 @@ describe('PluginRegistry', () => {
 			const Plugins = new PluginRegistry(BB);
 
 			await Plugins.registerCollection([
-				{ key: 'p1', name: 'P1', routes: { name: 'P1_Route', path: 'a' } },
-				{ key: 'p2', name: 'P2', routes: { name: 'P2_Route', path: 'b' } },
+				createPlugin({ key: 'p1', name: 'P1', routes: { name: 'P1_Route', path: 'a' } }),
+				createPlugin({ key: 'p2', name: 'P2', routes: { name: 'P2_Route', path: 'b' } }),
 			]);
 
 			const item = Plugins.get('p1');
@@ -611,8 +691,8 @@ describe('PluginRegistry', () => {
 			const Plugins = new PluginRegistry(BB);
 
 			await Plugins.registerCollection({
-				p1: { name: 'P1', routes: { name: 'P1_Route', path: 'a' } },
-				p2: { name: 'P2', routes: { name: 'P2_Route', path: 'b' } },
+				p1: createPlugin({ name: 'P1', routes: { name: 'P1_Route', path: 'a' } }),
+				p2: createPlugin({ name: 'P2', routes: { name: 'P2_Route', path: 'b' } }),
 			});
 
 			const item = Plugins.get('p1');

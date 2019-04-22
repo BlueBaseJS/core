@@ -38,6 +38,7 @@ export const boot: FilterNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+				await BB.Filters.run('bluebase.assets.register.internal', bootOptions);
 				await BB.Filters.run('bluebase.components.register.internal', bootOptions);
 
 				return bootOptions;

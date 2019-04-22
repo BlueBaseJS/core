@@ -29,8 +29,6 @@ exports[`ErrorObserver should catch an error when thrown by a child component 1`
   style={
     Object {
       "alignItems": "center",
-      "flex": 1,
-      "justifyContent": "center",
     }
   }
 >
@@ -43,10 +41,13 @@ exports[`ErrorObserver should catch an error when thrown by a child component 1`
           "fontSize": 20,
           "fontWeight": "500",
         },
-        Object {
-          "marginBottom": 8,
-          "textAlign": "center",
-        },
+        Array [
+          Object {
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+          undefined,
+        ],
       ]
     }
   >
@@ -61,10 +62,13 @@ exports[`ErrorObserver should catch an error when thrown by a child component 1`
           "fontSize": 14,
           "fontWeight": "400",
         },
-        Object {
-          "marginBottom": 8,
-          "textAlign": "center",
-        },
+        Array [
+          Object {
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+          undefined,
+        ],
       ]
     }
   >
@@ -78,8 +82,6 @@ exports[`ErrorObserver should catch an error when thrown null by a child compone
   style={
     Object {
       "alignItems": "center",
-      "flex": 1,
-      "justifyContent": "center",
     }
   }
 >
@@ -92,10 +94,13 @@ exports[`ErrorObserver should catch an error when thrown null by a child compone
           "fontSize": 20,
           "fontWeight": "500",
         },
-        Object {
-          "marginBottom": 8,
-          "textAlign": "center",
-        },
+        Array [
+          Object {
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+          undefined,
+        ],
       ]
     }
   >
@@ -110,10 +115,13 @@ exports[`ErrorObserver should catch an error when thrown null by a child compone
           "fontSize": 14,
           "fontWeight": "400",
         },
-        Object {
-          "marginBottom": 8,
-          "textAlign": "center",
-        },
+        Array [
+          Object {
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+          undefined,
+        ],
       ]
     }
   >
