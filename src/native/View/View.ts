@@ -1,1 +1,1 @@
-export { View, ViewProps } from 'react-native';
+export { FlatList, FlatListProps } from 'react-native';
