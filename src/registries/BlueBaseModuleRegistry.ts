@@ -33,7 +33,7 @@ export interface BlueBaseModuleRegistryItem<ValueType = any> {
 /**
  * BlueBase Registry Item
  */
-export interface BlueBaseModuleRegistryInputItem<ValueType = any> {
+export type BlueBaseModuleRegistryInputItem<ValueType = any, Extras = {}> = {
 	/**
 	 * Registry Item Value.
 	 */
@@ -46,7 +46,7 @@ export interface BlueBaseModuleRegistryInputItem<ValueType = any> {
 
 	/** Additional Item Data */
 	[key: string]: any;
-}
+} & Extras;
 
 /**
  * A registry that has all items as promises. Used to make parts of the app capable of
