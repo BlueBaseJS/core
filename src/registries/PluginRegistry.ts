@@ -312,7 +312,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		// If its an array
 		if (Array.isArray(collection)) {
 			for (const item of collection) {
-				await this.register(createPlugin(item));
+				await this.register(item);
 			}
 
 			return;
@@ -320,7 +320,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		// If its an object
 		else if (collection === Object(collection)) {
 			for (const key of Object.keys(collection)) {
-				await this.register(key, createPlugin(collection[key]));
+				await this.register(key, collection[key]);
 			}
 
 			return;

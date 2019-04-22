@@ -3,6 +3,7 @@ import { DynamicIconProps } from '@bluebase/components';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import { Text } from 'react-native';
 
 
 describe('PluginIcon', () => {
@@ -96,6 +97,24 @@ describe('PluginIcon', () => {
 			// expect(tree).toMatchSnapshot();
 
 			expect((tree as any)).toBe(null);
+			done();
+		});
+	});
+
+	test(`should throw an error when a plugin is not registered`, (done) => {
+
+		const rendered = TestRenderer.create(
+			<BlueBaseApp>
+				<PluginIcon id="some" />
+			</BlueBaseApp>
+		);
+
+		setTimeout(() => {
+			const found = rendered.root.findAllByType(Text);
+			expect(
+				(found[1].children[0] as any).children.join()
+			).toBe('There\'s no pluign registered with "some" key in the registry.');
+
 			done();
 		});
 	});
