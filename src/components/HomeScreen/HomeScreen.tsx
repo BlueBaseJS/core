@@ -23,7 +23,7 @@ export const HomeScreen = (props: HomeScreenProps) =>
   <ComponentState
     title="BlueBase"
     description="Welcome to BlueBase Framework!"
-    imageSource={require('../../../assets/common/logo.png')}
+    imageSource="LogoSquare"
     styles={{ image: { width: 100, height: 100 } }}
     {...props}
   />
