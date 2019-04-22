@@ -24,7 +24,9 @@ export const light = {
 	 */
 	background: {
 		card: '#ffffff',
-		default: '#fafafa',
+		default: '#f5f5f5',
+		light: '#fafafa',
+		dark: '#eeeeee',
 	},
 
 	/** The colors used to style the action elements. */
@@ -55,6 +57,8 @@ export const dark = {
 	background: {
 		card: '#424242',
 		default: '#303030',
+		light: '#404040',
+		dark: '#202020',
 	},
 	action: {
 		active: '#ffffff',
@@ -84,6 +88,18 @@ const common = {
 		dark: '#c51162',
 		light: '#ff4081',
 		main: '#f50057',
+	},
+	success: {
+		contrastText: '#fff',
+		dark: '#388e3c',
+		light: '#81c784',
+		main: '#4caf50',
+	},
+	warning: {
+		contrastText: '#fff',
+		dark: '#ffa000',
+		light: '#ffd54f',
+		main: '#ffc107',
 	},
 };
 
