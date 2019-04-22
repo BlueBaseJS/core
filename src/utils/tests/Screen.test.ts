@@ -1,15 +1,12 @@
 import { getScreenSizeFromWidth, isMobile } from '../Screen';
 import { Dimensions } from 'react-native';
 
-
 describe('Utils', () => {
 	describe('Screen', () => {
-
 		describe('.getScreenSizeFromWidth method', () => {
 			it('should return xs when width is 500', () => {
 				expect(getScreenSizeFromWidth(500)).toBe('xs');
 			});
-
 
 			it('should return sm when width is 700', () => {
 				expect(getScreenSizeFromWidth(700)).toBe('sm');
@@ -30,46 +27,32 @@ describe('Utils', () => {
 			it('should return xl when width is 1300', () => {
 				expect(getScreenSizeFromWidth(1300)).toBe('xl');
 			});
-
 		});
 
 		describe('.isMobile method', () => {
-
-
-
 			it('should return true when width is 300', () => {
-
 				(Dimensions as any).get = () => ({
-					width: 300
+					width: 300,
 				});
 
 				expect(isMobile()).toBe(true);
 			});
-
-
 
 			it('should return true when width is 700', () => {
-
 				(Dimensions as any).get = () => ({
-					width: 700
+					width: 700,
 				});
 
 				expect(isMobile()).toBe(true);
 			});
 
-
-
 			it('should return false when width is 900', () => {
-
 				(Dimensions as any).get = () => ({
-					width: 900
+					width: 900,
 				});
 
 				expect(isMobile()).toBe(false);
 			});
-
-
 		});
-
 	});
 });
