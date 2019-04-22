@@ -85,18 +85,18 @@ export const components: FilterNestedCollection = {
 					WaitObserver,
 
 					// Native
-					ActivityIndicator: { applyStyles: false, value: ActivityIndicator },
+					ActivityIndicator,
 					Button,
-					FlatList: { applyStyles: false, value: FlatList },
-					Image: { applyStyles: false, value: Image },
-					ImageBackground: { applyStyles: false, value: ImageBackground },
-					Picker: { applyStyles: false, value: Picker },
-					SafeAreaView: { applyStyles: false, value: SafeAreaView },
-					ScrollView: { applyStyles: false, value: ScrollView },
-					Slider: { applyStyles: false, value: Slider },
-					Switch: { applyStyles: false, value: Switch },
+					FlatList,
+					Image,
+					ImageBackground,
+					Picker,
+					SafeAreaView,
+					ScrollView,
+					Slider,
+					Switch,
 					Text,
-					TextInput: { applyStyles: false, value: TextInput },
+					TextInput,
 					View: { applyStyles: false, value: View },
 
 					// Typography
