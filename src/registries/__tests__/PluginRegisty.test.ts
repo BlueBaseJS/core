@@ -400,14 +400,11 @@ describe('PluginRegistry', () => {
 	});
 
 	describe('routes prop in plugins', () => {
-
 		it('should register routes from routes object', async () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register(
-				createPlugin({ key: 'P1', routes: { name: 'P1_Route', path: 'a' } })
-			);
+			await Plugins.register(createPlugin({ key: 'P1', routes: { name: 'P1_Route', path: 'a' } }));
 
 			const routes = await Plugins.getRouteMap();
 
@@ -419,7 +416,6 @@ describe('PluginRegistry', () => {
 					},
 				],
 			});
-
 		});
 
 		it('should register routes from routes thunk', async () => {
@@ -440,7 +436,6 @@ describe('PluginRegistry', () => {
 					},
 				],
 			});
-
 		});
 
 		it('should register routes from routes that is a promise', async () => {
@@ -461,7 +456,6 @@ describe('PluginRegistry', () => {
 					},
 				],
 			});
-
 		});
 
 		it('should register routes from routes thunk that returns a promise', async () => {
@@ -482,9 +476,7 @@ describe('PluginRegistry', () => {
 					},
 				],
 			});
-
 		});
-
 	});
 
 	describe('.getRoutes method', () => {
