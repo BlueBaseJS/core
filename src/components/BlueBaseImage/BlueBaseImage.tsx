@@ -33,7 +33,20 @@ export class BlueBaseImage extends React.PureComponent<BlueBaseImageProps> {
 
 		let Asset;
 
-		if (resolve) {
+		if (typeof _source === 'string') {
+			Asset = BB.Assets.resolve(_source);
+		}
+		else if (Array.isArray(_source)) {
+
+			const keys = (_source as string[]).filter(s => typeof s === 'string');
+
+			if (keys.length > 0) {
+				Asset = BB.Assets.resolve(...keys);
+			}
+		}
+		else if (resolve) {
+			BB.Logger.warn('resolve prop in BlueBaseImage is deprecated. Use "source" instead');
+
 			Asset = Array.isArray(resolve)
 			? BB.Assets.resolve(...resolve)
 			: BB.Assets.get(resolve);

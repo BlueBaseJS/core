@@ -1,5 +1,5 @@
-import { Body2, Button, H6, Image, View } from '../../getComponent';
-import { ComponentStateProps, ComponentStateStyles } from '@bluebase/components';
+import { BlueBaseImage, Body2, Button, H6, View } from '../../getComponent';
+import { ButtonProps, ComponentStateProps, ComponentStateStyles } from '@bluebase/components';
 import React from 'react';
 import { Theme } from '../../registries';
 
@@ -45,8 +45,8 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			marginBottom: theme.spacing.unit * 2,
 		},
 		root: {
-			alignItems: 'center',
-			flex: 1,
+			// alignItems: 'center',
+			// flex: 1,
 			justifyContent: 'center',
 		},
 		title: {
@@ -59,31 +59,57 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
 		const {
 			actionOnPress,
+			actionProps: _actionProps = {},
 			actionTitle,
 			description,
+			descriptionProps: _descriptionProps = {},
 			image,
+			imageProps: _imageProps = {},
 			imageSource,
 			title,
+			titleProps: _titleProps = {},
 		} = this.props;
 
 		const styles = this.props.styles as ComponentStateStyles;
+
+		const actionProps: ButtonProps = {
+			color:'primary',
+			..._actionProps,
+			onPress: actionOnPress,
+		};
+
+		const descriptionProps = {
+			..._descriptionProps,
+			children: description,
+			style: [styles.description, _descriptionProps.style]
+		};
+
+		const titleProps = {
+			..._titleProps,
+			children: title,
+			style: [styles.title, _titleProps.style]
+		};
+
+		const imageProps = {
+			..._imageProps,
+			source: imageSource || _imageProps.source,
+			style: [styles.image, _imageProps.style],
+		};
 
 		return (
 			<View style={styles.root}>
 				{image
 					? <View style={styles.imageRoot}>{image}</View>
 					: (imageSource
-						? <View style={styles.imageRoot}><Image style={styles.image} source={imageSource} /></View>
+						? <View style={styles.imageRoot}><BlueBaseImage {...imageProps} /></View>
 						: null)
 				}
-				{title ? <H6 style={styles.title} children={title} /> : null}
-				{description ? <Body2 style={styles.description} children={description} /> : null}
+				{title ? <H6 {...titleProps} /> : null}
+				{description ? <Body2 {...descriptionProps} /> : null}
 				{actionTitle
 					? (
 						<View style={styles.actionRoot}>
-							<Button color="primary" onPress={actionOnPress} >
-								{actionTitle}
-							</Button>
+							<Button {...actionProps}>{actionTitle}</Button>
 						</View>
 					)
 					: null}
