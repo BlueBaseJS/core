@@ -1,6 +1,7 @@
 import {
 	ActivityIndicatorProps,
 	BlueBaseFilterProps,
+	BlueBaseImageProps,
 	ButtonProps,
 	ComponentStateProps,
 	DataObserverProps,
@@ -70,6 +71,7 @@ export function getComponent<T = any>(...keys: string[]) {
 
 // System Components
 export const BlueBaseContent = getComponent<BlueBaseContentProps>('BlueBaseContent');
+export const BlueBaseImage = getComponent<BlueBaseImageProps>('BlueBaseImage');
 export const BlueBaseFilter = getComponent<BlueBaseFilterProps>('BlueBaseFilter');
 export const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 export const DataObserver = getComponent<DataObserverProps>('DataObserver');
