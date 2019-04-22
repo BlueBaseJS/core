@@ -4,7 +4,7 @@ exports[`ThemeContext should render a ThemeDemo component with themed background
 <View
   style={
     Object {
-      "backgroundColor": "#fafafa",
+      "backgroundColor": "#f5f5f5",
       "padding": 8,
     }
   }

@@ -29,7 +29,7 @@ exports[`Button should render Button with custom children 1`] = `
           "paddingTop": 8,
         },
         Object {
-          "backgroundColor": "#fafafa",
+          "backgroundColor": "#f5f5f5",
         },
         Object {
           "alignSelf": "stretch",
@@ -76,7 +76,7 @@ exports[`Button should render Button with default color styles 1`] = `
           "paddingTop": 8,
         },
         Object {
-          "backgroundColor": "#fafafa",
+          "backgroundColor": "#f5f5f5",
         },
       ]
     }
@@ -132,7 +132,7 @@ exports[`Button should render Button with full width 1`] = `
           "paddingTop": 8,
         },
         Object {
-          "backgroundColor": "#fafafa",
+          "backgroundColor": "#f5f5f5",
         },
         Object {
           "alignSelf": "stretch",
@@ -337,7 +337,7 @@ exports[`Button should use TouchableNativeFeedback on android platform 1`] = `
   styles={
     Object {
       "default": Object {
-        "backgroundColor": "#fafafa",
+        "backgroundColor": "#f5f5f5",
       },
       "defaultText": Object {},
       "fullWidth": Object {
