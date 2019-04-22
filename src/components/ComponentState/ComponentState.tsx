@@ -45,9 +45,9 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			marginBottom: theme.spacing.unit * 2,
 		},
 		root: {
-			// alignItems: 'center',
+			alignItems: 'center',
 			// flex: 1,
-			justifyContent: 'center',
+			// justifyContent: 'center',
 		},
 		title: {
 			marginBottom: theme.spacing.unit,

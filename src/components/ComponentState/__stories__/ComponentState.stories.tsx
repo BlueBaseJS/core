@@ -6,7 +6,7 @@ storiesOf('ComponentState', module)
 
 
 	.add('Everything', () => (
-		<View style={{ width: '100%', height: 500, backgroundColor: '#fff' }}>
+		<View style={{ width: '100%', height: 500, backgroundColor: '#fff', justifyContent: 'center' }}>
 			<ComponentState
 				title="Looks like your'e new here!"
 				description="Start by creating your first entry."
