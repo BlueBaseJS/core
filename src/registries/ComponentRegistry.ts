@@ -71,18 +71,19 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		}
 
 		// If component bundle has to be downloaded, wrap into lazy
-		const rawComponent = item.value.isAsync
+		let rawComponent = item.value.isAsync
 			? Loadable({ loader: () => item.value, loading: ReactLoadableLoading })
 			: (item.value.module as React.ComponentType<any>);
 
-		// HOCs
-		let hocs = item.hocs;
 
 		// Do we apply styles and theming to this component?
 		if (item.applyStyles === true) {
 			// If yes, then append applyStyles hoc
-			hocs.push([applyStyles, { name: item.key, styles: item.styles }]);
+			rawComponent = applyStyles({ name: item.key, styles: item.styles })(rawComponent);
 		}
+
+		// HOCs
+		let hocs = item.hocs;
 
 		// Process delayed HOCs
 		hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
