@@ -71,15 +71,16 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		}
 
 		// If component bundle has to be downloaded, wrap into lazy
-		let rawComponent = item.value.isAsync
+		const rawComponent = item.value.isAsync
 			? Loadable({ loader: () => item.value, loading: ReactLoadableLoading })
 			: (item.value.module as React.ComponentType<any>);
 
+		let themedComponent = rawComponent;
 
 		// Do we apply styles and theming to this component?
 		if (item.applyStyles === true) {
 			// If yes, then append applyStyles hoc
-			rawComponent = applyStyles({ name: item.key, styles: item.styles })(rawComponent);
+			themedComponent = applyStyles({ name: item.key, styles: item.styles })(rawComponent);
 		}
 
 		// HOCs
@@ -89,7 +90,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		// Wrap
-		const wrappedComponent = flowRight([...hocs])(rawComponent);
+		const wrappedComponent = flowRight([...hocs])(themedComponent);
 
 		return hoistNonReactStatics(wrappedComponent, rawComponent);
 	}
