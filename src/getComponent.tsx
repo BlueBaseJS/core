@@ -28,8 +28,8 @@ import {
 	WaitObserverProps,
 } from '@bluebase/components';
 import { BlueBase } from './BlueBase';
-import { BlueBaseConsumer } from './Context';
 import { BlueBaseContentProps } from './components';
+import { BlueBaseContext } from './Context';
 import React from 'react';
 
 
@@ -50,23 +50,38 @@ export function getComponent<T = any>(...keys: string[]) {
 
 	const displayName = keys.join('_');
 
-	const BlueBaseComponent = (props: T) => (
-		<BlueBaseConsumer children={(BB: BlueBase) => {
+	return class BlueBaseComponent extends React.Component<any> {
 
+		static displayName = displayName;
+
+		static contextType = BlueBaseContext;
+
+		Component?: React.ComponentType<T>;
+
+
+		// Before mounting, resolve component and store it.
+		// So we don't end up creating a new component during every render
+		componentWillMount() {
+
+			const BB: BlueBase = this.context;
+
+			// If there is no BlueBase context, throw an Error
 			if (!BB) {
 				// tslint:disable-next-line: max-line-length
 				throw Error(`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`);
 			}
 
-			const Component = BB.Components.resolve(...keys);
+			// We don't want to resolve the component on every render.
+			// If we don't do this, a new component is created on every
+			// render, causing various set of problems.
+			this.Component = BB.Components.resolve(...keys);
+		}
 
-			return React.createElement(Component, props);
-		}} />
-	);
-
-	BlueBaseComponent.displayName = displayName;
-
-	return BlueBaseComponent as React.ComponentType<T>;
+		render() {
+			// Render
+			return React.createElement(this.Component as React.ComponentType<any>, this.props);
+		}
+	};
 }
 
 // System Components
