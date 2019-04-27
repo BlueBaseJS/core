@@ -1,4 +1,4 @@
-import { NavigationActionParams } from '@bluebase/components';
+import { NavigationActionParams, NavigationActionsObject } from '@bluebase/components';
 import { NavigationActions } from '../../getComponent';
 import React from 'react';
 
@@ -18,7 +18,7 @@ export const Redirect = (props: RedirectProps) => {
 
 	return (
 		<NavigationActions>
-			{({ push: pushFn, replace }) => {
+			{({ push: pushFn, replace }: NavigationActionsObject) => {
 
 				const fn = (push === true) ? pushFn : replace;
 
