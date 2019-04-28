@@ -27,6 +27,9 @@ export interface Configs {
 	/** Prefix that is added to top level plugin route paths */
 	pluginRoutePathPrefix: string;
 
+	/** Sets the color of the status bar text. */
+	statusBarStyle: 'default' | 'light-content' | 'dark-content';
+
 	/**
 	 * Name of selected theme.
 	 * FIXME: This key contains the slug, but is called name. This is confusing.
@@ -73,6 +76,7 @@ export const BlueBaseDefaultConfigs: Configs = {
 		ur: 'اُردُو',
 	},
 	pluginRoutePathPrefix: 'p',
+	statusBarStyle: 'light-content',
 	'theme.mode': 'light',
 	'theme.name': 'bluebase-light',
 	'theme.overrides': {},
