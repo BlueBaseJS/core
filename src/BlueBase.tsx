@@ -20,7 +20,10 @@ import { IntlProvider } from './intl';
 import { MaybeRenderPropChildren } from './utils';
 import React from 'react';
 import { ThemeProvider } from './themes';
+import { getComponent } from './getComponent';
 import systemFilters from './filters';
+
+const BlueBaseContent = getComponent('BlueBaseContent');
 
 export interface BootOptions {
 
@@ -92,8 +95,6 @@ export class BlueBase {
 
 		// 🚀 Boot!
 		await this.Filters.run('bluebase.boot', this.bootOptions);
-
-		const BlueBaseContent = this.Components.resolve('BlueBaseContent');
 
 		// Navigation
 		const navigatorConfigs = await this.Filters.run('bluebase.navigator.root', {});
