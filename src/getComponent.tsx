@@ -9,9 +9,6 @@ import {
 	ErrorObserverProps,
 	ErrorStateProps,
 	FormattedMessageProps,
-	HeaderBackButtonProps,
-	HeaderProps,
-	HeaderTitleProps,
 	HoverObserverProps,
 	ImageProps,
 	LinkProps,
@@ -95,9 +92,6 @@ export const EmptyState = getComponent<{}>('EmptyState');
 export const ErrorObserver = getComponent<ErrorObserverProps>('ErrorObserver');
 export const ErrorState = getComponent<ErrorStateProps>('ErrorState');
 export const FormattedMessage = getComponent<FormattedMessageProps>('FormattedMessage');
-export const Header = getComponent<HeaderProps>('Header');
-export const HeaderTitle = getComponent<HeaderTitleProps>('HeaderTitle');
-export const HeaderBackButton = getComponent<HeaderBackButtonProps>('HeaderBackButton');
 export const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
 export const Link = getComponent<LinkProps>('Link');
 export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
