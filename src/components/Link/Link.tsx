@@ -37,7 +37,7 @@ export class Link extends React.PureComponent<LinkProps> {
 
 		return Component ? (
 			<NavigationActions>
-				{( navigation ) => {
+				{( navigation: NavigationActionsObject ) => {
 
 					const onPressDefault = (e: any) => this.handlePress(e, navigation);
 
