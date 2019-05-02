@@ -2,4 +2,7 @@
 // for booting bluebase. see https://blueeast.gitbooks.io/bluebase/
 export default {
 
+    assets: {
+        Wallpaper: require("../../assets/common/logo.png")
+    }
 };
