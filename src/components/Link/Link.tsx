@@ -1,4 +1,4 @@
-import { LinkDefaultProps, LinkProps, NavigationActionsObject } from '@bluebase/components';
+import { LinkProps, NavigationActionsObject } from '@bluebase/components';
 import { NativeSyntheticEvent, NativeTouchEvent, Platform } from 'react-native';
 import { NavigationActions } from '../../getComponent';
 import React from 'react';
@@ -10,7 +10,6 @@ import { TouchableItem } from '../TouchableItem';
 export class Link extends React.PureComponent<LinkProps> {
 
 	public static defaultProps: Partial<LinkProps> = {
-		...LinkDefaultProps,
 		component: TouchableItem,
 		replace: false,
 	};
