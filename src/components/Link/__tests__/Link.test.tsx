@@ -32,7 +32,7 @@ describe('Link', () => {
 		};
 	});
 
-	test(`should call the push function with the given routeName`, async () => {
+	test(`should call the navigate function with the given routeName`, async () => {
 
 		const components = {
 			NavigationActions,
@@ -50,9 +50,35 @@ describe('Link', () => {
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
 
+		expect(stubActions.navigate).toBeCalledTimes(1);
+		expect(stubActions.navigate).toBeCalledWith('Foo', undefined);
+
+		expect(stubActions.push).toBeCalledTimes(0);
+		expect(stubActions.replace).toBeCalledTimes(0);
+	});
+
+	test(`should call the push function with the given routeName`, async () => {
+
+		const components = {
+			NavigationActions,
+		};
+
+		const wrapper = mount(
+			<BlueBaseApp components={components}>
+				<Link routeName="Foo" method="push" />
+			</BlueBaseApp>
+		);
+
+		// Wait for render
+		await waitForElement(wrapper as any, Link);
+
+		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
+		onPress({ defaultPrevented: false, preventDefault: () => { return; } }, stubActions);
+
 		expect(stubActions.push).toBeCalledTimes(1);
 		expect(stubActions.push).toBeCalledWith('Foo', undefined);
 
+		expect(stubActions.navigate).toBeCalledTimes(0);
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 
@@ -70,7 +96,7 @@ describe('Link', () => {
 
 		const wrapper = mount(
 			<BlueBaseApp components={components}>
-				<Link path="/foo" />
+				<Link path="/foo" method="push" />
 			</BlueBaseApp>
 		);
 
@@ -83,6 +109,7 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledTimes(1);
 		expect(stubActions.push).toBeCalledWith({ path: '/foo' }, undefined);
 
+		expect(stubActions.navigate).toBeCalledTimes(0);
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 

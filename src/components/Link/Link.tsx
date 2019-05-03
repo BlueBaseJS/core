@@ -1,4 +1,4 @@
-import { LinkProps, NavigationActionsObject } from '@bluebase/components';
+import { LinkDefaultProps, LinkProps, NavigationActionsObject } from '@bluebase/components';
 import { NativeSyntheticEvent, NativeTouchEvent, Platform } from 'react-native';
 import { NavigationActions } from '../../getComponent';
 import React from 'react';
@@ -10,17 +10,27 @@ import { TouchableItem } from '../TouchableItem';
 export class Link extends React.PureComponent<LinkProps> {
 
 	public static defaultProps: Partial<LinkProps> = {
+		...LinkDefaultProps,
 		component: TouchableItem,
 		replace: false,
 	};
 
 	handlePress(event: NativeSyntheticEvent<NativeTouchEvent>, navigation: NavigationActionsObject) {
 
-		const { routeName, path, params, replace } = this.props;
+		const { method, routeName, path, params, replace } = this.props;
 
 		if (!event.defaultPrevented) {
 			event.preventDefault();
-			const fn = (replace === true) ? navigation.replace : navigation.push;
+
+			let fn = navigation.navigate;
+
+			if (method) {
+				fn = navigation[method];
+			}
+
+			if (replace === true) {
+				fn = navigation.replace;
+			}
 
 			if (typeof routeName === 'string') {
 				fn(routeName, params);
