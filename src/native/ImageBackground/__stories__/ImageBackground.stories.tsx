@@ -4,9 +4,6 @@ import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
 
-// const ImageBackground = getComponent('ImageBackground');
-
-
 storiesOf('Image Bakground', module)
 
 .add('Image Background wiht a uri path', () => (

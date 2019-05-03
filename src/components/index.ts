@@ -13,7 +13,6 @@ export * from './Header';
 export * from './HeaderBackButton';
 export * from './HeaderTitle';
 export * from './HomeScreen';
-export * from './ImageBackground';
 export * from './HoverObserver';
 export * from './Link';
 export * from './LoadingState';
