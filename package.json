@@ -171,7 +171,7 @@
     "remark-preset-lint-recommended": "^3.0.2",
     "schedule": "^0.4.0",
     "size-limit": "^1.0.1",
-    "standard-version": "^5.0.1",
+    "standard-version": "^6.0.1",
     "trash-cli": "^1.4.0",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
