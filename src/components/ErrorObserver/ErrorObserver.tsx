@@ -33,9 +33,9 @@ export class ErrorObserver extends React.PureComponent<ErrorObserverProps, Error
 		checkError: (props) => props.error,
 	};
 
-	readonly state: ErrorObserverState = {
-		error: (this.props.checkError) ? this.props.checkError(this.props) : undefined,
-	};
+	static getDerivedStateFromProps = (props: ErrorObserverProps) => ({
+		error: (props.checkError) ? props.checkError(props) : undefined,
+	})
 
 	componentDidCatch(error: Error | null) {
 		this.setState({
