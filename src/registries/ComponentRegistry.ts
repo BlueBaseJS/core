@@ -5,6 +5,7 @@ import {
 } from './BlueBaseModuleRegistry';
 import { ComponentStyles, applyStyles } from '../themes';
 import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
+
 import { ItemCollection } from './Registry';
 import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../components/';
@@ -90,7 +91,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
 
 		// Wrap
-		const wrappedComponent = flowRight([...hocs])(themedComponent);
+		const wrappedComponent = flowRight([...(hocs as ComponentRegistryHocItem[])])(themedComponent);
 
 		return hoistNonReactStatics(wrappedComponent, rawComponent);
 	}
