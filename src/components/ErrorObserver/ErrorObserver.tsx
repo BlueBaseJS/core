@@ -1,14 +1,11 @@
+import { ErrorObserverProps, ErrorObserverState } from '@bluebase/components';
+
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
-import { ErrorObserverProps } from '@bluebase/components';
 import { ErrorState } from '../../getComponent';
 import React from 'react';
 
-const MISSING_ERROR = 'An unknown error occured.';
-
-export interface ErrorObserverState {
-	readonly error?: Error,
-}
+const MISSING_ERROR = Error('An unknown error occurred.');
 
 /**
  * # 🚨 ErrorObserver
@@ -25,22 +22,25 @@ export interface ErrorObserverState {
  * </ErrorObserver>
  * ```
  */
-export class ErrorObserver extends React.PureComponent<ErrorObserverProps, ErrorObserverState> {
+export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObserverState> {
 
 	static contextType = BlueBaseContext;
 
 	public static defaultProps: Partial<ErrorObserverProps> = {
-		checkError: (props) => props.error,
+		checkError: (props, state) => props.error || state.error,
 	};
 
-	static getDerivedStateFromProps = (props: ErrorObserverProps) => ({
-		error: (props.checkError) ? props.checkError(props) : undefined,
+	readonly state = {
+		error: undefined
+	};
+
+	static getDerivedStateFromProps = (props: ErrorObserverProps, state: ErrorObserverState) => ({
+		error: (props.checkError) ? props.checkError(props, state) : undefined,
 	})
 
-	componentDidCatch(error: Error | null) {
-		this.setState({
-			error: error || new Error(MISSING_ERROR)
-		});
+	componentDidCatch(e: Error | null) {
+		const error = e || MISSING_ERROR;
+		this.setState({ error });
 	}
 
 	render() {
