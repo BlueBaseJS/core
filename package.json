@@ -176,7 +176,7 @@
     "trash-cli": "^1.4.0",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
-    "tslint": "^5.13.1",
+    "tslint": "5.11.0",
     "typedoc": "^0.14.2",
     "typescript": "3.3.3333"
   },
