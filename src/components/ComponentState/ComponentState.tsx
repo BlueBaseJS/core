@@ -1,5 +1,6 @@
-import { BlueBaseImage, Body2, Button, H6, View } from '../../getComponent';
+import { BlueBaseImage, Body2, Button, FormattedMessage, H6, View } from '../../getComponent';
 import { ButtonProps, ComponentStateProps, ComponentStateStyles } from '@bluebase/components';
+
 import React from 'react';
 import { Theme } from '../../registries';
 
@@ -28,7 +29,6 @@ import { Theme } from '../../registries';
  * ```
  */
 export class ComponentState extends React.PureComponent<ComponentStateProps> {
-
 	static defaultStyles = (theme: Theme) => ({
 		actionRoot: {
 			marginTop: theme.spacing.unit,
@@ -56,7 +56,6 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 	})
 
 	render() {
-
 		const {
 			actionOnPress,
 			actionProps: _actionProps = {},
@@ -73,21 +72,24 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 		const styles = this.props.styles as ComponentStateStyles;
 
 		const actionProps: ButtonProps = {
-			color:'primary',
+			color: 'primary',
 			..._actionProps,
+			component: Button,
 			onPress: actionOnPress,
 		};
 
 		const descriptionProps = {
 			..._descriptionProps,
 			children: description,
-			style: [styles.description, _descriptionProps.style]
+			component: Body2,
+			style: [styles.description, _descriptionProps.style],
 		};
 
 		const titleProps = {
 			..._titleProps,
 			children: title,
-			style: [styles.title, _titleProps.style]
+			component: H6,
+			style: [styles.title, _titleProps.style],
 		};
 
 		const imageProps = {
@@ -98,21 +100,20 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 
 		return (
 			<View style={styles.root}>
-				{image
-					? <View style={styles.imageRoot}>{image}</View>
-					: (imageSource
-						? <View style={styles.imageRoot}><BlueBaseImage {...imageProps} /></View>
-						: null)
-				}
-				{title ? <H6 {...titleProps} /> : null}
-				{description ? <Body2 {...descriptionProps} /> : null}
-				{actionTitle
-					? (
-						<View style={styles.actionRoot}>
-							<Button {...actionProps}>{actionTitle}</Button>
-						</View>
-					)
-					: null}
+				{image ? (
+					<View style={styles.imageRoot}>{image}</View>
+				) : imageSource ? (
+					<View style={styles.imageRoot}>
+						<BlueBaseImage {...imageProps} />
+					</View>
+				) : null}
+				{title ? <FormattedMessage {...titleProps} /> : null}
+				{description ? <FormattedMessage {...descriptionProps} /> : null}
+				{actionTitle ? (
+					<View style={styles.actionRoot}>
+						<FormattedMessage {...actionProps}>{actionTitle}</FormattedMessage>
+					</View>
+				) : null}
 			</View>
 		);
 	}

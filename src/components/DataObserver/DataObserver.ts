@@ -3,12 +3,6 @@ import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
 
-export interface DataObserverState {
-	// Check
-	readonly isLoading: boolean;
-	readonly isEmpty: boolean;
-}
-
 /**
  * # ⚡️ DataObserver
  *
@@ -23,7 +17,7 @@ export interface DataObserverState {
  * </DataObserver>
  * ```
  */
-export class DataObserver extends React.PureComponent<DataObserverProps, DataObserverState> {
+export class DataObserver extends React.PureComponent<DataObserverProps> {
 	public static defaultProps: Partial<DataObserverProps> = {
 		loading: false,
 
@@ -43,19 +37,14 @@ export class DataObserver extends React.PureComponent<DataObserverProps, DataObs
 		isLoading: props => (!isnil(props.loading) && isboolean(props.loading) ? props.loading : false),
 	};
 
-	readonly state: DataObserverState = {
-		isEmpty: this.props.isEmpty ? this.props.isEmpty(this.props) : false,
-		isLoading: this.props.isLoading ? this.props.isLoading(this.props) : false,
-	};
-
 	render() {
 		const { children } = this.props;
 
 		if (typeof children === 'function') {
 			return (children as any)({
 				data: this.props.data,
-				empty: this.state.isEmpty,
-				loading: this.state.isLoading,
+				empty: this.props.isEmpty ? this.props.isEmpty(this.props) : false,
+				loading: this.props.isLoading ? this.props.isLoading(this.props) : false,
 			});
 		}
 

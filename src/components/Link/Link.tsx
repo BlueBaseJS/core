@@ -16,11 +16,20 @@ export class Link extends React.PureComponent<LinkProps> {
 
 	handlePress(event: NativeSyntheticEvent<NativeTouchEvent>, navigation: NavigationActionsObject) {
 
-		const { routeName, path, params, replace } = this.props;
+		const { method, routeName, path, params, replace } = this.props;
 
 		if (!event.defaultPrevented) {
 			event.preventDefault();
-			const fn = (replace === true) ? navigation.replace : navigation.push;
+
+			let fn = navigation.navigate;
+
+			if (method) {
+				fn = navigation[method];
+			}
+
+			if (replace === true) {
+				fn = navigation.replace;
+			}
 
 			if (typeof routeName === 'string') {
 				fn(routeName, params);
@@ -37,7 +46,7 @@ export class Link extends React.PureComponent<LinkProps> {
 
 		return Component ? (
 			<NavigationActions>
-				{( navigation ) => {
+				{( navigation: NavigationActionsObject ) => {
 
 					const onPressDefault = (e: any) => this.handlePress(e, navigation);
 
