@@ -1058,10 +1058,10 @@
     tslint-react "^3.6.0"
     typescript "^3.1.4"
 
-"@bluebase/components@^5.11.0":
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-5.11.0.tgz#c5299db10236b96ad1143c986828fcc97a8f9bf0"
-  integrity sha512-30US2CLI/RuSM/X5YWApkquRBE9SmwoDtUx9w33VKeiZtsP4Bwl796YTY6Z2pAZdcSJFIXn1UwhlK3LeEmk00w==
+"@bluebase/components@^5.14.0":
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-5.14.0.tgz#8907f513e2023e63af0258ea073a0cf66eda1d00"
+  integrity sha512-q3WZHXwOYa9I5jFUrHkbCctC/YPEB5GC1a264bKPzdZi7HsC2EXrBxv8m8loxTKW6PZ+HSg7qPzy5rcdR6ojCQ==
   dependencies:
     deepmerge "^3.2.0"
     tslib "^1.9.3"

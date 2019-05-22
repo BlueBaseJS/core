@@ -1,8 +1,9 @@
 import { BlueBaseImageProps, ImageBackgroundProps } from '@bluebase/components';
+
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import { ImageBackground as RNImageBackground } from 'react-native';
-import  React from 'react';
+import React from 'react';
 import { resolveImageSource } from '../../components';
 
 // tslint:disable: jsdoc-format
@@ -19,22 +20,20 @@ import { resolveImageSource } from '../../components';
 ```
  */
 export class ImageBackground extends React.PureComponent<ImageBackgroundProps> {
-
 	static contextType = BlueBaseContext;
 
 	public static defaultProps = {
-		args: {}
+		args: {},
 	};
 
 	render() {
-
 		const { source: _source, ...rest } = this.props;
 		const BB: BlueBase = this.context;
 
 		const source = resolveImageSource(this.props as BlueBaseImageProps, BB);
 
-		if (source === null) {
-			return null;
+		if (!source) {
+			return this.props.children;
 		}
 
 		return React.createElement(RNImageBackground, { ...rest, source });
