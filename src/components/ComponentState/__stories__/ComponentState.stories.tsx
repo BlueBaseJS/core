@@ -1,12 +1,11 @@
 import { ComponentState, Image, View } from '../../../getComponent';
+
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 
 storiesOf('ComponentState', module)
-
-
 	.add('Everything', () => (
-		<View style={{ width: '100%', height: 500, backgroundColor: '#fff', justifyContent: 'center' }}>
+		<View style={{ width: '100%', height: 500, backgroundColor: '#fff' }}>
 			<ComponentState
 				title="Looks like your'e new here!"
 				description="Start by creating your first entry."
@@ -17,21 +16,13 @@ storiesOf('ComponentState', module)
 		</View>
 	))
 
-	.add('Only title', () => (
-		<ComponentState title="A simple state" />
-	))
+	.add('Only title', () => <ComponentState title="A simple state" />)
 
 	.add('Title with custom styles', () => (
-		<ComponentState
-			title="A simple state"
-			styles={{ title: { color: 'green', fontSize: 20 } }}
-		/>
+		<ComponentState title="A simple state" styles={{ title: { color: 'green', fontSize: 20 } }} />
 	))
 
-	.add('Only description', () => (
-		<ComponentState description="A simple description" />
-	))
-
+	.add('Only description', () => <ComponentState description="A simple description" />)
 
 	.add('Description with custom styles', () => (
 		<ComponentState
@@ -40,28 +31,21 @@ storiesOf('ComponentState', module)
 		/>
 	))
 
-
-	.add('Only action title', () => (
-		<ComponentState actionTitle="Bluerain" />
-	))
+	.add('Only action title', () => <ComponentState actionTitle="Bluerain" />)
 
 	.add('Action button with onPress listener', () => {
 		const Handler = () => console.log('clicked');
 
-		return(
-			<ComponentState
-				actionTitle="Bluerain"
-				actionOnPress={Handler}
-			/>
-		);
+		return <ComponentState actionTitle="Bluerain" actionOnPress={Handler} />;
 	})
 
 	.add('Image with custom image component', () => {
 		// tslint:disable-next-line:max-line-length
-		const ImageComponent = <Image source={{ uri: 'https://picsum.photos/200' }} style={{ width: 200, height: 200 }} />;
-		return (<ComponentState image={ImageComponent} />);
+		const ImageComponent = (
+			<Image source={{ uri: 'https://picsum.photos/200' }} style={{ width: 200, height: 200 }} />
+		);
+		return <ComponentState image={ImageComponent} />;
 	})
-
 
 	.add('Image with source path', () => (
 		<ComponentState

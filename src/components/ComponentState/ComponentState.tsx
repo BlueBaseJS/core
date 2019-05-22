@@ -46,14 +46,15 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 		},
 		root: {
 			alignItems: 'center',
-			// flex: 1,
-			// justifyContent: 'center',
+			flex: 1,
+			justifyContent: 'center',
+			padding: theme.spacing.unit * 2,
 		},
 		title: {
 			marginBottom: theme.spacing.unit,
 			textAlign: 'center',
 		},
-	})
+	});
 
 	render() {
 		const {
@@ -76,6 +77,7 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			..._actionProps,
 			component: Button,
 			onPress: actionOnPress,
+			style: [styles.action, _actionProps.style],
 		};
 
 		const descriptionProps = {

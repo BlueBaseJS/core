@@ -2,12 +2,10 @@ import { ComponentState } from '../../getComponent';
 import React from 'react';
 
 export interface HomeScreenProps {
-
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
-
+	/**
+	 * Used to locate this view in end-to-end tests.
+	 */
+	testID?: string;
 }
 
 /**
@@ -18,15 +16,14 @@ export interface HomeScreenProps {
  * <HomeScreen/>
  * ```
  */
-export const HomeScreen = (props: HomeScreenProps) =>
-(
-  <ComponentState
-    title="BlueBase"
-    description="Welcome to BlueBase Framework!"
-    imageSource="LogoSquare"
-    styles={{ image: { width: 100, height: 100 } }}
-    {...props}
-  />
+export const HomeScreen = (props: HomeScreenProps) => (
+	<ComponentState
+		title="BlueBase"
+		description="Welcome to BlueBase Framework!"
+		imageSource="LogoSquare"
+		styles={{ image: { width: 100, height: 100 } }}
+		{...props}
+	/>
 );
 
 HomeScreen.displayName = 'HomeScreen';
