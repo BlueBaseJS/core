@@ -48,7 +48,7 @@ exports[`ErrorState should render ErrorState 1`] = `
       ]
     }
   >
-    An unknown error has occured. Please try again later.
+    An unknown error has occurred. Please try again later.
   </Text>
 </View>
 `;

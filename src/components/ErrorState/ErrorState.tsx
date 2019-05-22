@@ -1,4 +1,5 @@
 import { ComponentStateProps, ErrorStateProps } from '@bluebase/components';
+
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import { ComponentState } from '../../getComponent';
@@ -17,11 +18,9 @@ import React from 'react';
  * ```
  */
 export class ErrorState extends React.PureComponent<ErrorStateProps> {
-
 	static contextType = BlueBaseContext;
 
 	render() {
-
 		const { error, retry } = this.props;
 
 		const BB: BlueBase = this.context;
@@ -29,8 +28,11 @@ export class ErrorState extends React.PureComponent<ErrorStateProps> {
 		const development = BB.Configs.getValue('development');
 
 		const props: ComponentStateProps = {
-			description: (development && error)? error.message : 'An unknown error has occured. Please try again later.',
-			title: (development && error) ? error.name : 'Something broke!',
+			description:
+				development && error
+					? error.message
+					: 'An unknown error has occurred. Please try again later.',
+			title: development && error ? error.name : 'Something broke!',
 		};
 
 		if (retry) {
@@ -38,6 +40,6 @@ export class ErrorState extends React.PureComponent<ErrorStateProps> {
 			props.actionOnPress = retry;
 		}
 
-		return (<ComponentState {...props} />);
+		return <ComponentState {...props} />;
 	}
 }
