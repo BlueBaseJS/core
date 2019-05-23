@@ -10,6 +10,7 @@ import {
 	ErrorStateProps,
 	FormattedMessageProps,
 	HoverObserverProps,
+	ImageBackgroundProps,
 	ImageProps,
 	LinkProps,
 	LoadingStateProps,
@@ -105,11 +106,12 @@ export const TouchableItem = getComponent<TouchableItemProps>('TouchableItem');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 
 // Native
-export const ActivityIndicator = getComponent<ActivityIndicatorProps>('ActivityIndicator');
-export const Button = getComponent<ButtonProps>('Button');
-export const Image = getComponent<ImageProps>('Image');
-export const Text = getComponent<TextProps>('Text');
-export const View = getComponent<ViewProps>('View');
+export const ActivityIndicator  = getComponent<ActivityIndicatorProps>('ActivityIndicator');
+export const Button 		 	= getComponent<ButtonProps>('Button');
+export const Image 			 	= getComponent<ImageProps>('Image');
+export const Text 			 	= getComponent<TextProps>('Text');
+export const View 			 	= getComponent<ViewProps>('View');
+export const ImageBackground 	= getComponent<ImageBackgroundProps>('ImageBackground');
 
 // Typography
 export const H1 = getComponent<TextProps>('H1');
