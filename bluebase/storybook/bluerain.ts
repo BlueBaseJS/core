@@ -10,6 +10,11 @@ import { BootOptions } from '../../src';
  */
 const bootOptions: Partial<BootOptions> = {
 
+	assets: {
+		Icon: require('../../assets/storybook-native/wallpaper.jpg'),
+		Wallpaper: require('../../assets/common/logo.png')
+	},
+
 	configs: {
 
 		'theme.overrides': {

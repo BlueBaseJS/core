@@ -1,11 +1,19 @@
-import { DataObserver, EmptyState, ErrorObserver, LoadingState, WaitObserver } from '../../getComponent';
+import {
+	DataObserver,
+	EmptyState,
+	ErrorObserver,
+	LoadingState,
+	WaitObserver,
+} from '../../getComponent';
 import {
 	DataObserverChildrenProps,
 	StatefulComponentProps,
 	WaitObserverChildrenProps,
 } from '@bluebase/components';
+
 import React from 'react';
 
+// tslint:disable: jsdoc-format
 /**
  * # 👨‍🎨 StatefulComponent
  *
@@ -13,20 +21,18 @@ import React from 'react';
  * state management. It shows empty, loading, error or data states based on the given props.
  *
  * ## Usage
- * ```jsx
- * <StatefulComponent data={data} loading={true} delay={200} timeout={10000}>
- *  <Text>Content</Text>
- * </StatefulComponent>
- * ```
+```jsx
+<StatefulComponent data={data} loading={true} delay={200} timeout={10000}>
+ <Text>Content</Text>
+</StatefulComponent>
+```
  */
 export class StatefulComponent extends React.PureComponent<StatefulComponentProps> {
-
 	public static defaultProps: Partial<StatefulComponentProps> = {
 		timeout: 10000,
 	};
 
 	render() {
-
 		const {
 			component: Component,
 			loadingComponent,
@@ -57,10 +63,8 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 
 		return (
 			<ErrorObserver {...{ error, checkError, errorComponent, rest }}>
-				<DataObserver
-					{...{ isEmpty, isLoading, loading, data, rest }}
-					children={(event: DataObserverChildrenProps) => {
-
+				<DataObserver {...{ isEmpty, isLoading, loading, data, rest }}>
+					{(event: DataObserverChildrenProps) => {
 						if (event.loading === true) {
 							return React.createElement(WaitObserver, {
 								children: (props: WaitObserverChildrenProps) => <LoadingState {...props} />,
@@ -72,11 +76,13 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 						}
 
 						if (event.empty) {
-							return (<EmptyState />);
+							return <EmptyState />;
 						}
 
 						// Render 'component' prop
-						if (Component) { return React.createElement(Component, rest); }
+						if (Component) {
+							return React.createElement(Component, rest);
+						}
 
 						// 'children' as a function, 'render prop' pattern
 						if (typeof children === 'function') {
@@ -85,7 +91,8 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 
 						// children
 						return children;
-					}} />
+					}}
+				</DataObserver>
 			</ErrorObserver>
 		);
 	}

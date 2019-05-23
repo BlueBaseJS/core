@@ -1,4 +1,5 @@
 import { getDefiniteModule, isPromise, makeId } from '../utils';
+
 import { BlueBase } from '../BlueBase';
 import isNil from 'lodash.isnil';
 import merge from 'deepmerge';
@@ -406,7 +407,7 @@ export class Registry<
 	 * @param item
 	 */
 	protected isItem(item: any): item is ItemType {
-		return (item as ItemType).value !== undefined;
+		return !!item && (item as ItemType).value !== undefined;
 	}
 
 	/**
@@ -414,7 +415,7 @@ export class Registry<
 	 * @param item
 	 */
 	protected isInputItem(item: any): item is ItemInputType {
-		return (item as ItemType).value !== undefined;
+		return !!item && (item as ItemType).value !== undefined;
 	}
 
 	/**

@@ -4,8 +4,7 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
 describe('ErrorState', () => {
-
-	test(`should render ErrorState`, (done) => {
+	test(`should render ErrorState`, done => {
 		const component = TestRenderer.create(
 			<BlueBaseApp>
 				<ErrorState />
@@ -16,16 +15,22 @@ describe('ErrorState', () => {
 			const tree = component.toJSON();
 			expect(tree).toMatchSnapshot();
 			expect((tree as any).children[0].children.join()).toBe('Something broke!');
-			expect((tree as any).children[1].children.join())
-				.toBe('An unknown error has occured. Please try again later.');
+			expect((tree as any).children[1].children.join()).toBe(
+				'An unknown error has occurred. Please try again later.'
+			);
 			done();
 		});
 	});
 
-	test(`should render ErrorState with retry button and custom error`, (done) => {
+	test(`should render ErrorState with retry button and custom error`, done => {
 		const component = TestRenderer.create(
 			<BlueBaseApp>
-				<ErrorState retry={() => { return null; }} error={Error('Bang!')} />
+				<ErrorState
+					retry={() => {
+						return null;
+					}}
+					error={Error('Bang!')}
+				/>
 			</BlueBaseApp>
 		);
 
@@ -38,5 +43,4 @@ describe('ErrorState', () => {
 			done();
 		});
 	});
-
 });
