@@ -2,6 +2,7 @@ import { BlueBaseImage, Body2, Button, FormattedMessage, H6, View } from '../../
 import { ButtonProps, ComponentStateProps, ComponentStateStyles } from '@bluebase/components';
 
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { Theme } from '../../registries';
 
 /**
@@ -77,27 +78,27 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			..._actionProps,
 			component: Button,
 			onPress: actionOnPress,
-			style: [styles.action, _actionProps.style],
+			style: StyleSheet.flatten([styles.action, _actionProps.style]),
 		};
 
 		const descriptionProps = {
 			..._descriptionProps,
 			children: description,
 			component: Body2,
-			style: [styles.description, _descriptionProps.style],
+			style: StyleSheet.flatten([styles.description, _descriptionProps.style]),
 		};
 
 		const titleProps = {
 			..._titleProps,
 			children: title,
 			component: H6,
-			style: [styles.title, _titleProps.style],
+			style: StyleSheet.flatten([styles.title, _titleProps.style]),
 		};
 
 		const imageProps = {
 			..._imageProps,
 			source: imageSource || _imageProps.source,
-			style: [styles.image, _imageProps.style],
+			style: StyleSheet.flatten([styles.image, _imageProps.style]),
 		};
 
 		return (

@@ -26,13 +26,10 @@ exports[`HomeScreen Snapshot HomeScreen 1`] = `
         }
       }
       style={
-        Array [
-          Object {
-            "height": 100,
-            "width": 100,
-          },
-          undefined,
-        ]
+        Object {
+          "height": 100,
+          "width": 100,
+        }
       }
     />
   </View>
@@ -45,13 +42,10 @@ exports[`HomeScreen Snapshot HomeScreen 1`] = `
           "fontSize": 20,
           "fontWeight": "500",
         },
-        Array [
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-          undefined,
-        ],
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
       ]
     }
   >
@@ -66,13 +60,10 @@ exports[`HomeScreen Snapshot HomeScreen 1`] = `
           "fontSize": 14,
           "fontWeight": "400",
         },
-        Array [
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-          undefined,
-        ],
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
       ]
     }
   >

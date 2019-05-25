@@ -1,4 +1,5 @@
 import * as Native from '../../../native';
+
 import { BlueBaseApp } from '../../BlueBaseApp';
 import { ComponentState } from '../ComponentState';
 import React from 'react';
@@ -30,10 +31,10 @@ describe('ComponentState', () => {
 		});
 
 		const styles = wrapper.find('ComponentState Image').last().prop('style');
-		expect((styles as any)[0]).toMatchObject({
-			height: 100,
-			width: 100,
-		});
+		if(styles){
+			expect(styles.height).toBe(100);
+			expect(styles.width).toBe(100);
+		}
 		expect(wrapper.find('ComponentState H6 Text').last().text()).toBe('Looks like your\'e new here!');
 		expect(wrapper.find('ComponentState Body2 Text').last().text()).toBe('Start by creating your first entry.');
 		expect(wrapper.find('ComponentState Button Text').last().text()).toBe('Tap to Create');

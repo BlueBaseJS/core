@@ -20,13 +20,10 @@ exports[`ErrorState should render ErrorState 1`] = `
           "fontSize": 20,
           "fontWeight": "500",
         },
-        Array [
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-          undefined,
-        ],
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
       ]
     }
   >
@@ -41,13 +38,10 @@ exports[`ErrorState should render ErrorState 1`] = `
           "fontSize": 14,
           "fontWeight": "400",
         },
-        Array [
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-          undefined,
-        ],
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
       ]
     }
   >
@@ -76,13 +70,10 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
           "fontSize": 20,
           "fontWeight": "500",
         },
-        Array [
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-          undefined,
-        ],
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
       ]
     }
   >
@@ -97,13 +88,10 @@ exports[`ErrorState should render ErrorState with retry button and custom error 
           "fontSize": 14,
           "fontWeight": "400",
         },
-        Array [
-          Object {
-            "marginBottom": 8,
-            "textAlign": "center",
-          },
-          undefined,
-        ],
+        Object {
+          "marginBottom": 8,
+          "textAlign": "center",
+        },
       ]
     }
   >
