@@ -23,7 +23,6 @@ const MISSING_ERROR = Error('An unknown error occurred.');
  * ```
  */
 export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObserverState> {
-
 	static contextType = BlueBaseContext;
 
 	public static defaultProps: Partial<ErrorObserverProps> = {
@@ -31,11 +30,11 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 	};
 
 	readonly state = {
-		error: undefined
+		error: undefined,
 	};
 
 	static getDerivedStateFromProps = (props: ErrorObserverProps, state: ErrorObserverState) => ({
-		error: (props.checkError) ? props.checkError(props, state) : undefined,
+		error: props.checkError ? props.checkError(props, state) : undefined,
 	})
 
 	componentDidCatch(e: Error | null) {
@@ -44,16 +43,15 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 	}
 
 	render() {
-
 		const BB: BlueBase = this.context;
 
 		const { error } = this.state;
-		const { children } = this.props;
+		const { children, retry } = this.props;
 
 		if (error) {
 			BB.Logger.error(error);
 			const Error = this.props.errorComponent || ErrorState;
-			return React.createElement(Error, { error });
+			return React.createElement(Error, { error, retry });
 		}
 
 		// 'children' as a function, 'render prop' pattern
