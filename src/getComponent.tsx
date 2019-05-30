@@ -8,6 +8,7 @@ import {
 	DynamicIconProps,
 	ErrorObserverProps,
 	ErrorStateProps,
+	FlatListProps,
 	FormattedMessageProps,
 	HoverObserverProps,
 	ImageBackgroundProps,
@@ -25,11 +26,11 @@ import {
 	ViewProps,
 	WaitObserverProps,
 } from '@bluebase/components';
+
 import { BlueBase } from './BlueBase';
 import { BlueBaseContentProps } from './components';
 import { BlueBaseContext } from './Context';
 import React from 'react';
-
 
 export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 
@@ -41,7 +42,6 @@ export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps }
  * @param keys
  */
 export function getComponent<T = any>(...keys: string[]) {
-
 	if (keys.length === 0) {
 		throw Error('getComponent method needs at least one key');
 	}
@@ -49,24 +49,23 @@ export function getComponent<T = any>(...keys: string[]) {
 	const displayName = keys.join('_');
 
 	return class BlueBaseComponent extends React.Component<any> {
-
 		static displayName = displayName;
 
 		static contextType = BlueBaseContext;
 
 		Component?: React.ComponentType<T>;
 
-
 		// Before mounting, resolve component and store it.
 		// So we don't end up creating a new component during every render
 		componentWillMount() {
-
 			const BB: BlueBase = this.context;
 
 			// If there is no BlueBase context, throw an Error
 			if (!BB) {
 				// tslint:disable-next-line: max-line-length
-				throw Error(`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`);
+				throw Error(
+					`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`
+				);
 			}
 
 			// We don't want to resolve the component on every render.
@@ -106,12 +105,13 @@ export const TouchableItem = getComponent<TouchableItemProps>('TouchableItem');
 export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 
 // Native
-export const ActivityIndicator  = getComponent<ActivityIndicatorProps>('ActivityIndicator');
-export const Button 		 	= getComponent<ButtonProps>('Button');
-export const Image 			 	= getComponent<ImageProps>('Image');
-export const Text 			 	= getComponent<TextProps>('Text');
-export const View 			 	= getComponent<ViewProps>('View');
-export const ImageBackground 	= getComponent<ImageBackgroundProps>('ImageBackground');
+export const ActivityIndicator = getComponent<ActivityIndicatorProps>('ActivityIndicator');
+export const Button = getComponent<ButtonProps>('Button');
+export const FlatList = getComponent<FlatListProps<any>>('FlatList');
+export const Image = getComponent<ImageProps>('Image');
+export const Text = getComponent<TextProps>('Text');
+export const View = getComponent<ViewProps>('View');
+export const ImageBackground = getComponent<ImageBackgroundProps>('ImageBackground');
 
 // Typography
 export const H1 = getComponent<TextProps>('H1');
