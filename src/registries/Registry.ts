@@ -2,6 +2,7 @@ import { getDefiniteModule, isPromise, makeId } from '../utils';
 
 import { BlueBase } from '../BlueBase';
 import isNil from 'lodash.isnil';
+import isPlainPbject from 'is-plain-object';
 import merge from 'deepmerge';
 
 /**
@@ -104,7 +105,9 @@ export class Registry<
 				value = item.value || existingItem.value;
 			}
 
-			item = merge(existingItem, item) as ItemType;
+			item = merge(existingItem, item, {
+				isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
+			}) as ItemType;
 
 			if (value) {
 				item.value = value;
