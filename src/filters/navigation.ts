@@ -1,4 +1,5 @@
 import { NavigatorProps, RouteConfig } from '@bluebase/components';
+
 import { BlueBase } from '../BlueBase';
 import { FilterNestedCollection } from '../registries';
 import deepmerge from 'deepmerge';
@@ -19,6 +20,7 @@ export const navigation: FilterNestedCollection = {
 						{
 							name: 'Root',
 							path: '',
+							screen: 'SystemLayout',
 							navigator: await BB.Filters.run('bluebase.navigator.main', {} as any),
 							navigationOptions: {
 								header: null,

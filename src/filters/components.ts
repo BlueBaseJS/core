@@ -36,9 +36,11 @@ import {
 	PluginIcon,
 	Redirect,
 	StatefulComponent,
+	SystemLayout,
 	TouchableItem,
 	WaitObserver,
 } from '../components/';
+
 import { FilterNestedCollection } from '../registries';
 import { ThemeValue } from '../themes';
 
@@ -75,6 +77,7 @@ export const components: FilterNestedCollection = {
 					PluginIcon,
 					Redirect: { applyStyles: false, value: Redirect },
 					StatefulComponent,
+					SystemLayout,
 					TouchableItem,
 					WaitObserver,
 
