@@ -23,12 +23,6 @@ function loadStories() {
   require('../../../src/components/ErrorObserver/__stories__/ErrorObserver.stories');
   require('../../../src/components/ErrorState/__stories__/ErrorState.stories');
   require('../../../src/components/ErrorState/__stories__/ErrorState.stories');
-  require('../../../src/components/Header/__stories__/Header.stories');
-  require('../../../src/components/Header/__stories__/Header.stories');
-  require('../../../src/components/HeaderBackButton/__stories__/HeaderBackButton.stories');
-  require('../../../src/components/HeaderBackButton/__stories__/HeaderBackButton.stories');
-  require('../../../src/components/HeaderTitle/__stories__/HeaderTitle.stories');
-  require('../../../src/components/HeaderTitle/__stories__/HeaderTitle.stories');
   require('../../../src/components/HomeScreen/__stories__/HomeScreen.stories');
   require('../../../src/components/HomeScreen/__stories__/HomeScreen.stories');
   require('../../../src/components/HoverObserver/__stories__/HoverObserver.stories');
@@ -45,8 +39,12 @@ function loadStories() {
   require('../../../src/components/StatefulComponent/__stories__/StatefulComponent.stories');
   require('../../../src/components/WaitObserver/__stories__/WaitObserver.stories');
   require('../../../src/components/WaitObserver/__stories__/WaitObserver.stories');
+  require('../../../src/intl/__stories__/IntlContext.stories');
+  require('../../../src/intl/__stories__/IntlContext.stories');
   require('../../../src/native/Button/__stories__/Button.stories');
   require('../../../src/native/Button/__stories__/Button.stories');
+  require('../../../src/native/ImageBackground/__stories__/ImageBackground.stories');
+  require('../../../src/native/ImageBackground/__stories__/ImageBackground.stories');
   require('../../../src/registries/__stories__/ComponentRegistry.stories');
   require('../../../src/registries/__stories__/ComponentRegistry.stories');
   require('../../../src/registries/__stories__/FontRegistry.stories');
@@ -75,12 +73,6 @@ const stories = [
   '../../../src/components/ErrorObserver/__stories__/ErrorObserver.stories',
   '../../../src/components/ErrorState/__stories__/ErrorState.stories',
   '../../../src/components/ErrorState/__stories__/ErrorState.stories',
-  '../../../src/components/Header/__stories__/Header.stories',
-  '../../../src/components/Header/__stories__/Header.stories',
-  '../../../src/components/HeaderBackButton/__stories__/HeaderBackButton.stories',
-  '../../../src/components/HeaderBackButton/__stories__/HeaderBackButton.stories',
-  '../../../src/components/HeaderTitle/__stories__/HeaderTitle.stories',
-  '../../../src/components/HeaderTitle/__stories__/HeaderTitle.stories',
   '../../../src/components/HomeScreen/__stories__/HomeScreen.stories',
   '../../../src/components/HomeScreen/__stories__/HomeScreen.stories',
   '../../../src/components/HoverObserver/__stories__/HoverObserver.stories',
@@ -97,8 +89,12 @@ const stories = [
   '../../../src/components/StatefulComponent/__stories__/StatefulComponent.stories',
   '../../../src/components/WaitObserver/__stories__/WaitObserver.stories',
   '../../../src/components/WaitObserver/__stories__/WaitObserver.stories',
+  '../../../src/intl/__stories__/IntlContext.stories',
+  '../../../src/intl/__stories__/IntlContext.stories',
   '../../../src/native/Button/__stories__/Button.stories',
   '../../../src/native/Button/__stories__/Button.stories',
+  '../../../src/native/ImageBackground/__stories__/ImageBackground.stories',
+  '../../../src/native/ImageBackground/__stories__/ImageBackground.stories',
   '../../../src/registries/__stories__/ComponentRegistry.stories',
   '../../../src/registries/__stories__/ComponentRegistry.stories',
   '../../../src/registries/__stories__/FontRegistry.stories',
