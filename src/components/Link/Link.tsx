@@ -49,8 +49,8 @@ export class Link extends React.PureComponent<LinkProps> {
 					return Platform.OS === 'web' && !!path && path !== '' ? (
 						<a href={path} onClick={(onPress as any) || onPressDefault} {...this.props} />
 					) : (
-						<Component {...rest} onPress={onPress || onPressDefault} />
-					);
+							<Component {...rest} onPress={onPress || onPressDefault} />
+						);
 				}}
 			</NavigationActions>
 		) : null;
