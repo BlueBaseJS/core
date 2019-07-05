@@ -29,6 +29,8 @@ import React from 'react';
  */
 export class StatefulComponent extends React.PureComponent<StatefulComponentProps> {
 	public static defaultProps: Partial<StatefulComponentProps> = {
+		emptyComponent: EmptyState,
+		loadingComponent: LoadingState,
 		timeout: 10000,
 	};
 
@@ -61,13 +63,16 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 
 		const rest = { data, ...other };
 
+		const LoadingComponent = loadingComponent!;
+		const EmptyComponent = emptyComponent!;
+
 		return (
 			<ErrorObserver {...{ error, checkError, errorComponent, rest }}>
 				<DataObserver {...{ isEmpty, isLoading, loading, data, rest }}>
 					{(event: DataObserverChildrenProps) => {
 						if (event.loading === true) {
 							return React.createElement(WaitObserver, {
-								children: (props: WaitObserverChildrenProps) => <LoadingState {...props} />,
+								children: (props: WaitObserverChildrenProps) => <LoadingComponent {...props} />,
 								delay,
 								onRetry,
 								onTimeout,
@@ -76,7 +81,7 @@ export class StatefulComponent extends React.PureComponent<StatefulComponentProp
 						}
 
 						if (event.empty) {
-							return <EmptyState />;
+							return <EmptyComponent />;
 						}
 
 						// Render 'component' prop
