@@ -15,6 +15,7 @@ import {
 	ThemeCollection,
 	ThemeRegistry,
 } from './registries';
+
 import { BlueBaseProvider } from './Context';
 import { IntlProvider } from './intl';
 import { MaybeRenderPropChildren } from './utils';
@@ -26,35 +27,33 @@ import systemFilters from './filters';
 const BlueBaseContent = getComponent('BlueBaseContent');
 
 export interface BootOptions {
-
 	/** Collection of assets to add in BlueBase's Asset Registry. */
-	assets: AssetCollection,
+	assets: AssetCollection;
 
 	/** Collection of components to add in BlueBase's Component Registry. */
-	components: ComponentCollection,
+	components: ComponentCollection;
 
 	/** Collection of configs to add in BlueBase's Config Registry. */
-	configs: ConfigCollection,
+	configs: ConfigCollection;
 
 	/** Collection of filters to add in BlueBase's Filter Registry. */
-	filters: FilterNestedCollection,
+	filters: FilterNestedCollection;
 
 	/** Collection of filters to add in BlueBase's Filter Registry. */
-	fonts: FontCollection,
+	fonts: FontCollection;
 
 	/** Collection of plugins to add in BlueBase's Plugin Registry. */
-	plugins: PluginCollection,
+	plugins: PluginCollection;
 
 	/** Collection of themes to add in BlueBase's Theme Registry. */
-	themes: ThemeCollection,
+	themes: ThemeCollection;
 
 	// routes: Plugin[]
 
-	children?: MaybeRenderPropChildren<{ BB: BlueBase }>,
+	children?: MaybeRenderPropChildren<{ BB: BlueBase }>;
 }
 
 export class BlueBase {
-
 	// APIs
 	public Analytics = new Analytics(this);
 	public Logger = new Logger(this);
@@ -85,13 +84,11 @@ export class BlueBase {
 	};
 
 	public async boot(options?: Partial<BootOptions> & { children?: React.ReactNode }) {
-
 		// Update boot options
 		this.bootOptions = { ...this.bootOptions, ...options };
 
 		// Register basic filters here, so they can be used in boot
 		await this.Filters.registerNestedCollection(systemFilters);
-		await this.Filters.registerNestedCollection(this.bootOptions.filters);
 
 		// 🚀 Boot!
 		await this.Filters.run('bluebase.boot', this.bootOptions);
