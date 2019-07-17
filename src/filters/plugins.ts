@@ -9,7 +9,7 @@ export const plugins: FilterNestedCollection = {
 	'bluebase.plugins.register': [
 		{
 			key: 'bluebase-plugins-register-default',
-			priority: 5,
+			priority: 2,
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _args: any, BB: BlueBase) => {

@@ -5,19 +5,6 @@ import { FilterNestedCollection } from '../registries';
 
 export const configs: FilterNestedCollection = {
 	'bluebase.configs.register': [
-		{
-			key: 'bluebase-configs-register-default',
-			priority: 5,
-
-			// tslint:disable-next-line:object-literal-sort-keys
-			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
-				await BB.Configs.registerCollection(bootOptions.configs);
-
-				return bootOptions;
-			},
-		},
-
 		/**
 		 * Registers all configs that ship with BlueBase
 		 */
