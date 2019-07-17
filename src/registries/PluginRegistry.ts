@@ -235,9 +235,9 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	/**
 	 * Returns all enabled plugins
 	 */
-	public getAllEnabled() {
-		const map = this.filter((_value, key) => this.isEnabled(key));
-		return Object.values(map);
+	public async getAllEnabled() {
+		const map = this.filterValues((_value, key) => this.isEnabled(key));
+		return Promise.all(Object.values(map));
 	}
 
 	/**
