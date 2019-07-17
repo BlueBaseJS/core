@@ -7,6 +7,21 @@ export { ItemCollection as ConfigCollection } from './Registry';
  */
 export class ConfigRegistry extends Registry<RegistryItem> {
 	/**
+	 * The set() method adds or updates an element with a specified
+	 * key and item to the registry.
+	 * @param key
+	 * @param value
+	 */
+	public set(key: string, item: RegistryItem | RegistryInputItem) {
+		super.set(key, item);
+
+		const value = this.getValue(key);
+		this.BB.Filters.run('bluebase.configs.set', { key, value });
+
+		return this;
+	}
+
+	/**
 	 * Registers a value if it's not already registered.
 	 * @param item
 	 */

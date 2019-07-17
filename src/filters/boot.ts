@@ -1,4 +1,5 @@
 import { BlueBase, BootOptions } from '../BlueBase';
+
 import { FilterNestedCollection } from '../registries';
 
 export const boot: FilterNestedCollection = {
@@ -9,51 +10,39 @@ export const boot: FilterNestedCollection = {
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+				// Start boot process
 				await BB.Filters.run('bluebase.boot.start', bootOptions);
 
-				await BB.Filters.run('bluebase.configs.register', bootOptions);
-				await BB.Filters.run('bluebase.assets.register', bootOptions);
-				await BB.Filters.run('bluebase.fonts.register', bootOptions);
-				await BB.Filters.run('bluebase.components.register', bootOptions);
+				// We want to register all plugins first
+				await BB.Filters.run('bluebase.plugins.register', bootOptions);
+
+				// The second most important process is to register all filters,
+				// so rest of boot process maybe "hackable"
 				await BB.Filters.run('bluebase.filters.register', bootOptions.filters);
+
+				// Register configs
+				await BB.Filters.run('bluebase.configs.register', bootOptions);
+
+				// Register assets
+				await BB.Filters.run('bluebase.assets.register', bootOptions);
+
+				// Register assets
+				await BB.Filters.run('bluebase.fonts.register', bootOptions);
+
+				// Register components
+				await BB.Filters.run('bluebase.components.register', bootOptions);
+
+				// Register routes
 				await BB.Filters.run('bluebase.routes.register', bootOptions);
+
+				// Register themes
 				await BB.Filters.run('bluebase.themes.register', bootOptions);
-				await BB.Filters.run('bluebase.plugins.register', bootOptions.plugins);
 
-				await BB.Filters.run('bluebase.plugins.initialize.all', bootOptions);
-
+				// Register preload modules
 				await BB.Filters.run('bluebase.preload', bootOptions);
 
+				// End boot
 				await BB.Filters.run('bluebase.boot.end', bootOptions);
-
-				return bootOptions;
-			},
-		},
-	],
-
-	'bluebase.boot.start': [
-		{
-			key: 'system-boot-start-default',
-			priority: 5,
-
-			// tslint:disable-next-line:object-literal-sort-keys
-			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Filters.run('bluebase.assets.register.internal', bootOptions);
-				await BB.Filters.run('bluebase.components.register.internal', bootOptions);
-
-				return bootOptions;
-			},
-		},
-	],
-
-	'bluebase.preload': [
-		{
-			key: 'system-preload-default',
-			priority: 5,
-
-			// tslint:disable-next-line:object-literal-sort-keys
-			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Fonts.load();
 
 				return bootOptions;
 			},

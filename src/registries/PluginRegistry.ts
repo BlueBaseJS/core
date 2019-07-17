@@ -15,6 +15,7 @@ import {
 	joinPaths,
 	resolveThunk,
 } from '../utils';
+
 import { AssetCollection } from './AssetRegistry';
 import { BlueBase } from '../BlueBase';
 import { ComponentCollection } from './ComponentRegistry';
@@ -229,6 +230,14 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 
 		item.enabled = false;
 		this.set(key, item);
+	}
+
+	/**
+	 * Returns all enabled plugins
+	 */
+	public getAllEnabled() {
+		const map = this.filter((_value, key) => this.isEnabled(key));
+		return Object.values(map);
 	}
 
 	/**
