@@ -45,13 +45,13 @@ import { FilterNestedCollection } from '../registries';
 import { ThemeValue } from '../themes';
 
 export const components: FilterNestedCollection = {
-	/**
-	 * Registers all components that ship with BlueBase
-	 */
-	'bluebase.components.register.internal': [
+	'bluebase.components.register': [
+		/**
+		 * Registers all components that ship with BlueBase
+		 */
 		{
 			key: 'bluebase-components-register-internal-default',
-			priority: 5,
+			priority: 2,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Components.registerCollection({
@@ -150,20 +150,35 @@ export const components: FilterNestedCollection = {
 				return bootOptions;
 			},
 		},
-	],
 
-	/**
-	 * This filter registers components from bootOptions.components property.
-	 * These are the components typically set in the bluebase.js file.
-	 */
-	'bluebase.components.register': [
+		/**
+		 * This filter registers components from bootOptions.components property.
+		 * These are the components typically set in the bluebase.js file.
+		 */
 		{
 			key: 'bluebase-components-register-default',
-			priority: 5,
+			priority: 3,
 
-			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Components.registerCollection(bootOptions.components);
+
+				return bootOptions;
+			},
+		},
+
+		/**
+		 * Registers all components in the plugins
+		 */
+		{
+			key: 'bluebase-components-register-from-plugins',
+			priority: 4,
+
+			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+				const plugins = BB.Plugins.getAllEnabled();
+
+				for (const plugin of plugins) {
+					await BB.Components.registerCollection(plugin.components);
+				}
 
 				return bootOptions;
 			},

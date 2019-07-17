@@ -1,14 +1,15 @@
 import { BlueBase, BootOptions } from '../BlueBase';
+
 import { FilterNestedCollection } from '../registries';
 
 export const assets: FilterNestedCollection = {
-	/**
-	 * Registers all assets that ship with BlueBase
-	 */
-	'bluebase.assets.register.internal': [
+	'bluebase.assets.register': [
+		/**
+		 * Registers all assets that ship with BlueBase
+		 */
 		{
 			key: 'bluebase-assets-register-internal-default',
-			priority: 5,
+			priority: 2,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Assets.registerCollection({
@@ -19,16 +20,34 @@ export const assets: FilterNestedCollection = {
 				return bootOptions;
 			},
 		},
-	],
 
-	'bluebase.assets.register': [
+		/**
+		 * Registers all assets in the bluebase.ts
+		 */
 		{
 			key: 'bluebase-assets-register-default',
-			priority: 5,
+			priority: 3,
 
-			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				await BB.Assets.registerCollection(bootOptions.assets);
+
+				return bootOptions;
+			},
+		},
+
+		/**
+		 * Registers all assets in the plugins
+		 */
+		{
+			key: 'bluebase-assets-register-from-plugins',
+			priority: 4,
+
+			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+				const plugins = BB.Plugins.getAllEnabled();
+
+				for (const plugin of plugins) {
+					await BB.Assets.registerCollection(plugin.assets);
+				}
 
 				return bootOptions;
 			},
