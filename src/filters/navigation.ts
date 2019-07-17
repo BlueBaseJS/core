@@ -9,7 +9,7 @@ export const navigation: FilterNestedCollection = {
 	'bluebase.navigator.root': [
 		{
 			key: 'bluebase-navigator-root-internal-default',
-			priority: 5,
+			priority: 3,
 
 			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
 				const navigator: NavigatorProps = {
@@ -37,7 +37,7 @@ export const navigation: FilterNestedCollection = {
 	'bluebase.navigator.main': [
 		{
 			key: 'bluebase-navigator-main-internal-default',
-			priority: 5,
+			priority: 3,
 
 			// tslint:disable-line:object-literal-sort-keys
 			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
