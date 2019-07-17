@@ -18,7 +18,7 @@ export const boot: FilterNestedCollection = {
 
 				// The second most important process is to register all filters,
 				// so rest of boot process maybe "hackable"
-				await BB.Filters.run('bluebase.filters.register', bootOptions.filters);
+				await BB.Filters.run('bluebase.filters.register', bootOptions);
 
 				// Register configs
 				await BB.Filters.run('bluebase.configs.register', bootOptions);

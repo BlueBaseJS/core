@@ -26,7 +26,7 @@ export const fonts: FilterNestedCollection = {
 			priority: 4,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				const plugins = BB.Plugins.getAllEnabled();
+				const plugins = await BB.Plugins.getAllEnabled();
 
 				for (const plugin of plugins) {
 					await BB.Fonts.registerCollection(plugin.fonts);
