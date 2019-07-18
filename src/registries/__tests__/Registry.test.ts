@@ -1,4 +1,5 @@
 import { Registry, RegistryItem } from '../Registry';
+
 import { BlueBase } from '../../BlueBase';
 
 describe('Registry', () => {
@@ -81,30 +82,26 @@ describe('Registry', () => {
 		});
 	});
 
-	// describe('meta setter/getters', () => {
+	describe('meta setter/getters', () => {
+		it('should return undefined when setting meta value of an unknown item', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
 
-	// 	it('should return undefined when setting meta value of an unknown item', async () => {
-	// 		const BB = new BlueBase();
-	// 		const registry = new Registry<RegistryItem<string, { preload: boolean, loaded: number }>>(BB);
+			registry.setMeta('foo', { preload: true });
 
-	// 		registry.setMeta('foo', 'preload', true);
+			expect(registry.getMeta('foo', 'preload')).toBe(undefined);
+		});
 
-	// 		expect(registry.getMeta('foo', 'preload')).toBe(undefined);
-	// 	});
+		it('should set meta value of an item', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
 
-	// 	it('should set meta value of an item', async () => {
-	// 		const BB = new BlueBase();
-	// 		const registry = new Registry<RegistryItem<string, { preload: boolean, loaded: string }>>(BB);
+			registry.setValue('foo', 'bar');
+			registry.setMeta('foo', { preload: true });
 
-	// 		registry.set('foo', { value: 'bar' });
-	// 		registry.setMeta('foo', 'preload', true);
-	// 		registry.setMeta('foo', 'loaded', 'yes');
-
-	// 		expect(registry.getMeta('foo', 'preload')).toBe(true);
-	// 		expect(registry.getMeta('foo', 'loaded')).toBe('yes');
-	// 	});
-
-	// });
+			expect(registry.getMeta('foo', 'preload')).toBe(true);
+		});
+	});
 
 	describe('.register method', () => {
 		it('should register an item', async () => {

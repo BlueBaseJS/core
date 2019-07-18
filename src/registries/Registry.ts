@@ -160,11 +160,11 @@ export class Registry<
 	}
 
 	/**
-	 * The setProps() method sets extra props of a registry item
+	 * The setMeta() method sets extra props of a registry item
 	 * @param key
 	 * @param props
 	 */
-	public setProps(key: string, props: { [key: string]: any }) {
+	public setMeta(key: string, props: { [key: string]: any }) {
 		const item = this.get(key);
 
 		// Override existing
@@ -175,6 +175,21 @@ export class Registry<
 		return this.data.set(key, merge(item, props, {
 			isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
 		}) as ItemType);
+	}
+
+	/**
+	 * The setMeta() method gets extra props of a registry item
+	 * @param key
+	 * @param props
+	 */
+	public getMeta(key: string, metaKey: string) {
+		const item = this.get(key);
+
+		if (!item) {
+			return;
+		}
+
+		return item[metaKey];
 	}
 
 	/**
