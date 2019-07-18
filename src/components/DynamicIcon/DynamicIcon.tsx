@@ -18,15 +18,13 @@ import React from 'react';
  */
 
 export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
-
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	public static defaultProps: Partial<DynamicIconProps> = {
-		size: 100
+		size: 100,
 	};
 
 	render() {
-
 		const BB: BlueBase = this.context;
 
 		const { type, component: Component, name, source, ...other } = this.props;
@@ -39,14 +37,11 @@ export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
 		}
 
 		if (type === 'component' && Component) {
-			component = (typeof Component === 'string')
-			? BB.Components.resolve(Component)
-			: component = Component;
-
+			component =
+				typeof Component === 'string' ? BB.Components.resolve(Component) : (component = Component);
 		} else if (type === 'icon' && name) {
 			component = BB.Components.resolve('Icon');
 			rest.name = name;
-
 		} else if (type === 'image' && source) {
 			component = BB.Components.resolve('Image');
 			rest.source = source;

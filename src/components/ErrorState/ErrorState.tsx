@@ -18,7 +18,7 @@ import React from 'react';
  * ```
  */
 export class ErrorState extends React.PureComponent<ErrorStateProps> {
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	render() {
 		const { error, retry } = this.props;

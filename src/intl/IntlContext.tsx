@@ -1,6 +1,7 @@
 import { BlueBaseDefaultConfigs, Configs } from '../Configs';
 import { ErrorState, LoadingState } from '../getComponent';
 import React, { createContext } from 'react';
+
 import { BlueBase } from '../BlueBase';
 import { BlueBaseContext } from '../Context';
 import { I18nManager } from 'react-native';
@@ -14,16 +15,16 @@ export type IntlMessages = {
  * Props of the `IntlProvider` component.
  */
 export interface IntlProviderProps {
-	children: React.ReactNode,
+	children: React.ReactNode;
 }
 
 export interface IntlProviderState {
 	readonly direction: Configs['direction'];
 	readonly rtl: boolean;
 	readonly locale: string;
-	readonly loading: boolean,
-	readonly messages: IntlMessages,
-	readonly error?: any,
+	readonly loading: boolean;
+	readonly messages: IntlMessages;
+	readonly error?: any;
 }
 
 /**
@@ -31,11 +32,11 @@ export interface IntlProviderState {
  */
 export interface IntlContextData {
 	__: (message: string) => string;
-	changeLocale: (slug: string) => void,
-	changeDirection: (direction: Configs['direction']) => void,
+	changeLocale: (slug: string) => void;
+	changeDirection: (direction: Configs['direction']) => void;
 	direction: Configs['direction'];
 	locale: string;
-	messages: IntlMessages
+	messages: IntlMessages;
 	rtl: boolean;
 }
 
@@ -53,8 +54,7 @@ export const IntlConsumer = IntlContext.Consumer;
  * 🈯️ IntlProvider
  */
 export class IntlProvider extends React.Component<IntlProviderProps, IntlProviderState> {
-
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	readonly state: IntlProviderState = {
 		direction: BlueBaseDefaultConfigs.direction,
@@ -71,7 +71,7 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	constructor(props: IntlProviderProps) {
 		super(props);
 
-    // This binding is necessary to make `this` work in the callback
+		// This binding is necessary to make `this` work in the callback
 		this.__ = this.__.bind(this);
 	}
 
@@ -90,7 +90,6 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 		this.setDirection(BB);
 		this.unsubscribeDirection(BB);
 		this.subscribeDirection(BB);
-
 	}
 
 	componentWillUnmount() {
@@ -108,7 +107,6 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	 * @param BB
 	 */
 	async setLocale(locale: string, BB: BlueBase) {
-
 		if (this.state.loading !== true) {
 			this.setState({ loading: true });
 		}
@@ -136,7 +134,6 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	 * @param BB
 	 */
 	setDirection(BB: BlueBase) {
-
 		const direction = BB.Configs.getValue('direction');
 
 		// Decide if layout should be RTL or not
@@ -144,11 +141,9 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 
 		if (direction === 'ltr') {
 			shouldBeRtl = false;
-		}
-		else if (direction === 'rtl') {
+		} else if (direction === 'rtl') {
 			shouldBeRtl = true;
-		}
-		else if (direction === 'auto') {
+		} else if (direction === 'auto') {
 			shouldBeRtl = !!rtlDetect.isRtlLang(this.state.locale);
 		}
 
@@ -165,7 +160,6 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	}
 
 	__(message: string) {
-
 		// We do this to keep a list off all messages in the app
 		if (!this.state.messages[message]) {
 			this.state.messages[message] = message;
@@ -174,7 +168,6 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 		return this.state.messages[message];
 	}
 	render() {
-
 		const BB: BlueBase = (this as any).context;
 		const { direction, error, loading, locale, messages, rtl } = this.state;
 
@@ -190,17 +183,19 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 
 		const value: IntlContextData = {
 			__: this.__,
-			changeDirection: (dir: Configs['direction']) => { BB.Configs.setValue('direction', dir); },
-			changeLocale: (newLocale: string) => { BB.Configs.setValue('locale', newLocale); },
+			changeDirection: (dir: Configs['direction']) => {
+				BB.Configs.setValue('direction', dir);
+			},
+			changeLocale: (newLocale: string) => {
+				BB.Configs.setValue('locale', newLocale);
+			},
 			direction,
 			locale,
 			messages,
 			rtl,
 		};
 
-		return (
-      <IntlContext.Provider value={value} children={this.props.children} />
-		);
+		return <IntlContext.Provider value={value} children={this.props.children} />;
 	}
 
 	/**
@@ -208,7 +203,7 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	 * @param BB
 	 */
 	private subscribeLocale(BB: BlueBase) {
-		this.localeSubscriptionId = BB.Configs.subscribe('locale', (value) => {
+		this.localeSubscriptionId = BB.Configs.subscribe('locale', value => {
 			this.setLocale(value, BB);
 		});
 	}
@@ -218,7 +213,7 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	 * @param BB
 	 */
 	private unsubscribeLocale(BB: BlueBase) {
-		if(this.localeSubscriptionId) {
+		if (this.localeSubscriptionId) {
 			BB.Configs.unsubscribe('locale', this.localeSubscriptionId);
 			delete this.localeSubscriptionId;
 		}
@@ -239,7 +234,7 @@ export class IntlProvider extends React.Component<IntlProviderProps, IntlProvide
 	 * @param BB
 	 */
 	private unsubscribeDirection(BB: BlueBase) {
-		if(this.directionSubscriptionId) {
+		if (this.directionSubscriptionId) {
 			BB.Configs.unsubscribe('direction', this.directionSubscriptionId);
 			delete this.directionSubscriptionId;
 		}

@@ -64,7 +64,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	 * states if required.
 	 * @param keys
 	 */
-	public resolve(...keys: string[]): React.ComponentType<any> {
+	public resolve<T = any>(...keys: string[]): React.ComponentType<T> {
 		const item = this.findOne(...keys);
 
 		if (!item) {

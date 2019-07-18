@@ -23,7 +23,7 @@ const MISSING_ERROR = Error('An unknown error occurred.');
  * ```
  */
 export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObserverState> {
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	public static defaultProps: Partial<ErrorObserverProps> = {
 		checkError: (props, state) => props.error || state.error,

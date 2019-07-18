@@ -1,4 +1,5 @@
 import { Text, View } from 'react-native';
+
 import React from 'react';
 // import TestRenderer from 'react-test-renderer';
 import { WaitObserver } from '../WaitObserver';
@@ -7,7 +8,6 @@ import { mount } from 'enzyme';
 jest.useFakeTimers();
 
 const LoadingState = (props: any) => {
-
 	const { timedOut } = props;
 
 	let title = 'Loading now...';
@@ -29,9 +29,7 @@ const LoadingState = (props: any) => {
 };
 
 describe('WaitObserver', () => {
-
 	test(`should change states based on custom delay & timeout`, () => {
-
 		const onTimeout = jest.fn();
 		const onRetry = jest.fn();
 
@@ -49,7 +47,7 @@ describe('WaitObserver', () => {
 		expect(component).toMatchSnapshot();
 		expect(onTimeout.mock.calls.length).toBe(0);
 		expect(onRetry.mock.calls.length).toBe(0);
-		expect(component.find('WaitObserver').text()).toBeNull();
+		expect(component.find('WaitObserver').text()).toBe('');
 		expect(component.find('WaitObserver').state()).toMatchObject({
 			pastDelay: false,
 			timedOut: false,
@@ -116,7 +114,6 @@ describe('WaitObserver', () => {
 	});
 
 	test(`should change states based on custom delay & timeouts`, () => {
-
 		const onTimeout = jest.fn();
 
 		const Comp = WaitObserver as any;
@@ -133,7 +130,7 @@ describe('WaitObserver', () => {
 		// Should render null
 		expect(component).toMatchSnapshot();
 		expect(onTimeout.mock.calls.length).toBe(0);
-		expect(component.find('WaitObserver').text()).toBeNull();
+		expect(component.find('WaitObserver').text()).toBe('');
 		expect(component.find('WaitObserver').state()).toMatchObject({
 			pastDelay: false,
 			timedOut: false,
@@ -157,11 +154,9 @@ describe('WaitObserver', () => {
 		// Should render timeout message
 		expect(component).toMatchSnapshot();
 		expect(component.getElements()).toHaveLength(0);
-
 	});
 
 	test(`should not change states based on timeouts, becuase it gets unmounted`, () => {
-
 		const onTimeout = jest.fn();
 
 		const component = mount(
@@ -176,7 +171,7 @@ describe('WaitObserver', () => {
 		// Should render null
 		expect(component).toMatchSnapshot();
 		expect(onTimeout.mock.calls.length).toBe(0);
-		expect(component.find('WaitObserver').text()).toBeNull();
+		expect(component.find('WaitObserver').text()).toBe('');
 		expect(component.find('WaitObserver').state()).toMatchObject({
 			pastDelay: false,
 			timedOut: false,
@@ -201,11 +196,9 @@ describe('WaitObserver', () => {
 		// Should render timeout message
 		expect(component).toMatchSnapshot();
 		expect(component.getElements()).toHaveLength(0);
-
 	});
 
 	test(`should show loading state if delay is 0`, () => {
-
 		const component = mount(
 			<WaitObserver
 				delay={0}
@@ -248,23 +241,15 @@ describe('WaitObserver', () => {
 			pastDelay: true,
 			timedOut: false,
 		});
-
 	});
 
 	test(`default callback functions should return undefined`, () => {
-
-		const component = mount(
-			<WaitObserver
-				children={<LoadingState />}
-			/>
-		);
+		const component = mount(<WaitObserver children={<LoadingState />} />);
 
 		const onRetry: any = component.find('WaitObserver').prop('onRetry');
 		const onTimeout: any = component.find('WaitObserver').prop('onTimeout');
 
 		expect(onRetry()).toBe(undefined);
 		expect(onTimeout()).toBe(undefined);
-
 	});
-
 });

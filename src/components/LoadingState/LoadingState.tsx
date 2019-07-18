@@ -1,8 +1,9 @@
 import { ActivityIndicator, ComponentState } from '../../getComponent';
 import { ComponentStateProps, LoadingStateProps } from '@bluebase/components';
+
+import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import React from 'react';
-
 
 /**
  * # ⏳ LoadingState
@@ -18,15 +19,13 @@ import React from 'react';
  * TODO: Add a prop to allow custom text for retry button.
  */
 export class LoadingState extends React.Component<LoadingStateProps> {
-
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	render() {
-
 		const { timedOut, retry } = this.props;
 
 		const props: ComponentStateProps = {
-			image: <ActivityIndicator />
+			image: <ActivityIndicator />,
 		};
 
 		if (timedOut === true) {
