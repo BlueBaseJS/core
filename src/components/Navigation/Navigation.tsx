@@ -13,7 +13,7 @@ import { resolveThunk } from '../../utils';
 // export const Navigation = ({ component: Component }: NavigationProps) => (<Component />);
 
 export class Navigation extends React.PureComponent<NavigationProps> {
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	render() {
 		const BB: BlueBase = this.context;

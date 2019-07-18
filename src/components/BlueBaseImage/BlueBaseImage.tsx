@@ -19,7 +19,7 @@ import React from 'react';
 ```
  */
 export class BlueBaseImage extends React.PureComponent<BlueBaseImageProps> {
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	public static defaultProps = {
 		args: {},

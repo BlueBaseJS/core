@@ -30,7 +30,7 @@ describe('Utils', () => {
 			it('should forward refs', async () => {
 				let instance;
 
-				const List = forwardRef(FlatList);
+				const List: any = forwardRef(FlatList);
 				const wrapper = mount(
 					<BlueBaseApp>
 						<List ref={(el: any) => (instance = el)} />
