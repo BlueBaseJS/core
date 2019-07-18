@@ -74,7 +74,9 @@
     "storybook": "start-storybook -p 6006 --config-dir ./bluebase/storybook/configs",
     "build-storybook": "build-storybook",
     "web:start": "bluebase web:start",
-    "expo:start": "bluebase expo:start"
+    "expo:start": "bluebase expo:start",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -104,9 +106,10 @@
     "lodash.isstring": "^4.0.1",
     "lodash.kebabcase": "^4.1.1",
     "react-loadable": "^5.5.0",
-    "react-native": "^0.59.8",
+    "react-native": "^0.60.0",
     "rtl-detect": "^1.0.2",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "snyk": "^1.194.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -195,5 +198,6 @@
     "singleQuote": true,
     "useTabs": true,
     "trailingComma": "es5"
-  }
+  },
+  "snyk": true
 }
