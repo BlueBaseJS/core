@@ -113,13 +113,12 @@ export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<
 		themes: {},
 
 		...rest,
-		...value,
+		...resolvedValue,
 
 		routes,
 	};
 
-	// FIXME: Fix typing hell in this project please
-	return final as any;
+	return final;
 }
 
 /**
@@ -236,8 +235,9 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * Returns all enabled plugins
 	 */
 	public async getAllEnabled() {
-		const map = this.filterValues((_value, key) => this.isEnabled(key));
-		return Promise.all(Object.values(map));
+		const map = this.filter((_value, key) => this.isEnabled(key));
+		const plugins = Object.values(map).map(p => inputToPlugin(p, this.BB));
+		return Promise.all(plugins);
 	}
 
 	/**
@@ -339,23 +339,11 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	}
 
 	/**
-	 * Convert any input value to an item. This is where you transform inputs and add defualts
-	 * @param key
-	 * @param partial
-	 */
-	protected createItem(key: string, partial: any): ItemType {
-		return super.createItem(key, {
-			...createPlugin(partial),
-			path: this.createPath(key, partial),
-		});
-	}
-
-	/**
 	 * Generates a path for the given plugin
 	 * @param key
 	 * @param plugin
 	 */
-	protected createPath(key: string, plugin: Partial<Plugin>) {
+	public createPath(key: string, plugin: Partial<Plugin>) {
 		const pluginRoutePathPrefix = this.BB.Configs.getValue('pluginRoutePathPrefix') || '';
 
 		// Resolve routes, if it's a thunk
@@ -370,6 +358,18 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		}
 
 		return joinPaths(pluginRoutePathPrefix, key);
+	}
+
+	/**
+	 * Convert any input value to an item. This is where you transform inputs and add defualts
+	 * @param key
+	 * @param partial
+	 */
+	protected createItem(key: string, partial: any): ItemType {
+		return super.createItem(key, {
+			...createPlugin(partial),
+			// path: this.createPath(key, partial),
+		});
 	}
 
 	/**

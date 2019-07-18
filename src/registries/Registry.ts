@@ -160,6 +160,24 @@ export class Registry<
 	}
 
 	/**
+	 * The setProps() method sets extra props of a registry item
+	 * @param key
+	 * @param props
+	 */
+	public setProps(key: string, props: { [key: string]: any }) {
+		const item = this.get(key);
+
+		// Override existing
+		if (!item) {
+			return;
+		}
+
+		return this.data.set(key, merge(item, props, {
+			isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
+		}) as ItemType);
+	}
+
+	/**
 	 * Adds an Item or an Item value to the registry.
 	 *
 	 * @param item
