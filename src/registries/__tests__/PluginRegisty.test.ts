@@ -1,5 +1,6 @@
 // tslint:disable:max-classes-per-file
 import { PluginInput, PluginRegistry, createPlugin } from '../PluginRegistry';
+
 import { BlueBase } from '../../BlueBase';
 import { Noop } from '../../getComponent';
 import { createBlueBaseModule } from '../../utils';
@@ -476,6 +477,48 @@ describe('PluginRegistry', () => {
 					},
 				],
 			});
+		});
+	});
+
+	describe('createPath', () => {
+		it('should create a path with route prefix', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			const plugin = createPlugin({ key: 'test-plugin', routes: { name: 'P1_Route', path: 'a' } });
+
+			await Plugins.register(plugin);
+			BB.Configs.setValue('pluginRoutePathPrefix', 'plugin');
+
+			const path = Plugins.createPath(plugin as any);
+
+			expect(path).toBe('plugin/test-plugin');
+		});
+
+		it('should create a path without route prefix', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			const plugin = createPlugin({ key: 'test-plugin', routes: { name: 'P1_Route', path: 'a' } });
+
+			await Plugins.register(plugin);
+
+			const path = Plugins.createPath(plugin as any);
+
+			expect(path).toBe('test-plugin');
+		});
+
+		it('should not create a path if there are not routes', async () => {
+			const BB = new BlueBase();
+			const Plugins = new PluginRegistry(BB);
+
+			const plugin = createPlugin({ key: 'test-plugin' });
+
+			await Plugins.register(plugin);
+
+			const path = Plugins.createPath(plugin as any);
+
+			expect(path).toBeUndefined();
 		});
 	});
 

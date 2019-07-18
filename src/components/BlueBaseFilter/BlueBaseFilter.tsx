@@ -23,15 +23,13 @@ import { ReactLoadableLoading } from '../ReactLoadableLoading';
  * ```
  */
 export class BlueBaseFilter extends React.PureComponent<BlueBaseFilterProps> {
-
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	public static defaultProps = {
-		args: {}
+		args: {},
 	};
 
 	render() {
-
 		const { filter, value, args, children } = this.props;
 
 		const BB: BlueBase = this.context;
@@ -41,7 +39,7 @@ export class BlueBaseFilter extends React.PureComponent<BlueBaseFilterProps> {
 			loading: ReactLoadableLoading,
 			render(loadedValue: any) {
 				return children(loadedValue);
-			}
+			},
 		});
 
 		return <AsyncBlueBaseFilter />;

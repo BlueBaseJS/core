@@ -20,7 +20,7 @@ import { resolveImageSource } from '../../components';
 ```
  */
 export class ImageBackground extends React.PureComponent<ImageBackgroundProps> {
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	public static defaultProps = {
 		args: {},

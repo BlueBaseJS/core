@@ -23,11 +23,9 @@ import { resolveThunk } from '../../utils';
  * TODO: In future, add a default icon.
  */
 export class PluginIcon extends React.PureComponent<PluginIconProps> {
-
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	render() {
-
 		const BB: BlueBase = this.context;
 
 		const { id, size } = this.props;

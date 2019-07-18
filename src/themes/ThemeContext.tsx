@@ -1,5 +1,6 @@
 import { ErrorState, LoadingState } from '../getComponent';
 import React, { createContext } from 'react';
+
 import { BlueBase } from '../BlueBase';
 import { BlueBaseContext } from '../Context';
 import { Theme } from '../registries';
@@ -10,7 +11,6 @@ import deepmerge from 'deepmerge';
  * Props of the `ThemeProvider` component.
  */
 export interface ThemeProviderProps {
-
 	/**
 	 * Key of the theme to use for children components. If this prop is not set,
 	 * the globally selected theme is used.
@@ -22,25 +22,24 @@ export interface ThemeProviderProps {
 	 */
 	overrides?: ThemeValueInput;
 
-	children: React.ReactNode,
+	children: React.ReactNode;
 }
 
 export interface ThemeProviderState {
-	readonly loading: boolean,
-	readonly theme?: Theme,
-	readonly error?: any,
+	readonly loading: boolean;
+	readonly theme?: Theme;
+	readonly error?: any;
 }
 
 /**
  * Interface of object passed as param to the ThemeConsumer render prop method.
  */
 export interface ThemeContextData {
-
 	/** Helper method to change current theme. */
-	changeTheme: (slug: string) => void,
+	changeTheme: (slug: string) => void;
 
 	/** Current theme */
-	theme: Theme
+	theme: Theme;
 }
 
 /**
@@ -57,8 +56,7 @@ export const ThemeConsumer = ThemeContext.Consumer;
  * 🎨 ThemeProvider
  */
 export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
-
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	readonly state: ThemeProviderState = {
 		loading: true,
@@ -75,8 +73,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 
 		// Subscribe to theme config updates
 		if (!theme) {
-
-			this.subscriptionId = BB.Configs.subscribe('theme.name', (value) => {
+			this.subscriptionId = BB.Configs.subscribe('theme.name', value => {
 				this.setTheme(value, overrides, BB);
 			});
 		}
@@ -86,7 +83,7 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 		const BB: BlueBase = (this as any).context;
 
 		// Unsubscribe from theme config updates
-		if(this.subscriptionId) {
+		if (this.subscriptionId) {
 			BB.Configs.unsubscribe('theme.name', this.subscriptionId);
 			delete this.subscriptionId;
 		}
@@ -100,7 +97,6 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 	 * @param BB
 	 */
 	async setTheme(slug: string | undefined, overrides: ThemeValueInput = {}, BB: BlueBase) {
-
 		if (this.state.loading !== true) {
 			this.setState({ loading: true });
 		}
@@ -119,7 +115,6 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 	}
 
 	render() {
-
 		const BB: BlueBase = (this as any).context;
 		const { loading, error, theme } = this.state;
 
@@ -138,12 +133,12 @@ export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProv
 		}
 
 		const value: ThemeContextData = {
-			changeTheme: (slug: string) => { BB.Configs.setValue('theme.name', slug); },
-			theme
+			changeTheme: (slug: string) => {
+				BB.Configs.setValue('theme.name', slug);
+			},
+			theme,
 		};
 
-		return (
-      <ThemeContext.Provider value={value} children={this.props.children} />
-		);
+		return <ThemeContext.Provider value={value} children={this.props.children} />;
 	}
 }

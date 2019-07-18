@@ -41,14 +41,14 @@ export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps }
  *
  * @param keys
  */
-export function getComponent<T = any>(...keys: string[]) {
+export function getComponent<T = any>(...keys: string[]): React.ComponentType<T> {
 	if (keys.length === 0) {
 		throw Error('getComponent method needs at least one key');
 	}
 
 	const displayName = keys.join('_');
 
-	return class BlueBaseComponent extends React.Component<any> {
+	return class BlueBaseComponent extends React.Component<T> {
 		static displayName = displayName;
 
 		static contextType = BlueBaseContext;
@@ -62,7 +62,6 @@ export function getComponent<T = any>(...keys: string[]) {
 
 			// If there is no BlueBase context, throw an Error
 			if (!BB) {
-				// tslint:disable-next-line: max-line-length
 				throw Error(
 					`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`
 				);
@@ -71,12 +70,12 @@ export function getComponent<T = any>(...keys: string[]) {
 			// We don't want to resolve the component on every render.
 			// If we don't do this, a new component is created on every
 			// render, causing various set of problems.
-			this.Component = BB.Components.resolve(...keys);
+			this.Component = BB.Components.resolve<T>(...keys);
 		}
 
 		render() {
 			// Render
-			return React.createElement(this.Component as React.ComponentType<any>, this.props);
+			return React.createElement(this.Component!, this.props);
 		}
 	};
 }
