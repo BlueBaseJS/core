@@ -343,7 +343,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param key
 	 * @param plugin
 	 */
-	public createPath(key: string, plugin: Partial<Plugin>) {
+	public createPath(plugin: Plugin) {
 		const pluginRoutePathPrefix = this.BB.Configs.getValue('pluginRoutePathPrefix') || '';
 
 		// Resolve routes, if it's a thunk
@@ -357,7 +357,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			return;
 		}
 
-		return joinPaths(pluginRoutePathPrefix, key);
+		return joinPaths(pluginRoutePathPrefix, plugin.key);
 	}
 
 	/**
@@ -368,7 +368,6 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	protected createItem(key: string, partial: any): ItemType {
 		return super.createItem(key, {
 			...createPlugin(partial),
-			// path: this.createPath(key, partial),
 		});
 	}
 

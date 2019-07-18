@@ -66,8 +66,8 @@ export const configs: FilterNestedCollection = {
 				const plugins = await BB.Plugins.getAllEnabled();
 
 				for (const plugin of plugins) {
-					BB.Plugins.setProps(plugin.key, {
-						path: BB.Plugins.createPath(plugin.key, plugin),
+					BB.Plugins.setMeta(plugin.key, {
+						path: BB.Plugins.createPath(plugin),
 					});
 				}
 
