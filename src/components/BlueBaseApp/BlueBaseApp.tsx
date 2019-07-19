@@ -1,28 +1,28 @@
 import { BlueBase, BootOptions } from '../../BlueBase';
-import { SafeAreaView, ScrollView, Text, View, } from 'react-native';
+import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+
+import { BlueBaseRoot } from '../../OfflineComponents/BlueBaseRoot/BlueBaseRoot';
 import React from 'react';
 import { isProduction } from '../../utils';
 
 const MISSING_ERROR = 'An unknown error occured.';
 
 export interface BlueBaseAppProps extends Partial<BootOptions> {
-
 	/** BlueBase Context */
-	BB?: BlueBase,
+	BB?: BlueBase;
 
 	/**
 	 * If this prop is provided, this tree will be rendered instead of BlueBase's own view.
 	 */
-	children?: React.ReactNode,
+	children?: React.ReactNode;
 
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
+	/**
+	 * Used to locate this view in end-to-end tests.
+	 */
+	testID?: string;
 }
 
 interface BlueBaseAppState {
-
 	/**
 	 * Has the app booted yet
 	 */
@@ -31,22 +31,17 @@ interface BlueBaseAppState {
 	/**
 	 * Are we loading the app
 	 */
-	readonly loading: boolean,
+	readonly loading: boolean;
 
 	/**
 	 * Any errors occured while booting the app
 	 */
-	readonly error: any,
+	readonly error: any;
 
 	/**
 	 * BlueBase instance used by the app
 	 */
-	readonly BB: BlueBase,
-
-	/**
-	 * App Component to render
-	 */
-	readonly AppComponent: React.ComponentType<any>
+	readonly BB: BlueBase;
 }
 
 /**
@@ -61,12 +56,10 @@ interface BlueBaseAppState {
  * ```
  */
 export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
-
 	constructor(props: BlueBaseAppProps) {
 		super(props);
 
 		this.state = {
-			AppComponent: () => null,
 			BB: props.BB || new BlueBase(),
 			booted: false,
 			error: null,
@@ -75,13 +68,11 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 	}
 
 	async componentDidMount() {
-
 		const BB = this.state.BB;
 
 		try {
-			const AppComponent = await BB.boot(this.props);
+			await BB.boot(this.props);
 			this.setState({
-				AppComponent: AppComponent || this.state.AppComponent,
 				booted: BB.booted,
 				loading: false,
 			});
@@ -96,13 +87,13 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 
 	componentDidCatch(error: Error | null) {
 		this.setState({
-			error: error || new Error(MISSING_ERROR)
+			error: error || new Error(MISSING_ERROR),
 		});
 	}
 
 	render() {
-
-		const { loading, error, AppComponent, BB } = this.state;
+		const { loading, error, BB } = this.state;
+		const { children } = this.props;
 
 		if (loading) {
 			return (
@@ -119,13 +110,13 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 				development = !isProduction();
 			}
 
-			const message = (development === true) ? error.message : MISSING_ERROR;
+			const message = development === true ? error.message : MISSING_ERROR;
 
 			return (
-				<ScrollView>
-					<SafeAreaView>
+				<ScrollView style={{ flex: 1 }}>
+					<SafeAreaView style={{ flex: 1 }}>
 						<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-							<Text style={{ fontWeight: 'bold', }}>🚨 BlueBase Error</Text>
+							<Text style={{ fontWeight: 'bold' }}>🚨 BlueBase Error</Text>
 							<Text>{message}</Text>
 						</View>
 					</SafeAreaView>
@@ -133,6 +124,6 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 			);
 		}
 
-		return <AppComponent children={this.props.children} />;
+		return <BlueBaseRoot BB={BB}>{children}</BlueBaseRoot>;
 	}
 }

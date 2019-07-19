@@ -25,15 +25,14 @@ export interface BlueBaseContentProps {
  * @param props
  */
 export const BlueBaseContent = (props: BlueBaseContentProps) => {
-	const { BB, children, navigator, styles: _styles } = props;
-	const styles = _styles as BlueBaseContentStyles;
+	const { BB, children, navigator, styles } = props;
 
 	const statusBarStyle = BB.Configs.getValue('statusBarStyle');
 
 	return children ? (
 		renderChildrenWithProps(children, { BB })
 	) : (
-		<View key="bluebase-wrapper" style={styles.backdrop}>
+		<View key="bluebase-wrapper" style={styles!.backdrop}>
 			<StatusBar translucent barStyle={statusBarStyle} />
 			<Navigation navigator={navigator} />
 		</View>
