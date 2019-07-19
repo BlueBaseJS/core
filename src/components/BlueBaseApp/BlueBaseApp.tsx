@@ -1,15 +1,25 @@
 import { BlueBase, BootOptions } from '../../BlueBase';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import {
+	BlueBaseAppError,
+	BlueBaseAppErrorProps,
+	BlueBaseAppLoading,
+	BlueBaseAppLoadingProps,
+	BlueBaseRoot,
+} from '../../OfflineComponents';
 
-import { BlueBaseRoot } from '../../OfflineComponents/BlueBaseRoot/BlueBaseRoot';
 import React from 'react';
-import { isProduction } from '../../utils';
 
 const MISSING_ERROR = 'An unknown error occured.';
 
 export interface BlueBaseAppProps extends Partial<BootOptions> {
 	/** BlueBase Context */
 	BB?: BlueBase;
+
+	/** Component rendered when an error occurs */
+	ErrorComponent: React.ComponentType<BlueBaseAppErrorProps>;
+
+	/** Component rendered when an error occurs */
+	LoadingComponent: React.ComponentType<BlueBaseAppLoadingProps>;
 
 	/**
 	 * If this prop is provided, this tree will be rendered instead of BlueBase's own view.
@@ -56,16 +66,17 @@ interface BlueBaseAppState {
  * ```
  */
 export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
-	constructor(props: BlueBaseAppProps) {
-		super(props);
+	static defaultProps: Partial<BlueBaseAppProps> = {
+		ErrorComponent: BlueBaseAppError,
+		LoadingComponent: BlueBaseAppLoading,
+	};
 
-		this.state = {
-			BB: props.BB || new BlueBase(),
-			booted: false,
-			error: null,
-			loading: true,
-		};
-	}
+	readonly state: BlueBaseAppState = {
+		BB: this.props.BB || new BlueBase(),
+		booted: false,
+		error: null,
+		loading: true,
+	};
 
 	async componentDidMount() {
 		const BB = this.state.BB;
@@ -93,35 +104,14 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 
 	render() {
 		const { loading, error, BB } = this.state;
-		const { children } = this.props;
+		const { ErrorComponent, LoadingComponent, children } = this.props;
 
 		if (loading) {
-			return (
-				<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-					<Text>Loading</Text>
-				</View>
-			);
+			return <LoadingComponent BB={BB} />;
 		}
 
 		if (error) {
-			let development = BB.Configs.getValue('development');
-
-			if (development === undefined) {
-				development = !isProduction();
-			}
-
-			const message = development === true ? error.message : MISSING_ERROR;
-
-			return (
-				<ScrollView style={{ flex: 1 }}>
-					<SafeAreaView style={{ flex: 1 }}>
-						<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-							<Text style={{ fontWeight: 'bold' }}>🚨 BlueBase Error</Text>
-							<Text>{message}</Text>
-						</View>
-					</SafeAreaView>
-				</ScrollView>
-			);
+			return <ErrorComponent error={error} BB={BB} />;
 		}
 
 		return <BlueBaseRoot BB={BB}>{children}</BlueBaseRoot>;
