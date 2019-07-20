@@ -47,7 +47,7 @@ describe('Link', () => {
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress(
 			{
-				defaultPrevented: true,
+				defaultPrevented: false,
 				preventDefault: () => {
 					return;
 				},
@@ -79,7 +79,7 @@ describe('Link', () => {
 		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress(
 			{
-				defaultPrevented: true,
+				defaultPrevented: false,
 				preventDefault: () => {
 					return;
 				},
@@ -117,7 +117,7 @@ describe('Link', () => {
 		const onPress: any = wrapper.find('Link a').prop('onClick');
 		onPress(
 			{
-				defaultPrevented: true,
+				defaultPrevented: false,
 				preventDefault: () => {
 					return;
 				},
@@ -149,7 +149,7 @@ describe('Link', () => {
 		const onPress: any = wrapper.find('Link a').prop('onClick');
 		onPress(
 			{
-				defaultPrevented: true,
+				defaultPrevented: false,
 				preventDefault: () => {
 					return;
 				},
@@ -183,7 +183,7 @@ describe('Link', () => {
 		const onPress: any = wrapper.find('Link a').prop('onClick');
 		onPress(
 			{
-				defaultPrevented: false,
+				defaultPrevented: true,
 				preventDefault: () => {
 					return;
 				},

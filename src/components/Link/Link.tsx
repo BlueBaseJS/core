@@ -17,7 +17,7 @@ export class Link extends React.PureComponent<LinkProps> {
 	handlePress(event: NativeSyntheticEvent<NativeTouchEvent>, navigation: NavigationActionsObject) {
 		const { method, routeName, path, params, replace } = this.props;
 
-		if (event && event.defaultPrevented) {
+		if (event && !event.defaultPrevented) {
 			event.preventDefault();
 
 			let fn = navigation.navigate;
@@ -49,8 +49,8 @@ export class Link extends React.PureComponent<LinkProps> {
 					return Platform.OS === 'web' && !!path && path !== '' ? (
 						<a href={path} onClick={(onPress as any) || onPressDefault} {...this.props} />
 					) : (
-							<Component {...rest} onPress={onPress || onPressDefault} />
-						);
+						<Component {...rest} onPress={onPress || onPressDefault} />
+					);
 				}}
 			</NavigationActions>
 		) : null;
