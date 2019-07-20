@@ -1,9 +1,7 @@
-import { getDefiniteModule, isPromise, makeId } from '../utils';
+import { getDefiniteModule, makeId } from '../utils';
 
 import { BlueBase } from '../BlueBase';
 import isNil from 'lodash.isnil';
-import isPlainPbject from 'is-plain-object';
-import merge from 'deepmerge';
 
 /**
  * BlueBase Registry Item
@@ -95,24 +93,24 @@ export class Registry<
 			throw Error('Could not set registry item. Reason: Unknown item type.');
 		}
 
-		const existingItem = this.get(key);
+		// const existingItem = this.get(key);
 
-		if (existingItem) {
-			let value;
+		// if (existingItem) {
+		// 	let value;
 
-			// If value is a promise, deepmerge messes it up
-			if (isPromise(existingItem.value) || isPromise(item.value)) {
-				value = item.value || existingItem.value;
-			}
+		// 	// If value is a promise, deepmerge messes it up
+		// 	if (isPromise(existingItem.value) || isPromise(item.value)) {
+		// 		value = item.value || existingItem.value;
+		// 	}
 
-			item = merge(existingItem, item, {
-				isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
-			}) as ItemType;
+		// 	item = merge(existingItem, item, {
+		// 		isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
+		// 	}) as ItemType;
 
-			if (value) {
-				item.value = value;
-			}
-		}
+		// 	if (value) {
+		// 		item.value = value;
+		// 	}
+		// }
 
 		// Override existing or create an new one
 		const finalItem = this.createItem(key, item);

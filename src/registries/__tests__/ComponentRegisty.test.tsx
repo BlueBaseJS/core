@@ -307,7 +307,7 @@ describe('ComponentRegistry', () => {
 
 		////// Overrides
 
-		it('should merge a ComponentRegistryItem with an existing one', async () => {
+		it('should NOT merge a ComponentRegistryItem with an existing one', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
 
@@ -326,8 +326,8 @@ describe('ComponentRegistry', () => {
 			if (!Component) {
 				throw Error();
 			}
-			expect(Component.hocs).toHaveLength(3);
-			expect(Component.preload).toBe(true);
+			expect(Component.hocs).toHaveLength(2);
+			expect(Component.preload).toBe(false);
 		});
 	});
 
