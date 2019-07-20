@@ -54,23 +54,5 @@ export const configs: FilterNestedCollection = {
 				return bootOptions;
 			},
 		},
-
-		/**
-		 * Sets paths for enabled plugins
-		 */
-		{
-			key: 'bluebase-configs-set-plugin-paths',
-			priority: 10,
-
-			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				const plugins = await BB.Plugins.getAllEnabled();
-
-				for (const plugin of plugins) {
-					BB.Plugins.setMeta(plugin.key, 'path', BB.Plugins.createPath(plugin));
-				}
-
-				return bootOptions;
-			},
-		},
 	],
 };
