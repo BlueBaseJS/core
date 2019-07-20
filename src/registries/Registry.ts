@@ -90,27 +90,8 @@ export class Registry<
 	 */
 	public set(key: string, item: ItemType | ItemInputType) {
 		if (!this.isItem(item)) {
-			throw Error('Could not set registry item. Reason: Unknown item type.');
+			throw Error(`Could not set registry item "${key}". Reason: Unknown item type.`);
 		}
-
-		// const existingItem = this.get(key);
-
-		// if (existingItem) {
-		// 	let value;
-
-		// 	// If value is a promise, deepmerge messes it up
-		// 	if (isPromise(existingItem.value) || isPromise(item.value)) {
-		// 		value = item.value || existingItem.value;
-		// 	}
-
-		// 	item = merge(existingItem, item, {
-		// 		isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
-		// 	}) as ItemType;
-
-		// 	if (value) {
-		// 		item.value = value;
-		// 	}
-		// }
 
 		// Override existing or create an new one
 		const finalItem = this.createItem(key, item);
@@ -223,7 +204,7 @@ export class Registry<
 			return args.key;
 		}
 
-		throw Error('Could not register item. Reason: Unknown item type.');
+		throw Error(`Could not register item "${args.key}". Reason: Unknown item type.`);
 	}
 
 	/**

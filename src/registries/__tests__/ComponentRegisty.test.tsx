@@ -302,7 +302,7 @@ describe('ComponentRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Could not register item. Reason: Unknown item type.');
+			expect(message).toBe('Could not register item "Button". Reason: Unknown item type.');
 		});
 
 		////// Overrides

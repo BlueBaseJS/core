@@ -18,7 +18,7 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			expect(() => registry.set('foo', 'bar' as any)).toThrowError(
-				'Could not set registry item. Reason: Unknown item type.'
+				'Could not set registry item "foo". Reason: Unknown item type.'
 			);
 		});
 	});
