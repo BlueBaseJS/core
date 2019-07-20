@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { LoadingState } from '../LoadingState';
 import React from 'react';
 import { mount } from 'enzyme';

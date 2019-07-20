@@ -1,6 +1,6 @@
 import * as Native from '../../../native';
 import { Text, View } from 'react-native';
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { DataObserver } from '../DataObserver';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';

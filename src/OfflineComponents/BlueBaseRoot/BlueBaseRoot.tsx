@@ -1,5 +1,4 @@
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseFilter } from '../../components';
 import { BlueBaseProvider } from '../../Context';
 import { IntlProvider } from '../../intl';
 import React from 'react';
@@ -17,13 +16,7 @@ export const BlueBaseRoot = ({ BB, children }: BlueBaseRootProps) => (
 	<BlueBaseProvider value={BB}>
 		<ThemeProvider>
 			<IntlProvider>
-				<BlueBaseFilter filter="bluebase.navigator.root" value={{}}>
-					{navigatorConfigs => (
-						<BlueBaseContent BB={BB} navigator={navigatorConfigs}>
-							{children}
-						</BlueBaseContent>
-					)}
-				</BlueBaseFilter>
+				<BlueBaseContent BB={BB}>{children}</BlueBaseContent>
 			</IntlProvider>
 		</ThemeProvider>
 	</BlueBaseProvider>

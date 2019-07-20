@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { DynamicIconProps } from '@bluebase/components';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';

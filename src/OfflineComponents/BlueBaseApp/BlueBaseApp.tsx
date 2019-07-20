@@ -5,7 +5,7 @@ import {
 	BlueBaseAppLoading,
 	BlueBaseAppLoadingProps,
 	BlueBaseRoot,
-} from '../../OfflineComponents';
+} from '..';
 
 import React from 'react';
 
@@ -104,7 +104,11 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 
 	render() {
 		const { loading, error, BB } = this.state;
-		const { ErrorComponent, LoadingComponent, children } = this.props;
+		const {
+			ErrorComponent = BlueBaseAppError,
+			LoadingComponent = BlueBaseAppLoading,
+			children,
+		} = this.props;
 
 		if (loading) {
 			return <LoadingComponent BB={BB} />;
