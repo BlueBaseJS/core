@@ -164,7 +164,7 @@ export class Registry<
 	 * @param key
 	 * @param props
 	 */
-	public setMeta(key: string, props: { [key: string]: any }) {
+	public setMeta(key: string, metaKey: string, metaValue: any) {
 		const item = this.get(key);
 
 		// Override existing
@@ -172,9 +172,10 @@ export class Registry<
 			return;
 		}
 
-		return this.data.set(key, merge(item, props, {
-			isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
-		}) as ItemType);
+		return this.data.set(key, {
+			...item,
+			[metaKey]: metaValue,
+		});
 	}
 
 	/**
@@ -182,14 +183,20 @@ export class Registry<
 	 * @param key
 	 * @param props
 	 */
-	public getMeta(key: string, metaKey: string) {
+	public getMeta(key: string, metaKey: string, defaultValue?: any) {
 		const item = this.get(key);
 
 		if (!item) {
 			return;
 		}
 
-		return item[metaKey];
+		const value = item[metaKey];
+
+		if (isNil(value) && defaultValue) {
+			return defaultValue;
+		}
+
+		return value;
 	}
 
 	/**

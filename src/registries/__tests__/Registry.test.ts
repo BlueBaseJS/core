@@ -87,7 +87,7 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
-			registry.setMeta('foo', { preload: true });
+			registry.setMeta('foo', 'preload', true);
 
 			expect(registry.getMeta('foo', 'preload')).toBe(undefined);
 		});
@@ -97,7 +97,7 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
-			registry.setMeta('foo', { preload: true });
+			registry.setMeta('foo', 'preload', true);
 
 			expect(registry.getMeta('foo', 'preload')).toBe(true);
 		});
