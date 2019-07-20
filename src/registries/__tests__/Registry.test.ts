@@ -101,6 +101,14 @@ describe('Registry', () => {
 
 			expect(registry.getMeta('foo', 'preload')).toBe(true);
 		});
+
+		it('should return defaultValue if meta item doesnt exist', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+			registry.setValue('foo', 'bar');
+
+			expect(registry.getMeta('foo', 'some', true)).toBe(true);
+		});
 	});
 
 	describe('.register method', () => {
