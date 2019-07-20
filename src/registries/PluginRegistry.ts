@@ -72,8 +72,8 @@ export interface PluginRegistryItemExtras {
 	/** Default plugin configs */
 	defaultConfigs: ConfigCollection;
 
-	/** Plugin Path */
-	path?: string;
+	/** Main route used as home page of the plugin */
+	indexRoute?: string;
 
 	[key: string]: any;
 }
@@ -336,28 +336,6 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		}
 
 		throw Error('Could not register collection. Reason: Unknown collection type.');
-	}
-
-	/**
-	 * Generates a path for the given plugin
-	 * @param key
-	 * @param plugin
-	 */
-	public createPath(plugin: Plugin) {
-		const pluginRoutePathPrefix = this.BB.Configs.getValue('pluginRoutePathPrefix') || '';
-
-		// Resolve routes, if it's a thunk
-		// Put the resovled value in an array, if it's a single item
-		const routes = getDefiniteArray(
-			resolveThunk(plugin.routes || plugin.value.routes || [], this.BB)
-		);
-
-		// Skip if plugin doesn't have any routes
-		if (!routes || routes.length === 0) {
-			return;
-		}
-
-		return joinPaths(pluginRoutePathPrefix, plugin.key);
 	}
 
 	/**
