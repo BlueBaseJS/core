@@ -1,11 +1,10 @@
-import { BlueBaseApp } from '../components/';
+import { BlueBaseApp } from '../';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { getComponent } from '../getComponent';
 
 describe('getComponent', () => {
-
-	test(`should render a text component`, (done) => {
+	test(`should render a text component`, done => {
 		const Text = getComponent('Text');
 
 		const component = TestRenderer.create(
@@ -23,8 +22,7 @@ describe('getComponent', () => {
 		});
 	});
 
-	test(`should render a button component`, (done) => {
-
+	test(`should render a button component`, done => {
 		const Button = getComponent('Button');
 
 		const component = TestRenderer.create(
@@ -42,7 +40,6 @@ describe('getComponent', () => {
 	});
 
 	test(`should throw an Error when no key is passed`, () => {
-
 		let message;
 
 		try {
@@ -55,7 +52,6 @@ describe('getComponent', () => {
 	});
 
 	test(`should throw an Error when there is not BlueBase context`, () => {
-
 		const Foo = getComponent('Foo');
 
 		let message;
@@ -65,8 +61,8 @@ describe('getComponent', () => {
 			message = error.message;
 		}
 
-		expect(message)
-		.toBe('Could not resolve component "Foo" in "getComponent" command. Reason: BlueBase context not found.');
+		expect(message).toBe(
+			'Could not resolve component "Foo" in "getComponent" command. Reason: BlueBase context not found.'
+		);
 	});
-
 });
