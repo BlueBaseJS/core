@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../index';
+import { BlueBaseApp } from '../../../';
 import React from 'react';
 import { Redirect } from '../Redirect';
 import { mount } from 'enzyme';
@@ -7,12 +7,10 @@ import { waitForElement } from 'enzyme-async-helpers';
 
 let stubActions: any = {};
 
-export const NavigationActions
- = ({ children }: any) => renderChildrenWithProps(children, stubActions);
+export const NavigationActions = ({ children }: any) =>
+	renderChildrenWithProps(children, stubActions);
 
 describe('Redirect', () => {
-
-
 	beforeEach(() => {
 		stubActions = {
 			getParam: jest.fn(),
@@ -28,12 +26,11 @@ describe('Redirect', () => {
 				params: {},
 				routeName: '',
 				url: '',
-			}
+			},
 		};
 	});
 
 	test(`should call the replace function with the given routeName`, async () => {
-
 		const components = {
 			NavigationActions,
 		};
@@ -56,7 +53,6 @@ describe('Redirect', () => {
 	});
 
 	test(`should call the replace function with the given path`, async () => {
-
 		const components = {
 			NavigationActions,
 		};
@@ -79,7 +75,6 @@ describe('Redirect', () => {
 	});
 
 	test(`should call the push function with the given routeName`, async () => {
-
 		const components = {
 			NavigationActions,
 		};
@@ -102,7 +97,6 @@ describe('Redirect', () => {
 	});
 
 	test(`should not do anything if there is no routeName or path prop`, async () => {
-
 		const components = {
 			NavigationActions,
 		};
@@ -121,6 +115,4 @@ describe('Redirect', () => {
 
 		expect(stubActions).toMatchSnapshot();
 	});
-
 });
-

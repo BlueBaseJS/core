@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { ErrorState } from '../ErrorState';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';

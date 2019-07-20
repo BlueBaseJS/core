@@ -1,5 +1,19 @@
-import { Body1, Body2, Caption, H1, H2, H3, H4, H5, H6, Overline, Subtitle1, Subtitle2, } from '../../getComponent';
-import { BlueBaseApp } from '../../components';
+import {
+	Body1,
+	Body2,
+	Caption,
+	H1,
+	H2,
+	H3,
+	H4,
+	H5,
+	H6,
+	Overline,
+	Subtitle1,
+	Subtitle2,
+} from '../../getComponent';
+
+import { BlueBaseApp } from '../../';
 import { BlueBaseLightTheme } from '../../themes';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
@@ -7,14 +21,9 @@ import TestRenderer from 'react-test-renderer';
 const theme = BlueBaseLightTheme.value as any;
 
 describe('filters', () => {
-
 	describe('components', () => {
-
-
 		describe('bluebase.components.register.internal', () => {
-
-			test(`should register H1 component with proper styles`, (done) => {
-
+			test(`should register H1 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<H1>Sample Text</H1>
@@ -31,8 +40,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register H2 component with proper styles`, (done) => {
-
+			test(`should register H2 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<H2>Sample Text</H2>
@@ -49,8 +57,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register H3 component with proper styles`, (done) => {
-
+			test(`should register H3 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<H3>Sample Text</H3>
@@ -67,8 +74,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register H4 component with proper styles`, (done) => {
-
+			test(`should register H4 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<H4>Sample Text</H4>
@@ -85,8 +91,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register H5 component with proper styles`, (done) => {
-
+			test(`should register H5 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<H5>Sample Text</H5>
@@ -103,8 +108,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register H6 component with proper styles`, (done) => {
-
+			test(`should register H6 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<H6>Sample Text</H6>
@@ -121,8 +125,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register Subtitle1 component with proper styles`, (done) => {
-
+			test(`should register Subtitle1 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<Subtitle1>Sample Text</Subtitle1>
@@ -139,8 +142,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register Subtitle2 component with proper styles`, (done) => {
-
+			test(`should register Subtitle2 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<Subtitle2>Sample Text</Subtitle2>
@@ -157,8 +159,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register Body1 component with proper styles`, (done) => {
-
+			test(`should register Body1 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<Body1>Sample Text</Body1>
@@ -175,8 +176,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register Body2 component with proper styles`, (done) => {
-
+			test(`should register Body2 component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<Body2>Sample Text</Body2>
@@ -193,8 +193,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register Caption component with proper styles`, (done) => {
-
+			test(`should register Caption component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<Caption>Sample Text</Caption>
@@ -211,8 +210,7 @@ describe('filters', () => {
 				});
 			});
 
-			test(`should register Overline component with proper styles`, (done) => {
-
+			test(`should register Overline component with proper styles`, done => {
 				const rendered = TestRenderer.create(
 					<BlueBaseApp>
 						<Overline>Sample Text</Overline>
@@ -228,9 +226,6 @@ describe('filters', () => {
 					done();
 				});
 			});
-
 		});
-
 	});
-
 });

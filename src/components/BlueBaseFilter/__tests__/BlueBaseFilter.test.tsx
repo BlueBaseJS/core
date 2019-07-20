@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { BlueBaseFilter } from '../BlueBaseFilter';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';

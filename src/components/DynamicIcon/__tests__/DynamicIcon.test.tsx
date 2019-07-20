@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import { BlueBase } from '../../../BlueBase';
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { DynamicIcon } from '../DynamicIcon';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';

@@ -1,5 +1,5 @@
 export * from './BlueBase';
-export { BlueBaseApp } from './components/';
+export { BlueBaseApp } from './OfflineComponents/';
 export * from './Context';
 export { getComponent } from './getComponent';
 export * from './intl';
