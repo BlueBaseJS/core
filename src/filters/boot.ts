@@ -49,7 +49,7 @@ export const boot: FilterNestedCollection = {
 		},
 	],
 
-	'bluebase.system.reset': [
+	'bluebase.reset': [
 		{
 			key: 'bluebase-reset-default',
 			priority: 3,

@@ -148,7 +148,7 @@ export class BlueBase {
 		this.bootOptions = { ...this.bootOptions, ...options };
 
 		if (reset === true) {
-			await this.Filters.run('bluebase.system.reset', this.bootOptions);
+			await this.Filters.run('bluebase.reset', this.bootOptions);
 		}
 
 		// Register basic filters here, so they can be used in boot
