@@ -18,4 +18,10 @@ describe('BlueBase', () => {
 
 		expect(resetFilter).toHaveBeenCalledTimes(1);
 	});
+
+	test(`should boot even without optioons`, async () => {
+		const BB = new BlueBase();
+		await BB.boot();
+		expect(BB.Configs.size()).toBe(11);
+	});
 });

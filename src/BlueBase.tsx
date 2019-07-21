@@ -143,7 +143,7 @@ export class BlueBase {
 	 * Main boot business logic
 	 * @param param
 	 */
-	protected async bootInternal({ reset, ...options }: Partial<BootOptionsInternal> = {}) {
+	protected async bootInternal({ reset, ...options }: Partial<BootOptionsInternal>) {
 		// Update boot options
 		this.bootOptions = { ...this.bootOptions, ...options };
 
