@@ -1,5 +1,5 @@
 // tslint:disable: object-literal-sort-keys
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { EmptyState } from '../../EmptyState';
 import { Navigation } from '../Navigation';
 import React from 'react';

@@ -1,6 +1,6 @@
 import { forwardRef, renderChildrenWithProps } from '../Components';
 
-import { BlueBaseApp } from '../../components';
+import { BlueBaseApp } from '../../';
 import { FlatList } from '../../getComponent';
 import React from 'react';
 import { mount } from 'enzyme';

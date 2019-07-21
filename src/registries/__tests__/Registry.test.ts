@@ -18,7 +18,7 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			expect(() => registry.set('foo', 'bar' as any)).toThrowError(
-				'Could not set registry item. Reason: Unknown item type.'
+				'Could not set registry item "foo". Reason: Unknown item type.'
 			);
 		});
 	});
@@ -87,7 +87,7 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
-			registry.setMeta('foo', { preload: true });
+			registry.setMeta('foo', 'preload', true);
 
 			expect(registry.getMeta('foo', 'preload')).toBe(undefined);
 		});
@@ -97,9 +97,17 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			registry.setValue('foo', 'bar');
-			registry.setMeta('foo', { preload: true });
+			registry.setMeta('foo', 'preload', true);
 
 			expect(registry.getMeta('foo', 'preload')).toBe(true);
+		});
+
+		it('should return defaultValue if meta item doesnt exist', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<string>>(BB);
+			registry.setValue('foo', 'bar');
+
+			expect(registry.getMeta('foo', 'some', true)).toBe(true);
 		});
 	});
 

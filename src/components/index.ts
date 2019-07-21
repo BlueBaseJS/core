@@ -1,4 +1,3 @@
-export * from './BlueBaseApp';
 export * from './BlueBaseContent';
 export * from './BlueBaseFilter';
 export * from './BlueBaseImage';

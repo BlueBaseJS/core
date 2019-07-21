@@ -105,13 +105,15 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		key: string,
 		...hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>
 	) {
-		const item = super.get(key);
-
-		if (!item) {
+		if (!this.has(key)) {
 			throw Error(`Could not add hocs for "${key}" component. Reason: Component not found.`);
 		}
 
-		this.set(key, { ...item, hocs });
+		const currentHocs: Array<
+			ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs
+		> = super.getMeta(key, 'hocs', []);
+
+		this.setMeta(key, 'hocs', [...currentHocs, ...hocs]);
 	}
 
 	/**
@@ -120,15 +122,11 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	 * @param styles
 	 */
 	public setStyles(key: string, styles: MaybeThunk<ComponentStyles>) {
-		const item = this.get(key);
-
-		if (!item) {
+		if (!this.has(key)) {
 			throw Error(`Cannot set styles "${key}" component. Reason: Component not found.`);
 		}
 
-		item.styles = styles;
-
-		this.data = this.data.set(key, item);
+		this.setMeta(key, 'styles', styles);
 	}
 
 	/**
@@ -136,13 +134,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	 * @param key
 	 */
 	public getStyles(key: string): MaybeThunk<ComponentStyles> | undefined {
-		const item = this.get(key);
-
-		if (!item) {
-			return;
-		}
-
-		return item.styles;
+		return this.getMeta(key, 'styles');
 	}
 
 	/**

@@ -1,6 +1,7 @@
 import { Text, View } from 'react-native';
+
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseApp } from '../../components';
+import { BlueBaseApp } from '../../';
 import { ComponentRegistry } from '../';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
@@ -17,10 +18,7 @@ class Welcome extends React.Component<{ name: string }> {
 }
 
 describe('ComponentRegistry', () => {
-
-
 	describe('Proxy', () => {
-
 		it('should resolve a component through proxy', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
@@ -34,11 +32,9 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 			expect(() => Components.resolve('Foo')).toThrow();
 		});
-
 	});
 
 	describe('.resolve method', () => {
-
 		it('should throw for unknown components', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
@@ -68,7 +64,7 @@ describe('ComponentRegistry', () => {
 			// expect(rendered.toJSON()).toMatchSnapshot();
 		});
 
-		it('should resolve a Promised component', async (done) => {
+		it('should resolve a Promised component', async done => {
 			const Foo = getComponent('Foo');
 			const wrapper = mount(
 				<BlueBaseApp components={{ Foo: Promise.resolve(Text) as any }}>
@@ -84,7 +80,10 @@ describe('ComponentRegistry', () => {
 				// expect(wrapper).toMatchSnapshot();
 
 				// Verify that background color is light
-				const view = wrapper.find('Foo').find('Text').last();
+				const view = wrapper
+					.find('Foo')
+					.find('Text')
+					.last();
 				expect(view.text()).toBe('Some text');
 
 				done();
@@ -116,9 +115,7 @@ describe('ComponentRegistry', () => {
 
 			await Components.register('Button', Button);
 
-			const hoc = (args: { backgroundColor: string }) =>
-			(Comp: React.ComponentType) =>
-			() => (
+			const hoc = (args: { backgroundColor: string }) => (Comp: React.ComponentType) => () => (
 				<View style={{ backgroundColor: args.backgroundColor }}>
 					<Comp />
 				</View>
@@ -158,9 +155,7 @@ describe('ComponentRegistry', () => {
 
 			await Components.register('Button', Button);
 
-			const hoc = (args: { backgroundColor: string }) =>
-			(Comp: React.ComponentType) =>
-			() => (
+			const hoc = (args: { backgroundColor: string }) => (Comp: React.ComponentType) => () => (
 				<View style={{ backgroundColor: args.backgroundColor }}>
 					<Comp />
 				</View>
@@ -172,11 +167,9 @@ describe('ComponentRegistry', () => {
 
 			expect((ResolvedComponent as any).foo).toBe('bar');
 		});
-
 	});
 
 	describe('.register method', () => {
-
 		/////////////////////////////////
 		//////// React Component ////////
 		/////////////////////////////////
@@ -248,7 +241,7 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 
 			await Components.register('Button', {
-				value: Button
+				value: Button,
 			});
 
 			// TODO: Add proper dom testing
@@ -260,20 +253,19 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 
 			await Components.register('Button', {
-				value: { default: Button } as any
+				value: { default: Button } as any,
 			});
 
 			// TODO: Add proper dom testing
 			expect(getComponent('Button')).toBeTruthy();
 		});
 
-
 		it('should register a ComponentRegistryItem, with value in a Promised ES Module', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
 
 			await Components.register('Button', {
-				value: Promise.resolve({ default: Button }) as any
+				value: Promise.resolve({ default: Button }) as any,
 			});
 
 			// TODO: Add proper dom testing
@@ -302,7 +294,6 @@ describe('ComponentRegistry', () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
 
-
 			let message = false;
 
 			try {
@@ -311,13 +302,12 @@ describe('ComponentRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Could not register item. Reason: Unknown item type.');
+			expect(message).toBe('Could not register item "Button". Reason: Unknown item type.');
 		});
-
 
 		////// Overrides
 
-		it('should merge a ComponentRegistryItem with an existing one', async () => {
+		it('should NOT merge a ComponentRegistryItem with an existing one', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
 
@@ -336,14 +326,12 @@ describe('ComponentRegistry', () => {
 			if (!Component) {
 				throw Error();
 			}
-			expect(Component.hocs).toHaveLength(3);
-			expect(Component.preload).toBe(true);
+			expect(Component.hocs).toHaveLength(2);
+			expect(Component.preload).toBe(false);
 		});
 	});
 
-
 	describe('.addHocs method', () => {
-
 		it('should add a single HOC', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
@@ -398,7 +386,6 @@ describe('ComponentRegistry', () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
 
-
 			let message = false;
 
 			try {
@@ -407,14 +394,13 @@ describe('ComponentRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Could not add hocs for "Button" component. Reason: Component not found.');
+			expect(message).toBe(
+				'Could not add hocs for "Button" component. Reason: Component not found.'
+			);
 		});
-
 	});
 
-
 	describe('.setStyles/getStyles method', () => {
-
 		it('should set & get styles of a Component', async () => {
 			const BB = new BlueBase();
 			const Components = new ComponentRegistry(BB);
@@ -423,7 +409,7 @@ describe('ComponentRegistry', () => {
 			Components.setStyles('Button', {
 				root: {
 					backgroundColor: 'blue',
-				}
+				},
 			});
 
 			const styles = Components.getStyles('Button');
@@ -434,7 +420,7 @@ describe('ComponentRegistry', () => {
 			expect(styles).toMatchObject({
 				root: {
 					backgroundColor: 'blue',
-				}
+				},
 			});
 		});
 
@@ -446,12 +432,13 @@ describe('ComponentRegistry', () => {
 				Components.setStyles('Button', {
 					root: {
 						backgroundColor: 'blue',
-					}
+					},
 				});
 			} catch (error) {
-				expect(error.message).toBe('Cannot set styles "Button" component. Reason: Component not found.');
+				expect(error.message).toBe(
+					'Cannot set styles "Button" component. Reason: Component not found.'
+				);
 			}
-
 		});
 
 		it('should return undefined if getting styles of an unknown component', async () => {
@@ -459,7 +446,5 @@ describe('ComponentRegistry', () => {
 			const Components = new ComponentRegistry(BB);
 			expect(Components.getStyles('Button')).toBe(undefined);
 		});
-
 	});
-
 });

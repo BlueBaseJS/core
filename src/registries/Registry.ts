@@ -1,9 +1,7 @@
-import { getDefiniteModule, isPromise, makeId } from '../utils';
+import { getDefiniteModule, makeId } from '../utils';
 
 import { BlueBase } from '../BlueBase';
 import isNil from 'lodash.isnil';
-import isPlainPbject from 'is-plain-object';
-import merge from 'deepmerge';
 
 /**
  * BlueBase Registry Item
@@ -92,26 +90,7 @@ export class Registry<
 	 */
 	public set(key: string, item: ItemType | ItemInputType) {
 		if (!this.isItem(item)) {
-			throw Error('Could not set registry item. Reason: Unknown item type.');
-		}
-
-		const existingItem = this.get(key);
-
-		if (existingItem) {
-			let value;
-
-			// If value is a promise, deepmerge messes it up
-			if (isPromise(existingItem.value) || isPromise(item.value)) {
-				value = item.value || existingItem.value;
-			}
-
-			item = merge(existingItem, item, {
-				isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
-			}) as ItemType;
-
-			if (value) {
-				item.value = value;
-			}
+			throw Error(`Could not set registry item "${key}". Reason: Unknown item type.`);
 		}
 
 		// Override existing or create an new one
@@ -164,7 +143,7 @@ export class Registry<
 	 * @param key
 	 * @param props
 	 */
-	public setMeta(key: string, props: { [key: string]: any }) {
+	public setMeta(key: string, metaKey: string, metaValue: any) {
 		const item = this.get(key);
 
 		// Override existing
@@ -172,9 +151,10 @@ export class Registry<
 			return;
 		}
 
-		return this.data.set(key, merge(item, props, {
-			isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
-		}) as ItemType);
+		return this.data.set(key, {
+			...item,
+			[metaKey]: metaValue,
+		});
 	}
 
 	/**
@@ -182,14 +162,20 @@ export class Registry<
 	 * @param key
 	 * @param props
 	 */
-	public getMeta(key: string, metaKey: string) {
+	public getMeta(key: string, metaKey: string, defaultValue?: any) {
 		const item = this.get(key);
 
 		if (!item) {
 			return;
 		}
 
-		return item[metaKey];
+		const value = item[metaKey];
+
+		if (isNil(value) && defaultValue) {
+			return defaultValue;
+		}
+
+		return value;
 	}
 
 	/**
@@ -218,7 +204,7 @@ export class Registry<
 			return args.key;
 		}
 
-		throw Error('Could not register item. Reason: Unknown item type.');
+		throw Error(`Could not register item "${args.key}". Reason: Unknown item type.`);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../../components/BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { ImageBackground } from '../ImageBackground';
 import React from 'react';
 import { Text } from 'react-native';

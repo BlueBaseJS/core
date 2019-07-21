@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../BlueBaseApp';
+import { BlueBaseApp } from '../../../';
 import { ErrorObserver } from '../ErrorObserver';
 import React from 'react';
 import { Text } from 'react-native';
@@ -14,7 +14,6 @@ const BangNull = () => {
 };
 
 describe('ErrorObserver', () => {
-
 	test(`Snapshot ErrorObserver`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
@@ -26,7 +25,12 @@ describe('ErrorObserver', () => {
 
 		await waitForElement(wrapper as any, ErrorObserver);
 
-		expect(wrapper.find('Text').last().text()).toBe('Hello');
+		expect(
+			wrapper
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Hello');
 	});
 
 	test(`Snapshot ErrorObserver after complete rendering`, async () => {
@@ -40,7 +44,12 @@ describe('ErrorObserver', () => {
 
 		await waitForElement(wrapper as any, ErrorObserver);
 
-		expect(wrapper.find('Text').last().text()).toBe('Hello');
+		expect(
+			wrapper
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Hello');
 	});
 
 	test(`Snapshot ErrorObserver after complete rendering with error`, async () => {
@@ -57,23 +66,29 @@ describe('ErrorObserver', () => {
 
 		await waitForElement(wrapper as any, ErrorObserver);
 
-		expect(wrapper.find('Text').last().text()).toBe('Error');
+		expect(
+			wrapper
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Error');
 	});
 
 	test(`Snapshot ErrorObserver after complete rendering with child as function`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<ErrorObserver>
-				{
-					() => <Text>Hello</Text>
-				}
-				</ErrorObserver>
+				<ErrorObserver>{() => <Text>Hello</Text>}</ErrorObserver>
 			</BlueBaseApp>
 		);
 
 		await waitForElement(wrapper as any, ErrorObserver);
 
-		expect(wrapper.find('Text').last().text()).toBe('Hello');
+		expect(
+			wrapper
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Hello');
 	});
 
 	test(`should catch an error when thrown by a child component`, async () => {
@@ -88,7 +103,12 @@ describe('ErrorObserver', () => {
 		await waitForElement(wrapper as any, ErrorObserver);
 
 		// expect(wrapper).toMatchSnapshot();
-		expect(wrapper.find('Text').last().text()).toBe('💥 Boom!');
+		expect(
+			wrapper
+				.find('Text')
+				.last()
+				.text()
+		).toBe('💥 Boom!');
 	});
 
 	test(`should catch an error when thrown null by a child component`, async () => {
@@ -102,13 +122,18 @@ describe('ErrorObserver', () => {
 
 		await waitForElement(wrapper as any, ErrorObserver);
 
-		expect(wrapper.find('Text').last().text()).toBe('An unknown error occurred.');
+		expect(
+			wrapper
+				.find('Text')
+				.last()
+				.text()
+		).toBe('An unknown error occurred.');
 	});
 
 	test(`should not catch an error because check error is null`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<ErrorObserver checkError={null as any} error={Error('Useless')} >
+				<ErrorObserver checkError={null as any} error={Error('Useless')}>
 					<Text>Hello</Text>
 				</ErrorObserver>
 			</BlueBaseApp>
@@ -116,8 +141,11 @@ describe('ErrorObserver', () => {
 
 		await waitForElement(wrapper as any, ErrorObserver);
 
-		expect(wrapper.find('Text').last().text()).toBe('Hello');
+		expect(
+			wrapper
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Hello');
 	});
-
-
 });

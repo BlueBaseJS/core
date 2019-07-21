@@ -16,15 +16,27 @@ import {
 	ThemeRegistry,
 } from './registries';
 
-import { BlueBaseProvider } from './Context';
-import { IntlProvider } from './intl';
 import { MaybeRenderPropChildren } from './utils';
-import React from 'react';
-import { ThemeProvider } from './themes';
-import { getComponent } from './getComponent';
 import systemFilters from './filters';
 
-const BlueBaseContent = getComponent('BlueBaseContent');
+export interface BlueBaseProgress {
+	/**
+	 * Has the app booted yet
+	 */
+	readonly booted: boolean;
+
+	/**
+	 * Are we loading the app
+	 */
+	readonly loading: boolean;
+
+	/**
+	 * Any errors occured while booting the app
+	 */
+	readonly error: any;
+}
+
+export type SetStateFn = (state: BlueBaseProgress) => Promise<void>;
 
 export interface BootOptions {
 	/** Collection of assets to add in BlueBase's Asset Registry. */
@@ -53,6 +65,21 @@ export interface BootOptions {
 	children?: MaybeRenderPropChildren<{ BB: BlueBase }>;
 }
 
+export interface BootOptionsInternal extends BootOptions {
+	onProgress?: SetStateFn;
+	reset?: boolean;
+}
+
+const emptyBootOptions: BootOptionsInternal = {
+	assets: {},
+	components: {},
+	configs: {},
+	filters: {},
+	fonts: {},
+	plugins: [],
+	themes: [],
+};
+
 export class BlueBase {
 	// APIs
 	public Analytics = new Analytics(this);
@@ -73,19 +100,56 @@ export class BlueBase {
 	// Flags
 	public booted = false;
 
-	private bootOptions: BootOptions = {
-		assets: {},
-		components: {},
-		configs: {},
-		filters: {},
-		fonts: {},
-		plugins: [],
-		themes: [],
-	};
+	private bootOptions: BootOptions = emptyBootOptions;
 
-	public async boot(options?: Partial<BootOptions> & { children?: React.ReactNode }) {
+	public async boot({ onProgress, ...options }: Partial<BootOptionsInternal> = {}) {
+		// Store onProgress for later use, even after boot finishes (i.e. in reboot, etc)
+		if (onProgress) {
+			this.onProgress = onProgress;
+		}
+
+		await this.onProgress({
+			booted: false,
+			error: null,
+			loading: true,
+		});
+
+		try {
+			await this.bootInternal(options);
+			await this.onProgress({
+				booted: this.booted,
+				error: null,
+				loading: false,
+			});
+		} catch (error) {
+			await this.onProgress({
+				booted: false,
+				error,
+				loading: false,
+			});
+		}
+
+		return this;
+	}
+
+	/**
+	 * Performs a reset and boot.
+	 */
+	public async reboot(options?: BootOptionsInternal) {
+		return this.boot({ ...options, reset: true });
+	}
+
+	/**
+	 * Main boot business logic
+	 * @param param
+	 */
+	protected async bootInternal({ reset, ...options }: Partial<BootOptionsInternal>) {
 		// Update boot options
 		this.bootOptions = { ...this.bootOptions, ...options };
+
+		if (reset === true) {
+			await this.Filters.run('bluebase.reset', this.bootOptions);
+		}
 
 		// Register basic filters here, so they can be used in boot
 		await this.Filters.registerNestedCollection(systemFilters);
@@ -93,26 +157,13 @@ export class BlueBase {
 		// 🚀 Boot!
 		await this.Filters.run('bluebase.boot', this.bootOptions);
 
-		// Navigation
-		const navigatorConfigs = await this.Filters.run('bluebase.navigator.root', {});
-
-		// TODO: Move this to BlueBaseApp component
-		const BlueBaseRoot = () => (
-			<BlueBaseProvider value={this}>
-				<ThemeProvider>
-					<IntlProvider>
-						<BlueBaseContent
-							BB={this}
-							children={this.bootOptions.children}
-							navigator={navigatorConfigs}
-						/>
-					</IntlProvider>
-				</ThemeProvider>
-			</BlueBaseProvider>
-		);
-
+		// Set booted flag
 		this.booted = true;
 
-		return BlueBaseRoot;
+		return this;
+	}
+
+	private onProgress: SetStateFn = async () => {
+		return;
 	}
 }
