@@ -1,4 +1,4 @@
-import { BlueBase, BootOptions } from '../../BlueBase';
+import { BlueBase, BlueBaseProgress, BootOptions } from '../../BlueBase';
 import {
 	BlueBaseAppError,
 	BlueBaseAppErrorProps,
@@ -80,20 +80,11 @@ export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppSt
 
 	async componentDidMount() {
 		const BB = this.state.BB;
+		BB.boot({ ...this.props, onProgress: this.onProgress });
+	}
 
-		try {
-			await BB.boot(this.props);
-			this.setState({
-				booted: BB.booted,
-				loading: false,
-			});
-		} catch (error) {
-			this.setState({
-				booted: false,
-				error,
-				loading: false,
-			});
-		}
+	onProgress = async (params: BlueBaseProgress) => {
+		await this.setState(params);
 	}
 
 	componentDidCatch(error: Error | null) {

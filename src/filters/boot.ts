@@ -6,7 +6,7 @@ export const boot: FilterNestedCollection = {
 	'bluebase.boot': [
 		{
 			key: 'bluebase-boot-default',
-			priority: 5,
+			priority: 3,
 
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
@@ -43,6 +43,26 @@ export const boot: FilterNestedCollection = {
 
 				// End boot
 				await BB.Filters.run('bluebase.boot.end', bootOptions);
+
+				return bootOptions;
+			},
+		},
+	],
+
+	'bluebase.system.reset': [
+		{
+			key: 'bluebase-reset-default',
+			priority: 3,
+
+			// tslint:disable-next-line:object-literal-sort-keys
+			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
+				BB.Assets.clear();
+				BB.Components.clear();
+				BB.Configs.clear();
+				BB.Filters.clear();
+				BB.Fonts.clear();
+				BB.Plugins.clear();
+				BB.Themes.clear();
 
 				return bootOptions;
 			},
