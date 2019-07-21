@@ -1,9 +1,11 @@
+import { waitForElement, waitForState } from 'enzyme-async-helpers';
+
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../BlueBaseApp';
+import { BlueBaseAppError } from '../../BlueBaseAppError';
 import React from 'react';
 import { Text } from 'react-native';
 import { mount } from 'enzyme';
-import { waitForState } from 'enzyme-async-helpers';
 
 declare const global: any;
 
@@ -73,11 +75,13 @@ describe('BlueBaseApp', () => {
 	test(`should render error state when boot throws an error`, async () => {
 		const BB = new BlueBase();
 		BB.Configs.setValue('development', true);
-		BB.boot = () => {
+		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
 		};
 
 		const wrapper = mount(<BlueBaseApp BB={BB} />);
+
+		await waitForElement(wrapper, BlueBaseAppError);
 
 		// expect(wrapper).toMatchSnapshot();
 		expect(
@@ -149,6 +153,8 @@ describe('BlueBaseApp', () => {
 		await waitForState(wrapper as any, (state: any) => state.loading === false);
 		wrapper.update();
 
+		await waitForElement(wrapper, BlueBaseAppError);
+
 		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
@@ -184,6 +190,8 @@ describe('BlueBaseApp', () => {
 		await waitForState(wrapper as any, (state: any) => state.loading === false);
 		wrapper.update();
 
+		await waitForElement(wrapper, BlueBaseAppError);
+
 		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
@@ -202,11 +210,13 @@ describe('BlueBaseApp', () => {
 	// tslint:disable-next-line: max-line-length
 	test(`should render error state with actual error message when development config is undefined, && isProduction is false`, async () => {
 		const BB = new BlueBase();
-		BB.boot = () => {
+		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
 		};
 
 		const wrapper = mount(<BlueBaseApp BB={BB} />);
+
+		await waitForElement(wrapper, BlueBaseAppError);
 
 		// expect(wrapper).toMatchSnapshot();
 		expect(
@@ -226,13 +236,15 @@ describe('BlueBaseApp', () => {
 	// tslint:disable-next-line: max-line-length
 	test(`should render error state with custom error message when development config is undefined, && isProduction is true`, async () => {
 		const BB = new BlueBase();
-		BB.boot = () => {
+		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
 		};
 
 		global.process.env.NODE_ENV = 'production';
 
 		const wrapper = mount(<BlueBaseApp BB={BB} />);
+
+		await waitForElement(wrapper, BlueBaseAppError);
 
 		// expect(wrapper).toMatchSnapshot();
 		expect(
