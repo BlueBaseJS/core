@@ -135,7 +135,7 @@ export class BlueBase {
 	/**
 	 * Performs a reset and boot.
 	 */
-	public async reboot(options?: BootOptionsInternal) {
+	public async reset(options?: BootOptionsInternal) {
 		return this.boot({ ...options, reset: true });
 	}
 
