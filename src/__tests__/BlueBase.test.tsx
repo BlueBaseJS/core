@@ -14,7 +14,7 @@ describe('BlueBase', () => {
 
 		expect(resetFilter).toHaveBeenCalledTimes(0);
 
-		await BB.reboot();
+		await BB.reset();
 
 		expect(resetFilter).toHaveBeenCalledTimes(1);
 	});
