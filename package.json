@@ -93,6 +93,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
+    "@loadable/component": "^5.10.2",
     "deepmerge": "^4.0.0",
     "expo": "^33.0.0",
     "hoist-non-react-statics": "^3.3.0",
@@ -134,6 +135,7 @@
     "@types/enzyme-async-helpers": "^0.9.1",
     "@types/hoist-non-react-statics": "^3.3.0",
     "@types/jest": "^24.0.15",
+    "@types/loadable__component": "^5.10.0",
     "@types/lodash.flowright": "^3.5.6",
     "@types/lodash.isboolean": "^3.0.6",
     "@types/lodash.isfunction": "^3.0.6",
