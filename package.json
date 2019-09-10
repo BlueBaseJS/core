@@ -62,7 +62,6 @@
     "doc": "run-s doc:html && opn docs/index.html",
     "doc:html": "typedoc src/ --target ES6 --mode file --out docs",
     "doc:json": "typedoc src/ --target ES6 --mode file --json docs/typedoc.json",
-    "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d docs",
     "version": "standard-version",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "all": "run-s reset test cov:check doc:html",
