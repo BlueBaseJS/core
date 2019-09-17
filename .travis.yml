@@ -13,4 +13,4 @@ script:
   # - yarn run size
 after_success:
   - test $TRAVIS_BRANCH = "master" && yarn run doc
-  - test $TRAVIS_BRANCH = "master" && npx semantic-release
+  - npx semantic-release
