@@ -17,6 +17,7 @@ import {
 } from './registries';
 
 import { MaybeRenderPropChildren } from './utils';
+import { VERSION } from './version';
 import systemFilters from './filters';
 
 export interface BlueBaseProgress {
@@ -81,6 +82,9 @@ const emptyBootOptions: BootOptionsInternal = {
 };
 
 export class BlueBase {
+	/** BlueBase Version */
+	readonly version = VERSION;
+
 	// APIs
 	public Analytics = new Analytics(this);
 	public Logger = new Logger(this);
