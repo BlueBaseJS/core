@@ -1269,7 +1269,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.4.3", "@babel/runtime@^7.4.5":
+"@babel/runtime@^7.4.3", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
   integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
@@ -1749,6 +1749,14 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
+
+"@loadable/component@^5.10.2":
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.10.2.tgz#1f51e7a0064cc0f59604b1933bbc7a1bbfd84d18"
+  integrity sha512-pUzGRc/mhGzZ0+xJPQErnS68BQEApFYGwn10iSDqBHdDhOruCASTer1J+rYI4jaJJcegJwnuzh7j/SqMoiCyAQ==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    hoist-non-react-statics "^3.3.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -2696,6 +2704,13 @@
   integrity sha512-MU1HIvWUme74stAoc3mgAi+aMlgKOudgEvQDIm1v4RkrDudBh1T+NFp5sftpBAdXdx1J0PbdpJ+M2EsSOi1djA==
   dependencies:
     "@types/jest-diff" "*"
+
+"@types/loadable__component@^5.10.0":
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/@types/loadable__component/-/loadable__component-5.10.0.tgz#178fdc401983f4f93647fac778226da7b8c1e080"
+  integrity sha512-AaDP1VxV3p7CdPOtOTl3ALgQ6ES4AxJKO9UGj9vJonq/w2yERxwdzFiWNQFh9fEDXEzjxujBlM2RmSJtHV1/pA==
+  dependencies:
+    "@types/react" "*"
 
 "@types/lodash.flowright@^3.5.6":
   version "3.5.6"

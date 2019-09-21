@@ -4,11 +4,15 @@ import {
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
 import { ComponentStyles, applyStyles } from '../themes';
-import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
+import {
+	MaybeThunk,
+	Thunk,
+	getDefiniteBlueBaseModule,
+	isBlueBaseModule,
+	withLoadable,
+} from '../utils';
 
 import { ItemCollection } from './Registry';
-import Loadable from 'react-loadable';
-import { ReactLoadableLoading } from '../components/';
 import flowRight from 'lodash.flowright';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
@@ -73,7 +77,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 
 		// If component bundle has to be downloaded, wrap into lazy
 		const rawComponent = item.value.isAsync
-			? Loadable({ loader: () => item.value, loading: ReactLoadableLoading })
+			? withLoadable(item.value)
 			: (item.value.module as React.ComponentType<any>);
 
 		let themedComponent = rawComponent;

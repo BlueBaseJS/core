@@ -8,3 +8,4 @@ export * from './Promises';
 export * from './Screen';
 export * from './Thunks';
 export * from './Typescript';
+export * from './withLoadable';
