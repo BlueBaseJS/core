@@ -1,0 +1,79 @@
+# Used on master, the only difference is that we release docs here
+
+name: Production CI
+
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - 'master' # Push events on master branch
+
+jobs:
+  test:
+    name: Test, Build & Release
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: install
+
+      - name: Unit Tests (Jest)
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: test:only --coverage --logHeapUsage --ci
+
+      - name: Test Lint
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: test:lint
+
+      - name: Test Prettier
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: test:prettier
+
+      - name: Build
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: build
+
+      - name: Semantic Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Build Docs
+        uses: Borales/actions-yarn@master
+        with:
+          args: doc
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v2.2.0
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./docs
