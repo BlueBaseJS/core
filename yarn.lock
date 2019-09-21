@@ -1355,10 +1355,10 @@
     react-native-web "^0.11.4"
     webpack "^4.28.2"
 
-"@bluebase/code-standards@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@bluebase/code-standards/-/code-standards-2.0.1.tgz#55650d8e6a327e24b04be49425ee555f9b6fde10"
-  integrity sha512-MNYt30ppV1G2LOkmx3JAuJjNyPIg9L7Qd1LiNqbNyhnHjPg6AZZTRdVLUzJ/bMhByQAKHp/DDkD0Dcuz7FjCwg==
+"@bluebase/code-standards@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@bluebase/code-standards/-/code-standards-2.0.2.tgz#4ce46d597c7b8392b3618d1faec38b589ef23f06"
+  integrity sha512-ypkWnxq2XQVMT2GK/gND9ypAGvcEyIGB3Rh64qQ8cADYcnt0OBQdwY6JpJoQJllA+Fjz/+bqBBBZRuzSK/kCJg==
   dependencies:
     "@babel/plugin-proposal-object-rest-spread" "^7.2.0"
     "@babel/plugin-transform-flow-strip-types" "^7.4.0"
