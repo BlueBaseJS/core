@@ -9,9 +9,6 @@ on:
       - '*' # Push events on all branchs
       - '*/*'
       - '!master' # Exclude master
-      - '!next' # Exclude next
-      - '!alpha' # Exclude alpha
-      - '!beta' # Exclude beta
 
 jobs:
   test:
