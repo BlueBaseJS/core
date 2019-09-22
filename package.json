@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.js",
-  "repository": "https://github.com/BlueBaseJS/core",
+  "repository": "https://github.com/BlueBaseJS/core.git",
   "license": "MIT",
   "keywords": [],
   "remarkConfig": {
