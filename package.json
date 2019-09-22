@@ -30,8 +30,6 @@
     "react-native-storybook-loader": {
       "searchDir": [
         "src",
-        "bluebase/storybook-native",
-        "src",
         "bluebase/storybook-native"
       ],
       "pattern": "**/*.stories.tsx",
