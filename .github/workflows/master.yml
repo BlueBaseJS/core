@@ -61,7 +61,7 @@ jobs:
           args: build
 
       - name: Semantic Release
-        run: sudo npx semantic-release@beta
+        run: sudo npx semantic-release@beta --no-ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
