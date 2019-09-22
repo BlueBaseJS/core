@@ -106,7 +106,7 @@
     "@babel/core": "^7.5.5",
     "@bluebase/babel-preset-bluebase": "^2.4.1",
     "@bluebase/cli-essentials": "^0.0.5",
-    "@bluebase/code-standards": "^2.2.3",
+    "@bluebase/code-standards": "^2.2.4",
     "@bluebase/components": "^5.15.3",
     "@bluebase/core": "^4.0.0-alpha.39",
     "@bluebase/storybook-addon": "^3.0.0",
