@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "@bluebase/code-standards/tslint"
-  ]
+	"extends": ["@bluebase/code-standards/tslint"],
+	"rules": {
+		"ter-indent": ["tabs", 2]
+	}
 }
