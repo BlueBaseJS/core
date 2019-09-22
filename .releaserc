@@ -1,0 +1,6 @@
+  
+{
+  "extends": [
+    "@bluebase/code-standards/releaserc"
+  ]
+}

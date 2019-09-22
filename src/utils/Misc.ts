@@ -1,5 +1,8 @@
 declare var process: any;
 
+import deepmerge from 'deepmerge';
+import isPlainPbject from 'is-plain-object';
+
 /**
  * Check if the project is running in production mode. Returns 'true' if it is.
  */
@@ -29,4 +32,15 @@ export function makeId(length: number = 8) {
 			.substr(2, 10);
 	}
 	return ('_' + str).substr(0, length);
+}
+
+/**
+ * Deep merges 2 objects. Nested fields are only merged if they are plain objects or arrays.
+ * @param x
+ * @param y
+ */
+export function merge<T>(x: Partial<T>, y: Partial<T>) {
+	return deepmerge(x, y, {
+		isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
+	});
 }

@@ -2,11 +2,11 @@
   "name": "@bluebase/core",
   "description": "🚀 A modular, pluggable and cross platform app framework.",
   "author": "BlueEast Team <code@blueeast.com>",
-  "version": "4.0.0-alpha.42",
+  "version": "4.0.0-alpha.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.js",
-  "repository": "https://github.com/BlueBaseJS/core",
+  "repository": "https://github.com/BlueBaseJS/core.git",
   "license": "MIT",
   "keywords": [],
   "remarkConfig": {
@@ -30,8 +30,6 @@
     "react-native-storybook-loader": {
       "searchDir": [
         "src",
-        "bluebase/storybook-native",
-        "src",
         "bluebase/storybook-native"
       ],
       "pattern": "**/*.stories.tsx",
@@ -39,7 +37,6 @@
     }
   },
   "scripts": {
-    "storybook-native:start": "bluebase storybook-native:start",
     "start": "yarn run storybook",
     "clean": "rimraf coverage dist tmp",
     "watch": "tsc -w -p tsconfig.json",
@@ -57,16 +54,12 @@
     "test:lint": "npm run lint",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
     "test:md": "remark . -f",
-    "commit": "git-cz",
     "report-coverage": "codecov && cat ./coverage/lcov.info | codacy-coverage",
-    "doc": "run-s doc:html && opn docs/index.html",
+    "doc": "run-s doc:html",
     "doc:html": "typedoc src/ --target ES6 --mode file --out docs",
     "doc:json": "typedoc src/ --target ES6 --mode file --json docs/typedoc.json",
-    "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d docs",
-    "version": "standard-version",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "all": "run-s reset test cov:check doc:html",
-    "prepare-release": "run-s all version doc:publish",
     "prepublishOnly": "yarn remove expo react-native",
     "size": "size-limit",
     "storybook:start": "bluerain storybook:start",
@@ -85,9 +78,7 @@
     "cov": "Rebuild, run tests, then create and open the coverage report",
     "doc": "Generate HTML API documentation and open it in a browser",
     "doc:json": "Generate API documentation in typedoc JSON format",
-    "version": "Bump package.json version, update CHANGELOG.md, tag release",
-    "reset": "Delete all untracked files and reset the repo to the last commit",
-    "prepare-release": "One-step: clean, build, test, publish docs, and prep a release"
+    "reset": "Delete all untracked files and reset the repo to the last commit"
   },
   "engines": {
     "node": ">=8.9"
@@ -113,7 +104,7 @@
     "@babel/core": "^7.5.5",
     "@bluebase/babel-preset-bluebase": "^2.4.1",
     "@bluebase/cli-essentials": "^0.0.5",
-    "@bluebase/code-standards": "^1.3.3",
+    "@bluebase/code-standards": "^2.2.4",
     "@bluebase/components": "^5.15.3",
     "@bluebase/core": "^4.0.0-alpha.39",
     "@bluebase/storybook-addon": "^3.0.0",
@@ -155,12 +146,9 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "codacy-coverage": "^3.4.0",
     "codecov": "^3.2.0",
-    "commitizen": "^3.1.2",
-    "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-async-helpers": "^0.9.1",
-    "gh-pages": "^2.0.1",
     "jest": "^24.3.1",
     "jest-enzyme": "^7.0.2",
     "jsdom": "^15.1.1",
@@ -179,9 +167,8 @@
     "remark-cli": "^6.0.1",
     "remark-preset-lint-recommended": "^3.0.3",
     "schedule": "^0.5.0",
+    "semantic-release": "^16.0.0-beta.24",
     "size-limit": "^1.3.7",
-    "standard-version": "^6.0.1",
-    "trash-cli": "^3.0.0",
     "ts-jest": "^24.0.0",
     "ts-loader": "^6.0.4",
     "tslint": "5.11.0",

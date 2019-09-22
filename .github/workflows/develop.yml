@@ -1,0 +1,76 @@
+# Used on all branches, except master
+
+name: Development CI
+
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - '*' # Push events on all branchs
+      - '*/*'
+      - '!master' # Exclude master
+
+jobs:
+  test:
+    name: Test, Build & Release
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: install
+
+      # - name: Jest
+      #   uses: docker://rkusa/jest-action:latest
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     args: --coverage --logHeapUsage
+
+      - name: Unit Tests (Jest)
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: test:only --coverage --logHeapUsage --ci
+
+      - name: Test Lint
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: test:lint
+
+      - name: Test Prettier
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: test:prettier
+
+      - name: Build
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+        uses: Borales/actions-yarn@master
+        with:
+          args: build
+
+      - name: Semantic Release
+        run: sudo npx semantic-release@beta --no-ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
