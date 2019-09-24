@@ -6,7 +6,7 @@ on:
   push:
     # Sequence of patterns matched against refs/heads
     branches:
-      - 'master' # Push events on master branch
+      - "master" # Push events on master branch
 
 jobs:
   test:
@@ -65,6 +65,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Remove .npmrc
+        run: sudo rm .npmrc
 
       - name: Build Docs
         uses: Borales/actions-yarn@master
