@@ -1,3 +1,13 @@
+# [5.0.0](https://github.com/BlueBaseJS/core/compare/v4.0.0...v5.0.0) (2019-09-24)
+
+### Bug Fixes
+
+-   **dev workflow:** removed sudo from semantic release ([12085d3](https://github.com/BlueBaseJS/core/commit/12085d3))
+
+### BREAKING CHANGES
+
+-   **dev workflow:** Version Upgrade
+
 # [4.0.0](https://github.com/BlueBaseJS/core/compare/v3.15.1...v4.0.0) (2019-09-23)
 
 ### Bug Fixes
