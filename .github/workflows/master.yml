@@ -6,7 +6,7 @@ on:
   push:
     # Sequence of patterns matched against refs/heads
     branches:
-      - 'master' # Push events on master branch
+      - "master" # Push events on master branch
 
 jobs:
   test:
@@ -63,15 +63,18 @@ jobs:
       - name: Semantic Release
         run: npx semantic-release@beta
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Remove .npmrc
+        run: sudo rm .npmrc
 
       - name: Build Docs
         uses: Borales/actions-yarn@master
         with:
           args: doc
 
-      - name: deploy
+      - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v2.2.0
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
