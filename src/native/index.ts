@@ -6,7 +6,6 @@ export * from './ImageBackground';
 export * from './Picker';
 export * from './SafeAreaView';
 export * from './ScrollView';
-export * from './Slider';
 export * from './Switch';
 export * from './Text';
 export * from './TextInput';
