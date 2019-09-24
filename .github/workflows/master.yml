@@ -67,9 +67,11 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Remove .npmrc
-        run: sudo rm .npmrc
+        run: sudo touch .npmrc; sudo rm .npmrc
 
       - name: Build Docs
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
         uses: Borales/actions-yarn@master
         with:
           args: doc
