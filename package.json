@@ -100,8 +100,8 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.5.5",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
     "@bluebase/babel-preset-bluebase": "^2.4.1",
     "@bluebase/cli-essentials": "^0.0.5",
     "@bluebase/code-standards": "^2.2.4",
