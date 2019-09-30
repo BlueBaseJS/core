@@ -14,7 +14,7 @@ export const themes: FilterNestedCollection = {
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				const keys = await BB.Themes.registerCollection([BlueBaseLightTheme, BlueBaseDarkTheme]);
-				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'system' }));
+				keys.forEach(key => BB.Themes.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;
 			},
@@ -29,7 +29,7 @@ export const themes: FilterNestedCollection = {
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				const keys = await BB.Themes.registerCollection(bootOptions.themes);
-				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'boot' }));
+				keys.forEach(key => BB.Themes.setMeta(key, 'source', { type: 'boot' }));
 
 				return bootOptions;
 			},
@@ -48,7 +48,7 @@ export const themes: FilterNestedCollection = {
 				for (const plugin of plugins) {
 					const keys = await BB.Themes.registerCollection(plugin.themes);
 					keys.forEach(key =>
-						BB.Components.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
+						BB.Themes.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
 					);
 				}
 
