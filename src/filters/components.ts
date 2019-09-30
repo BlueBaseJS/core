@@ -53,7 +53,7 @@ export const components: FilterNestedCollection = {
 			priority: 2,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Components.registerCollection({
+				const keys = await BB.Components.registerCollection({
 					// BlueBase Components
 					BlueBaseContent,
 					BlueBaseFilter: { applyStyles: false, value: BlueBaseFilter },
@@ -145,6 +145,8 @@ export const components: FilterNestedCollection = {
 					},
 				});
 
+				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'system' }));
+
 				return bootOptions;
 			},
 		},
@@ -158,7 +160,8 @@ export const components: FilterNestedCollection = {
 			priority: 3,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Components.registerCollection(bootOptions.components);
+				const keys = await BB.Components.registerCollection(bootOptions.components);
+				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'boot' }));
 
 				return bootOptions;
 			},
@@ -175,7 +178,10 @@ export const components: FilterNestedCollection = {
 				const plugins = await BB.Plugins.getAllEnabled();
 
 				for (const plugin of plugins) {
-					await BB.Components.registerCollection(plugin.components);
+					const keys = await BB.Components.registerCollection(plugin.components);
+					keys.forEach(key =>
+						BB.Components.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
+					);
 				}
 
 				return bootOptions;
