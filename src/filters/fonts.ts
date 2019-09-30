@@ -12,7 +12,8 @@ export const fonts: FilterNestedCollection = {
 			priority: 3,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Fonts.registerCollection(bootOptions.fonts);
+				const keys = await BB.Fonts.registerCollection(bootOptions.fonts);
+				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;
 			},
@@ -29,7 +30,10 @@ export const fonts: FilterNestedCollection = {
 				const plugins = await BB.Plugins.getAllEnabled();
 
 				for (const plugin of plugins) {
-					await BB.Fonts.registerCollection(plugin.fonts);
+					const keys = await BB.Fonts.registerCollection(plugin.fonts);
+					keys.forEach(key =>
+						BB.Components.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
+					);
 				}
 
 				return bootOptions;

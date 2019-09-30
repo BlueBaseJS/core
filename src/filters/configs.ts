@@ -13,7 +13,8 @@ export const configs: FilterNestedCollection = {
 			priority: 2,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
+				const keys = await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
+				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;
 			},
@@ -27,7 +28,8 @@ export const configs: FilterNestedCollection = {
 			priority: 3,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Configs.registerCollection(bootOptions.configs);
+				const keys = await BB.Configs.registerCollection(bootOptions.configs);
+				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'boot' }));
 
 				return bootOptions;
 			},
