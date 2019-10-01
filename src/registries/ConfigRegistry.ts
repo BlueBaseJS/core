@@ -27,18 +27,18 @@ export class ConfigRegistry extends Registry<RegistryItem> {
 	 */
 	public async registerIfNotExists(
 		item: RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
-	): Promise<void>;
+	): Promise<void | string>;
 	public async registerIfNotExists(
 		key: string,
 		item: RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
-	): Promise<void>;
+	): Promise<void | string>;
 	public async registerIfNotExists<
 		T = RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
-	>(key: string | T, item?: T): Promise<void> {
+	>(key: string | T, item?: T): Promise<void | string> {
 		const args = this.getKeyAnyItem(key as any, item);
 
 		if (!this.has(args.key)) {
-			this.register(args.key, args.item);
+			return this.register(args.key, args.item);
 		}
 	}
 
@@ -47,21 +47,28 @@ export class ConfigRegistry extends Registry<RegistryItem> {
 	 * @param collection
 	 */
 	public async registerCollectionIfNotExists(collection: ItemCollection<RegistryInputItem> = []) {
+		const keys: string[] = [];
+
 		// If its an array
 		if (Array.isArray(collection)) {
 			for (const item of collection) {
-				await this.registerIfNotExists(item);
+				const key = await this.registerIfNotExists(item);
+
+				if (key) {
+					keys.push(key);
+				}
 			}
 
-			return;
+			return keys;
 		}
 		// If its an object
 		else if (collection === Object(collection)) {
 			for (const key of Object.keys(collection)) {
 				await this.registerIfNotExists(key, collection[key]);
+				keys.push(key);
 			}
 
-			return;
+			return keys;
 		}
 
 		throw Error('Could not register collection. Reason: Unknown collection type.');

@@ -12,10 +12,12 @@ export const assets: FilterNestedCollection = {
 			priority: 2,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Assets.registerCollection({
+				const keys = await BB.Assets.registerCollection({
 					Logo: require('../../assets/common/logo.png'),
 					LogoSquare: require('../../assets/common/logo.png'),
 				});
+
+				keys.forEach(key => BB.Assets.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;
 			},
@@ -29,8 +31,9 @@ export const assets: FilterNestedCollection = {
 			priority: 3,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Assets.registerCollection(bootOptions.assets);
+				const keys = await BB.Assets.registerCollection(bootOptions.assets);
 
+				keys.forEach(key => BB.Assets.setMeta(key, 'source', { type: 'boot' }));
 				return bootOptions;
 			},
 		},
@@ -46,7 +49,10 @@ export const assets: FilterNestedCollection = {
 				const plugins = await BB.Plugins.getAllEnabled();
 
 				for (const plugin of plugins) {
-					await BB.Assets.registerCollection(plugin.assets);
+					const keys = await BB.Assets.registerCollection(plugin.assets);
+					keys.forEach(key =>
+						BB.Assets.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
+					);
 				}
 
 				return bootOptions;

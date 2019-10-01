@@ -7,7 +7,7 @@ import {
 	isBlueBaseModule,
 	isPromise,
 } from '../utils';
-import { Registry } from './Registry';
+import { ItemSource, Registry } from './Registry';
 
 /**
  * BlueBaseModule Registry Item
@@ -20,6 +20,9 @@ export interface BlueBaseModuleRegistryItem<ValueType = any> {
 	 * Registry Item Value.
 	 */
 	value: BlueBaseModule<ValueType>;
+
+	/** The source of this item */
+	source: ItemSource;
 
 	/**
 	 * Preload this value
