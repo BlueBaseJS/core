@@ -19,20 +19,9 @@ export type ComponentRegistryHocItem = (...args: any[]) => React.ComponentType<a
 
 export type ComponentRegistryHocItemWithArgs<T = any> = [Thunk<ComponentRegistryHocItem>, T];
 
-/**
- * Source of this component. Contains information about who registered this component.
- */
-export interface ComponentSource {
-	type: 'plugin' | 'theme' | 'api' | 'custom';
-	key: string;
-}
-
 interface ComponentRegistryItemExtras {
 	/** Higher Order Components. BlueBase will wrap the component during resolution */
 	hocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs>;
-
-	/** The source of this component */
-	source: ComponentSource;
 
 	/** Style rules for this component. May also be a thunk. */
 	styles: MaybeThunk<ComponentStyles>;

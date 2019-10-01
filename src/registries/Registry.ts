@@ -4,6 +4,14 @@ import { BlueBase } from '../BlueBase';
 import isNil from 'lodash.isnil';
 
 /**
+ * Source of this item. Contains information about who registered this it.
+ */
+export interface ItemSource {
+	type: 'plugin' | 'boot' | 'system' | 'custom';
+	key?: string;
+}
+
+/**
  * BlueBase Registry Item
  */
 export interface RegistryItem<ValueType = any> {
@@ -14,6 +22,9 @@ export interface RegistryItem<ValueType = any> {
 	 * Registry Item Value.
 	 */
 	value: ValueType;
+
+	/** The source of this item */
+	source: ItemSource;
 
 	/** Additional Item Data */
 	[key: string]: any;
@@ -143,7 +154,9 @@ export class Registry<
 	 * @param key
 	 * @param props
 	 */
-	public setMeta(key: string, metaKey: string, metaValue: any) {
+	public setMeta(key: string, meta: { [key: string]: any }): void;
+	public setMeta(key: string, metaKey: string, metaValue: any): void;
+	public setMeta(key: string, metaKey: string | { [key: string]: any }, metaValue?: any) {
 		const item = this.get(key);
 
 		// Override existing
@@ -151,9 +164,18 @@ export class Registry<
 			return;
 		}
 
-		return this.data.set(key, {
+		if (typeof metaKey === 'string') {
+			this.data.set(key, {
+				...item,
+				[metaKey]: metaValue,
+			});
+
+			return;
+		}
+
+		this.data.set(key, {
 			...item,
-			[metaKey]: metaValue,
+			...metaKey,
 		});
 	}
 
@@ -211,22 +233,31 @@ export class Registry<
 	 * Register a collection of items.
 	 * @param collection
 	 */
-	public async registerCollection(collection: ItemCollection<ItemInputType> = []) {
+	public async registerCollection(
+		collection: ItemCollection<ItemInputType> = [],
+		meta: { source?: ItemSource; [key: string]: any } = {}
+	) {
+		const keys: string[] = [];
+
 		// If its an array
 		if (Array.isArray(collection)) {
 			for (const item of collection) {
-				await this.register(item);
+				const key = await this.register(item);
+				this.setMeta(key, meta);
+				keys.push(key);
 			}
 
-			return;
+			return keys;
 		}
 		// If its an object
 		else if (collection === Object(collection)) {
 			for (const key of Object.keys(collection)) {
 				await this.register(key, collection[key]);
+				this.setMeta(key, meta);
+				keys.push(key);
 			}
 
-			return;
+			return keys;
 		}
 
 		throw Error('Could not register collection. Reason: Unknown collection type.');
@@ -397,7 +428,10 @@ export class Registry<
 	 */
 	protected createItem(key: string, partial: ItemType | ItemInputType): ItemType {
 		const item = {
-			...(partial as any),
+			source: {
+				type: 'custom',
+			},
+			...partial,
 			key,
 		};
 

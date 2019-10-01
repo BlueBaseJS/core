@@ -13,10 +13,12 @@ import {
 	Subtitle2,
 } from '../../getComponent';
 
+import { BlueBase } from '../../BlueBase';
 import { BlueBaseApp } from '../../';
 import { BlueBaseLightTheme } from '../../themes';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import { createPlugin } from '../../registries';
 
 const theme = BlueBaseLightTheme.value as any;
 
@@ -225,6 +227,50 @@ describe('filters', () => {
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.overline);
 					done();
 				});
+			});
+		});
+
+		describe('input source', () => {
+			it('should set "system" input source for built-in components', async () => {
+				const BB = new BlueBase();
+				await BB.boot();
+
+				const source = BB.Components.getMeta('H1', 'source');
+
+				expect(source.type).toBe('system');
+			});
+
+			it('should set "boot" input source for components added via boot', async () => {
+				const BB = new BlueBase();
+				await BB.boot({
+					components: {
+						Foo: () => null,
+					},
+				});
+
+				const source = BB.Components.getMeta('Foo', 'source');
+
+				expect(source.type).toBe('boot');
+			});
+
+			it('should set "plugin" input source for components added via plugin', async () => {
+				const BB = new BlueBase();
+				await BB.boot({
+					plugins: [
+						createPlugin({
+							key: 'bar',
+
+							components: {
+								Foo: () => null,
+							},
+						}),
+					],
+				});
+
+				const source = BB.Components.getMeta('Foo', 'source');
+
+				expect(source.type).toBe('plugin');
+				expect(source.key).toBe('bar');
 			});
 		});
 	});

@@ -13,7 +13,8 @@ export const configs: FilterNestedCollection = {
 			priority: 2,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
+				const keys = await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
+				keys.forEach(key => BB.Configs.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;
 			},
@@ -27,7 +28,8 @@ export const configs: FilterNestedCollection = {
 			priority: 3,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				await BB.Configs.registerCollection(bootOptions.configs);
+				const keys = await BB.Configs.registerCollection(bootOptions.configs);
+				keys.forEach(key => BB.Configs.setMeta(key, 'source', { type: 'boot' }));
 
 				return bootOptions;
 			},
@@ -48,7 +50,10 @@ export const configs: FilterNestedCollection = {
 					// We just want to make sure we set default configs if certain
 					// configs were not given as input
 
-					BB.Configs.registerCollectionIfNotExists(plugin.defaultConfigs);
+					const keys = await BB.Configs.registerCollectionIfNotExists(plugin.defaultConfigs);
+					keys.forEach(key =>
+						BB.Configs.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
+					);
 				}
 
 				return bootOptions;

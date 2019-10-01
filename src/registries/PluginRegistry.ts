@@ -318,21 +318,25 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param collection
 	 */
 	public async registerCollection(collection: ItemCollection<ItemInputType> = []) {
+		const keys: string[] = [];
+
 		// If its an array
 		if (Array.isArray(collection)) {
 			for (const item of collection) {
-				await this.register(item);
+				const key = await this.register(item);
+				keys.push(key);
 			}
 
-			return;
+			return keys;
 		}
 		// If its an object
 		else if (collection === Object(collection)) {
 			for (const key of Object.keys(collection)) {
 				await this.register(key, collection[key]);
+				keys.push(key);
 			}
 
-			return;
+			return keys;
 		}
 
 		throw Error('Could not register collection. Reason: Unknown collection type.');
