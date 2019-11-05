@@ -10,8 +10,8 @@ This repository includes:
 
 ## Logo / Logo Icon
 
-<img src="logo/logo.png" width="250">
-<img src="logo/blue-base-icon.png" width="200">
+<img src="logos/logo.png" width="250">
+<img src="logos/blue-base-icon.png" width="200">
 
 ## Android Icon
 
