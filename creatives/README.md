@@ -30,7 +30,7 @@ This repository includes:
 <img src="splash-screen/splash.png" width="450">
 
 ## Download Source File
-<a href="https://github.com/BlueEastCode/commi-creatives/blob/commi/commiIcons/Source%20File/logo.ai?raw=true">Download</a>
+<a href="https://github.com/BlueBaseJS/core/blob/bluebase/app-icons/creatives/source-files/logo.ai?raw=true">Download</a>
 
 ## Questions
 _None_
