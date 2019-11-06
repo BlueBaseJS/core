@@ -493,8 +493,12 @@ export class Registry<
 	 * Find one item in a given sequence. Returns the first item found.
 	 * @param keys
 	 */
-	protected findOne(...keys: string[]) {
+	protected findOne(...keys: any[]) {
 		for (const tempKey of keys) {
+			if (typeof tempKey !== 'string') {
+				continue;
+			}
+
 			const item = this.data.get(tempKey);
 
 			if (!isNil(item)) {

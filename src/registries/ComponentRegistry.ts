@@ -11,6 +11,7 @@ import Loadable from 'react-loadable';
 import { ReactLoadableLoading } from '../components/';
 import flowRight from 'lodash.flowright';
 import hoistNonReactStatics from 'hoist-non-react-statics';
+import isNil from 'lodash.isnil';
 
 /**
  * Definition of the HOC
@@ -53,7 +54,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	 * states if required.
 	 * @param keys
 	 */
-	public resolve<T = any>(...keys: string[]): React.ComponentType<T> {
+	public resolve<T = any>(...keys: Array<string | React.ComponentType<T>>): React.ComponentType<T> {
 		const item = this.findOne(...keys);
 
 		if (!item) {
@@ -124,6 +125,29 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	 */
 	public getStyles(key: string): MaybeThunk<ComponentStyles> | undefined {
 		return this.getMeta(key, 'styles');
+	}
+
+	/**
+	 * Find one item in a given sequence. Returns the first item found.
+	 * @param keys
+	 */
+	protected findOne<T = any>(...keys: Array<string | React.ComponentType<T>>) {
+		for (const tempKey of keys) {
+			// If it is a component, just return it as an Unknown component
+			if (this.isInputValue(tempKey)) {
+				return this.createItem('Unknown', { value: tempKey });
+			}
+
+			if (typeof tempKey === 'string') {
+				const item = this.data.get(tempKey);
+
+				if (!isNil(item)) {
+					return item;
+				}
+			}
+		}
+
+		return;
 	}
 
 	/**
