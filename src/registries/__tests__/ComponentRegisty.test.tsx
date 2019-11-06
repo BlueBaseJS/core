@@ -447,4 +447,108 @@ describe('ComponentRegistry', () => {
 			expect(Components.getStyles('Button')).toBe(undefined);
 		});
 	});
+
+	describe('.findOne method', () => {
+		it('should resolve a single value', async () => {
+			const BB = new BlueBase();
+			const registry = new ComponentRegistry(BB);
+
+			const TestComponent = () => null;
+			(TestComponent as any).displayName = 'TestComponent';
+
+			await registry.register('a', TestComponent);
+
+			const Component = await (registry as any).findOne('a').value;
+
+			expect(Component.displayName).toBe('TestComponent');
+		});
+
+		it('should resolve a single fallback value, if initial ones are not find', async () => {
+			const BB = new BlueBase();
+			const registry = new ComponentRegistry(BB);
+
+			const TestComponent1 = () => null;
+			(TestComponent1 as any).displayName = 'TestComponent1';
+
+			const TestComponent2 = () => null;
+			(TestComponent2 as any).displayName = 'TestComponent2';
+
+			const TestComponent3 = () => null;
+			(TestComponent3 as any).displayName = 'TestComponent3';
+
+			await registry.register('a', TestComponent1);
+			await registry.register('b', TestComponent2);
+			await registry.register('c', TestComponent3);
+
+			const Component = await (registry as any).findOne('d', 'c').value;
+
+			expect(Component.displayName).toBe('TestComponent3');
+		});
+
+		it('should return a component as is', async () => {
+			const BB = new BlueBase();
+			const registry = new ComponentRegistry(BB);
+
+			const TestComponent1 = () => null;
+			(TestComponent1 as any).displayName = 'TestComponent1';
+
+			const TestComponent2 = () => null;
+			(TestComponent2 as any).displayName = 'TestComponent2';
+
+			const TestComponent3 = () => null;
+			(TestComponent3 as any).displayName = 'TestComponent3';
+
+			await registry.register('a', TestComponent1);
+			// await registry.register('b', TestComponent2);
+			await registry.register('c', TestComponent3);
+
+			const Component = await (registry as any).findOne('d', TestComponent2, 'c').value;
+
+			expect(Component.displayName).toBe('TestComponent2');
+		});
+
+		it('should return undefined if no values are found', async () => {
+			const BB = new BlueBase();
+			const registry = new ComponentRegistry(BB);
+
+			const TestComponent1 = () => null;
+			(TestComponent1 as any).displayName = 'TestComponent1';
+
+			const TestComponent2 = () => null;
+			(TestComponent2 as any).displayName = 'TestComponent2';
+
+			const TestComponent3 = () => null;
+			(TestComponent3 as any).displayName = 'TestComponent3';
+
+			await registry.register('a', TestComponent1);
+			await registry.register('b', TestComponent2);
+			await registry.register('c', TestComponent3);
+
+			const Component = (registry as any).findOne('d', 'e', 'f');
+
+			expect(Component).toBeUndefined();
+		});
+
+		it('should ignore unknown types', async () => {
+			const BB = new BlueBase();
+			const registry = new ComponentRegistry(BB);
+
+			const TestComponent1 = () => null;
+			(TestComponent1 as any).displayName = 'TestComponent1';
+
+			const TestComponent2 = () => null;
+			(TestComponent2 as any).displayName = 'TestComponent2';
+
+			const TestComponent3 = () => null;
+			(TestComponent3 as any).displayName = 'TestComponent3';
+
+			await registry.register('a', TestComponent1);
+			await registry.register('b', TestComponent2);
+			await registry.register('c', TestComponent3);
+
+			const Component = await (registry as any).findOne(5, 'd', 'c').value;
+
+			expect(Component.displayName).toBe('TestComponent3');
+		});
+	});
 });

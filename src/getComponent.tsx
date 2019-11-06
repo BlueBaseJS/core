@@ -41,7 +41,9 @@ export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps }
  *
  * @param keys
  */
-export function getComponent<T = any>(...keys: string[]): React.ComponentType<T> {
+export function getComponent<T = any>(
+	...keys: Array<string | React.ComponentType<any>>
+): React.ComponentType<T> {
 	if (keys.length === 0) {
 		throw Error('getComponent method needs at least one key');
 	}

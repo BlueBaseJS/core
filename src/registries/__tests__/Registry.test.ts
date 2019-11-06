@@ -583,4 +583,46 @@ describe('Registry', () => {
 	// 	});
 
 	// });
+
+	describe('.findOne method', () => {
+		it('should resolve a single value', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<number>>(BB);
+
+			registry.setValue('a', 1);
+			registry.setValue('b', 2);
+			registry.setValue('c', 3);
+
+			expect((registry as any).findOne('a').value).toBe(1);
+		});
+
+		it('should resolve a single fallback value, if initial ones are not find', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<number>>(BB);
+
+			registry.setValue('a', 1);
+			registry.setValue('b', 2);
+			registry.setValue('c', 3);
+
+			expect((registry as any).findOne('d', 'c').value).toBe(3);
+		});
+
+		it('should ignore non string values', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<number>>(BB);
+
+			registry.setValue('a', 1);
+			registry.setValue('b', 2);
+			registry.setValue('c', 3);
+
+			expect((registry as any).findOne('d', 5, 'c').value).toBe(3);
+		});
+
+		it('should return undefined if no values are found', async () => {
+			const BB = new BlueBase();
+			const registry = new Registry<RegistryItem<number>>(BB);
+
+			expect((registry as any).findOne('d', 5, 'c')).toBeUndefined();
+		});
+	});
 });
