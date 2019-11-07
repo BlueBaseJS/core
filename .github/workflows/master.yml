@@ -12,69 +12,46 @@ jobs:
   test:
     name: Test, Build & Release
     runs-on: ubuntu-latest
+    container: 
+      image: bluebasejs/github-actions-image
 
     strategy:
       matrix:
         node-version: [12]
-
+        
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@master
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-
+      - name: Reconstruct NPMRC       
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//benpm.mevris.io/:_authToken='${NPM_TOKEN}'" > .npmrc
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
+          echo "@mevris:registry=http://benpm.mevris.io" >> .npmrc
+          
       - name: Install Dependencies
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
-        uses: Borales/actions-yarn@master
-        with:
-          args: install
+        run: yarn install
 
-      - name: Unit Tests (Jest)
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
-        uses: Borales/actions-yarn@master
-        with:
-          args: test:only --coverage --logHeapUsage --ci
+      - name: Unit Tests
+        run: yarn test:only --coverage --logHeapUsage --ci
 
       - name: Test Lint
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
-        uses: Borales/actions-yarn@master
-        with:
-          args: test:lint
+        run: yarn test:lint
 
       - name: Test Prettier
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
-        uses: Borales/actions-yarn@master
-        with:
-          args: test:prettier
+        run: yarn test:prettier
 
       - name: Build
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
-        uses: Borales/actions-yarn@master
-        with:
-          args: build
+        run: yarn build
 
       - name: Semantic Release
         run: npx semantic-release@beta
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Remove .npmrc
-        run: sudo touch .npmrc; sudo rm .npmrc
 
       - name: Build Docs
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
-        uses: Borales/actions-yarn@master
-        with:
-          args: doc
+        run: yarn run doc
 
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v2.2.0
