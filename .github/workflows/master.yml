@@ -21,14 +21,6 @@ jobs:
         
     steps:
       - uses: actions/checkout@master
-
-      - name: Reconstruct NPMRC       
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo "//benpm.mevris.io/:_authToken='${NPM_TOKEN}'" > .npmrc
-          echo "registry=https://registry.npmjs.org/" >> .npmrc
-          echo "@mevris:registry=http://benpm.mevris.io" >> .npmrc
           
       - name: Install Dependencies
         run: yarn install
@@ -46,10 +38,10 @@ jobs:
         run: yarn build
 
       - name: Semantic Release
-        run: npx semantic-release@beta
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release@beta
 
       - name: Build Docs
         run: yarn run doc
