@@ -1,3 +1,9 @@
+# [5.3.0-alpha.1](https://github.com/BlueBaseJS/core/compare/v5.2.0...v5.3.0-alpha.1@alpha) (2019-11-12)
+
+### Features
+
+-   **expo:** updated expo ([ebe32b6](https://github.com/BlueBaseJS/core/commit/ebe32b6))
+
 # [5.2.0](https://github.com/BlueBaseJS/core/compare/v5.1.0...v5.2.0) (2019-11-07)
 
 ### Bug Fixes
