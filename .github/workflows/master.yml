@@ -6,22 +6,25 @@ on:
   push:
     # Sequence of patterns matched against refs/heads
     branches:
-      - "master" # Push events on master branch
+      - 'master' # Push events on master branch
+      - 'next' # Push events on staging branch
+      - 'alpha' # Push events on alpha branch
+      - 'beta' # Push events on beta branch
 
 jobs:
   test:
     name: Test, Build & Release
     runs-on: ubuntu-latest
-    container: 
+    container:
       image: bluebasejs/github-actions-image
 
     strategy:
       matrix:
         node-version: [12]
-        
+
     steps:
       - uses: actions/checkout@master
-          
+
       - name: Install Dependencies
         run: yarn install
 

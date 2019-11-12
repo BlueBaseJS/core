@@ -9,29 +9,32 @@ on:
       - '*' # Push events on all branchs
       - '*/*'
       - '!master' # Exclude master
+      - '!next' # Exclude next
+      - '!alpha' # Exclude alpha
+      - '!beta' # Exclude beta
 
 jobs:
   test:
     name: Test, Build & Release
     runs-on: ubuntu-latest
-    container: 
+    container:
       image: bluebasejs/github-actions-image
 
     strategy:
       matrix:
         node-version: [12]
-        
+
     steps:
       - uses: actions/checkout@master
 
-      - name: Reconstruct NPMRC       
+      - name: Reconstruct NPMRC
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "//benpm.mevris.io/:_authToken='${NPM_TOKEN}'" > .npmrc
           echo "registry=https://registry.npmjs.org/" >> .npmrc
           echo "@mevris:registry=http://benpm.mevris.io" >> .npmrc
-          
+
       - name: Install Dependencies
         run: yarn install
 
