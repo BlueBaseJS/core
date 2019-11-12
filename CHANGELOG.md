@@ -1,3 +1,9 @@
+# [5.3.0-alpha.3](https://github.com/BlueBaseJS/core/compare/v5.3.0-alpha.2@alpha...v5.3.0-alpha.3@alpha) (2019-11-12)
+
+### Bug Fixes
+
+-   **workflow:** workflow ([1ca54c7](https://github.com/BlueBaseJS/core/commit/1ca54c7))
+
 # [5.3.0-alpha.2](https://github.com/BlueBaseJS/core/compare/v5.3.0-alpha.1@alpha...v5.3.0-alpha.2@alpha) (2019-11-12)
 
 ### Bug Fixes
