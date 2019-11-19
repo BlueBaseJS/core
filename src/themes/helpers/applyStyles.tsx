@@ -1,17 +1,20 @@
 import { ComponentStyles, ThemeValue } from '../structure/Theme';
 import { MaybeThunk, resolveThunk } from '../../utils';
+
 import React from 'react';
 import { ThemeContext } from '..';
 import { buildTheme } from './buildTheme';
 import deepmerge from 'deepmerge';
 import isNil from 'lodash.isnil';
 
-export type ComponentWithDefaultStyles = React.ComponentType<any> & { defaultStyles?: ComponentStyles };
+export type ComponentWithDefaultStyles = React.ComponentType<any> & {
+	defaultStyles?: ComponentStyles;
+};
 
 export interface ThemedComponentProps {
-	styles: ComponentStyles,
+	styles: ComponentStyles;
 
-	[key: string]: any,
+	[key: string]: any;
 }
 
 /**
@@ -31,21 +34,17 @@ export interface ThemedComponentProps {
  * @param Component
  * @param stylesParam
  */
-export const applyStyles = (
-	{ name, styles: stylesParam }: {
-		name?: string,
-		styles?: MaybeThunk<ComponentStyles>
-	} = {}
-) => (Component: ComponentWithDefaultStyles)
-: React.ComponentType<any> =>
-{
-
+export const applyStyles = ({
+	name,
+	styles: stylesParam,
+}: {
+	name?: string;
+	styles?: MaybeThunk<ComponentStyles>;
+} = {}) => (Component: ComponentWithDefaultStyles): React.ComponentType<any> => {
 	return class ThemedComponent extends React.Component<ThemedComponentProps> {
-
 		static contextType = ThemeContext;
 
 		render() {
-
 			const context: { theme: ThemeValue } = this.context;
 			const { styles: stylesProp, ...rest } = this.props;
 
@@ -67,16 +66,11 @@ export const applyStyles = (
 			}
 
 			// Put all style rules in an array
-			const stylesArr: any[] = [
-				defaultStyles,
-				stylesParam,
-				themedStyles,
-				stylesProp,
-			]
-			// Remove those styles which are nil
-			.filter(a => !isNil(a))
-			// If any item is a thunk, resolve it
-			.map(a => a && resolveThunk(a, theme));
+			const stylesArr: any[] = [defaultStyles, stylesParam, themedStyles, stylesProp]
+				// Remove those styles which are nil
+				.filter(a => !isNil(a))
+				// If any item is a thunk, resolve it
+				.map(a => a && resolveThunk(a, theme, rest));
 
 			// Merge all into a single object
 			const styles = deepmerge.all(stylesArr);
