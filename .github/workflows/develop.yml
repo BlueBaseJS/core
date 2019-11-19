@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "//benpm.mevris.io/:_authToken='${NPM_TOKEN}'" > .npmrc
           echo "registry=https://registry.npmjs.org/" >> .npmrc
-          echo "@bluebase:registry=http://benpm.mevris.io" >> .npmrc
+        
           
           
       - name: Install Dependencies
