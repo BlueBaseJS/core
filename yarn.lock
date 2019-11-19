@@ -991,9 +991,9 @@
     react-native-web "^0.11.4"
     webpack "^4.28.2"
 
-"@bluebase/code-standards@^2.2.4":
+"@bluebase/code-standards@2.2.4":
   version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@bluebase/code-standards/-/code-standards-2.2.4.tgz#736b1a42fa39d5165b5ff988ad4280381e5d86ba"
+  resolved "http://benpm.mevris.io/@bluebase%2fcode-standards/-/code-standards-2.2.4.tgz#736b1a42fa39d5165b5ff988ad4280381e5d86ba"
   integrity sha512-NExz01+4yyT0cc7UN9bZjpBFFWp9S4ekThvYZV5uiMwPDi0vqzLsxQp+XwRWjWngVdAeLR7n3I8TSBpR8ADlUA==
   dependencies:
     "@babel/plugin-proposal-object-rest-spread" "^7.2.0"
