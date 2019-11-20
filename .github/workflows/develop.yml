@@ -22,16 +22,8 @@ jobs:
         node-version: [12]
         
     steps:
-      - uses: actions/checkout@master
-
-      - name: Reconstruct NPMRC       
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          echo "//benpm.mevris.io/:_authToken='${NPM_TOKEN}'" > .npmrc
-          echo "registry=https://registry.npmjs.org/" >> .npmrc
-          echo "@mevris:registry=http://benpm.mevris.io" >> .npmrc
-          
+      - uses: actions/checkout@master  
+                
       - name: Install Dependencies
         run: yarn install
 
