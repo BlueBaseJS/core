@@ -1,3 +1,9 @@
+## [5.3.1](https://github.com/BlueBaseJS/core/compare/v5.3.0...v5.3.1) (2019-11-22)
+
+### Bug Fixes
+
+-   **workflow:** fixed build docs step ([2d5d9e1](https://github.com/BlueBaseJS/core/commit/2d5d9e1))
+
 # [5.3.0](https://github.com/BlueBaseJS/core/compare/v5.2.0...v5.3.0) (2019-11-22)
 
 ### Bug Fixes
