@@ -39,6 +39,7 @@ jobs:
 
       - name: Semantic Release
         env:
+          GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
           GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release@beta
