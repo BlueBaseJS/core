@@ -1,3 +1,16 @@
+# [5.3.0](https://github.com/BlueBaseJS/core/compare/v5.2.0...v5.3.0) (2019-11-22)
+
+### Bug Fixes
+
+-   **add npmrc file :** add npmrc registry ([c5e7815](https://github.com/BlueBaseJS/core/commit/c5e7815))
+-   **npmrc:** removed npmrc ([e327b4e](https://github.com/BlueBaseJS/core/commit/e327b4e))
+-   **workflow:** updated environment variable ([c767876](https://github.com/BlueBaseJS/core/commit/c767876))
+-   **workflow:** using git credentials for @semantic-release/git ([3637f20](https://github.com/BlueBaseJS/core/commit/3637f20))
+
+### Features
+
+-   **applyStyles:** defaultStyles fn gets props as second param ([2a169c2](https://github.com/BlueBaseJS/core/commit/2a169c2))
+
 # [5.2.0](https://github.com/BlueBaseJS/core/compare/v5.1.0...v5.2.0) (2019-11-07)
 
 ### Bug Fixes
