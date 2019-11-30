@@ -176,7 +176,8 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		return (
 			isBlueBaseModule(value) ||
 			typeof value === 'function' ||
-			(typeof value === 'object' && typeof value.render === 'function')
+			(typeof value === 'object' && typeof value.render === 'function') ||
+			(typeof value === 'object' && !!value.type)
 		);
 	}
 }
