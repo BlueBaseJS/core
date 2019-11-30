@@ -1,4 +1,4 @@
-import { ErrorState, LoadingState } from '../getComponent';
+import { ErrorState, LoadingState, WaitObserver } from '../getComponent';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { BlueBase } from '../BlueBase';
@@ -122,13 +122,16 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
 	loadTheme();
 
-	console.log('theme');
 	if (error) {
 		return <ErrorState error={error} retry={loadTheme} />;
 	}
 
 	if (loading) {
-		return <LoadingState retry={loadTheme} />;
+		return (
+			<WaitObserver>
+				<LoadingState retry={loadTheme} />
+			</WaitObserver>
+		);
 	}
 
 	if (!theme) {

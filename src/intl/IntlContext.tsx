@@ -1,4 +1,4 @@
-import { ErrorState, LoadingState } from '../getComponent';
+import { ErrorState, LoadingState, WaitObserver } from '../getComponent';
 import React, { createContext, useContext } from 'react';
 import { useFilter, useRtl } from '../hooks';
 
@@ -73,7 +73,11 @@ export const IntlProvider = (props: IntlProviderProps) => {
 	}
 
 	if (loading) {
-		return <LoadingState retry={retry} />;
+		return (
+			<WaitObserver>
+				<LoadingState retry={retry} />
+			</WaitObserver>
+		);
 	}
 
 	const value: IntlContextData = {
