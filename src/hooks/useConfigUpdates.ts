@@ -1,23 +1,24 @@
-import { RegistryItem, RegistrySubscriptionFn } from '../registries';
-
+import { RegistryItem } from '../registries';
 import { useBlueBase } from './useBlueBase';
 import { useEffect } from 'react';
 
 export function useConfigUpdates(
 	key: string,
-	callback: RegistrySubscriptionFn<RegistryItem<any>>,
+	callback: (value: any, item: RegistryItem<any>, cancelled: boolean) => void,
 	deps?: readonly any[]
 ) {
 	const BB = useBlueBase();
 
-	let subscriptionId: string;
-
 	useEffect(() => {
+		let subscriptionId: string;
+		let cancelled = false;
+
 		// Subscribe
-		subscriptionId = BB.Configs.subscribe(key, callback);
+		subscriptionId = BB.Configs.subscribe(key, (value, item) => callback(value, item, cancelled));
 
 		// Unsubscribe from config updates
 		return () => {
+			cancelled = true;
 			BB.Configs.unsubscribe(key, subscriptionId);
 		};
 	}, deps);

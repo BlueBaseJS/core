@@ -1,11 +1,12 @@
 import { ErrorState, LoadingState } from '../getComponent';
-import React, { createContext } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { BlueBase } from '../BlueBase';
 import { BlueBaseContext } from '../Context';
 import { Theme } from '../registries';
 import { ThemeValueInput } from './structure';
-import deepmerge from 'deepmerge';
+import { merge } from '../utils';
+import { useConfigUpdates } from '../hooks';
 
 /**
  * Props of the `ThemeProvider` component.
@@ -55,90 +56,91 @@ export const ThemeConsumer = ThemeContext.Consumer;
 /**
  * 🎨 ThemeProvider
  */
-export class ThemeProvider extends React.Component<ThemeProviderProps, ThemeProviderState> {
-	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
-	readonly state: ThemeProviderState = {
-		loading: true,
-	};
+export const ThemeProvider = (props: ThemeProviderProps) => {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<Error | undefined>();
+	const [theme, setThemeState] = useState<Theme | undefined>();
 
-	/** Stores configuration subscription ID */
-	private subscriptionId?: string;
-
-	async componentWillMount() {
-		const BB: BlueBase = (this as any).context;
-		const { theme, overrides = {} } = this.props;
-
-		this.setTheme(theme, overrides, BB);
-
-		// Subscribe to theme config updates
-		if (!theme) {
-			this.subscriptionId = BB.Configs.subscribe('theme.name', value => {
-				this.setTheme(value, overrides, BB);
-			});
-		}
-	}
-
-	componentWillUnmount() {
-		const BB: BlueBase = (this as any).context;
-
-		// Unsubscribe from theme config updates
-		if (this.subscriptionId) {
-			BB.Configs.unsubscribe('theme.name', this.subscriptionId);
-			delete this.subscriptionId;
-		}
-	}
+	const BB: BlueBase = useContext(BlueBaseContext);
+	const name = props.theme || BB.Configs.getValue('theme.name');
+	const overrides = props.overrides || {};
 
 	/**
 	 * Sets a theme to Provider's state. If a theme key is given, it is used,
 	 * otherwise global theme is used.
 	 *
 	 * @param slug
-	 * @param BB
+	 * @param overrides
 	 */
-	async setTheme(slug: string | undefined, overrides: ThemeValueInput = {}, BB: BlueBase) {
-		if (this.state.loading !== true) {
-			this.setState({ loading: true });
+	async function setTheme(slug: string, cancelled: boolean) {
+		if (loading !== true) {
+			setLoading(true);
 		}
-
-		const key = slug || BB.Configs.getValue('theme.name');
 
 		try {
-			const theme = await BB.Themes.resolve(key);
-			this.setState({ theme: deepmerge(theme, overrides) as Theme, loading: false });
+			const resolvedTheme = await BB.Themes.resolve(slug);
+
+			if (cancelled) {
+				return;
+			}
+
+			setThemeState(merge(resolvedTheme, overrides) as Theme);
+			setLoading(false);
 		} catch (error) {
-			this.setState({
-				error: Error(`Could not change theme. Reason: Theme with the key "${key}" does not exist.`),
-				loading: false,
-			});
+			if (cancelled) {
+				return;
+			}
+
+			setError(
+				Error(`Could not change theme. Reason: Theme with the key "${slug}" does not exist.`)
+			);
+			setLoading(false);
 		}
 	}
 
-	render() {
-		const BB: BlueBase = (this as any).context;
-		const { loading, error, theme } = this.state;
+	useConfigUpdates(
+		'theme.name',
+		(themeName: string, _i: any, cancelled: boolean) => setTheme(themeName, cancelled),
+		[theme]
+	);
 
-		const retry = () => this.setTheme(this.props.theme, this.props.overrides, BB);
+	function loadTheme() {
+		useEffect(() => {
+			if (theme && theme.key === name) {
+				return;
+			}
 
-		if (error) {
-			return <ErrorState error={error} retry={retry} />;
-		}
+			let cancelled = false;
+			setTheme(name, cancelled);
 
-		if (loading) {
-			return <LoadingState retry={retry} />;
-		}
-
-		if (!theme) {
-			return <ErrorState error={Error('Could not load theme.')} />;
-		}
-
-		const value: ThemeContextData = {
-			changeTheme: (slug: string) => {
-				BB.Configs.setValue('theme.name', slug);
-			},
-			theme,
-		};
-
-		return <ThemeContext.Provider value={value} children={this.props.children} />;
+			return () => {
+				cancelled = true;
+			};
+		});
 	}
-}
+
+	loadTheme();
+
+	console.log('theme');
+	if (error) {
+		return <ErrorState error={error} retry={loadTheme} />;
+	}
+
+	if (loading) {
+		return <LoadingState retry={loadTheme} />;
+	}
+
+	if (!theme) {
+		return <ErrorState error={Error('Could not load theme.')} retry={loadTheme} />;
+	}
+
+	const value: ThemeContextData = {
+		changeTheme: (slug: string) => {
+			BB.Configs.setValue('theme.name', slug);
+		},
+		theme,
+	};
+
+	return <ThemeContext.Provider value={value} children={props.children} />;
+};
