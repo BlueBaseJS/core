@@ -410,15 +410,11 @@ export class Registry<
 		}
 
 		if (!subscriptions.get(subscriptionId)) {
-			// tslint:disable-next-line
-			throw Error(
-				`Could not unsubscribe from a registry item. Reason: No subscription with id "${subscriptionId}" registered.`
-			);
+			return;
 		}
 
 		subscriptions.delete(subscriptionId);
-
-		this.subscriptions.set(key, subscriptions);
+		// this.subscriptions.set(key, subscriptions);
 	}
 
 	/**

@@ -1016,10 +1016,10 @@
     tslint-react "^3.6.0"
     typescript "^3.1.4"
 
-"@bluebase/components@^5.15.3":
-  version "5.15.3"
-  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-5.15.3.tgz#b8109f049a9428527c5cc4be0fec1df70f190f34"
-  integrity sha512-YArXlkZD4eAB9IA2psgsor1defEiUnh9JT5F71gr60dYulfDKBnEogOUiztgavE5tm6qwd275+ZB8mOO5NYT9A==
+"@bluebase/components@^5.20.0":
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-5.20.0.tgz#4441d4f50d65dd189e74f11c0b8d4b8edc3fce23"
+  integrity sha512-U8iTuK1msm8gjGdQTT3LjaXhszCivAmaSM2Eel/8kENSqBL4HeAjToSpOkjA1xGYpq/dWhMlvBlX8FEpZ/psWA==
   dependencies:
     deepmerge "^3.2.0"
     tslib "^1.9.3"
@@ -7951,6 +7951,13 @@ hoist-non-react-statics@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
   integrity sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
+  dependencies:
+    react-is "^16.7.0"
+
+hoist-non-react-statics@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#101685d3aff3b23ea213163f6e8e12f4f111e19f"
+  integrity sha512-wbg3bpgA/ZqWrZuMOeJi8+SKMhr7X9TesL/rXMjTzh0p0JUBo3II8DHboYbuIXWRlttrUFxwcu/5kygrCw8fJw==
   dependencies:
     react-is "^16.7.0"
 
