@@ -1,18 +1,6 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+
 import { WaitObserverProps } from '@bluebase/components';
-
-interface WaitObserverState {
-
-	/**
-	 * Flag that tells if we have waited more time than specified in the delay prop
-	 */
-	readonly pastDelay: boolean,
-
-	/**
-	 * Flag that tells if waiting has timedout
-	 */
-	readonly timedOut: boolean,
-}
 
 /**
  * # ⏰ WaitObserver
@@ -36,84 +24,82 @@ interface WaitObserverState {
  * />
  * ```
  */
-export class WaitObserver extends React.PureComponent<WaitObserverProps, WaitObserverState> {
+export const WaitObserver = (props: WaitObserverProps) => {
+	const [pastDelay, setPastDelay] = useState(false);
+	const [timedOut, setTimedOut] = useState(false);
 
-	public static defaultProps: Partial<WaitObserverProps> = {
-		delay: 200,
-		onRetry: () => { return; },
-		onTimeout: () => { return; },
-	};
+	let _delay: any;
+	let _timeout: any;
 
-	readonly state: WaitObserverState = {
-		pastDelay: false,
-		timedOut: false,
-	};
-
-	private _delay?: any;
-	private _timeout?: any;
-
-	componentWillMount() {
-		this.init();
-	}
-
-	componentWillUnmount() {
-		this.clearTimeouts();
-	}
-
-	render() {
-		if (this.state.pastDelay) {
-
-			const { children } = this.props;
-
-			if (typeof children === 'function') {
-				return (children as any)({
-					retry: this.retry,
-					timedOut: this.state.timedOut,
-				});
-			}
-
-			return children;
-
-		} else {
-			return null;
-		}
-	}
-
-	private init() {
-		if (typeof this.props.delay === 'number') {
-			if (this.props.delay === 0) {
-				this.setState({ pastDelay: true });
+	function init() {
+		if (typeof props.delay === 'number') {
+			if (props.delay === 0) {
+				setPastDelay(true);
 			} else {
-				this._delay = setTimeout(() => {
-					this.setState({ pastDelay: true });
-				}, this.props.delay);
+				_delay = setTimeout(() => {
+					setPastDelay(true);
+				}, props.delay);
 			}
 		}
 
-		if (typeof this.props.timeout === 'number') {
-			this._timeout = setTimeout(() => {
-				if (this.props.onTimeout) {
-					this.props.onTimeout();
+		if (typeof props.timeout === 'number') {
+			_timeout = setTimeout(() => {
+				if (props.onTimeout) {
+					props.onTimeout();
 				}
-				this.setState({ timedOut: true });
-			}, this.props.timeout);
+				setTimedOut(true);
+			}, props.timeout);
 		}
 	}
 
-	private clearTimeouts() {
-		if (this._delay) {
-			clearTimeout(this._delay);
+	function clearTimeouts() {
+		if (_delay) {
+			clearTimeout(_delay);
 		}
-		if (this._timeout) {
-			clearTimeout(this._timeout);
+		if (_timeout) {
+			clearTimeout(_timeout);
 		}
 	}
 
-	private retry = () => {
-		if (this.props.onRetry) {
-			this.props.onRetry();
+	function retry() {
+		if (props.onRetry) {
+			props.onRetry();
 		}
-		this.setState({ timedOut: false });
-		this.init();
+		setTimedOut(false);
+		init();
 	}
-}
+
+	useEffect(() => {
+		init();
+
+		return clearTimeouts;
+	});
+
+	if (pastDelay) {
+		const { children } = props;
+
+		if (typeof children === 'function') {
+			return children({
+				retry,
+				timedOut,
+			});
+		}
+
+		return children;
+	}
+
+	return null;
+};
+
+const defaultProps: Partial<WaitObserverProps> = {
+	delay: 200,
+	onRetry: () => {
+		return;
+	},
+	onTimeout: () => {
+		return;
+	},
+};
+
+WaitObserver.defaultProps = defaultProps;
+WaitObserver.displayName = 'WaitObserver';
