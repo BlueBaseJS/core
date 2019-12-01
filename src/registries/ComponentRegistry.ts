@@ -71,7 +71,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		// Do we apply styles and theming to this component?
 		if (item.applyStyles === true) {
 			// If yes, then append applyStyles hoc
-			themedComponent = applyStyles({ name: item.key, styles: item.styles })(rawComponent);
+			themedComponent = applyStyles(item.key)(rawComponent);
 		}
 
 		// HOCs
