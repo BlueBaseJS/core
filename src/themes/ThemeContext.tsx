@@ -5,7 +5,7 @@ import { BlueBaseContext } from '../Context';
 import { Theme } from '../registries';
 import { ThemeValueInput } from './structure';
 import { buildTheme } from './helpers';
-import { merge } from '../utils';
+import deepmerge from 'deepmerge';
 import { useConfig } from '../hooks';
 
 /**
@@ -56,9 +56,10 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
 	const [themeName, setThemeName] = useConfig('theme.name');
 	const [mode] = useConfig('theme.mode');
+	const [overridesConfig] = useConfig('theme.overrides');
 
 	const name = props.theme || themeName;
-	const overrides = props.overrides || {};
+	const overrides = deepmerge.all([{}, overridesConfig || {}, props.overrides || {}]);
 
 	const DEFAULT_THEME = buildTheme(mode)({ value: overrides });
 
@@ -76,7 +77,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 			const resolvedTheme = await BB.Themes.resolve(slug);
 
 			if (!cancelled) {
-				setThemeState(merge(resolvedTheme, overrides) as Theme);
+				setThemeState(deepmerge(resolvedTheme, overrides) as Theme);
 			}
 		} catch (error) {
 			BB.Logger.warn(
