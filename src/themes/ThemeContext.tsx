@@ -58,13 +58,13 @@ export const ThemeConsumer = ThemeContext.Consumer;
  */
 
 export const ThemeProvider = (props: ThemeProviderProps) => {
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<Error | undefined>();
-	const [theme, setThemeState] = useState<Theme | undefined>();
-
 	const BB: BlueBase = useContext(BlueBaseContext);
 	const name = props.theme || BB.Configs.getValue('theme.name');
 	const overrides = props.overrides || {};
+
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<Error>();
+	const [theme, setThemeState] = useState<Theme>();
 
 	/**
 	 * Sets a theme to Provider's state. If a theme key is given, it is used,
@@ -107,7 +107,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 
 	function loadTheme() {
 		useEffect(() => {
-			if (theme && theme.key === name) {
+			if ((theme && theme.key === name) || error) {
 				return;
 			}
 
@@ -120,22 +120,26 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 		});
 	}
 
+	const retry = () => {
+		setError(undefined);
+	};
+
 	loadTheme();
 
 	if (error) {
-		return <ErrorState error={error} retry={loadTheme} />;
+		return <ErrorState error={error} retry={retry} />;
 	}
 
 	if (loading) {
 		return (
 			<WaitObserver>
-				<LoadingState retry={loadTheme} />
+				<LoadingState retry={retry} />
 			</WaitObserver>
 		);
 	}
 
 	if (!theme) {
-		return <ErrorState error={Error('Could not load theme.')} retry={loadTheme} />;
+		return <ErrorState error={Error('Could not load theme.')} retry={retry} />;
 	}
 
 	const value: ThemeContextData = {

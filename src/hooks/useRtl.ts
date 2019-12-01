@@ -1,5 +1,4 @@
-import { BlueBaseDefaultConfigs, Configs } from '../Configs';
-
+import { Configs } from '../Configs';
 import { I18nManager } from 'react-native';
 import rtlDetect from 'rtl-detect';
 import { useBlueBase } from './useBlueBase';
@@ -10,7 +9,7 @@ export function useRtl() {
 	const BB = useBlueBase();
 
 	const [rtl, setRtl] = useState(false);
-	const [directionState, setDirectionState] = useState(BlueBaseDefaultConfigs.direction);
+	const [directionState, setDirectionState] = useState(BB.Configs.getValue('direction'));
 
 	/**
 	 * Sets a theme to Provider's state. If a theme key is given, it is used,
@@ -47,10 +46,12 @@ export function useRtl() {
 		setRtl(shouldBeRtl);
 	}
 
-	updateDirection();
+	if (BB.Configs.getValue('direction') !== directionState) {
+		updateDirection();
+	}
 
 	useConfigUpdates('direction', updateDirection);
-	useConfigUpdates('locale', updateDirection);
+	useConfigUpdates('locale', () => updateDirection());
 
 	return {
 		direction: directionState,
