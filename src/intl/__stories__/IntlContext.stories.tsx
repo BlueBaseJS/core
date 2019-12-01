@@ -7,6 +7,7 @@ import { LocalePicker } from './LocalePicker';
 import React from 'react';
 import { View } from 'react-native';
 import storiesOf from '@bluebase/storybook-addon';
+import wait from 'waait';
 
 const filters = {
 	'bluebase.intl.messages.ur': (messages: IntlMessages) => ({
@@ -15,10 +16,29 @@ const filters = {
 	}),
 };
 
+const filtersLate = {
+	'bluebase.intl.messages.ur': async (messages: IntlMessages) => {
+		await wait(2000);
+		return {
+			...messages,
+			'Hello! 👋': 'ہیلو! 👋',
+		};
+	},
+};
+
 storiesOf('IntlContext', module)
 	.add('Locale', () => (
 		<BlueBaseApp filters={filters}>
-			<View>
+			<View style={{ padding: 40 }}>
+				<LocalePicker />
+				<FormattedMessage component={H5}>Hello! 👋</FormattedMessage>
+				<FormattedMessage style={{ color: 'blue' }}>How are you?</FormattedMessage>
+			</View>
+		</BlueBaseApp>
+	))
+	.add('Delayed translation', () => (
+		<BlueBaseApp filters={filtersLate} configs={{ locale: 'ur' }}>
+			<View style={{ padding: 40 }}>
 				<LocalePicker />
 				<FormattedMessage component={H5}>Hello! 👋</FormattedMessage>
 				<FormattedMessage style={{ color: 'blue' }}>How are you?</FormattedMessage>
@@ -28,7 +48,7 @@ storiesOf('IntlContext', module)
 
 	.add('Direction', () => (
 		<BlueBaseApp filters={filters}>
-			<View>
+			<View style={{ padding: 40 }}>
 				<DirectionPicker />
 				<LocalePicker />
 				<View style={{ flexDirection: 'row' }}>

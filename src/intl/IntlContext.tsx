@@ -1,9 +1,6 @@
-import { ErrorState, LoadingState, WaitObserver } from '../getComponent';
-import React, { createContext, useContext } from 'react';
+import React, { createContext } from 'react';
 import { useFilter, useRtl } from '../hooks';
 
-import { BlueBase } from '../BlueBase';
-import { BlueBaseContext } from '../Context';
 import { Configs } from '../Configs';
 import { useLocale } from '../hooks/useLocale';
 
@@ -54,40 +51,18 @@ export const IntlConsumer = IntlContext.Consumer;
  * 🈯️ IntlProvider
  */
 export const IntlProvider = (props: IntlProviderProps) => {
-	const BB: BlueBase = useContext(BlueBaseContext);
-
 	const [locale, setLocale] = useLocale();
-	const { rtl, direction } = useRtl();
+	const { rtl, direction, setDirection } = useRtl();
 
 	// Example: "bluebase.intl.messages.en", "bluebase.intl.messages.ur"
-	const { value: messages, loading, error } = useFilter<IntlMessages>(
-		`bluebase.intl.messages.${locale}`,
-		{}
-	);
+	const { value: messages } = useFilter<IntlMessages>(`bluebase.intl.messages.${locale}`, {});
 
 	const __ = (message: string) => (messages[message] ? messages[message] : message);
-	const retry = () => setLocale(locale);
-
-	if (error) {
-		return <ErrorState error={error} retry={retry} />;
-	}
-
-	if (loading) {
-		return (
-			<WaitObserver>
-				<LoadingState retry={retry} />
-			</WaitObserver>
-		);
-	}
 
 	const value: IntlContextData = {
 		__,
-		changeDirection: (dir: Configs['direction']) => {
-			BB.Configs.setValue('direction', dir);
-		},
-		changeLocale: (newLocale: string) => {
-			BB.Configs.setValue('locale', newLocale);
-		},
+		changeDirection: setDirection,
+		changeLocale: setLocale,
 		direction,
 		locale,
 		messages,
@@ -96,3 +71,5 @@ export const IntlProvider = (props: IntlProviderProps) => {
 
 	return <IntlContext.Provider value={value} children={props.children} />;
 };
+
+IntlProvider.displayName = 'IntlProvider';

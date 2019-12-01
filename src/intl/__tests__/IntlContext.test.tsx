@@ -115,7 +115,7 @@ describe('IntlContext', () => {
 		).toBe('Hello! 👋');
 	});
 
-	test(`should show error state even`, async () => {
+	test(`should show default message when a filter throws an error`, async () => {
 		const badFilters = {
 			'bluebase.intl.messages.ur': () => {
 				throw Error('Bang Bang!');
@@ -127,23 +127,20 @@ describe('IntlContext', () => {
 				<View>
 					<LocalePicker />
 					<FormattedMessage testID="Heading" component={H5}>
-						ہیلو!
-					</FormattedMessage>
-					<FormattedMessage testID="desc" style={{ color: 'blue' }}>
-						How are you?
+						Hello
 					</FormattedMessage>
 				</View>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper, 'ErrorState');
+		await waitForElement(wrapper, 'FormattedMessage');
 
 		expect(
 			wrapper
-				.find('Body2 Text')
+				.find('[testID="Heading"] Text')
 				.last()
 				.text()
-		).toBe('Bang Bang!');
+		).toBe('Hello');
 	});
 
 	test(`should change locale by callback function`, async () => {

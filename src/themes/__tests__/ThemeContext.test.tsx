@@ -6,8 +6,8 @@ import { ThemeDemo } from '../__stories__/ThemeDemo';
 import { ThemePicker } from '../__stories__/ThemePicker';
 import { ThemeProvider } from '../..';
 import { mount } from 'enzyme';
+import wait from 'waait';
 import { waitForElement } from 'enzyme-async-helpers';
-
 describe('ThemeContext', () => {
 	test(`should render a ThemeDemo component with themed background color`, async () => {
 		const BB = new BlueBase();
@@ -82,6 +82,7 @@ describe('ThemeContext', () => {
 	test(`should throw render error state if theme is not found`, async () => {
 		const BB = new BlueBase();
 		await BB.boot({ configs: { 'theme.name': 'foo' } });
+		BB.Logger.warn = jest.fn();
 
 		const wrapper = mount(
 			<BlueBaseContext.Provider value={BB}>
@@ -92,18 +93,22 @@ describe('ThemeContext', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper, 'ErrorState');
+		await waitForElement(wrapper, 'ThemeDemo');
 
-		// Verify that background color is dark
-		const error = wrapper.find('ErrorState').last();
+		await wait(1000);
+		wrapper.update();
 
-		expect((error.prop('error') as Error).message).toBe(
+		expect(
+			wrapper
+				.find('ThemeDemo Body1 Text')
+				.last()
+				.text()
+		).toBe('BlueBase Light');
+
+		expect(BB.Logger.warn).toHaveBeenCalledTimes(1);
+		expect(BB.Logger.warn).toHaveBeenLastCalledWith(
 			'Could not change theme. Reason: Theme with the key "foo" does not exist.'
 		);
-
-		const retry: any = error.prop('retry');
-
-		retry();
 
 		wrapper.unmount();
 	});
@@ -125,7 +130,6 @@ describe('ThemeContext', () => {
 
 		// Wait for render
 		await waitForElement(wrapper as any, ThemeDemo);
-		// expect(wrapper).toMatchSnapshot();
 
 		// Check theme
 		const view = wrapper.find('ThemeDemo [testID="box"]').first();
