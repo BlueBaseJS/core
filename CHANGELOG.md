@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/BlueBaseJS/core/compare/v5.3.1...v5.4.0) (2019-12-02)
+
+### Features
+
+-   **🎁 ComponentRegistry:** Allow React.memo components ([65d8bce](https://github.com/BlueBaseJS/core/commit/65d8bce))
+-   **getComponent:** Now uses hooks api ([5c86b8b](https://github.com/BlueBaseJS/core/commit/5c86b8b))
+
 ## [5.3.1](https://github.com/BlueBaseJS/core/compare/v5.3.0...v5.3.1) (2019-11-22)
 
 ### Bug Fixes
