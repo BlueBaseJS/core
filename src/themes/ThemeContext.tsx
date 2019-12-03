@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { BlueBase } from '../BlueBase';
 import { BlueBaseContext } from '../Context';
+import { Configs } from '../Configs';
 import { Theme } from '../registries';
 import { ThemeValueInput } from './structure';
 import { buildTheme } from './helpers';
@@ -16,7 +17,12 @@ export interface ThemeProviderProps {
 	 * Key of the theme to use for children components. If this prop is not set,
 	 * the globally selected theme is used.
 	 */
-	theme?: string;
+	theme?: Configs['theme.name'];
+
+	/**
+	 * Theme mode
+	 */
+	mode?: Configs['theme.mode'];
 
 	/**
 	 * Any custom overrides to the selected theme.
@@ -50,15 +56,15 @@ export const ThemeConsumer = ThemeContext.Consumer;
 /**
  * 🎨 ThemeProvider
  */
-
 export const ThemeProvider = (props: ThemeProviderProps) => {
 	const BB: BlueBase = useContext(BlueBaseContext);
 
 	const [themeName, setThemeName] = useConfig('theme.name');
-	const [mode] = useConfig('theme.mode');
+	const [modeConfig] = useConfig('theme.mode');
 	const [overridesConfig] = useConfig('theme.overrides');
 
 	const name = props.theme || themeName;
+	const mode = props.mode || modeConfig;
 	const overrides = deepmerge.all([{}, overridesConfig || {}, props.overrides || {}]);
 
 	const DEFAULT_THEME = buildTheme(mode)({ value: overrides });
