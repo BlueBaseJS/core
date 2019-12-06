@@ -37,6 +37,9 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Set Unsafe-Perm
+        run: npm set unsafe-perm true
+
       - name: Semantic Release
         env:
           GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
