@@ -1,3 +1,11 @@
+## [5.4.1](https://github.com/BlueBaseJS/core/compare/v5.4.0...v5.4.1) (2019-12-06)
+
+### Bug Fixes
+
+-   **workflow:** added privilged access to the image ([e72f818](https://github.com/BlueBaseJS/core/commit/e72f818))
+-   **workflow:** changed version for checkout action ([23e940a](https://github.com/BlueBaseJS/core/commit/23e940a))
+-   **workflow:** fixed prepublish not being executed ([dd1985d](https://github.com/BlueBaseJS/core/commit/dd1985d))
+
 # [5.4.0](https://github.com/BlueBaseJS/core/compare/v5.3.1...v5.4.0) (2019-12-02)
 
 ### Features
