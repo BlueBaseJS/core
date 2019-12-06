@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: bluebasejs/github-actions-image
+      options: --privileged
 
     strategy:
       matrix:
