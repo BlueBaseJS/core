@@ -15,7 +15,6 @@ describe('getComponent', () => {
 
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
 			expect((tree as any).type).toBe('Text');
 			expect((tree as any).children.join()).toBe('A Text component');
 			done();
@@ -33,7 +32,6 @@ describe('getComponent', () => {
 
 		setTimeout(() => {
 			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
 			expect((tree as any).children[0].type).toBe('View');
 			done();
 		});

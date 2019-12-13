@@ -1,20 +1,21 @@
-# [5.3.0-alpha.3](https://github.com/BlueBaseJS/core/compare/v5.3.0-alpha.2@alpha...v5.3.0-alpha.3@alpha) (2019-11-12)
+## [5.3.1](https://github.com/BlueBaseJS/core/compare/v5.3.0...v5.3.1) (2019-11-22)
 
 ### Bug Fixes
 
--   **workflow:** workflow ([1ca54c7](https://github.com/BlueBaseJS/core/commit/1ca54c7))
+-   **workflow:** fixed build docs step ([2d5d9e1](https://github.com/BlueBaseJS/core/commit/2d5d9e1))
 
-# [5.3.0-alpha.2](https://github.com/BlueBaseJS/core/compare/v5.3.0-alpha.1@alpha...v5.3.0-alpha.2@alpha) (2019-11-12)
+# [5.3.0](https://github.com/BlueBaseJS/core/compare/v5.2.0...v5.3.0) (2019-11-22)
 
 ### Bug Fixes
 
--   **workflow:** workflow ([576d04c](https://github.com/BlueBaseJS/core/commit/576d04c))
-
-# [5.3.0-alpha.1](https://github.com/BlueBaseJS/core/compare/v5.2.0...v5.3.0-alpha.1@alpha) (2019-11-12)
+-   **add npmrc file :** add npmrc registry ([c5e7815](https://github.com/BlueBaseJS/core/commit/c5e7815))
+-   **npmrc:** removed npmrc ([e327b4e](https://github.com/BlueBaseJS/core/commit/e327b4e))
+-   **workflow:** updated environment variable ([c767876](https://github.com/BlueBaseJS/core/commit/c767876))
+-   **workflow:** using git credentials for @semantic-release/git ([3637f20](https://github.com/BlueBaseJS/core/commit/3637f20))
 
 ### Features
 
--   **expo:** updated expo ([ebe32b6](https://github.com/BlueBaseJS/core/commit/ebe32b6))
+-   **applyStyles:** defaultStyles fn gets props as second param ([2a169c2](https://github.com/BlueBaseJS/core/commit/2a169c2))
 
 # [5.2.0](https://github.com/BlueBaseJS/core/compare/v5.1.0...v5.2.0) (2019-11-07)
 

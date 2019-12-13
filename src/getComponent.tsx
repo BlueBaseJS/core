@@ -26,11 +26,11 @@ import {
 	ViewProps,
 	WaitObserverProps,
 } from '@bluebase/components';
+import React, { useContext } from 'react';
 
 import { BlueBase } from './BlueBase';
 import { BlueBaseContentProps } from './components';
 import { BlueBaseContext } from './Context';
-import React from 'react';
 
 export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 
@@ -50,36 +50,30 @@ export function getComponent<T = any>(
 
 	const displayName = keys.join('_');
 
-	return class BlueBaseComponent extends React.Component<T> {
-		static displayName = displayName;
+	let Component: React.ComponentType<T>;
 
-		static contextType = BlueBaseContext;
+	const BlueBaseComponent = (props: T) => {
+		const BB: BlueBase = useContext(BlueBaseContext);
 
-		Component?: React.ComponentType<T>;
-
-		// Before mounting, resolve component and store it.
-		// So we don't end up creating a new component during every render
-		componentWillMount() {
-			const BB: BlueBase = this.context;
-
-			// If there is no BlueBase context, throw an Error
-			if (!BB) {
-				throw Error(
-					`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`
-				);
-			}
-
-			// We don't want to resolve the component on every render.
-			// If we don't do this, a new component is created on every
-			// render, causing various set of problems.
-			this.Component = BB.Components.resolve<T>(...keys);
+		// If there is no BlueBase context, throw an Error
+		if (!BB) {
+			throw Error(
+				`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`
+			);
 		}
 
-		render() {
-			// Render
-			return React.createElement(this.Component!, this.props);
+		// We don't want to resolve the component on every render.
+		// If we don't do this, a new component is created on every
+		// render, causing various set of problems.
+		if (!Component) {
+			Component = BB.Components.resolve<T>(...keys);
 		}
+
+		return React.createElement(Component!, props);
 	};
+
+	BlueBaseComponent.displayName = displayName;
+	return BlueBaseComponent;
 }
 
 // System Components

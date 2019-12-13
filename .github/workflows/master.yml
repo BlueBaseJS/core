@@ -46,18 +46,14 @@ jobs:
 
       - name: Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
+          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release@beta
 
       - name: Build Docs
-        env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn run doc
-
-      - name: Deploy Docs
-        uses: peaceiris/actions-gh-pages@v2.2.0
-        env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./docs

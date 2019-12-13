@@ -30,12 +30,9 @@ describe('BlueBaseFilter', () => {
 
 		let text = rendered.root.findByType(Text);
 
-		// expect(rendered.toJSON()).toMatchSnapshot();
 		expect(text.instance.props.children).toBe('Loading');
 
 		setTimeout(() => {
-			// expect(rendered.toJSON()).toMatchSnapshot();
-
 			text = rendered.root.findByType(Text);
 			expect(text.instance.props.children).toBe(25);
 			done();
