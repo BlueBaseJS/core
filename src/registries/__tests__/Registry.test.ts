@@ -529,7 +529,7 @@ describe('Registry', () => {
 			);
 		});
 
-		it('should throw an error for unknown subscription ID', async () => {
+		it('should return undefined for unknown subscription ID', async () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<string>>(BB);
 
@@ -539,9 +539,7 @@ describe('Registry', () => {
 			});
 
 			// tslint:disable-next-line
-			expect(() => registry.unsubscribe('foo', '123')).toThrow(
-				'Could not unsubscribe from a registry item. Reason: No subscription with id "123" registered.'
-			);
+			expect(registry.unsubscribe('foo', '123')).toBeUndefined();
 		});
 	});
 

@@ -24,7 +24,7 @@ export const BlueBaseAppError = ({ error, BB }: BlueBaseAppErrorProps) => {
 		<ScrollView style={{ flex: 1 }}>
 			<SafeAreaView style={{ flex: 1 }}>
 				<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-					<Text style={{ fontWeight: 'bold' }}>🚨 BlueBase Error</Text>
+					<Text style={{ fontWeight: 'bold' }}>🚨 Error</Text>
 					<Text>{message}</Text>
 				</View>
 			</SafeAreaView>

@@ -1,48 +1,34 @@
+import { BlueBase } from '../../BlueBase';
 import { BlueBaseApp } from '../../index';
-import { ErrorState } from '../../getComponent';
+import { BlueBaseContext } from '../../Context';
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
 import { ThemeDemo } from '../__stories__/ThemeDemo';
 import { ThemePicker } from '../__stories__/ThemePicker';
 import { ThemeProvider } from '../..';
 import { mount } from 'enzyme';
+import wait from 'waait';
 import { waitForElement } from 'enzyme-async-helpers';
-
 describe('ThemeContext', () => {
+	test(`should render a ThemeDemo component with themed background color`, async () => {
+		const BB = new BlueBase();
+		await BB.boot();
 
-	test(`should render a ThemeDemo component with themed background color`, (done) => {
-		const component = TestRenderer.create(
-			<BlueBaseApp>
-				<ThemeDemo />
-			</BlueBaseApp>
-		);
-
-
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			expect((tree as any).props.style.backgroundColor).toBe('#f5f5f5');
-			done();
-		});
-	});
-
-
-	test(`should render a overwritten ThemeDemo component with red background color`, (done) => {
-		const component = TestRenderer.create(
-			<BlueBaseApp>
-				<ThemeProvider theme="bluebase-dark" overrides={{ palette: { background: { default: 'red' } } }}>
+		const wrapper = mount(
+			<BlueBaseContext.Provider value={BB}>
+				<ThemeProvider>
 					<ThemeDemo />
 				</ThemeProvider>
-			</BlueBaseApp>
+			</BlueBaseContext.Provider>
 		);
 
+		// Wait for render
+		await waitForElement(wrapper as any, ThemeDemo);
 
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			expect((tree as any).props.style.backgroundColor).toBe('red');
-			done();
-		});
+		const view = wrapper
+			.find('ThemeDemo')
+			.childAt(0)
+			.first();
+		expect((view.prop('style') as any).backgroundColor).toBe('#f5f5f5');
 	});
 
 	test(`should change theme based on callback function`, async () => {
@@ -54,13 +40,22 @@ describe('ThemeContext', () => {
 		);
 
 		// Wait for render
-		await waitForElement(wrapper as any, ThemeDemo);
+		await waitForElement(wrapper, ThemeDemo);
 		// expect(wrapper).toMatchSnapshot();
 
 		// Check theme
-		let view = wrapper.find('ThemeDemo').childAt(0).first();
+		let view = wrapper
+			.find('ThemeDemo')
+			.childAt(0)
+			.first();
 		expect((view.prop('style') as any).backgroundColor).toBe('#f5f5f5');
-		expect(wrapper.find('ThemeDemo').find('Text').last().text()).toBe('BlueBase Light');
+		expect(
+			wrapper
+				.find('ThemeDemo')
+				.find('Text')
+				.last()
+				.text()
+		).toBe('BlueBase Light');
 
 		// Change theme
 		const onValueChange: any = wrapper.find('Picker').prop('onValueChange');
@@ -70,97 +65,82 @@ describe('ThemeContext', () => {
 		// expect(wrapper).toMatchSnapshot();
 
 		// Verify that background color is dark
-		view = wrapper.find('ThemeDemo').childAt(0).first();
+		view = wrapper
+			.find('ThemeDemo')
+			.childAt(0)
+			.first();
 		expect((view.prop('style') as any).backgroundColor).toBe('#303030');
-		expect(wrapper.find('ThemeDemo').find('Text').last().text()).toBe('BlueBase Dark');
+		expect(
+			wrapper
+				.find('ThemeDemo')
+				.find('Text')
+				.last()
+				.text()
+		).toBe('BlueBase Dark');
 	});
 
-	test(`should throw an error when changing theme based to unknown theme`, async () => {
+	test(`should throw render error state if theme is not found`, async () => {
+		const BB = new BlueBase();
+		await BB.boot({ configs: { 'theme.name': 'foo' } });
+		BB.Logger.warn = jest.fn();
+
 		const wrapper = mount(
-			<BlueBaseApp>
-				<ThemePicker />
-				<ThemeDemo />
-			</BlueBaseApp>
+			<BlueBaseContext.Provider value={BB}>
+				<ThemeProvider>
+					<ThemeDemo />
+				</ThemeProvider>
+			</BlueBaseContext.Provider>
 		);
 
 		// Wait for render
-		await waitForElement(wrapper as any, ThemeDemo);
-		// expect(wrapper).toMatchSnapshot();
+		await waitForElement(wrapper, 'ThemeDemo');
 
-		// Check theme
-		const view = wrapper.find('ThemeDemo').childAt(0).first();
-		expect((view.prop('style') as any).backgroundColor).toBe('#f5f5f5');
-		expect(wrapper.find('ThemeDemo').find('Text').last().text()).toBe('BlueBase Light');
+		await wait(1000);
+		wrapper.update();
 
-		// Check Subscription
-		const Provider = wrapper.find('ThemeProvider').last().instance();
-		const subscriptionId = (Provider as any).subscriptionId;
-		expect(subscriptionId).toBeDefined();
+		expect(
+			wrapper
+				.find('ThemeDemo Body1 Text')
+				.last()
+				.text()
+		).toBe('BlueBase Light');
 
-		// Change theme
-		const onValueChange: any = wrapper.find('Picker').prop('onValueChange');
-		onValueChange('does-not-exist');
+		expect(BB.Logger.warn).toHaveBeenCalledTimes(1);
+		expect(BB.Logger.warn).toHaveBeenLastCalledWith(
+			'Could not change theme. Reason: Theme with the key "foo" does not exist.'
+		);
 
-		await waitForElement(wrapper as any, ErrorState);
-		// expect(wrapper).toMatchSnapshot();
-
-		// Verify that background color is dark
-		const error = wrapper.find('ErrorState').last().prop('error') as Error;
-		expect(error.message).toBe('Could not change theme. Reason: Theme with the key "does-not-exist" does not exist.');
-
-		// Unmount to unsubscribe
 		wrapper.unmount();
-		// TODO: check if subscription ID gets deleted
-	});
-
-	test(`should throw render error state if state.theme is undefined`, async () => {
-		const wrapper = mount(
-			<BlueBaseApp>
-				<ThemePicker />
-				<ThemeDemo />
-			</BlueBaseApp>
-		);
-
-		// Wait for render
-		await waitForElement(wrapper as any, ThemeDemo);
-		// expect(wrapper).toMatchSnapshot();
-
-		// Check theme
-		wrapper.find('ThemeProvider').setState({ theme: undefined });
-
-		await waitForElement(wrapper as any, ErrorState);
-		// expect(wrapper).toMatchSnapshot();
-
-		// Verify that background color is dark
-		const error = wrapper.find('ErrorState').last().prop('error') as Error;
-		expect(error.message).toBe('Could not load theme.');
 	});
 
 	test(`should override a theme`, async () => {
+		const BB = new BlueBase();
+		await BB.boot({ configs: { 'theme.name': 'foo' } });
+
 		const wrapper = mount(
-			<BlueBaseApp>
-				<ThemeProvider theme="bluebase-dark" overrides={{ palette: { background: { default: 'red' } } }}>
+			<BlueBaseContext.Provider value={BB}>
+				<ThemeProvider
+					theme="bluebase-dark"
+					overrides={{ palette: { background: { default: 'red' } } }}
+				>
 					<ThemeDemo />
 				</ThemeProvider>
-			</BlueBaseApp>
+			</BlueBaseContext.Provider>
 		);
 
 		// Wait for render
 		await waitForElement(wrapper as any, ThemeDemo);
-		// expect(wrapper).toMatchSnapshot();
 
 		// Check theme
-		const view = wrapper.find('ThemeDemo').childAt(0).first();
-		expect((view.prop('style') as any).backgroundColor).toBe('red');
-		expect(wrapper.find('ThemeDemo').find('Text').last().text()).toBe('BlueBase Dark');
-
-		// Check Subscription
-		const Provider = wrapper.find('ThemeProvider').last().instance();
-		const subscriptionId = (Provider as any).subscriptionId;
-		expect(subscriptionId).toBeUndefined();
+		const view = wrapper.find('ThemeDemo [testID="box"]').first();
+		expect(view.prop('style')!.backgroundColor).toBe('red');
+		expect(
+			wrapper
+				.find('ThemeDemo Body1 Text')
+				.last()
+				.text()
+		).toBe('BlueBase Dark');
 
 		wrapper.unmount();
 	});
-
 });
-

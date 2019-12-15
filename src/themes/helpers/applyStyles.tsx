@@ -1,21 +1,30 @@
-import { ComponentStyles, ThemeValue } from '../structure/Theme';
-import { MaybeThunk, resolveThunk } from '../../utils';
-
+import { ComponentStyles } from '../structure/Theme';
+import { MaybeThunk } from '../../utils';
 import React from 'react';
-import { ThemeContext } from '..';
-import { buildTheme } from './buildTheme';
-import deepmerge from 'deepmerge';
-import isNil from 'lodash.isnil';
+import { useStyles } from '../../hooks';
 
-export type ComponentWithDefaultStyles = React.ComponentType<any> & {
+export type BlueBaseComponent<T = any> = React.ComponentType<T> & {
 	defaultStyles?: ComponentStyles;
 };
+
+export type ComponentWithDefaultStyles = BlueBaseComponent;
 
 export interface ThemedComponentProps {
 	styles: ComponentStyles;
 
 	[key: string]: any;
 }
+
+export type applyStylesOptions =
+	| string
+	| {
+			name: string;
+
+			/**
+			 * @deprecated
+			 */
+			styles?: MaybeThunk<ComponentStyles>;
+	  };
 
 /**
  * Merges component styles from different sources and passes on the the component as 'styles' prop.
@@ -28,57 +37,25 @@ export interface ThemedComponentProps {
  * 3. Themes: From theme.components[componentName] property of current theme.
  * 4. styles prop: The styles prop passed on to the component during usage.
  *
- * FIXME: Fix return typing of this function
- *
- * @param name
- * @param Component
- * @param stylesParam
+ * @param options
  */
-export const applyStyles = ({
-	name,
-	styles: stylesParam,
-}: {
-	name?: string;
-	styles?: MaybeThunk<ComponentStyles>;
-} = {}) => (Component: ComponentWithDefaultStyles): React.ComponentType<any> => {
-	return class ThemedComponent extends React.Component<ThemedComponentProps> {
-		static contextType = ThemeContext;
 
-		render() {
-			const context: { theme: ThemeValue } = this.context;
-			const { styles: stylesProp, ...rest } = this.props;
+export function applyStyles<T = any>(options: applyStylesOptions) {
+	return (Component: BlueBaseComponent<T>): BlueBaseComponent<T> => {
+		const name = typeof options === 'string' ? options : options.name;
 
-			// Extract defaultStyles from component
-			const defaultStyles = Component.defaultStyles;
-
-			// Extract theme, or use default theme as placeholder
-			// We need to do this, because when the actual theme is being resolved,
-			// we may need to show Loading state. That state may need some styles as well.
-			const theme = context ? context.theme : buildTheme()();
-
-			// Extract component style rules from theme
-			let themedStyles;
-			if (name) {
-				const themeComponentStyles = theme.components;
-
-				// Extract style rules for this component
-				themedStyles = themeComponentStyles[name];
-			}
-
-			// Put all style rules in an array
-			const stylesArr: any[] = [defaultStyles, stylesParam, themedStyles, stylesProp]
-				// Remove those styles which are nil
-				.filter(a => !isNil(a))
-				// If any item is a thunk, resolve it
-				.map(a => a && resolveThunk(a, theme, rest));
-
-			// Merge all into a single object
-			const styles = deepmerge.all(stylesArr);
+		const ThemedComponent = (props: T) => {
+			// const { styles: stylesProp, ...rest } = props;
+			const styles = useStyles(name, props, Component.defaultStyles);
 
 			// If we were able to extract any rules, pass them forward in the styles prop
-			const props = stylesArr.length > 0 ? { ...rest, styles } : rest;
+			const finalProps = Object.keys(styles).length > 0 ? { ...props, styles } : props;
 
-			return React.createElement(Component, props);
-		}
+			return React.createElement(Component, finalProps);
+		};
+
+		ThemedComponent.displayName = 'ThemedComponent';
+
+		return ThemedComponent;
 	};
-};
+}

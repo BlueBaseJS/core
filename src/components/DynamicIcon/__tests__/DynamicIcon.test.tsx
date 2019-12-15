@@ -1,4 +1,5 @@
 import { Text, View } from 'react-native';
+
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../../../';
 import { DynamicIcon } from '../DynamicIcon';
@@ -6,9 +7,7 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
 describe('DynamicIcon', () => {
-
-	test(`should return null if there is no type prop`, (done) => {
-
+	test(`should return null if there is no type prop`, done => {
 		const DIcon = DynamicIcon as any;
 
 		const rendered = TestRenderer.create(
@@ -19,14 +18,13 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect(tree).toBe(null);
 			done();
 		});
 	});
 
-	test(`should render an image with default size of 100x100`, (done) => {
+	test(`should render an image with default size of 100x100`, done => {
 		const rendered = TestRenderer.create(
 			<BlueBaseApp>
 				<DynamicIcon type="image" source={{ uri: 'https://picsum.photos/200' }} />
@@ -35,7 +33,6 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect((tree as any).type).toBe('Image');
 			expect((tree as any).props.size).toBe(100);
@@ -44,7 +41,7 @@ describe('DynamicIcon', () => {
 		});
 	});
 
-	test(`should render an image with default size of 250x250`, (done) => {
+	test(`should render an image with default size of 250x250`, done => {
 		const rendered = TestRenderer.create(
 			<BlueBaseApp>
 				<DynamicIcon type="image" size={250} source={{ uri: 'https://picsum.photos/200' }} />
@@ -53,7 +50,6 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect((tree as any).type).toBe('Image');
 			expect((tree as any).props.size).toBe(250);
@@ -62,7 +58,7 @@ describe('DynamicIcon', () => {
 		});
 	});
 
-	test(`should render an image with style prop overwritten`, (done) => {
+	test(`should render an image with style prop overwritten`, done => {
 		const rendered = TestRenderer.create(
 			<BlueBaseApp>
 				<DynamicIcon
@@ -75,7 +71,6 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect((tree as any).type).toBe('Image');
 			expect((tree as any).props.size).toBe(100);
@@ -84,7 +79,7 @@ describe('DynamicIcon', () => {
 		});
 	});
 
-	test(`should render an image with style prop overwritten`, (done) => {
+	test(`should render an image with style prop overwritten`, done => {
 		const rendered = TestRenderer.create(
 			<BlueBaseApp>
 				<DynamicIcon
@@ -97,7 +92,6 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect((tree as any).type).toBe('Image');
 			expect((tree as any).props.size).toBe(100);
@@ -107,7 +101,7 @@ describe('DynamicIcon', () => {
 		});
 	});
 
-	test(`should render an custom component`, (done) => {
+	test(`should render an custom component`, done => {
 		const CustomComponent = ({ size }: { size: number }) => (
 			<View style={{ height: size, width: size, backgroundColor: 'red' }} />
 		);
@@ -120,17 +114,19 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect((tree as any).type).toBe('View');
-			expect((tree as any).props.style).toMatchObject({ height: 100, width: 100, backgroundColor: 'red' });
+			expect((tree as any).props.style).toMatchObject({
+				height: 100,
+				width: 100,
+				backgroundColor: 'red',
+			});
 
 			done();
 		});
 	});
 
-	test(`should render an custom component that is registered in component registry`, (done) => {
-
+	test(`should render an custom component that is registered in component registry`, done => {
 		const CustomComponent = ({ size }: { size: number }) => (
 			<View style={{ height: size, width: size, backgroundColor: 'green' }} />
 		);
@@ -145,22 +141,22 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect((tree as any).type).toBe('View');
-			expect((tree as any).props.style).toMatchObject({ height: 100, width: 100, backgroundColor: 'green' });
+			expect((tree as any).props.style).toMatchObject({
+				height: 100,
+				width: 100,
+				backgroundColor: 'green',
+			});
 
 			done();
 		});
 	});
 
-	test(`should render an Icon component`, (done) => {
-
-		const Icon = ({ size, name }: { size: number, name: string }) => (
+	test(`should render an Icon component`, done => {
+		const Icon = ({ size, name }: { size: number; name: string }) => (
 			<View style={{ height: size, width: size, backgroundColor: 'blue' }}>
-				<Text>
-					{name}
-				</Text>
+				<Text>{name}</Text>
 			</View>
 		);
 
@@ -174,13 +170,15 @@ describe('DynamicIcon', () => {
 
 		setTimeout(() => {
 			const tree = rendered.toJSON();
-			expect(tree).toMatchSnapshot();
 
 			expect((tree as any).type).toBe('View');
-			expect((tree as any).props.style).toMatchObject({ height: 100, width: 100, backgroundColor: 'blue' });
+			expect((tree as any).props.style).toMatchObject({
+				height: 100,
+				width: 100,
+				backgroundColor: 'blue',
+			});
 
 			done();
 		});
 	});
-
 });
