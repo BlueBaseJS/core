@@ -1,15 +1,16 @@
 import { BlueBaseApp } from '../../../';
 import { BlueBaseFilter } from '../BlueBaseFilter';
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
 import { Text } from 'react-native';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
 // beforeEach(() => {
 // 	jest.resetModules();
 // });
 
 describe('BlueBaseFilter', () => {
-	test(`should render a filtered value`, done => {
+	test(`should render a filtered value`, async () => {
 		const filters = {
 			math: [
 				{ key: 'add-fifteen', value: (val: number) => val + 15 },
@@ -18,24 +19,48 @@ describe('BlueBaseFilter', () => {
 			],
 		};
 
-		const rendered: any = TestRenderer.create(
+		const wrapper = mount(
 			<BlueBaseApp filters={filters}>
 				<BlueBaseFilter filter="math" value={5} args={{ op: 'add' }}>
 					{(val: number) => {
-						return <Text>{val}</Text>;
+						return <Text testID="val">{val}</Text>;
 					}}
 				</BlueBaseFilter>
 			</BlueBaseApp>
 		);
 
-		let text = rendered.root.findByType(Text);
+		await waitForElement(wrapper, 'Text[testID="val"]');
 
-		expect(text.instance.props.children).toBe('Loading');
+		expect(
+			wrapper
+				.find('Text[testID="val"]')
+				.last()
+				.text()
+		).toBe('25');
+	});
 
-		setTimeout(() => {
-			text = rendered.root.findByType(Text);
-			expect(text.instance.props.children).toBe(25);
-			done();
-		});
+	test(`should show error state when a filter throws`, async () => {
+		const filters = {
+			math: [
+				{ key: 'add-fifteen', value: (val: number) => val + 15 },
+				() => {
+					throw new Error();
+				},
+			],
+		};
+
+		const wrapper = mount(
+			<BlueBaseApp filters={filters}>
+				<BlueBaseFilter filter="math" value={5} args={{ op: 'add' }}>
+					{(val: number) => {
+						return <Text testID="val">{val}</Text>;
+					}}
+				</BlueBaseFilter>
+			</BlueBaseApp>
+		);
+
+		await waitForElement(wrapper, 'ErrorState');
+
+		expect(wrapper.find('ErrorState').exists()).toBe(true);
 	});
 });
