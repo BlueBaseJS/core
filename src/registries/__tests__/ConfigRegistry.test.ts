@@ -276,9 +276,7 @@ describe('ConfigRegistry', () => {
 			});
 
 			// tslint:disable-next-line
-			expect(() => Configs.unsubscribe('foo', '123')).toThrow(
-				'Could not unsubscribe from a registry item. Reason: No subscription with id "123" registered.'
-			);
+			expect(Configs.unsubscribe('foo', '123')).toBeUndefined();
 		});
 	});
 });

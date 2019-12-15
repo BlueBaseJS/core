@@ -89,7 +89,7 @@ describe('BlueBaseApp', () => {
 				.find('BlueBaseApp Text Text')
 				.at(0)
 				.text()
-		).toBe('🚨 BlueBase Error');
+		).toBe('🚨 Error');
 		expect(
 			wrapper
 				.find('BlueBaseApp Text Text')
@@ -124,7 +124,7 @@ describe('BlueBaseApp', () => {
 				.find('BlueBaseApp Text Text')
 				.at(0)
 				.text()
-		).toBe('🚨 BlueBase Error');
+		).toBe('🚨 Error');
 		expect(
 			wrapper
 				.find('BlueBaseApp Text Text')
@@ -161,7 +161,7 @@ describe('BlueBaseApp', () => {
 				.find('BlueBaseApp Text Text')
 				.at(0)
 				.text()
-		).toBe('🚨 BlueBase Error');
+		).toBe('🚨 Error');
 		expect(
 			wrapper
 				.find('BlueBaseApp Text Text')
@@ -198,7 +198,7 @@ describe('BlueBaseApp', () => {
 				.find('BlueBaseApp Text Text')
 				.at(0)
 				.text()
-		).toBe('🚨 BlueBase Error');
+		).toBe('🚨 Error');
 		expect(
 			wrapper
 				.find('BlueBaseApp Text Text')
@@ -224,7 +224,7 @@ describe('BlueBaseApp', () => {
 				.find('BlueBaseApp Text Text')
 				.at(0)
 				.text()
-		).toBe('🚨 BlueBase Error');
+		).toBe('🚨 Error');
 		expect(
 			wrapper
 				.find('BlueBaseApp Text Text')
@@ -252,7 +252,7 @@ describe('BlueBaseApp', () => {
 				.find('BlueBaseApp Text Text')
 				.at(0)
 				.text()
-		).toBe('🚨 BlueBase Error');
+		).toBe('🚨 Error');
 		expect(
 			wrapper
 				.find('BlueBaseApp Text Text')
