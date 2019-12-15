@@ -1,9 +1,11 @@
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
-import { BlueBaseFilterProps } from '@bluebase/components';
-import Loadable from 'react-loadable';
+import { BlueBaseFilterProps, ErrorStateProps, LoadingStateProps } from '@bluebase/components';
+
 import React from 'react';
-import { ReactLoadableLoading } from '../ReactLoadableLoading';
+import { getComponent } from '../../getComponent';
+import { useFilter } from '../../hooks';
+
+const LoadingState = getComponent<LoadingStateProps>('LoadingState');
+const ErrorState = getComponent<ErrorStateProps>('ErrorState');
 
 /**
  * # 🚇 BlueBaseFilter
@@ -22,26 +24,21 @@ import { ReactLoadableLoading } from '../ReactLoadableLoading';
  * }} />
  * ```
  */
-export class BlueBaseFilter extends React.PureComponent<BlueBaseFilterProps> {
-	static contextType: React.Context<BlueBase> = BlueBaseContext;
+export const BlueBaseFilter: React.FunctionComponent<BlueBaseFilterProps> = ({
+	filter,
+	value: initialValue,
+	args,
+	children,
+}: BlueBaseFilterProps): any => {
+	const { error, loading, value } = useFilter(filter, initialValue, args);
 
-	public static defaultProps = {
-		args: {},
-	};
-
-	render() {
-		const { filter, value, args, children } = this.props;
-
-		const BB: BlueBase = this.context;
-
-		const AsyncBlueBaseFilter = Loadable({
-			loader: () => BB.Filters.run(filter, value, args),
-			loading: ReactLoadableLoading,
-			render(loadedValue: any) {
-				return children(loadedValue);
-			},
-		});
-
-		return <AsyncBlueBaseFilter />;
+	if (loading) {
+		return <LoadingState />;
 	}
-}
+
+	if (error) {
+		return <ErrorState />;
+	}
+
+	return children(value);
+};
