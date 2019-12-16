@@ -1,6 +1,7 @@
 import { MaybeThunk, resolveThunk } from '../utils';
 
 import { ComponentStyles } from '../themes';
+import { Theme } from '../registries';
 import deepmerge from 'deepmerge';
 import isNil from 'lodash.isnil';
 import { useBlueBase } from './useBlueBase';
@@ -8,8 +9,8 @@ import { useTheme } from './useTheme';
 
 export function useStyles<T = ComponentStyles>(
 	componentName: string,
-	props: { styles?: T } = {},
-	defaultStyles?: T
+	props: { styles?: Partial<T> } & any = {},
+	defaultStyles?: T | ((theme: Theme, props: any) => T)
 ): T {
 	const BB = useBlueBase();
 	const { theme } = useTheme();
