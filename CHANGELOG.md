@@ -1,3 +1,9 @@
+## [5.5.1](https://github.com/BlueBaseJS/core/compare/v5.5.0...v5.5.1) (2019-12-16)
+
+### Bug Fixes
+
+-   **useStyles:** Fixed hook typings ([aa0c33a](https://github.com/BlueBaseJS/core/commit/aa0c33a))
+
 # [5.5.0](https://github.com/BlueBaseJS/core/compare/v5.4.1...v5.5.0) (2019-12-15)
 
 ### Features
