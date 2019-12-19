@@ -1,3 +1,9 @@
+# [5.6.0](https://github.com/BlueBaseJS/core/compare/v5.5.1...v5.6.0) (2019-12-19)
+
+### Features
+
+-   **BlueBaseImageBackground:** Added component ([#245](https://github.com/BlueBaseJS/core/issues/245)) ([2e0d9ef](https://github.com/BlueBaseJS/core/commit/2e0d9ef))
+
 ## [5.5.1](https://github.com/BlueBaseJS/core/compare/v5.5.0...v5.5.1) (2019-12-16)
 
 ### Bug Fixes
