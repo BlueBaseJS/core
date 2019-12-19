@@ -79,6 +79,9 @@ export function getComponent<T = any>(
 // System Components
 export const BlueBaseContent = getComponent<BlueBaseContentProps>('BlueBaseContent');
 export const BlueBaseImage = getComponent<BlueBaseImageProps>('BlueBaseImage');
+export const BlueBaseImageBackground = getComponent<ImageBackgroundProps>(
+	'BlueBaseImageBackground'
+);
 export const BlueBaseFilter = getComponent<BlueBaseFilterProps>('BlueBaseFilter');
 export const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 export const DataObserver = getComponent<DataObserverProps>('DataObserver');

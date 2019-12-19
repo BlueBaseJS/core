@@ -1,3 +1,32 @@
+## [5.5.1](https://github.com/BlueBaseJS/core/compare/v5.5.0...v5.5.1) (2019-12-16)
+
+### Bug Fixes
+
+-   **useStyles:** Fixed hook typings ([aa0c33a](https://github.com/BlueBaseJS/core/commit/aa0c33a))
+
+# [5.5.0](https://github.com/BlueBaseJS/core/compare/v5.4.1...v5.5.0) (2019-12-15)
+
+### Features
+
+-   **🎨 ThemeProvider:** Now supports mode prop ([2e126a5](https://github.com/BlueBaseJS/core/commit/2e126a5))
+-   **🎨 ThemeProvider:** Rewrote to use hooks api ([bc580e4](https://github.com/BlueBaseJS/core/commit/bc580e4))
+-   **🚇 BlueBaseFilter:** Now uses useFilter hook ([50a377f](https://github.com/BlueBaseJS/core/commit/50a377f))
+-   **BlueBaseAppError:** Removed "BlueBase" from error title. ([c177956](https://github.com/BlueBaseJS/core/commit/c177956))
+-   **useStyles:** Adds useStyles hook ([0e25b77](https://github.com/BlueBaseJS/core/commit/0e25b77))
+-   **🈯️ IntlContext:** Updated to use hooks api ([86eae71](https://github.com/BlueBaseJS/core/commit/86eae71))
+
+### Performance Improvements
+
+-   **Contexts:** Updated hooks and contexts ([b57954d](https://github.com/BlueBaseJS/core/commit/b57954d))
+
+## [5.4.1](https://github.com/BlueBaseJS/core/compare/v5.4.0...v5.4.1) (2019-12-06)
+
+### Bug Fixes
+
+-   **workflow:** added privilged access to the image ([e72f818](https://github.com/BlueBaseJS/core/commit/e72f818))
+-   **workflow:** changed version for checkout action ([23e940a](https://github.com/BlueBaseJS/core/commit/23e940a))
+-   **workflow:** fixed prepublish not being executed ([dd1985d](https://github.com/BlueBaseJS/core/commit/dd1985d))
+
 # [5.4.0](https://github.com/BlueBaseJS/core/compare/v5.3.1...v5.4.0) (2019-12-02)
 
 ### Features
