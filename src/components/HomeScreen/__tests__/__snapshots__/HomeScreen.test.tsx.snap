@@ -19,7 +19,6 @@ exports[`HomeScreen Snapshot HomeScreen 1`] = `
     }
   >
     <Image
-      args={Object {}}
       source={
         Object {
           "uri": "test-file-stub",

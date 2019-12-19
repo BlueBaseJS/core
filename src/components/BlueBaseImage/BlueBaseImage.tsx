@@ -1,9 +1,13 @@
 import { BlueBaseImageProps, ImageProps } from '@bluebase/components';
+import React, { useContext } from 'react';
+import { ThemeContextData, isMobile } from '@bluebase/core';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import { Image } from '../../getComponent';
-import React from 'react';
+import { useTheme } from '../../hooks';
+
+// import { useTheme } from '../../hooks';
 
 // tslint:disable: jsdoc-format
 /**
@@ -18,30 +22,40 @@ import React from 'react';
 <BlueBaseImage resolve={['LogoSquare', 'Logo']} />
 ```
  */
-export class BlueBaseImage extends React.PureComponent<BlueBaseImageProps> {
-	static contextType: React.Context<BlueBase> = BlueBaseContext;
-
-	public static defaultProps = {
-		args: {},
-	};
-
-	render() {
-		const { resolve, source: _source, ...rest } = this.props;
-		const BB: BlueBase = this.context;
-
-		const source = resolveImageSource(this.props, BB);
-
-		if (!source) {
-			return null;
-		}
-
-		return React.createElement(Image, { ...rest, source });
+//
+export const BlueBaseImage = (props: BlueBaseImageProps) => {
+	const { resolve, source: _source, ...rest } = props;
+	const BB: BlueBase = useContext(BlueBaseContext);
+	const Theme: ThemeContextData = useTheme();
+	const source = resolveImageSource(props, BB, Theme);
+	if (!source) {
+		return null;
 	}
-}
 
-export const resolveImageSource = (props: BlueBaseImageProps, BB: BlueBase) => {
-	const { resolve, source: _source } = props;
+	return React.createElement(Image, { ...rest, source });
+};
+const getAssetVersions = (source: BlueBaseImageProps['source'], Theme: ThemeContextData) => {
+	if (typeof source !== 'string') {
+		return source;
+	}
 
+	const { theme }: ThemeContextData = Theme;
+
+	// desktop or mobile
+	const screen = isMobile() ? 'mobile' : 'desktop';
+
+	// dark or light mode
+	const mode = theme.mode;
+
+	return [`${source}_${screen}_${mode}`, `${source}_${screen}`, `${source}_${mode}`, source];
+};
+export const resolveImageSource = (
+	props: BlueBaseImageProps,
+	BB: BlueBase,
+	Theme: ThemeContextData
+) => {
+	const { resolve } = props;
+	const _source: BlueBaseImageProps['source'] = getAssetVersions(props.source, Theme);
 	let Asset;
 
 	if (typeof _source === 'string') {
@@ -63,6 +77,5 @@ export const resolveImageSource = (props: BlueBaseImageProps, BB: BlueBase) => {
 	}
 
 	const source = Asset ? Asset.value : (_source as ImageProps['source']);
-
 	return source;
 };
