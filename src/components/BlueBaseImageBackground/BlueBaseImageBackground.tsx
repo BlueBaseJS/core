@@ -24,7 +24,7 @@ import { useTheme } from '../../hooks';
 interface BlueBaseImageBackgroundProps extends ImageBackgroundProps {
 	children?: ReactNode;
 }
-export const BlueBaseImageBackground = (props: BlueBaseImageBackgroundProps) => {
+export const BlueBaseImageBackground = (props: BlueBaseImageBackgroundProps): any => {
 	const { source: _source, ...rest } = props;
 	const BB: BlueBase = useContext(BlueBaseContext);
 	const Theme: ThemeContextData = useTheme();
