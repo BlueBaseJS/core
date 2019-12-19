@@ -4,9 +4,15 @@ import {
 	BlueBaseAppErrorProps,
 	BlueBaseAppLoading,
 	BlueBaseAppLoadingProps,
-	BlueBaseRoot,
 } from '..';
 import React, { useEffect, useState } from 'react';
+
+import { BlueBaseProvider } from '../../Context';
+import { IntlProvider } from '../../intl';
+import { ThemeProvider } from '../../themes';
+import { getComponent } from '../../getComponent';
+
+const BlueBaseContent = getComponent('BlueBaseContent');
 
 export interface BlueBaseAppProps extends Partial<BootOptions> {
 	/** BlueBase Context */
@@ -48,12 +54,13 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 	} = props;
 
 	const [bootCount, setBootCount] = useState(0);
-	const [error, setError] = useState();
 	const [booting, setBooting] = useState(true);
-	const [bootTrigger, setBootTrigger] = useState(true);
+	const [bootTrigger, setBootTrigger] = useState(true); // Setting to true to start boot
+	const [progress, setProgress] = useState<BlueBaseProgress>({});
+
 	const [BB] = useState(props.BB || new BlueBase());
 
-	BB.reboot = () => {
+	BB.reboot = async () => {
 		setBootTrigger(true);
 	};
 
@@ -64,31 +71,38 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 			return;
 		}
 
-		BB.boot({
-			...props,
-			onProgress: async (progress: BlueBaseProgress) => {
-				setError(progress.error);
-			},
-		})
-			.then(() => {
-				setBootCount(bootCount + 1);
-				setBooting(false);
-			})
-			.catch(e => {
-				setError(e);
-				setBooting(false);
+		(async () => {
+			await BB.boot({
+				...props,
+				onProgress: (p: BlueBaseProgress) => {
+					setProgress(p);
+					if (p.error) {
+						setBooting(false);
+					}
+				},
 			});
-	});
+			setBootCount(bootCount + 1);
+			setBooting(false);
+		})();
+	}, [bootTrigger]);
 
 	if (booting) {
-		return <LoadingComponent BB={BB} />;
+		return <LoadingComponent BB={BB} progress={progress} bootCount={bootCount} />;
 	}
 
-	if (error) {
-		return <ErrorComponent error={error} BB={BB} />;
+	if (progress.error) {
+		return <ErrorComponent BB={BB} progress={progress} bootCount={bootCount} />;
 	}
 
-	return <BlueBaseRoot BB={BB}>{children}</BlueBaseRoot>;
+	return (
+		<BlueBaseProvider key={`boot-${bootCount}`} value={BB}>
+			<ThemeProvider>
+				<IntlProvider>
+					<BlueBaseContent>{children}</BlueBaseContent>
+				</IntlProvider>
+			</ThemeProvider>
+		</BlueBaseProvider>
+	);
 };
 
 const defaultProps: Partial<BlueBaseAppProps> = {

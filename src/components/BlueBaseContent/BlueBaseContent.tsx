@@ -6,6 +6,7 @@ import { BlueBase } from '../../BlueBase';
 import { BlueBaseFilter } from '../BlueBaseFilter';
 import React from 'react';
 import { Theme } from '../../registries';
+import { useBlueBase } from '../../hooks';
 
 const Navigation = getComponent('Navigation');
 
@@ -14,7 +15,6 @@ export interface BlueBaseContentStyles {
 }
 
 export interface BlueBaseContentProps {
-	BB: BlueBase;
 	children?: MaybeRenderPropChildren<{ BB: BlueBase }>;
 	styles?: Partial<BlueBaseContentStyles>;
 }
@@ -24,7 +24,8 @@ export interface BlueBaseContentProps {
  * @param props
  */
 export const BlueBaseContent = (props: BlueBaseContentProps) => {
-	const { BB, children, styles } = props;
+	const { children, styles } = props;
+	const BB = useBlueBase();
 
 	const statusBarStyle = BB.Configs.getValue('statusBarStyle');
 
