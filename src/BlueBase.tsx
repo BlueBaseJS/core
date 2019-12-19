@@ -106,6 +106,10 @@ export class BlueBase {
 
 	private bootOptions: BootOptions = emptyBootOptions;
 
+	public reboot: () => void = () => {
+		return;
+	};
+
 	public async boot({ onProgress, ...options }: Partial<BootOptionsInternal> = {}) {
 		// Store onProgress for later use, even after boot finishes (i.e. in reboot, etc)
 		if (onProgress) {
@@ -169,5 +173,5 @@ export class BlueBase {
 
 	private onProgress: SetStateFn = async () => {
 		return;
-	}
+	};
 }

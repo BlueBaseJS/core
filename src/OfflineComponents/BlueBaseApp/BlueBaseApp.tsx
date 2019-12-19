@@ -6,10 +6,7 @@ import {
 	BlueBaseAppLoadingProps,
 	BlueBaseRoot,
 } from '..';
-
-import React from 'react';
-
-const MISSING_ERROR = 'An unknown error occured.';
+import React, { useEffect, useState } from 'react';
 
 export interface BlueBaseAppProps extends Partial<BootOptions> {
 	/** BlueBase Context */
@@ -32,28 +29,6 @@ export interface BlueBaseAppProps extends Partial<BootOptions> {
 	testID?: string;
 }
 
-interface BlueBaseAppState {
-	/**
-	 * Has the app booted yet
-	 */
-	readonly booted: boolean;
-
-	/**
-	 * Are we loading the app
-	 */
-	readonly loading: boolean;
-
-	/**
-	 * Any errors occured while booting the app
-	 */
-	readonly error: any;
-
-	/**
-	 * BlueBase instance used by the app
-	 */
-	readonly BB: BlueBase;
-}
-
 /**
  * # 🚀 BlueBaseApp
  *
@@ -62,53 +37,63 @@ interface BlueBaseAppState {
  *
  * ## Usage
  * ```jsx
- * <BlueBaseApp BB={BB} plugins={{}} filter={{}} themes={{}} />
+ * <BlueBaseApp BB={BB} />
  * ```
  */
-export class BlueBaseApp extends React.Component<BlueBaseAppProps, BlueBaseAppState> {
-	static defaultProps: Partial<BlueBaseAppProps> = {
-		ErrorComponent: BlueBaseAppError,
-		LoadingComponent: BlueBaseAppLoading,
+export const BlueBaseApp = (props: BlueBaseAppProps) => {
+	const {
+		ErrorComponent = BlueBaseAppError,
+		LoadingComponent = BlueBaseAppLoading,
+		children,
+	} = props;
+
+	const [bootCount, setBootCount] = useState(0);
+	const [error, setError] = useState();
+	const [booting, setBooting] = useState(true);
+	const [bootTrigger, setBootTrigger] = useState(true);
+	const [BB] = useState(props.BB || new BlueBase());
+
+	BB.reboot = () => {
+		setBootTrigger(true);
 	};
 
-	readonly state: BlueBaseAppState = {
-		BB: this.props.BB || new BlueBase(),
-		booted: false,
-		error: null,
-		loading: true,
-	};
-
-	async componentDidMount() {
-		const BB = this.state.BB;
-		BB.boot({ ...this.props, onProgress: this.onProgress });
-	}
-
-	onProgress = async (params: BlueBaseProgress) => {
-		await this.setState(params);
-	}
-
-	componentDidCatch(error: Error | null) {
-		this.setState({
-			error: error || new Error(MISSING_ERROR),
-		});
-	}
-
-	render() {
-		const { loading, error, BB } = this.state;
-		const {
-			ErrorComponent = BlueBaseAppError,
-			LoadingComponent = BlueBaseAppLoading,
-			children,
-		} = this.props;
-
-		if (loading) {
-			return <LoadingComponent BB={BB} />;
+	useEffect(() => {
+		if (bootTrigger) {
+			setBootTrigger(false);
+		} else {
+			return;
 		}
 
-		if (error) {
-			return <ErrorComponent error={error} BB={BB} />;
-		}
+		BB.boot({
+			...props,
+			onProgress: async (progress: BlueBaseProgress) => {
+				setError(progress.error);
+			},
+		})
+			.then(() => {
+				setBootCount(bootCount + 1);
+				setBooting(false);
+			})
+			.catch(e => {
+				setError(e);
+				setBooting(false);
+			});
+	});
 
-		return <BlueBaseRoot BB={BB}>{children}</BlueBaseRoot>;
+	if (booting) {
+		return <LoadingComponent BB={BB} />;
 	}
-}
+
+	if (error) {
+		return <ErrorComponent error={error} BB={BB} />;
+	}
+
+	return <BlueBaseRoot BB={BB}>{children}</BlueBaseRoot>;
+};
+
+const defaultProps: Partial<BlueBaseAppProps> = {
+	ErrorComponent: BlueBaseAppError,
+	LoadingComponent: BlueBaseAppLoading,
+};
+
+BlueBaseApp.defaultProps = defaultProps;
