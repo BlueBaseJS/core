@@ -1,5 +1,5 @@
 import { BlueBaseApp } from '../../../';
-import { ImageBackground } from '../ImageBackground';
+import { BlueBaseImageBackground } from '../BlueBaseImageBackground';
 import React from 'react';
 import { Text } from 'react-native';
 import { mount } from 'enzyme';
@@ -9,13 +9,13 @@ describe('ImageBackground', () => {
 	it(`should render a BlueBlueImage`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
-				<ImageBackground source="Logo" style={{ width: 100 }}>
+				<BlueBaseImageBackground source="Logo" style={{ width: 100 }}>
 					<Text>Foo</Text>
-				</ImageBackground>
+				</BlueBaseImageBackground>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper as any, ImageBackground);
+		await waitForElement(wrapper as any, BlueBaseImageBackground);
 
 		expect(
 			wrapper
@@ -30,13 +30,13 @@ describe('ImageBackground', () => {
 	it(`should render a BlueBlueImage`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
-				<ImageBackground source="Logo" style={{ width: 100 }}>
+				<BlueBaseImageBackground source="Logo" style={{ width: 100 }}>
 					<Text>Foo</Text>
-				</ImageBackground>
+				</BlueBaseImageBackground>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper as any, ImageBackground);
+		await waitForElement(wrapper as any, BlueBaseImageBackground);
 
 		expect(
 			wrapper
@@ -51,13 +51,13 @@ describe('ImageBackground', () => {
 	it(`should render a backup BlueBlueImage`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
-				<ImageBackground source={['Icon', 'Logo']} style={{ width: 100 }}>
+				<BlueBaseImageBackground source={['Icon', 'Logo']} style={{ width: 100 }}>
 					<Text>Foo</Text>
-				</ImageBackground>
+				</BlueBaseImageBackground>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper as any, ImageBackground);
+		await waitForElement(wrapper as any, BlueBaseImageBackground);
 
 		expect(
 			wrapper
@@ -72,13 +72,13 @@ describe('ImageBackground', () => {
 	it(`should render a backup BlueBlueImage from source prop`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
-				<ImageBackground source={['Icon', 'Logo']} style={{ width: 100 }}>
+				<BlueBaseImageBackground source={['Icon', 'Logo']} style={{ width: 100 }}>
 					<Text>Foo</Text>
-				</ImageBackground>
+				</BlueBaseImageBackground>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper as any, ImageBackground);
+		await waitForElement(wrapper as any, BlueBaseImageBackground);
 
 		expect(
 			wrapper
@@ -93,13 +93,13 @@ describe('ImageBackground', () => {
 	it(`should render just children if there is not source prop`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
-				<ImageBackground>
+				<BlueBaseImageBackground>
 					<Text>Foo</Text>
-				</ImageBackground>
+				</BlueBaseImageBackground>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper as any, ImageBackground);
+		await waitForElement(wrapper as any, BlueBaseImageBackground);
 
 		expect(wrapper.find('Image').exists()).toBe(false);
 		expect(

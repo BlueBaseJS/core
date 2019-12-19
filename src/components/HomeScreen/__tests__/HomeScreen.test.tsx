@@ -8,10 +8,10 @@ import TestRenderer from 'react-test-renderer';
 // });
 
 describe('HomeScreen', () => {
-	test(`Snapshot HomeScreen`, (done) => {
+	test(`Snapshot HomeScreen`, done => {
 		const component = TestRenderer.create(
 			<BlueBaseApp>
-				<HomeScreen/>
+				<HomeScreen />
 			</BlueBaseApp>
 		);
 		setTimeout(() => {
@@ -20,5 +20,4 @@ describe('HomeScreen', () => {
 			done();
 		});
 	});
-
 });
