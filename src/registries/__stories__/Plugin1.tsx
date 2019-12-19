@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '@bluebase/components';
-import { createPlugin } from '@bluebase/core';
+import { createPlugin } from '../PluginRegistry';
 
 export default createPlugin({
 	key: 'app-1',

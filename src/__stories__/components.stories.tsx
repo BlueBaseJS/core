@@ -16,7 +16,7 @@ import {
 	getComponent,
 } from '../getComponent';
 
-import { BlueBaseApp } from '@bluebase/core';
+import { BlueBaseApp } from '../OfflineComponents';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 

@@ -1,7 +1,6 @@
+import { BlueBase, BlueBaseProgress } from '../../BlueBase';
 import { SafeAreaView, ScrollView, Text, View } from 'react-native';
 
-import { BlueBase } from '@bluebase/core';
-import { BlueBaseProgress } from '../../BlueBase';
 import React from 'react';
 import { isProduction } from '../../utils';
 
@@ -9,12 +8,13 @@ const MISSING_ERROR = 'An unknown error occured.';
 
 export interface BlueBaseAppErrorProps {
 	BB: BlueBase;
-	progress: BlueBaseProgress;
+	error?: Error;
+	progress?: BlueBaseProgress;
 	bootCount: number;
 }
 
-export const BlueBaseAppError = ({ progress, BB }: BlueBaseAppErrorProps) => {
-	const { error } = progress;
+export const BlueBaseAppError = ({ progress = {}, error: err, BB }: BlueBaseAppErrorProps) => {
+	const error = err || progress.error;
 	let development = BB.Configs.getValue('development');
 
 	if (development === undefined) {
@@ -34,3 +34,5 @@ export const BlueBaseAppError = ({ progress, BB }: BlueBaseAppErrorProps) => {
 		</ScrollView>
 	);
 };
+
+BlueBaseAppError.displayName = 'BlueBaseAppError';

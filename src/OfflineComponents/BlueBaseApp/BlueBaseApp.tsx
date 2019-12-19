@@ -8,6 +8,7 @@ import {
 import React, { useEffect, useState } from 'react';
 
 import { BlueBaseProvider } from '../../Context';
+import { ErrorObserver } from '../../components';
 import { IntlProvider } from '../../intl';
 import { ThemeProvider } from '../../themes';
 import { getComponent } from '../../getComponent';
@@ -96,11 +97,18 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 
 	return (
 		<BlueBaseProvider key={`boot-${bootCount}`} value={BB}>
-			<ThemeProvider>
-				<IntlProvider>
-					<BlueBaseContent>{children}</BlueBaseContent>
-				</IntlProvider>
-			</ThemeProvider>
+			<ErrorObserver
+				errorComponent={ErrorComponent}
+				BB={BB}
+				progress={progress}
+				bootCount={bootCount}
+			>
+				<ThemeProvider>
+					<IntlProvider>
+						<BlueBaseContent>{children}</BlueBaseContent>
+					</IntlProvider>
+				</ThemeProvider>
+			</ErrorObserver>
 		</BlueBaseProvider>
 	);
 };
@@ -111,3 +119,4 @@ const defaultProps: Partial<BlueBaseAppProps> = {
 };
 
 BlueBaseApp.defaultProps = defaultProps;
+BlueBaseApp.displayName = 'BlueBaseApp';

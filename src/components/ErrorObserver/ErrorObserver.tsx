@@ -35,7 +35,7 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 
 	static getDerivedStateFromProps = (props: ErrorObserverProps, state: ErrorObserverState) => ({
 		error: props.checkError ? props.checkError(props, state) : undefined,
-	})
+	});
 
 	componentDidCatch(e: Error | null) {
 		const error = e || MISSING_ERROR;
@@ -46,12 +46,13 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 		const BB: BlueBase = this.context;
 
 		const { error } = this.state;
-		const { children, retry } = this.props;
+		const { children, retry, checkError, error: e, errorComponent, ...rest } = this.props;
 
 		if (error) {
 			BB.Logger.error(error);
+
 			const Error = this.props.errorComponent || ErrorState;
-			return React.createElement(Error, { error, retry });
+			return React.createElement(Error, { error, retry, ...rest });
 		}
 
 		// 'children' as a function, 'render prop' pattern
