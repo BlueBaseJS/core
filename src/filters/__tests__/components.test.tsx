@@ -34,7 +34,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h1);
@@ -51,7 +50,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h2);
@@ -68,7 +66,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h3);
@@ -85,7 +82,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h4);
@@ -102,7 +98,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h5);
@@ -119,7 +114,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h6);
@@ -136,7 +130,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.subtitle1);
@@ -153,7 +146,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.subtitle2);
@@ -170,7 +162,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.body1);
@@ -187,7 +178,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.body2);
@@ -204,7 +194,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.caption);
@@ -221,7 +210,6 @@ describe('filters', () => {
 
 				setTimeout(() => {
 					const tree = rendered.toJSON();
-					expect(tree).toMatchSnapshot();
 
 					expect((tree as any).type).toBe('Text');
 					expect((tree as any).props.style[0]).toMatchObject(theme.typography.overline);
