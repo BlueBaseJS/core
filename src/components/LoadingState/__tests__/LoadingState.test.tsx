@@ -4,9 +4,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
-
 describe('LoadingState', () => {
-
 	test(`should render an ActivityIndicator`, async () => {
 		const component = mount(
 			<BlueBaseApp>
@@ -16,12 +14,10 @@ describe('LoadingState', () => {
 
 		// Wait for render
 		await waitForElement(component as any, LoadingState);
-		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
 		expect(component.exists('LoadingState Body2')).toBe(false);
 		expect(component.exists('LoadingState Button')).toBe(false);
-
 	});
 
 	test(`should render timeout message`, async () => {
@@ -33,11 +29,15 @@ describe('LoadingState', () => {
 
 		// Wait for render
 		await waitForElement(component as any, LoadingState);
-		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
 		expect(component.exists('LoadingState Body2')).toBe(true);
-		expect(component.find('LoadingState Body2 Text').last().text()).toBe('This is taking longer than usual');
+		expect(
+			component
+				.find('LoadingState Body2 Text')
+				.last()
+				.text()
+		).toBe('This is taking longer than usual');
 		expect(component.exists('LoadingState Button')).toBe(false);
 	});
 
@@ -52,15 +52,22 @@ describe('LoadingState', () => {
 
 		// Wait for render
 		await waitForElement(component as any, LoadingState);
-		// expect(component).toMatchSnapshot();
 
 		expect(component.exists('LoadingState ActivityIndicator')).toBe(true);
 		expect(component.exists('LoadingState Body2')).toBe(true);
-		expect(component.find('LoadingState Body2 Text').last().text()).toBe('This is taking longer than usual');
+		expect(
+			component
+				.find('LoadingState Body2 Text')
+				.last()
+				.text()
+		).toBe('This is taking longer than usual');
 		expect(component.exists('LoadingState Button')).toBe(true);
 
-		(component as any).find('LoadingState Button').first().props().onPress();
+		(component as any)
+			.find('LoadingState Button')
+			.first()
+			.props()
+			.onPress();
 		expect(mockedFn.mock.calls.length).toBe(1);
 	});
-
 });

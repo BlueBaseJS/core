@@ -9,7 +9,6 @@ import { waitForElement } from 'enzyme-async-helpers';
 // jest.useFakeTimers();
 
 describe('StatefulComponent', () => {
-
 	test(`should show empty state as no data is provided`, async () => {
 		const component = mount(
 			<BlueBaseApp>
@@ -19,14 +18,21 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		// expect(component).toMatchSnapshot();
-
-		expect(component.find('StatefulComponent H6 Text').last().text()).toBe('Empty Area');
-		expect(component.find('StatefulComponent Body2 Text').last().text()).toBe('Create new items to fill this area.');
+		expect(
+			component
+				.find('StatefulComponent H6 Text')
+				.last()
+				.text()
+		).toBe('Empty Area');
+		expect(
+			component
+				.find('StatefulComponent Body2 Text')
+				.last()
+				.text()
+		).toBe('Create new items to fill this area.');
 	});
 
 	test(`should show empty state as data is an empty array`, async () => {
-
 		const component = mount(
 			<BlueBaseApp>
 				<StatefulComponent data={[]} />
@@ -35,11 +41,18 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		// expect(component).toMatchSnapshot();
-
-		expect(component.find('StatefulComponent H6 Text').last().text()).toBe('Empty Area');
-		expect(component.find('StatefulComponent Body2 Text').last().text()).toBe('Create new items to fill this area.');
-
+		expect(
+			component
+				.find('StatefulComponent H6 Text')
+				.last()
+				.text()
+		).toBe('Empty Area');
+		expect(
+			component
+				.find('StatefulComponent Body2 Text')
+				.last()
+				.text()
+		).toBe('Create new items to fill this area.');
 	});
 
 	test(`should show loading state if loading is set to true`, async () => {
@@ -51,7 +64,6 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		// expect(component).toMatchSnapshot();
 		expect(component.exists('LoadingState')).toBe(true);
 	});
 
@@ -66,27 +78,34 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		// expect(component).toMatchSnapshot();
-		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Content');
+		expect(
+			component
+				.find('StatefulComponent')
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Content');
 	});
 
 	it(`should show render prop children`, async () => {
 		const component = mount(
 			<BlueBaseApp>
-				<StatefulComponent data={true}>
-					{() => <Text>Render prop</Text>}
-				</StatefulComponent>
+				<StatefulComponent data={true}>{() => <Text>Render prop</Text>}</StatefulComponent>
 			</BlueBaseApp>
 		);
 
 		await waitForElement(component as any, StatefulComponent);
 
-		// expect(component).toMatchSnapshot();
-		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Render prop');
+		expect(
+			component
+				.find('StatefulComponent')
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Render prop');
 	});
 
 	it(`should show children from Component prop`, async () => {
-
 		const Comp = () => <Text>Custom Component</Text>;
 
 		const component = mount(
@@ -99,8 +118,12 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
-		// expect(component).toMatchSnapshot();
-		expect(component.find('StatefulComponent').find('Text').last().text()).toBe('Custom Component');
+		expect(
+			component
+				.find('StatefulComponent')
+				.find('Text')
+				.last()
+				.text()
+		).toBe('Custom Component');
 	});
-
 });

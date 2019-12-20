@@ -1024,24 +1024,6 @@
     deepmerge "^3.2.0"
     tslib "^1.9.3"
 
-"@bluebase/core@^4.0.0-alpha.39":
-  version "4.0.0-alpha.42"
-  resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-4.0.0-alpha.42.tgz#99c886cffb3a5908fd101a487e1f6200f74ac6ed"
-  integrity sha512-/S15Q3kNKxfZD/b9idAV7h42EQ9NXziL+1+u6IOo32b8wkeC2WCpR0JmuSkjMSN/Rl+jH0a35z1fh3M8zUBh8w==
-  dependencies:
-    deepmerge "^4.0.0"
-    hoist-non-react-statics "^3.3.0"
-    is-plain-object "^3.0.0"
-    lodash.flowright "^3.5.0"
-    lodash.isboolean "^3.0.3"
-    lodash.isfunction "^3.0.9"
-    lodash.isnil "^4.0.0"
-    lodash.isstring "^4.0.1"
-    lodash.kebabcase "^4.1.1"
-    react-loadable "^5.5.0"
-    rtl-detect "^1.0.2"
-    tslib "^1.10.0"
-
 "@bluebase/storybook-addon@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@bluebase/storybook-addon/-/storybook-addon-3.0.0.tgz#b38c1bb66f026898f00cbbf8cc4c13fcb0bfe93c"

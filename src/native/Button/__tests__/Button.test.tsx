@@ -1,4 +1,5 @@
 import { Button, ButtonStyles } from '../Button';
+
 // import { BlueBaseApp } from '../../../';
 import { BlueBaseLightTheme } from '../../../themes';
 import React from 'react';
@@ -8,9 +9,7 @@ import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
 describe('Button', () => {
-
 	test(`should render Button with default color styles`, () => {
-
 		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} testID="button-root">
@@ -26,12 +25,9 @@ describe('Button', () => {
 
 		expect(text.props.style[0]).toMatchObject(styles.text);
 		expect(text.props.style[0]).toMatchObject(styles.defaultText);
-
-		expect(rendered).toMatchSnapshot();
 	});
 
 	test(`should render Button with primary color styles`, () => {
-
 		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} color="primary" testID="button-root">
@@ -47,12 +43,9 @@ describe('Button', () => {
 
 		expect(text.props.style[0]).toMatchObject(styles.text);
 		expect(text.props.style[1]).toMatchObject(styles.primaryText);
-
-		expect(rendered).toMatchSnapshot();
 	});
 
 	test(`should render Button with secondary color styles`, () => {
-
 		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} color="secondary" testID="button-root">
@@ -68,12 +61,9 @@ describe('Button', () => {
 
 		expect(text.props.style[0]).toMatchObject(styles.text);
 		expect(text.props.style[1]).toMatchObject(styles.secondaryText);
-
-		expect(rendered).toMatchSnapshot();
 	});
 
 	test(`should render Button with link color styles`, () => {
-
 		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} color="link" testID="button-root">
@@ -89,15 +79,12 @@ describe('Button', () => {
 
 		expect(text.props.style[0]).toMatchObject(styles.text);
 		expect(text.props.style[1]).toMatchObject(styles.linkText);
-
-		expect(rendered).toMatchSnapshot();
 	});
 
 	test(`should render Button with full width`, () => {
-
 		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
 		const rendered = TestRenderer.create(
-			<Button styles={styles} testID="button-root" fullWidth={true} >
+			<Button styles={styles} testID="button-root" fullWidth={true}>
 				Hello
 			</Button>
 		);
@@ -111,15 +98,12 @@ describe('Button', () => {
 
 		expect(text.props.style[0]).toMatchObject(styles.text);
 		expect(text.props.style[1]).toMatchObject(styles.defaultText);
-
-		expect(rendered).toMatchSnapshot();
 	});
 
 	test(`should render Button with custom children`, () => {
-
 		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
 		const rendered = TestRenderer.create(
-			<Button styles={styles} testID="button-root" fullWidth={true} >
+			<Button styles={styles} testID="button-root" fullWidth={true}>
 				<Text testID="custom">Custom</Text>
 			</Button>
 		);
@@ -133,12 +117,9 @@ describe('Button', () => {
 
 		expect(text.props.style).toBeUndefined();
 		expect(text.props.testID).toBe('custom');
-
-		expect(rendered).toMatchSnapshot();
 	});
 
 	test(`should use TouchableNativeFeedback on android platform`, async () => {
-
 		jest.mock('Platform', () => {
 			const Platform = (require as any).requireActual('Platform');
 			Platform.OS = 'android';
@@ -156,20 +137,13 @@ describe('Button', () => {
 		// // const el = rendered.root.findAllByProps({ testID: 'button-root' })[1];
 		// const touchable = rendered.root.findByType(TouchableNativeFeedback);
 
-		// expect(rendered).toMatchSnapshot();
 		// expect(touchable.type).toBe('TouchableNativeFeedback');
 
-		const wrapper = mount(
-			<Button styles={styles}>
-				Hello
-			</Button>
-		);
+		const wrapper = mount(<Button styles={styles}>Hello</Button>);
 
 		// Wait for render
 		await waitForElement(wrapper as any, Button);
 
-		expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('Button DummyTouchableNativeFeedback').length).toBe(1);
 	});
-
 });
