@@ -2,39 +2,28 @@ import { BlueBaseApp } from '../';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { getComponent } from '../getComponent';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
 describe('getComponent', () => {
-	test(`should render a text component`, done => {
+	test(`should render a text component`, async () => {
 		const Text = getComponent('Text');
 
-		const component = TestRenderer.create(
+		const wrapper = mount(
 			<BlueBaseApp>
-				<Text>A Text component</Text>
+				<Text testID="test">A Text component</Text>
+				<Text testID="test2">A Second Text component</Text>
 			</BlueBaseApp>
 		);
 
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect((tree as any).type).toBe('Text');
-			expect((tree as any).children.join()).toBe('A Text component');
-			done();
-		});
-	});
+		await waitForElement(wrapper, '[testID="test"]');
 
-	test(`should render a button component`, done => {
-		const Button = getComponent('Button');
-
-		const component = TestRenderer.create(
-			<BlueBaseApp>
-				<Button>A Button component</Button>
-			</BlueBaseApp>
-		);
-
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect((tree as any).children[0].type).toBe('View');
-			done();
-		});
+		expect(
+			wrapper
+				.find('Text[testID="test"]')
+				.last()
+				.text()
+		).toBe('A Text component');
 	});
 
 	test(`should throw an Error when no key is passed`, () => {

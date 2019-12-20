@@ -2,7 +2,6 @@ import { BlueBaseApp } from '../../../';
 import { DynamicIconProps } from '@bluebase/components';
 import { PluginIcon } from '../PluginIcon';
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
@@ -22,7 +21,7 @@ describe('PluginIcon', () => {
 	// 	}
 	// });
 
-	test(`should render an image icon for a registered plugin`, done => {
+	test(`should render an image icon for a registered plugin`, async () => {
 		const plugin = {
 			icon: {
 				source: { uri: 'https://picsum.photos/200' },
@@ -32,24 +31,23 @@ describe('PluginIcon', () => {
 			value: {},
 		};
 
-		const rendered = TestRenderer.create(
+		const wrapper = mount(
 			<BlueBaseApp plugins={[plugin]}>
 				<PluginIcon id="some" />
 			</BlueBaseApp>
 		);
 
-		setTimeout(() => {
-			const tree = rendered.toJSON();
-			// expect(tree).toMatchSnapshot();
+		await waitForElement(wrapper, 'DynamicIcon');
 
-			expect((tree as any).type).toBe('Image');
-			expect((tree as any).props.size).toBe(100);
-			expect((tree as any).props.style).toMatchObject({ height: 100, width: 100 });
-			done();
-		});
+		expect(
+			wrapper
+				.find('DynamicIcon')
+				.first()
+				.prop('type')
+		).toBe('image');
 	});
 
-	test(`should render an image icon for a registered plugin where icon prop is a thunk`, done => {
+	test(`should render an image icon for a registered plugin where icon prop is a thunk`, async () => {
 		const plugin = {
 			icon: () => ({
 				source: { uri: 'https://picsum.photos/200' },
@@ -59,42 +57,37 @@ describe('PluginIcon', () => {
 			value: {},
 		};
 
-		const rendered = TestRenderer.create(
+		const wrapper = mount(
 			<BlueBaseApp plugins={[plugin]}>
 				<PluginIcon id="some" />
 			</BlueBaseApp>
 		);
 
-		setTimeout(() => {
-			const tree = rendered.toJSON();
-			// expect(tree).toMatchSnapshot();
+		await waitForElement(wrapper, 'DynamicIcon');
 
-			expect((tree as any).type).toBe('Image');
-			expect((tree as any).props.size).toBe(100);
-			expect((tree as any).props.style).toMatchObject({ height: 100, width: 100 });
-			done();
-		});
+		expect(
+			wrapper
+				.find('DynamicIcon')
+				.first()
+				.prop('type')
+		).toBe('image');
 	});
 
-	test(`should render null where plugin doesnt have an icon prop`, done => {
+	test(`should render null where plugin doesnt have an icon prop`, async () => {
 		const plugin = {
 			key: 'some',
 			value: {},
 		};
 
-		const rendered = TestRenderer.create(
+		const wrapper = mount(
 			<BlueBaseApp plugins={[plugin]}>
 				<PluginIcon id="some" />
 			</BlueBaseApp>
 		);
 
-		setTimeout(() => {
-			const tree = rendered.toJSON();
-			// expect(tree).toMatchSnapshot();
+		await waitForElement(wrapper, 'PluginIcon');
 
-			expect(tree as any).toBe(null);
-			done();
-		});
+		expect(wrapper.find('DynamicIcon').exists()).toBe(false);
 	});
 
 	test(`should throw an error when a plugin is not registered`, async () => {
