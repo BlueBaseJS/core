@@ -12,6 +12,7 @@ import { ErrorObserver } from '../../components';
 import { IntlProvider } from '../../intl';
 import { ThemeProvider } from '../../themes';
 import { getComponent } from '../../getComponent';
+import { isProduction } from '../../utils';
 
 const BlueBaseContent = getComponent('BlueBaseContent');
 
@@ -95,6 +96,12 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 		return <ErrorComponent BB={BB} progress={progress} bootCount={bootCount} />;
 	}
 
+	let development = BB.Configs.getValue('development');
+
+	if (development === undefined) {
+		development = !isProduction();
+	}
+
 	return (
 		<BlueBaseProvider key={`boot-${bootCount}`} value={BB}>
 			<ErrorObserver
@@ -102,6 +109,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 				BB={BB}
 				progress={progress}
 				bootCount={bootCount}
+				onError={!development && BB.reboot}
 			>
 				<ThemeProvider>
 					<IntlProvider>

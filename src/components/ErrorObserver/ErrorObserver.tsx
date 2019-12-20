@@ -39,6 +39,9 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 
 	componentDidCatch(e: Error | null) {
 		const error = e || MISSING_ERROR;
+		if (this.props.onError) {
+			this.props.onError(error);
+		}
 		this.setState({ error });
 	}
 

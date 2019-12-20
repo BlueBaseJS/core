@@ -32,7 +32,7 @@ export interface BlueBaseProgress {
 	message?: string;
 
 	/**
-	 * Any errors occured while booting the app
+	 * Any errors occurred while booting the app
 	 */
 	error?: any;
 }
