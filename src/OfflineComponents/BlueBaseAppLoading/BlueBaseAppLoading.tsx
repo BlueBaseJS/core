@@ -36,7 +36,9 @@ export const BlueBaseAppLoading = ({ progress, image }: BlueBaseAppLoadingProps)
 	</WaitObserver>
 );
 
-BlueBaseAppLoading.defaultProps = {
+const defaultProps: Partial<BlueBaseAppLoadingProps> = {
 	image: Logo,
 };
+
+BlueBaseAppLoading.defaultProps = defaultProps;
 BlueBaseAppLoading.displayName = 'BlueBaseAppLoading';

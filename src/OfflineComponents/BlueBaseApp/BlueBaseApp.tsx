@@ -49,7 +49,11 @@ export interface BlueBaseAppProps extends Partial<BootOptions> {
  * ```
  */
 export const BlueBaseApp = (props: BlueBaseAppProps) => {
-	const { ErrorComponent, LoadingComponent, children } = props;
+	const {
+		ErrorComponent = BlueBaseAppError,
+		LoadingComponent = BlueBaseAppLoading,
+		children,
+	} = props;
 
 	const [BB] = useState(props.BB || new BlueBase());
 

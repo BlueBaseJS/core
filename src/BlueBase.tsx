@@ -151,7 +151,7 @@ export class BlueBase {
 			await this.Filters.run('bluebase.reset', this.bootOptions, { onProgress });
 			onProgress({
 				message: 'Reseting...',
-				progress: 20,
+				progress: 10,
 			});
 		}
 
@@ -159,7 +159,7 @@ export class BlueBase {
 		await this.Filters.registerNestedCollection(systemFilters);
 		onProgress({
 			message: 'Loading system defaults',
-			progress: 30,
+			progress: 20,
 		});
 
 		// 🚀 Boot!
@@ -169,8 +169,8 @@ export class BlueBase {
 		this.booted = true;
 
 		onProgress({
-			message: 'Almost there!',
-			progress: 95,
+			message: 'Done!',
+			progress: 100,
 		});
 
 		return this;
