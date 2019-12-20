@@ -12,7 +12,7 @@ import { ErrorObserver } from '../../components';
 import { IntlProvider } from '../../intl';
 import { ThemeProvider } from '../../themes';
 import { getComponent } from '../../getComponent';
-import { isProduction } from '../../utils';
+import { useExceptionHandlingOnProduction } from './useExceptionHandlingOnProduction';
 
 const BlueBaseContent = getComponent('BlueBaseContent');
 
@@ -49,18 +49,16 @@ export interface BlueBaseAppProps extends Partial<BootOptions> {
  * ```
  */
 export const BlueBaseApp = (props: BlueBaseAppProps) => {
-	const {
-		ErrorComponent = BlueBaseAppError,
-		LoadingComponent = BlueBaseAppLoading,
-		children,
-	} = props;
+	const { ErrorComponent, LoadingComponent, children } = props;
+
+	const [BB] = useState(props.BB || new BlueBase());
 
 	const [bootCount, setBootCount] = useState(0);
 	const [booting, setBooting] = useState(true);
 	const [bootTrigger, setBootTrigger] = useState(true); // Setting to true to start boot
 	const [progress, setProgress] = useState<BlueBaseProgress>({});
 
-	const [BB] = useState(props.BB || new BlueBase());
+	const { onError } = useExceptionHandlingOnProduction(BB);
 
 	BB.reboot = async () => {
 		setBootTrigger(true);
@@ -96,12 +94,6 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 		return <ErrorComponent BB={BB} progress={progress} bootCount={bootCount} />;
 	}
 
-	let development = BB.Configs.getValue('development');
-
-	if (development === undefined) {
-		development = !isProduction();
-	}
-
 	return (
 		<BlueBaseProvider key={`boot-${bootCount}`} value={BB}>
 			<ErrorObserver
@@ -109,7 +101,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 				BB={BB}
 				progress={progress}
 				bootCount={bootCount}
-				onError={!development && BB.reboot}
+				onError={onError}
 			>
 				<ThemeProvider>
 					<IntlProvider>

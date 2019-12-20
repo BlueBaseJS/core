@@ -14,8 +14,8 @@ export interface BlueBaseAppErrorProps {
 	bootCount: number;
 }
 
-export const BlueBaseAppError = ({ progress = {}, error: err, BB }: BlueBaseAppErrorProps) => {
-	const error = err || progress.error;
+export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorProps) => {
+	const error = err || (progress && progress.error);
 	let development = BB.Configs.getValue('development');
 
 	if (development === undefined) {
@@ -25,7 +25,7 @@ export const BlueBaseAppError = ({ progress = {}, error: err, BB }: BlueBaseAppE
 	const message = development === true && error ? error.message : MISSING_ERROR;
 
 	return (
-		<WaitObserver>
+		<WaitObserver delay={100}>
 			<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
 				<SafeAreaView
 					style={{ alignItems: 'center', flexGrow: 1, justifyContent: 'center', padding: 16 }}

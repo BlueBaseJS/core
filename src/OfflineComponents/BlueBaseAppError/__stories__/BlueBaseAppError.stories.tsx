@@ -35,4 +35,11 @@ storiesOf('BlueBaseAppError', module)
 				<BadBoy />
 			</BlueBaseApp>
 		</View>
+	))
+	.add('Simulate Production Infinite Error', () => (
+		<View style={{ ...StyleSheet.absoluteFillObject, height: Dimensions.get('window').height }}>
+			<BlueBaseApp configs={{ development: false }}>
+				<Bang />
+			</BlueBaseApp>
+		</View>
 	));
