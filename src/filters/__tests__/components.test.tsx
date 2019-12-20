@@ -15,206 +15,220 @@ import {
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseApp } from '../../';
-import { BlueBaseLightTheme } from '../../themes';
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
+import { StyleSheet } from 'react-native';
+import { buildTheme } from '../../themes';
 import { createPlugin } from '../../registries';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
-const theme = BlueBaseLightTheme.value as any;
+const theme = buildTheme()();
 
 describe('filters', () => {
 	describe('components', () => {
 		describe('bluebase.components.register.internal', () => {
-			test(`should register H1 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register H1 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<H1>Sample Text</H1>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, H1);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h1);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.h1);
 			});
 
-			test(`should register H2 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register H2 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<H2>Sample Text</H2>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, H2);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h2);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.h2);
 			});
 
-			test(`should register H3 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register H3 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<H3>Sample Text</H3>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, H3);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h3);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.h3);
 			});
 
-			test(`should register H4 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register H4 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<H4>Sample Text</H4>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, H4);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h4);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.h4);
 			});
 
-			test(`should register H5 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register H5 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<H5>Sample Text</H5>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, H5);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h5);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.h5);
 			});
 
-			test(`should register H6 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register H6 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<H6>Sample Text</H6>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, H6);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.h6);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.h6);
 			});
 
-			test(`should register Subtitle1 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register Subtitle1 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<Subtitle1>Sample Text</Subtitle1>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, Subtitle1);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.subtitle1);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.subtitle1);
 			});
 
-			test(`should register Subtitle2 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register Subtitle2 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<Subtitle2>Sample Text</Subtitle2>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, Subtitle2);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.subtitle2);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.subtitle2);
 			});
 
-			test(`should register Body1 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register Body1 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<Body1>Sample Text</Body1>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, Body1);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.body1);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.body1);
 			});
 
-			test(`should register Body2 component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register Body2 component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<Body2>Sample Text</Body2>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, Body2);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.body2);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.body2);
 			});
 
-			test(`should register Caption component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register Caption component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<Caption>Sample Text</Caption>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, Caption);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.caption);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.caption);
 			});
 
-			test(`should register Overline component with proper styles`, done => {
-				const rendered = TestRenderer.create(
+			test(`should register Overline component with proper styles`, async () => {
+				const wrapper = mount(
 					<BlueBaseApp>
 						<Overline>Sample Text</Overline>
 					</BlueBaseApp>
 				);
 
-				setTimeout(() => {
-					const tree = rendered.toJSON();
+				await waitForElement(wrapper, Overline);
 
-					expect((tree as any).type).toBe('Text');
-					expect((tree as any).props.style[0]).toMatchObject(theme.typography.overline);
-					done();
-				});
+				expect(
+					StyleSheet.flatten(wrapper
+						.find('Text')
+						.last()
+						.prop('style') as any)
+				).toMatchObject(theme.typography.overline);
 			});
 		});
 
