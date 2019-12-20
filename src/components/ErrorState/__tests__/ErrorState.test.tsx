@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
-describe('ErrorState', async () => {
+describe('ErrorState', () => {
 	test(`should render ErrorState`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
