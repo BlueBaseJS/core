@@ -35,7 +35,7 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 
 	static getDerivedStateFromProps = (props: ErrorObserverProps, state: ErrorObserverState) => ({
 		error: props.checkError ? props.checkError(props, state) : undefined,
-	});
+	})
 
 	componentDidCatch(e: Error | null) {
 		const error = e || MISSING_ERROR;

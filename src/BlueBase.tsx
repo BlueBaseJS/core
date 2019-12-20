@@ -108,7 +108,7 @@ export class BlueBase {
 
 	public reboot: () => Promise<void> = async () => {
 		this.boot();
-	};
+	}
 
 	public async boot({ onProgress, ...options }: Partial<BootOptionsInternal> = {}) {
 		// Store onProgress for later use, even after boot finishes (i.e. in reboot, etc)
@@ -178,5 +178,5 @@ export class BlueBase {
 
 	private onProgress: BlueBaseBootProgressCallback = () => {
 		return;
-	};
+	}
 }
