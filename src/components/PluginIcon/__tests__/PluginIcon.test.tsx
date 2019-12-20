@@ -6,21 +6,6 @@ import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
 describe('PluginIcon', () => {
-	// it(`Snapshot PluginIcon component with no plugin registered`, () => {
-
-	// 	const component = TestRenderer.create(
-	// 		<BlueBaseApp>
-	// 			<PluginIcon id="unregistered-plugin" />
-	// 		</BlueBaseApp>
-	// 	);
-	// 	try {
-	// 		const tree = component.toJSON();
-	// 		expect(tree).toMatchSnapshot();
-	// 	} catch (e) {
-	// 		expect(e.message).toBe(`There's no pluign registered with "unregistered-plugin" key in the registry.`);
-	// 	}
-	// });
-
 	test(`should render an image icon for a registered plugin`, async () => {
 		const plugin = {
 			icon: {

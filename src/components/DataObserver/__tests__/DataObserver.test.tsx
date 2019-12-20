@@ -7,22 +7,6 @@ import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
 describe('DataObserver', () => {
-	// test(`Snapshot DataObserver component with Text`, (done) => {
-	// 	const wrapper = mount(
-	// 		<BlueBaseApp>
-	// 			<DataObserver>
-	// 				<Native.Text>hello</Native.Text>
-
-	// 			</DataObserver>
-	// 		</BlueBaseApp>
-	// 	);
-	// 	setTimeout(() => {
-	// 		const tree = component.toJSON();
-	// 		expect(tree).toMatchSnapshot();
-	// 		done();
-	// 	});
-	// });
-
 	test(`should generate states from custom listener functions`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>

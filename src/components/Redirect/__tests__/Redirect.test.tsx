@@ -48,8 +48,6 @@ describe('Redirect', () => {
 		expect(stubActions.replace).toBeCalledWith('Foo', undefined);
 
 		expect(stubActions.push).toBeCalledTimes(0);
-
-		expect(stubActions).toMatchSnapshot();
 	});
 
 	test(`should call the replace function with the given path`, async () => {
@@ -70,8 +68,6 @@ describe('Redirect', () => {
 		expect(stubActions.replace).toBeCalledWith({ path: '/foo' }, undefined);
 
 		expect(stubActions.push).toBeCalledTimes(0);
-
-		expect(stubActions).toMatchSnapshot();
 	});
 
 	test(`should call the push function with the given routeName`, async () => {
@@ -92,8 +88,6 @@ describe('Redirect', () => {
 		expect(stubActions.push).toBeCalledWith('Foo', undefined);
 
 		expect(stubActions.replace).toBeCalledTimes(0);
-
-		expect(stubActions).toMatchSnapshot();
 	});
 
 	test(`should not do anything if there is no routeName or path prop`, async () => {
@@ -112,7 +106,5 @@ describe('Redirect', () => {
 
 		expect(stubActions.push).toBeCalledTimes(0);
 		expect(stubActions.replace).toBeCalledTimes(0);
-
-		expect(stubActions).toMatchSnapshot();
 	});
 });

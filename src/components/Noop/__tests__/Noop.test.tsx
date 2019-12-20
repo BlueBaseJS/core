@@ -11,9 +11,6 @@ describe('Noop', () => {
 		const component = renderer.create(<Noop />);
 
 		expect(component.root.props.children).toBeUndefined();
-
-		// const tree = component.toTree();
-		// expect(tree).toMatchSnapshot();
 	});
 
 	test('Should render children', () => {
@@ -28,6 +25,5 @@ describe('Noop', () => {
 		);
 
 		// const tree = component.toTree();
-		// expect(tree).toMatchSnapshot();
 	});
 });

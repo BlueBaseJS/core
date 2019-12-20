@@ -102,7 +102,6 @@ describe('ErrorObserver', () => {
 
 		await waitForElement(wrapper as any, ErrorObserver);
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('Text')

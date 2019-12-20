@@ -51,7 +51,6 @@ describe('BlueBaseApp', () => {
 
 		await waitForElement(wrapper, '[testID="Custom"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('BlueBaseApp Text')
@@ -73,7 +72,6 @@ describe('BlueBaseApp', () => {
 
 		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('[testID="error-title"]')
@@ -101,7 +99,6 @@ describe('BlueBaseApp', () => {
 		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 		wrapper.update();
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('[testID="error-title"]')
@@ -128,7 +125,6 @@ describe('BlueBaseApp', () => {
 		// Wait for state update
 		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('[testID="error-title"]')
@@ -155,7 +151,6 @@ describe('BlueBaseApp', () => {
 		// Wait for state update
 		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-button"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(wrapper.find('ErrorObserver').prop('bootCount')).toBe(3);
 
 		const onPress: any = wrapper
@@ -183,7 +178,6 @@ describe('BlueBaseApp', () => {
 
 		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('[testID="error-title"]')
@@ -213,7 +207,6 @@ describe('BlueBaseApp', () => {
 
 		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('[testID="error-title"]')
