@@ -1,9 +1,13 @@
 import { NavigationActionsObject, NavigationActionsProps } from '@bluebase/components';
+import { createContext, useContext } from 'react';
+
 import { renderChildrenWithProps } from '../../utils';
 
-const stubAction = () => { return; };
+const stubAction = () => {
+	return;
+};
 
-const stubActions: NavigationActionsObject = {
+export const StubNavigationActionsObject: NavigationActionsObject = {
 	getParam: stubAction,
 	goBack: stubAction,
 	navigate: stubAction,
@@ -17,8 +21,18 @@ const stubActions: NavigationActionsObject = {
 		params: {},
 		routeName: '',
 		url: '',
-	}
+	},
 };
 
-export const NavigationActions
- = ({ children }: NavigationActionsProps) => renderChildrenWithProps(children, stubActions);
+export const NavigationContext = createContext<NavigationActionsObject>(
+	StubNavigationActionsObject
+);
+
+export function useNavigation() {
+	return useContext(NavigationContext);
+}
+
+export const NavigationActions = ({ children }: NavigationActionsProps) => {
+	const actions = useNavigation();
+	return renderChildrenWithProps(children, actions);
+};
