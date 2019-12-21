@@ -1,3 +1,4 @@
+import { NavigationContext, StubNavigationActionsObject } from '../NavigationActions';
 import { NavigationProps, RouteConfig } from '@bluebase/components';
 
 import { BlueBase } from '../../BlueBase';
@@ -10,8 +11,6 @@ import { resolveThunk } from '../../utils';
  *
  * This is a stub router. Intended to be replaced by an external router plugin.
  */
-// export const Navigation = ({ component: Component }: NavigationProps) => (<Component />);
-
 export class Navigation extends React.PureComponent<NavigationProps> {
 	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
@@ -35,11 +34,17 @@ export class Navigation extends React.PureComponent<NavigationProps> {
 			navigator = <Navigation navigator={route.navigator} />;
 		}
 
+		let node = navigator;
+
 		if (route.screen) {
 			const Component = Screen!;
-			return <Component key={route.name}>{navigator}</Component>;
+			node = <Component key={route.name}>{navigator}</Component>;
 		}
 
-		return navigator;
+		return (
+			<NavigationContext.Provider value={StubNavigationActionsObject}>
+				{node}
+			</NavigationContext.Provider>
+		);
 	}
 }

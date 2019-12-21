@@ -5,10 +5,13 @@ const deepmerge = require('deepmerge');
  */
 export default (input: any) => {
 	return deepmerge(input, {
-
 		// app.json is generated from manifest
 		manifest: {
-			name: 'My BlueBase App'
-		}
+			name: 'My BlueBase App',
+
+			splash: {
+				resiveMode: 'cover',
+			},
+		},
 	});
 };
