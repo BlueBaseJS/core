@@ -1,3 +1,16 @@
+# [5.7.0](https://github.com/BlueBaseJS/core/compare/v5.6.0...v5.7.0) (2019-12-21)
+
+### Bug Fixes
+
+-   **BlueBaseImage:** Fixed a bad import statement ([cfaa5c9](https://github.com/BlueBaseJS/core/commit/cfaa5c9))
+
+### Features
+
+-   **🚨 BlueBaseAppError:** New UX ([e89b114](https://github.com/BlueBaseJS/core/commit/e89b114))
+-   **BlueBaseApp:** BlueBaseApp is now a functional component ([e9b83f7](https://github.com/BlueBaseJS/core/commit/e9b83f7))
+-   **BlueBaseApp:** Shows error message in prod during infinite crash ([3a27ef0](https://github.com/BlueBaseJS/core/commit/3a27ef0))
+-   **BlueBaseAppLoading:** New loading UI ([09a1973](https://github.com/BlueBaseJS/core/commit/09a1973))
+
 # [5.6.0](https://github.com/BlueBaseJS/core/compare/v5.5.1...v5.6.0) (2019-12-19)
 
 ### Features
