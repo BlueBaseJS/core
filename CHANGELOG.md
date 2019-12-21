@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/BlueBaseJS/core/compare/v5.7.0...v5.8.0) (2019-12-21)
+
+### Features
+
+-   **🔀 Navigation:** Adds a NavigationContext & useNavigation hook ([8969aae](https://github.com/BlueBaseJS/core/commit/8969aae))
+-   New Logo ([#158](https://github.com/BlueBaseJS/core/issues/158)) ([be1acb7](https://github.com/BlueBaseJS/core/commit/be1acb7))
+
 # [5.7.0](https://github.com/BlueBaseJS/core/compare/v5.6.0...v5.7.0) (2019-12-21)
 
 ### Bug Fixes
