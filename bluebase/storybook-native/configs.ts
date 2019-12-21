@@ -5,11 +5,14 @@ const deepmerge = require('deepmerge');
  */
 export default (input: any) => {
 	return deepmerge(input, {
-
 		// app.json is generated from manifest
 		manifest: {
 			name: 'BlueBase Storybook Native',
 			slug: 'bluebase-storybook-native',
-		}
+
+			splash: {
+				resiveMode: 'cover',
+			},
+		},
 	});
 };

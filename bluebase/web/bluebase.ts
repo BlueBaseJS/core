@@ -1,6 +1,6 @@
-import { BootOptions } from '../../src';
+import { BootOptions, merge } from '../../src';
+
 import commonBootOptions from '../common/bluebase';
-import deepmerge from 'deepmerge';
 
 /**
  * Add your platform specific configs here.
@@ -9,4 +9,4 @@ import deepmerge from 'deepmerge';
  */
 const bootOptions: Partial<BootOptions> = {};
 
-export default deepmerge(commonBootOptions, bootOptions);
+export default merge(commonBootOptions, bootOptions);
