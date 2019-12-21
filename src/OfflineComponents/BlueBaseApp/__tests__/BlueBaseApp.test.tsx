@@ -1,11 +1,10 @@
-import { waitForElement, waitForState } from 'enzyme-async-helpers';
-
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../BlueBaseApp';
-import { BlueBaseAppError } from '../../BlueBaseAppError';
 import React from 'react';
 import { Text } from 'react-native';
 import { mount } from 'enzyme';
+import wait from 'waait';
+import { waitForElement } from 'enzyme-async-helpers';
 
 declare const global: any;
 
@@ -18,61 +17,51 @@ const BangNull = () => {
 };
 
 describe('BlueBaseApp', () => {
-	test(`should render BlueBaseApp`, async () => {
+	it(`should render BlueBaseApp`, async () => {
 		const wrapper = mount(<BlueBaseApp />);
 
-		// Will show loading
-		// expect(wrapper).toMatchSnapshot();
-		expect(
-			wrapper
-				.find('BlueBaseApp Text')
-				.last()
-				.text()
-		).toBe('Loading');
+		// // Will show loading
+		// expect(
+		// 	wrapper
+		// 		.find('BlueBaseApp Text')
+		// 		.last()
+		// 		.text()
+		// ).toBe('Loading');
 
 		// Wait for state update
-		await waitForState(wrapper as any, (state: any) => state.loading === false);
+		await waitForElement(wrapper, 'HomeScreen');
 		wrapper.update();
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('BlueBaseApp HomeScreen Text')
 				.last()
 				.text()
 		).toBe('Welcome to BlueBase Framework!');
+
+		wrapper.unmount();
 	});
 
-	test(`should render BlueBaseApp with custom child`, async () => {
+	it(`should render BlueBaseApp with custom child`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<Text>🚀 BlueBase System Content!</Text>
+				<Text testID="Custom">🚀 BlueBase System Content!</Text>
 			</BlueBaseApp>
 		);
 
-		// Will show loading
-		// expect(wrapper).toMatchSnapshot();
-		expect(
-			wrapper
-				.find('BlueBaseApp Text')
-				.last()
-				.text()
-		).toBe('Loading');
+		await waitForElement(wrapper, '[testID="Custom"]');
 
-		// Wait for state update
-		await waitForState(wrapper as any, (state: any) => state.loading === false);
-		wrapper.update();
-
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
 				.find('BlueBaseApp Text')
 				.last()
 				.text()
 		).toBe('🚀 BlueBase System Content!');
+
+		wrapper.unmount();
 	});
 
-	test(`should render error state when boot throws an error`, async () => {
+	it(`should render error state when boot throws an error`, async () => {
 		const BB = new BlueBase();
 		BB.Configs.setValue('development', true);
 		(BB as any).bootInternal = () => {
@@ -81,134 +70,105 @@ describe('BlueBaseApp', () => {
 
 		const wrapper = mount(<BlueBaseApp BB={BB} />);
 
-		await waitForElement(wrapper, BlueBaseAppError);
+		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(0)
+				.find('[testID="error-title"]')
+				.last()
 				.text()
-		).toBe('🚨 Error');
+		).toBe('ERROR');
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(1)
+				.find('[testID="error-message"]')
+				.last()
 				.text()
 		).toBe('Boot Error!');
+
+		wrapper.unmount();
 	});
 
-	test(`should render error state when a child throws an error`, async () => {
+	it(`should render error state when a child throws an error`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<Bang />
 			</BlueBaseApp>
 		);
 
-		// Will show loading
-		// expect(wrapper).toMatchSnapshot();
-		expect(
-			wrapper
-				.find('BlueBaseApp Text')
-				.last()
-				.text()
-		).toBe('Loading');
-
 		// Wait for state update
-		await waitForState(wrapper as any, (state: any) => state.loading === false);
+		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 		wrapper.update();
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(0)
+				.find('[testID="error-title"]')
+				.last()
 				.text()
-		).toBe('🚨 Error');
+		).toBe('ERROR');
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(1)
+				.find('[testID="error-message"]')
+				.last()
 				.text()
 		).toBe('💥 Boom!');
+
+		wrapper.unmount();
 	});
 
-	test(`should render error state with custom message when a child throws a null error`, async () => {
+	it(`should render error state with custom message when a child throws a null error`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<BangNull />
 			</BlueBaseApp>
 		);
 
-		// Will show loading
-		// expect(wrapper).toMatchSnapshot();
+		// Wait for state update
+		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
+
 		expect(
 			wrapper
-				.find('BlueBaseApp Text')
+				.find('[testID="error-title"]')
 				.last()
 				.text()
-		).toBe('Loading');
-
-		// Wait for state update
-		await waitForState(wrapper as any, (state: any) => state.loading === false);
-		wrapper.update();
-
-		await waitForElement(wrapper, BlueBaseAppError);
-
-		// expect(wrapper).toMatchSnapshot();
+		).toBe('ERROR');
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(0)
+				.find('[testID="error-message"]')
+				.last()
 				.text()
-		).toBe('🚨 Error');
-		expect(
-			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(1)
-				.text()
-		).toBe('An unknown error occured.');
+		).toBe('An unknown error occurred.');
+
+		wrapper.unmount();
 	});
 
-	test(`should render error state with custom message when in production mode`, async () => {
+	it(`should render error state with custom message when in production mode`, async () => {
 		const wrapper = mount(
 			<BlueBaseApp configs={{ development: false }}>
 				<Bang />
 			</BlueBaseApp>
 		);
 
-		// Will show loading
-		// expect(wrapper).toMatchSnapshot();
-		expect(
-			wrapper
-				.find('BlueBaseApp Text')
-				.last()
-				.text()
-		).toBe('Loading');
-
 		// Wait for state update
-		await waitForState(wrapper as any, (state: any) => state.loading === false);
-		wrapper.update();
+		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-button"]');
 
-		await waitForElement(wrapper, BlueBaseAppError);
+		expect(wrapper.find('ErrorObserver').prop('bootCount')).toBe(3);
 
-		// expect(wrapper).toMatchSnapshot();
-		expect(
-			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(0)
-				.text()
-		).toBe('🚨 Error');
-		expect(
-			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(1)
-				.text()
-		).toBe('An unknown error occured.');
+		const onPress: any = wrapper
+			.find('BlueBaseAppError [testID="error-button"]')
+			.first()
+			.prop('onPress');
+
+		await wait(500);
+		onPress();
+
+		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-button"]');
+		// wrapper.update();
+
+		expect(wrapper.find('ErrorObserver').prop('bootCount')).toBe(8);
 	});
 
 	// tslint:disable-next-line: max-line-length
-	test(`should render error state with actual error message when development config is undefined, && isProduction is false`, async () => {
+	it(`should render error state with actual error message when development config is undefined, && isProduction is false`, async () => {
 		const BB = new BlueBase();
 		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
@@ -216,25 +176,26 @@ describe('BlueBaseApp', () => {
 
 		const wrapper = mount(<BlueBaseApp BB={BB} />);
 
-		await waitForElement(wrapper, BlueBaseAppError);
+		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(0)
+				.find('[testID="error-title"]')
+				.last()
 				.text()
-		).toBe('🚨 Error');
+		).toBe('ERROR');
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(1)
+				.find('[testID="error-message"]')
+				.last()
 				.text()
 		).toBe('Boot Error!');
+
+		wrapper.unmount();
 	});
 
 	// tslint:disable-next-line: max-line-length
-	test(`should render error state with custom error message when development config is undefined, && isProduction is true`, async () => {
+	it(`should render error state with custom error message when development config is undefined, && isProduction is true`, async () => {
 		const BB = new BlueBase();
 		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
@@ -244,20 +205,21 @@ describe('BlueBaseApp', () => {
 
 		const wrapper = mount(<BlueBaseApp BB={BB} />);
 
-		await waitForElement(wrapper, BlueBaseAppError);
+		await waitForElement(wrapper, 'BlueBaseAppError [testID="error-title"]');
 
-		// expect(wrapper).toMatchSnapshot();
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(0)
+				.find('[testID="error-title"]')
+				.last()
 				.text()
-		).toBe('🚨 Error');
+		).toBe('ERROR');
 		expect(
 			wrapper
-				.find('BlueBaseApp Text Text')
-				.at(1)
+				.find('[testID="error-message"]')
+				.last()
 				.text()
-		).toBe('An unknown error occured.');
+		).toBe('An unknown error occurred.');
+
+		wrapper.unmount();
 	});
 });

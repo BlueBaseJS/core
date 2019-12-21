@@ -1,10 +1,11 @@
 import { BlueBaseImageProps, ImageProps } from '@bluebase/components';
 import React, { useContext } from 'react';
-import { ThemeContextData, isMobile } from '@bluebase/core';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../Context';
 import { Image } from '../../getComponent';
+import { ThemeContextData } from '../../themes';
+import { isMobile } from '../../utils';
 import { useTheme } from '../../hooks';
 
 // import { useTheme } from '../../hooks';

@@ -41,7 +41,6 @@ describe('ThemeContext', () => {
 
 		// Wait for render
 		await waitForElement(wrapper, ThemeDemo);
-		// expect(wrapper).toMatchSnapshot();
 
 		// Check theme
 		let view = wrapper
@@ -62,7 +61,6 @@ describe('ThemeContext', () => {
 		onValueChange('bluebase-dark');
 
 		await waitForElement(wrapper as any, ThemeDemo);
-		// expect(wrapper).toMatchSnapshot();
 
 		// Verify that background color is dark
 		view = wrapper

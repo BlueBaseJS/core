@@ -2,6 +2,7 @@ import { DataObserverProps } from '@bluebase/components';
 import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
+import { renderChildrenWithProps } from '../../utils';
 
 /**
  * # ⚡️ DataObserver
@@ -40,14 +41,10 @@ export class DataObserver extends React.PureComponent<DataObserverProps> {
 	render() {
 		const { children } = this.props;
 
-		if (typeof children === 'function') {
-			return (children as any)({
-				data: this.props.data,
-				empty: this.props.isEmpty ? this.props.isEmpty(this.props) : false,
-				loading: this.props.isLoading ? this.props.isLoading(this.props) : false,
-			});
-		}
-
-		return children;
+		return renderChildrenWithProps(children, {
+			data: this.props.data,
+			empty: this.props.isEmpty ? this.props.isEmpty(this.props) : false,
+			loading: this.props.isLoading ? this.props.isLoading(this.props) : false,
+		});
 	}
 }

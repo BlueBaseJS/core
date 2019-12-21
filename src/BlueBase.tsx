@@ -22,22 +22,22 @@ import systemFilters from './filters';
 
 export interface BlueBaseProgress {
 	/**
-	 * Has the app booted yet
+	 * Percentage progress of boot. Number between 0-100.
 	 */
-	readonly booted: boolean;
+	progress?: number;
 
 	/**
-	 * Are we loading the app
+	 * Progress status message
 	 */
-	readonly loading: boolean;
+	message?: string;
 
 	/**
-	 * Any errors occured while booting the app
+	 * Any errors occurred while booting the app
 	 */
-	readonly error: any;
+	error?: any;
 }
 
-export type SetStateFn = (state: BlueBaseProgress) => Promise<void>;
+export type BlueBaseBootProgressCallback = (state: BlueBaseProgress) => void;
 
 export interface BootOptions {
 	/** Collection of assets to add in BlueBase's Asset Registry. */
@@ -67,7 +67,7 @@ export interface BootOptions {
 }
 
 export interface BootOptionsInternal extends BootOptions {
-	onProgress?: SetStateFn;
+	onProgress?: BlueBaseBootProgressCallback;
 	reset?: boolean;
 }
 
@@ -106,31 +106,25 @@ export class BlueBase {
 
 	private bootOptions: BootOptions = emptyBootOptions;
 
+	public reboot: () => Promise<void> = async () => {
+		this.boot();
+	}
+
 	public async boot({ onProgress, ...options }: Partial<BootOptionsInternal> = {}) {
 		// Store onProgress for later use, even after boot finishes (i.e. in reboot, etc)
 		if (onProgress) {
 			this.onProgress = onProgress;
 		}
 
-		await this.onProgress({
-			booted: false,
-			error: null,
-			loading: true,
+		this.onProgress({
+			message: 'Initiating...',
+			progress: 0,
 		});
 
 		try {
 			await this.bootInternal(options);
-			await this.onProgress({
-				booted: this.booted,
-				error: null,
-				loading: false,
-			});
 		} catch (error) {
-			await this.onProgress({
-				booted: false,
-				error,
-				loading: false,
-			});
+			this.onProgress({ error });
 		}
 
 		return this;
@@ -148,26 +142,41 @@ export class BlueBase {
 	 * @param param
 	 */
 	protected async bootInternal({ reset, ...options }: Partial<BootOptionsInternal>) {
+		const onProgress = this.onProgress;
+
 		// Update boot options
 		this.bootOptions = { ...this.bootOptions, ...options };
 
 		if (reset === true) {
-			await this.Filters.run('bluebase.reset', this.bootOptions);
+			await this.Filters.run('bluebase.reset', this.bootOptions, { onProgress });
+			onProgress({
+				message: 'Reseting...',
+				progress: 10,
+			});
 		}
 
 		// Register basic filters here, so they can be used in boot
 		await this.Filters.registerNestedCollection(systemFilters);
+		onProgress({
+			message: 'Loading system defaults',
+			progress: 20,
+		});
 
 		// 🚀 Boot!
-		await this.Filters.run('bluebase.boot', this.bootOptions);
+		await this.Filters.run('bluebase.boot', this.bootOptions, { onProgress });
 
 		// Set booted flag
 		this.booted = true;
 
+		onProgress({
+			message: 'Done!',
+			progress: 100,
+		});
+
 		return this;
 	}
 
-	private onProgress: SetStateFn = async () => {
+	private onProgress: BlueBaseBootProgressCallback = () => {
 		return;
 	}
 }

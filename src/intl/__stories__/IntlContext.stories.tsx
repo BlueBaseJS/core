@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '@bluebase/core';
+import { BlueBaseApp } from '../../OfflineComponents';
 import { DirectionPicker } from './DirectionPicker';
 import { FormattedMessage } from '../../components';
 import { H5 } from '../../getComponent';

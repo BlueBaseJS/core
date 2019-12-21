@@ -61,7 +61,6 @@ describe('ComponentRegistry', () => {
 
 		// 	expect(rendered.root.props.children).toBe('Some text');
 		// 	// expect(rendered.root.type.displayName).toBe('Text');
-		// 	// expect(rendered.toJSON()).toMatchSnapshot();
 		// });
 
 		it('should resolve a Promised component', async done => {
@@ -73,11 +72,9 @@ describe('ComponentRegistry', () => {
 			);
 
 			// expect(json).toBe(null);
-			// expect(wrapper).toMatchSnapshot();
 
 			setTimeout(() => {
 				wrapper.update();
-				// expect(wrapper).toMatchSnapshot();
 
 				// Verify that background color is light
 				const view = wrapper
@@ -106,7 +103,7 @@ describe('ComponentRegistry', () => {
 		// 	const rendered = TestRenderer.create(<ResolvedComponent />);
 		// 	const tree = rendered.toJSON() as any;
 		// 	expect(tree.props.style.backgroundColor).toBe('green');
-		// 	// expect(tree).toMatchSnapshot();
+		//
 		// });
 
 		// it('should add an HOC with its arguments that makes background orange', async () => {
@@ -128,7 +125,7 @@ describe('ComponentRegistry', () => {
 		// 	const rendered = TestRenderer.create(<ResolvedComponent />);
 		// 	const tree = rendered.toJSON() as any;
 		// 	expect(tree.props.style.backgroundColor).toBe('orange');
-		// 	// expect(tree).toMatchSnapshot();
+		//
 		// });
 
 		it('should not apply styles if applyStyles flag is set false', async () => {
@@ -146,7 +143,6 @@ describe('ComponentRegistry', () => {
 			const rendered = TestRenderer.create(<ResolvedComponent />);
 			const tree = rendered.toJSON() as any;
 			expect(tree.props.styles).toBeUndefined();
-			// expect(tree).toMatchSnapshot();
 		});
 
 		it('should hoist static properties of the original component', async () => {

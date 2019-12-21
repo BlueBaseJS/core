@@ -1,29 +1,35 @@
 import { BlueBaseApp } from '../../../';
 import { ErrorState } from '../ErrorState';
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 
 describe('ErrorState', () => {
-	test(`should render ErrorState`, done => {
-		const component = TestRenderer.create(
+	test(`should render ErrorState`, async () => {
+		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorState />
 			</BlueBaseApp>
 		);
 
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			expect((tree as any).children[0].children.join()).toBe('Something broke!');
-			expect((tree as any).children[1].children.join()).toBe(
-				'An unknown error has occurred. Please try again later.'
-			);
-			done();
-		});
+		await waitForElement(wrapper, ErrorState);
+
+		expect(
+			wrapper
+				.find('ComponentState')
+				.first()
+				.prop('title')
+		).toBe('Something broke!');
+		expect(
+			wrapper
+				.find('ComponentState')
+				.first()
+				.prop('description')
+		).toBe('An unknown error has occurred. Please try again later.');
 	});
 
-	test(`should render ErrorState with retry button and custom error`, done => {
-		const component = TestRenderer.create(
+	test(`should render ErrorState with retry button and custom error`, async () => {
+		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorState
 					retry={() => {
@@ -34,13 +40,25 @@ describe('ErrorState', () => {
 			</BlueBaseApp>
 		);
 
-		setTimeout(() => {
-			const tree = component.toJSON();
-			expect(tree).toMatchSnapshot();
-			expect((tree as any).children[0].children.join()).toBe('Error');
-			expect((tree as any).children[1].children.join()).toBe('Bang!');
-			expect((tree as any).children[2].type).toBe('View'); // Button
-			done();
-		});
+		await waitForElement(wrapper, ErrorState);
+
+		expect(
+			wrapper
+				.find('ComponentState')
+				.first()
+				.prop('title')
+		).toBe('Error');
+		expect(
+			wrapper
+				.find('ComponentState')
+				.first()
+				.prop('description')
+		).toBe('Bang!');
+		expect(
+			wrapper
+				.find('ComponentState')
+				.first()
+				.prop('actionTitle')
+		).toBe('Retry');
 	});
 });
