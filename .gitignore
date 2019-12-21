@@ -43,4 +43,4 @@ dist/
 
 
 # Storybook Native
-./bluebase/storybook-native/storybook/storyLoader.js
+bluebase/storybook-native/storybook/storyLoader.js
