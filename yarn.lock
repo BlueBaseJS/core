@@ -1042,6 +1042,11 @@
     rtl-detect "^1.0.2"
     tslib "^1.10.0"
 
+"@bluebase/storybook-addon@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/storybook-addon/-/storybook-addon-3.0.0.tgz#b38c1bb66f026898f00cbbf8cc4c13fcb0bfe93c"
+  integrity sha512-RdByeuapaJG7Vp8xcu07M5TUy5hXUgYCfmJ+UJ35gJ+R1BjxsQfmGKpcn2antxT74fmAYNob5qcPN4Kta02F3A==
+
 "@blueeast/bluerain-cli-essentials@^4.0.0-beta.2":
   version "4.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@blueeast/bluerain-cli-essentials/-/bluerain-cli-essentials-4.0.0-beta.2.tgz#aea1e938ef3d95b9abac84396e029f37d4bca93e"
