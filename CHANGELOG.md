@@ -1,3 +1,9 @@
+# [5.9.0](https://github.com/BlueBaseJS/core/compare/v5.8.0...v5.9.0) (2019-12-24)
+
+### Features
+
+-   **BlueBase:** Added ability to reset on reboot ([b375af4](https://github.com/BlueBaseJS/core/commit/b375af4))
+
 # [5.8.0](https://github.com/BlueBaseJS/core/compare/v5.7.0...v5.8.0) (2019-12-21)
 
 ### Features
