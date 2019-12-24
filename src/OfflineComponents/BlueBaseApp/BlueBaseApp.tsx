@@ -59,6 +59,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 
 	const [bootCount, setBootCount] = useState(0);
 	const [booting, setBooting] = useState(true);
+	const [bootTrigger, setBootTrigger] = useState(true); // Setting to true to start boot
 	const [progress, setProgress] = useState<BlueBaseProgress>({});
 
 	const { onError } = useExceptionHandlingOnProduction(BB);
@@ -88,8 +89,14 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 	};
 
 	useEffect(() => {
+		if (bootTrigger) {
+			setBootTrigger(false);
+		} else {
+			return;
+		}
+
 		boot();
-	}, []);
+	}, [bootTrigger]);
 
 	if (booting) {
 		return <LoadingComponent BB={BB} progress={progress} bootCount={bootCount} />;
