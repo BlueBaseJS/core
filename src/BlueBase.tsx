@@ -106,10 +106,6 @@ export class BlueBase {
 
 	private bootOptions: BootOptions = emptyBootOptions;
 
-	public reboot: () => Promise<void> = async () => {
-		this.boot();
-	}
-
 	public async boot({ onProgress, ...options }: Partial<BootOptionsInternal> = {}) {
 		// Store onProgress for later use, even after boot finishes (i.e. in reboot, etc)
 		if (onProgress) {
@@ -131,7 +127,15 @@ export class BlueBase {
 	}
 
 	/**
-	 * Performs a reset and boot.
+	 * Performs boot, and resets whole view heirarchy
+	 */
+	public reboot: (reset?: boolean) => Promise<void> = async (reset?: boolean) => {
+		// This is just a stub funnction. It is replaced by BlueBaseApp
+		this.boot({ reset });
+	};
+
+	/**
+	 * Performs a reset and boot. Does not unmount the whole app.
 	 */
 	public async reset(options?: BootOptionsInternal) {
 		return this.boot({ ...options, reset: true });
@@ -178,5 +182,5 @@ export class BlueBase {
 
 	private onProgress: BlueBaseBootProgressCallback = () => {
 		return;
-	}
+	};
 }
