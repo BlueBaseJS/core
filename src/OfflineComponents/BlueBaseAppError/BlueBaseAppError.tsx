@@ -23,6 +23,7 @@ export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorP
 	}
 
 	const message = development === true && error ? error.message : MISSING_ERROR;
+	const reload = () => BB.reboot();
 
 	return (
 		<WaitObserver delay={100}>
@@ -58,7 +59,7 @@ export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorP
 							{message}
 						</Text>
 						<View style={{}}>
-							<TouchableOpacity onPress={BB.reboot} testID="error-button">
+							<TouchableOpacity onPress={reload} testID="error-button">
 								<Text
 									style={{
 										backgroundColor: 'rgba(76, 175, 80, .1)',

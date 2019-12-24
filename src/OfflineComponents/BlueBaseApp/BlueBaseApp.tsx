@@ -64,8 +64,28 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 
 	const { onError } = useExceptionHandlingOnProduction(BB);
 
-	BB.reboot = async () => {
-		setBootTrigger(true);
+	async function boot(reset?: boolean) {
+		if (!booting) {
+			setBooting(true);
+		}
+
+		await BB.boot({
+			...props,
+			reset,
+
+			onProgress: (p: BlueBaseProgress) => {
+				setProgress(p);
+				if (p.error) {
+					setBooting(false);
+				}
+			},
+		});
+		setBootCount(bootCount + 1);
+		setBooting(false);
+	}
+
+	BB.reboot = async (reset: boolean = false) => {
+		boot(reset);
 	};
 
 	useEffect(() => {
@@ -75,19 +95,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 			return;
 		}
 
-		(async () => {
-			await BB.boot({
-				...props,
-				onProgress: (p: BlueBaseProgress) => {
-					setProgress(p);
-					if (p.error) {
-						setBooting(false);
-					}
-				},
-			});
-			setBootCount(bootCount + 1);
-			setBooting(false);
-		})();
+		boot();
 	}, [bootTrigger]);
 
 	if (booting) {
