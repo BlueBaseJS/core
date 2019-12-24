@@ -59,36 +59,37 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 
 	const [bootCount, setBootCount] = useState(0);
 	const [booting, setBooting] = useState(true);
-	const [bootTrigger, setBootTrigger] = useState(true); // Setting to true to start boot
 	const [progress, setProgress] = useState<BlueBaseProgress>({});
 
 	const { onError } = useExceptionHandlingOnProduction(BB);
 
-	BB.reboot = async () => {
-		setBootTrigger(true);
+	async function boot(reset?: boolean) {
+		if (!booting) {
+			setBooting(true);
+		}
+
+		await BB.boot({
+			...props,
+			reset,
+
+			onProgress: (p: BlueBaseProgress) => {
+				setProgress(p);
+				if (p.error) {
+					setBooting(false);
+				}
+			},
+		});
+		setBootCount(bootCount + 1);
+		setBooting(false);
+	}
+
+	BB.reboot = async (reset: boolean = false) => {
+		boot(reset);
 	};
 
 	useEffect(() => {
-		if (bootTrigger) {
-			setBootTrigger(false);
-		} else {
-			return;
-		}
-
-		(async () => {
-			await BB.boot({
-				...props,
-				onProgress: (p: BlueBaseProgress) => {
-					setProgress(p);
-					if (p.error) {
-						setBooting(false);
-					}
-				},
-			});
-			setBootCount(bootCount + 1);
-			setBooting(false);
-		})();
-	}, [bootTrigger]);
+		boot();
+	}, []);
 
 	if (booting) {
 		return <LoadingComponent BB={BB} progress={progress} bootCount={bootCount} />;
