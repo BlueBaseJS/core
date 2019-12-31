@@ -81,9 +81,17 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 	async function setTheme(slug: string, cancelled: boolean) {
 		try {
 			const resolvedTheme = await BB.Themes.resolve(slug);
+			const modeTheme =
+				resolvedTheme.mode !== mode ? await BB.Themes.resolveAlternate(resolvedTheme.key) : {};
+
+			const change = deepmerge.all([resolvedTheme, modeTheme, overrides]) as Theme;
+
+			if (JSON.stringify(theme) === JSON.stringify(change)) {
+				return;
+			}
 
 			if (!cancelled) {
-				setThemeState(deepmerge(resolvedTheme, overrides) as Theme);
+				setThemeState(change);
 			}
 		} catch (error) {
 			BB.Logger.warn(
