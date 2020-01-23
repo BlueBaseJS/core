@@ -1,3 +1,9 @@
+## [5.9.1](https://github.com/BlueBaseJS/core/compare/v5.9.0...v5.9.1) (2020-01-23)
+
+### Bug Fixes
+
+-   **ComponentState:** Styles updated to resolve title and image overlap ([#282](https://github.com/BlueBaseJS/core/issues/282)) ([4ab2465](https://github.com/BlueBaseJS/core/commit/4ab2465))
+
 # [5.9.0](https://github.com/BlueBaseJS/core/compare/v5.8.0...v5.9.0) (2019-12-24)
 
 ### Features
