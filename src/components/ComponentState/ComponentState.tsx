@@ -55,7 +55,7 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			marginBottom: theme.spacing.unit,
 			textAlign: 'center',
 		},
-	});
+	})
 
 	render() {
 		const {
