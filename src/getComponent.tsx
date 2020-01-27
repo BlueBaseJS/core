@@ -26,11 +26,10 @@ import {
 	ViewProps,
 	WaitObserverProps,
 } from '@bluebase/components';
-import React, { useContext } from 'react';
 
-import { BlueBase } from './BlueBase';
 import { BlueBaseContentProps } from './components';
-import { BlueBaseContext } from './Context';
+import React from 'react';
+import { useBlueBase } from './hooks';
 
 export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 
@@ -50,10 +49,8 @@ export function getComponent<T = any>(
 
 	const displayName = keys.join('_');
 
-	let Component: React.ComponentType<T>;
-
 	const BlueBaseComponent = (props: T) => {
-		const BB: BlueBase = useContext(BlueBaseContext);
+		const BB = useBlueBase();
 
 		// If there is no BlueBase context, throw an Error
 		if (!BB) {
@@ -62,14 +59,7 @@ export function getComponent<T = any>(
 			);
 		}
 
-		// We don't want to resolve the component on every render.
-		// If we don't do this, a new component is created on every
-		// render, causing various set of problems.
-		if (!Component) {
-			Component = BB.Components.resolve<T>(...keys);
-		}
-
-		return React.createElement(Component!, props);
+		return React.createElement(BB.Components.resolveFromCache<T>(...keys), props);
 	};
 
 	BlueBaseComponent.displayName = displayName;
