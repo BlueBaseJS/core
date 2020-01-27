@@ -18,7 +18,7 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<string>>(BB);
 
 			expect(() => registry.set('foo', 'bar' as any)).toThrowError(
-				'Could not set registry item "foo". Reason: Unknown item type.'
+				'Could not set registry item "foo". Reason: Unknown item type: "bar"'
 			);
 		});
 	});
@@ -176,7 +176,9 @@ describe('Registry', () => {
 			try {
 				await registry.register('foo');
 			} catch (error) {
-				expect(error.message).toBe('Could not register item. Reason: No item given.');
+				expect(error.message).toBe(
+					'Could not register item with key "foo". Reason: No item given.'
+				);
 			}
 		});
 
@@ -190,7 +192,7 @@ describe('Registry', () => {
 			try {
 				await registry.register({ value: 'foo' });
 			} catch (error) {
-				expect(error.message).toBe('Could not register item. Reason: No key given.');
+				expect(error.message).toBe('Could not register item "undefined". Reason: No key given.');
 			}
 		});
 	});
@@ -559,7 +561,7 @@ describe('Registry', () => {
 			const registry = new Registry<RegistryItem<number>>(BB);
 
 			expect(() => (registry as any).createItem('foo', 'bar')).toThrowError(
-				'Could not set item. Reason: Unknown item type.'
+				'Could not set item with key "foo". Reason: Unknown item type: "[object Object]"'
 			);
 		});
 	});
