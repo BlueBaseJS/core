@@ -1,12 +1,13 @@
 # BlueBase Creatives
 
 ## Description
+
 This repository includes:
-1. Logo / Logo Icon
-2. Icons for Android
-3. iOS Icons
-3. Favicon
-5. Splash Screen
+1\. Logo / Logo Icon
+2\. Icons for Android
+3\. iOS Icons
+3\. Favicon
+5\. Splash Screen
 
 ## Logo / Logo Icon
 
@@ -30,7 +31,9 @@ This repository includes:
 <img src="splash-screen/splash.png" width="450">
 
 ## Download Source File
+
 <a href="https://github.com/BlueBaseJS/core/blob/bluebase/app-icons/creatives/source-files/logo.ai?raw=true">Download</a>
 
 ## Questions
+
 _None_

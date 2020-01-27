@@ -1,5 +1,5 @@
 import { FormattedMessage, H5, View } from '../../getComponent';
-import { I18nManager, Text } from 'react-native';
+import { I18nManager, StyleSheet, Text } from 'react-native';
 
 import { BlueBaseApp } from '../../index';
 import { DirectionPicker } from '../__stories__/DirectionPicker';
@@ -47,10 +47,10 @@ describe('IntlContext', () => {
 				.text()
 		).toBe('How are you?');
 		expect(
-			(wrapper
+			(StyleSheet.flatten(wrapper
 				.find('Text [testID="desc"]')
 				.first()
-				.prop('style') as any).color
+				.prop('style') as any) as any).color
 		).toBe('blue');
 	});
 
@@ -84,10 +84,10 @@ describe('IntlContext', () => {
 				.text()
 		).toBe('How are you?');
 		expect(
-			(wrapper
+			(StyleSheet.flatten(wrapper
 				.find('Text [testID="desc"]')
 				.first()
-				.prop('style') as any).color
+				.prop('style') as any) as any).color
 		).toBe('blue');
 	});
 

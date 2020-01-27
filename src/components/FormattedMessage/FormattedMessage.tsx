@@ -1,27 +1,21 @@
-import { IntlContext, IntlContextData } from '../../intl';
+import { useComponent, useIntl } from '../../hooks';
 
 import { FormattedMessageProps } from '@bluebase/components';
 import React from 'react';
-import { Text } from '../../getComponent';
 
-export class FormattedMessage extends React.PureComponent<FormattedMessageProps> {
-	static contextType = IntlContext;
+export const FormattedMessage = (props: FormattedMessageProps) => {
+	const Text = useComponent('Text');
 
-	static defaultProps: Partial<FormattedMessageProps> = {
-		component: Text,
-	};
+	const { children, component = Text, ...rest } = props;
+	const intl = useIntl();
 
-	render() {
-		const { children, component, ...rest } = this.props;
+	const Component = component as any;
 
-		const Component = component as any;
-
-		if (typeof children !== 'string' || !this.context) {
-			return React.createElement(Component, rest, children);
-		}
-
-		const { __ }: IntlContextData = this.context;
-
-		return React.createElement(Component, rest, __(children));
+	if (typeof children !== 'string' || !intl) {
+		return React.createElement(Component, rest, children);
 	}
-}
+
+	const { __ } = intl;
+
+	return React.createElement(Component, rest, __(children));
+};
