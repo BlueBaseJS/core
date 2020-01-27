@@ -1,4 +1,5 @@
 import { BlueBaseModuleRegistry, BlueBaseModuleRegistryItem } from '../BlueBaseModuleRegistry';
+
 import { BlueBase } from '../../BlueBase';
 import { createBlueBaseModule } from '../../utils';
 
@@ -149,7 +150,9 @@ describe('BlueBaseModuleRegistry', () => {
 			try {
 				await registry.register(Promise.resolve('foo'));
 			} catch (error) {
-				expect(error.message).toBe('Could not register item. Reason: No item given.');
+				expect(error.message).toBe(
+					'Could not register item with key "foo". Reason: No item given.'
+				);
 			}
 		});
 	});

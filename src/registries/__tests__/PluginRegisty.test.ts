@@ -111,7 +111,7 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			let message = false;
+			let message = '';
 
 			class Foo {
 				public foo = 'bar';
@@ -123,7 +123,7 @@ describe('PluginRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Could not register item. Reason: No item given.');
+			expect(message.startsWith('Could not register item with key "class Foo')).toBe(true);
 		});
 
 		it('should throw an error if plugin is not provided', async () => {
@@ -138,7 +138,7 @@ describe('PluginRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Could not register item. Reason: No item given.');
+			expect(message).toBe('Could not register item with key "undefined". Reason: No item given.');
 		});
 
 		it('should throw an error if empty object is registered', async () => {
@@ -153,7 +153,9 @@ describe('PluginRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Could not register item. Reason: No item given.');
+			expect(message).toBe(
+				'Could not register item with key "[object Object]". Reason: No item given.'
+			);
 		});
 
 		it('should throw an error if unknown data type is registered', async () => {
@@ -168,7 +170,7 @@ describe('PluginRegistry', () => {
 				message = e.message;
 			}
 
-			expect(message).toBe('Could not register item. Reason: No item given.');
+			expect(message).toBe('Could not register item with key "foo". Reason: No item given.');
 		});
 
 		it('should throw an error if name is not provided', async () => {

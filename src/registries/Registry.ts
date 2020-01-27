@@ -101,7 +101,9 @@ export class Registry<
 	 */
 	public set(key: string, item: ItemType | ItemInputType) {
 		if (!this.isItem(item)) {
-			throw Error(`Could not set registry item "${key}". Reason: Unknown item type.`);
+			throw Error(
+				`Could not set registry item "${key}". Reason: Unknown item type: "${String(item)}"`
+			);
 		}
 
 		// Override existing or create an new one
@@ -226,7 +228,9 @@ export class Registry<
 			return args.key;
 		}
 
-		throw Error(`Could not register item "${args.key}". Reason: Unknown item type.`);
+		throw Error(
+			`Could not register item "${args.key}". Reason: Unknown item type: "${String(args.item)}"`
+		);
 	}
 
 	/**
@@ -432,7 +436,9 @@ export class Registry<
 		};
 
 		if (!this.isItem(item)) {
-			throw Error(`Could not set item. Reason: Unknown item type.`);
+			throw Error(
+				`Could not set item with key "${key}". Reason: Unknown item type: "${String(item)}"`
+			);
 		}
 
 		return item;
@@ -541,11 +547,11 @@ export class Registry<
 		}
 
 		if (!finalKey) {
-			throw Error('Could not register item. Reason: No key given.');
+			throw Error(`Could not register item "${String(item)}". Reason: No key given.`);
 		}
 
 		if (finalItem === undefined) {
-			throw Error('Could not register item. Reason: No item given.');
+			throw Error(`Could not register item with key "${key}". Reason: No item given.`);
 		}
 
 		return { key: finalKey, item: getDefiniteModule(finalItem) };
