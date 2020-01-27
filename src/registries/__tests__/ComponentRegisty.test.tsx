@@ -165,6 +165,45 @@ describe('ComponentRegistry', () => {
 		});
 	});
 
+	describe('.resolveFromCache method', () => {
+		it('should throw for unknown components', async () => {
+			const BB = new BlueBase();
+			const Components = new ComponentRegistry(BB);
+
+			let message = false;
+
+			try {
+				Components.resolveFromCache('Foo');
+			} catch (e) {
+				message = e.message;
+			}
+
+			expect(message).toBe('Could not resolve any of the following components: [Foo].');
+		});
+
+		it('should resolve a component from cache', async () => {
+			const BB = new BlueBase();
+			await BB.boot();
+
+			jest.spyOn(BB.Components, 'resolve');
+
+			expect(BB.Components.resolve).toHaveBeenCalledTimes(0);
+			expect(BB.Components.getMeta('View', 'CachedComponent')).toBeUndefined();
+
+			// Should call resolve and cache component
+			BB.Components.resolveFromCache('View');
+
+			expect(BB.Components.resolve).toHaveBeenCalledTimes(1);
+			expect(BB.Components.getMeta('View', 'CachedComponent')).toBeTruthy();
+
+			// Should return cached component
+			BB.Components.resolveFromCache('View');
+
+			expect(BB.Components.resolve).toHaveBeenCalledTimes(1);
+			expect(BB.Components.getMeta('View', 'CachedComponent')).toBeTruthy();
+		});
+	});
+
 	describe('.register method', () => {
 		/////////////////////////////////
 		//////// React Component ////////

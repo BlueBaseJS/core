@@ -32,6 +32,8 @@ interface ComponentRegistryItemExtras {
 
 	/** Should apply styles and theming to this component? true by default */
 	applyStyles: boolean;
+
+	CachedComponent: React.ComponentType<any>;
 }
 
 export type ComponentRegistryItem = BlueBaseModuleRegistryItem<React.ComponentType<any>> &
@@ -83,7 +85,31 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		// Wrap
 		const wrappedComponent = flowRight([...(hocs as ComponentRegistryHocItem[])])(themedComponent);
 
-		return hoistNonReactStatics(wrappedComponent, rawComponent);
+		// Final result
+		const result = hoistNonReactStatics(wrappedComponent, rawComponent);
+
+		// Cache result
+		this.setMeta(item.key, { CachedComponent: result });
+
+		return result;
+	}
+
+	public resolveFromCache<T = any>(
+		...keys: Array<string | React.ComponentType<T>>
+	): React.ComponentType<T> {
+		const item = this.findOne(...keys);
+
+		if (!item) {
+			throw Error(`Could not resolve any of the following components: [${keys.join(', ')}].`);
+		}
+
+		const CachedComponent = this.getMeta(item.key, 'CachedComponent');
+
+		if (CachedComponent) {
+			return CachedComponent;
+		}
+
+		return this.resolve(...keys);
 	}
 
 	/**
