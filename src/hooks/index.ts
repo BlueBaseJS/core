@@ -1,4 +1,5 @@
 export * from './useBlueBase';
+export * from './useComponent';
 export * from './useConfig';
 export * from './useFilter';
 export * from './useIntl';
