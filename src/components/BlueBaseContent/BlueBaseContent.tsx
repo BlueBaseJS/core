@@ -1,14 +1,12 @@
 import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
 import { StatusBar, StyleProp, ViewStyle } from 'react-native';
-import { View, getComponent } from '../../getComponent';
+import { useBlueBase, useComponent, useConfig } from '../../hooks';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseFilter } from '../BlueBaseFilter';
 import React from 'react';
 import { Theme } from '../../registries';
-import { useBlueBase } from '../../hooks';
-
-const Navigation = getComponent('Navigation');
+import { View } from '../../getComponent';
 
 export interface BlueBaseContentStyles {
 	backdrop: StyleProp<ViewStyle>;
@@ -26,8 +24,8 @@ export interface BlueBaseContentProps {
 export const BlueBaseContent = (props: BlueBaseContentProps) => {
 	const { children, styles } = props;
 	const BB = useBlueBase();
-
-	const statusBarStyle = BB.Configs.getValue('statusBarStyle');
+	const Navigation = useComponent('Navigation');
+	const [statusBarStyle] = useConfig('statusBarStyle');
 
 	return children ? (
 		renderChildrenWithProps(children, { BB })

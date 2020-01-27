@@ -1,11 +1,7 @@
 import { BlueBaseFilterProps, ErrorStateProps, LoadingStateProps } from '@bluebase/components';
+import { useComponent, useFilter } from '../../hooks';
 
 import React from 'react';
-import { getComponent } from '../../getComponent';
-import { useFilter } from '../../hooks';
-
-const LoadingState = getComponent<LoadingStateProps>('LoadingState');
-const ErrorState = getComponent<ErrorStateProps>('ErrorState');
 
 /**
  * # 🚇 BlueBaseFilter
@@ -30,6 +26,9 @@ export const BlueBaseFilter: React.FunctionComponent<BlueBaseFilterProps> = ({
 	args,
 	children,
 }: BlueBaseFilterProps): any => {
+	const ErrorState = useComponent<ErrorStateProps>('ErrorState');
+	const LoadingState = useComponent<LoadingStateProps>('LoadingState');
+
 	const { error, loading, value } = useFilter(filter, initialValue, args);
 
 	if (loading) {
