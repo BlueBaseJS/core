@@ -1,3 +1,17 @@
+# [5.11.0](https://github.com/BlueBaseJS/core/compare/v5.10.0...v5.11.0) (2020-01-27)
+
+### Features
+
+-   **🎁 ComponentRegistry:** Added `resolveFromCache` method ([a22075f](https://github.com/BlueBaseJS/core/commit/a22075f))
+-   **getComponent:** Uses the new resolveFromCache method ([8efb8f5](https://github.com/BlueBaseJS/core/commit/8efb8f5))
+-   **hooks:** Added useComponent hook ([9af1b0e](https://github.com/BlueBaseJS/core/commit/9af1b0e))
+
+# [5.10.0](https://github.com/BlueBaseJS/core/compare/v5.9.1...v5.10.0) (2020-01-27)
+
+### Features
+
+-   **Registry:** Improved Error messages ([b1348f7](https://github.com/BlueBaseJS/core/commit/b1348f7)), closes [#217](https://github.com/BlueBaseJS/core/issues/217)
+
 ## [5.9.1](https://github.com/BlueBaseJS/core/compare/v5.9.0...v5.9.1) (2020-01-23)
 
 ### Bug Fixes
