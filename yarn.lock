@@ -2429,12 +2429,11 @@
     "@types/react" "*"
     "@types/webpack" "*"
 
-"@types/react-native@^0.57.65":
-  version "0.57.65"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.57.65.tgz#9da4773aaa95924bce42a54a5c19cfd8ffd5022b"
-  integrity sha512-7P5ulTb+/cnwbABWaAjzKmSYkRWeK7UCTfUwHhDpnwxdiL2X/KbdN1sPgo0B2E4zxfYE3MEoHv7FhB8Acfvf8A==
+"@types/react-native@^0.61.19":
+  version "0.61.19"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.61.19.tgz#5cbb692640b3b3dbdd82b37204b059141eda7236"
+  integrity sha512-A6M+t/8gDFe5rF7DoFDCLEfadturcgV4NCrXc64W/luLxNpR3WGMEKsK1EeR0/OmOfMyS4rQTH5nAhl4iaQ+KA==
   dependencies:
-    "@types/prop-types" "*"
     "@types/react" "*"
 
 "@types/react-syntax-highlighter@10.1.0":
