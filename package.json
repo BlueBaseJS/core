@@ -85,7 +85,7 @@
   },
   "dependencies": {
     "deepmerge": "^4.0.0",
-    "expo": "^33.0.0",
+    "expo": "^37.0.10",
     "hoist-non-react-statics": "^3.3.1",
     "is-plain-object": "^3.0.0",
     "lodash.flowright": "^3.5.0",
