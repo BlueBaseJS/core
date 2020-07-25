@@ -1,3 +1,9 @@
+## [5.11.1](https://github.com/BlueBaseJS/core/compare/v5.11.0...v5.11.1) (2020-02-24)
+
+### Bug Fixes
+
+-   **filter:** resolved rerendering of filter hook ([#306](https://github.com/BlueBaseJS/core/issues/306)) ([#307](https://github.com/BlueBaseJS/core/issues/307)) ([2c7ad18](https://github.com/BlueBaseJS/core/commit/2c7ad18))
+
 # [5.11.0](https://github.com/BlueBaseJS/core/compare/v5.10.0...v5.11.0) (2020-01-27)
 
 ### Features
