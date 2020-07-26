@@ -110,7 +110,7 @@ export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<
 		filters: {},
 		fonts: {},
 		name: 'Untitled Plugin',
-		themes: {},
+		themes: [],
 
 		...rest,
 		...resolvedValue,

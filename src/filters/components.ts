@@ -42,7 +42,7 @@ import {
 } from '../components/';
 
 import { FilterNestedCollection } from '../registries';
-import { ThemeValue } from '../themes';
+import { Theme } from '../themes';
 
 export const components: FilterNestedCollection = {
 	'bluebase.components.register': [
@@ -99,51 +99,51 @@ export const components: FilterNestedCollection = {
 					// Typography
 					H1: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.h1 }),
+						styles: (theme: Theme) => ({ root: theme.typography.h1 }),
 					},
 					H2: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.h2 }),
+						styles: (theme: Theme) => ({ root: theme.typography.h2 }),
 					},
 					H3: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.h3 }),
+						styles: (theme: Theme) => ({ root: theme.typography.h3 }),
 					},
 					H4: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.h4 }),
+						styles: (theme: Theme) => ({ root: theme.typography.h4 }),
 					},
 					H5: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.h5 }),
+						styles: (theme: Theme) => ({ root: theme.typography.h5 }),
 					},
 					H6: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.h6 }),
+						styles: (theme: Theme) => ({ root: theme.typography.h6 }),
 					},
 					Subtitle1: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.subtitle1 }),
+						styles: (theme: Theme) => ({ root: theme.typography.subtitle1 }),
 					},
 					Subtitle2: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.subtitle2 }),
+						styles: (theme: Theme) => ({ root: theme.typography.subtitle2 }),
 					},
 					Body1: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.body1 }),
+						styles: (theme: Theme) => ({ root: theme.typography.body1 }),
 					},
 					Body2: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.body2 }),
+						styles: (theme: Theme) => ({ root: theme.typography.body2 }),
 					},
 					Caption: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.caption }),
+						styles: (theme: Theme) => ({ root: theme.typography.caption }),
 					},
 					Overline: {
 						value: Text,
-						styles: (theme: ThemeValue) => ({ root: theme.typography.overline }),
+						styles: (theme: Theme) => ({ root: theme.typography.overline }),
 					},
 				});
 

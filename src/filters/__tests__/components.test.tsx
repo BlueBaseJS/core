@@ -15,14 +15,14 @@ import {
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseApp } from '../../';
+import { BlueBaseTheme } from '../../themes';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { buildTheme } from '../../themes';
 import { createPlugin } from '../../registries';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
-const theme = buildTheme()();
+const theme = BlueBaseTheme;
 
 describe('filters', () => {
 	describe('components', () => {

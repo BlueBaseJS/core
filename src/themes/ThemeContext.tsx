@@ -1,13 +1,8 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext } from 'react';
+import { Theme, ThemeInput } from '..';
+import { useBlueBase, useConfig } from '../hooks';
 
-import { BlueBase } from '../BlueBase';
-import { BlueBaseContext } from '../Context';
 import { Configs } from '../Configs';
-import { Theme } from '../registries';
-import { ThemeValueInput } from './structure';
-import { buildTheme } from './helpers';
-import deepmerge from 'deepmerge';
-import { useConfig } from '../hooks';
 
 /**
  * Props of the `ThemeProvider` component.
@@ -27,7 +22,7 @@ export interface ThemeProviderProps {
 	/**
 	 * Any custom overrides to the selected theme.
 	 */
-	overrides?: ThemeValueInput;
+	overrides: ThemeInput;
 
 	children: React.ReactNode;
 }
@@ -39,7 +34,9 @@ export interface ThemeContextData {
 	/** Helper method to change current theme. */
 	changeTheme: (slug: string) => void;
 
-	/** Current theme */
+	changeMode: (mode: Configs['theme.mode']) => void;
+
+	/** Selected theme varaint */
 	theme: Theme;
 }
 
@@ -57,56 +54,30 @@ export const ThemeConsumer = ThemeContext.Consumer;
  * 🎨 ThemeProvider
  */
 export const ThemeProvider = (props: ThemeProviderProps) => {
-	const BB: BlueBase = useContext(BlueBaseContext);
+	const BB = useBlueBase();
 
-	const [themeName, setThemeName] = useConfig('theme.name');
-	const [modeConfig] = useConfig('theme.mode');
-	const [overridesConfig] = useConfig('theme.overrides');
+	const [themeName, changeTheme] = useConfig('theme.name');
+	const [modeConfig, changeMode] = useConfig('theme.mode');
+	const [overridesConfig] = useConfig<ThemeInput>('theme.overrides');
 
-	const name = props.theme || themeName;
+	const key = props.theme || themeName;
 	const mode = props.mode || modeConfig;
-	const overrides = deepmerge.all([{}, overridesConfig || {}, props.overrides || {}]);
 
-	const DEFAULT_THEME = buildTheme(mode)({ value: overrides });
+	const registryTheme = BB.Themes.getValue(key);
 
-	const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
-
-	/**
-	 * Sets a theme to Provider's state. If a theme key is given, it is used,
-	 * otherwise global theme is used.
-	 *
-	 * @param slug
-	 * @param overrides
-	 */
-	async function setTheme(slug: string, cancelled: boolean) {
-		try {
-			const resolvedTheme = await BB.Themes.resolve(slug);
-
-			if (!cancelled) {
-				setThemeState(deepmerge(resolvedTheme, overrides) as Theme);
-			}
-		} catch (error) {
-			BB.Logger.warn(
-				`Could not change theme. Reason: Theme with the key "${slug}" does not exist.`
-			);
-		}
+	if (!registryTheme) {
+		BB.Logger.warn(
+			`Could not load theme. Reason: Theme with the key "${key}" does not exist. Falling back to default theme.`
+		);
 	}
 
-	useEffect(() => {
-		if (theme && theme.key === name) {
-			return;
-		}
+	const theme = new Theme(registryTheme, overridesConfig, props.overrides);
 
-		let cancelled = false;
-		setTheme(name, cancelled);
-
-		return () => {
-			cancelled = true;
-		};
-	}, [name, mode, overrides]);
+	theme.mode = mode;
 
 	const value: ThemeContextData = {
-		changeTheme: setThemeName,
+		changeMode,
+		changeTheme,
 		theme,
 	};
 
@@ -114,3 +85,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 };
 
 ThemeProvider.displayName = 'ThemeProvider';
+
+ThemeProvider.defaultProps = {
+	overrides: {},
+};

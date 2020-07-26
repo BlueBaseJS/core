@@ -1,6 +1,8 @@
 // tslint:disable:no-console
 import { View, getComponent } from '../../getComponent';
 
+import { BlueBaseApp } from '../../OfflineComponents';
+import { ModePicker } from './ModePicker';
 import React from 'react';
 import { ThemeDemo } from '../../themes/__stories__/ThemeDemo';
 import { ThemePicker } from '../../themes/__stories__/ThemePicker';
@@ -15,14 +17,23 @@ storiesOf('ThemeContext', module)
 	.add('Basic Example', () => (
 		<View>
 			<ThemePicker />
+			<ModePicker />
 			<ThemeDemo />
 		</View>
+	))
+	.add('test', () => (
+		<BlueBaseApp configs={{ 'theme.name': 'foo' }}>
+			<ThemeProvider overrides={{ light: { palette: { background: { default: 'red' } } } }}>
+				<ThemeDemo />
+			</ThemeProvider>
+		</BlueBaseApp>
 	))
 
 	.add('Basic Example with overrides', () => (
 		<ThemeProvider
-			theme="bluebase-dark"
-			overrides={{ palette: { background: { default: 'red' } } }}
+			theme="bluebase-theme"
+			mode="dark"
+			overrides={{ dark: { palette: { background: { default: 'red' } } } }}
 		>
 			<View style={{ margin: 8 }}>
 				<ThemeDemo />
@@ -41,8 +52,9 @@ storiesOf('ThemeContext', module)
 	.add('Nested Theme', () => (
 		<View>
 			<ThemePicker />
+			<ModePicker />
 			<ThemeDemo>
-				<ThemeProvider theme="bluebase-dark">
+				<ThemeProvider mode="dark">
 					<View style={{ margin: 8 }}>
 						<ThemeDemo />
 					</View>
@@ -54,13 +66,15 @@ storiesOf('ThemeContext', module)
 	.add('3 Level Nesting', () => (
 		<View>
 			<ThemePicker />
+			<ModePicker />
 			<ThemeDemo>
-				<ThemeProvider theme="bluebase-dark">
+				<ThemeProvider mode="dark">
 					<View style={{ margin: 8 }}>
 						<ThemeDemo>
 							<ThemeProvider>
 								<View style={{ margin: 8 }}>
 									<ThemePicker />
+									<ModePicker />
 									<ThemeDemo />
 								</View>
 							</ThemeProvider>

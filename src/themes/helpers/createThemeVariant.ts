@@ -1,7 +1,8 @@
-import { Palette, ThemeTypography } from '../structure';
+import { Palette, ThemeTypography, ThemeVariant } from '../structure';
+
 import { elevation } from './elevation';
 
-export function createTheme(palette: Palette, typography: ThemeTypography) {
+export function createThemeVariant(palette: Palette, typography: ThemeTypography): ThemeVariant {
 	return {
 		components: {},
 		elevation,

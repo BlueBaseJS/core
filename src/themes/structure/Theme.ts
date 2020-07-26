@@ -1,14 +1,17 @@
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { Palette, PaletteInput } from './Palette';
 import { ThemeTypography, ThemeTypographyInput } from './Typography';
+import { createPalette, createThemeVariant, createTypography } from '../';
+
 import { MaybeThunk } from '../../utils';
+import deepmerge from 'deepmerge';
 
 export interface ComponentStyles {
 	// rule
 	[key: string]: ViewStyle | TextStyle | ImageStyle | { [prop: string]: string };
 }
 
-export interface ThemeValue {
+export interface ThemeVariant {
 	/** Component styles */
 	components: {
 		// component name
@@ -37,10 +40,79 @@ export interface ThemeValue {
 	[key: string]: any;
 }
 
-export interface ThemeValueInput {
-	components?: ThemeValue['components'];
-	shape?: Partial<ThemeValue['shape']>;
-	spacing?: Partial<ThemeValue['spacing']>;
-	typography?: ThemeTypographyInput;
+export interface ThemeVariantInput extends Omit<Partial<ThemeVariant>, 'palette' | 'typography'> {
 	palette?: PaletteInput;
+	typography?: ThemeTypographyInput;
+}
+
+export interface BaseTheme {
+	name: string;
+	key: string;
+	light: ThemeVariant;
+	dark: ThemeVariant;
+}
+
+export interface ThemeInput {
+	name?: string;
+	key?: string;
+	light?: ThemeVariantInput;
+	dark?: ThemeVariantInput;
+}
+
+const DEFAULT_DARK_PALETTE = createPalette('dark');
+const DEFAULT_LIGHT_PALETTE = createPalette('light');
+
+export class Theme implements BaseTheme {
+	public name: string;
+	public key: string;
+
+	public light: ThemeVariant;
+	public dark: ThemeVariant;
+
+	public mode: 'light' | 'dark' = 'light';
+
+	constructor(input: ThemeInput = {}, ...overrides: ThemeInput[]) {
+		const final: BaseTheme = deepmerge.all([
+			{
+				key: 'bluebase-theme',
+				name: 'BlueBase Theme',
+
+				light: createThemeVariant(DEFAULT_LIGHT_PALETTE, createTypography(DEFAULT_LIGHT_PALETTE)),
+
+				dark: createThemeVariant(DEFAULT_DARK_PALETTE, createTypography(DEFAULT_DARK_PALETTE)),
+			},
+			input,
+			...overrides,
+		]) as BaseTheme;
+
+		this.key = final.key;
+		this.name = final.name;
+
+		this.light = final.light;
+		this.dark = final.dark;
+	}
+
+	public get components() {
+		return this[this.mode].components;
+	}
+
+	public get elevation() {
+		return this[this.mode].elevation;
+	}
+
+	public get palette() {
+		return this[this.mode].palette;
+	}
+
+	public get shape() {
+		return this[this.mode].shape;
+	}
+
+	public get spacing() {
+		return this[this.mode].spacing;
+	}
+
+	public get typography() {
+		return this[this.mode].typography;
+	}
 }

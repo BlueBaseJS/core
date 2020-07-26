@@ -1,2 +1,1 @@
-export * from './BlueBaseDarkTheme';
-export * from './BlueBaseLightTheme';
+export * from './BlueBaseTheme';

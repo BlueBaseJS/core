@@ -1,6 +1,6 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-import { BlueBaseDarkTheme, BlueBaseLightTheme } from '../themes';
 
+import { BlueBaseTheme } from '../themes';
 import { FilterNestedCollection } from '../registries';
 
 export const themes: FilterNestedCollection = {
@@ -13,7 +13,7 @@ export const themes: FilterNestedCollection = {
 			priority: 2,
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
-				const keys = await BB.Themes.registerCollection([BlueBaseLightTheme, BlueBaseDarkTheme]);
+				const keys = await BB.Themes.registerCollection([BlueBaseTheme]);
 				keys.forEach(key => BB.Themes.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;

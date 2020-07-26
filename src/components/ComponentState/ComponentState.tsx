@@ -3,7 +3,7 @@ import { ButtonProps, ComponentStateProps, ComponentStateStyles } from '@bluebas
 
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Theme } from '../../registries';
+import { Theme } from '../../themes';
 
 /**
  * # 🤡 ComponentState
@@ -55,7 +55,7 @@ export class ComponentState extends React.PureComponent<ComponentStateProps> {
 			marginBottom: theme.spacing.unit,
 			textAlign: 'center',
 		},
-	})
+	});
 
 	render() {
 		const {

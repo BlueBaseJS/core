@@ -5,7 +5,7 @@ import { useBlueBase, useComponent, useConfig } from '../../hooks';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseFilter } from '../BlueBaseFilter';
 import React from 'react';
-import { Theme } from '../../registries';
+import { Theme } from '../../themes';
 import { View } from '../../getComponent';
 
 export interface BlueBaseContentStyles {

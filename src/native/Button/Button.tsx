@@ -7,34 +7,30 @@ import {
 	View,
 	ViewStyle,
 } from 'react-native';
+
 import React from 'react';
-import { Theme } from '../../registries';
+import { Theme } from '../../themes';
 
 export interface ButtonStyles {
-	root: ViewStyle,
-	primary: ViewStyle,
-	secondary: ViewStyle,
-	default: ViewStyle,
-	link: ViewStyle,
-	fullWidth: ViewStyle,
-	text: TextStyle,
-	primaryText: TextStyle,
-	secondaryText: TextStyle,
-	defaultText: TextStyle,
-	linkText: TextStyle,
+	root: ViewStyle;
+	primary: ViewStyle;
+	secondary: ViewStyle;
+	default: ViewStyle;
+	link: ViewStyle;
+	fullWidth: ViewStyle;
+	text: TextStyle;
+	primaryText: TextStyle;
+	secondaryText: TextStyle;
+	defaultText: TextStyle;
+	linkText: TextStyle;
 }
 
 export interface ButtonProps {
-
 	/* Label to be passed as child. */
 	children?: React.ReactNode;
 
 	/* Color prop of type enum. */
-	color?:
-		| 'primary'
-		| 'secondary'
-		| 'link'
-		| 'default';
+	color?: 'primary' | 'secondary' | 'link' | 'default';
 
 	/**
 	 * Callback function fired when button is pressed.
@@ -64,12 +60,12 @@ export interface ButtonProps {
 	/**
 	 * Button Styles
 	 */
-	styles?: ButtonStyles,
+	styles?: ButtonStyles;
 
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-	testID?: string,
+	/**
+	 * Used to locate this view in end-to-end tests.
+	 */
+	testID?: string;
 
 	[key: string]: any;
 }
@@ -80,7 +76,6 @@ export interface ButtonProps {
  */
 
 export class Button extends React.Component<ButtonProps> {
-
 	static defaultStyles = (theme: Theme) => ({
 		default: {
 			backgroundColor: theme.palette.background.default,
@@ -115,7 +110,7 @@ export class Button extends React.Component<ButtonProps> {
 			...theme.typography.button,
 			textAlign: 'center',
 		},
-	})
+	});
 
 	render() {
 		const {
@@ -161,16 +156,9 @@ export class Button extends React.Component<ButtonProps> {
 		const Touchable: React.ComponentType<any> =
 			Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
 		return (
-			<Touchable
-				accessibilityRole="button"
-				disabled={disabled}
-				onPress={onPress}
-			>
-				<View style={rootStyles} testID={testID} >
-					{typeof children === 'string'
-						? <Text style={textStyles}>{children}</Text>
-						: children
-					}
+			<Touchable accessibilityRole="button" disabled={disabled} onPress={onPress}>
+				<View style={rootStyles} testID={testID}>
+					{typeof children === 'string' ? <Text style={textStyles}>{children}</Text> : children}
 				</View>
 			</Touchable>
 		);

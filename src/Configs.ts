@@ -1,4 +1,4 @@
-import { ThemeValueInput } from './themes/structure/Theme';
+import { ThemeInput } from './themes';
 import { isProduction } from './utils';
 
 export interface Configs {
@@ -40,12 +40,12 @@ export interface Configs {
 	 * Theme mode: Either light or dark.
 	 * TODO: Add 'auto' mode to detect OS/User preference? This will be added to configs.
 	 */
-	'theme.mode': 'light' | 'dark';
+	'theme.mode': 'light' | 'dark' | 'auto';
 
 	/**
 	 * Overrides for any selected theme. These overrides are applied to all themes.
 	 */
-	'theme.overrides': ThemeValueInput;
+	'theme.overrides': Partial<ThemeInput>;
 
 	/**
 	 * App version
@@ -78,7 +78,10 @@ export const BlueBaseDefaultConfigs: Configs = {
 	pluginRoutePathPrefix: 'p',
 	statusBarStyle: 'light-content',
 	'theme.mode': 'light',
-	'theme.name': 'bluebase-light',
-	'theme.overrides': {},
+	'theme.name': 'bluebase-theme',
+	'theme.overrides': {
+		dark: {},
+		light: {},
+	},
 	title: 'BlueBase',
 };

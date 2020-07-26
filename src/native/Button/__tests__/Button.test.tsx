@@ -1,7 +1,6 @@
 import { Button, ButtonStyles } from '../Button';
 
-// import { BlueBaseApp } from '../../../';
-import { BlueBaseLightTheme } from '../../../themes';
+import { BlueBaseTheme } from '../../../themes';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Text } from 'react-native';
@@ -10,7 +9,7 @@ import { waitForElement } from 'enzyme-async-helpers';
 
 describe('Button', () => {
 	test(`should render Button with default color styles`, () => {
-		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const styles = Button.defaultStyles(BlueBaseTheme) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} testID="button-root">
 				Hello
@@ -28,7 +27,7 @@ describe('Button', () => {
 	});
 
 	test(`should render Button with primary color styles`, () => {
-		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const styles = Button.defaultStyles(BlueBaseTheme) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} color="primary" testID="button-root">
 				Hello
@@ -46,7 +45,7 @@ describe('Button', () => {
 	});
 
 	test(`should render Button with secondary color styles`, () => {
-		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const styles = Button.defaultStyles(BlueBaseTheme) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} color="secondary" testID="button-root">
 				Hello
@@ -64,7 +63,7 @@ describe('Button', () => {
 	});
 
 	test(`should render Button with link color styles`, () => {
-		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const styles = Button.defaultStyles(BlueBaseTheme) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} color="link" testID="button-root">
 				Hello
@@ -82,7 +81,7 @@ describe('Button', () => {
 	});
 
 	test(`should render Button with full width`, () => {
-		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const styles = Button.defaultStyles(BlueBaseTheme) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} testID="button-root" fullWidth={true}>
 				Hello
@@ -101,7 +100,7 @@ describe('Button', () => {
 	});
 
 	test(`should render Button with custom children`, () => {
-		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const styles = Button.defaultStyles(BlueBaseTheme) as ButtonStyles;
 		const rendered = TestRenderer.create(
 			<Button styles={styles} testID="button-root" fullWidth={true}>
 				<Text testID="custom">Custom</Text>
@@ -126,7 +125,7 @@ describe('Button', () => {
 			return Platform;
 		});
 
-		const styles = Button.defaultStyles(BlueBaseLightTheme.value as any) as ButtonStyles;
+		const styles = Button.defaultStyles(BlueBaseTheme) as ButtonStyles;
 
 		// const rendered = TestRenderer.create(
 		// 	<Button styles={styles}>
