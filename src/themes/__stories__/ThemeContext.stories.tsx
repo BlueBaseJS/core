@@ -22,7 +22,7 @@ storiesOf('ThemeContext', module)
 		</View>
 	))
 	.add('test', () => (
-		<BlueBaseApp configs={{ 'theme.name': 'foo' }}>
+		<BlueBaseApp configs={{ theme: 'foo' }}>
 			<ThemeProvider overrides={{ light: { palette: { background: { default: 'red' } } } }}>
 				<ThemeDemo />
 			</ThemeProvider>

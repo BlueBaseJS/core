@@ -18,12 +18,9 @@ describe('ThemeContext', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, ThemeDemo);
 
-		expect(
-			(wrapper
-				.find('[testID="box"]')
-				.first()
-				.prop('style') as any).backgroundColor
-		).toBe('#f5f5f5');
+		expect((wrapper.find('[testID="box"]').first().prop('style') as any).backgroundColor).toBe(
+			'#f5f5f5'
+		);
 	});
 
 	test(`should change theme based on callback function`, async () => {
@@ -41,45 +38,27 @@ describe('ThemeContext', () => {
 		// Check theme
 		let view = wrapper.find('[testID="box"]').first();
 		expect((view.prop('style') as any).backgroundColor).toBe('#f5f5f5');
-		expect(
-			wrapper
-				.find(ThemeDemo)
-				.find('Body1 Text')
-				.last()
-				.text()
-		).toBe('BlueBase Theme');
+		expect(wrapper.find(ThemeDemo).find('Body1 Text').last().text()).toBe('BlueBase Theme');
 
 		// Change theme
-		const onValueChange: any = wrapper
-			.find(ModePicker)
-			.find('Picker')
-			.prop('onValueChange');
+		const onValueChange: any = wrapper.find(ModePicker).find('Picker').prop('onValueChange');
 		onValueChange('dark');
 
 		await waitForElement(wrapper as any, ThemeDemo);
 
 		// Verify that background color is dark
-		view = wrapper
-			.find(ThemeDemo)
-			.childAt(0)
-			.first();
+		view = wrapper.find(ThemeDemo).childAt(0).first();
 		expect((view.prop('style') as any).backgroundColor).toBe('#303030');
-		expect(
-			wrapper
-				.find(ThemeDemo)
-				.find('Text')
-				.last()
-				.text()
-		).toBe('BlueBase Theme');
+		expect(wrapper.find(ThemeDemo).find('Text').last().text()).toBe('BlueBase Theme');
 	});
 
 	test(`should throw render error state if theme is not found`, async () => {
 		const BB = new BlueBase();
-		// await BB.boot({ configs: { 'theme.name': 'foo' } });
+		// await BB.boot({ configs: { 'theme': 'foo' } });
 		BB.Logger.warn = jest.fn();
 
 		const wrapper = mount(
-			<BlueBaseApp configs={{ 'theme.name': 'foo' }} BB={BB}>
+			<BlueBaseApp configs={{ theme: 'foo' }} BB={BB}>
 				<ThemeDemo />
 			</BlueBaseApp>
 		);
@@ -90,13 +69,7 @@ describe('ThemeContext', () => {
 		await wait(1000);
 		wrapper.update();
 
-		expect(
-			wrapper
-				.find(ThemeDemo)
-				.find('Body1 Text')
-				.last()
-				.text()
-		).toBe('BlueBase Theme');
+		expect(wrapper.find(ThemeDemo).find('Body1 Text').last().text()).toBe('BlueBase Theme');
 
 		expect(BB.Logger.warn).toHaveBeenCalledTimes(1);
 		expect(BB.Logger.warn).toHaveBeenLastCalledWith(
@@ -110,7 +83,7 @@ describe('ThemeContext', () => {
 		const wrapper = mount(
 			<BlueBaseApp
 				configs={{
-					'theme.name': 'foo',
+					theme: 'foo',
 					'theme.overrides': { light: { palette: { background: { default: 'red' } } } },
 				}}
 			>
@@ -122,20 +95,11 @@ describe('ThemeContext', () => {
 		await waitForElement(wrapper as any, ThemeDemo);
 
 		// Check theme
-		const view = wrapper
-			.find(ThemeDemo)
-			.find('[testID="box"]')
-			.first();
+		const view = wrapper.find(ThemeDemo).find('[testID="box"]').first();
 
 		expect(view.prop('style')!.backgroundColor).toBe('red');
 
-		expect(
-			wrapper
-				.find(ThemeDemo)
-				.find('Body1 Text')
-				.last()
-				.text()
-		).toBe('BlueBase Theme');
+		expect(wrapper.find(ThemeDemo).find('Body1 Text').last().text()).toBe('BlueBase Theme');
 
 		wrapper.unmount();
 	});

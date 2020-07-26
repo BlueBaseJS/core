@@ -13,7 +13,7 @@ export interface ThemeProviderProps {
 	 * Key of the theme to use for children components. If this prop is not set,
 	 * the globally selected theme is used.
 	 */
-	theme?: Configs['theme.name'];
+	theme?: Configs['theme'];
 
 	/**
 	 * Theme mode
@@ -34,7 +34,7 @@ export interface ThemeProviderProps {
 export const ThemeProvider = (props: ThemeProviderProps) => {
 	const BB = useBlueBase();
 
-	const [themeName, changeTheme] = useConfig('theme.name');
+	const [themeName, changeTheme] = useConfig('theme');
 	const [modeConfig, changeMode] = useConfig('theme.mode');
 	const [overridesConfig] = useConfig<ThemeInput>('theme.overrides');
 

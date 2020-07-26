@@ -33,7 +33,7 @@ export interface Configs {
 	 * Name of selected theme.
 	 * FIXME: This key contains the slug, but is called name. This is confusing.
 	 */
-	'theme.name': string;
+	theme: string;
 
 	/**
 	 * Theme mode: Either light or dark.
@@ -73,7 +73,7 @@ export const BlueBaseDefaultConfigs: Configs = {
 	},
 	pluginRoutePathPrefix: 'p',
 	'theme.mode': 'light',
-	'theme.name': 'bluebase-theme',
+	theme: 'bluebase-theme',
 	'theme.overrides': {
 		dark: {},
 		light: {},
