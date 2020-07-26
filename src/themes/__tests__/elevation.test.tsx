@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 describe('elevation', () => {
 	test(`should return shadow styles on native`, () => {
 		const elevation = require('../elevation/elevation.native').elevation;

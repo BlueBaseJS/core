@@ -22,6 +22,6 @@ describe('BlueBase', () => {
 	test(`should boot even without optioons`, async () => {
 		const BB = new BlueBase();
 		await BB.boot();
-		expect(BB.Configs.size()).toBe(11);
+		expect(BB.Configs.size()).toBe(10);
 	});
 });

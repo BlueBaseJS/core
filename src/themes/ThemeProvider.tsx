@@ -1,8 +1,9 @@
-import React, { createContext } from 'react';
 import { Theme, ThemeInput } from './Theme';
+import { ThemeContext, ThemeContextData } from '../contexts';
 import { useBlueBase, useConfig } from '../hooks';
 
 import { Configs } from '../Configs';
+import React from 'react';
 
 /**
  * Props of the `ThemeProvider` component.
@@ -26,29 +27,6 @@ export interface ThemeProviderProps {
 
 	children: React.ReactNode;
 }
-
-/**
- * Interface of object passed as param to the ThemeConsumer render prop method.
- */
-export interface ThemeContextData {
-	/** Helper method to change current theme. */
-	changeTheme: (slug: string) => void;
-
-	changeMode: (mode: Configs['theme.mode']) => void;
-
-	/** Selected theme varaint */
-	theme: Theme;
-}
-
-/**
- * This is the context where BlueBase theme is stored.
- */
-export const ThemeContext: React.Context<ThemeContextData> = createContext(undefined as any);
-
-/**
- * BlueBase theme consumer.
- */
-export const ThemeConsumer = ThemeContext.Consumer;
 
 /**
  * 🎨 ThemeProvider
@@ -81,7 +59,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 		theme,
 	};
 
-	return <ThemeContext.Provider value={value} children={props.children} />;
+	return <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>;
 };
 
 ThemeProvider.displayName = 'ThemeProvider';

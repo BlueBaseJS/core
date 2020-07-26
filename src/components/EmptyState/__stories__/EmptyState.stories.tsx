@@ -1,9 +1,8 @@
-import { EmptyState } from '../../../getComponent';
+import { EmptyStateProps } from '@bluebase/components';
 import React from 'react';
+import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
 
-storiesOf('EmptyState', module)
+const EmptyState = getComponent<EmptyStateProps>('EmptyState');
 
-	.add('With default props', () => (
-		<EmptyState />
-	));
+storiesOf('EmptyState', module).add('With default props', () => <EmptyState />);

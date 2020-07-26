@@ -22,7 +22,7 @@ export class DataObserver extends React.PureComponent<DataObserverProps> {
 	public static defaultProps: Partial<DataObserverProps> = {
 		loading: false,
 
-		isEmpty: props => {
+		isEmpty: (props: DataObserverProps) => {
 			// If its null or undefined
 			if (isnil(props.data)) {
 				return true;
@@ -35,7 +35,8 @@ export class DataObserver extends React.PureComponent<DataObserverProps> {
 
 			return false;
 		},
-		isLoading: props => (!isnil(props.loading) && isboolean(props.loading) ? props.loading : false),
+		isLoading: (props: DataObserverProps) =>
+			!isnil(props.loading) && isboolean(props.loading) ? props.loading : false,
 	};
 
 	render() {

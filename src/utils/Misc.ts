@@ -13,6 +13,7 @@ export function isProduction(): boolean {
 	}
 
 	// react-native
+	// eslint-disable-next-line no-undef
 	if (__DEV__) {
 		return false;
 	}
@@ -31,7 +32,7 @@ export function makeId(length: number = 8) {
 			.toString(36)
 			.substr(2, 10);
 	}
-	return ('_' + str).substr(0, length);
+	return `_${str}`.substr(0, length);
 }
 
 /**
@@ -41,6 +42,6 @@ export function makeId(length: number = 8) {
  */
 export function merge<T>(x: Partial<T>, y: Partial<T>) {
 	return deepmerge(x, y, {
-		isMergeableObject: i => isPlainPbject(i) || Array.isArray(i),
+		isMergeableObject: (i: any) => isPlainPbject(i) || Array.isArray(i),
 	});
 }

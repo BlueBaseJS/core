@@ -1,13 +1,18 @@
-import { FormattedMessage, H5, View } from '../../getComponent';
-import { I18nManager, StyleSheet, Text } from 'react-native';
+import { I18nManager, StyleSheet, Text, TextProps, ViewProps } from 'react-native';
 
 import { BlueBaseApp } from '../../index';
 import { DirectionPicker } from '../__stories__/DirectionPicker';
-import { IntlMessages } from '../IntlContext';
+import { FormattedMessageProps } from '@bluebase/components';
+import { IntlMessages } from '../../contexts';
 import { LocalePicker } from '../__stories__/LocalePicker';
 import React from 'react';
+import { getComponent } from '../../getComponent';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+
+const FormattedMessage = getComponent<FormattedMessageProps>('FormattedMessage');
+const H5 = getComponent<TextProps>('H5');
+const View = getComponent<ViewProps>('View');
 
 const filters = {
 	'bluebase.intl.messages.ur': (messages: IntlMessages) => ({
@@ -161,7 +166,8 @@ describe('IntlContext', () => {
 		await waitForElement(wrapper as any, FormattedMessage);
 
 		const onValueChange = wrapper
-			.find('LocalePicker Picker')
+			.find(LocalePicker)
+			.find('Picker')
 			.first()
 			.prop('onValueChange') as any;
 
@@ -197,7 +203,8 @@ describe('IntlContext', () => {
 		await waitForElement(wrapper as any, FormattedMessage);
 
 		const changeDirection = wrapper
-			.find('DirectionPicker Picker')
+			.find(DirectionPicker)
+			.find('Picker')
 			.first()
 			.prop('onValueChange') as any;
 

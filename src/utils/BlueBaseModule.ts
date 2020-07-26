@@ -1,5 +1,6 @@
 import { MaybeEsModule, getDefiniteModule } from './Modules';
 import { MaybePromise, getDefinitePromise, isPromise } from './Promises';
+
 import isNil from 'lodash.isnil';
 
 // /**
@@ -53,7 +54,7 @@ export function createBlueBaseModule<T>(input: MaybeBlueBaseModule<T>) {
 	const module = getDefiniteModule(input);
 	const promisedModule = getDefinitePromise(module);
 
-	const promise = new Promise((resolve, reject) => {
+	const promise = new Promise((resolve: any, reject: any) => {
 		promisedModule
 			.then((m: MaybeEsModule<T>) => {
 				(promise as BlueBaseModule<T>).loaded = true;
@@ -62,7 +63,7 @@ export function createBlueBaseModule<T>(input: MaybeBlueBaseModule<T>) {
 			.catch(reject);
 	}) as BlueBaseModule<T>;
 
-	promise.isAsync = isPromise(module) ? true : false;
+	promise.isAsync = !!isPromise(module);
 	promise.module = module;
 	promise.loaded = false;
 

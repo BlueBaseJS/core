@@ -18,7 +18,7 @@ export function useConfig<T = any>(
 		let cancelled = false;
 
 		// Subscribe
-		subscriptionId = BB.Configs.subscribe(key, (v, item) => {
+		subscriptionId = BB.Configs.subscribe(key, (v: any, item: RegistryItem<any>) => {
 			if (cancelled) {
 				BB.Configs.unsubscribe(key, subscriptionId);
 				return;

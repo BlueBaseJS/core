@@ -406,7 +406,7 @@ describe('Registry', () => {
 
 			const arr: any = [];
 
-			registry.forEach((value, key) => {
+			registry.forEach((value: RegistryItem<string>, key: string) => {
 				arr.push([key, value]);
 			});
 
@@ -474,13 +474,13 @@ describe('Registry', () => {
 
 			expect((registry as any).subscriptions.get('bar')).toBe(undefined);
 
-			registry.subscribe('bar', value => {
+			registry.subscribe('bar', (value: number) => {
 				expect(value).toBe(10);
 			});
 
 			expect((registry as any).subscriptions.get('bar').size).toBe(1);
 
-			registry.subscribe('bar', value => {
+			registry.subscribe('bar', (value: number) => {
 				expect(value).toBe(10);
 			});
 
@@ -495,7 +495,7 @@ describe('Registry', () => {
 			const BB = new BlueBase();
 			const registry = new Registry<RegistryItem<number>>(BB);
 
-			registry.subscribe('bar', value => {
+			registry.subscribe('bar', (value: number) => {
 				expect(value).toBe(10);
 			});
 
@@ -527,6 +527,7 @@ describe('Registry', () => {
 
 			// tslint:disable-next-line
 			expect(() => registry.unsubscribe('foo', 'bar')).toThrow(
+				// eslint-disable-next-line max-len
 				'Could not unsubscribe from a registry item. Reason: No subsciptions for item with key "foo" registered.'
 			);
 		});

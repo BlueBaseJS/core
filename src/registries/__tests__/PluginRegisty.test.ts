@@ -2,8 +2,11 @@
 import { PluginInput, PluginRegistry, createPlugin } from '../PluginRegistry';
 
 import { BlueBase } from '../../BlueBase';
-import { Noop } from '../../getComponent';
+import { NoopProps } from '@bluebase/components';
 import { createBlueBaseModule } from '../../utils';
+import { getComponent } from '../../getComponent';
+
+const Noop = getComponent<NoopProps>('Noop');
 
 describe('PluginRegistry', () => {
 	describe('.register method', () => {
@@ -114,7 +117,7 @@ describe('PluginRegistry', () => {
 			let message = '';
 
 			class Foo {
-				public foo = 'bar';
+				public foo: string = 'bar';
 			}
 
 			try {

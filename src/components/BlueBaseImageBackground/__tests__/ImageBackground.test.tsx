@@ -91,15 +91,17 @@ describe('ImageBackground', () => {
 	});
 
 	it(`should render just children if there is not source prop`, async () => {
+		const CustomBlueBaseImageBackground: any = BlueBaseImageBackground;
+
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
-				<BlueBaseImageBackground>
+				<CustomBlueBaseImageBackground>
 					<Text>Foo</Text>
-				</BlueBaseImageBackground>
+				</CustomBlueBaseImageBackground>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper as any, BlueBaseImageBackground);
+		await waitForElement(wrapper as any, CustomBlueBaseImageBackground);
 
 		expect(wrapper.find('Image').exists()).toBe(false);
 		expect(

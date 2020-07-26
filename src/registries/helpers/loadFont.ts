@@ -23,7 +23,7 @@ export const loadFont = (fontName: string, font: string) => {
 };
 
 export const loadAllFonts = async (fonts: { [name: string]: FontValue }) => {
-	Object.keys(fonts).forEach(fontName => {
+	Object.keys(fonts).forEach((fontName: string) => {
 		loadFont(fontName, fonts[fontName] as string);
 	});
 };

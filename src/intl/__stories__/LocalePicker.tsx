@@ -1,31 +1,18 @@
-import { BlueBase, BlueBaseContext } from '../..';
-import { IntlContext, IntlContextData } from '..';
+import { useConfig, useIntl } from '../../hooks';
+
 import { Picker } from 'react-native';
 import React from 'react';
 
-export class LocalePicker extends React.PureComponent {
+export const LocalePicker = () => {
+	const [locale] = useConfig('locale');
+	const [localeOptions] = useConfig('locale.options');
+	const { changeLocale } = useIntl();
 
-	static contextType = BlueBaseContext;
-
-	render() {
-		const BB: BlueBase = (this as any).context;
-		const localeOptions = BB.Configs.getValue('locale.options');
-
-		return (
-			<IntlContext.Consumer children={({ changeLocale }: IntlContextData) => (
-				<Picker
-					selectedValue={BB.Configs.getValue('locale')}
-					style={{ width: 150 }}
-					onValueChange={changeLocale}>
-					{Object.keys(localeOptions).map(locale => (
-						<Picker.Item
-							label={localeOptions[locale]}
-							value={locale}
-							key={locale}
-						/>
-					))}
-				</Picker>
-			)} />
-		);
-	}
-}
+	return (
+		<Picker selectedValue={locale} style={{ width: 150 }} onValueChange={changeLocale}>
+			{Object.keys(localeOptions).map((l: string) => (
+				<Picker.Item label={localeOptions[l]} value={l} key={l} />
+			))}
+		</Picker>
+	);
+};

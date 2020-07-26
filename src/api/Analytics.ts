@@ -1,6 +1,8 @@
 import { BlueBase } from '../BlueBase';
 
 export interface AnalyticsTrackData {
+	[key: string]: any;
+
 	/** Event name */
 	name: string;
 
@@ -12,8 +14,6 @@ export interface AnalyticsTrackData {
 
 	/** Custom metrics that your app reports to analytics providers (i.e. AWS Pinpoint) */
 	metrics?: { [key: string]: number };
-
-	[key: string]: any;
 }
 
 /**

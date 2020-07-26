@@ -80,13 +80,16 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 		let hocs = item.hocs;
 
 		// Process delayed HOCs
-		hocs = item.hocs.map(hoc => (Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc));
+		hocs = item.hocs.map((hoc: ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs<any>) =>
+			Array.isArray(hoc) ? hoc[0](hoc[1]) : hoc
+		);
 
 		// Wrap
 		const wrappedComponent = flowRight([...(hocs as ComponentRegistryHocItem[])])(themedComponent);
 
 		// Final result
 		const result = hoistNonReactStatics(wrappedComponent, rawComponent);
+		result.displayName = item.key;
 
 		// Cache result
 		this.setMeta(item.key, { CachedComponent: result });

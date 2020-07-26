@@ -1,22 +1,26 @@
-import { LinkProps, NavigationActionsObject } from '@bluebase/components';
-import { NativeSyntheticEvent, NativeTouchEvent, Platform } from 'react-native';
+import { NativeSyntheticEvent, NativeTouchEvent, Platform, Text } from 'react-native';
 
-import { NavigationActions } from '../../getComponent';
+import { LinkProps } from '@bluebase/components';
 import React from 'react';
 import { TouchableItem } from '../TouchableItem';
+import { useNavigation } from '../../hooks';
+
+const ExternalLink = (props: any) => <Text {...props} accessibilityRole="link" />;
 
 /**
  * 🔗 Link
  */
-export class Link extends React.PureComponent<LinkProps> {
-	public static defaultProps: Partial<LinkProps> = {
-		component: TouchableItem,
-		replace: false,
-	};
+export const Link = (props: LinkProps) => {
+	const { method, routeName, path, params, onPress, replace, ...rest } = props;
+	const navigation = useNavigation();
 
-	handlePress(event: NativeSyntheticEvent<NativeTouchEvent>, navigation: NavigationActionsObject) {
-		const { method, routeName, path, params, replace } = this.props;
+	if (!props.component) {
+		return null;
+	}
 
+	const Component = props.component;
+
+	function handlePress(event: NativeSyntheticEvent<NativeTouchEvent>) {
 		if (event && !event.defaultPrevented) {
 			event.preventDefault();
 
@@ -38,21 +42,15 @@ export class Link extends React.PureComponent<LinkProps> {
 		}
 	}
 
-	render() {
-		const { component: Component, routeName, path, params, onPress, replace, ...rest } = this.props;
+	return Platform.OS === 'web' && !!path && path !== '' ? (
+		<ExternalLink {...rest} href={path} onPress={onPress || handlePress} />
+	) : (
+		<Component {...rest} onPress={onPress || handlePress} />
+	);
+};
 
-		return Component ? (
-			<NavigationActions>
-				{(navigation: NavigationActionsObject) => {
-					const onPressDefault = (e: any) => this.handlePress(e, navigation);
-
-					return Platform.OS === 'web' && !!path && path !== '' ? (
-						<a href={path} onClick={(onPress as any) || onPressDefault} {...this.props} />
-					) : (
-						<Component {...rest} onPress={onPress || onPressDefault} />
-					);
-				}}
-			</NavigationActions>
-		) : null;
-	}
-}
+Link.displayName = 'Link';
+Link.defaultProps = {
+	component: TouchableItem,
+	replace: false,
+};

@@ -1,28 +1,28 @@
-import {
-	Body1,
-	Body2,
-	Caption,
-	H1,
-	H2,
-	H3,
-	H4,
-	H5,
-	H6,
-	Overline,
-	Subtitle1,
-	Subtitle2,
-} from '../../getComponent';
+import { StyleSheet, TextProps } from 'react-native';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseApp } from '../../';
 import { BlueBaseTheme } from '../../themes';
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { createPlugin } from '../../registries';
+import { getComponent } from '../../getComponent';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 
 const theme = BlueBaseTheme;
+
+const H1 = getComponent<TextProps>('H1');
+const H2 = getComponent<TextProps>('H2');
+const H3 = getComponent<TextProps>('H3');
+const H4 = getComponent<TextProps>('H4');
+const H5 = getComponent<TextProps>('H5');
+const H6 = getComponent<TextProps>('H6');
+const Subtitle1 = getComponent<TextProps>('Subtitle1');
+const Subtitle2 = getComponent<TextProps>('Subtitle2');
+const Body1 = getComponent<TextProps>('Body1');
+const Body2 = getComponent<TextProps>('Body2');
+const Caption = getComponent<TextProps>('Caption');
+const Overline = getComponent<TextProps>('Overline');
 
 describe('filters', () => {
 	describe('components', () => {

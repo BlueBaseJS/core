@@ -1,31 +1,35 @@
-import { NavigationActionParams, NavigationActionsObject } from '@bluebase/components';
-import { NavigationActions } from '../../getComponent';
+import {
+	NavigationActionParams,
+	NavigationActionsObject,
+	NavigationActionsProps,
+} from '@bluebase/components';
+
 import React from 'react';
+import { getComponent } from '../../getComponent';
+
+const NavigationActions = getComponent<NavigationActionsProps>('NavigationActions');
 
 export interface RedirectProps {
-	routeName?: string,
-	path?: string,
+	routeName?: string;
+	path?: string;
 	params?: NavigationActionParams;
-	push?: boolean,
+	push?: boolean;
 }
 
 /**
  * 🔀 Redirect
  */
 export const Redirect = (props: RedirectProps) => {
-
 	const { routeName, path, params, push } = props;
 
 	return (
 		<NavigationActions>
 			{({ push: pushFn, replace }: NavigationActionsObject) => {
-
-				const fn = (push === true) ? pushFn : replace;
+				const fn = push === true ? pushFn : replace;
 
 				if (typeof routeName === 'string') {
 					fn(routeName, params);
-				}
-				else if (typeof path === 'string') {
+				} else if (typeof path === 'string') {
 					fn({ path }, params);
 				}
 

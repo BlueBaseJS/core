@@ -1,4 +1,4 @@
-import { IntlContext } from '../intl';
+import { IntlContext } from '../contexts';
 import { useContext } from 'react';
 
 export function useIntl() {

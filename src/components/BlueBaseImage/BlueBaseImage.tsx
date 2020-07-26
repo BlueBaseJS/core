@@ -1,14 +1,10 @@
 import { BlueBaseImageProps, ImageProps } from '@bluebase/components';
-import React, { useContext } from 'react';
+import { useBlueBase, useComponent, useTheme } from '../../hooks';
 
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
-import { Image } from '../../getComponent';
-import { ThemeContextData } from '../../themes';
+import React from 'react';
+import { ThemeContextData } from '../../contexts';
 import { isMobile } from '../../utils';
-import { useTheme } from '../../hooks';
-
-// import { useTheme } from '../../hooks';
 
 // tslint:disable: jsdoc-format
 /**
@@ -26,8 +22,12 @@ import { useTheme } from '../../hooks';
 //
 export const BlueBaseImage = (props: BlueBaseImageProps) => {
 	const { resolve, source: _source, ...rest } = props;
-	const BB: BlueBase = useContext(BlueBaseContext);
+
+	const BB = useBlueBase();
+	const Image = useComponent<ImageProps>('Image');
+
 	const Theme: ThemeContextData = useTheme();
+
 	const source = resolveImageSource(props, BB, Theme);
 	if (!source) {
 		return null;
@@ -35,6 +35,7 @@ export const BlueBaseImage = (props: BlueBaseImageProps) => {
 
 	return React.createElement(Image, { ...rest, source });
 };
+
 const getAssetVersions = (source: BlueBaseImageProps['source'], Theme: ThemeContextData) => {
 	if (typeof source !== 'string') {
 		return source;
@@ -50,6 +51,7 @@ const getAssetVersions = (source: BlueBaseImageProps['source'], Theme: ThemeCont
 
 	return [`${source}_${screen}_${mode}`, `${source}_${screen}`, `${source}_${mode}`, source];
 };
+
 export const resolveImageSource = (
 	props: BlueBaseImageProps,
 	BB: BlueBase,
@@ -62,7 +64,7 @@ export const resolveImageSource = (
 	if (typeof _source === 'string') {
 		Asset = BB.Assets.resolve(_source);
 	} else if (Array.isArray(_source)) {
-		const keys = (_source as string[]).filter(s => typeof s === 'string');
+		const keys = (_source as string[]).filter((s: string) => typeof s === 'string');
 
 		if (keys.length > 0) {
 			Asset = BB.Assets.resolve(...keys);

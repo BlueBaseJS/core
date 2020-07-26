@@ -12,6 +12,8 @@ export interface ComponentStyles {
 }
 
 export interface ThemeVariant {
+	[key: string]: any;
+
 	/** Component styles */
 	components: {
 		// component name
@@ -21,23 +23,21 @@ export interface ThemeVariant {
 	elevation: (value: number) => Partial<ViewStyle>;
 
 	shape: {
-		borderRadius: number;
 		[key: string]: any;
+		borderRadius: number;
 	};
 
 	spacing: {
-		unit: number;
 		[key: string]: any;
+		unit: number;
 	};
 
 	typography: ThemeTypography;
 
 	palette: Palette;
 
-	// tslint:disable-next-line
-	// TODO: Add shadows. Example: https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/styles/shadows.js
-
-	[key: string]: any;
+	// eslint-disable-next-line max-len
+	// TODO: Add shadows. eg. https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/styles/shadows.js
 }
 
 export interface ThemeVariantInput extends Omit<Partial<ThemeVariant>, 'palette' | 'typography'> {

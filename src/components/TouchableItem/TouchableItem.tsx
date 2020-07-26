@@ -1,11 +1,8 @@
-import {
-	Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-} from 'react-native';
+import { Platform, TouchableNativeFeedback, TouchableOpacity, ViewProps } from 'react-native';
+
 import React from 'react';
 import { TouchableItemProps } from '@bluebase/components';
-import { View } from '../../getComponent';
+import { useComponent } from '../../hooks';
 
 // import BorderlessButton from './BorderlessButton';
 
@@ -22,66 +19,57 @@ const ANDROID_VERSION_LOLLIPOP = 21;
  *
  * Code taken from react-navigation project
  */
-export class TouchableItem extends React.Component<TouchableItemProps> {
 
-	public static defaultProps: Partial<TouchableItemProps> = {
-		borderless: false,
-		pressColor: 'rgba(0, 0, 0, .32)', // TODO: Extract this from theme
-	};
+export const TouchableItem = (props: TouchableItemProps & { children: React.ReactNode }) => {
+	const View = useComponent<ViewProps>('View');
 
-	render() {
-    /*
-     * TouchableNativeFeedback.Ripple causes a crash on old Android versions,
-     * therefore only enable it on Android Lollipop and above.
-     *
-     * All touchables on Android should have the ripple effect according to
-     * platform design guidelines.
-     * We need to pass the background prop to specify a borderless ripple effect.
-     */
-		if (
-      Platform.OS === 'android' &&
-      Platform.Version >= ANDROID_VERSION_LOLLIPOP
-    ) {
-			const { style, ...rest } = this.props;
-			return (
-        <TouchableNativeFeedback
-          {...rest}
-          style={null}
-          background={TouchableNativeFeedback.Ripple(
-            this.props.pressColor as string,
-            this.props.borderless
-          )}
-        >
-          <View style={style}>{React.Children.only(this.props.children)}</View>
-        </TouchableNativeFeedback>
-			);
-		}
-		else if (Platform.OS === 'ios') {
-			// FIXME: Add borderless button
-			return (
-        <TouchableOpacity
-          hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
-          // disallowInterruption={true}
-          {...this.props}
-        >
-          {this.props.children}
-        </TouchableOpacity>
-			);
-			// return (
-      //   <BorderlessButton
-      //     hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
-      //     disallowInterruption={true}
-      //     {...this.props}
-      //   >
-      //     {this.props.children}
-      //   </BorderlessButton>
-			// );
-		} else {
-			return (
-        <TouchableOpacity {...this.props}>
-          {this.props.children}
-        </TouchableOpacity>
-			);
-		}
+	/*
+	 * TouchableNativeFeedback.Ripple causes a crash on old Android versions,
+	 * therefore only enable it on Android Lollipop and above.
+	 *
+	 * All touchables on Android should have the ripple effect according to
+	 * platform design guidelines.
+	 * We need to pass the background prop to specify a borderless ripple effect.
+	 */
+	if (Platform.OS === 'android' && Platform.Version >= ANDROID_VERSION_LOLLIPOP) {
+		const { style, ...rest } = props;
+		return (
+			<TouchableNativeFeedback
+				{...rest}
+				style={null}
+				background={TouchableNativeFeedback.Ripple(props.pressColor as string, props.borderless)}
+			>
+				<View style={style}>{React.Children.only(props.children)}</View>
+			</TouchableNativeFeedback>
+		);
+	} else if (Platform.OS === 'ios') {
+		// FIXME: Add borderless button
+		return (
+			<TouchableOpacity
+				hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
+				// disallowInterruption={true}
+				{...props}
+			>
+				{props.children}
+			</TouchableOpacity>
+		);
+		// return (
+		//   <BorderlessButton
+		//     hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
+		//     disallowInterruption={true}
+		//     {...props}
+		//   >
+		//     {props.children}
+		//   </BorderlessButton>
+		// );
+	} else {
+		return <TouchableOpacity {...props}>{props.children}</TouchableOpacity>;
 	}
-}
+};
+
+TouchableItem.displayName = 'TouchableItem';
+
+TouchableItem.defaultProps = {
+	borderless: false,
+	pressColor: 'rgba(0, 0, 0, .32)', // TODO: Extract this from theme
+};

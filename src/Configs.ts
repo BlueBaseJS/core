@@ -2,6 +2,8 @@ import { ThemeInput } from './themes';
 import { isProduction } from './utils';
 
 export interface Configs {
+	[key: string]: any;
+
 	/** Project title */
 	title: string;
 
@@ -58,9 +60,6 @@ export interface Configs {
 	 * Author Website or Email URL
 	 */
 	authorUrl?: string;
-
-	// others
-	[key: string]: any;
 }
 
 export const BlueBaseDefaultConfigs: Configs = {

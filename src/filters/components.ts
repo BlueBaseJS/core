@@ -147,7 +147,7 @@ export const components: FilterNestedCollection = {
 					},
 				});
 
-				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'system' }));
+				keys.forEach((key: string) => BB.Components.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;
 			},
@@ -163,7 +163,7 @@ export const components: FilterNestedCollection = {
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				const keys = await BB.Components.registerCollection(bootOptions.components);
-				keys.forEach(key => BB.Components.setMeta(key, 'source', { type: 'boot' }));
+				keys.forEach((key: string) => BB.Components.setMeta(key, 'source', { type: 'boot' }));
 
 				return bootOptions;
 			},
@@ -181,7 +181,7 @@ export const components: FilterNestedCollection = {
 
 				for (const plugin of plugins) {
 					const keys = await BB.Components.registerCollection(plugin.components);
-					keys.forEach(key =>
+					keys.forEach((key: string) =>
 						BB.Components.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
 					);
 				}

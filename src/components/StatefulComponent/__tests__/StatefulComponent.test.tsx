@@ -41,15 +41,18 @@ describe('StatefulComponent', () => {
 
 		await waitForElement(component as any, StatefulComponent);
 
+		// expect(component.find(StatefulComponent)).toMatchSnapshot();
 		expect(
 			component
-				.find('StatefulComponent H6 Text')
+				.find(StatefulComponent)
+				.find('H6 Text')
 				.last()
 				.text()
 		).toBe('Empty Area');
 		expect(
 			component
-				.find('StatefulComponent Body2 Text')
+				.find(StatefulComponent)
+				.find('Body2 Text')
 				.last()
 				.text()
 		).toBe('Create new items to fill this area.');

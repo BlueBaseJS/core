@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 
 import React from 'react';
-import { Theme } from '../../themes';
+import { Theme } from '../../themes/Theme';
+import { useStyles } from '../../hooks/useStyles';
 
 export interface ButtonStyles {
 	root: ViewStyle;
@@ -26,6 +27,8 @@ export interface ButtonStyles {
 }
 
 export interface ButtonProps {
+	[key: string]: any;
+
 	/* Label to be passed as child. */
 	children?: React.ReactNode;
 
@@ -66,101 +69,98 @@ export interface ButtonProps {
 	 * Used to locate this view in end-to-end tests.
 	 */
 	testID?: string;
-
-	[key: string]: any;
 }
+
+const defaultStyles = (theme: Theme): ButtonStyles => ({
+	default: {
+		backgroundColor: theme.palette.background.default,
+	},
+	defaultText: {},
+	fullWidth: {
+		alignSelf: 'stretch',
+	},
+	link: {},
+	linkText: {},
+	primary: {
+		backgroundColor: theme.palette.primary.main,
+	},
+	primaryText: {
+		color: theme.palette.primary.contrastText,
+	},
+	root: {
+		alignSelf: 'flex-start',
+		borderRadius: theme.shape.borderRadius,
+		paddingBottom: theme.spacing.unit,
+		paddingLeft: theme.spacing.unit * 2,
+		paddingRight: theme.spacing.unit * 2,
+		paddingTop: theme.spacing.unit,
+	},
+	secondary: {
+		backgroundColor: theme.palette.secondary.main,
+	},
+	secondaryText: {
+		color: theme.palette.secondary.contrastText,
+	},
+	text: {
+		...theme.typography.button,
+		textAlign: 'center',
+	},
+});
 
 /**
  * A basic button component that should render nicely on any platform. Supports
  * a minimal level of customization.
  */
+export const Button = (props: ButtonProps) => {
+	const {
+		color = 'default',
+		onPress,
+		children,
+		disabled,
+		fullWidth,
+		// active,
+		// size,
+		testID,
+	} = props;
 
-export class Button extends React.Component<ButtonProps> {
-	static defaultStyles = (theme: Theme) => ({
-		default: {
-			backgroundColor: theme.palette.background.default,
-		},
-		defaultText: {},
-		fullWidth: {
-			alignSelf: 'stretch',
-		},
-		link: {},
-		linkText: {},
-		primary: {
-			backgroundColor: theme.palette.primary.main,
-		},
-		primaryText: {
-			color: theme.palette.primary.contrastText,
-		},
-		root: {
-			alignSelf: 'flex-start',
-			borderRadius: theme.shape.borderRadius,
-			paddingBottom: theme.spacing.unit,
-			paddingLeft: theme.spacing.unit * 2,
-			paddingRight: theme.spacing.unit * 2,
-			paddingTop: theme.spacing.unit,
-		},
-		secondary: {
-			backgroundColor: theme.palette.secondary.main,
-		},
-		secondaryText: {
-			color: theme.palette.secondary.contrastText,
-		},
-		text: {
-			...theme.typography.button,
-			textAlign: 'center',
-		},
-	})
+	const styles = useStyles('Button', props, defaultStyles);
 
-	render() {
-		const {
-			color = 'default',
-			onPress,
-			children,
-			disabled,
-			fullWidth,
-			// active,
-			// size,
-			testID,
-		} = this.props;
+	const rootStyles: ViewStyle[] = [styles.root];
+	const textStyles: TextStyle[] = [styles.text];
 
-		const styles = this.props.styles as ButtonStyles;
-
-		const rootStyles: ViewStyle[] = [styles.root];
-		const textStyles: TextStyle[] = [styles.text];
-
-		if (color === 'default') {
-			rootStyles.push(styles.default);
-			textStyles.push(styles.defaultText);
-		}
-
-		if (color === 'primary') {
-			rootStyles.push(styles.primary);
-			textStyles.push(styles.primaryText);
-		}
-
-		if (color === 'secondary') {
-			rootStyles.push(styles.secondary);
-			textStyles.push(styles.secondaryText);
-		}
-
-		if (color === 'link') {
-			rootStyles.push(styles.link);
-			textStyles.push(styles.linkText);
-		}
-
-		if (fullWidth === true) {
-			rootStyles.push(styles.fullWidth);
-		}
-
-		const Touchable: React.ComponentType<any> =
-			Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-		return (
-			<Touchable accessibilityRole="button" disabled={disabled} onPress={onPress}>
-				<View style={rootStyles} testID={testID}>
-					{typeof children === 'string' ? <Text style={textStyles}>{children}</Text> : children}
-				</View>
-			</Touchable>
-		);
+	if (color === 'default') {
+		rootStyles.push(styles.default);
+		textStyles.push(styles.defaultText);
 	}
-}
+
+	if (color === 'primary') {
+		rootStyles.push(styles.primary);
+		textStyles.push(styles.primaryText);
+	}
+
+	if (color === 'secondary') {
+		rootStyles.push(styles.secondary);
+		textStyles.push(styles.secondaryText);
+	}
+
+	if (color === 'link') {
+		rootStyles.push(styles.link);
+		textStyles.push(styles.linkText);
+	}
+
+	if (fullWidth === true) {
+		rootStyles.push(styles.fullWidth);
+	}
+
+	const Touchable: React.ComponentType<any> =
+		Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
+	return (
+		<Touchable accessibilityRole="button" disabled={disabled} onPress={onPress}>
+			<View style={rootStyles} testID={testID}>
+				{typeof children === 'string' ? <Text style={textStyles}>{children}</Text> : children}
+			</View>
+		</Touchable>
+	);
+};
+
+Button.displayName = 'Button';

@@ -1,4 +1,4 @@
-import { BlueBaseContext } from '../Context';
+import { BlueBaseContext } from '../contexts';
 import { useContext } from 'react';
 
 export function useBlueBase() {

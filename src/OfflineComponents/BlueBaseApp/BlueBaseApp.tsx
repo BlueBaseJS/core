@@ -7,7 +7,7 @@ import {
 } from '..';
 import React, { useEffect, useState } from 'react';
 
-import { BlueBaseProvider } from '../../Context';
+import { BlueBaseProvider } from '../../contexts';
 import { ErrorObserver } from '../../components';
 import { IntlProvider } from '../../intl';
 import { ThemeProvider } from '../../themes';

@@ -1,24 +1,25 @@
-import {
-	Body1,
-	Body2,
-	Caption,
-	H1,
-	H2,
-	H3,
-	H4,
-	H5,
-	H6,
-	Overline,
-	Subtitle1,
-	Subtitle2,
-	Text,
-	View,
-	getComponent,
-} from '../getComponent';
+import { TextProps, ViewProps } from 'react-native';
 
 import { BlueBaseApp } from '../OfflineComponents';
 import React from 'react';
+import { getComponent } from '../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+
+const View = getComponent<ViewProps>('View');
+const Text = getComponent<TextProps>('Text');
+
+const H1 = getComponent<TextProps>('H1');
+const H2 = getComponent<TextProps>('H2');
+const H3 = getComponent<TextProps>('H3');
+const H4 = getComponent<TextProps>('H4');
+const H5 = getComponent<TextProps>('H5');
+const H6 = getComponent<TextProps>('H6');
+const Subtitle1 = getComponent<TextProps>('Subtitle1');
+const Subtitle2 = getComponent<TextProps>('Subtitle2');
+const Body1 = getComponent<TextProps>('Body1');
+const Body2 = getComponent<TextProps>('Body2');
+const Caption = getComponent<TextProps>('Caption');
+const Overline = getComponent<TextProps>('Overline');
 
 const HookButton = getComponent('HookButton');
 

@@ -1,27 +1,19 @@
-import { BlueBase, BlueBaseContext } from '../..';
-import { IntlContext, IntlContextData } from '..';
+import { useConfig, useIntl } from '../../hooks';
+
 import { Picker } from 'react-native';
 import React from 'react';
 
-export class DirectionPicker extends React.PureComponent {
+export const DirectionPicker = () => {
+	const { changeDirection } = useIntl();
+	const [direction] = useConfig('direction');
 
-	static contextType = BlueBaseContext;
+	return (
+		<Picker selectedValue={direction} style={{ width: 150 }} onValueChange={changeDirection}>
+			<Picker.Item label="Auto" value="auto" />
+			<Picker.Item label="Left to Right" value="ltr" />
+			<Picker.Item label="Right to Left" value="rtl" />
+		</Picker>
+	);
+};
 
-	render() {
-		const BB: BlueBase = (this as any).context;
-
-		return (
-			<IntlContext.Consumer children={({ changeDirection }: IntlContextData) => (
-				<Picker
-					selectedValue={BB.Configs.getValue('direction')}
-					style={{ width: 150 }}
-					onValueChange={changeDirection}
-				>
-					<Picker.Item label="Auto" value="auto" />
-					<Picker.Item label="Left to Right" value="ltr" />
-					<Picker.Item label="Right to Left" value="rtl" />
-				</Picker>
-			)} />
-		);
-	}
-}
+DirectionPicker.displayName = 'DirectionPicker';

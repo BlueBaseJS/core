@@ -1,13 +1,16 @@
+import { TextProps, View } from 'react-native';
+
 import { BlueBaseApp } from '../../OfflineComponents';
 import { DirectionPicker } from './DirectionPicker';
 import { FormattedMessage } from '../../components';
-import { H5 } from '../../getComponent';
-import { IntlMessages } from '../IntlContext';
+import { IntlMessages } from '../../contexts';
 import { LocalePicker } from './LocalePicker';
 import React from 'react';
-import { View } from 'react-native';
+import { getComponent } from '../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
 import wait from 'waait';
+
+const H5 = getComponent<TextProps>('H5');
 
 const filters = {
 	'bluebase.intl.messages.ur': (messages: IntlMessages) => ({

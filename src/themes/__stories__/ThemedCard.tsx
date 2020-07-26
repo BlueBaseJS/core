@@ -1,9 +1,12 @@
-import { Text, View } from '../../getComponent';
-import { TextStyle, ViewStyle } from 'react-native';
+import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import { MaybeThunk } from '../../utils';
 import React from 'react';
 import { Theme } from '../Theme';
+import { getComponent } from '../../getComponent';
+
+const View = getComponent<ViewProps>('View');
+const Text = getComponent<TextProps>('Text');
 
 export interface ThemedCardProps {
 	styles?: {

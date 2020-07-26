@@ -1,4 +1,5 @@
 import { HoverObserver } from '../HoverObserver';
+import { HoverObserverState } from '@bluebase/core/dist/components';
 import { HoverObserver as HoverObserverWeb } from '../HoverObserver.web';
 import React from 'react';
 import { Text } from 'react-native';
@@ -10,7 +11,9 @@ describe('HoverObserver', () => {
 	it(`should render a HoverObserver with default props`, () => {
 		const wrapper = mount(
 			<HoverObserverWeb>
-				{({ isHovering }) => <Text>{isHovering ? 'Hovering!' : 'Not Hovering!'}</Text>}
+				{({ isHovering }: HoverObserverState) => (
+					<Text>{isHovering ? 'Hovering!' : 'Not Hovering!'}</Text>
+				)}
 			</HoverObserverWeb>
 		);
 

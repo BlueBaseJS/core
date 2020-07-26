@@ -31,7 +31,7 @@ export function useStyles<T = ComponentStyles>(
 	// Put all style rules in an array
 	const stylesArr = [defaultStyles!, stylesParam!, themedStyles!, stylesProp!]
 		// Remove those styles which are nil
-		.filter(a => !isNil(a))
+		.filter((a: any) => !isNil(a))
 		// If any item is a thunk, resolve it
 		.map((a: any) => a && resolveThunk(a, theme, rest)) as ComponentStyles[];
 

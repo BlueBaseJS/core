@@ -1,5 +1,8 @@
-import { ComponentState } from '../../getComponent';
+import { ComponentStateProps } from '@bluebase/components';
 import React from 'react';
+import { getComponent } from '../../getComponent';
+
+const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 
 export interface HomeScreenProps {
 	/**

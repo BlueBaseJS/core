@@ -1,6 +1,6 @@
 import * as Native from '../../../native';
 
-import { BlueBaseApp } from '../../../';
+import { BlueBaseApp } from '../../../OfflineComponents';
 import { ComponentState } from '../ComponentState';
 import React from 'react';
 import { mount } from 'enzyme';
@@ -26,7 +26,8 @@ describe('ComponentState', () => {
 		// Check Component
 		expect(
 			wrapper
-				.find('ComponentState Image')
+				.find(ComponentState)
+				.find('Image')
 				.last()
 				.prop('source')
 		).toMatchObject({
@@ -34,7 +35,8 @@ describe('ComponentState', () => {
 		});
 
 		const styles = wrapper
-			.find('ComponentState Image')
+			.find(ComponentState)
+			.find('Image')
 			.last()
 			.prop('style');
 		if (styles) {
@@ -43,19 +45,22 @@ describe('ComponentState', () => {
 		}
 		expect(
 			wrapper
-				.find('ComponentState H6 Text')
+				.find(ComponentState)
+				.find('H6 Text')
 				.last()
 				.text()
 		).toBe("Looks like your'e new here!");
 		expect(
 			wrapper
-				.find('ComponentState Body2 Text')
+				.find(ComponentState)
+				.find('Body2 Text')
 				.last()
 				.text()
 		).toBe('Start by creating your first entry.');
 		expect(
 			wrapper
-				.find('ComponentState Button Text')
+				.find(ComponentState)
+				.find('Button Text')
 				.last()
 				.text()
 		).toBe('Tap to Create');
@@ -83,7 +88,8 @@ describe('ComponentState', () => {
 		// Check Component
 		expect(
 			wrapper
-				.find('ComponentState Image')
+				.find(ComponentState)
+				.find('Image')
 				.last()
 				.prop('source')
 		).toMatchObject({
@@ -91,7 +97,8 @@ describe('ComponentState', () => {
 		});
 		expect(
 			wrapper
-				.find('ComponentState Image')
+				.find(ComponentState)
+				.find('Image')
 				.last()
 				.prop('style')
 		).toMatchObject({
@@ -100,7 +107,8 @@ describe('ComponentState', () => {
 		});
 		expect(
 			wrapper
-				.find('ComponentState Image')
+				.find(ComponentState)
+				.find('Image')
 				.last()
 				.prop('testID')
 		).toBe('Custom');

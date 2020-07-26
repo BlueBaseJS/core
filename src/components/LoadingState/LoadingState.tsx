@@ -1,9 +1,16 @@
-import { ActivityIndicator, ComponentState } from '../../getComponent';
-import { ComponentStateProps, LoadingStateProps } from '@bluebase/components';
+import {
+	ActivityIndicatorProps,
+	ComponentStateProps,
+	LoadingStateProps,
+} from '@bluebase/components';
 
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
+import { BlueBaseContext } from '../../contexts';
 import React from 'react';
+import { getComponent } from '../../getComponent';
+
+const ActivityIndicator = getComponent<ActivityIndicatorProps>('ActivityIndicator');
+const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 
 /**
  * # ⏳ LoadingState

@@ -1,10 +1,9 @@
+import { BlueBaseContext, ThemeContextData } from '../../contexts';
 import { BlueBaseImageProps, ImageBackgroundProps } from '@bluebase/components';
+import { ImageSourcePropType, ImageBackground as RNImageBackground } from 'react-native';
 import React, { ReactNode, useContext } from 'react';
 
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
-import { ImageBackground as RNImageBackground } from 'react-native';
-import { ThemeContextData } from '../../themes';
 import { resolveImageSource } from '../../components';
 import { useTheme } from '../../hooks';
 
@@ -21,7 +20,8 @@ import { useTheme } from '../../hooks';
 <BlueBaseImageBackground resolve={['LogoSquare', 'Logo']}><Content /></BlueBaseImageBackground>
 ```
  */
-interface BlueBaseImageBackgroundProps extends ImageBackgroundProps {
+interface BlueBaseImageBackgroundProps extends Omit<ImageBackgroundProps, 'source'> {
+	source: ImageSourcePropType | string | string[];
 	children?: ReactNode;
 }
 export const BlueBaseImageBackground = (props: BlueBaseImageBackgroundProps): any => {

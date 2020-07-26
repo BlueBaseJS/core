@@ -1,10 +1,7 @@
-import {
-	NavigationActions,
-	NavigationContext,
-	StubNavigationActionsObject,
-} from '../NavigationActions';
+import { NavigationContext, StubNavigationActionsObject } from '../../../contexts';
 
 import { BlueBaseApp } from '../../..';
+import { NavigationActions } from '../NavigationActions';
 import { NavigationActionsObject } from '@bluebase/components';
 import React from 'react';
 import { Text } from 'react-native';
@@ -17,7 +14,7 @@ describe('NavigationActions', () => {
 		const wrapper = mount(
 			<NavigationContext.Provider value={StubNavigationActionsObject}>
 				<BlueBaseApp>
-					<NavigationActions children={children} />
+					<NavigationActions>{children}</NavigationActions>
 				</BlueBaseApp>
 			</NavigationContext.Provider>
 		);

@@ -10,9 +10,8 @@ export type BlueBaseComponent<T = any> = React.ComponentType<T> & {
 export type ComponentWithDefaultStyles = BlueBaseComponent;
 
 export interface ThemedComponentProps {
-	styles: ComponentStyles;
-
 	[key: string]: any;
+	styles: ComponentStyles;
 }
 
 export type applyStylesOptions =

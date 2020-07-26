@@ -1,10 +1,14 @@
-import { HoverObserver, Text } from '../../../getComponent';
+import { HoverObserverProps } from '@bluebase/components';
 import React from 'react';
+import { Text } from 'react-native';
+import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+
 // import { SystemApp } from '../SystemApp';
 
-storiesOf('HoverObserver', module)
+const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
 
+storiesOf('HoverObserver', module)
 	.add('Basic Example', () => (
 		<HoverObserver>
 			<Text>Text as a children</Text>
@@ -34,12 +38,15 @@ storiesOf('HoverObserver', module)
 
 	.add('with onHoverChanged with hoverDelayInMs and hoverOffDelayInMs both', () => (
 		<HoverObserver
-			onHoverChanged={(e: any) => console.log(`${e.isHovering ? 'onHoverStart' : 'onHoverEnd'} after one second delay `)}
+			onHoverChanged={(e: any) =>
+				console.log(`${e.isHovering ? 'onHoverStart' : 'onHoverEnd'} after one second delay `)
+			}
 			hoverDelayInMs={1000}
 			hoverOffDelayInMs={1000}
 		>
-			<Text>Text as a children with onHoverChanged
-				with hoverDelayInMs and hoverOffDelayInMs both</Text>
+			<Text>
+				Text as a children with onHoverChanged with hoverDelayInMs and hoverOffDelayInMs both
+			</Text>
 		</HoverObserver>
 	))
 
