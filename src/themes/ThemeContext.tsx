@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { Theme, ThemeInput } from '..';
+import { Theme, ThemeInput } from './Theme';
 import { useBlueBase, useConfig } from '../hooks';
 
 import { Configs } from '../Configs';

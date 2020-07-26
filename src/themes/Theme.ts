@@ -1,10 +1,10 @@
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
-import { Palette, PaletteInput } from './Palette';
-import { ThemeTypography, ThemeTypographyInput } from './Typography';
-import { createPalette, createThemeVariant, createTypography } from '../';
+import { Palette, PaletteInput, createPalette } from './Palette';
+import { ThemeTypography, ThemeTypographyInput, createTypography } from './Typography';
 
-import { MaybeThunk } from '../../utils';
+import { MaybeThunk } from '../utils';
 import deepmerge from 'deepmerge';
+import { elevation } from './elevation';
 
 export interface ComponentStyles {
 	// rule
@@ -61,6 +61,21 @@ export interface ThemeInput {
 
 const DEFAULT_DARK_PALETTE = createPalette('dark');
 const DEFAULT_LIGHT_PALETTE = createPalette('light');
+
+export function createThemeVariant(palette: Palette, typography: ThemeTypography): ThemeVariant {
+	return {
+		components: {},
+		elevation,
+		palette,
+		shape: {
+			borderRadius: 4,
+		},
+		spacing: {
+			unit: 8,
+		},
+		typography,
+	};
+}
 
 export class Theme implements BaseTheme {
 	public name: string;

@@ -1,7 +1,7 @@
-import { ComponentStyles } from '../structure/Theme';
-import { MaybeThunk } from '../../utils';
+import { ComponentStyles } from './Theme';
+import { MaybeThunk } from '../utils';
 import React from 'react';
-import { useStyles } from '../../hooks';
+import { useStyles } from '../hooks';
 
 export type BlueBaseComponent<T = any> = React.ComponentType<T> & {
 	defaultStyles?: ComponentStyles;

@@ -3,7 +3,7 @@ import { BlueBaseContext } from '../../Context';
 import React from 'react';
 import { Text } from 'react-native';
 import { ThemeProvider } from '../ThemeContext';
-import { applyStyles } from '../helpers';
+import { applyStyles } from '../applyStyles';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 

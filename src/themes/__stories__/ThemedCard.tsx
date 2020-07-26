@@ -3,7 +3,7 @@ import { TextStyle, ViewStyle } from 'react-native';
 
 import { MaybeThunk } from '../../utils';
 import React from 'react';
-import { Theme } from '../structure';
+import { Theme } from '../Theme';
 
 export interface ThemedCardProps {
 	styles?: {
