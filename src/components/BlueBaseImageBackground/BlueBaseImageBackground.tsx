@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BlueBaseContext, ThemeContextData } from '../../contexts';
 import { BlueBaseImageProps, ImageBackgroundProps } from '@bluebase/components';
 import { ImageSourcePropType, ImageBackground as RNImageBackground } from 'react-native';

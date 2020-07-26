@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BlueBaseImageProps, ImageProps } from '@bluebase/components';
 import { useBlueBase, useComponent, useTheme } from '../../hooks';
 

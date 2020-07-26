@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NativeSyntheticEvent, NativeTouchEvent, Platform, Text } from 'react-native';
 
 import { LinkProps } from '@bluebase/components';

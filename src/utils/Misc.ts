@@ -1,4 +1,4 @@
-declare var process: any;
+declare const process: any;
 
 import deepmerge from 'deepmerge';
 import isPlainPbject from 'is-plain-object';
@@ -28,9 +28,7 @@ export function isProduction(): boolean {
 export function makeId(length: number = 8) {
 	let str = '';
 	for (let i = 1; i < length + 1; i = i + 8) {
-		str += Math.random()
-			.toString(36)
-			.substr(2, 10);
+		str += Math.random().toString(36).substr(2, 10);
 	}
 	return `_${str}`.substr(0, length);
 }

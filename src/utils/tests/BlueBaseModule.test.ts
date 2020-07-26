@@ -33,10 +33,12 @@ describe('Utils', () => {
 		});
 
 		it('should process an ES module in a promise', async () => {
-			const module = createBlueBaseModule<{ foo: string }>(Promise.resolve({
-				__esModule: true,
-				default: { foo: 'bar' },
-			}) as any);
+			const module = createBlueBaseModule<{ foo: string }>(
+				Promise.resolve({
+					__esModule: true,
+					default: { foo: 'bar' },
+				}) as any
+			);
 			expect(module.loaded).toBe(false);
 
 			const obj = await module;

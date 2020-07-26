@@ -26,4 +26,4 @@ export const IntlContext: React.Context<IntlContextData> = createContext(undefin
 /**
  * BlueBase theme consumer.
  */
-export const IntlConsumer = IntlContext.Consumer;
+export const IntlConsumer: React.Consumer<IntlContextData> = IntlContext.Consumer;

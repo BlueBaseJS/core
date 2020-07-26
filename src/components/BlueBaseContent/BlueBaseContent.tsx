@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
 import { NavigationProps, NavigatorProps } from '@bluebase/components';
 import { StatusBar, StyleProp, ViewProps, ViewStyle } from 'react-native';

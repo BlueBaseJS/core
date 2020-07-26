@@ -63,14 +63,16 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register(Promise.resolve({
-				__esModule: true,
-				default: {
-					key: 'dummy-plugin',
-					name: 'Dummy Plugin',
-					value: {},
-				},
-			}) as any);
+			await Plugins.register(
+				Promise.resolve({
+					__esModule: true,
+					default: {
+						key: 'dummy-plugin',
+						name: 'Dummy Plugin',
+						value: {},
+					},
+				}) as any
+			);
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -81,14 +83,16 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register(createBlueBaseModule({
-				__esModule: true,
-				default: {
-					key: 'dummy-plugin',
-					name: 'Dummy Plugin',
-					value: {},
-				},
-			}) as any);
+			await Plugins.register(
+				createBlueBaseModule({
+					__esModule: true,
+					default: {
+						key: 'dummy-plugin',
+						name: 'Dummy Plugin',
+						value: {},
+					},
+				}) as any
+			);
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -99,11 +103,13 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register(Promise.resolve({
-				key: 'dummy-plugin',
-				name: 'Dummy Plugin',
-				value: {},
-			}) as any);
+			await Plugins.register(
+				Promise.resolve({
+					key: 'dummy-plugin',
+					name: 'Dummy Plugin',
+					value: {},
+				}) as any
+			);
 
 			const item = Plugins.get('dummy-plugin');
 

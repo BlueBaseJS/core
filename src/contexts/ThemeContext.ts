@@ -23,4 +23,4 @@ export const ThemeContext: React.Context<ThemeContextData> = createContext(undef
 /**
  * BlueBase theme consumer.
  */
-export const ThemeConsumer = ThemeContext.Consumer;
+export const ThemeConsumer: React.Consumer<ThemeContextData> = ThemeContext.Consumer;
