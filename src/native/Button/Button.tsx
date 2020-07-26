@@ -110,7 +110,7 @@ export class Button extends React.Component<ButtonProps> {
 			...theme.typography.button,
 			textAlign: 'center',
 		},
-	});
+	})
 
 	render() {
 		const {
