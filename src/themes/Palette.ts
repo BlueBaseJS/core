@@ -42,6 +42,7 @@ export interface Palette {
 	success: PaletteColor;
 	warning: PaletteColor;
 	error: PaletteColor;
+	info: PaletteColor;
 	action: TypeAction;
 	divider: TypeDivider;
 	text: TypeText;
@@ -158,10 +159,16 @@ const common = {
 		main: '#4caf50',
 	},
 	warning: {
+		contrastText: 'rgba(0, 0, 0, 0.87)',
+		dark: '#f57c00',
+		light: '#ffb74d',
+		main: '#ff9800',
+	},
+	info: {
 		contrastText: '#fff',
-		dark: '#ffa000',
-		light: '#ffd54f',
-		main: '#ffc107',
+		dark: '#1976d2',
+		light: '#64b5f6',
+		main: '#2196f3',
 	},
 };
 
