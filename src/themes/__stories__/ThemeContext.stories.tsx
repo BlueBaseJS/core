@@ -1,9 +1,8 @@
-import { BlueBaseApp } from '../../OfflineComponents';
 import { ModePicker } from './ModePicker';
 import React from 'react';
 import { ThemeDemo } from '../../themes/__stories__/ThemeDemo';
 import { ThemePicker } from '../../themes/__stories__/ThemePicker';
-import { ThemeProvider } from '..';
+import { ThemeProvider } from '../ThemeProvider';
 import { View } from 'react-native';
 // tslint:disable:no-console
 import { getComponent } from '../../getComponent';
@@ -20,13 +19,6 @@ storiesOf('ThemeContext', module)
 			<ModePicker />
 			<ThemeDemo />
 		</View>
-	))
-	.add('test', () => (
-		<BlueBaseApp configs={{ theme: 'foo' }}>
-			<ThemeProvider overrides={{ light: { palette: { background: { default: 'red' } } } }}>
-				<ThemeDemo />
-			</ThemeProvider>
-		</BlueBaseApp>
 	))
 
 	.add('Basic Example with overrides', () => (

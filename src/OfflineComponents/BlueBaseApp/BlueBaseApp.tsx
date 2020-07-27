@@ -4,7 +4,7 @@ import {
 	BlueBaseAppErrorProps,
 	BlueBaseAppLoading,
 	BlueBaseAppLoadingProps,
-} from '..';
+} from '../';
 import React, { useEffect, useState } from 'react';
 
 import { BlueBaseProvider } from '../../contexts';

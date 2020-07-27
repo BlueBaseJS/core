@@ -2,7 +2,7 @@ const { withUnimodules } = require('@expo/webpack-config/addons');
 const { resolve } = require('path');
 
 module.exports = ({ config }) => {
-	return withUnimodules(
+	const newConfig = withUnimodules(
 		config,
 		{
 			projectRoot: resolve(__dirname, '../../../'),
@@ -11,4 +11,8 @@ module.exports = ({ config }) => {
 			supportsFontLoading: false,
 		}
 	);
+
+	newConfig.resolve.alias['@bluebase/core'] = resolve(__dirname, '../../../src');
+
+	return newConfig;
 };

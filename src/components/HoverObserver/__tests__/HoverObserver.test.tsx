@@ -1,5 +1,5 @@
-import { HoverObserver } from '../HoverObserver';
-import { HoverObserverState } from '@bluebase/core/dist/components';
+import { HoverObserver, HoverObserverState } from '../HoverObserver';
+
 import { HoverObserver as HoverObserverWeb } from '../HoverObserver.web';
 import React from 'react';
 import { Text } from 'react-native';
@@ -18,12 +18,7 @@ describe('HoverObserver', () => {
 		);
 
 		// Check component
-		expect(
-			wrapper
-				.find('HoverObserver Text')
-				.last()
-				.text()
-		).toBe('Not Hovering!');
+		expect(wrapper.find('HoverObserver Text').last().text()).toBe('Not Hovering!');
 
 		// Change state: mouseEnter
 		wrapper.find('HoverObserver div').simulate('mouseEnter');
@@ -31,12 +26,7 @@ describe('HoverObserver', () => {
 		wrapper.update();
 
 		// Check component
-		expect(
-			wrapper
-				.find('HoverObserver Text')
-				.last()
-				.text()
-		).toBe('Hovering!');
+		expect(wrapper.find('HoverObserver Text').last().text()).toBe('Hovering!');
 
 		// Change state: mouseLeave
 		wrapper.find('HoverObserver div').simulate('mouseLeave');
@@ -44,26 +34,11 @@ describe('HoverObserver', () => {
 		wrapper.update();
 
 		// Check component
-		expect(
-			wrapper
-				.find('HoverObserver Text')
-				.last()
-				.text()
-		).toBe('Not Hovering!');
+		expect(wrapper.find('HoverObserver Text').last().text()).toBe('Not Hovering!');
 
 		// Change state: mouseOver
-		expect(
-			(wrapper as any)
-				.find('HoverObserver')
-				.instance()
-				.onMouseOver()
-		).toBeUndefined();
-		expect(
-			(wrapper as any)
-				.find('HoverObserver')
-				.instance()
-				.onMouseOut()
-		).toBeUndefined();
+		expect((wrapper as any).find('HoverObserver').instance().onMouseOver()).toBeUndefined();
+		expect((wrapper as any).find('HoverObserver').instance().onMouseOut()).toBeUndefined();
 
 		wrapper.unmount();
 	});
@@ -76,27 +51,14 @@ describe('HoverObserver', () => {
 		);
 
 		// Check component
-		expect(
-			wrapper
-				.find('HoverObserver Text')
-				.last()
-				.text()
-		).toBe('Not Hovering!');
+		expect(wrapper.find('HoverObserver Text').last().text()).toBe('Not Hovering!');
 
 		// Change state: mouseEnter
-		wrapper
-			.find('HoverObserver Text')
-			.first()
-			.simulate('mouseEnter');
+		wrapper.find('HoverObserver Text').first().simulate('mouseEnter');
 		jest.advanceTimersByTime(1);
 		wrapper.update();
 
 		// Check component
-		expect(
-			wrapper
-				.find('HoverObserver Text')
-				.last()
-				.text()
-		).toBe('Not Hovering!');
+		expect(wrapper.find('HoverObserver Text').last().text()).toBe('Not Hovering!');
 	});
 });
