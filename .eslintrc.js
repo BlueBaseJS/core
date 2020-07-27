@@ -13,4 +13,12 @@ module.exports = {
 		'prefer-arrow/prefer-arrow-functions': 0,
 		'react/jsx-no-bind': 0,
 	},
+	overrides: [
+		{
+			files: ['*.js'],
+			rules: {
+				'@typescript-eslint/typedef': 'off',
+			},
+		},
+	],
 };
