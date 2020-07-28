@@ -2,7 +2,7 @@
 import { DefinePlugin } from 'webpack';
 import path from 'path';
 
-export default function(config: any) {
+function webpackConfig(config: any) {
 	config.resolve.alias = {
 		...config.resolve.alias,
 
@@ -71,3 +71,5 @@ export default function(config: any) {
 
 	return config;
 }
+
+export default webpackConfig;
