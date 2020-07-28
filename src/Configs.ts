@@ -31,13 +31,11 @@ export interface Configs {
 
 	/**
 	 * Name of selected theme.
-	 * FIXME: This key contains the slug, but is called name. This is confusing.
 	 */
 	theme: string;
 
 	/**
 	 * Theme mode: Either light or dark.
-	 * TODO: Add 'auto' mode to detect OS/User preference? This will be added to configs.
 	 */
 	'theme.mode': 'light' | 'dark' | 'auto';
 
@@ -72,8 +70,8 @@ export const BlueBaseDefaultConfigs: Configs = {
 		ur: 'اُردُو',
 	},
 	pluginRoutePathPrefix: 'p',
-	'theme.mode': 'light',
 	theme: 'bluebase-theme',
+	'theme.mode': 'auto',
 	'theme.overrides': {
 		dark: {},
 		light: {},

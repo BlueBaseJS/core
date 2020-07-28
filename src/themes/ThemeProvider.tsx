@@ -1,6 +1,6 @@
+import { ColorSchemeName, useBlueBase, useColorScheme, useConfig } from '../hooks';
 import { Theme, ThemeInput } from './Theme';
 import { ThemeContext, ThemeContextData } from '../contexts';
-import { useBlueBase, useConfig } from '../hooks';
 
 import { Configs } from '../Configs';
 import React from 'react';
@@ -18,7 +18,7 @@ export interface ThemeProviderProps {
 	/**
 	 * Theme mode
 	 */
-	mode?: Configs['theme.mode'];
+	mode?: ColorSchemeName;
 
 	/**
 	 * Any custom overrides to the selected theme.
@@ -33,13 +33,14 @@ export interface ThemeProviderProps {
  */
 export const ThemeProvider = (props: ThemeProviderProps) => {
 	const BB = useBlueBase();
+	const colorScheme = useColorScheme();
 
+	const [, changeMode] = useConfig('theme.mode');
 	const [themeName, changeTheme] = useConfig('theme');
-	const [modeConfig, changeMode] = useConfig('theme.mode');
 	const [overridesConfig] = useConfig<ThemeInput>('theme.overrides');
 
 	const key = props.theme || themeName;
-	const mode = props.mode || modeConfig;
+	const mode = props.mode || colorScheme;
 
 	const registryTheme = BB.Themes.getValue(key);
 

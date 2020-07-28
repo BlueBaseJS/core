@@ -108,17 +108,12 @@ describe('Button', () => {
 
 		await waitForElement(wrapper, Button);
 
-		expect(
-			wrapper
-				.find('Button Text[testID="custom"]')
-				.last()
-				.text()
-		).toBe('Custom');
+		expect(wrapper.find('Button Text[testID="custom"]').last().text()).toBe('Custom');
 	});
 
 	test(`should use TouchableNativeFeedback on android platform`, async () => {
-		jest.mock('Platform', () => {
-			const Platform = (require as any).requireActual('Platform');
+		jest.mock('react-native/Libraries/Utilities/Platform', () => {
+			const Platform = jest.requireActual('react-native/Libraries/Utilities/Platform');
 			Platform.OS = 'android';
 			return Platform;
 		});
@@ -132,6 +127,6 @@ describe('Button', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Button);
 
-		expect(wrapper.find('Button DummyTouchableNativeFeedback').length).toBe(1);
+		expect(wrapper.find('Button TouchableNativeFeedback').length).toBe(1);
 	});
 });
