@@ -1,3 +1,21 @@
+# [6.0.0-alpha.1](https://github.com/BlueBaseJS/core/compare/v5.11.1...v6.0.0-alpha.1) (2020-08-04)
+
+### Bug Fixes
+
+-   **filter:** resolved rerendering of filter hook ([#306](https://github.com/BlueBaseJS/core/issues/306)) ([5b033e3](https://github.com/BlueBaseJS/core/commit/5b033e3))
+
+### Features
+
+-   **🎨 Themes:** New theme engine ([#421](https://github.com/BlueBaseJS/core/issues/421)) ([dcfcc4f](https://github.com/BlueBaseJS/core/commit/dcfcc4f))
+
+### BREAKING CHANGES
+
+-   **🎨 Themes:** - Updated `theme.name` config to `theme`
+
+
+-   Typings updated
+-   Internal functions and API changed
+
 ## [5.11.1](https://github.com/BlueBaseJS/core/compare/v5.11.0...v5.11.1) (2020-02-24)
 
 ### Bug Fixes
