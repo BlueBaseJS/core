@@ -1,37 +1,5 @@
-import {
-	ActivityIndicatorProps,
-	BlueBaseFilterProps,
-	BlueBaseImageProps,
-	ButtonProps,
-	ComponentStateProps,
-	DataObserverProps,
-	DynamicIconProps,
-	ErrorObserverProps,
-	ErrorStateProps,
-	FlatListProps,
-	FormattedMessageProps,
-	HoverObserverProps,
-	ImageBackgroundProps,
-	ImageProps,
-	LinkProps,
-	LoadingStateProps,
-	NavigationActionsProps,
-	NavigationProps,
-	NoopProps,
-	PluginIconProps,
-	RedirectProps,
-	StatefulComponentProps,
-	TextProps,
-	TouchableItemProps,
-	ViewProps,
-	WaitObserverProps,
-} from '@bluebase/components';
-
-import { BlueBaseContentProps } from './components';
 import React from 'react';
 import { useBlueBase } from './hooks';
-
-export { ActivityIndicatorProps, ButtonProps, ImageProps, TextProps, ViewProps } from './native';
 
 /**
  * Resolves a component from BlueBase context, and returns it.
@@ -55,62 +23,14 @@ export function getComponent<T = any>(
 		// If there is no BlueBase context, throw an Error
 		if (!BB) {
 			throw Error(
+				// eslint-disable-next-line max-len
 				`Could not resolve component "${displayName}" in "getComponent" command. Reason: BlueBase context not found.`
 			);
 		}
 
-		return React.createElement(BB.Components.resolveFromCache<T>(...keys), props);
+		return React.createElement(BB.Components.resolveFromCache<T>(...(keys as any)), props);
 	};
 
 	BlueBaseComponent.displayName = displayName;
 	return BlueBaseComponent;
 }
-
-// System Components
-export const BlueBaseContent = getComponent<BlueBaseContentProps>('BlueBaseContent');
-export const BlueBaseImage = getComponent<BlueBaseImageProps>('BlueBaseImage');
-export const BlueBaseImageBackground = getComponent<ImageBackgroundProps>(
-	'BlueBaseImageBackground'
-);
-export const BlueBaseFilter = getComponent<BlueBaseFilterProps>('BlueBaseFilter');
-export const ComponentState = getComponent<ComponentStateProps>('ComponentState');
-export const DataObserver = getComponent<DataObserverProps>('DataObserver');
-export const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
-export const EmptyState = getComponent<{}>('EmptyState');
-export const ErrorObserver = getComponent<ErrorObserverProps>('ErrorObserver');
-export const ErrorState = getComponent<ErrorStateProps>('ErrorState');
-export const FormattedMessage = getComponent<FormattedMessageProps>('FormattedMessage');
-export const HoverObserver = getComponent<HoverObserverProps>('HoverObserver');
-export const Link = getComponent<LinkProps>('Link');
-export const LoadingState = getComponent<LoadingStateProps>('LoadingState');
-export const Noop = getComponent<NoopProps>('Noop');
-export const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
-export const Navigation = getComponent<NavigationProps>('Navigation');
-export const NavigationActions = getComponent<NavigationActionsProps>('NavigationActions');
-export const Redirect = getComponent<RedirectProps>('Redirect');
-export const StatefulComponent = getComponent<StatefulComponentProps>('StatefulComponent');
-export const TouchableItem = getComponent<TouchableItemProps>('TouchableItem');
-export const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
-
-// Native
-export const ActivityIndicator = getComponent<ActivityIndicatorProps>('ActivityIndicator');
-export const Button = getComponent<ButtonProps>('Button');
-export const FlatList = getComponent<FlatListProps<any>>('FlatList');
-export const Image = getComponent<ImageProps>('Image');
-export const Text = getComponent<TextProps>('Text');
-export const View = getComponent<ViewProps>('View');
-export const ImageBackground = getComponent<ImageBackgroundProps>('ImageBackground');
-
-// Typography
-export const H1 = getComponent<TextProps>('H1');
-export const H2 = getComponent<TextProps>('H2');
-export const H3 = getComponent<TextProps>('H3');
-export const H4 = getComponent<TextProps>('H4');
-export const H5 = getComponent<TextProps>('H5');
-export const H6 = getComponent<TextProps>('H6');
-export const Subtitle1 = getComponent<TextProps>('Subtitle1');
-export const Subtitle2 = getComponent<TextProps>('Subtitle2');
-export const Body1 = getComponent<TextProps>('Body1');
-export const Body2 = getComponent<TextProps>('Body2');
-export const Caption = getComponent<TextProps>('Caption');
-export const Overline = getComponent<TextProps>('Overline');

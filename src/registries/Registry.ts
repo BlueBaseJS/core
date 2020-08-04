@@ -15,6 +15,9 @@ export interface ItemSource {
  * BlueBase Registry Item
  */
 export interface RegistryItem<ValueType = any> {
+	/** Additional Item Data */
+	[key: string]: any;
+
 	/** Item Key */
 	key: string;
 
@@ -25,22 +28,19 @@ export interface RegistryItem<ValueType = any> {
 
 	/** The source of this item */
 	source: ItemSource;
-
-	/** Additional Item Data */
-	[key: string]: any;
 }
 
 /**
  * BlueBase Registry Item
  */
 export interface RegistryInputItem<ValueType = any> {
+	/** Additional Item Data */
+	[key: string]: any;
+
 	/**
 	 * Registry Item Value.
 	 */
 	value: ValueType;
-
-	/** Additional Item Data */
-	[key: string]: any;
 }
 
 /**
@@ -239,7 +239,7 @@ export class Registry<
 	 */
 	public async registerCollection(
 		collection: ItemCollection<ItemInputType> = [],
-		meta: { source?: ItemSource; [key: string]: any } = {}
+		meta: { [key: string]: any; source?: ItemSource } = {}
 	) {
 		const keys: string[] = [];
 
@@ -341,12 +341,12 @@ export class Registry<
 	 * @param predicate
 	 */
 	public filter(predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean) {
-		const arr = Array.from(this.entries()).filter(entry =>
+		const arr = Array.from(this.entries()).filter((entry: [string, ItemType]) =>
 			predicate(entry[1].value, entry[0], entry[1])
 		);
 		const items: { [key: string]: ItemType } = {};
 
-		Array.from(arr).forEach(entry => {
+		Array.from(arr).forEach((entry: [string, ItemType]) => {
 			items[entry[0]] = entry[1];
 		});
 
@@ -360,12 +360,12 @@ export class Registry<
 	public filterValues(
 		predicate: (value: ItemType['value'], key: string, item: ItemType) => boolean
 	) {
-		const arr = Array.from(this.entries()).filter(entry =>
+		const arr = Array.from(this.entries()).filter((entry: [string, ItemType]) =>
 			predicate(entry[1].value, entry[0], entry[1])
 		);
 		const items: { [key: string]: ItemType } = {};
 
-		Array.from(arr).forEach(entry => {
+		Array.from(arr).forEach((entry: [string, ItemType]) => {
 			items[entry[0]] = entry[1].value;
 		});
 
@@ -407,9 +407,9 @@ export class Registry<
 		const subscriptions = this.subscriptions.get(key);
 
 		if (!subscriptions) {
-			// tslint:disable-next-line
 			throw Error(
-				`Could not unsubscribe from a registry item. Reason: No subsciptions for item with key \"${key}\" registered.`
+				// eslint-disable-next-line max-len
+				`Could not unsubscribe from a registry item. Reason: No subsciptions for item with key "${key}" registered.`
 			);
 		}
 
@@ -431,7 +431,7 @@ export class Registry<
 			source: {
 				type: 'custom',
 			},
-			...partial,
+			...(partial as any),
 			key,
 		};
 
@@ -488,7 +488,7 @@ export class Registry<
 			return;
 		}
 
-		subscriptions.forEach(fn => fn(item.value, item));
+		subscriptions.forEach((fn: RegistrySubscriptionFn<ItemType>) => fn(item.value, item));
 	}
 
 	/**

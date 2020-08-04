@@ -2,8 +2,11 @@
 import { PluginInput, PluginRegistry, createPlugin } from '../PluginRegistry';
 
 import { BlueBase } from '../../BlueBase';
-import { Noop } from '../../getComponent';
+import { NoopProps } from '@bluebase/components';
 import { createBlueBaseModule } from '../../utils';
+import { getComponent } from '../../getComponent';
+
+const Noop = getComponent<NoopProps>('Noop');
 
 describe('PluginRegistry', () => {
 	describe('.register method', () => {
@@ -60,14 +63,16 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register(Promise.resolve({
-				__esModule: true,
-				default: {
-					key: 'dummy-plugin',
-					name: 'Dummy Plugin',
-					value: {},
-				},
-			}) as any);
+			await Plugins.register(
+				Promise.resolve({
+					__esModule: true,
+					default: {
+						key: 'dummy-plugin',
+						name: 'Dummy Plugin',
+						value: {},
+					},
+				}) as any
+			);
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -78,14 +83,16 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register(createBlueBaseModule({
-				__esModule: true,
-				default: {
-					key: 'dummy-plugin',
-					name: 'Dummy Plugin',
-					value: {},
-				},
-			}) as any);
+			await Plugins.register(
+				createBlueBaseModule({
+					__esModule: true,
+					default: {
+						key: 'dummy-plugin',
+						name: 'Dummy Plugin',
+						value: {},
+					},
+				}) as any
+			);
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -96,11 +103,13 @@ describe('PluginRegistry', () => {
 			const BB = new BlueBase();
 			const Plugins = new PluginRegistry(BB);
 
-			await Plugins.register(Promise.resolve({
-				key: 'dummy-plugin',
-				name: 'Dummy Plugin',
-				value: {},
-			}) as any);
+			await Plugins.register(
+				Promise.resolve({
+					key: 'dummy-plugin',
+					name: 'Dummy Plugin',
+					value: {},
+				}) as any
+			);
 
 			const item = Plugins.get('dummy-plugin');
 
@@ -114,7 +123,7 @@ describe('PluginRegistry', () => {
 			let message = '';
 
 			class Foo {
-				public foo = 'bar';
+				public foo: string = 'bar';
 			}
 
 			try {

@@ -1,43 +1,36 @@
-import { BlueBaseApp } from '../../../';
+import { BlueBaseApp } from '../../../OfflineComponents/BlueBaseApp';
 import { Link } from '../Link';
+import { NavigationContext } from '../../../contexts';
 import React from 'react';
 import { mount } from 'enzyme';
-import { renderChildrenWithProps } from '../../../utils';
 import { waitForElement } from 'enzyme-async-helpers';
 
-let stubActions: any = {};
-
-export const NavigationActions = ({ children }: any) =>
-	renderChildrenWithProps(children, stubActions);
+const createStubActions = () => ({
+	getParam: jest.fn(),
+	goBack: jest.fn(),
+	navigate: jest.fn(),
+	pop: jest.fn(),
+	push: jest.fn(),
+	replace: jest.fn(),
+	setParams: jest.fn(),
+	source: null,
+	state: {
+		key: '',
+		params: {},
+		routeName: '',
+		url: '',
+	},
+});
 
 describe('Link', () => {
-	beforeEach(() => {
-		stubActions = {
-			getParam: jest.fn(),
-			goBack: jest.fn(),
-			navigate: jest.fn(),
-			pop: jest.fn(),
-			push: jest.fn(),
-			replace: jest.fn(),
-			setParams: jest.fn(),
-			source: null,
-			state: {
-				key: '',
-				params: {},
-				routeName: '',
-				url: '',
-			},
-		};
-	});
-
 	test(`should call the navigate function with the given routeName`, async () => {
-		const components = {
-			NavigationActions,
-		};
+		const stubActions = createStubActions();
 
 		const wrapper = mount(
-			<BlueBaseApp components={components}>
-				<Link routeName="Foo" />
+			<BlueBaseApp>
+				<NavigationContext.Provider value={stubActions}>
+					<Link routeName="Foo" />
+				</NavigationContext.Provider>
 			</BlueBaseApp>
 		);
 
@@ -63,13 +56,13 @@ describe('Link', () => {
 	});
 
 	test(`should call the push function with the given routeName`, async () => {
-		const components = {
-			NavigationActions,
-		};
+		const stubActions = createStubActions();
 
 		const wrapper = mount(
-			<BlueBaseApp components={components}>
-				<Link routeName="Foo" method="push" />
+			<BlueBaseApp>
+				<NavigationContext.Provider value={stubActions}>
+					<Link routeName="Foo" method="push" />
+				</NavigationContext.Provider>
 			</BlueBaseApp>
 		);
 
@@ -94,59 +87,21 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 
-	test(`should call the push function with the given path`, async () => {
-		jest.mock('Platform', () => {
-			const Platform = (require as any).requireActual('Platform');
-			Platform.OS = 'web';
-			return Platform;
-		});
-
-		const components = {
-			NavigationActions,
-		};
-
-		const wrapper = mount(
-			<BlueBaseApp components={components}>
-				<Link path="/foo" method="push" />
-			</BlueBaseApp>
-		);
-
-		// Wait for render
-		await waitForElement(wrapper as any, Link);
-
-		const onPress: any = wrapper.find('Link a').prop('onClick');
-		onPress(
-			{
-				defaultPrevented: false,
-				preventDefault: () => {
-					return;
-				},
-			},
-			stubActions
-		);
-
-		expect(stubActions.push).toBeCalledTimes(1);
-		expect(stubActions.push).toBeCalledWith({ path: '/foo' }, undefined);
-
-		expect(stubActions.navigate).toBeCalledTimes(0);
-		expect(stubActions.replace).toBeCalledTimes(0);
-	});
-
 	test(`should call the replace function with the given path`, async () => {
-		const components = {
-			NavigationActions,
-		};
+		const stubActions = createStubActions();
 
 		const wrapper = mount(
-			<BlueBaseApp components={components}>
-				<Link path="/foo" replace />
+			<BlueBaseApp>
+				<NavigationContext.Provider value={stubActions}>
+					<Link path="/foo" replace />
+				</NavigationContext.Provider>
 			</BlueBaseApp>
 		);
 
 		// Wait for render
 		await waitForElement(wrapper as any, Link);
 
-		const onPress: any = wrapper.find('Link a').prop('onClick');
+		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress(
 			{
 				defaultPrevented: false,
@@ -164,20 +119,20 @@ describe('Link', () => {
 	});
 
 	test(`should not do anything if event.defaultPrevented is true`, async () => {
-		const components = {
-			NavigationActions,
-		};
+		const stubActions = createStubActions();
 
 		const wrapper = mount(
-			<BlueBaseApp components={components}>
-				<Link path="/foo" replace />
+			<BlueBaseApp>
+				<NavigationContext.Provider value={stubActions}>
+					<Link path="/foo" replace />
+				</NavigationContext.Provider>
 			</BlueBaseApp>
 		);
 
 		// Wait for render
 		await waitForElement(wrapper as any, Link);
 
-		const onPress: any = wrapper.find('Link a').prop('onClick');
+		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress(
 			{
 				defaultPrevented: true,
@@ -193,6 +148,7 @@ describe('Link', () => {
 	});
 
 	test(`should call the push function with the given path`, async () => {
+		const stubActions = createStubActions();
 		const customOnPress = jest.fn();
 
 		const wrapper = mount(
@@ -204,7 +160,7 @@ describe('Link', () => {
 		// Wait for render
 		await waitForElement(wrapper as any, Link);
 
-		const onPress: any = wrapper.find('Link a').prop('onClick');
+		const onPress: any = wrapper.find('Link TouchableItem').prop('onPress');
 		onPress(
 			{
 				defaultPrevented: false,
@@ -222,6 +178,8 @@ describe('Link', () => {
 	});
 
 	test(`should not do anything if there is no path or routeName prop`, async () => {
+		const stubActions = createStubActions();
+
 		const wrapper = mount(
 			<BlueBaseApp>
 				<Link />

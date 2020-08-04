@@ -1,6 +1,6 @@
 export * from './BlueBase';
 export * from './OfflineComponents/';
-export * from './Context';
+export * from './contexts';
 export { getComponent } from './getComponent';
 export * from './hooks';
 export * from './intl';

@@ -1,13 +1,15 @@
+/* eslint-disable max-len */
 import { DefinePlugin } from 'webpack';
 import path from 'path';
 
-export default function(config: any) {
+function webpackConfig(config: any) {
 	config.resolve.alias = {
 		...config.resolve.alias,
 
 		'@bluebase/core': path.resolve(__dirname, '../../src'),
 
 		'react-native$': 'react-native-web',
+		// tslint:disable-next-line: object-literal-sort-keys
 		'@react-native-community/netinfo': 'react-native-web/dist/exports/NetInfo',
 		// Add polyfills for modules that react-native-web doesn't support
 		// Depends on expo-asset
@@ -29,6 +31,7 @@ export default function(config: any) {
 
 	config.module.rules.push({
 		test: /\.(ts|tsx)$/,
+
 		include: [
 			path.resolve(__dirname, '../../../src'),
 			path.resolve(__dirname, '../../../bluebase'),
@@ -42,9 +45,10 @@ export default function(config: any) {
 	});
 
 	config.module.rules.push({
-		test: /\.js$/,
+		// tslint:disable-next-line: max-line-length
 		exclude: /node_modules\/(?!(rn-placeholder|react-native-elements|react-native-vector-icons|expo-image-picker|react-native-animatable|react-native-svg|react-native-reanimated|expo-face-detector|react-native-gesture-handler|expo-linear-gradient|expo-payments-stripe|expo-gl|expo-av|expo-camera|expo|expo-barcode-scanner|expo-ads-admob|expo-blur|@expo\/vector-icons|@unimodules\/react-native-adapter)\/).*/,
 		loader: 'babel-loader',
+		test: /\.js$/,
 	});
 
 	// config = withUnimodules(config, {
@@ -67,3 +71,5 @@ export default function(config: any) {
 
 	return config;
 }
+
+export default webpackConfig;

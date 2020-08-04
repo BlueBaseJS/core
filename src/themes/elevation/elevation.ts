@@ -38,7 +38,7 @@ const shadows = [
 	getShadowValue(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8),
 ];
 
-export function elevation(value: number) {
+export function elevation(value: number): any {
 	if (value < 0) {
 		value = 0;
 	}

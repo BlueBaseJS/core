@@ -6,8 +6,7 @@ import React from 'react';
  *
  * A component that does... nothing!
  */
-export const Noop: React.FunctionComponent<NoopProps> = ({ children }) => {
-
+export const Noop: React.FunctionComponent<NoopProps> = ({ children }: NoopProps) => {
 	if (children && React.isValidElement(children)) {
 		return children;
 	}

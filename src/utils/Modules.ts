@@ -2,9 +2,9 @@
  * An ES Module
  */
 export type EsModule<T> = {
+	[key: string]: any;
 	__esModule?: boolean;
 	default: T;
-	[key: string]: any;
 };
 
 /**

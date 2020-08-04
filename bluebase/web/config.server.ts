@@ -1,3 +1,5 @@
-export default function (input: any) {
+function config(input: any) {
 	return input;
 }
+
+export default config;

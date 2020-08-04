@@ -1,16 +1,15 @@
-import { createPalette, createTypography } from '../helpers';
 import { Platform } from 'react-native';
+import { createPalette } from '../Palette';
+import { createTypography } from '../Typography';
 
 // declare const require: any;
 
 describe('createTypography', () => {
-
 	// beforeEach(() => {
 	// 	jest.resetModules();
 	// });
 
 	test(`fontFamily should be undefined on native`, () => {
-
 		const palette = createPalette('light');
 		const typography = createTypography(palette);
 		expect(typography.body1.fontFamily).toBeUndefined();
@@ -33,6 +32,4 @@ describe('createTypography', () => {
 
 		expect(typography.body1.fontFamily).toBe('"Roboto", "Helvetica", "Arial", sans-serif');
 	});
-
 });
-

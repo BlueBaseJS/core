@@ -63,7 +63,7 @@ describe('ComponentRegistry', () => {
 		// 	// expect(rendered.root.type.displayName).toBe('Text');
 		// });
 
-		it('should resolve a Promised component', async done => {
+		it('should resolve a Promised component', async (done: any) => {
 			const Foo = getComponent('Foo');
 			const wrapper = mount(
 				<BlueBaseApp components={{ Foo: Promise.resolve(Text) as any }}>
@@ -205,9 +205,9 @@ describe('ComponentRegistry', () => {
 	});
 
 	describe('.register method', () => {
-		/////////////////////////////////
-		//////// React Component ////////
-		/////////////////////////////////
+		// ///////////////////////////////
+		// ////// React Component ////////
+		// ///////////////////////////////
 
 		it('should register a React Functional Component', async () => {
 			const BB = new BlueBase();
@@ -267,9 +267,9 @@ describe('ComponentRegistry', () => {
 			expect(getComponent('Welcome')).toBeTruthy();
 		});
 
-		///////////////////////////////////////
-		//////// ComponentRegistryItem ////////
-		///////////////////////////////////////
+		// /////////////////////////////////////
+		// ////// ComponentRegistryItem ////////
+		// /////////////////////////////////////
 
 		it('should register a ComponentRegistryItem', async () => {
 			const BB = new BlueBase();
@@ -342,7 +342,7 @@ describe('ComponentRegistry', () => {
 			);
 		});
 
-		////// Overrides
+		// //// Overrides
 
 		it('should NOT merge a ComponentRegistryItem with an existing one', async () => {
 			const BB = new BlueBase();

@@ -1,5 +1,5 @@
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
+import { BlueBaseContext } from '../../contexts';
 import { DynamicIconProps } from '@bluebase/components';
 import React from 'react';
 

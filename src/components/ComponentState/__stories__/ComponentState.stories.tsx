@@ -1,7 +1,12 @@
-import { ComponentState, Image, View } from '../../../getComponent';
+import { ComponentStateProps, ImageProps, ViewProps } from '@bluebase/components';
 
 import React from 'react';
+import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+
+const ComponentState = getComponent<ComponentStateProps>('ComponentState');
+const Image = getComponent<ImageProps>('Image');
+const View = getComponent<ViewProps>('View');
 
 storiesOf('ComponentState', module)
 	.add('Everything', () => (

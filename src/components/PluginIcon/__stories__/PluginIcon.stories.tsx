@@ -1,13 +1,15 @@
 import { BlueBase, BlueBaseConsumer } from '../../..';
-import { PluginIcon } from '../../../getComponent';
+
+import { PluginIconProps } from '@bluebase/components';
 import React from 'react';
+import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
 
-storiesOf('PluginIcon', module)
+const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
 
-	.add('Basic Example', () => (
-		<BlueBaseConsumer children={(BB: BlueBase) => {
-
+storiesOf('PluginIcon', module).add('Basic Example', () => (
+	<BlueBaseConsumer>
+		{(BB: BlueBase) => {
 			BB.Plugins.set('some', {
 				icon: {
 					source: { uri: 'https://picsum.photos/200' },
@@ -16,8 +18,7 @@ storiesOf('PluginIcon', module)
 				value: {},
 			});
 
-			return (
-				<PluginIcon id="some"/>
-			);
-		}} />
-	));
+			return <PluginIcon id="some" />;
+		}}
+	</BlueBaseConsumer>
+));

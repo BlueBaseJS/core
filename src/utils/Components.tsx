@@ -17,7 +17,11 @@ export function renderChildrenWithProps<T = any>(children: MaybeRenderPropChildr
  * @param Component
  */
 export function applyRef<T = any>(Component: React.ComponentType<T>): React.ComponentType<T> {
-	return ({ bluebaseRef, ...rest }: any) => <Component ref={bluebaseRef} {...rest} />;
+	const ComponentWithApplyRef = ({ bluebaseRef, ...rest }: any) => (
+		<Component ref={bluebaseRef} {...rest} />
+	);
+	ComponentWithApplyRef.displayName = 'ComponentWithApplyRef';
+	return ComponentWithApplyRef;
 }
 
 /**
@@ -26,7 +30,8 @@ export function applyRef<T = any>(Component: React.ComponentType<T>): React.Comp
  */
 export function forwardRef<T = any>(Component: React.ComponentType<T>): React.ComponentType<T> {
 	const ForwardRefComponent = Component as any;
-	return React.forwardRef((props, ref) => {
+	// eslint-disable-next-line react/display-name
+	return React.forwardRef((props: any, ref: any) => {
 		return <ForwardRefComponent {...props} bluebaseRef={ref} />;
 	}) as any;
 }

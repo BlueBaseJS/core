@@ -1,4 +1,4 @@
-import { BlueBaseApp } from '../../../';
+import { BlueBaseApp } from '../../';
 import React from 'react';
 import storiesOf from '@bluebase/storybook-addon';
 

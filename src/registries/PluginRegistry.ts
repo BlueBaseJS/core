@@ -1,10 +1,5 @@
 import {
-	BlueBaseModuleRegistry,
-	BlueBaseModuleRegistryInputItem,
-	BlueBaseModuleRegistryItem,
-} from './BlueBaseModuleRegistry';
-import { DynamicIconProps, RouteConfig } from '@bluebase/components';
-import {
+	BlueBaseModule,
 	MaybeArray,
 	MaybePromise,
 	MaybeThunk,
@@ -15,6 +10,12 @@ import {
 	joinPaths,
 	resolveThunk,
 } from '../utils';
+import {
+	BlueBaseModuleRegistry,
+	BlueBaseModuleRegistryInputItem,
+	BlueBaseModuleRegistryItem,
+} from './BlueBaseModuleRegistry';
+import { DynamicIconProps, RouteConfig } from '@bluebase/components';
 
 import { AssetCollection } from './AssetRegistry';
 import { BlueBase } from '../BlueBase';
@@ -46,6 +47,8 @@ export interface PluginValue {
 export type PluginValueInput = Partial<PluginValue>;
 
 export interface PluginRegistryItemExtras {
+	[key: string]: any;
+
 	/**
 	 * Name of the plugin.
 	 *
@@ -74,8 +77,6 @@ export interface PluginRegistryItemExtras {
 
 	/** Main route used as home page of the plugin */
 	indexRoute?: string;
-
-	[key: string]: any;
 }
 
 export type PluginRegistryItem = BlueBaseModuleRegistryItem<PluginValue> & PluginRegistryItemExtras;
@@ -110,7 +111,7 @@ export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<
 		filters: {},
 		fonts: {},
 		name: 'Untitled Plugin',
-		themes: {},
+		themes: [],
 
 		...rest,
 		...resolvedValue,
@@ -235,8 +236,10 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * Returns all enabled plugins
 	 */
 	public async getAllEnabled() {
-		const map = this.filter((_value, key) => this.isEnabled(key));
-		const plugins = Object.values(map).map(p => inputToPlugin(p, this.BB));
+		const map = this.filter((_value: BlueBaseModule<PluginValue>, key: string) =>
+			this.isEnabled(key)
+		);
+		const plugins = Object.values(map).map((p: PluginRegistryItem) => inputToPlugin(p, this.BB));
 		return Promise.all(plugins);
 	}
 
@@ -261,7 +264,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 
 		return (
 			config.startsWith(`plugin.${key}.`) ||
-			Object.keys(plugin.defaultConfigs).findIndex(k => k === config) >= 0
+			Object.keys(plugin.defaultConfigs).findIndex((k: string) => k === config) >= 0
 		);
 	}
 
@@ -301,7 +304,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			}
 
 			// Add plugin slug as prefix to top level routes
-			routes = routes.map(route => ({
+			routes = routes.map((route: RouteConfig) => ({
 				...route,
 				path: joinPaths(pluginRoutePathPrefix, prefixPluginKey ? key : '', route.path),
 			}));

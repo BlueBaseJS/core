@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 import { Text, View } from 'react-native';
 
 import React from 'react';
@@ -9,12 +10,14 @@ export class WillMountLogger extends React.Component<any> {
 	componentWillMount() {
 		this.mounts = this.mounts + 1;
 
+		// tslint:disable-next-line: no-console
 		console.log(`Mounts: ${this.mounts}`);
 	}
 
 	componentWillUnMount() {
 		this.unmounts = this.unmounts + 1;
 
+		// tslint:disable-next-line: no-console
 		console.log(`Unounts: ${this.unmounts}`);
 	}
 

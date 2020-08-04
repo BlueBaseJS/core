@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
-import { StatusBar, StyleProp, ViewStyle } from 'react-native';
-import { useBlueBase, useComponent, useConfig } from '../../hooks';
+import { NavigationProps, NavigatorProps } from '@bluebase/components';
+import { StatusBar, StyleProp, ViewProps, ViewStyle } from 'react-native';
+import { useBlueBase, useComponent, useTheme } from '../../hooks';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseFilter } from '../BlueBaseFilter';
 import React from 'react';
-import { Theme } from '../../registries';
-import { View } from '../../getComponent';
+import { Theme } from '../../themes';
 
 export interface BlueBaseContentStyles {
 	backdrop: StyleProp<ViewStyle>;
@@ -24,16 +25,18 @@ export interface BlueBaseContentProps {
 export const BlueBaseContent = (props: BlueBaseContentProps) => {
 	const { children, styles } = props;
 	const BB = useBlueBase();
-	const Navigation = useComponent('Navigation');
-	const [statusBarStyle] = useConfig('statusBarStyle');
+	const Navigation = useComponent<NavigationProps>('Navigation');
+	const View = useComponent<ViewProps>('View');
+
+	const { theme } = useTheme();
 
 	return children ? (
 		renderChildrenWithProps(children, { BB })
 	) : (
 		<View key="bluebase-wrapper" style={styles!.backdrop}>
-			<StatusBar translucent barStyle={statusBarStyle} />
+			<StatusBar translucent barStyle={theme.mode === 'dark' ? 'light-content' : 'dark-content'} />
 			<BlueBaseFilter filter="bluebase.navigator.root" value={{}}>
-				{navigator => <Navigation navigator={navigator} />}
+				{(navigator: NavigatorProps) => <Navigation navigator={navigator} />}
 			</BlueBaseFilter>
 		</View>
 	);

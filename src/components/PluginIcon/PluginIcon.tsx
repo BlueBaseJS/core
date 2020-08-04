@@ -1,9 +1,12 @@
+import { DynamicIconProps, PluginIconProps } from '@bluebase/components';
+
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
-import { DynamicIcon } from '../../getComponent';
-import { PluginIconProps } from '@bluebase/components';
+import { BlueBaseContext } from '../../contexts';
 import React from 'react';
+import { getComponent } from '../../getComponent';
 import { resolveThunk } from '../../utils';
+
+const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
 
 /**
  * # 🔌 PluginIcon

@@ -1,97 +1,51 @@
-import {
-	BlueBaseModuleRegistry,
-	BlueBaseModuleRegistryInputItem,
-	BlueBaseModuleRegistryItem,
-} from './BlueBaseModuleRegistry';
-import { ThemeValue, ThemeValueInput, buildTheme } from '../themes';
-import { ItemCollection } from './Registry';
-import { getDefiniteBlueBaseModule } from '../utils';
+import { Registry, RegistryInputItem, RegistryItem } from './Registry';
+import { Theme, ThemeInput } from '../themes';
 
-export interface ThemeRegistryItemExtras {
-	/**
-	 * Name of theme.
-	 *
-	 * We put it in meta so we can show the name in menu een without downloading
-	 * the whole theme.
-	 */
-	name: string;
+export interface ThemeRegistryItemExtras {}
 
-	/**
-	 * Theme mode: Either light or dark.
-	 */
-	mode: 'light' | 'dark';
+export type ThemeItem = RegistryItem<Theme> & ThemeRegistryItemExtras;
+export type ThemeRegistryInput = RegistryInputItem<ThemeInput>;
 
-	/**
-	 * Sometimes a user wants to switch to the light/dark version of the same theme.
-	 * This property has the slug of that theme. For example, if this is a light theme,
-	 * this property will have the slug of the dark version, and vice versa.
-	 */
-	alternate?: string;
-
-	key: string;
-}
-
-export type ThemeRegistryItem = BlueBaseModuleRegistryItem<ThemeValue> & ThemeRegistryItemExtras;
-export type ThemeRegistryInputItem = BlueBaseModuleRegistryInputItem<ThemeValueInput>;
-
-type ItemType = ThemeRegistryItem;
-type ItemInputType = ThemeRegistryInputItem;
-
-export type Theme = ThemeRegistryItemExtras & ThemeValue;
-export type ThemeInput = ThemeRegistryInputItem;
-
-export type ThemeCollection = ItemCollection<ThemeInput>;
+export type ThemeCollection = ThemeInput[];
 
 /**
  * 🎨 ThemeRegistry
  */
-export class ThemeRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputType> {
+export class ThemeRegistry extends Registry<ThemeItem, ThemeRegistryInput> {
 	/**
-	 * Returns a Promise that resolves a Theme
-	 * @param keys
+	 * Adds an Item or an Item value to the registry.
+	 *
+	 * @param item
 	 */
-	public async resolve(...keys: string[]): Promise<Theme> {
-		const item = this.findOne(...keys);
-
-		if (!item) {
-			throw Error(`Could not resolve any of the following themes: [${keys.join(', ')}].`);
-		}
-
-		const theme: ThemeInput = { ...item, value: await item.value };
-		const overrides: ThemeInput = { value: this.BB.Configs.getValue('theme.overrides') || {} };
-
-		// We pass through createTheme to make sure if theme has missed some rules,
-		// they're provided
-		return buildTheme(item.mode)(theme, overrides);
+	public async register<
+		T = ThemeItem | ThemeItem['value'] | ThemeRegistryInput | ThemeRegistryInput['value']
+	>(key: string | T, item?: T): Promise<string> {
+		return key instanceof Theme
+			? super.register(key.key, key)
+			: super.register(key as any, item as any);
 	}
 
 	/**
-	 * Get alternate version of current theme
-	 * @param key
+	 * Typeguard to check a given object is an input value
+	 * @param value
 	 */
-	public async resolveAlternate(key: string): Promise<Theme> {
-		const item = this.get(key);
-
-		if (!item || !item.alternate) {
-			throw Error(`Could not resolve alternate theme of "${key}".`);
-		}
-
-		return this.resolve(item.alternate);
+	protected isInputValue(value: any): value is ThemeRegistryInput['value'] {
+		return value instanceof Theme;
 	}
 
 	/**
-	 * Convert any input value to an item. This is where you transform inputs and add defualts
-	 * @param key
-	 * @param partial
+	 * Typeguard to check a given object is a registry item
+	 * @param item
 	 */
-	protected createItem(key: string, partial: any): ThemeRegistryItem {
-		const value = getDefiniteBlueBaseModule(partial.value);
+	protected isItem(item: any): item is ThemeItem {
+		return item.value && item.value instanceof Theme;
+	}
 
-		return super.createItem(key, {
-			mode: 'light',
-			name: 'Untitled Theme',
-			...partial,
-			value,
-		});
+	/**
+	 * Typeguard to check a given object is a input item
+	 * @param item
+	 */
+	protected isInputItem(item: any): item is ThemeRegistryInput {
+		return item.value && item.value instanceof Theme;
 	}
 }

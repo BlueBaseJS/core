@@ -13,6 +13,9 @@ import { ItemSource, Registry } from './Registry';
  * BlueBaseModule Registry Item
  */
 export interface BlueBaseModuleRegistryItem<ValueType = any> {
+	/** Additional Item Data */
+	[key: string]: any;
+
 	/** Item Key */
 	key: string;
 
@@ -28,15 +31,15 @@ export interface BlueBaseModuleRegistryItem<ValueType = any> {
 	 * Preload this value
 	 */
 	preload: boolean;
-
-	/** Additional Item Data */
-	[key: string]: any;
 }
 
 /**
  * BlueBase Registry Item
  */
 export type BlueBaseModuleRegistryInputItem<ValueType = any, Extras = {}> = {
+	/** Additional Item Data */
+	[key: string]: any;
+
 	/**
 	 * Registry Item Value.
 	 */
@@ -46,9 +49,6 @@ export type BlueBaseModuleRegistryInputItem<ValueType = any, Extras = {}> = {
 	 * Preload this value
 	 */
 	preload?: boolean;
-
-	/** Additional Item Data */
-	[key: string]: any;
 } & Extras;
 
 /**
@@ -96,8 +96,10 @@ export class BlueBaseModuleRegistry<
 	 * Preload all items that have preload property set to true
 	 */
 	public async preloadAll() {
-		const items = this.filter((_value, _key, item) => item.preload === true);
-		const promises = Object.values(items).map(item => item.value);
+		const items = this.filter(
+			(_value: ItemType['value'], _key: string, item: ItemType) => item.preload === true
+		);
+		const promises = Object.values(items).map((item: ItemType) => item.value);
 
 		return Promise.all(promises);
 	}

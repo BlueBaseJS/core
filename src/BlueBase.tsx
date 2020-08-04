@@ -82,27 +82,27 @@ const emptyBootOptions: BootOptionsInternal = {
 };
 
 export class BlueBase {
-	/** BlueBase Version */
-	readonly version = VERSION;
-
-	// APIs
-	public Analytics = new Analytics(this);
-	public Logger = new Logger(this);
-
-	// Registries
-	public Assets = new AssetRegistry(this);
-	public Components = new ComponentRegistry(this);
-	public Configs = new ConfigRegistry(this);
-	public Filters = new FilterRegistry(this);
-	public Fonts = new FontRegistry(this);
-	public Plugins = new PluginRegistry(this);
-	public Themes = new ThemeRegistry(this);
-
 	// Allow other props
 	[key: string]: any;
 
+	/** BlueBase Version */
+	readonly version: string = VERSION;
+
+	// APIs
+	public Analytics: Analytics = new Analytics(this);
+	public Logger: Logger = new Logger(this);
+
+	// Registries
+	public Assets: AssetRegistry = new AssetRegistry(this);
+	public Components: ComponentRegistry = new ComponentRegistry(this);
+	public Configs: ConfigRegistry = new ConfigRegistry(this);
+	public Filters: FilterRegistry = new FilterRegistry(this);
+	public Fonts: FontRegistry = new FontRegistry(this);
+	public Plugins: PluginRegistry = new PluginRegistry(this);
+	public Themes: ThemeRegistry = new ThemeRegistry(this);
+
 	// Flags
-	public booted = false;
+	public booted: boolean = false;
 
 	private bootOptions: BootOptions = emptyBootOptions;
 

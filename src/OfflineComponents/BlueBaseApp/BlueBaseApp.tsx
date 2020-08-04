@@ -4,10 +4,11 @@ import {
 	BlueBaseAppErrorProps,
 	BlueBaseAppLoading,
 	BlueBaseAppLoadingProps,
-} from '..';
+} from '../';
 import React, { useEffect, useState } from 'react';
 
-import { BlueBaseProvider } from '../../Context';
+import { AppearanceProvider } from 'react-native-appearance';
+import { BlueBaseProvider } from '../../contexts';
 import { ErrorObserver } from '../../components';
 import { IntlProvider } from '../../intl';
 import { ThemeProvider } from '../../themes';
@@ -115,11 +116,13 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 				bootCount={bootCount}
 				onError={onError}
 			>
-				<ThemeProvider>
-					<IntlProvider>
-						<BlueBaseContent>{children}</BlueBaseContent>
-					</IntlProvider>
-				</ThemeProvider>
+				<AppearanceProvider>
+					<ThemeProvider>
+						<IntlProvider>
+							<BlueBaseContent>{children}</BlueBaseContent>
+						</IntlProvider>
+					</ThemeProvider>
+				</AppearanceProvider>
 			</ErrorObserver>
 		</BlueBaseProvider>
 	);

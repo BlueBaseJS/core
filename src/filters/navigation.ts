@@ -55,7 +55,9 @@ export const navigation: FilterNestedCollection = {
 				];
 
 				const routeMap = await BB.Plugins.getRouteMap();
-				Object.values(routeMap).forEach(routesArr => (mainRoutes = mainRoutes.concat(routesArr)));
+				Object.values(routeMap).forEach(
+					(routesArr: RouteConfig[]) => (mainRoutes = mainRoutes.concat(routesArr))
+				);
 
 				const navigator: NavigatorProps = {
 					type: 'stack',

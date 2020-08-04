@@ -9,10 +9,12 @@ export default {
 
 	configs: {
 		'theme.overrides': {
-			components: {
-				ThemedCard2: {
-					root: {
-						backgroundColor: 'green',
+			light: {
+				components: {
+					ThemedCard2: {
+						root: {
+							backgroundColor: 'green',
+						},
 					},
 				},
 			},

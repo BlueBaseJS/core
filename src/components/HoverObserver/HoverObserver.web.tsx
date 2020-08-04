@@ -1,4 +1,5 @@
 import React, { SyntheticEvent } from 'react';
+
 import { HoverObserverProps } from '@bluebase/components';
 import { renderChildrenWithProps } from '../../utils';
 
@@ -6,7 +7,9 @@ export interface HoverObserverState {
 	readonly isHovering: boolean;
 }
 
-const Noop = () => { return; };
+const Noop = () => {
+	return;
+};
 
 /**
  * # 🛸 HoverObserver
@@ -25,13 +28,12 @@ const Noop = () => { return; };
  * ```
  */
 export class HoverObserver extends React.PureComponent<HoverObserverProps, HoverObserverState> {
-
 	public static defaultProps: Partial<HoverObserverProps> = {
 		hoverDelayInMs: 0,
 		hoverOffDelayInMs: 0,
 		onHoverChanged: Noop,
-		onMouseEnter: ({ setIsHovering }) => setIsHovering(),
-		onMouseLeave: ({ unsetIsHovering }) => unsetIsHovering(),
+		onMouseEnter: ({ setIsHovering }: any) => setIsHovering(),
+		onMouseLeave: ({ unsetIsHovering }: any) => unsetIsHovering(),
 		onMouseOut: Noop,
 		onMouseOver: Noop,
 	};
@@ -42,7 +44,7 @@ export class HoverObserver extends React.PureComponent<HoverObserverProps, Hover
 		super(props);
 
 		this.state = {
-			isHovering: false
+			isHovering: false,
 		};
 
 		this.onMouseEnter = this.onMouseEnter.bind(this);
@@ -60,7 +62,7 @@ export class HoverObserver extends React.PureComponent<HoverObserverProps, Hover
 		this.props.onMouseEnter!({
 			e,
 			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
+			unsetIsHovering: this.unsetIsHovering,
 		});
 	}
 
@@ -68,7 +70,7 @@ export class HoverObserver extends React.PureComponent<HoverObserverProps, Hover
 		this.props.onMouseLeave!({
 			e,
 			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
+			unsetIsHovering: this.unsetIsHovering,
 		});
 	}
 
@@ -76,7 +78,7 @@ export class HoverObserver extends React.PureComponent<HoverObserverProps, Hover
 		this.props.onMouseOver!({
 			e,
 			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
+			unsetIsHovering: this.unsetIsHovering,
 		});
 	}
 
@@ -84,7 +86,7 @@ export class HoverObserver extends React.PureComponent<HoverObserverProps, Hover
 		this.props.onMouseOut!({
 			e,
 			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering
+			unsetIsHovering: this.unsetIsHovering,
 		});
 	}
 
@@ -130,12 +132,14 @@ export class HoverObserver extends React.PureComponent<HoverObserverProps, Hover
 		const { children } = this.props;
 
 		return (
-			<div {...{
-				onMouseEnter: this.onMouseEnter,
-				onMouseLeave: this.onMouseLeave,
-				onMouseOut: this.onMouseOut,
-				onMouseOver: this.onMouseOver,
-			}}>
+			<div
+				{...{
+					onMouseEnter: this.onMouseEnter,
+					onMouseLeave: this.onMouseLeave,
+					onMouseOut: this.onMouseOut,
+					onMouseOver: this.onMouseOver,
+				}}
+			>
 				{renderChildrenWithProps(children, this.state)}
 			</div>
 		);

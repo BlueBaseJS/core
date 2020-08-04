@@ -14,7 +14,7 @@ export const plugins: FilterNestedCollection = {
 			// tslint:disable-next-line:object-literal-sort-keys
 			value: async (bootOptions: BootOptions, _args: any, BB: BlueBase) => {
 				const keys = await BB.Plugins.registerCollection(bootOptions.plugins);
-				keys.forEach(key => BB.Plugins.setMeta(key, 'source', { type: 'boot' }));
+				keys.forEach((key: string) => BB.Plugins.setMeta(key, 'source', { type: 'boot' }));
 
 				// return
 				return bootOptions;

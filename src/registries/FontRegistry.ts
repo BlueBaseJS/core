@@ -1,4 +1,5 @@
 import { Registry, RegistryInputItem, RegistryItem } from './Registry';
+
 import { ImageRequireSource } from 'react-native';
 import { loadAllFonts } from './helpers';
 
@@ -18,7 +19,7 @@ export type FontCollection = { [key: string]: FontInput };
  */
 export class FontRegistry extends Registry<Font, FontInput> {
 	public async load() {
-		const items = this.filterValues(value => !!value);
+		const items = this.filterValues((value: string | number) => !!value);
 		await loadAllFonts(items as any);
 	}
 

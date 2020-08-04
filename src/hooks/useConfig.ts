@@ -14,11 +14,10 @@ export function useConfig<T = any>(
 	const setValue = (v: any) => BB.Configs.setValue(key, v);
 
 	useEffect(() => {
-		let subscriptionId: string;
 		let cancelled = false;
 
 		// Subscribe
-		subscriptionId = BB.Configs.subscribe(key, (v, item) => {
+		const subscriptionId: string = BB.Configs.subscribe(key, (v: any, item: RegistryItem<any>) => {
 			if (cancelled) {
 				BB.Configs.unsubscribe(key, subscriptionId);
 				return;

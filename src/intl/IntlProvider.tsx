@@ -1,12 +1,9 @@
-import React, { createContext } from 'react';
+import { IntlContext, IntlContextData, IntlMessages } from '../contexts';
 import { useFilter, useRtl } from '../hooks';
 
 import { Configs } from '../Configs';
+import React from 'react';
 import { useLocale } from '../hooks/useLocale';
-
-export type IntlMessages = {
-	[key: string]: string;
-};
 
 /**
  * Props of the `IntlProvider` component.
@@ -23,29 +20,6 @@ export interface IntlProviderState {
 	readonly messages: IntlMessages;
 	readonly error?: any;
 }
-
-/**
- * Interface of object passed as param to the IntlConsumer render prop method.
- */
-export interface IntlContextData {
-	__: (message: string) => string;
-	changeLocale: (slug: string) => void;
-	changeDirection: (direction: Configs['direction']) => void;
-	direction: Configs['direction'];
-	locale: string;
-	messages: IntlMessages;
-	rtl: boolean;
-}
-
-/**
- * This is the context where BlueBase theme is stored.
- */
-export const IntlContext: React.Context<IntlContextData> = createContext(undefined as any);
-
-/**
- * BlueBase theme consumer.
- */
-export const IntlConsumer = IntlContext.Consumer;
 
 /**
  * 🈯️ IntlProvider
@@ -69,7 +43,7 @@ export const IntlProvider = (props: IntlProviderProps) => {
 		rtl,
 	};
 
-	return <IntlContext.Provider value={value} children={props.children} />;
+	return <IntlContext.Provider value={value}>{props.children}</IntlContext.Provider>;
 };
 
 IntlProvider.displayName = 'IntlProvider';

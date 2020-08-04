@@ -1,5 +1,5 @@
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseLightTheme } from '../../themes';
+import { Theme } from '../../themes';
 import { createPlugin } from '../../registries';
 
 describe('filters', () => {
@@ -9,7 +9,7 @@ describe('filters', () => {
 				const BB = new BlueBase();
 				await BB.boot();
 
-				const source = BB.Themes.getMeta('bluebase-light', 'source');
+				const source = BB.Themes.getMeta('bluebase-theme', 'source');
 
 				expect(source.type).toBe('system');
 			});
@@ -17,12 +17,7 @@ describe('filters', () => {
 			it('should set "boot" input source for themes added via boot', async () => {
 				const BB = new BlueBase();
 				await BB.boot({
-					themes: [
-						{
-							...BlueBaseLightTheme,
-							key: 'foo',
-						},
-					],
+					themes: [new Theme({ key: 'foo' })],
 				});
 
 				const source = BB.Themes.getMeta('foo', 'source');
@@ -37,12 +32,7 @@ describe('filters', () => {
 						createPlugin({
 							key: 'bar',
 
-							themes: [
-								{
-									...BlueBaseLightTheme,
-									key: 'foo',
-								},
-							],
+							themes: [new Theme({ key: 'foo' })],
 						}),
 					],
 				});

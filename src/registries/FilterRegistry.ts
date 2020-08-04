@@ -1,9 +1,5 @@
 import {
-	BlueBaseModuleRegistry,
-	BlueBaseModuleRegistryInputItem,
-	BlueBaseModuleRegistryItem,
-} from './BlueBaseModuleRegistry';
-import {
+	BlueBaseModule,
 	MaybeArray,
 	MaybeBlueBaseModule,
 	MaybeThunk,
@@ -12,6 +8,12 @@ import {
 	getDefiniteBlueBaseModule,
 	resolveThunk,
 } from '../utils';
+import {
+	BlueBaseModuleRegistry,
+	BlueBaseModuleRegistryInputItem,
+	BlueBaseModuleRegistryItem,
+} from './BlueBaseModuleRegistry';
+
 import { BlueBase } from '../BlueBase';
 import { ItemCollection } from './Registry';
 import isFunction from 'lodash.isfunction';
@@ -44,6 +46,8 @@ export type FilterHandlerFn<T = any> = (
  * Properties of a Filter item.
  */
 export interface FilterRegistryItemProps {
+	[key: string]: any;
+
 	/**
 	 * Priority of exeuction.
 	 *
@@ -55,8 +59,6 @@ export interface FilterRegistryItemProps {
 	 * ID of event to subscribe to
 	 */
 	event: string;
-
-	[key: string]: any;
 }
 
 export type FilterRegistryItem = BlueBaseModuleRegistryItem<FilterHandlerFn> &
@@ -137,7 +139,10 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * @param event
 	 */
 	public findAllByEvent(event: string) {
-		return this.filter((_value, _key, item) => item.event === event);
+		return this.filter(
+			(_value: BlueBaseModule<FilterHandlerFn<any>>, _key: string, item: FilterRegistryItem) =>
+				item.event === event
+		);
 	}
 
 	/**
@@ -171,7 +176,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		}
 
 		// Sort items based on priority
-		filterItems.sort((a, b) => a.priority - b.priority);
+		filterItems.sort((a: FilterRegistryItem, b: FilterRegistryItem) => a.priority - b.priority);
 
 		// Run waterfall
 		for (const item of filterItems) {

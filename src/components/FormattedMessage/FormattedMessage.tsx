@@ -6,6 +6,7 @@ import React from 'react';
 export const FormattedMessage = (props: FormattedMessageProps) => {
 	const Text = useComponent('Text');
 
+	// eslint-disable-next-line react/prop-types
 	const { children, component = Text, ...rest } = props;
 	const intl = useIntl();
 

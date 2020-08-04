@@ -1,9 +1,11 @@
-import { Text, View } from 'react-native';
+import { ImageBackgroundProps, Text, View } from 'react-native';
 
-import { BlueBaseImageBackground } from '../../../getComponent';
 import React from 'react';
 import { ThemeProvider } from '../../../themes';
+import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+
+const BlueBaseImageBackground = getComponent<ImageBackgroundProps>('BlueBaseImageBackground');
 
 storiesOf('BlueBase Image Background', module)
 	.add('Image Background with a uri path', () => (

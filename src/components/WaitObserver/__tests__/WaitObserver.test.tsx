@@ -34,13 +34,9 @@ describe('WaitObserver', () => {
 		const onRetry = jest.fn();
 
 		const component = mount(
-			<WaitObserver
-				delay={1000}
-				timeout={3000}
-				onTimeout={onTimeout}
-				onRetry={onRetry}
-				children={(props: any) => <LoadingState {...props} />}
-			/>
+			<WaitObserver delay={1000} timeout={3000} onTimeout={onTimeout} onRetry={onRetry}>
+				{(props: any) => <LoadingState {...props} />}
+			</WaitObserver>
 		);
 
 		// Should render null
@@ -74,7 +70,7 @@ describe('WaitObserver', () => {
 		retry();
 		component.update();
 
-		//////// Start the process again
+		// ////// Start the process again
 
 		// Should render Loading message
 		expect(onTimeout.mock.calls.length).toBe(1);
@@ -95,12 +91,9 @@ describe('WaitObserver', () => {
 		const onTimeout = jest.fn();
 
 		const component = mount(
-			<WaitObserver
-				delay={undefined}
-				timeout={undefined}
-				onTimeout={onTimeout}
-				children={(props: any) => <LoadingState {...props} />}
-			/>
+			<WaitObserver delay={undefined} timeout={undefined} onTimeout={onTimeout}>
+				{(props: any) => <LoadingState {...props} />}
+			</WaitObserver>
 		);
 
 		// Should render null
@@ -155,13 +148,9 @@ describe('WaitObserver', () => {
 
 	test(`should show loading state if delay is 0`, () => {
 		const component = mount(
-			<WaitObserver
-				delay={0}
-				timeout={2000}
-				onRetry={null as any}
-				onTimeout={null as any}
-				children={(props: any) => <LoadingState {...props} />}
-			/>
+			<WaitObserver delay={0} timeout={2000} onRetry={null as any} onTimeout={null as any}>
+				{(props: any) => <LoadingState {...props} />}
+			</WaitObserver>
 		);
 
 		// Should render Loading message
@@ -185,13 +174,9 @@ describe('WaitObserver', () => {
 
 	test(`should show loading state if delay is 0 (without render prop)`, () => {
 		const component = mount(
-			<WaitObserver
-				delay={0}
-				timeout={2000}
-				onRetry={null as any}
-				onTimeout={null as any}
-				children={<LoadingState />}
-			/>
+			<WaitObserver delay={0} timeout={2000} onRetry={null as any} onTimeout={null as any}>
+				<LoadingState />
+			</WaitObserver>
 		);
 
 		// Should render Loading message
@@ -199,7 +184,11 @@ describe('WaitObserver', () => {
 	});
 
 	test(`default callback functions should return undefined`, () => {
-		const component = mount(<WaitObserver children={<LoadingState />} />);
+		const component = mount(
+			<WaitObserver>
+				<LoadingState />
+			</WaitObserver>
+		);
 
 		const onRetry: any = component.find('WaitObserver').prop('onRetry');
 		const onTimeout: any = component.find('WaitObserver').prop('onTimeout');

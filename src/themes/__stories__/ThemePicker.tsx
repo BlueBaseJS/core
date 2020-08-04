@@ -1,24 +1,20 @@
-import { BlueBase, BlueBaseContext } from '../../';
-import { ThemeContext, ThemeContextData } from '../../themes';
+import { useBlueBase, useTheme } from '../../';
+
 import { Picker } from 'react-native';
 import React from 'react';
+import { ThemeItem } from '../../registries';
 
-export class ThemePicker extends React.PureComponent {
+export const ThemePicker = () => {
+	const BB = useBlueBase();
+	const themes = [...BB.Themes.entries()];
+	const { theme, changeTheme } = useTheme();
 
-	static contextType = BlueBaseContext;
-
-	render() {
-		const BB: BlueBase = (this as any).context;
-		const themes = [...BB.Themes.entries()];
-		return (
-			<ThemeContext.Consumer children={({ changeTheme }: ThemeContextData) => (
-				<Picker
-					selectedValue={BB.Configs.getValue('theme.name')}
-					style={{ width: 150 }}
-					onValueChange={changeTheme}>
-					{themes.map(entry => <Picker.Item label={entry[1].name} value={entry[0]} key={entry[0]} />)}
-				</Picker>
-			)} />
-		);
-	}
-}
+	return (
+		<Picker selectedValue={theme.key} style={{ width: 150 }} onValueChange={changeTheme}>
+			{themes.map((entry: [string, ThemeItem]) => {
+				const t = entry[1].value;
+				return <Picker.Item label={t.name} value={t.key} key={t.key} />;
+			})}
+		</Picker>
+	);
+};

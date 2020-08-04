@@ -218,7 +218,7 @@ describe('ConfigRegistry', () => {
 			(Configs as any).subscriptions.clear();
 			Configs.set('bar', item as any);
 
-			Configs.subscribe('bar', value => {
+			Configs.subscribe('bar', (value: number) => {
 				expect(value).toBe(10);
 			});
 
@@ -231,7 +231,7 @@ describe('ConfigRegistry', () => {
 			const BB = new BlueBase();
 			const Configs = new ConfigRegistry(BB);
 
-			Configs.subscribe('bar', value => {
+			Configs.subscribe('bar', (value: number) => {
 				expect(value).toBe(10);
 			});
 
@@ -261,8 +261,8 @@ describe('ConfigRegistry', () => {
 			const BB = new BlueBase();
 			const Configs = new ConfigRegistry(BB);
 
-			// tslint:disable-next-line
 			expect(() => Configs.unsubscribe('foo', '123')).toThrow(
+				// eslint-disable-next-line max-len
 				'Could not unsubscribe from a registry item. Reason: No subsciptions for item with key "foo" registered.'
 			);
 		});

@@ -1,33 +1,28 @@
-import { Body1, View } from '../../getComponent';
+import { TextProps, ViewProps } from 'react-native';
 
 import React from 'react';
-import { Theme } from '../../registries';
-import { ThemeContext } from '../../themes';
+import { getComponent } from '../../getComponent';
+import { useTheme } from '../../hooks';
+
+export const Body1 = getComponent<TextProps>('Body1');
+export const View = getComponent<ViewProps>('View');
 
 export interface ThemeDemoProps {
 	children?: React.ReactNode;
 }
 
-export class ThemeDemo extends React.PureComponent<ThemeDemoProps> {
-	render() {
-		const { children } = this.props;
+export const ThemeDemo = ({ children }: any) => {
+	const { theme } = useTheme();
 
-		return (
-			<ThemeContext.Consumer>
-				{({ theme }: { theme: Theme }) => {
-					const mainStyle = {
-						backgroundColor: theme.palette.background.default,
-						padding: theme.spacing.unit,
-					};
+	const mainStyle = {
+		backgroundColor: theme.palette.background.default,
+		padding: theme.spacing.unit,
+	};
 
-					return (
-						<View style={mainStyle} testID="box">
-							<Body1>{theme.name}</Body1>
-							{children}
-						</View>
-					);
-				}}
-			</ThemeContext.Consumer>
-		);
-	}
-}
+	return (
+		<View style={mainStyle} testID="box">
+			<Body1>{theme.name}</Body1>
+			{children}
+		</View>
+	);
+};

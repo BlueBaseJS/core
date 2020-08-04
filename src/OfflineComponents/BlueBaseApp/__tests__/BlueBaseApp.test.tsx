@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../BlueBaseApp';
 import React from 'react';

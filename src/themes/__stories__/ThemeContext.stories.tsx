@@ -1,10 +1,11 @@
-// tslint:disable:no-console
-import { View, getComponent } from '../../getComponent';
-
+import { ModePicker } from './ModePicker';
 import React from 'react';
 import { ThemeDemo } from '../../themes/__stories__/ThemeDemo';
 import { ThemePicker } from '../../themes/__stories__/ThemePicker';
-import { ThemeProvider } from '..';
+import { ThemeProvider } from '../ThemeProvider';
+import { View } from 'react-native';
+// tslint:disable:no-console
+import { getComponent } from '../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
 
 const ThemedCard = getComponent('ThemedCard');
@@ -15,14 +16,16 @@ storiesOf('ThemeContext', module)
 	.add('Basic Example', () => (
 		<View>
 			<ThemePicker />
+			<ModePicker />
 			<ThemeDemo />
 		</View>
 	))
 
 	.add('Basic Example with overrides', () => (
 		<ThemeProvider
-			theme="bluebase-dark"
-			overrides={{ palette: { background: { default: 'red' } } }}
+			theme="bluebase-theme"
+			mode="dark"
+			overrides={{ dark: { palette: { background: { default: 'red' } } } }}
 		>
 			<View style={{ margin: 8 }}>
 				<ThemeDemo />
@@ -41,8 +44,9 @@ storiesOf('ThemeContext', module)
 	.add('Nested Theme', () => (
 		<View>
 			<ThemePicker />
+			<ModePicker />
 			<ThemeDemo>
-				<ThemeProvider theme="bluebase-dark">
+				<ThemeProvider mode="dark">
 					<View style={{ margin: 8 }}>
 						<ThemeDemo />
 					</View>
@@ -54,13 +58,15 @@ storiesOf('ThemeContext', module)
 	.add('3 Level Nesting', () => (
 		<View>
 			<ThemePicker />
+			<ModePicker />
 			<ThemeDemo>
-				<ThemeProvider theme="bluebase-dark">
+				<ThemeProvider mode="dark">
 					<View style={{ margin: 8 }}>
 						<ThemeDemo>
 							<ThemeProvider>
 								<View style={{ margin: 8 }}>
 									<ThemePicker />
+									<ModePicker />
 									<ThemeDemo />
 								</View>
 							</ThemeProvider>

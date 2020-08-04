@@ -1,8 +1,6 @@
 import { ComponentStateProps, ErrorStateProps } from '@bluebase/components';
+import { useBlueBase, useComponent } from '../../hooks';
 
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../Context';
-import { ComponentState } from '../../getComponent';
 import React from 'react';
 
 /**
@@ -17,29 +15,28 @@ import React from 'react';
  * <ErrorState retry={retryCallback} error={Error('Bang!')} />
  * ```
  */
-export class ErrorState extends React.PureComponent<ErrorStateProps> {
-	static contextType: React.Context<BlueBase> = BlueBaseContext;
+export const ErrorState = (props: ErrorStateProps) => {
+	const { error, retry } = props;
 
-	render() {
-		const { error, retry } = this.props;
+	const BB = useBlueBase();
+	const ComponentState = useComponent<ComponentStateProps>('ComponentState');
 
-		const BB: BlueBase = this.context;
+	const development = BB.Configs.getValue('development');
 
-		const development = BB.Configs.getValue('development');
+	const csProps: ComponentStateProps = {
+		description:
+			development && error
+				? error.message
+				: 'An unknown error has occurred. Please try again later.',
+		title: development && error ? error.name : 'Something broke!',
+	};
 
-		const props: ComponentStateProps = {
-			description:
-				development && error
-					? error.message
-					: 'An unknown error has occurred. Please try again later.',
-			title: development && error ? error.name : 'Something broke!',
-		};
-
-		if (retry) {
-			props.actionTitle = 'Retry';
-			props.actionOnPress = retry;
-		}
-
-		return <ComponentState {...props} />;
+	if (retry) {
+		csProps.actionTitle = 'Retry';
+		csProps.actionOnPress = retry;
 	}
-}
+
+	return <ComponentState {...csProps} />;
+};
+
+ErrorState.displayName = 'ErrorState';

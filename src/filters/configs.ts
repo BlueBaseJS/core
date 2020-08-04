@@ -14,7 +14,7 @@ export const configs: FilterNestedCollection = {
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				const keys = await BB.Configs.registerCollection(BlueBaseDefaultConfigs);
-				keys.forEach(key => BB.Configs.setMeta(key, 'source', { type: 'system' }));
+				keys.forEach((key: string) => BB.Configs.setMeta(key, 'source', { type: 'system' }));
 
 				return bootOptions;
 			},
@@ -29,7 +29,7 @@ export const configs: FilterNestedCollection = {
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				const keys = await BB.Configs.registerCollection(bootOptions.configs);
-				keys.forEach(key => BB.Configs.setMeta(key, 'source', { type: 'boot' }));
+				keys.forEach((key: string) => BB.Configs.setMeta(key, 'source', { type: 'boot' }));
 
 				return bootOptions;
 			},
@@ -51,7 +51,7 @@ export const configs: FilterNestedCollection = {
 					// configs were not given as input
 
 					const keys = await BB.Configs.registerCollectionIfNotExists(plugin.defaultConfigs);
-					keys.forEach(key =>
+					keys.forEach((key: string) =>
 						BB.Configs.setMeta(key, 'source', { type: 'plugin', key: plugin.key })
 					);
 				}

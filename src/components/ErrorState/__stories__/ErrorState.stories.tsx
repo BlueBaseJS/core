@@ -1,9 +1,8 @@
-import { ErrorState } from '../../../getComponent';
+import { ErrorStateProps } from '@bluebase/components';
 import React from 'react';
+import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
 
-storiesOf('ErrorState', module)
+const ErrorState = getComponent<ErrorStateProps>('ErrorState');
 
-	.add('With default props', () => (
-		<ErrorState />
-	));
+storiesOf('ErrorState', module).add('With default props', () => <ErrorState />);

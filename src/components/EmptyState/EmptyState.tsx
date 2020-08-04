@@ -1,6 +1,7 @@
-import { ComponentState } from '../../getComponent';
-import { EmptyStateProps } from '@bluebase/components';
+import { ComponentStateProps, EmptyStateProps } from '@bluebase/components';
+
 import React from 'react';
+import { useComponent } from '../../hooks';
 
 /**
  * # 📭 EmptyState
@@ -12,7 +13,15 @@ import React from 'react';
  * <EmptyState/>
  * ```
  */
-export const EmptyState = (props: EmptyStateProps) =>
-	(<ComponentState title="Empty Area" description="Create new items to fill this area." {...props} />);
+export const EmptyState = (props: EmptyStateProps) => {
+	const ComponentState = useComponent<ComponentStateProps>('ComponentState');
+	return (
+		<ComponentState
+			title="Empty Area"
+			description="Create new items to fill this area."
+			{...props}
+		/>
+	);
+};
 
 EmptyState.displayName = 'EmptyState';
