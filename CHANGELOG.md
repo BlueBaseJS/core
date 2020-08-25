@@ -1,3 +1,9 @@
+# [6.0.0-alpha.2](https://github.com/BlueBaseJS/core/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2020-08-25)
+
+### Bug Fixes
+
+-   **VIew:** Fixed an issue where RCTView was crashing app ([3153910](https://github.com/BlueBaseJS/core/commit/3153910))
+
 # [6.0.0-alpha.1](https://github.com/BlueBaseJS/core/compare/v5.11.1...v6.0.0-alpha.1) (2020-08-04)
 
 ### Bug Fixes
