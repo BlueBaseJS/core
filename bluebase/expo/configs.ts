@@ -9,6 +9,8 @@ export default (input: any) => {
 		manifest: {
 			name: 'My BlueBase App',
 
+			userInterfaceStyle: 'automatic',
+
 			splash: {
 				resiveMode: 'cover',
 			},

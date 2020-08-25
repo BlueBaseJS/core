@@ -48,7 +48,7 @@
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:md": "remark . -o",
     "test": "run-s build test:*",
-    "test:only": "jest --coverage",
+    "test:only": "jest --coverage --runInBand",
     "test:lint": "eslint src bluebase --ext=ts,tsx",
     "fix:lint": "eslint src bluebase --ext=ts,tsx --fix .",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
@@ -95,7 +95,7 @@
     "lodash.kebabcase": "^4.1.1",
     "react-loadable": "^5.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
-    "react-native-appearance": "^0.3.4",
+    "react-native-appearance": "~0.3.3",
     "rtl-detect": "^1.0.2",
     "tslib": "^1.10.0"
   },
