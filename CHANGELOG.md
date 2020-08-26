@@ -1,3 +1,13 @@
+# [6.0.0-alpha.3](https://github.com/BlueBaseJS/core/compare/v6.0.0-alpha.2...v6.0.0-alpha.3) (2020-08-26)
+
+### Features
+
+-   **PluginRegistry:** Routes are now evaluated on render, not on boot ([6d1373c](https://github.com/BlueBaseJS/core/commit/6d1373c))
+
+### BREAKING CHANGES
+
+-   **PluginRegistry:** Route config thunk no longer receive BB as a param. It receives RouteOptions param instead.
+
 # [6.0.0-alpha.2](https://github.com/BlueBaseJS/core/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2020-08-25)
 
 ### Bug Fixes
