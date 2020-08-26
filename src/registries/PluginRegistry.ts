@@ -23,7 +23,9 @@ import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
 import { FilterNestedCollection } from './FilterRegistry';
 import { FontCollection } from './FontRegistry';
+import { IntlContextData } from '../contexts';
 import { ItemCollection } from './Registry';
+import { Theme } from '..';
 import { ThemeCollection } from './ThemeRegistry';
 
 export type PluginCategory =
@@ -34,6 +36,12 @@ export type PluginCategory =
 	| 'theme'
 	| 'analytics'
 	| string;
+
+export interface RouteOptions {
+	BB: BlueBase;
+	intl: IntlContextData;
+	theme: Theme;
+}
 
 export interface PluginValue {
 	assets: AssetCollection;
@@ -93,15 +101,10 @@ export type PluginInput = PluginRegistryInputItem;
 
 export type PluginCollection = ItemCollection<PluginInput>;
 
-export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<Plugin> {
+export async function inputToPlugin(plugin: PluginInput): Promise<Plugin> {
 	const { value, ...rest } = plugin;
 
 	const resolvedValue = await value;
-
-	const routes = await resolveRoutes(
-		plugin.routes || (resolvedValue && resolvedValue.routes) || [],
-		BB
-	);
 
 	const final = {
 		assets: {},
@@ -115,8 +118,6 @@ export async function inputToPlugin(plugin: PluginInput, BB: BlueBase): Promise<
 
 		...rest,
 		...resolvedValue,
-
-		routes,
 	};
 
 	return final;
@@ -152,10 +153,10 @@ export function createPlugin(plugin: Partial<Plugin>): PluginInput {
 
 export async function resolveRoutes(
 	routes: PluginValue['routes'],
-	BB: BlueBase
+	options: RouteOptions
 ): Promise<RouteConfig[]> {
 	// If thunk resolve it
-	let finalRoutes = resolveThunk(routes || [], BB);
+	let finalRoutes = resolveThunk(routes || [], options);
 
 	// If result is a promise, resolve it too
 	if (isPromise(finalRoutes)) {
@@ -183,7 +184,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 
 		const input = { ...item, value: await item.value };
 
-		return inputToPlugin(input, this.BB);
+		return inputToPlugin(input);
 	}
 
 	/**
@@ -239,7 +240,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 		const map = this.filter((_value: BlueBaseModule<PluginValue>, key: string) =>
 			this.isEnabled(key)
 		);
-		const plugins = Object.values(map).map((p: PluginRegistryItem) => inputToPlugin(p, this.BB));
+		const plugins = Object.values(map).map((p: PluginRegistryItem) => inputToPlugin(p));
 		return Promise.all(plugins);
 	}
 
@@ -277,6 +278,7 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 	 * - Plugin is not resolved
 	 */
 	public async getRouteMap(
+		options: RouteOptions,
 		prefixPluginKey: boolean = true
 	): Promise<{ [key: string]: RouteConfig[] }> {
 		const pluginRoutes: { [key: string]: RouteConfig[] } = {};
@@ -290,13 +292,11 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 			}
 
 			// Resolve plugin
-			const plugin = await inputToPlugin(item.value.module as any, this.BB);
+			const plugin = await inputToPlugin(item.value.module as any);
 
 			// Resolve routes, if it's a thunk
 			// Put the resovled value in an array, if it's a single item
-			// FIXME: Actually, inputToPlugin return value as routes prop resolved.
-			// Remove typecasting in future and fix typings
-			let routes = plugin.routes as RouteConfig[];
+			let routes = await resolveRoutes(plugin.routes || [], options);
 
 			// Skip if plugin doesn't have any routes
 			if (!routes || routes.length === 0) {

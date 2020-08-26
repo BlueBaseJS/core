@@ -418,7 +418,7 @@ describe('PluginRegistry', () => {
 
 			await Plugins.register(createPlugin({ key: 'P1', routes: { name: 'P1_Route', path: 'a' } }));
 
-			const routes = await Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap({ BB } as any);
 
 			expect(routes).toMatchObject({
 				P1: [
@@ -438,7 +438,7 @@ describe('PluginRegistry', () => {
 				createPlugin({ key: 'P1', routes: () => ({ name: 'P1_Route', path: 'a' }) })
 			);
 
-			const routes = await Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap({ BB } as any);
 
 			expect(routes).toMatchObject({
 				P1: [
@@ -458,7 +458,7 @@ describe('PluginRegistry', () => {
 				createPlugin({ key: 'P1', routes: Promise.resolve({ name: 'P1_Route', path: 'a' }) })
 			);
 
-			const routes = await Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap({ BB } as any);
 
 			expect(routes).toMatchObject({
 				P1: [
@@ -478,7 +478,7 @@ describe('PluginRegistry', () => {
 				createPlugin({ key: 'P1', routes: () => Promise.resolve({ name: 'P1_Route', path: 'a' }) })
 			);
 
-			const routes = await Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap({ BB } as any);
 
 			expect(routes).toMatchObject({
 				P1: [
@@ -557,7 +557,7 @@ describe('PluginRegistry', () => {
 			// Disbale so it gets skipped
 			await Plugins.disable('p3');
 
-			const routes = await Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap({ BB } as any);
 
 			expect(routes).toMatchObject({
 				p1: [
@@ -617,7 +617,7 @@ describe('PluginRegistry', () => {
 			// Resolve so its loaded
 			await Plugins.resolve('p2');
 
-			const routes = await Plugins.getRouteMap(false);
+			const routes = await Plugins.getRouteMap({ BB } as any, false);
 
 			expect(routes).toMatchObject({
 				p1: [
@@ -658,7 +658,7 @@ describe('PluginRegistry', () => {
 
 			await Plugins.register(p1);
 
-			const routes = await Plugins.getRouteMap();
+			const routes = await Plugins.getRouteMap({ BB } as any);
 
 			expect(routes).toMatchObject({
 				p1: [
