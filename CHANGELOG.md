@@ -1,3 +1,24 @@
+# [6.0.0](https://github.com/BlueBaseJS/core/compare/v5.11.1...v6.0.0) (2020-08-26)
+
+### Bug Fixes
+
+-   **filter:** resolved rerendering of filter hook ([#306](https://github.com/BlueBaseJS/core/issues/306)) ([5b033e3](https://github.com/BlueBaseJS/core/commit/5b033e3))
+-   **VIew:** Fixed an issue where RCTView was crashing app ([3153910](https://github.com/BlueBaseJS/core/commit/3153910))
+
+### Features
+
+-   **🎨 Themes:** New theme engine ([#421](https://github.com/BlueBaseJS/core/issues/421)) ([dcfcc4f](https://github.com/BlueBaseJS/core/commit/dcfcc4f))
+-   **PluginRegistry:** Routes are now evaluated on render, not on boot ([6d1373c](https://github.com/BlueBaseJS/core/commit/6d1373c))
+
+### BREAKING CHANGES
+
+-   **PluginRegistry:** Route config thunk no longer receive BB as a param. It receives RouteOptions param instead.
+-   **🎨 Themes:** - Updated `theme.name` config to `theme`
+
+
+-   Typings updated
+-   Internal functions and API changed
+
 # [6.0.0-alpha.3](https://github.com/BlueBaseJS/core/compare/v6.0.0-alpha.2...v6.0.0-alpha.3) (2020-08-26)
 
 ### Features
