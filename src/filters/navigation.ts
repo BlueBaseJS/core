@@ -1,7 +1,7 @@
+import { FilterNestedCollection, RouteOptions } from '../registries';
 import { NavigatorProps, RouteConfig } from '@bluebase/components';
 
 import { BlueBase } from '../BlueBase';
-import { FilterNestedCollection } from '../registries';
 import deepmerge from 'deepmerge';
 
 // tslint:disable:object-literal-sort-keys
@@ -11,7 +11,7 @@ export const navigation: FilterNestedCollection = {
 			key: 'bluebase-navigator-root-internal-default',
 			priority: 3,
 
-			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
+			value: async (inputNavigator: NavigatorProps, opts: RouteOptions, BB: BlueBase) => {
 				const navigator: NavigatorProps = {
 					type: 'switch',
 					initialRouteName: 'Root',
@@ -21,7 +21,7 @@ export const navigation: FilterNestedCollection = {
 							name: 'Root',
 							path: '',
 							screen: 'SystemLayout',
-							navigator: await BB.Filters.run('bluebase.navigator.main', {} as any),
+							navigator: await BB.Filters.run('bluebase.navigator.main', {} as any, opts),
 							navigationOptions: {
 								header: null,
 							},
@@ -40,7 +40,7 @@ export const navigation: FilterNestedCollection = {
 			priority: 3,
 
 			// tslint:disable-line:object-literal-sort-keys
-			value: async (inputNavigator: NavigatorProps, _ctx: {}, BB: BlueBase) => {
+			value: async (inputNavigator: NavigatorProps, opts: RouteOptions, BB: BlueBase) => {
 				let mainRoutes: RouteConfig[] = [
 					{
 						name: 'Home',
@@ -54,7 +54,7 @@ export const navigation: FilterNestedCollection = {
 					},
 				];
 
-				const routeMap = await BB.Plugins.getRouteMap();
+				const routeMap = await BB.Plugins.getRouteMap(opts);
 				Object.values(routeMap).forEach(
 					(routesArr: RouteConfig[]) => (mainRoutes = mainRoutes.concat(routesArr))
 				);
