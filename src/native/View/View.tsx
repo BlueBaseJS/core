@@ -4,5 +4,5 @@ import React from 'react';
 
 export { ViewProps } from 'react-native';
 
-export const View = (props: ViewProps) => <BaseView {...props} />;
+export const View: React.ComponentType<ViewProps> = (props: ViewProps) => <BaseView {...props} />;
 View.displayName = 'View';
