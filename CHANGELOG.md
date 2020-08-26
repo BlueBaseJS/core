@@ -1,3 +1,9 @@
+## [6.0.1](https://github.com/BlueBaseJS/core/compare/v6.0.0...v6.0.1) (2020-08-26)
+
+### Bug Fixes
+
+-   **useFilter:** Fixed an issue where app was being unmounted ([3a689f8](https://github.com/BlueBaseJS/core/commit/3a689f8))
+
 # [6.0.0](https://github.com/BlueBaseJS/core/compare/v5.11.1...v6.0.0) (2020-08-26)
 
 ### Bug Fixes
