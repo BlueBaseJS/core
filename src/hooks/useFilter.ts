@@ -40,7 +40,7 @@ export function useFilter<T = any>(
 		return () => {
 			cancelled = true;
 		};
-	}, [name, ...deps, args]);
+	}, [name, ...deps]);
 
 	return { value, loading, error };
 }
