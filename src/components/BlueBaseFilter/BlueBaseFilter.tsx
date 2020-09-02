@@ -36,8 +36,10 @@ export const BlueBaseFilter: React.FunctionComponent<BlueBaseFilterProps> = ({
 	}
 
 	if (error) {
-		return <ErrorState />;
+		return <ErrorState error={error} />;
 	}
 
 	return children(value);
 };
+
+BlueBaseFilter.displayName = 'BlueBaseFilter';
