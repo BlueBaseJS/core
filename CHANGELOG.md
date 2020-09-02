@@ -1,3 +1,9 @@
+## [6.0.2](https://github.com/BlueBaseJS/core/compare/v6.0.1...v6.0.2) (2020-09-02)
+
+### Bug Fixes
+
+-   **BlueBaseFilter:** Better error debugging ([906ee32](https://github.com/BlueBaseJS/core/commit/906ee32))
+
 ## [6.0.1](https://github.com/BlueBaseJS/core/compare/v6.0.0...v6.0.1) (2020-08-26)
 
 ### Bug Fixes
