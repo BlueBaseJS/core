@@ -8,6 +8,7 @@ import {
 import React, { useEffect, useState } from 'react';
 
 import { AppearanceProvider } from 'react-native-appearance';
+import { BlueBaseAppTestError } from '../BlueBaseAppTestError';
 import { BlueBaseProvider } from '../../contexts';
 import { ErrorObserver } from '../../components';
 import { IntlProvider } from '../../intl';
@@ -129,7 +130,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 };
 
 const defaultProps: Partial<BlueBaseAppProps> = {
-	ErrorComponent: BlueBaseAppError,
+	ErrorComponent: process.env.NODE_ENV === 'test' ? BlueBaseAppTestError : BlueBaseAppError,
 	LoadingComponent: BlueBaseAppLoading,
 };
 

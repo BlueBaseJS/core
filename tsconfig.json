@@ -4,6 +4,7 @@
 		"outDir": "dist",
 		"rootDir": ".",
 		"typeRoots": ["node_modules/@types"],
+		"types": ["jest", "node"],
 		"baseUrl": ".",
 		"paths": {
 			"@bluebase/core": ["src"],
