@@ -1,4 +1,4 @@
-import { isProduction, makeId } from '../Misc';
+import { isProduction, makeId, merge } from '../Misc';
 
 declare const global: any;
 
@@ -90,6 +90,15 @@ describe('Utils', () => {
 			it('should create a string of 8 chars', async () => {
 				const n1 = makeId(5);
 				expect(n1.length).toBe(5);
+			});
+		});
+
+		describe('.merge method', () => {
+			it('should merge 2 objects', async () => {
+				expect(merge({ foo: 'bar' }, { bar: 'baz', foo: 'fop' } as any)).toMatchObject({
+					bar: 'baz',
+					foo: 'fop',
+				});
 			});
 		});
 	});

@@ -170,4 +170,23 @@ describe('BlueBaseApp', () => {
 
 		wrapper.unmount();
 	});
+
+	it(`should throw error using the test error component`, async () => {
+		const BB = new BlueBase();
+		(BB as any).bootInternal = () => {
+			throw Error('Boot Error!');
+		};
+
+		global.process.env.NODE_ENV = 'test';
+
+		let message = '';
+
+		try {
+			mount(<BlueBaseApp BB={BB} />);
+		} catch (error) {
+			message = error.message;
+		}
+
+		expect(message).toBe('Boot Error!');
+	});
 });
