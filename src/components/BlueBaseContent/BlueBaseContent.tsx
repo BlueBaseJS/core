@@ -34,13 +34,17 @@ export const BlueBaseContent = (props: BlueBaseContentProps) => {
 	return children ? (
 		renderChildrenWithProps(children, { BB })
 	) : (
-		<View key="bluebase-wrapper" style={styles!.backdrop}>
-			<StatusBar translucent barStyle={theme.mode === 'dark' ? 'light-content' : 'dark-content'} />
-			<BlueBaseFilter filter="bluebase.navigator.root" value={{}} args={{ theme, BB, intl }}>
-				{(navigator: NavigatorProps) => <Navigation navigator={navigator} />}
-			</BlueBaseFilter>
-		</View>
-	);
+			<View key="bluebase-wrapper" style={styles!.backdrop}>
+				<StatusBar
+					barStyle={theme.mode === 'dark' ? 'light-content' : 'dark-content'}
+					translucent
+					backgroundColor="transparent"
+				/>
+				<BlueBaseFilter filter="bluebase.navigator.root" value={{}} args={{ theme, BB, intl }}>
+					{(navigator: NavigatorProps) => <Navigation navigator={navigator} />}
+				</BlueBaseFilter>
+			</View>
+		);
 };
 
 BlueBaseContent.defaultStyles = (theme: Theme) => ({
