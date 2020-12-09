@@ -19,28 +19,20 @@ const Widget = getComponent('Widget');
 export const EmptyState = (props: EmptyStateProps) => {
 	const ComponentState = useComponent<ComponentStateProps>('ComponentState');
 
-	return props.widget ? (
-		isMobile() ? (
-			<ComponentState
-				title="Empty Area"
-				description="Create new items to fill this area."
-				{...props}
-			/>
-		) : (
-			<Widget>
-				<ComponentState
-					title="Empty Area"
-					description="Create new items to fill this area."
-					{...props}
-				/>
-			</Widget>
-		)
-	) : (
+	return isMobile() ? (
 		<ComponentState
 			title="Empty Area"
 			description="Create new items to fill this area."
 			{...props}
 		/>
+	) : (
+		<Widget>
+			<ComponentState
+				title="Empty Area"
+				description="Create new items to fill this area."
+				{...props}
+			/>
+		</Widget>
 	);
 };
 
