@@ -9,8 +9,8 @@ export function useColorScheme(): ColorSchemeName {
 	let mode;
 	try {
 		const rnColorScheme = useColorSchemeRN();
-		mode = rnColorScheme || 'light';
-		if (mode === 'no-preference') {
+		mode = rnColorScheme;
+		if (mode !== 'light' && mode !== 'dark') {
 			mode = 'light';
 		}
 	} catch (error) {
