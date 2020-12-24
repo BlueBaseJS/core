@@ -10,7 +10,7 @@ export function useColorScheme(): ColorSchemeName {
 	try {
 		const rnColorScheme = useColorSchemeRN();
 		mode = rnColorScheme || 'light';
-		if (rnColorScheme === 'no-preference') {
+		if (mode === 'no-preference') {
 			mode = 'light';
 		}
 	} catch (error) {
