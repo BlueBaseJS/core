@@ -1,3 +1,9 @@
+# [6.1.0](https://github.com/BlueBaseJS/core/compare/v6.0.2...v6.1.0) (2020-09-30)
+
+### Features
+
+-   **BlueBaseAppTestError:** Better error debugging in test enviornments ([6c1391d](https://github.com/BlueBaseJS/core/commit/6c1391d))
+
 ## [6.0.2](https://github.com/BlueBaseJS/core/compare/v6.0.1...v6.0.2) (2020-09-02)
 
 ### Bug Fixes
