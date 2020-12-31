@@ -1,3 +1,11 @@
+## [6.1.1](https://github.com/BlueBaseJS/core/compare/v6.1.0...v6.1.1) (2020-12-31)
+
+### Bug Fixes
+
+-   **added hooks for latest preferences:** added hooks for latest preferences ([fd25124](https://github.com/BlueBaseJS/core/commit/fd25124))
+-   **added hooks of components:** added hooks of components ([57e8e7e](https://github.com/BlueBaseJS/core/commit/57e8e7e))
+-   **if no option of mode then toggle to no preferences:** if no option of mode then toggle to no preferences ([b70ddbf](https://github.com/BlueBaseJS/core/commit/b70ddbf))
+
 # [6.1.0](https://github.com/BlueBaseJS/core/compare/v6.0.2...v6.1.0) (2020-09-30)
 
 ### Features
