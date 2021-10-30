@@ -3,7 +3,6 @@ export * from './Button';
 export * from './FlatList';
 export * from './Image';
 export * from './ImageBackground';
-export * from './Picker';
 export * from './SafeAreaView';
 export * from './ScrollView';
 export * from './Switch';
