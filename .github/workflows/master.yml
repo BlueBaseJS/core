@@ -15,14 +15,14 @@ jobs:
   test:
     name: Test, Build & Release
     runs-on: ubuntu-latest
-    container: 
+    container:
       image: bluebasejs/github-actions-image
       options: --privileged
 
     strategy:
       matrix:
         node-version: [12]
-        
+
     steps:
       - uses: actions/checkout@v1
 
@@ -41,9 +41,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Set Unsafe-Perm
-        run: npm set unsafe-perm true
-
       - name: Semantic Release
         env:
           GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
@@ -52,7 +49,7 @@ jobs:
         run: npx semantic-release@beta
 
       - name: Build Docs
-        env: 
+        env:
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn run doc
 
