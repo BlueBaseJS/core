@@ -1,3 +1,10 @@
+# [7.0.0-beta.4](https://github.com/BlueBaseJS/core/compare/v7.0.0-beta.3...v7.0.0-beta.4) (2021-10-31)
+
+### Bug Fixes
+
+*   Fixed build issues ([0d09d75](https://github.com/BlueBaseJS/core/commit/0d09d7556e15b7a27ba1920f2ec67f7cfe03078a))
+*   Fixed warnings ([31918f2](https://github.com/BlueBaseJS/core/commit/31918f2f91434555aaeec3231db9294cab5fab3e))
+
 # [7.0.0-beta.3](https://github.com/BlueBaseJS/core/compare/v7.0.0-beta.2...v7.0.0-beta.3) (2021-10-31)
 
 ### Bug Fixes
