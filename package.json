@@ -48,7 +48,7 @@
     "test:lint": "eslint src --ext=ts,tsx",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
     "test:md": "remark . -f",
-    "test:only": "jest --coverage --forceExit --detectOpenHandles --runInBand",
+    "test:only": "jest --coverage --runInBand",
     "prepublishOnly": "yarn remove expo react-native;",
     "storybook-native": "NODE_ENV=STORYBOOK_NATIVE expo start",
     "prestorybook-native": "rnstl",
