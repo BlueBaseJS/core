@@ -3,7 +3,7 @@
   "description": "🚀 A modular, pluggable and cross platform app framework.",
   "author": "BlueEast Team <code@blueeast.com>",
   "version": "7.0.0-beta.4",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.js",
   "repository": "https://github.com/BlueBaseJS/core.git",
