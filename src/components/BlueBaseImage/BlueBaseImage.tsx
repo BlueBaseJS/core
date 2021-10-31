@@ -21,7 +21,7 @@ import { isMobile } from '../../utils';
 ```
  */
 //
-export const BlueBaseImage = (props: BlueBaseImageProps) => {
+export const BlueBaseImage = (props: BlueBaseImageProps & any) => {
 	const { resolve, source: _source, ...rest } = props;
 
 	const BB = useBlueBase();

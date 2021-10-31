@@ -112,7 +112,7 @@ export const ComponentState = (props: ComponentStateProps) => {
 	const imageProps = {
 		..._imageProps,
 		source: imageSource || _imageProps.source,
-		style: StyleSheet.flatten([styles.image, _imageProps.style]),
+		style: StyleSheet.flatten([styles.image, (_imageProps as any).style]),
 	};
 
 	return (
