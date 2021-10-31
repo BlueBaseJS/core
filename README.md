@@ -3,7 +3,7 @@
   <h1>
 		BlueBase
 	</h1>
-  <p>🚀 A modular, pluggable and cross platform app framework.</p>
+  <p>🚀 A modular, pluggable and cross platform app framework!</p>
 </div>
 
 <hr />
