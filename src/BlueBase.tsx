@@ -119,7 +119,7 @@ export class BlueBase {
 
 		try {
 			await this.bootInternal(options);
-		} catch (error: any) {
+		} catch (error) {
 			this.onProgress({ error });
 		}
 

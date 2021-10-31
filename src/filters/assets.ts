@@ -12,8 +12,8 @@ export const assets: FilterNestedCollection = {
 
 			value: async (bootOptions: BootOptions, _ctx: {}, BB: BlueBase) => {
 				const keys = await BB.Assets.registerCollection({
-					Logo: require('../../assets/common/logo.png'),
-					LogoSquare: require('../../assets/common/logo.png'),
+					Logo: require('../../assets/logo.png'),
+					LogoSquare: require('../../assets/logo.png'),
 				});
 
 				keys.forEach((key: string) => BB.Assets.setMeta(key, 'source', { type: 'system' }));

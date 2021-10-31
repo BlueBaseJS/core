@@ -1,5 +1,5 @@
 <div align="center">
-	<img height=125 src="assets/common/logo.png">
+	<img height=125 src="assets/logo.png">
   <h1>
 		BlueBase
 	</h1>

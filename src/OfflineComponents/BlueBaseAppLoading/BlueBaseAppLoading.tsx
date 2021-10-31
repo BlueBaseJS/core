@@ -11,7 +11,7 @@ import { BlueBase, BlueBaseProgress } from '../../BlueBase';
 import { WaitObserver } from '../../components';
 
 // tslint:disable-next-line: no-var-requires
-const Logo = require('../../../assets/common/logo.png');
+const Logo = require('../../../assets/logo.png');
 
 export interface BlueBaseAppLoadingProps {
 	BB: BlueBase;

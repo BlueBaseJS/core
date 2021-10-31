@@ -7,8 +7,8 @@ import { BlueBaseImage } from '../BlueBaseImage';
 storiesOf('BlueBaseImage', module).add('Simple Example', () => (
 	<BlueBaseApp
 		assets={{
-			Icon: require('../../../../assets/common/icon.png'),
-			Logo: require('../../../../assets/common/logo.png'),
+			Icon: require('../../../../assets//icon.png'),
+			Logo: require('../../../../assets/logo.png'),
 		}}
 	>
 		<BlueBaseImage

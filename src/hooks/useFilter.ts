@@ -13,7 +13,7 @@ export function useFilter<T = any>(
 	const BB = useBlueBase();
 	const [value, setValue] = useState(initialValue);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<Error | undefined>();
+	const [error, setError] = useState<any | undefined>();
 
 	let cancelled = false;
 
@@ -28,7 +28,7 @@ export function useFilter<T = any>(
 					setValue(result);
 					setLoading(false);
 				}
-			} catch (error: any) {
+			} catch (error) {
 				if (!cancelled) {
 					setError(error);
 					setLoading(false);

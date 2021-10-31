@@ -14,7 +14,7 @@ export function useColorScheme(): ColorSchemeName {
 		if (mode !== 'light' && mode !== 'dark') {
 			mode = 'light';
 		}
-	} catch (error: any) {
+	} catch (error) {
 		mode = 'light';
 	}
 

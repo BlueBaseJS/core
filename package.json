@@ -3,7 +3,7 @@
   "description": "🚀 A modular, pluggable and cross platform app framework.",
   "author": "BlueEast Team <code@blueeast.com>",
   "version": "7.0.0-beta.2",
-  "main": "dist/index.js",
+  "main": "node_modules/expo/AppEntry.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.js",
   "repository": "https://github.com/BlueBaseJS/core.git",
@@ -32,10 +32,10 @@
     }
   },
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "start": "rnstl && expo start",
+    "android": "yarn start --android",
+    "ios": "yarn start --ios",
+    "web": "yarn start --web",
     "eject": "expo eject",
     "clean": "rimraf coverage dist tmp",
     "build": "run-s clean && run-p build:* && cp -r ./dist/src/* ./dist && rm -r ./dist/src",

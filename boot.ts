@@ -4,7 +4,7 @@ import { ThemedCard } from './src/themes/__stories__/ThemedCard';
 // for booting bluebase. see https://blueeast.gitbooks.io/bluebase/
 export default {
 	assets: {
-		Icon: require('./assets/common/icon.png'),
+		Icon: require('./assets//icon.png'),
 	},
 
 	configs: {
