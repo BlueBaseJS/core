@@ -1,3 +1,9 @@
+# [7.0.0-beta.5](https://github.com/BlueBaseJS/core/compare/v7.0.0-beta.4...v7.0.0-beta.5) (2021-10-31)
+
+### Bug Fixes
+
+*   Fixed main property ([6517d56](https://github.com/BlueBaseJS/core/commit/6517d56a19c6e3c6917477b8b0c0e06200e0a847))
+
 # [7.0.0-beta.4](https://github.com/BlueBaseJS/core/compare/v7.0.0-beta.3...v7.0.0-beta.4) (2021-10-31)
 
 ### Bug Fixes
