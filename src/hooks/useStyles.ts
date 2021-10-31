@@ -1,8 +1,8 @@
-import { ComponentStyles, Theme } from '../themes';
-import { MaybeThunk, resolveThunk } from '../utils';
-
 import deepmerge from 'deepmerge';
 import isNil from 'lodash.isnil';
+
+import { ComponentStyles, Theme } from '../themes';
+import { MaybeThunk, resolveThunk } from '../utils';
 import { useBlueBase } from './useBlueBase';
 import { useTheme } from './useTheme';
 

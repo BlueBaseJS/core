@@ -1,6 +1,6 @@
+import { HoverObserverProps } from '@bluebase/components';
 import React, { SyntheticEvent } from 'react';
 
-import { HoverObserverProps } from '@bluebase/components';
 import { renderChildrenWithProps } from '../../utils';
 
 export interface HoverObserverState {

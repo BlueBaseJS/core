@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
 import { NavigationProps, NavigatorProps } from '@bluebase/components';
+import React from 'react';
 import { StatusBar, StyleProp, ViewProps, ViewStyle } from 'react-native';
-import { useBlueBase, useComponent, useIntl, useTheme } from '../../hooks';
 
 import { BlueBase } from '../../BlueBase';
-import { BlueBaseFilter } from '../BlueBaseFilter';
-import React from 'react';
+import { useBlueBase, useComponent, useIntl, useTheme } from '../../hooks';
 import { Theme } from '../../themes';
+import { MaybeRenderPropChildren, renderChildrenWithProps } from '../../utils';
+import { BlueBaseFilter } from '../BlueBaseFilter';
 
 export interface BlueBaseContentStyles {
 	backdrop: StyleProp<ViewStyle>;

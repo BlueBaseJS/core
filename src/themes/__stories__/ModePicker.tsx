@@ -1,5 +1,6 @@
-import { Picker } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import React from 'react';
+
 import { useTheme } from '../..';
 
 export const ModePicker = () => {

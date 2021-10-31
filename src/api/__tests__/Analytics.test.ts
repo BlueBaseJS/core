@@ -1,7 +1,7 @@
 // tslint:disable:object-literal-sort-keys
 
-import { AnalyticsTrackData } from '../Analytics';
 import { BlueBase } from '../../BlueBase';
+import { AnalyticsTrackData } from '../Analytics';
 
 describe('Analytics', () => {
 	it('should send track data through filter', async () => {

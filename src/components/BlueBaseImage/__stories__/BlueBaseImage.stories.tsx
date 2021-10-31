@@ -1,7 +1,8 @@
+import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
+
 import { BlueBaseApp } from '../../../';
 import { BlueBaseImage } from '../BlueBaseImage';
-import React from 'react';
-import storiesOf from '@bluebase/storybook-addon';
 
 storiesOf('BlueBaseImage', module).add('Simple Example', () => (
 	<BlueBaseApp

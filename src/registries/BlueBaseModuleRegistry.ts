@@ -1,11 +1,11 @@
 import {
 	BlueBaseModule,
-	MaybeBlueBaseModule,
 	createBlueBaseModule,
 	getDefiniteBlueBaseModule,
 	getDefiniteModule,
 	isBlueBaseModule,
 	isPromise,
+	MaybeBlueBaseModule,
 } from '../utils';
 import { ItemSource, Registry } from './Registry';
 

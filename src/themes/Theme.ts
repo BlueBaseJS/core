@@ -1,10 +1,10 @@
+import deepmerge from 'deepmerge';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
-import { Palette, PaletteInput, createPalette } from './Palette';
-import { ThemeTypography, ThemeTypographyInput, createTypography } from './Typography';
 
 import { MaybeThunk } from '../utils';
-import deepmerge from 'deepmerge';
 import { elevation } from './elevation';
+import { createPalette, Palette, PaletteInput } from './Palette';
+import { createTypography, ThemeTypography, ThemeTypographyInput } from './Typography';
 
 export interface ComponentStyles {
 	// rule

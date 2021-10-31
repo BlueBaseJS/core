@@ -1,7 +1,7 @@
 import { ComponentStateProps, ErrorStateProps } from '@bluebase/components';
-import { useBlueBase, useComponent } from '../../hooks';
-
 import React from 'react';
+
+import { useBlueBase, useComponent } from '../../hooks';
 
 /**
  * # 🚨 ErrorState

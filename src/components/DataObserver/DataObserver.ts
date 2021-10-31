@@ -1,7 +1,8 @@
 import { DataObserverProps } from '@bluebase/components';
-import React from 'react';
 import isboolean from 'lodash.isboolean';
 import isnil from 'lodash.isnil';
+import React from 'react';
+
 import { renderChildrenWithProps } from '../../utils';
 
 /**

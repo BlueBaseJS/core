@@ -1,15 +1,15 @@
-import { NavigationContext, StubNavigationActionsObject } from '../../../contexts';
-
-import { BlueBaseApp } from '../../..';
-import { NavigationActions } from '../NavigationActions';
 import { NavigationActionsObject } from '@bluebase/components';
-import React from 'react';
-import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
+import { BlueBaseApp } from '../../..';
+import { NavigationContext, StubNavigationActionsObject } from '../../../contexts';
+import { NavigationActions } from '../NavigationActions';
 
 describe('NavigationActions', () => {
-	it(`should pass stub actions to the consumer`, async () => {
+	it('should pass stub actions to the consumer', async () => {
 		const children = jest.fn().mockImplementation(() => <Text testID="content">Will render</Text>);
 		const wrapper = mount(
 			<NavigationContext.Provider value={StubNavigationActionsObject}>

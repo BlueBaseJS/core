@@ -1,8 +1,8 @@
-import { IntlContext, IntlContextData, IntlMessages } from '../contexts';
-import { useFilter, useRtl } from '../hooks';
+import React from 'react';
 
 import { Configs } from '../Configs';
-import React from 'react';
+import { IntlContext, IntlContextData, IntlMessages } from '../contexts';
+import { useFilter, useRtl } from '../hooks';
 import { useLocale } from '../hooks/useLocale';
 
 /**

@@ -1,7 +1,6 @@
-import { BlueBaseModuleRegistry, BlueBaseModuleRegistryItem } from '../BlueBaseModuleRegistry';
-
 import { BlueBase } from '../../BlueBase';
 import { createBlueBaseModule } from '../../utils';
+import { BlueBaseModuleRegistry, BlueBaseModuleRegistryItem } from '../BlueBaseModuleRegistry';
 
 describe('BlueBaseModuleRegistry', () => {
 	describe('.set method', () => {
@@ -116,7 +115,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 			try {
 				await registry.register('some', Promise.resolve('foo'));
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe('Could not register item. Reason: Unknown item type.');
 			}
 		});
@@ -138,7 +137,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 			try {
 				await registry.register(Promise.resolve({ value: 'foo', preload: true }));
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe('Could not register item. Reason: No key given.');
 			}
 		});
@@ -149,7 +148,7 @@ describe('BlueBaseModuleRegistry', () => {
 
 			try {
 				await registry.register(Promise.resolve('foo'));
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Could not register item with key "foo". Reason: No item given.'
 				);

@@ -1,9 +1,10 @@
-import { BlueBaseApp } from '../../../OfflineComponents';
-import { Button } from '../Button';
-import React from 'react';
-import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
+import { BlueBaseApp } from '../../../OfflineComponents';
+import { Button } from '../Button';
 
 describe('Button', () => {
 	// test(`should render Button with default color styles`, () => {
@@ -97,10 +98,10 @@ describe('Button', () => {
 	// 	expect(text.props.style[1]).toMatchObject(styles.defaultText);
 	// });
 
-	test(`should render Button with custom children`, async () => {
+	test('should render Button with custom children', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<Button testID="button-root" fullWidth={true}>
+				<Button testID="button-root" fullWidth>
 					<Text testID="custom">Custom</Text>
 				</Button>
 			</BlueBaseApp>
@@ -111,7 +112,7 @@ describe('Button', () => {
 		expect(wrapper.find('Button Text[testID="custom"]').last().text()).toBe('Custom');
 	});
 
-	test(`should use TouchableNativeFeedback on android platform`, async () => {
+	test('should use TouchableNativeFeedback on android platform', async () => {
 		jest.mock('react-native/Libraries/Utilities/Platform', () => {
 			const Platform = jest.requireActual('react-native/Libraries/Utilities/Platform');
 			Platform.OS = 'android';

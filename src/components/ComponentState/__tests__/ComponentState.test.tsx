@@ -1,13 +1,13 @@
-import * as Native from '../../../native';
-
-import { BlueBaseApp } from '../../../OfflineComponents';
-import { ComponentState } from '../ComponentState';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import * as Native from '../../../native';
+import { BlueBaseApp } from '../../../OfflineComponents';
+import { ComponentState } from '../ComponentState';
 
 describe('ComponentState', () => {
-	test(`should render ComponentState with all elements`, async () => {
+	test('should render ComponentState with all elements', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ComponentState
@@ -49,7 +49,7 @@ describe('ComponentState', () => {
 				.find('H6 Text')
 				.last()
 				.text()
-		).toBe("Looks like your'e new here!");
+		).toBe('Looks like your\'e new here!');
 		expect(
 			wrapper
 				.find(ComponentState)
@@ -66,7 +66,7 @@ describe('ComponentState', () => {
 		).toBe('Tap to Create');
 	});
 
-	test(`should render ComponentState with custom image`, async () => {
+	test('should render ComponentState with custom image', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ComponentState

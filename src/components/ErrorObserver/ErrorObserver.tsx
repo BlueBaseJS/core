@@ -1,8 +1,8 @@
 import { ErrorObserverProps, ErrorObserverState, ErrorStateProps } from '@bluebase/components';
+import React from 'react';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../contexts';
-import React from 'react';
 import { getComponent } from '../../getComponent';
 
 const MISSING_ERROR = Error('An unknown error occurred.');

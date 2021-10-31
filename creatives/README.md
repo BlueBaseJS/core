@@ -3,11 +3,12 @@
 ## Description
 
 This repository includes:
-1. Logo / Logo Icon
-2. Icons for Android
-3. iOS Icons
-3. Favicon
-5. Splash Screen
+
+1.  Logo / Logo Icon
+2.  Icons for Android
+3.  iOS Icons
+4.  Favicon
+5.  Splash Screen
 
 ## Logo / Logo Icon
 
@@ -36,4 +37,4 @@ This repository includes:
 
 ## Questions
 
-_None_
+*None*

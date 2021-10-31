@@ -1,13 +1,13 @@
-import { StyleSheet, TextProps } from 'react-native';
-
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseApp } from '../../';
-import { BlueBaseTheme } from '../../themes';
-import React from 'react';
-import { createPlugin } from '../../registries';
-import { getComponent } from '../../getComponent';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { StyleSheet, TextProps } from 'react-native';
+
+import { BlueBaseApp } from '../../';
+import { BlueBase } from '../../BlueBase';
+import { getComponent } from '../../getComponent';
+import { createPlugin } from '../../registries';
+import { BlueBaseTheme } from '../../themes';
 
 const theme = BlueBaseTheme;
 
@@ -27,7 +27,7 @@ const Overline = getComponent<TextProps>('Overline');
 describe('filters', () => {
 	describe('components', () => {
 		describe('bluebase.components.register.internal', () => {
-			test(`should register H1 component with proper styles`, async () => {
+			test('should register H1 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<H1>Sample Text</H1>
@@ -44,7 +44,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.h1);
 			});
 
-			test(`should register H2 component with proper styles`, async () => {
+			test('should register H2 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<H2>Sample Text</H2>
@@ -61,7 +61,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.h2);
 			});
 
-			test(`should register H3 component with proper styles`, async () => {
+			test('should register H3 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<H3>Sample Text</H3>
@@ -78,7 +78,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.h3);
 			});
 
-			test(`should register H4 component with proper styles`, async () => {
+			test('should register H4 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<H4>Sample Text</H4>
@@ -95,7 +95,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.h4);
 			});
 
-			test(`should register H5 component with proper styles`, async () => {
+			test('should register H5 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<H5>Sample Text</H5>
@@ -112,7 +112,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.h5);
 			});
 
-			test(`should register H6 component with proper styles`, async () => {
+			test('should register H6 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<H6>Sample Text</H6>
@@ -129,7 +129,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.h6);
 			});
 
-			test(`should register Subtitle1 component with proper styles`, async () => {
+			test('should register Subtitle1 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<Subtitle1>Sample Text</Subtitle1>
@@ -146,7 +146,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.subtitle1);
 			});
 
-			test(`should register Subtitle2 component with proper styles`, async () => {
+			test('should register Subtitle2 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<Subtitle2>Sample Text</Subtitle2>
@@ -163,7 +163,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.subtitle2);
 			});
 
-			test(`should register Body1 component with proper styles`, async () => {
+			test('should register Body1 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<Body1>Sample Text</Body1>
@@ -180,7 +180,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.body1);
 			});
 
-			test(`should register Body2 component with proper styles`, async () => {
+			test('should register Body2 component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<Body2>Sample Text</Body2>
@@ -197,7 +197,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.body2);
 			});
 
-			test(`should register Caption component with proper styles`, async () => {
+			test('should register Caption component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<Caption>Sample Text</Caption>
@@ -214,7 +214,7 @@ describe('filters', () => {
 				).toMatchObject(theme.typography.caption);
 			});
 
-			test(`should register Overline component with proper styles`, async () => {
+			test('should register Overline component with proper styles', async () => {
 				const wrapper = mount(
 					<BlueBaseApp>
 						<Overline>Sample Text</Overline>

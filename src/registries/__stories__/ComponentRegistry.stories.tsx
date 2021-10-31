@@ -1,11 +1,11 @@
-import { BlueBase, BlueBaseConsumer } from '../../';
-import { Button, Text, View } from 'react-native';
+import storiesOf from '@bluebase/storybook-addon';
 import React, { useState } from 'react';
+import { Button, Text, View } from 'react-native';
 
+import { BlueBase, BlueBaseConsumer } from '../../';
+import { useBlueBase } from '../../hooks';
 import { BlueBaseApp } from '../../OfflineComponents';
 import { WillMountLogger } from './WillMountLogger';
-import storiesOf from '@bluebase/storybook-addon';
-import { useBlueBase } from '../../hooks';
 
 const HOC = (Comp: React.ComponentType) => (props: any) => (
 	<View style={{ backgroundColor: 'green' }}>

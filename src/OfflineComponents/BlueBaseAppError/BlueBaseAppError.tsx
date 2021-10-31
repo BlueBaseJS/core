@@ -1,7 +1,13 @@
-import { BlueBase, BlueBaseProgress } from '../../BlueBase';
-import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-
 import React from 'react';
+import {
+	SafeAreaView,
+	ScrollView,
+	Text,
+	TouchableOpacity,
+	View
+} from 'react-native';
+
+import { BlueBase, BlueBaseProgress } from '../../BlueBase';
 import { WaitObserver } from '../../components';
 import { isProduction } from '../../utils';
 

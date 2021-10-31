@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { BlueBaseImageProps, ImageProps } from '@bluebase/components';
-import { useBlueBase, useComponent, useTheme } from '../../hooks';
+import React from 'react';
 
 import { BlueBase } from '../../BlueBase';
-import React from 'react';
 import { ThemeContextData } from '../../contexts';
+import { useBlueBase, useComponent, useTheme } from '../../hooks';
 import { isMobile } from '../../utils';
 
 // tslint:disable: jsdoc-format

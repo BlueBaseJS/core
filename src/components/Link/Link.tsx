@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { NativeSyntheticEvent, NativeTouchEvent, Platform, Text } from 'react-native';
-
 import { LinkProps } from '@bluebase/components';
 import React from 'react';
-import { TouchableItem } from '../TouchableItem';
+import { NativeSyntheticEvent, NativeTouchEvent, Platform, Text } from 'react-native';
+
 import { useNavigation } from '../../hooks';
+import { TouchableItem } from '../TouchableItem';
 
 const ExternalLink = (props: any) => <Text {...props} accessibilityRole="link" />;
 

@@ -1,17 +1,18 @@
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseContext } from '../../contexts';
-import React from 'react';
-import { Text } from 'react-native';
-import { ThemeProvider } from '../ThemeProvider';
-import { applyStyles } from '../applyStyles';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
+import { BlueBase } from '../../BlueBase';
+import { BlueBaseContext } from '../../contexts';
+import { applyStyles } from '../applyStyles';
+import { ThemeProvider } from '../ThemeProvider';
 
 const Demo = (props: any) => <Text style={props.styles.root}>Demo Text</Text>;
 Demo.defaultStyles = { root: { backgroundColor: 'red' } };
 
 describe('applyStyles', () => {
-	test(`apply styles without theme & unknown component name`, async () => {
+	test('apply styles without theme & unknown component name', async () => {
 		const ThemedDemo = applyStyles({ name: 'Foo' })(Demo);
 
 		const BB = new BlueBase();

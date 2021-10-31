@@ -1,5 +1,4 @@
 import { BlueBase, BlueBaseBootProgressCallback, BootOptions } from '../BlueBase';
-
 import { FilterNestedCollection } from '../registries';
 
 export const boot: FilterNestedCollection = {

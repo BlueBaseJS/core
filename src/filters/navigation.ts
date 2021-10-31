@@ -1,8 +1,8 @@
-import { FilterNestedCollection, RouteOptions } from '../registries';
 import { NavigatorProps, RouteConfig } from '@bluebase/components';
+import deepmerge from 'deepmerge';
 
 import { BlueBase } from '../BlueBase';
-import deepmerge from 'deepmerge';
+import { FilterNestedCollection, RouteOptions } from '../registries';
 
 // tslint:disable:object-literal-sort-keys
 export const navigation: FilterNestedCollection = {

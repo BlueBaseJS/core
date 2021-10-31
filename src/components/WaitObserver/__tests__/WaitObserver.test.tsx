@@ -1,9 +1,9 @@
+import { mount } from 'enzyme';
+import React from 'react';
 import { Text, View } from 'react-native';
 
-import React from 'react';
 // import TestRenderer from 'react-test-renderer';
 import { WaitObserver } from '../WaitObserver';
-import { mount } from 'enzyme';
 
 jest.useFakeTimers();
 
@@ -29,7 +29,7 @@ const LoadingState = (props: any) => {
 };
 
 describe('WaitObserver', () => {
-	test(`should change states based on custom delay & timeout`, () => {
+	test('should change states based on custom delay & timeout', () => {
 		const onTimeout = jest.fn();
 		const onRetry = jest.fn();
 
@@ -87,7 +87,7 @@ describe('WaitObserver', () => {
 		// expect(component.find('WaitObserver').text()).toBe('This is taking longer than usual');
 	});
 
-	test(`should change states based on custom delay & timeouts`, () => {
+	test('should change states based on custom delay & timeouts', () => {
 		const onTimeout = jest.fn();
 
 		const component = mount(
@@ -114,7 +114,7 @@ describe('WaitObserver', () => {
 		expect(component.getElements()).toHaveLength(0);
 	});
 
-	test(`should not change states based on timeouts, becuase it gets unmounted`, () => {
+	test('should not change states based on timeouts, becuase it gets unmounted', () => {
 		const onTimeout = jest.fn();
 
 		const component = mount(
@@ -146,7 +146,7 @@ describe('WaitObserver', () => {
 		expect(component.getElements()).toHaveLength(0);
 	});
 
-	test(`should show loading state if delay is 0`, () => {
+	test('should show loading state if delay is 0', () => {
 		const component = mount(
 			<WaitObserver delay={0} timeout={2000} onRetry={null as any} onTimeout={null as any}>
 				{(props: any) => <LoadingState {...props} />}
@@ -172,7 +172,7 @@ describe('WaitObserver', () => {
 		expect(component.find('WaitObserver').text()).toBe('Loading now...');
 	});
 
-	test(`should show loading state if delay is 0 (without render prop)`, () => {
+	test('should show loading state if delay is 0 (without render prop)', () => {
 		const component = mount(
 			<WaitObserver delay={0} timeout={2000} onRetry={null as any} onTimeout={null as any}>
 				<LoadingState />
@@ -183,7 +183,7 @@ describe('WaitObserver', () => {
 		expect(component.find('WaitObserver').text()).toBe('Loading now...');
 	});
 
-	test(`default callback functions should return undefined`, () => {
+	test('default callback functions should return undefined', () => {
 		const component = mount(
 			<WaitObserver>
 				<LoadingState />

@@ -1,11 +1,12 @@
-import { BlueBaseApp } from '../../../';
-import { BlueBaseImage } from '../BlueBaseImage';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import { BlueBaseApp } from '../../../';
+import { BlueBaseImage } from '../BlueBaseImage';
 
 describe('BlueBaseImage', () => {
-	test(`should render a BlueBlueImage`, async () => {
+	test('should render a BlueBlueImage', async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
 				<BlueBaseImage resolve="Logo" source={{ uri: 'ignore.png' }} />
@@ -24,7 +25,7 @@ describe('BlueBaseImage', () => {
 		});
 	});
 
-	test(`should render a BlueBlueImage`, async () => {
+	test('should render a BlueBlueImage', async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
 				<BlueBaseImage source="Logo" />
@@ -43,7 +44,7 @@ describe('BlueBaseImage', () => {
 		});
 	});
 
-	test(`should render a backup BlueBlueImage`, async () => {
+	test('should render a backup BlueBlueImage', async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
 				<BlueBaseImage resolve={['Icon', 'Logo']} source={{ uri: 'ignore.png' }} />
@@ -62,7 +63,7 @@ describe('BlueBaseImage', () => {
 		});
 	});
 
-	test(`should render an image from source if none is found`, async () => {
+	test('should render an image from source if none is found', async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ None: require('./Logo.jpg') }}>
 				<BlueBaseImage resolve={['Icon', 'Logo']} source={{ uri: 'ignore.png' }} />
@@ -81,7 +82,7 @@ describe('BlueBaseImage', () => {
 		});
 	});
 
-	test(`should render a backup BlueBlueImage from source prop`, async () => {
+	test('should render a backup BlueBlueImage from source prop', async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
 				<BlueBaseImage source={['Icon', 'Logo']} />
@@ -100,7 +101,7 @@ describe('BlueBaseImage', () => {
 		});
 	});
 
-	test(`should render null when there is any empty array in source`, async () => {
+	test('should render null when there is any empty array in source', async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
 				<BlueBaseImage source={[]} />
@@ -112,7 +113,7 @@ describe('BlueBaseImage', () => {
 		expect(wrapper.find('Image').exists()).toBe(false);
 	});
 
-	test(`should render null if there is no source`, async () => {
+	test('should render null if there is no source', async () => {
 		const wrapper = mount(
 			<BlueBaseApp assets={{ Logo: './Logo.jpg' }}>
 				<BlueBaseImage />

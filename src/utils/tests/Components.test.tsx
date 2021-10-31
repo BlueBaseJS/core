@@ -1,11 +1,11 @@
-import { forwardRef, renderChildrenWithProps } from '../Components';
-
-import { BlueBaseApp } from '../../';
-import { FlatListProps } from 'react-native';
-import React from 'react';
-import { getComponent } from '../../getComponent';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { FlatListProps } from 'react-native';
+
+import { BlueBaseApp } from '../../';
+import { getComponent } from '../../getComponent';
+import { forwardRef, renderChildrenWithProps } from '../Components';
 
 const FlatList = getComponent<FlatListProps<any>>('FlatList');
 

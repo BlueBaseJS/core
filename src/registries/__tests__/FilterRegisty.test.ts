@@ -1,7 +1,7 @@
 // declare var global: any;
 
-import { DEFAULT_HOOK_PRIORITY, FilterNestedCollection, FilterRegistry } from '../FilterRegistry';
 import { BlueBase } from '../../BlueBase';
+import { DEFAULT_HOOK_PRIORITY, FilterNestedCollection, FilterRegistry } from '../FilterRegistry';
 
 describe('FilterRegistry', () => {
 	describe('.register method', () => {
@@ -145,7 +145,7 @@ describe('FilterRegistry', () => {
 
 			try {
 				await Filters.registerNestedCollection(collection);
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Could not register Filter. Reason: Input is not a filter item.'
 				);

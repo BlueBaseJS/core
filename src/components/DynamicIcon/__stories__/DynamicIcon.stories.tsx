@@ -1,10 +1,10 @@
-import { BlueBase, BlueBaseConsumer } from '../../..';
+import { DynamicIconProps } from '@bluebase/components';
+import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
 import { Text, View } from 'react-native';
 
-import { DynamicIconProps } from '@bluebase/components';
-import React from 'react';
+import { BlueBase, BlueBaseConsumer } from '../../..';
 import { getComponent } from '../../../getComponent';
-import storiesOf from '@bluebase/storybook-addon';
 
 const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
 

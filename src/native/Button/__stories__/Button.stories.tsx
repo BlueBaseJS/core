@@ -1,7 +1,8 @@
-import { Button } from '../Button';
-import React from 'react';
-import { View } from '../../View';
 import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
+
+import { View } from '../../View';
+import { Button } from '../Button';
 
 storiesOf('Button', module)
 	.add('With default props', () => <Button>Hello</Button>)
@@ -26,7 +27,7 @@ storiesOf('Button', module)
 				<Button color="primary">Normal</Button>
 			</View>
 			<View style={{ padding: 8 }}>
-				<Button color="primary" fullWidth={true}>
+				<Button color="primary" fullWidth>
 					Full Width
 				</Button>
 			</View>

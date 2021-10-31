@@ -1,7 +1,13 @@
-import { ActivityIndicator, Image, ImageProps, Text, View } from 'react-native';
-import { BlueBase, BlueBaseProgress } from '../../BlueBase';
-
 import React from 'react';
+import {
+	ActivityIndicator,
+	Image,
+	ImageProps,
+	Text,
+	View
+} from 'react-native';
+
+import { BlueBase, BlueBaseProgress } from '../../BlueBase';
 import { WaitObserver } from '../../components';
 
 // tslint:disable-next-line: no-var-requires

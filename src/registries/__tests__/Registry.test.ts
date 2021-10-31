@@ -1,6 +1,5 @@
-import { Registry, RegistryItem } from '../Registry';
-
 import { BlueBase } from '../../BlueBase';
+import { Registry, RegistryItem } from '../Registry';
 
 describe('Registry', () => {
 	describe('.set method', () => {
@@ -141,7 +140,7 @@ describe('Registry', () => {
 
 			try {
 				await registry.register('some', 'foo');
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe('Could not register item. Reason: Unknown item type.');
 			}
 		});
@@ -164,7 +163,7 @@ describe('Registry', () => {
 
 			try {
 				await registry.register({ value: 'foo', preload: true });
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe('Could not register item. Reason: No key given.');
 			}
 		});
@@ -175,7 +174,7 @@ describe('Registry', () => {
 
 			try {
 				await registry.register('foo');
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Could not register item with key "foo". Reason: No item given.'
 				);
@@ -191,7 +190,7 @@ describe('Registry', () => {
 
 			try {
 				await registry.register({ value: 'foo' });
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe('Could not register item "undefined". Reason: No key given.');
 			}
 		});
@@ -262,7 +261,7 @@ describe('Registry', () => {
 
 			try {
 				await registry.registerCollection('boom' as any);
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Could not register collection. Reason: Unknown collection type.'
 				);

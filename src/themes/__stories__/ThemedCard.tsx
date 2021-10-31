@@ -1,9 +1,9 @@
+import React from 'react';
 import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
-import { MaybeThunk } from '../../utils';
-import React from 'react';
-import { Theme } from '../Theme';
 import { getComponent } from '../../getComponent';
+import { MaybeThunk } from '../../utils';
+import { Theme } from '../Theme';
 
 const View = getComponent<ViewProps>('View');
 const Text = getComponent<TextProps>('Text');

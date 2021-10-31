@@ -1,7 +1,7 @@
-import { getDefiniteModule, makeId } from '../utils';
+import isNil from 'lodash.isnil';
 
 import { BlueBase } from '../BlueBase';
-import isNil from 'lodash.isnil';
+import { getDefiniteModule, makeId } from '../utils';
 
 /**
  * Source of this item. Contains information about who registered this it.

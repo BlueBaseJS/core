@@ -1,7 +1,7 @@
-import { MaybeEsModule, getDefiniteModule } from './Modules';
-import { MaybePromise, getDefinitePromise, isPromise } from './Promises';
-
 import isNil from 'lodash.isnil';
+
+import { getDefiniteModule, MaybeEsModule } from './Modules';
+import { getDefinitePromise, isPromise, MaybePromise } from './Promises';
 
 // /**
 //  * Structure of an input acceptable to create a BlueBaseModule

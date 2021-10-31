@@ -1,11 +1,12 @@
-import { BlueBaseApp } from '../../../';
-import { LoadingState } from '../LoadingState';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import { BlueBaseApp } from '../../../';
+import { LoadingState } from '../LoadingState';
 
 describe('LoadingState', () => {
-	test(`should render an ActivityIndicator`, async () => {
+	test('should render an ActivityIndicator', async () => {
 		const component = mount(
 			<BlueBaseApp>
 				<LoadingState />
@@ -20,10 +21,10 @@ describe('LoadingState', () => {
 		expect(component.exists('LoadingState Button')).toBe(false);
 	});
 
-	test(`should render timeout message`, async () => {
+	test('should render timeout message', async () => {
 		const component = mount(
 			<BlueBaseApp>
-				<LoadingState timedOut={true} />
+				<LoadingState timedOut />
 			</BlueBaseApp>
 		);
 
@@ -41,12 +42,12 @@ describe('LoadingState', () => {
 		expect(component.exists('LoadingState Button')).toBe(false);
 	});
 
-	test(`should render timeout message & retry button`, async () => {
+	test('should render timeout message & retry button', async () => {
 		const mockedFn = jest.fn();
 
 		const component = mount(
 			<BlueBaseApp>
-				<LoadingState timedOut={true} retry={mockedFn} />
+				<LoadingState timedOut retry={mockedFn} />
 			</BlueBaseApp>
 		);
 

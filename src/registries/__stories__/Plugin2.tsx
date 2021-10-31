@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
-import React from 'react';
 import { Text } from '@bluebase/components';
+import React from 'react';
+
 import { createPlugin } from '../PluginRegistry';
 
 export default createPlugin({

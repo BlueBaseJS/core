@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 describe('elevation', () => {
-	test(`should return shadow styles on native`, () => {
+	test('should return shadow styles on native', () => {
 		const elevation = require('../elevation/elevation.native').elevation;
 
 		expect(elevation(1)).toMatchObject({
@@ -34,13 +34,13 @@ describe('elevation', () => {
 		});
 	});
 
-	test(`should return elevation prop on web`, () => {
+	test('should return elevation prop on web', () => {
 		const elevation = require('../elevation/elevation.android').elevation;
 
 		expect(elevation(1)).toMatchObject({ elevation: 1 });
 	});
 
-	test(`should return box shadow prop on web`, () => {
+	test('should return box shadow prop on web', () => {
 		const elevation = require('../elevation/elevation.ts').elevation;
 
 		// tslint:disable: max-line-length

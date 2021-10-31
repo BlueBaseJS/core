@@ -1,9 +1,9 @@
+import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseAppLoading } from '../BlueBaseAppLoading';
-import React from 'react';
-import storiesOf from '@bluebase/storybook-addon';
 
 storiesOf('BlueBaseAppLoading', module)
 	.add('Basic Example', () => (

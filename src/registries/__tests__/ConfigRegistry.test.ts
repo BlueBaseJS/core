@@ -166,7 +166,7 @@ describe('ConfigRegistry', () => {
 
 			try {
 				await Configs.registerCollectionIfNotExists('foo' as any);
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Could not register collection. Reason: Unknown collection type.'
 				);

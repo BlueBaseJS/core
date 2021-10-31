@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-import { DefinePlugin } from 'webpack';
 import path from 'path';
+import { DefinePlugin } from 'webpack';
 
 function webpackConfig(config: any) {
 	config.resolve.alias = {

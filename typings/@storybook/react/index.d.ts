@@ -1,2 +1,2 @@
 declare module '@storybook/react';
-declare var module: any;
+declare let module: any;

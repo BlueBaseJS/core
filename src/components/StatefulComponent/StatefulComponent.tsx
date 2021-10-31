@@ -8,8 +8,8 @@ import {
 	WaitObserverChildrenProps,
 	WaitObserverProps,
 } from '@bluebase/components';
-
 import React from 'react';
+
 import { getComponent } from '../../getComponent';
 
 const DataObserver = getComponent<DataObserverProps>('DataObserver');

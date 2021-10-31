@@ -1,7 +1,7 @@
 import { BlueBaseFilterProps, ErrorStateProps, LoadingStateProps } from '@bluebase/components';
-import { useComponent, useFilter } from '../../hooks';
-
 import React from 'react';
+
+import { useComponent, useFilter } from '../../hooks';
 
 /**
  * # 🚇 BlueBaseFilter

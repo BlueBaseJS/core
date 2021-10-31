@@ -1,6 +1,6 @@
 import { BlueBase } from '../../BlueBase';
-import { Theme } from '../../themes';
 import { createPlugin } from '../../registries';
+import { Theme } from '../../themes';
 
 describe('filters', () => {
 	describe('themes', () => {

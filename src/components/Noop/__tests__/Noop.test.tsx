@@ -1,7 +1,8 @@
-import { Noop } from '../Noop';
 import React from 'react';
 import { Text } from 'react-native';
 import renderer from 'react-test-renderer';
+
+import { Noop } from '../Noop';
 
 const TestComponent = () => <Text>Testing</Text>;
 TestComponent.displayName = 'Testing';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { Button } from 'react-native';
 export default function HookButton() {
 	const [buttonText, setButtonText] = useState('Click me, please');

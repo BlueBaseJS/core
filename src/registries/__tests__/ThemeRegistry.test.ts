@@ -42,7 +42,7 @@ describe('ThemeRegistry', () => {
 
 			try {
 				Themes.getValue('foo');
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe('Could not resolve any of the following themes: [foo].');
 			}
 		});

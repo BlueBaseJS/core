@@ -1,16 +1,17 @@
-import { BlueBaseApp } from '../../../';
-import { BlueBaseFilter } from '../BlueBaseFilter';
-import React from 'react';
-import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
+import { BlueBaseApp } from '../../../';
+import { BlueBaseFilter } from '../BlueBaseFilter';
 
 // beforeEach(() => {
 // 	jest.resetModules();
 // });
 
 describe('BlueBaseFilter', () => {
-	test(`should render a filtered value`, async () => {
+	test('should render a filtered value', async () => {
 		const filters = {
 			math: [
 				{ key: 'add-fifteen', value: (val: number) => val + 15 },
@@ -39,7 +40,7 @@ describe('BlueBaseFilter', () => {
 		).toBe('25');
 	});
 
-	test(`should show error state when a filter throws`, async () => {
+	test('should show error state when a filter throws', async () => {
 		const filters = {
 			math: [
 				{ key: 'add-fifteen', value: (val: number) => val + 15 },

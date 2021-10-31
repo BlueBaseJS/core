@@ -1,7 +1,7 @@
-import { useComponent, useIntl } from '../../hooks';
-
 import { FormattedMessageProps } from '@bluebase/components';
 import React from 'react';
+
+import { useComponent, useIntl } from '../../hooks';
 
 export const FormattedMessage = (props: FormattedMessageProps) => {
 	const Text = useComponent('Text');

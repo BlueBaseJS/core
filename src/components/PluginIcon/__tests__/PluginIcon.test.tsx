@@ -1,13 +1,14 @@
-import { BlueBaseApp } from '../../../';
-import { BlueBaseAppError } from '../../../OfflineComponents';
 import { DynamicIconProps } from '@bluebase/components';
-import { PluginIcon } from '../PluginIcon';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import { BlueBaseApp } from '../../../';
+import { BlueBaseAppError } from '../../../OfflineComponents';
+import { PluginIcon } from '../PluginIcon';
 
 describe('PluginIcon', () => {
-	test(`should render an image icon for a registered plugin`, async () => {
+	test('should render an image icon for a registered plugin', async () => {
 		const plugin = {
 			icon: {
 				source: { uri: 'https://picsum.photos/200' },
@@ -28,7 +29,7 @@ describe('PluginIcon', () => {
 		expect(wrapper.find('DynamicIcon').first().prop('type')).toBe('image');
 	});
 
-	test(`should render an image icon for a registered plugin where icon prop is a thunk`, async () => {
+	test('should render an image icon for a registered plugin where icon prop is a thunk', async () => {
 		const plugin = {
 			icon: () => ({
 				source: { uri: 'https://picsum.photos/200' },
@@ -49,7 +50,7 @@ describe('PluginIcon', () => {
 		expect(wrapper.find('DynamicIcon').first().prop('type')).toBe('image');
 	});
 
-	test(`should render null where plugin doesnt have an icon prop`, async () => {
+	test('should render null where plugin doesnt have an icon prop', async () => {
 		const plugin = {
 			key: 'some',
 			value: {},
@@ -66,7 +67,7 @@ describe('PluginIcon', () => {
 		expect(wrapper.find('DynamicIcon').exists()).toBe(false);
 	});
 
-	test(`should throw an error when a plugin is not registered`, async () => {
+	test('should throw an error when a plugin is not registered', async () => {
 		const wrapper = mount(
 			<BlueBaseApp ErrorComponent={BlueBaseAppError}>
 				<PluginIcon id="some" />

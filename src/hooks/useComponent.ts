@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useBlueBase } from './useBlueBase';
 
 export function useComponent<T = any>(

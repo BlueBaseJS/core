@@ -1,12 +1,13 @@
-import { ModePicker } from './ModePicker';
+import storiesOf from '@bluebase/storybook-addon';
 import React from 'react';
+import { View } from 'react-native';
+
+// tslint:disable:no-console
+import { getComponent } from '../../getComponent';
 import { ThemeDemo } from '../../themes/__stories__/ThemeDemo';
 import { ThemePicker } from '../../themes/__stories__/ThemePicker';
 import { ThemeProvider } from '../ThemeProvider';
-import { View } from 'react-native';
-// tslint:disable:no-console
-import { getComponent } from '../../getComponent';
-import storiesOf from '@bluebase/storybook-addon';
+import { ModePicker } from './ModePicker';
 
 const ThemedCard = getComponent('ThemedCard');
 const ThemedCard2 = getComponent('ThemedCard2');

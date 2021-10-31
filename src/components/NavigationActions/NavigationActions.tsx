@@ -1,6 +1,7 @@
 import { NavigationActionsProps } from '@bluebase/components';
-import { renderChildrenWithProps } from '../../utils';
+
 import { useNavigation } from '../../hooks';
+import { renderChildrenWithProps } from '../../utils';
 
 export const NavigationActions = ({ children }: NavigationActionsProps) => {
 	const actions = useNavigation();

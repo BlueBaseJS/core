@@ -1,9 +1,9 @@
 import { DataObserverProps, LoadingStateProps } from '@bluebase/components';
-
-import React from 'react';
-import { Text } from '../../../native';
-import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
+
+import { getComponent } from '../../../getComponent';
+import { Text } from '../../../native';
 
 const DataObserver = getComponent<DataObserverProps>('DataObserver');
 const LoadingState = getComponent<LoadingStateProps>('LoadingState');
@@ -58,7 +58,7 @@ storiesOf('DataObserver', module)
 	))
 
 	.add('with render prop loading:true instead of isLoading prop', () => (
-		<DataObserver loading={true} isEmpty={() => false}>
+		<DataObserver loading isEmpty={() => false}>
 			{(data: any) => {
 				return data.loading ? (
 					<LoadingState />

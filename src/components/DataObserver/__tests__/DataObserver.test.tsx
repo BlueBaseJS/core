@@ -1,13 +1,13 @@
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
 import { Text, View } from 'react-native';
 
 import { BlueBaseApp } from '../../../';
 import { DataObserver } from '../DataObserver';
-import React from 'react';
-import { mount } from 'enzyme';
-import { waitForElement } from 'enzyme-async-helpers';
 
 describe('DataObserver', () => {
-	test(`should generate states from custom listener functions`, async () => {
+	test('should generate states from custom listener functions', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<DataObserver data="foo" isEmpty={() => false} isLoading={() => true}>
@@ -46,10 +46,10 @@ describe('DataObserver', () => {
 		).toBe('true');
 	});
 
-	test(`should set loading to true`, async () => {
+	test('should set loading to true', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<DataObserver data="foo" loading={true}>
+				<DataObserver data="foo" loading>
 					{({ data, empty, loading }: { data: string; empty: boolean; loading: boolean }) => {
 						return (
 							<View testID="data-view">
@@ -85,10 +85,10 @@ describe('DataObserver', () => {
 		).toBe('true');
 	});
 
-	test(`should set empty to true if data if an empty array`, async () => {
+	test('should set empty to true if data if an empty array', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<DataObserver data={[]} loading={true}>
+				<DataObserver data={[]} loading>
 					{({ data, empty, loading }: { data: string; empty: boolean; loading: boolean }) => {
 						return (
 							<View testID="data-view">
@@ -124,10 +124,10 @@ describe('DataObserver', () => {
 		).toBe('true');
 	});
 
-	test(`should set empty to false if data if an array`, async () => {
+	test('should set empty to false if data if an array', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
-				<DataObserver data={['a']} loading={true}>
+				<DataObserver data={['a']} loading>
 					{({ data, empty, loading }: { data: string; empty: boolean; loading: boolean }) => {
 						return (
 							<View testID="data-view">
@@ -163,7 +163,7 @@ describe('DataObserver', () => {
 		).toBe('true');
 	});
 
-	test(`should set empty and loading to false when there are no listener functions`, async () => {
+	test('should set empty and loading to false when there are no listener functions', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<DataObserver data="a" isEmpty={null as any} isLoading={null as any}>
@@ -202,7 +202,7 @@ describe('DataObserver', () => {
 		).toBe('false');
 	});
 
-	test(`should set loading to false, if loading prop is not a boolean`, async () => {
+	test('should set loading to false, if loading prop is not a boolean', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<DataObserver data="a" loading={'true' as any}>

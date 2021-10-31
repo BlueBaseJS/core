@@ -1,6 +1,5 @@
-import { View as BaseView, ViewProps } from 'react-native';
-
 import React from 'react';
+import { View as BaseView, ViewProps } from 'react-native';
 
 export { ViewProps } from 'react-native';
 

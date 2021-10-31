@@ -1,10 +1,10 @@
-import { Button, Dimensions, StyleSheet, View } from 'react-native';
+import storiesOf from '@bluebase/storybook-addon';
 import React, { useState } from 'react';
+import { Button, Dimensions, StyleSheet, View } from 'react-native';
 
 import { BlueBase } from '../../../BlueBase';
 import { BlueBaseApp } from '../../BlueBaseApp/BlueBaseApp';
-import { BlueBaseAppError } from '../BlueBaseAppError';
-import storiesOf from '@bluebase/storybook-addon';
+import { BlueBaseAppError } from '../../BlueBaseAppError';
 
 const Bang = () => {
 	throw Error('💥 Bang Bang Boom!');

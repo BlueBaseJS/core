@@ -1,6 +1,6 @@
 // tslint:disable:object-literal-sort-keys
-import { Font, FontRegistry } from '../FontRegistry';
 import { BlueBase } from '../../BlueBase';
+import { Font, FontRegistry } from '../FontRegistry';
 
 describe('FontRegistry', () => {
 	describe('.register method', () => {

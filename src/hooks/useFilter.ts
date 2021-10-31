@@ -28,7 +28,7 @@ export function useFilter<T = any>(
 					setValue(result);
 					setLoading(false);
 				}
-			} catch (error) {
+			} catch (error: any) {
 				if (!cancelled) {
 					setError(error);
 					setLoading(false);

@@ -1,7 +1,8 @@
 import { NoopProps } from '@bluebase/components';
-import React from 'react';
-import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
+
+import { getComponent } from '../../../getComponent';
 
 const Noop = getComponent<NoopProps>('Noop');
 

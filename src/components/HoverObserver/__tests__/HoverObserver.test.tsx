@@ -1,14 +1,14 @@
-import { HoverObserver, HoverObserverState } from '../HoverObserver';
-
-import { HoverObserver as HoverObserverWeb } from '../HoverObserver.web';
+import { mount } from 'enzyme';
 import React from 'react';
 import { Text } from 'react-native';
-import { mount } from 'enzyme';
+
+import { HoverObserver, HoverObserverState } from '../HoverObserver';
+import { HoverObserver as HoverObserverWeb } from '../HoverObserver.web';
 
 jest.useFakeTimers();
 
 describe('HoverObserver', () => {
-	it(`should render a HoverObserver with default props`, () => {
+	it('should render a HoverObserver with default props', () => {
 		const wrapper = mount(
 			<HoverObserverWeb>
 				{({ isHovering }: HoverObserverState) => (
@@ -43,7 +43,7 @@ describe('HoverObserver', () => {
 		wrapper.unmount();
 	});
 
-	it(`should always set isHovering to false on android`, () => {
+	it('should always set isHovering to false on android', () => {
 		const wrapper = mount(
 			<HoverObserver>
 				{({ isHovering }: any) => <Text>{isHovering ? 'Hovering!' : 'Not Hovering!'}</Text>}

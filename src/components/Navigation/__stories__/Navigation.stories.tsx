@@ -1,8 +1,9 @@
 import { NavigationProps } from '@bluebase/components';
+import storiesOf from '@bluebase/storybook-addon';
 import React from 'react';
+
 // tslint:disable: object-literal-sort-keys
 import { getComponent } from '../../../getComponent';
-import storiesOf from '@bluebase/storybook-addon';
 
 const Navigation = getComponent<NavigationProps>('Navigation');
 

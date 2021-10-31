@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-
-import { Configs } from '../Configs';
 import { I18nManager } from 'react-native';
 import rtlDetect from 'rtl-detect';
+
+import { Configs } from '../Configs';
 import { useConfig } from './useConfig';
 
 export function useRtl() {

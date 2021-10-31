@@ -1,5 +1,5 @@
-import { Registry, RegistryInputItem, RegistryItem } from './Registry';
 import { Theme, ThemeInput } from '../themes';
+import { Registry, RegistryInputItem, RegistryItem } from './Registry';
 
 export interface ThemeRegistryItemExtras {}
 

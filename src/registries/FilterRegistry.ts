@@ -1,11 +1,15 @@
+import isFunction from 'lodash.isfunction';
+import isNil from 'lodash.isnil';
+
+import { BlueBase } from '../BlueBase';
 import {
 	BlueBaseModule,
+	getDefiniteArray,
+	getDefiniteBlueBaseModule,
 	MaybeArray,
 	MaybeBlueBaseModule,
 	MaybeThunk,
 	Omit,
-	getDefiniteArray,
-	getDefiniteBlueBaseModule,
 	resolveThunk,
 } from '../utils';
 import {
@@ -13,11 +17,7 @@ import {
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-
-import { BlueBase } from '../BlueBase';
 import { ItemCollection } from './Registry';
-import isFunction from 'lodash.isfunction';
-import isNil from 'lodash.isnil';
 
 /**
  * Default priority for a filter.
@@ -126,7 +126,7 @@ export class FilterRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 				const newItem: FilterRegistryInputItem = { event: eventName, ...item } as any;
 
 				if (!this.isInputItem(newItem)) {
-					throw Error(`Could not register Filter. Reason: Input is not a filter item.`);
+					throw Error('Could not register Filter. Reason: Input is not a filter item.');
 				}
 
 				await this.register(newItem);

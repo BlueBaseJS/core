@@ -1,8 +1,8 @@
-import { BlueBaseContext, NavigationContext, StubNavigationActionsObject } from '../../contexts';
 import { NavigationProps, RouteConfig } from '@bluebase/components';
+import React from 'react';
 
 import { BlueBase } from '../../BlueBase';
-import React from 'react';
+import { BlueBaseContext, NavigationContext, StubNavigationActionsObject } from '../../contexts';
 import { resolveThunk } from '../../utils';
 
 /**

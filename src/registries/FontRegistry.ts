@@ -1,7 +1,7 @@
-import { Registry, RegistryInputItem, RegistryItem } from './Registry';
-
 import { ImageRequireSource } from 'react-native';
+
 import { loadAllFonts } from './helpers';
+import { Registry, RegistryInputItem, RegistryItem } from './Registry';
 
 export interface FontRegistryItemExtras {
 	preload: boolean;

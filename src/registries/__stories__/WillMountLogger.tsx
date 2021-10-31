@@ -1,7 +1,6 @@
 /* eslint-disable react/no-deprecated */
-import { Text, View } from 'react-native';
-
 import React from 'react';
+import { Text, View } from 'react-native';
 
 export class WillMountLogger extends React.Component<any> {
 	private mounts: number = 0;

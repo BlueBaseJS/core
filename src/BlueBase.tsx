@@ -1,4 +1,5 @@
 import { Analytics, Logger } from './api';
+import systemFilters from './filters';
 import {
 	AssetCollection,
 	AssetRegistry,
@@ -15,10 +16,8 @@ import {
 	ThemeCollection,
 	ThemeRegistry,
 } from './registries';
-
 import { MaybeRenderPropChildren } from './utils';
 import { VERSION } from './version';
-import systemFilters from './filters';
 
 export interface BlueBaseProgress {
 	/**
@@ -83,6 +82,7 @@ const emptyBootOptions: BootOptionsInternal = {
 
 export class BlueBase {
 	// Allow other props
+	// eslint-disable-next-line no-undef
 	[key: string]: any;
 
 	/** BlueBase Version */
@@ -119,7 +119,7 @@ export class BlueBase {
 
 		try {
 			await this.bootInternal(options);
-		} catch (error) {
+		} catch (error: any) {
 			this.onProgress({ error });
 		}
 

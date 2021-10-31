@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+
 import { createPalette } from '../Palette';
 import { createTypography } from '../Typography';
 
@@ -9,13 +10,13 @@ describe('createTypography', () => {
 	// 	jest.resetModules();
 	// });
 
-	test(`fontFamily should be undefined on native`, () => {
+	test('fontFamily should be undefined on native', () => {
 		const palette = createPalette('light');
 		const typography = createTypography(palette);
 		expect(typography.body1.fontFamily).toBeUndefined();
 	});
 
-	test(`fontFamily should NOT be undefined on web`, () => {
+	test('fontFamily should NOT be undefined on web', () => {
 		// jest.mock('Platform', () => {
 		// 	const Platform = jest.requireActual('Platform');
 		// 	Platform.OS = 'web';

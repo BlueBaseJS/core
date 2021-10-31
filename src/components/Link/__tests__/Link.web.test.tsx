@@ -4,12 +4,13 @@ jest.mock('react-native/Libraries/Utilities/Platform', () => {
 	return Platform;
 });
 
-import { BlueBaseApp } from '../../../OfflineComponents/BlueBaseApp';
-import { Link } from '../Link';
-import { NavigationContext } from '../../../contexts';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import { NavigationContext } from '../../../contexts';
+import { BlueBaseApp } from '../../../OfflineComponents/BlueBaseApp';
+import { Link } from '../Link';
 
 const createStubActions = () => ({
 	getParam: jest.fn(),
@@ -33,7 +34,7 @@ describe('Link', () => {
 
 	// });
 
-	test(`should render ExternalLink on web`, async () => {
+	test('should render ExternalLink on web', async () => {
 		const stubActions = createStubActions();
 
 		const wrapper = mount(

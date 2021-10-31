@@ -1,6 +1,6 @@
+import React from 'react';
 import { TextProps, ViewProps } from 'react-native';
 
-import React from 'react';
 import { getComponent } from '../../getComponent';
 import { useTheme } from '../../hooks';
 

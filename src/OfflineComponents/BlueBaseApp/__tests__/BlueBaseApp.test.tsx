@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
-import { BlueBase } from '../../../BlueBase';
-import { BlueBaseApp } from '../BlueBaseApp';
-import { BlueBaseAppError } from '../../BlueBaseAppError';
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
 import React from 'react';
 import { Text } from 'react-native';
-import { mount } from 'enzyme';
 import wait from 'waait';
-import { waitForElement } from 'enzyme-async-helpers';
+
+import { BlueBase } from '../../../BlueBase';
+import { BlueBaseAppError } from '../../BlueBaseAppError';
+import { BlueBaseApp } from '../BlueBaseApp';
 
 declare const global: any;
 
@@ -19,7 +20,7 @@ const BangNull = () => {
 };
 
 describe('BlueBaseApp', () => {
-	it(`should render BlueBaseApp`, async () => {
+	it('should render BlueBaseApp', async () => {
 		const wrapper = mount(<BlueBaseApp />);
 
 		// // Will show loading
@@ -41,7 +42,7 @@ describe('BlueBaseApp', () => {
 		wrapper.unmount();
 	});
 
-	it(`should render BlueBaseApp with custom child`, async () => {
+	it('should render BlueBaseApp with custom child', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<Text testID="Custom">🚀 BlueBase System Content!</Text>
@@ -55,7 +56,7 @@ describe('BlueBaseApp', () => {
 		wrapper.unmount();
 	});
 
-	it(`should render error state when boot throws an error`, async () => {
+	it('should render error state when boot throws an error', async () => {
 		const BB = new BlueBase();
 		BB.Configs.setValue('development', true);
 		(BB as any).bootInternal = () => {
@@ -72,7 +73,7 @@ describe('BlueBaseApp', () => {
 		wrapper.unmount();
 	});
 
-	it(`should render error state when a child throws an error`, async () => {
+	it('should render error state when a child throws an error', async () => {
 		const wrapper = mount(
 			<BlueBaseApp ErrorComponent={BlueBaseAppError}>
 				<Bang />
@@ -89,7 +90,7 @@ describe('BlueBaseApp', () => {
 		wrapper.unmount();
 	});
 
-	it(`should render error state with custom message when a child throws a null error`, async () => {
+	it('should render error state with custom message when a child throws a null error', async () => {
 		const wrapper = mount(
 			<BlueBaseApp ErrorComponent={BlueBaseAppError}>
 				<BangNull />
@@ -107,7 +108,7 @@ describe('BlueBaseApp', () => {
 		wrapper.unmount();
 	});
 
-	it(`should render error state with custom message when in production mode`, async () => {
+	it('should render error state with custom message when in production mode', async () => {
 		const wrapper = mount(
 			<BlueBaseApp configs={{ development: false }} ErrorComponent={BlueBaseAppError}>
 				<Bang />
@@ -134,7 +135,7 @@ describe('BlueBaseApp', () => {
 	});
 
 	// tslint:disable-next-line: max-line-length
-	it(`should render error state with actual error message when development config is undefined, && isProduction is false`, async () => {
+	it('should render error state with actual error message when development config is undefined, && isProduction is false', async () => {
 		const BB = new BlueBase();
 		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
@@ -151,7 +152,7 @@ describe('BlueBaseApp', () => {
 	});
 
 	// tslint:disable-next-line: max-line-length
-	it(`should render error state with custom error message when development config is undefined, && isProduction is true`, async () => {
+	it('should render error state with custom error message when development config is undefined, && isProduction is true', async () => {
 		const BB = new BlueBase();
 		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
@@ -171,7 +172,7 @@ describe('BlueBaseApp', () => {
 		wrapper.unmount();
 	});
 
-	it(`should throw error using the test error component`, async () => {
+	it('should throw error using the test error component', async () => {
 		const BB = new BlueBase();
 		(BB as any).bootInternal = () => {
 			throw Error('Boot Error!');
@@ -183,7 +184,7 @@ describe('BlueBaseApp', () => {
 
 		try {
 			mount(<BlueBaseApp BB={BB} />);
-		} catch (error) {
+		} catch (error: any) {
 			message = error.message;
 		}
 

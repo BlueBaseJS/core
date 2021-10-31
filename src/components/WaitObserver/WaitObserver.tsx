@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-
 import { WaitObserverProps } from '@bluebase/components';
+import { useEffect, useState } from 'react';
 
 /**
  * # ⏰ WaitObserver

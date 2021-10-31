@@ -1,9 +1,10 @@
-import { BlueBaseApp } from '../../../';
-import React from 'react';
-import { Redirect } from '../Redirect';
 import { mount } from 'enzyme';
-import { renderChildrenWithProps } from '../../../utils';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import { BlueBaseApp } from '../../../';
+import { renderChildrenWithProps } from '../../../utils';
+import { Redirect } from '../Redirect';
 
 let stubActions: any = {};
 
@@ -30,7 +31,7 @@ describe('Redirect', () => {
 		};
 	});
 
-	test(`should call the replace function with the given routeName`, async () => {
+	test('should call the replace function with the given routeName', async () => {
 		const components = {
 			NavigationActions,
 		};
@@ -50,7 +51,7 @@ describe('Redirect', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 	});
 
-	test(`should call the replace function with the given path`, async () => {
+	test('should call the replace function with the given path', async () => {
 		const components = {
 			NavigationActions,
 		};
@@ -70,7 +71,7 @@ describe('Redirect', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 	});
 
-	test(`should call the push function with the given routeName`, async () => {
+	test('should call the push function with the given routeName', async () => {
 		const components = {
 			NavigationActions,
 		};
@@ -90,7 +91,7 @@ describe('Redirect', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 
-	test(`should not do anything if there is no routeName or path prop`, async () => {
+	test('should not do anything if there is no routeName or path prop', async () => {
 		const components = {
 			NavigationActions,
 		};

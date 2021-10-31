@@ -1,9 +1,9 @@
+import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
 import { TextProps, ViewProps } from 'react-native';
 
-import { BlueBaseApp } from '../OfflineComponents';
-import React from 'react';
 import { getComponent } from '../getComponent';
-import storiesOf from '@bluebase/storybook-addon';
+import { BlueBaseApp } from '../OfflineComponents';
 
 const View = getComponent<ViewProps>('View');
 const Text = getComponent<TextProps>('Text');

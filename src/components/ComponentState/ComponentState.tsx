@@ -7,10 +7,10 @@ import {
 	FormattedMessageProps,
 	H6Props,
 } from '@bluebase/components';
-import { StyleSheet, ViewProps } from 'react-native';
-import { useComponent, useStyles } from '../../hooks';
-
 import React from 'react';
+import { StyleSheet, ViewProps } from 'react-native';
+
+import { useComponent, useStyles } from '../../hooks';
 import { Theme } from '../../themes';
 
 const defaultStyles = (theme: Theme): Partial<ComponentStateStyles> => ({

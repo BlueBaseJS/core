@@ -1,8 +1,8 @@
 import { ComponentStateProps, ImageProps, ViewProps } from '@bluebase/components';
-
-import React from 'react';
-import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
+
+import { getComponent } from '../../../getComponent';
 
 const ComponentState = getComponent<ComponentStateProps>('ComponentState');
 const Image = getComponent<ImageProps>('Image');

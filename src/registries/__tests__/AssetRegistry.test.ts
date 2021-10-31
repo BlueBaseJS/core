@@ -1,6 +1,6 @@
 // tslint:disable:object-literal-sort-keys
-import { Asset, AssetRegistry } from '../AssetRegistry';
 import { BlueBase } from '../../BlueBase';
+import { Asset, AssetRegistry } from '../AssetRegistry';
 
 describe('AssetRegistry', () => {
 	describe('.register method', () => {

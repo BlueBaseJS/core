@@ -1,9 +1,9 @@
-import { ColorSchemeName, useBlueBase, useColorScheme, useConfig } from '../hooks';
-import { Theme, ThemeInput } from './Theme';
-import { ThemeContext, ThemeContextData } from '../contexts';
+import React from 'react';
 
 import { Configs } from '../Configs';
-import React from 'react';
+import { ThemeContext, ThemeContextData } from '../contexts';
+import { ColorSchemeName, useBlueBase, useColorScheme, useConfig } from '../hooks';
+import { Theme, ThemeInput } from './Theme';
 
 /**
  * Props of the `ThemeProvider` component.

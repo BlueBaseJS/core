@@ -1,8 +1,9 @@
 import { HoverObserverProps } from '@bluebase/components';
+import storiesOf from '@bluebase/storybook-addon';
 import React from 'react';
 import { Text } from 'react-native';
+
 import { getComponent } from '../../../getComponent';
-import storiesOf from '@bluebase/storybook-addon';
 
 // import { SystemApp } from '../SystemApp';
 

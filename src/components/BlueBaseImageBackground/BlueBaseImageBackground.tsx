@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import { BlueBaseContext, ThemeContextData } from '../../contexts';
 import { BlueBaseImageProps, ImageBackgroundProps } from '@bluebase/components';
-import { ImageSourcePropType, ImageBackground as RNImageBackground } from 'react-native';
 import React, { ReactNode, useContext } from 'react';
+import { ImageBackground as RNImageBackground, ImageSourcePropType } from 'react-native';
 
 import { BlueBase } from '../../BlueBase';
 import { resolveImageSource } from '../../components';
+import { BlueBaseContext, ThemeContextData } from '../../contexts';
 import { useTheme } from '../../hooks';
 
 // tslint:disable: jsdoc-format

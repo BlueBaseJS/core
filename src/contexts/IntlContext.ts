@@ -1,5 +1,6 @@
+import React, { createContext } from 'react';
+
 import { Configs } from '../Configs';
-import { createContext } from 'react';
 
 export type IntlMessages = {
 	[key: string]: string;

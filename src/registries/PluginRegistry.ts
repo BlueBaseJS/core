@@ -1,31 +1,31 @@
+import { DynamicIconProps, RouteConfig } from '@bluebase/components';
+
+import { Theme } from '..';
+import { BlueBase } from '../BlueBase';
+import { IntlContextData } from '../contexts';
 import {
 	BlueBaseModule,
-	MaybeArray,
-	MaybePromise,
-	MaybeThunk,
 	getDefiniteArray,
 	getDefinitePromise,
 	isBlueBaseModule,
 	isPromise,
 	joinPaths,
+	MaybeArray,
+	MaybePromise,
+	MaybeThunk,
 	resolveThunk,
 } from '../utils';
+import { AssetCollection } from './AssetRegistry';
 import {
 	BlueBaseModuleRegistry,
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { DynamicIconProps, RouteConfig } from '@bluebase/components';
-
-import { AssetCollection } from './AssetRegistry';
-import { BlueBase } from '../BlueBase';
 import { ComponentCollection } from './ComponentRegistry';
 import { ConfigCollection } from './ConfigRegistry';
 import { FilterNestedCollection } from './FilterRegistry';
 import { FontCollection } from './FontRegistry';
-import { IntlContextData } from '../contexts';
 import { ItemCollection } from './Registry';
-import { Theme } from '..';
 import { ThemeCollection } from './ThemeRegistry';
 
 export type PluginCategory =

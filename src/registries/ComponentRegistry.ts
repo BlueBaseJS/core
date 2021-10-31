@@ -1,17 +1,18 @@
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import flowRight from 'lodash.flowright';
+import isNil from 'lodash.isnil';
+import React from 'react';
+import Loadable from 'react-loadable';
+
+import { ReactLoadableLoading } from '../components/';
+import { applyStyles, ComponentStyles } from '../themes';
+import { getDefiniteBlueBaseModule, isBlueBaseModule, MaybeThunk, Thunk } from '../utils';
 import {
 	BlueBaseModuleRegistry,
 	BlueBaseModuleRegistryInputItem,
 	BlueBaseModuleRegistryItem,
 } from './BlueBaseModuleRegistry';
-import { ComponentStyles, applyStyles } from '../themes';
-import { MaybeThunk, Thunk, getDefiniteBlueBaseModule, isBlueBaseModule } from '../utils';
-
 import { ItemCollection } from './Registry';
-import Loadable from 'react-loadable';
-import { ReactLoadableLoading } from '../components/';
-import flowRight from 'lodash.flowright';
-import hoistNonReactStatics from 'hoist-non-react-statics';
-import isNil from 'lodash.isnil';
 
 /**
  * Definition of the HOC
@@ -128,9 +129,8 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 			throw Error(`Could not add hocs for "${key}" component. Reason: Component not found.`);
 		}
 
-		const currentHocs: Array<
-			ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs
-		> = super.getMeta(key, 'hocs', []);
+		const currentHocs: Array<ComponentRegistryHocItem | ComponentRegistryHocItemWithArgs> =
+			super.getMeta(key, 'hocs', []);
 
 		this.setMeta(key, 'hocs', [...currentHocs, ...hocs]);
 	}

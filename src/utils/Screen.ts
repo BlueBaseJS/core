@@ -1,5 +1,5 @@
-import { Dimensions } from 'react-native';
 import { SCREEN_SIZE } from '@bluebase/components';
+import { Dimensions } from 'react-native';
 
 // tslint:disable: object-literal-sort-keys
 

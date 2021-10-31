@@ -1,6 +1,7 @@
-import { Configs } from '../Configs';
+import React, { createContext } from 'react';
+
 import { Theme } from '..';
-import { createContext } from 'react';
+import { Configs } from '../Configs';
 
 /**
  * Interface of object passed as param to the ThemeConsumer render prop method.

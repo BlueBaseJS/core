@@ -1,7 +1,8 @@
 import { ErrorStateProps } from '@bluebase/components';
-import React from 'react';
-import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
+
+import { getComponent } from '../../../getComponent';
 
 const ErrorState = getComponent<ErrorStateProps>('ErrorState');
 

@@ -1,12 +1,8 @@
-import {
-	ActivityIndicatorProps,
-	ComponentStateProps,
-	LoadingStateProps,
-} from '@bluebase/components';
+import { ActivityIndicatorProps, ComponentStateProps, LoadingStateProps } from '@bluebase/components';
+import React from 'react';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../contexts';
-import React from 'react';
 import { getComponent } from '../../getComponent';
 
 const ActivityIndicator = getComponent<ActivityIndicatorProps>('ActivityIndicator');

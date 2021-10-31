@@ -1,9 +1,10 @@
-import { BlueBaseApp } from '../../../OfflineComponents/BlueBaseApp';
-import { Link } from '../Link';
-import { NavigationContext } from '../../../contexts';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import { NavigationContext } from '../../../contexts';
+import { BlueBaseApp } from '../../../OfflineComponents/BlueBaseApp';
+import { Link } from '../Link';
 
 const createStubActions = () => ({
 	getParam: jest.fn(),
@@ -23,7 +24,7 @@ const createStubActions = () => ({
 });
 
 describe('Link', () => {
-	test(`should call the navigate function with the given routeName`, async () => {
+	test('should call the navigate function with the given routeName', async () => {
 		const stubActions = createStubActions();
 
 		const wrapper = mount(
@@ -55,7 +56,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 
-	test(`should call the push function with the given routeName`, async () => {
+	test('should call the push function with the given routeName', async () => {
 		const stubActions = createStubActions();
 
 		const wrapper = mount(
@@ -87,7 +88,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 
-	test(`should call the replace function with the given path`, async () => {
+	test('should call the replace function with the given path', async () => {
 		const stubActions = createStubActions();
 
 		const wrapper = mount(
@@ -118,7 +119,7 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 	});
 
-	test(`should not do anything if event.defaultPrevented is true`, async () => {
+	test('should not do anything if event.defaultPrevented is true', async () => {
 		const stubActions = createStubActions();
 
 		const wrapper = mount(
@@ -147,7 +148,7 @@ describe('Link', () => {
 		expect(stubActions.push).toBeCalledTimes(0);
 	});
 
-	test(`should call the push function with the given path`, async () => {
+	test('should call the push function with the given path', async () => {
 		const stubActions = createStubActions();
 		const customOnPress = jest.fn();
 
@@ -177,7 +178,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 
-	test(`should not do anything if there is no path or routeName prop`, async () => {
+	test('should not do anything if there is no path or routeName prop', async () => {
 		const stubActions = createStubActions();
 
 		const wrapper = mount(
@@ -204,7 +205,7 @@ describe('Link', () => {
 		expect(stubActions.replace).toBeCalledTimes(0);
 	});
 
-	test(`should not render anything if component prop is null`, async () => {
+	test('should not render anything if component prop is null', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<Link component={null as any} />

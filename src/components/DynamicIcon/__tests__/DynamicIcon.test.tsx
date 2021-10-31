@@ -1,14 +1,14 @@
-import { Text, View } from 'react-native';
-
-import { BlueBase } from '../../../BlueBase';
-import { BlueBaseApp } from '../../../';
-import { DynamicIcon } from '../DynamicIcon';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text, View } from 'react-native';
+
+import { BlueBaseApp } from '../../../';
+import { BlueBase } from '../../../BlueBase';
+import { DynamicIcon } from '../DynamicIcon';
 
 describe('DynamicIcon', () => {
-	test(`should return null if there is no type prop`, async () => {
+	test('should return null if there is no type prop', async () => {
 		const DIcon = DynamicIcon as any;
 
 		const wrapper = mount(
@@ -22,7 +22,7 @@ describe('DynamicIcon', () => {
 		expect(wrapper.find(DIcon).text()).toBe('');
 	});
 
-	test(`should render an image with default size of 100x100`, async () => {
+	test('should render an image with default size of 100x100', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<DynamicIcon type="image" source={{ uri: 'https://picsum.photos/200' }} />
@@ -36,7 +36,7 @@ describe('DynamicIcon', () => {
 		expect(node.prop('style')).toMatchObject({ height: 100, width: 100 });
 	});
 
-	test(`should render an image with default size of 250x250`, async () => {
+	test('should render an image with default size of 250x250', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<DynamicIcon type="image" size={250} source={{ uri: 'https://picsum.photos/200' }} />
@@ -50,7 +50,7 @@ describe('DynamicIcon', () => {
 		expect(node.prop('style')).toMatchObject({ height: 250, width: 250 });
 	});
 
-	test(`should render an image with style prop overwritten`, async () => {
+	test('should render an image with style prop overwritten', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<DynamicIcon
@@ -68,7 +68,7 @@ describe('DynamicIcon', () => {
 		expect(node.prop('style')).toMatchObject({ height: 100, width: 100 });
 	});
 
-	test(`should render an image with style prop overwritten`, async () => {
+	test('should render an image with style prop overwritten', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<DynamicIcon
@@ -86,7 +86,7 @@ describe('DynamicIcon', () => {
 		expect(node.prop('style')).toMatchObject({ height: 100, width: 100 });
 	});
 
-	test(`should render an custom component`, async () => {
+	test('should render an custom component', async () => {
 		const CustomComponent = ({ size }: { size: number }) => (
 			<View testID="custom" style={{ height: size, width: size, backgroundColor: 'red' }} />
 		);
@@ -103,7 +103,7 @@ describe('DynamicIcon', () => {
 		expect(node.prop('style')).toMatchObject({ height: 100, width: 100, backgroundColor: 'red' });
 	});
 
-	test(`should render an custom component that is registered in component registry`, async () => {
+	test('should render an custom component that is registered in component registry', async () => {
 		const CustomComponent = ({ size }: { size: number }) => (
 			<View testID="custom" style={{ height: size, width: size, backgroundColor: 'green' }} />
 		);
@@ -122,7 +122,7 @@ describe('DynamicIcon', () => {
 		expect(node.prop('style')).toMatchObject({ height: 100, width: 100, backgroundColor: 'green' });
 	});
 
-	test(`should render an Icon component`, async () => {
+	test('should render an Icon component', async () => {
 		const Icon = ({ size, name }: { size: number; name: string }) => (
 			<View testID="custom" style={{ height: size, width: size, backgroundColor: 'blue' }}>
 				<Text>{name}</Text>

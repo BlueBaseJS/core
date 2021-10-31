@@ -1,5 +1,6 @@
-import { ItemCollection, Registry, RegistryInputItem, RegistryItem } from './Registry';
 import { ImageSourcePropType } from 'react-native';
+
+import { ItemCollection, Registry, RegistryInputItem, RegistryItem } from './Registry';
 
 export interface AssetRegistryItemExtras {
 	type: 'audio' | 'photo' | 'video' | 'unknown';

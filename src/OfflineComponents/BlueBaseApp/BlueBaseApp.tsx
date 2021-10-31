@@ -1,19 +1,14 @@
-import { BlueBase, BlueBaseProgress, BootOptions } from '../../BlueBase';
-import {
-	BlueBaseAppError,
-	BlueBaseAppErrorProps,
-	BlueBaseAppLoading,
-	BlueBaseAppLoadingProps,
-} from '../';
 import React, { useEffect, useState } from 'react';
-
 import { AppearanceProvider } from 'react-native-appearance';
-import { BlueBaseAppTestError } from '../BlueBaseAppTestError';
-import { BlueBaseProvider } from '../../contexts';
+
+import { BlueBase, BlueBaseProgress, BootOptions } from '../../BlueBase';
 import { ErrorObserver } from '../../components';
+import { BlueBaseProvider } from '../../contexts';
+import { getComponent } from '../../getComponent';
 import { IntlProvider } from '../../intl';
 import { ThemeProvider } from '../../themes';
-import { getComponent } from '../../getComponent';
+import { BlueBaseAppError, BlueBaseAppErrorProps, BlueBaseAppLoading, BlueBaseAppLoadingProps } from '../';
+import { BlueBaseAppTestError } from '../BlueBaseAppTestError';
 import { useExceptionHandlingOnProduction } from './useExceptionHandlingOnProduction';
 
 const BlueBaseContent = getComponent('BlueBaseContent');

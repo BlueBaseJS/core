@@ -1,18 +1,19 @@
 // tslint:disable: object-literal-sort-keys
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
 import { BlueBaseApp } from '../../../';
 import { EmptyState } from '../../EmptyState';
 import { Navigation } from '../Navigation';
-import React from 'react';
-import { Text } from 'react-native';
-import { mount } from 'enzyme';
-import { waitForElement } from 'enzyme-async-helpers';
 
 function SomeComponent() {
 	return <Text>SomeComponent</Text>;
 }
 
 describe('Navigation', () => {
-	test(`should render a screen component`, async () => {
+	test('should render a screen component', async () => {
 		const navigator = {
 			type: 'stack',
 			routes: [
@@ -36,7 +37,7 @@ describe('Navigation', () => {
 		expect(component.exists('Navigation SomeComponent')).toBe(true);
 	});
 
-	test(`should render a screen component from component registry`, async () => {
+	test('should render a screen component from component registry', async () => {
 		const navigator = {
 			type: 'stack',
 			routes: [
@@ -60,7 +61,7 @@ describe('Navigation', () => {
 		expect(component.exists('Navigation EmptyState')).toBe(true);
 	});
 
-	test(`should render a screen component in a nested navigator`, async () => {
+	test('should render a screen component in a nested navigator', async () => {
 		const navigator = {
 			type: 'stack',
 			routes: [
@@ -93,7 +94,7 @@ describe('Navigation', () => {
 		expect(component.exists('Navigation SomeComponent')).toBe(true);
 	});
 
-	test(`should render null if theres no screen or navigator prop in route`, async () => {
+	test('should render null if theres no screen or navigator prop in route', async () => {
 		const navigator = {
 			type: 'stack',
 			routes: [
@@ -116,7 +117,7 @@ describe('Navigation', () => {
 		expect(component.find('Navigation').children()).toHaveLength(0);
 	});
 
-	test(`should render null if theres no route`, async () => {
+	test('should render null if theres no route', async () => {
 		const navigator = {
 			type: 'stack',
 		} as any;

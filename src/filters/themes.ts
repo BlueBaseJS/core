@@ -1,7 +1,6 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-
-import { BlueBaseTheme } from '../themes';
 import { FilterNestedCollection } from '../registries';
+import { BlueBaseTheme } from '../themes';
 
 export const themes: FilterNestedCollection = {
 	'bluebase.themes.register': [

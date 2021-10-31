@@ -1,15 +1,16 @@
-import { BlueBaseApp } from '../../../';
-import React from 'react';
-import { StatefulComponent } from '../StatefulComponent';
-import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
+import { BlueBaseApp } from '../../../';
+import { StatefulComponent } from '../StatefulComponent';
 // import TestRenderer from 'react-test-renderer';
 
 // jest.useFakeTimers();
 
 describe('StatefulComponent', () => {
-	test(`should show empty state as no data is provided`, async () => {
+	test('should show empty state as no data is provided', async () => {
 		const component = mount(
 			<BlueBaseApp>
 				<StatefulComponent />
@@ -32,7 +33,7 @@ describe('StatefulComponent', () => {
 		).toBe('Create new items to fill this area.');
 	});
 
-	test(`should show empty state as data is an empty array`, async () => {
+	test('should show empty state as data is an empty array', async () => {
 		const component = mount(
 			<BlueBaseApp>
 				<StatefulComponent data={[]} />
@@ -58,10 +59,10 @@ describe('StatefulComponent', () => {
 		).toBe('Create new items to fill this area.');
 	});
 
-	test(`should show loading state if loading is set to true`, async () => {
+	test('should show loading state if loading is set to true', async () => {
 		const component = mount(
 			<BlueBaseApp>
-				<StatefulComponent loading={true} delay={0} timeout={0} />
+				<StatefulComponent loading delay={0} timeout={0} />
 			</BlueBaseApp>
 		);
 
@@ -70,10 +71,10 @@ describe('StatefulComponent', () => {
 		expect(component.exists('LoadingState')).toBe(true);
 	});
 
-	it(`should show children nodes`, async () => {
+	it('should show children nodes', async () => {
 		const component = mount(
 			<BlueBaseApp>
-				<StatefulComponent data={true}>
+				<StatefulComponent data>
 					<Text>Content</Text>
 				</StatefulComponent>
 			</BlueBaseApp>
@@ -90,10 +91,10 @@ describe('StatefulComponent', () => {
 		).toBe('Content');
 	});
 
-	it(`should show render prop children`, async () => {
+	it('should show render prop children', async () => {
 		const component = mount(
 			<BlueBaseApp>
-				<StatefulComponent data={true}>{() => <Text>Render prop</Text>}</StatefulComponent>
+				<StatefulComponent data>{() => <Text>Render prop</Text>}</StatefulComponent>
 			</BlueBaseApp>
 		);
 
@@ -108,12 +109,12 @@ describe('StatefulComponent', () => {
 		).toBe('Render prop');
 	});
 
-	it(`should show children from Component prop`, async () => {
+	it('should show children from Component prop', async () => {
 		const Comp = () => <Text>Custom Component</Text>;
 
 		const component = mount(
 			<BlueBaseApp>
-				<StatefulComponent data={true} component={Comp}>
+				<StatefulComponent data component={Comp}>
 					<Text>Content</Text>
 				</StatefulComponent>
 			</BlueBaseApp>

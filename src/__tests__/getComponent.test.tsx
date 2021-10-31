@@ -32,7 +32,7 @@ describe('getComponent', () => {
 
 		try {
 			getComponent();
-		} catch (error) {
+		} catch (error: any) {
 			message = error.message;
 		}
 
@@ -45,7 +45,7 @@ describe('getComponent', () => {
 		let message;
 		try {
 			TestRenderer.create(<Foo />);
-		} catch (error) {
+		} catch (error: any) {
 			message = error.message;
 		}
 

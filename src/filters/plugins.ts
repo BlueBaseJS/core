@@ -1,5 +1,4 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-
 import { FilterNestedCollection } from '../registries';
 
 export const plugins: FilterNestedCollection = {

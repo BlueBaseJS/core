@@ -1,4 +1,5 @@
 import { useColorScheme as useColorSchemeRN } from 'react-native-appearance';
+
 import { useConfig } from './useConfig';
 
 export type ColorSchemeName = 'light' | 'dark';
@@ -13,7 +14,7 @@ export function useColorScheme(): ColorSchemeName {
 		if (mode !== 'light' && mode !== 'dark') {
 			mode = 'light';
 		}
-	} catch (error) {
+	} catch (error: any) {
 		mode = 'light';
 	}
 

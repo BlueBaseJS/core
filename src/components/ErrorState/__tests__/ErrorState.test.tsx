@@ -1,11 +1,12 @@
-import { BlueBaseApp } from '../../../';
-import { ErrorState } from '../ErrorState';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import { BlueBaseApp } from '../../../';
+import { ErrorState } from '../ErrorState';
 
 describe('ErrorState', () => {
-	test(`should render ErrorState`, async () => {
+	test('should render ErrorState', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorState />
@@ -28,7 +29,7 @@ describe('ErrorState', () => {
 		).toBe('An unknown error has occurred. Please try again later.');
 	});
 
-	test(`should render ErrorState with retry button and custom error`, async () => {
+	test('should render ErrorState with retry button and custom error', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorState

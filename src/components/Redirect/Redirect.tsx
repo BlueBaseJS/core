@@ -1,10 +1,6 @@
-import {
-	NavigationActionParams,
-	NavigationActionsObject,
-	NavigationActionsProps,
-} from '@bluebase/components';
-
+import { NavigationActionParams, NavigationActionsObject, NavigationActionsProps } from '@bluebase/components';
 import React from 'react';
+
 import { getComponent } from '../../getComponent';
 
 const NavigationActions = getComponent<NavigationActionsProps>('NavigationActions');

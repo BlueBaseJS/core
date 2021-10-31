@@ -1,8 +1,8 @@
 import { DynamicIconProps, PluginIconProps } from '@bluebase/components';
+import React from 'react';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../contexts';
-import React from 'react';
 import { getComponent } from '../../getComponent';
 import { resolveThunk } from '../../utils';
 

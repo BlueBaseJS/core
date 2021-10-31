@@ -1,5 +1,6 @@
-import { getScreenSizeFromWidth, isMobile } from '../Screen';
 import { Dimensions } from 'react-native';
+
+import { getScreenSizeFromWidth, isMobile } from '../Screen';
 
 describe('Utils', () => {
 	describe('Screen', () => {

@@ -1,17 +1,4 @@
 // tslint:disable: object-literal-sort-keys
-import {
-	ActivityIndicator,
-	Button,
-	FlatList,
-	Image,
-	ImageBackground,
-	SafeAreaView,
-	ScrollView,
-	Switch,
-	Text,
-	TextInput,
-	View,
-} from '../native';
 import { BlueBase, BootOptions } from '../BlueBase';
 import {
 	BlueBaseContent,
@@ -39,7 +26,19 @@ import {
 	TouchableItem,
 	WaitObserver,
 } from '../components/';
-
+import {
+	ActivityIndicator,
+	Button,
+	FlatList,
+	Image,
+	ImageBackground,
+	SafeAreaView,
+	ScrollView,
+	Switch,
+	Text,
+	TextInput,
+	View,
+} from '../native';
 import { FilterNestedCollection } from '../registries';
 import { Theme } from '../themes';
 

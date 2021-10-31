@@ -1,9 +1,10 @@
-import { BlueBaseApp } from '../../../';
-import { ErrorObserver } from '../ErrorObserver';
-import React from 'react';
-import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
+import { BlueBaseApp } from '../../../';
+import { ErrorObserver } from '../ErrorObserver';
 
 const Bang = () => {
 	throw Error('💥 Boom!');
@@ -14,7 +15,7 @@ const BangNull = () => {
 };
 
 describe('ErrorObserver', () => {
-	test(`Snapshot ErrorObserver`, async () => {
+	test('Snapshot ErrorObserver', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorObserver>
@@ -33,7 +34,7 @@ describe('ErrorObserver', () => {
 		).toBe('Hello');
 	});
 
-	test(`Snapshot ErrorObserver after complete rendering`, async () => {
+	test('Snapshot ErrorObserver after complete rendering', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorObserver>
@@ -52,7 +53,7 @@ describe('ErrorObserver', () => {
 		).toBe('Hello');
 	});
 
-	test(`Snapshot ErrorObserver after complete rendering with error`, async () => {
+	test('Snapshot ErrorObserver after complete rendering with error', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorObserver
@@ -74,7 +75,7 @@ describe('ErrorObserver', () => {
 		).toBe('Error');
 	});
 
-	test(`Snapshot ErrorObserver after complete rendering with child as function`, async () => {
+	test('Snapshot ErrorObserver after complete rendering with child as function', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorObserver>{() => <Text>Hello</Text>}</ErrorObserver>
@@ -91,7 +92,7 @@ describe('ErrorObserver', () => {
 		).toBe('Hello');
 	});
 
-	test(`should catch an error when thrown by a child component`, async () => {
+	test('should catch an error when thrown by a child component', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorObserver>
@@ -110,7 +111,7 @@ describe('ErrorObserver', () => {
 		).toBe('💥 Boom!');
 	});
 
-	test(`should catch an error when thrown null by a child component`, async () => {
+	test('should catch an error when thrown null by a child component', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorObserver>
@@ -129,7 +130,7 @@ describe('ErrorObserver', () => {
 		).toBe('An unknown error occurred.');
 	});
 
-	test(`should not catch an error because check error is null`, async () => {
+	test('should not catch an error because check error is null', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ErrorObserver checkError={null as any} error={Error('Useless')}>

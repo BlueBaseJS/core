@@ -1,6 +1,5 @@
-import { BootOptions, merge } from '../../src';
-
 import commonBootOptions from '../../boot';
+import { BootOptions, merge } from '../../src';
 
 /**
  * Add your platform specific configs here.

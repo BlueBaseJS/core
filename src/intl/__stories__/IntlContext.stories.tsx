@@ -1,14 +1,14 @@
+import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
 import { TextProps, View } from 'react-native';
+import wait from 'waait';
 
-import { BlueBaseApp } from '../../OfflineComponents';
-import { DirectionPicker } from './DirectionPicker';
 import { FormattedMessage } from '../../components';
 import { IntlMessages } from '../../contexts';
-import { LocalePicker } from './LocalePicker';
-import React from 'react';
 import { getComponent } from '../../getComponent';
-import storiesOf from '@bluebase/storybook-addon';
-import wait from 'waait';
+import { BlueBaseApp } from '../../OfflineComponents';
+import { DirectionPicker } from './DirectionPicker';
+import { LocalePicker } from './LocalePicker';
 
 const H5 = getComponent<TextProps>('H5');
 

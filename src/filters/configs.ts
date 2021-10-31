@@ -1,5 +1,4 @@
 import { BlueBase, BootOptions } from '../BlueBase';
-
 import { BlueBaseDefaultConfigs } from '../Configs';
 import { FilterNestedCollection } from '../registries';
 

@@ -219,7 +219,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.resolve('foo');
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe('Could not resolve any of the following plugins: [foo].');
 			}
 		});
@@ -259,7 +259,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				Plugins.hasConfig('foo', 'other.config');
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Could not check config for a plugin. Reason: No plugin registered by key "foo".'
 				);
@@ -740,7 +740,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.registerCollection('boom' as any);
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Could not register collection. Reason: Unknown collection type.'
 				);

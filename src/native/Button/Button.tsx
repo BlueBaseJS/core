@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Platform,
 	Text,
@@ -8,9 +9,8 @@ import {
 	ViewStyle,
 } from 'react-native';
 
-import React from 'react';
-import { Theme } from '../../themes/Theme';
 import { useStyles } from '../../hooks/useStyles';
+import { Theme } from '../../themes/Theme';
 
 export interface ButtonStyles {
 	root: ViewStyle;

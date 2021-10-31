@@ -1,9 +1,9 @@
-import { BlueBase, BlueBaseConsumer } from '../../..';
-
 import { PluginIconProps } from '@bluebase/components';
-import React from 'react';
-import { getComponent } from '../../../getComponent';
 import storiesOf from '@bluebase/storybook-addon';
+import React from 'react';
+
+import { BlueBase, BlueBaseConsumer } from '../../..';
+import { getComponent } from '../../../getComponent';
 
 const PluginIcon = getComponent<PluginIconProps>('PluginIcon');
 

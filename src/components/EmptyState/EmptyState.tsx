@@ -1,6 +1,6 @@
 import { ComponentStateProps, EmptyStateProps } from '@bluebase/components';
-
 import React from 'react';
+
 import { useComponent } from '../../hooks';
 
 /**
