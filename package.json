@@ -68,7 +68,6 @@
     "lodash.isstring": "^4.0.1",
     "lodash.kebabcase": "^4.1.1",
     "react-loadable": "^5.5.0",
-    "react-native-appearance": "~0.3.3",
     "rtl-detect": "^1.0.2"
   },
   "devDependencies": {

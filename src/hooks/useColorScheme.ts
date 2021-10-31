@@ -1,4 +1,4 @@
-import { useColorScheme as useColorSchemeRN } from 'react-native-appearance';
+import { useColorScheme as useColorSchemeRN } from 'react-native';
 
 import { useConfig } from './useConfig';
 

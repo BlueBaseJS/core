@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { AppearanceProvider } from 'react-native-appearance';
 
 import { BlueBase, BlueBaseProgress, BootOptions } from '../../BlueBase';
 import { ErrorObserver } from '../../components';
@@ -112,13 +111,11 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 				bootCount={bootCount}
 				onError={onError}
 			>
-				<AppearanceProvider>
-					<ThemeProvider>
-						<IntlProvider>
-							<BlueBaseContent>{children}</BlueBaseContent>
-						</IntlProvider>
-					</ThemeProvider>
-				</AppearanceProvider>
+				<ThemeProvider>
+					<IntlProvider>
+						<BlueBaseContent>{children}</BlueBaseContent>
+					</IntlProvider>
+				</ThemeProvider>
 			</ErrorObserver>
 		</BlueBaseProvider>
 	);
