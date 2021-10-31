@@ -1,3 +1,9 @@
+# [7.0.0-beta.2](https://github.com/BlueBaseJS/core/compare/v7.0.0-beta.1...v7.0.0-beta.2) (2021-10-31)
+
+### Bug Fixes
+
+*   Removed react-native-appearance in favor of native API ([11857b5](https://github.com/BlueBaseJS/core/commit/11857b55de47ed287aa995a61975b94762ddac9f))
+
 # [7.0.0-beta.1](https://github.com/BlueBaseJS/core/compare/v6.1.1...v7.0.0-beta.1) (2021-10-31)
 
 ### Code Refactoring
