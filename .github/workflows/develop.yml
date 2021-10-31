@@ -17,16 +17,16 @@ jobs:
   test:
     name: Test, Build & Release
     runs-on: ubuntu-latest
-    container: 
+    container:
       image: bluebasejs/github-actions-image
 
     strategy:
       matrix:
-        node-version: [12]
-        
+        node-version: [14]
+
     steps:
-      - uses: actions/checkout@v1 
-                
+      - uses: actions/checkout@v1
+
       - name: Install Dependencies
         run: yarn install
 
