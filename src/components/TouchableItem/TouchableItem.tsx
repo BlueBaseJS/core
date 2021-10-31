@@ -1,7 +1,7 @@
+import { TouchableItemProps } from '@bluebase/components';
+import React from 'react';
 import { Platform, TouchableNativeFeedback, TouchableOpacity, ViewProps } from 'react-native';
 
-import React from 'react';
-import { TouchableItemProps } from '@bluebase/components';
 import { useComponent } from '../../hooks';
 
 // import BorderlessButton from './BorderlessButton';
@@ -37,7 +37,7 @@ export const TouchableItem = (props: TouchableItemProps & { children: React.Reac
 			<TouchableNativeFeedback
 				{...rest}
 				style={null}
-				background={TouchableNativeFeedback.Ripple(props.pressColor as string, props.borderless)}
+				background={TouchableNativeFeedback.Ripple(props.pressColor as string, props.borderless!)}
 			>
 				<View style={style}>{React.Children.only(props.children)}</View>
 			</TouchableNativeFeedback>

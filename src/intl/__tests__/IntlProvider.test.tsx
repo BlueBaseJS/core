@@ -1,14 +1,20 @@
-import { I18nManager, StyleSheet, Text, TextProps, ViewProps } from 'react-native';
-
-import { BlueBaseApp } from '../../index';
-import { DirectionPicker } from '../__stories__/DirectionPicker';
 import { FormattedMessageProps } from '@bluebase/components';
-import { IntlMessages } from '../../contexts';
-import { LocalePicker } from '../__stories__/LocalePicker';
-import React from 'react';
-import { getComponent } from '../../getComponent';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import {
+	I18nManager,
+	StyleSheet,
+	Text,
+	TextProps,
+	ViewProps
+} from 'react-native';
+
+import { IntlMessages } from '../../contexts';
+import { getComponent } from '../../getComponent';
+import { BlueBaseApp } from '../../index';
+import { DirectionPicker } from '../__stories__/DirectionPicker';
+import { LocalePicker } from '../__stories__/LocalePicker';
 
 const FormattedMessage = getComponent<FormattedMessageProps>('FormattedMessage');
 const H5 = getComponent<TextProps>('H5');
@@ -22,7 +28,7 @@ const filters = {
 };
 
 describe('IntlContext', () => {
-	test(`should render default messages`, async () => {
+	test('should render default messages', async () => {
 		const wrapper = mount(
 			<BlueBaseApp filters={filters}>
 				<View>
@@ -59,7 +65,7 @@ describe('IntlContext', () => {
 		).toBe('blue');
 	});
 
-	test(`should render translated messages`, async () => {
+	test('should render translated messages', async () => {
 		const wrapper = mount(
 			<BlueBaseApp filters={filters} configs={{ locale: 'ur' }}>
 				<View>
@@ -96,7 +102,7 @@ describe('IntlContext', () => {
 		).toBe('blue');
 	});
 
-	test(`FormattedMessage should render child as is, if its not a string`, async () => {
+	test('FormattedMessage should render child as is, if its not a string', async () => {
 		const node: any = <Text>Hello! 👋</Text>;
 
 		const wrapper = mount(
@@ -120,7 +126,7 @@ describe('IntlContext', () => {
 		).toBe('Hello! 👋');
 	});
 
-	test(`should show default message when a filter throws an error`, async () => {
+	test('should show default message when a filter throws an error', async () => {
 		const badFilters = {
 			'bluebase.intl.messages.ur': () => {
 				throw Error('Bang Bang!');
@@ -148,7 +154,7 @@ describe('IntlContext', () => {
 		).toBe('Hello');
 	});
 
-	test(`should change locale by callback function`, async () => {
+	test('should change locale by callback function', async () => {
 		const wrapper = mount(
 			<BlueBaseApp filters={filters}>
 				<View>
@@ -184,7 +190,7 @@ describe('IntlContext', () => {
 		).toBe('ہیلو!');
 	});
 
-	test(`should set the direction to ltr`, async () => {
+	test('should set the direction to ltr', async () => {
 		const wrapper = mount(
 			<BlueBaseApp filters={filters} configs={{ direction: 'ltr' }}>
 				<View>

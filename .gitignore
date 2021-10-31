@@ -13,6 +13,7 @@ coverage
 docs/
 
 # Transpiled files
+web-build/
 build/
 dist/
 
@@ -37,10 +38,7 @@ dist/
 
 # Expo
 .expo
+.expo-shared
 
 # Jest
 .jest
-
-
-# Storybook Native
-bluebase/storybook-native/storybook/storyLoader.js

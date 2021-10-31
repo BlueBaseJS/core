@@ -1,7 +1,7 @@
-import { useConfig, useIntl } from '../../hooks';
-
-import { Picker } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import React from 'react';
+
+import { useConfig, useIntl } from '../../hooks';
 
 export const LocalePicker = () => {
 	const [locale] = useConfig('locale');

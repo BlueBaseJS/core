@@ -1,12 +1,13 @@
-import { BlueBaseApp } from '../';
-import React from 'react';
-import TestRenderer from 'react-test-renderer';
-import { getComponent } from '../getComponent';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import TestRenderer from 'react-test-renderer';
+
+import { BlueBaseApp } from '../';
+import { getComponent } from '../getComponent';
 
 describe('getComponent', () => {
-	test(`should render a text component`, async () => {
+	test('should render a text component', async () => {
 		const Text = getComponent('Text');
 
 		const wrapper = mount(
@@ -26,7 +27,7 @@ describe('getComponent', () => {
 		).toBe('A Text component');
 	});
 
-	test(`should throw an Error when no key is passed`, () => {
+	test('should throw an Error when no key is passed', () => {
 		let message;
 
 		try {
@@ -38,7 +39,7 @@ describe('getComponent', () => {
 		expect(message).toBe('getComponent method needs at least one key');
 	});
 
-	test(`should throw an Error when there is not BlueBase context`, () => {
+	test('should throw an Error when there is not BlueBase context', () => {
 		const Foo = getComponent('Foo');
 
 		let message;

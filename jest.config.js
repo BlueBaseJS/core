@@ -1,41 +1,30 @@
-module.exports = {
-	preset: 'jest-expo',
+const configs = require('@bluebase/code-standards/jest.config');
+
+const modules = [
+	'@unimodules/.*',
+	'@react-native/.*',
+	'expo',
+	'react-native',
+	'react-router-native',
+	'react-navigation-stack',
+	'react-navigation',
+	'react-native-gesture-handler',
+	'rn-placeholder',
+	'react-native-modal-datetime-picker',
+	'unimodules-permissions-interface',
+	'@react-native-community/datetimepicker',
+].join('|');
+
+module.exports = Object.assign(configs, {
+	transformIgnorePatterns: [`/node_modules/(?!${modules})`],
+	setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
 	testEnvironment: 'node',
-	transform: {
-		'^.+\\.tsx?$': 'ts-jest',
-	},
-	testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-	moduleNameMapper: {
-		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-			'<rootDir>/__mocks__/fileMock.js',
-		'^.+\\.(css|less|scss)$': '<rootDir>/__mocks__/styleMock.js',
-	},
-	transformIgnorePatterns: ['/node_modules/(?!ui-components|react-native).+\\.js$'],
-	testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
-	coverageDirectory: 'coverage',
-	collectCoverageFrom: [
-		'src/**/*.{ts,tsx,js,jsx}',
-		'!src/**/*.stories.{ts,tsx,js,jsx}',
-		'!src/**/*.d.ts',
-		'!**/__stories__/**',
-	],
 	coverageThreshold: {
 		global: {
-			branches: 95,
-			functions: 95,
-			lines: 95,
-			statements: 95,
-		},
+			branches: 90,
+			functions: 90,
+			lines: 90,
+			statements: 90
+		}
 	},
-	coveragePathIgnorePatterns: [
-		'.*\\.d\\.ts',
-		'<rootDir>/node_modules/',
-		'<rootDir>/src/registries/helpers/',
-	],
-	watchPathIgnorePatterns: [
-		// 'src/*/output/**',
-		// 'output/'
-	],
-	setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
-};
+});

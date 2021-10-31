@@ -1,6 +1,6 @@
 import { BootOptions, merge } from '../../src';
 
-import commonBootOptions from '../common/bluebase';
+import commonBootOptions from '../../boot';
 
 /**
  * Add your platform specific configs here.

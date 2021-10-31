@@ -1,12 +1,12 @@
-import { Text, View } from 'react-native';
-
-import { BlueBase } from '../../BlueBase';
-import { BlueBaseApp } from '../../';
-import { ComponentRegistry } from '../';
-import React from 'react';
-import TestRenderer from 'react-test-renderer';
-import { getComponent } from '../../getComponent';
 import { mount } from 'enzyme';
+import React from 'react';
+import { Text, View } from 'react-native';
+import TestRenderer from 'react-test-renderer';
+
+import { BlueBaseApp } from '../../';
+import { BlueBase } from '../../BlueBase';
+import { getComponent } from '../../getComponent';
+import { ComponentRegistry } from '../';
 
 const Button: React.StatelessComponent<{}> = () => <View>A Button</View>;
 (Button as any).foo = 'bar';
@@ -43,7 +43,7 @@ describe('ComponentRegistry', () => {
 
 			try {
 				Components.resolve('Foo');
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -63,7 +63,7 @@ describe('ComponentRegistry', () => {
 		// 	// expect(rendered.root.type.displayName).toBe('Text');
 		// });
 
-		it('should resolve a Promised component', async (done: any) => {
+		it('should resolve a Promised component', (done: any) => {
 			const Foo = getComponent('Foo');
 			const wrapper = mount(
 				<BlueBaseApp components={{ Foo: Promise.resolve(Text) as any }}>
@@ -174,7 +174,7 @@ describe('ComponentRegistry', () => {
 
 			try {
 				Components.resolveFromCache('Foo');
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -333,7 +333,7 @@ describe('ComponentRegistry', () => {
 
 			try {
 				await Components.register('Button', {} as any);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -427,7 +427,7 @@ describe('ComponentRegistry', () => {
 
 			try {
 				Components.addHocs('Button', () => Button);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -471,7 +471,7 @@ describe('ComponentRegistry', () => {
 						backgroundColor: 'blue',
 					},
 				});
-			} catch (error) {
+			} catch (error: any) {
 				expect(error.message).toBe(
 					'Cannot set styles "Button" component. Reason: Component not found.'
 				);

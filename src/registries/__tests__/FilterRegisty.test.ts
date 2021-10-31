@@ -325,7 +325,7 @@ describe('FilterRegistry', () => {
 
 			try {
 				await Filters.run('filter1', 2);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 

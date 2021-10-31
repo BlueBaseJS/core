@@ -1,10 +1,10 @@
-import { ThemedCard } from '../../src/themes/__stories__/ThemedCard';
+import { ThemedCard } from './src/themes/__stories__/ThemedCard';
 
 // This file contain all the apps, plugins and configuration which are required
 // for booting bluebase. see https://blueeast.gitbooks.io/bluebase/
 export default {
 	assets: {
-		Icon: require('../../assets/common/icon.png'),
+		Icon: require('./assets/common/icon.png'),
 	},
 
 	configs: {

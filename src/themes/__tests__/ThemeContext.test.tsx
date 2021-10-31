@@ -1,14 +1,15 @@
+import { mount } from 'enzyme';
+import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import wait from 'waait';
+
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseApp } from '../../index';
 import { ModePicker } from '../__stories__/ModePicker';
-import React from 'react';
 import { ThemeDemo } from '../__stories__/ThemeDemo';
 import { ThemePicker } from '../__stories__/ThemePicker';
-import { mount } from 'enzyme';
-import wait from 'waait';
-import { waitForElement } from 'enzyme-async-helpers';
 describe('ThemeContext', () => {
-	test(`should render a ThemeDemo component with themed background color`, async () => {
+	test('should render a ThemeDemo component with themed background color', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ThemeDemo />
@@ -23,7 +24,7 @@ describe('ThemeContext', () => {
 		);
 	});
 
-	test(`should change theme based on callback function`, async () => {
+	test('should change theme based on callback function', async () => {
 		const wrapper = mount(
 			<BlueBaseApp>
 				<ThemePicker />
@@ -52,7 +53,7 @@ describe('ThemeContext', () => {
 		expect(wrapper.find(ThemeDemo).find('Text').last().text()).toBe('BlueBase Theme');
 	});
 
-	test(`should throw render error state if theme is not found`, async () => {
+	test('should throw render error state if theme is not found', async () => {
 		const BB = new BlueBase();
 		// await BB.boot({ configs: { 'theme': 'foo' } });
 		BB.Logger.warn = jest.fn();
@@ -79,7 +80,7 @@ describe('ThemeContext', () => {
 		wrapper.unmount();
 	});
 
-	test(`should override a theme`, async () => {
+	test('should override a theme', async () => {
 		const wrapper = mount(
 			<BlueBaseApp
 				configs={{

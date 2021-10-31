@@ -1,10 +1,10 @@
 // tslint:disable:max-classes-per-file
-import { PluginInput, PluginRegistry, createPlugin } from '../PluginRegistry';
+import { NoopProps } from '@bluebase/components';
 
 import { BlueBase } from '../../BlueBase';
-import { NoopProps } from '@bluebase/components';
-import { createBlueBaseModule } from '../../utils';
 import { getComponent } from '../../getComponent';
+import { createBlueBaseModule } from '../../utils';
+import { createPlugin, PluginInput, PluginRegistry } from '../PluginRegistry';
 
 const Noop = getComponent<NoopProps>('Noop');
 
@@ -128,11 +128,11 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.register(Foo as any);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
-			expect(message.startsWith('Could not register item with key "class Foo')).toBe(true);
+			expect(message.startsWith('Could not register item with key "function Foo')).toBe(true);
 		});
 
 		it('should throw an error if plugin is not provided', async () => {
@@ -143,7 +143,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.register(undefined as any);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -158,7 +158,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.register({} as any);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -175,7 +175,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.register('foo' as any);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -190,7 +190,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.register({} as any);
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 
@@ -292,7 +292,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				Plugins.isEnabled('foo');
-			} catch (e) {
+			} catch (e: any) {
 				expect(e.message).toBe(
 					'Could not check if plugin is enabled. Reason: No plugin registered by key "foo".'
 				);
@@ -320,7 +320,7 @@ describe('PluginRegistry', () => {
 
 			try {
 				await Plugins.enable('foo');
-			} catch (e) {
+			} catch (e: any) {
 				expect(e.message).toBe(
 					'Could not enable plugin. Reason: No plugin registered by key "foo".'
 				);
@@ -334,7 +334,7 @@ describe('PluginRegistry', () => {
 			let message;
 			try {
 				await Plugins.disable('foo');
-			} catch (e) {
+			} catch (e: any) {
 				message = e.message;
 			}
 

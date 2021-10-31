@@ -1,7 +1,7 @@
-import 'react-native';
 import 'jest-enzyme';
+import 'react-native';
 
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Enzyme from 'enzyme';
 
 /**
@@ -10,22 +10,30 @@ import Enzyme from 'enzyme';
 const { JSDOM } = require('jsdom');
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>', {
-	url: 'http://localhost',
+	url: 'http://localhost'
 });
 const { window } = jsdom;
+window.Date = Date;
 
-function copyProps(src, target) {
+function copyProps(src: any, target: any) {
 	Object.defineProperties(target, {
 		...Object.getOwnPropertyDescriptors(src),
 		...Object.getOwnPropertyDescriptors(target),
 	});
 }
 
+declare const global: {
+	document: any,
+	navigator: any,
+	window: any,
+};
+
 global.window = window;
 global.document = window.document;
 global.navigator = {
 	userAgent: 'node.js',
 };
+
 copyProps(window, global);
 
 /**
@@ -40,7 +48,8 @@ Enzyme.configure({ adapter: new Adapter() });
  * see https://github.com/Root-App/react-native-mock-render/issues/6
  */
 const originalConsoleError = console.error;
-console.error = (message) => {
+// tslint:disable-next-line: no-console
+console.error = (message: any) => {
 	if (message.startsWith('Warning:')) {
 		return;
 	}
