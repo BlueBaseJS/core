@@ -6,7 +6,8 @@ import { BlueBaseProvider } from '../../contexts';
 import { getComponent } from '../../getComponent';
 import { IntlProvider } from '../../intl';
 import { ThemeProvider } from '../../themes';
-import { BlueBaseAppError, BlueBaseAppErrorProps, BlueBaseAppLoading, BlueBaseAppLoadingProps } from '../';
+import { BlueBaseAppError, BlueBaseAppErrorProps } from '../BlueBaseAppError';
+import { BlueBaseAppLoading, BlueBaseAppLoadingProps } from '../BlueBaseAppLoading';
 import { BlueBaseAppTestError } from '../BlueBaseAppTestError';
 import { useExceptionHandlingOnProduction } from './useExceptionHandlingOnProduction';
 

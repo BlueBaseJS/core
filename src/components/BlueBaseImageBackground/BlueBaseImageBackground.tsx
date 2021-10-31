@@ -4,7 +4,7 @@ import React, { ReactNode, useContext } from 'react';
 import { ImageBackground as RNImageBackground, ImageSourcePropType } from 'react-native';
 
 import { BlueBase } from '../../BlueBase';
-import { resolveImageSource } from '../../components';
+import { resolveImageSource } from '../../components/BlueBaseImage';
 import { BlueBaseContext, ThemeContextData } from '../../contexts';
 import { useTheme } from '../../hooks';
 

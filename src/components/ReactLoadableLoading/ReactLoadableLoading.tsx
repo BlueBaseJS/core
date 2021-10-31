@@ -1,7 +1,8 @@
 import React from 'react';
 import { LoadingComponentProps } from 'react-loadable';
 
-import { ErrorState, LoadingState } from '../';
+import { ErrorState } from '../ErrorState';
+import { LoadingState } from '../LoadingState';
 
 /**
  * Loading component used in react-loadable library
