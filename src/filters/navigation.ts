@@ -22,7 +22,7 @@ export const navigation: FilterNestedCollection = {
 							path: '',
 							screen: 'SystemLayout',
 							navigator: await BB.Filters.run('bluebase.navigator.main', {} as any, opts),
-							navigationOptions: {
+							options: {
 								header: null,
 							},
 						},
@@ -47,7 +47,7 @@ export const navigation: FilterNestedCollection = {
 						path: '',
 						exact: true,
 						screen: 'HomeScreen',
-						navigationOptions: {
+						options: {
 							headerLeft: null,
 							title: BB.Configs.getValue('title'),
 						},
