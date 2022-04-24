@@ -1,3 +1,28 @@
+# [7.0.0](https://github.com/BlueBaseJS/core/compare/v6.1.1...v7.0.0) (2022-04-24)
+
+### Bug Fixes
+
+*   **navigation:** Migrated away from deprecated property in navigation ([5396e97](https://github.com/BlueBaseJS/core/commit/5396e97e420a890b7733946b6fc84e3249f924ac))
+*   Fixed build issues ([0d09d75](https://github.com/BlueBaseJS/core/commit/0d09d7556e15b7a27ba1920f2ec67f7cfe03078a))
+*   Fixed build issues ([557573b](https://github.com/BlueBaseJS/core/commit/557573bce0a0a3af6a75198a541f5a467f06772e))
+*   Fixed main property ([6517d56](https://github.com/BlueBaseJS/core/commit/6517d56a19c6e3c6917477b8b0c0e06200e0a847))
+*   Fixed warnings ([31918f2](https://github.com/BlueBaseJS/core/commit/31918f2f91434555aaeec3231db9294cab5fab3e))
+*   Removed react-native-appearance in favor of native API ([11857b5](https://github.com/BlueBaseJS/core/commit/11857b55de47ed287aa995a61975b94762ddac9f))
+
+### Code Refactoring
+
+*   Removed Picker component ([19f4321](https://github.com/BlueBaseJS/core/commit/19f43211134e37dcc461fd28d38b6bdd613d60a7))
+
+### Features
+
+*   Expo 43 ([dc94af8](https://github.com/BlueBaseJS/core/commit/dc94af8f078f716f47a19153cf12e1f4dc943026))
+*   Upgraded Expo to V43 ([13053d1](https://github.com/BlueBaseJS/core/commit/13053d1fdb3bf84e7620600de71b9aef453e80b7))
+
+### BREAKING CHANGES
+
+*   Upgrade project to Expo 43
+*   Picker component is removed because it is not part of react native core anymore
+
 # [7.0.0-beta.5](https://github.com/BlueBaseJS/core/compare/v7.0.0-beta.4...v7.0.0-beta.5) (2021-10-31)
 
 ### Bug Fixes
