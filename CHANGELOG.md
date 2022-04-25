@@ -1,3 +1,9 @@
+# [7.1.0](https://github.com/BlueBaseJS/core/compare/v7.0.0...v7.1.0) (2022-04-25)
+
+### Features
+
+*   **BlueBaseTheme:** New colors, better dark mode readibility ([9c1dd6a](https://github.com/BlueBaseJS/core/commit/9c1dd6a80b842712ddd0f821ec04880cbfceafc9))
+
 # [7.0.0](https://github.com/BlueBaseJS/core/compare/v6.1.1...v7.0.0) (2022-04-24)
 
 ### Bug Fixes
