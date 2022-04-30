@@ -1,3 +1,13 @@
+# [8.0.0-alpha.1](https://github.com/BlueBaseJS/core/compare/v7.1.0...v8.0.0-alpha.1) (2022-04-30)
+
+### Features
+
+*   **Navigation:** Improved typings to follow React Navigation 6 ([874c2dc](https://github.com/BlueBaseJS/core/commit/874c2dc29758fa45947221a370fc237d1eae84e8))
+
+### BREAKING CHANGES
+
+*   **Navigation:** - Navigation props have changed to follow React Navigation 6. Implementation of Link, Redirect & TouchableItem components removed
+
 # [7.1.0](https://github.com/BlueBaseJS/core/compare/v7.0.0...v7.1.0) (2022-04-25)
 
 ### Features
