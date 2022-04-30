@@ -1,25 +1,30 @@
 import { NavigationActionsObject } from '@bluebase/components';
 import { createContext } from 'react';
 
-const stubAction = () => {
+const stubAction = (): any => {
 	return;
 };
 
 export const StubNavigationActionsObject: NavigationActionsObject = {
-	getParam: stubAction,
-	goBack: stubAction,
+	route: { key: 'Stub', params: {}, name: 'Stub' },
 	navigate: stubAction,
-	pop: stubAction,
-	push: stubAction,
-	replace: stubAction,
+	reset: stubAction,
+	goBack: stubAction,
+	isFocused: stubAction,
+	canGoBack: stubAction,
+	getId: stubAction,
+	getParent: stubAction,
 	setParams: stubAction,
+	setOptions: stubAction,
+	replace: stubAction,
+	push: stubAction,
+	pop: stubAction,
+	popToTop: stubAction,
+	openDrawer: stubAction,
+	closeDrawer: stubAction,
+	toggleDrawer: stubAction,
+	jumpTo: stubAction,
 	source: null,
-	state: {
-		key: '',
-		params: {},
-		routeName: '',
-		url: '',
-	},
 };
 
 export const NavigationContext = createContext<NavigationActionsObject>(

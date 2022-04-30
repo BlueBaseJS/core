@@ -1,4 +1,5 @@
 // tslint:disable: object-literal-sort-keys
+import { NavigatorProps } from '@bluebase/components';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
 import React from 'react';
@@ -14,7 +15,7 @@ function SomeComponent() {
 
 describe('Navigation', () => {
 	test('should render a screen component', async () => {
-		const navigator = {
+		const navigator: NavigatorProps = {
 			type: 'stack',
 			routes: [
 				{
@@ -38,7 +39,7 @@ describe('Navigation', () => {
 	});
 
 	test('should render a screen component from component registry', async () => {
-		const navigator = {
+		const navigator: NavigatorProps = {
 			type: 'stack',
 			routes: [
 				{
@@ -62,7 +63,7 @@ describe('Navigation', () => {
 	});
 
 	test('should render a screen component in a nested navigator', async () => {
-		const navigator = {
+		const navigator: NavigatorProps = {
 			type: 'stack',
 			routes: [
 				{
@@ -95,7 +96,7 @@ describe('Navigation', () => {
 	});
 
 	test('should render null if theres no screen or navigator prop in route', async () => {
-		const navigator = {
+		const navigator: NavigatorProps = {
 			type: 'stack',
 			routes: [
 				{
@@ -118,7 +119,7 @@ describe('Navigation', () => {
 	});
 
 	test('should render null if theres no route', async () => {
-		const navigator = {
+		const navigator: NavigatorProps = {
 			type: 'stack',
 		} as any;
 

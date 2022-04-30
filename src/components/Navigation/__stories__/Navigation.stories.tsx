@@ -1,4 +1,4 @@
-import { NavigationProps } from '@bluebase/components';
+import { NavigationProps, NavigatorProps } from '@bluebase/components';
 import storiesOf from '@bluebase/storybook-addon';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import { getComponent } from '../../../getComponent';
 
 const Navigation = getComponent<NavigationProps>('Navigation');
 
-const navigator = {
+const navigator: NavigatorProps = {
 	type: 'stack',
 	routes: [
 		{
