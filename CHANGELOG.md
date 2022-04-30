@@ -1,3 +1,9 @@
+# [8.0.0-alpha.2](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.1...v8.0.0-alpha.2) (2022-04-30)
+
+### Bug Fixes
+
+*   Updated @bluebase/components ([ad96731](https://github.com/BlueBaseJS/core/commit/ad9673104e45f7053fe831cfeefb31ae25fb13cd))
+
 # [8.0.0-alpha.1](https://github.com/BlueBaseJS/core/compare/v7.1.0...v8.0.0-alpha.1) (2022-04-30)
 
 ### Features
