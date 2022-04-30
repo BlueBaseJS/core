@@ -57,7 +57,7 @@
     "build-storybook": "node ./node_modules/@storybook/react/bin/build.js"
   },
   "dependencies": {
-    "@bluebase/components": "^8.0.0-alpha.4",
+    "@bluebase/components": "^8.0.0-alpha.5",
     "deepmerge": "^4.2.2",
     "hoist-non-react-statics": "^3.3.2",
     "is-plain-object": "^3.0.0",

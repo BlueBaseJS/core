@@ -1239,10 +1239,10 @@
     tslint-react "^3.6.0"
     typescript "^4.4.4"
 
-"@bluebase/components@^8.0.0-alpha.4":
-  version "8.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-8.0.0-alpha.4.tgz#e1e5546ee3615e914e13ba7da2a7915dbe8f57f5"
-  integrity sha512-hVLOr3EHr/xPiX8KVjy5s3AJHxB8cG/F/M/UwfIfeSceTYsRKS3B/r6IGemLF+ssqh2MFHl1fflG+4Y4pSOAeg==
+"@bluebase/components@^8.0.0-alpha.5":
+  version "8.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-8.0.0-alpha.5.tgz#19460aa6d8dbab5ba1995d61fb34772b9d2cf675"
+  integrity sha512-PxBZoYG21qF39c7L8Ondpo2wwz0yPu6SSJhu4aOF/5W4PdflRkDix3Q3XA85kl9fvRhbsb9FXJW0luHaMskz6g==
   dependencies:
     "@react-navigation/bottom-tabs" "^6.3.1"
     "@react-navigation/drawer" "^6.4.1"
