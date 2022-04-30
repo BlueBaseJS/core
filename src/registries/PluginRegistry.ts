@@ -305,7 +305,6 @@ export class PluginRegistry extends BlueBaseModuleRegistry<ItemType, ItemInputTy
 
 			// Add plugin slug as prefix to top level routes
 			routes = routes.map((route: RouteConfig) => {
-
 				let path = route.path;
 
 				if (path !== undefined) {
