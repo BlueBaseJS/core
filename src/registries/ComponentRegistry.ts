@@ -101,19 +101,26 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 	public resolveFromCache<T = any>(
 		...keys: Array<string | React.ComponentType<T>>
 	): React.ComponentType<T> {
-		const item = this.findOne(...keys);
+		for (const tempKey of keys) {
+			// If it is a component, just return it as is
+			if (this.isInputValue(tempKey)) {
+				return tempKey as React.ComponentType<T>;
+			}
 
-		if (!item) {
-			throw Error(`Could not resolve any of the following components: [${keys.join(', ')}].`);
+			const item = this.findOne(...keys);
+
+			if (typeof tempKey === 'string' && item) {
+				const CachedComponent = this.getMeta(item.key, 'CachedComponent');
+
+				if (CachedComponent) {
+					return CachedComponent;
+				}
+
+				return CachedComponent?CachedComponent :this.resolve(tempKey);
+			}
 		}
 
-		const CachedComponent = this.getMeta(item.key, 'CachedComponent');
-
-		if (CachedComponent) {
-			return CachedComponent;
-		}
-
-		return this.resolve(...keys);
+		throw Error(`Could not resolve any of the following components: [${keys.join(', ')}].`);
 	}
 
 	/**
