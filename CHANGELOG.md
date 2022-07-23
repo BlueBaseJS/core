@@ -1,3 +1,9 @@
+# [8.0.0-alpha.4](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.3...v8.0.0-alpha.4) (2022-07-23)
+
+### Bug Fixes
+
+*   **ComponentRegistry:** Fixed an exception for fallback components ([1ebc8d3](https://github.com/BlueBaseJS/core/commit/1ebc8d3c1af207e2de9129f5ca4b6278eed306f3))
+
 # [8.0.0-alpha.3](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.2...v8.0.0-alpha.3) (2022-07-23)
 
 ### Features
