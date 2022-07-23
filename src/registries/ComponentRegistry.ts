@@ -116,7 +116,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 					return CachedComponent;
 				}
 
-				return CachedComponent?CachedComponent :this.resolve(tempKey);
+				return CachedComponent ? CachedComponent : this.resolve(tempKey);
 			}
 		}
 
