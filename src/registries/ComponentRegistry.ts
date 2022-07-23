@@ -107,7 +107,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 				return tempKey as React.ComponentType<T>;
 			}
 
-			const item = this.findOne(...keys);
+			const item = this.findOne(tempKey);
 
 			if (typeof tempKey === 'string' && item) {
 				const CachedComponent = this.getMeta(item.key, 'CachedComponent');
@@ -116,7 +116,7 @@ export class ComponentRegistry extends BlueBaseModuleRegistry<
 					return CachedComponent;
 				}
 
-				return CachedComponent ? CachedComponent : this.resolve(tempKey);
+				return this.resolve(tempKey);
 			}
 		}
 
