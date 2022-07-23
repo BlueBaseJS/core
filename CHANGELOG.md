@@ -1,3 +1,10 @@
+# [8.0.0-alpha.3](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.2...v8.0.0-alpha.3) (2022-07-23)
+
+### Features
+
+*   Use expo-font to load fonts ([7162d2f](https://github.com/BlueBaseJS/core/commit/7162d2f7041b0548a6a61c7f7a26b678cea750b0))
+*   **ComponentRegistry:** resolveFromCache will return component as is ([d739348](https://github.com/BlueBaseJS/core/commit/d73934840a1086e381eef3ae355a28a6aecf8b81))
+
 # [8.0.0-alpha.2](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.1...v8.0.0-alpha.2) (2022-04-30)
 
 ### Bug Fixes
