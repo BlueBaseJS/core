@@ -59,6 +59,7 @@
   "dependencies": {
     "@bluebase/components": "^8.0.0-alpha.5",
     "deepmerge": "^4.2.2",
+    "expo-font": "^10.1.0",
     "hoist-non-react-statics": "^3.3.2",
     "is-plain-object": "^3.0.0",
     "lodash.flowright": "^3.5.0",
