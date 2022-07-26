@@ -30,7 +30,7 @@ describe('StatefulComponent', () => {
 				.find('StatefulComponent Body2 Text')
 				.last()
 				.text()
-		).toBe('Create new items to fill this area.');
+		).toBe('There is no data to display.');
 	});
 
 	test('should show empty state as data is an empty array', async () => {
@@ -56,7 +56,7 @@ describe('StatefulComponent', () => {
 				.find('Body2 Text')
 				.last()
 				.text()
-		).toBe('Create new items to fill this area.');
+		).toBe('There is no data to display.');
 	});
 
 	test('should show loading state if loading is set to true', async () => {
