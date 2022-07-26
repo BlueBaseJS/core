@@ -28,7 +28,7 @@ export const ErrorState = (props: ErrorStateProps) => {
 			development && error
 				? error.message
 				: 'An unknown error has occurred. Please try again later.',
-		title: development && error ? error.name : 'Something broke!',
+		title: development && error ? error.name : 'Error',
 	};
 
 	if (retry) {
@@ -36,7 +36,7 @@ export const ErrorState = (props: ErrorStateProps) => {
 		csProps.actionOnPress = retry;
 	}
 
-	return <ComponentState {...csProps} />;
+	return <ComponentState {...csProps} imageSource="Error" />;
 };
 
 ErrorState.displayName = 'ErrorState';

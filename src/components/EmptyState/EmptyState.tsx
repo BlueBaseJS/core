@@ -17,8 +17,9 @@ export const EmptyState = (props: EmptyStateProps) => {
 	const ComponentState = useComponent<ComponentStateProps>('ComponentState');
 	return (
 		<ComponentState
-			title="Empty Area"
-			description="Create new items to fill this area."
+			title="No data"
+			description="There is no data to display."
+			imageSource="Empty"
 			{...props}
 		/>
 	);

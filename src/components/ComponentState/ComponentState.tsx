@@ -14,29 +14,31 @@ import { useComponent, useStyles } from '../../hooks';
 import { Theme } from '../../themes';
 
 const defaultStyles = (theme: Theme): Partial<ComponentStateStyles> => ({
-	actionRoot: {
-		marginTop: theme.spacing.unit,
+	root: {
+		alignItems: 'center',
+		flexGrow: 1,
+		justifyContent: 'center',
+		paddingHorizontal: theme.spacing.unit * 4,
+		paddingVertical: theme.spacing.unit * 2,
 	},
-	description: {
-		marginBottom: theme.spacing.unit,
-		textAlign: 'center',
+	imageRoot: {
+		marginVertical: theme.spacing.unit,
 	},
 	image: {
 		height: 250,
 		width: 250,
 	},
-	imageRoot: {
-		marginBottom: theme.spacing.unit * 2,
-	},
-	root: {
-		alignItems: 'center',
-		flexGrow: 1,
-		justifyContent: 'center',
-		padding: theme.spacing.unit * 2,
-	},
 	title: {
-		marginBottom: theme.spacing.unit,
+		marginVertical: theme.spacing.unit / 2,
 		textAlign: 'center',
+	},
+	description: {
+		color: theme.palette.text.secondary,
+		marginVertical: theme.spacing.unit / 2,
+		textAlign: 'center',
+	},
+	actionRoot: {
+		marginVertical: theme.spacing.unit,
 	},
 });
 
