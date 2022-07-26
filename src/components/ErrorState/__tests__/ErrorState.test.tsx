@@ -20,7 +20,7 @@ describe('ErrorState', () => {
 				.find('ComponentState')
 				.first()
 				.prop('title')
-		).toBe('Something broke!');
+		).toBe('Error');
 		expect(
 			wrapper
 				.find('ComponentState')

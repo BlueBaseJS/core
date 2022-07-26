@@ -24,7 +24,7 @@ describe('StatefulComponent', () => {
 				.find('StatefulComponent H6 Text')
 				.last()
 				.text()
-		).toBe('Empty Area');
+		).toBe('No data');
 		expect(
 			component
 				.find('StatefulComponent Body2 Text')
@@ -49,7 +49,7 @@ describe('StatefulComponent', () => {
 				.find('H6 Text')
 				.last()
 				.text()
-		).toBe('Empty Area');
+		).toBe('No data');
 		expect(
 			component
 				.find(StatefulComponent)
