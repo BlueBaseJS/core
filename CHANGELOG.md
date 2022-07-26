@@ -1,3 +1,9 @@
+# [8.0.0-alpha.5](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.4...v8.0.0-alpha.5) (2022-07-26)
+
+### Features
+
+*   **ComponentState:** Improved UI ([a9cbe6d](https://github.com/BlueBaseJS/core/commit/a9cbe6da65a26d2a34868c4c8e60e2769d967248))
+
 # [8.0.0-alpha.4](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.3...v8.0.0-alpha.4) (2022-07-23)
 
 ### Bug Fixes
