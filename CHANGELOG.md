@@ -1,3 +1,9 @@
+# [8.0.0-alpha.7](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.6...v8.0.0-alpha.7) (2023-08-31)
+
+### Bug Fixes
+
+*   Update package.json ([28e283d](https://github.com/BlueBaseJS/core/commit/28e283d826607af1645fbfcd3f04077b3c7cf46a))
+
 # [8.0.0-alpha.6](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.5...v8.0.0-alpha.6) (2023-08-31)
 
 ### Bug Fixes
