@@ -8,8 +8,8 @@ import isPlainPbject from 'is-plain-object';
  */
 export function isProduction(): boolean {
 	// Web
-	if (process && process.env && process.env.NODE_ENV) {
-		return process.env.NODE_ENV === 'production';
+	if (typeof process !== undefined && process?.env && process?.env.NODE_ENV) {
+		return process?.env.NODE_ENV === 'production';
 	}
 
 	// react-native
