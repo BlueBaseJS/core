@@ -1,3 +1,10 @@
+# [8.0.0-alpha.6](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.5...v8.0.0-alpha.6) (2023-08-31)
+
+### Bug Fixes
+
+*   process.env is undefined error ([#604](https://github.com/BlueBaseJS/core/issues/604)) ([50c0730](https://github.com/BlueBaseJS/core/commit/50c07303d1853ec7eddfb21003ee88947d049296))
+*   Update master.yml ([68739a4](https://github.com/BlueBaseJS/core/commit/68739a41ff04c34fc87a3e3fe6174003c8419948))
+
 # [8.0.0-alpha.5](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.4...v8.0.0-alpha.5) (2022-07-26)
 
 ### Features
