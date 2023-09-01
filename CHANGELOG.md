@@ -1,3 +1,24 @@
+# [8.0.0](https://github.com/BlueBaseJS/core/compare/v7.1.0...v8.0.0) (2023-09-01)
+
+### Bug Fixes
+
+*   process.env is undefined error ([#604](https://github.com/BlueBaseJS/core/issues/604)) ([50c0730](https://github.com/BlueBaseJS/core/commit/50c07303d1853ec7eddfb21003ee88947d049296))
+*   Update master.yml ([68739a4](https://github.com/BlueBaseJS/core/commit/68739a41ff04c34fc87a3e3fe6174003c8419948))
+*   Update package.json ([28e283d](https://github.com/BlueBaseJS/core/commit/28e283d826607af1645fbfcd3f04077b3c7cf46a))
+*   **ComponentRegistry:** Fixed an exception for fallback components ([1ebc8d3](https://github.com/BlueBaseJS/core/commit/1ebc8d3c1af207e2de9129f5ca4b6278eed306f3))
+*   Updated @bluebase/components ([ad96731](https://github.com/BlueBaseJS/core/commit/ad9673104e45f7053fe831cfeefb31ae25fb13cd))
+
+### Features
+
+*   **ComponentState:** Improved UI ([a9cbe6d](https://github.com/BlueBaseJS/core/commit/a9cbe6da65a26d2a34868c4c8e60e2769d967248))
+*   Use expo-font to load fonts ([7162d2f](https://github.com/BlueBaseJS/core/commit/7162d2f7041b0548a6a61c7f7a26b678cea750b0))
+*   **ComponentRegistry:** resolveFromCache will return component as is ([d739348](https://github.com/BlueBaseJS/core/commit/d73934840a1086e381eef3ae355a28a6aecf8b81))
+*   **Navigation:** Improved typings to follow React Navigation 6 ([874c2dc](https://github.com/BlueBaseJS/core/commit/874c2dc29758fa45947221a370fc237d1eae84e8))
+
+### BREAKING CHANGES
+
+*   **Navigation:** - Navigation props have changed to follow React Navigation 6. Implementation of Link, Redirect & TouchableItem components removed
+
 # [8.0.0-alpha.7](https://github.com/BlueBaseJS/core/compare/v8.0.0-alpha.6...v8.0.0-alpha.7) (2023-08-31)
 
 ### Bug Fixes
