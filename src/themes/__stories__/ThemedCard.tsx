@@ -9,6 +9,7 @@ const View = getComponent<ViewProps>('View');
 const Text = getComponent<TextProps>('Text');
 
 export interface ThemedCardProps {
+	children?: React.ReactNode;
 	styles?: {
 		root: ViewStyle;
 		text: TextStyle;
@@ -33,10 +34,10 @@ export class ThemedCard extends React.PureComponent<ThemedCardProps> {
 	});
 
 	render() {
-		const { styles, children } = this.props as any;
+		const { styles, children } = this.props;
 		return (
 			<View style={styles && styles.root}>
-				<Text style={styles && styles.text}>{children}</Text>
+				<Text style={styles && styles.text}>{children as any}</Text>
 			</View>
 		);
 	}
