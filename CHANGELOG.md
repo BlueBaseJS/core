@@ -1,3 +1,9 @@
+## [8.1.2](https://github.com/BlueBaseJS/core/compare/v8.1.1...v8.1.2) (2023-09-02)
+
+### Bug Fixes
+
+*   Fixed spoiled package.json ([568adca](https://github.com/BlueBaseJS/core/commit/568adcaf8e85e68564fbaba9be898c83e148f709))
+
 ## [8.1.1](https://github.com/BlueBaseJS/core/compare/v8.1.0...v8.1.1) (2023-09-02)
 
 ### Bug Fixes
