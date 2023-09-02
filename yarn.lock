@@ -1324,10 +1324,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bluebase/code-standards@^2.22.1":
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/@bluebase/code-standards/-/code-standards-2.22.1.tgz#9f00bb472d2ed576cf848dd360f47e684f660e7d"
-  integrity sha512-/rVK5ExoDJtT/98MZpL1bSwu97BzX0UaDUHTof4HH2Dm+i3E9UjHoBTgQ9Kav74TCVpiIVLX3kSn54MLSGg1LQ==
+"@bluebase/code-standards@^2.22.2":
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/@bluebase/code-standards/-/code-standards-2.22.2.tgz#a5013a24f3bf5883ce0d24c6822dd2265f6259e7"
+  integrity sha512-4TtDCEnxB4XQ+pRb/HziXcEjNcToMcMIEMfXSZs1OAIlcOXFf4JGOagVmOlg4n3wWnLCCOdbO6XBEbKy5jb8Tw==
   dependencies:
     "@babel/plugin-proposal-object-rest-spread" "^7.16.7"
     "@babel/plugin-transform-flow-strip-types" "^7.16.7"

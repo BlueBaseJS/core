@@ -74,7 +74,7 @@
   "devDependencies": {
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.11",
-    "@bluebase/code-standards": "^2.22.1",
+    "@bluebase/code-standards": "^2.22.2",
     "@bluebase/storybook-addon": "^3.0.0",
     "@expo/webpack-config": "^19.0.0",
     "@react-native-picker/picker": "2.4.10",
