@@ -77,7 +77,7 @@ export const StatefulComponent = (props: StatefulComponentProps) => {
 								onTimeout,
 								timeout,
 							},
-							(p: WaitObserverChildrenProps) => <LoadingComponent {...p} />
+							((p: WaitObserverChildrenProps) => <LoadingComponent {...p} />) as any
 						);
 					}
 

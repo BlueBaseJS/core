@@ -21,7 +21,7 @@ describe('Noop', () => {
 			</Noop>
 		);
 
-		expect(component.root.findByType(TestComponent).findByType(Text).props.children).toBe(
+		expect(component.root.findByType(TestComponent).findByType(Text as any).props.children).toBe(
 			'Testing'
 		);
 

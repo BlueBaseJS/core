@@ -26,7 +26,7 @@ export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
 	};
 
 	render() {
-		const BB: BlueBase = this.context;
+		const BB: BlueBase = this.context as BlueBase;
 
 		const { type, component: Component, name, source, ...other } = this.props;
 		const rest = { ...other };

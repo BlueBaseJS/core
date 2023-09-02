@@ -33,7 +33,7 @@ export class ThemedCard extends React.PureComponent<ThemedCardProps> {
 	});
 
 	render() {
-		const { styles, children } = this.props;
+		const { styles, children } = this.props as any;
 		return (
 			<View style={styles && styles.root}>
 				<Text style={styles && styles.text}>{children}</Text>

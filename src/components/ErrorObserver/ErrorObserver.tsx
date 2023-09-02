@@ -51,7 +51,7 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 	}
 
 	render() {
-		const BB: BlueBase = this.context;
+		const BB: BlueBase = this.context as BlueBase;
 
 		const { error } = this.state;
 		const { children, retry, checkError, error: e, errorComponent, ...rest } = this.props;
