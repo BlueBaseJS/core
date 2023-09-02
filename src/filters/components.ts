@@ -81,7 +81,7 @@ export const components: FilterNestedCollection = {
 					FlatList,
 					Image,
 					ImageBackground,
-					SafeAreaView,
+					SafeAreaView: { applyStyles: false, value: SafeAreaView },
 					ScrollView,
 					Switch,
 					Text,
