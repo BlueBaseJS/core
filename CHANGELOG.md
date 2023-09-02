@@ -1,3 +1,9 @@
+## [8.1.1](https://github.com/BlueBaseJS/core/compare/v8.1.0...v8.1.1) (2023-09-02)
+
+### Bug Fixes
+
+*   Fixed build ([e2ae4d2](https://github.com/BlueBaseJS/core/commit/e2ae4d237135cc4fa5a226c1a59391b5adb767ea))
+
 # [8.1.0](https://github.com/BlueBaseJS/core/compare/v8.0.1...v8.1.0) (2023-09-02)
 
 ### Features
