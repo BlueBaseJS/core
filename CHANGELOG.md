@@ -1,3 +1,9 @@
+# [8.1.0](https://github.com/BlueBaseJS/core/compare/v8.0.1...v8.1.0) (2023-09-02)
+
+### Features
+
+*   Updated to Expo 49 ([d3dd9b4](https://github.com/BlueBaseJS/core/commit/d3dd9b495e6fdfe9fadc6ea7bd3c6b22bb8b7ebe))
+
 ## [8.0.1](https://github.com/BlueBaseJS/core/compare/v8.0.0...v8.0.1) (2023-09-02)
 
 ### Bug Fixes
