@@ -1,3 +1,9 @@
+## [8.0.1](https://github.com/BlueBaseJS/core/compare/v8.0.0...v8.0.1) (2023-09-02)
+
+### Bug Fixes
+
+*   Fixed a crash due to SafeAreaView ([56a6f85](https://github.com/BlueBaseJS/core/commit/56a6f851b8ec8c2f4a916a25c11e50e27351e299))
+
 # [8.0.0](https://github.com/BlueBaseJS/core/compare/v7.1.0...v8.0.0) (2023-09-01)
 
 ### Bug Fixes
