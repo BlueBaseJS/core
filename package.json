@@ -3,7 +3,7 @@
   "description": "🚀 A modular, pluggable and cross platform app framework.",
   "author": "BlueEast Team <code@blueeast.com>",
   "version": "8.1.2",
-  "main": "dist/index.js",
+  "main": "./App.jsx",
   "typings": "dist/index.d.ts",
   "module": "dist/index.js",
   "repository": "https://github.com/BlueBaseJS/core.git",
@@ -74,7 +74,7 @@
   "devDependencies": {
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.11",
-    "@bluebase/code-standards": "^2.22.3",
+    "@bluebase/code-standards": "^2.22.4",
     "@bluebase/storybook-addon": "^3.0.0",
     "@expo/webpack-config": "^19.0.0",
     "@react-native-picker/picker": "2.4.10",
