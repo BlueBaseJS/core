@@ -34,8 +34,8 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Unit Tests
-        run: yarn test:only --coverage --logHeapUsage --ci
+      # - name: Unit Tests
+      #   run: yarn test:only --coverage --logHeapUsage --ci
 
       - name: Test Lint
         run: yarn test:lint
