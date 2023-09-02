@@ -8,7 +8,7 @@ import { BlueBase } from '../../BlueBase';
 import { getComponent } from '../../getComponent';
 import { ComponentRegistry } from '../';
 
-const Button: React.StatelessComponent<{}> = () => <View>A Button</View>;
+const Button = () => <View>A Button</View>;
 (Button as any).foo = 'bar';
 
 class Welcome extends React.Component<{ name: string }> {

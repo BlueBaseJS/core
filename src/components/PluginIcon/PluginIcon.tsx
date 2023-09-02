@@ -29,7 +29,7 @@ export class PluginIcon extends React.PureComponent<PluginIconProps> {
 	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	render() {
-		const BB: BlueBase = this.context;
+		const BB: BlueBase = this.context as BlueBase;
 
 		const { id, size } = this.props;
 

@@ -1,4 +1,3 @@
-// tslint:disable: object-literal-sort-keys
 import { BlueBase, BootOptions } from '../BlueBase';
 import {
 	BlueBaseContent,
@@ -76,16 +75,16 @@ export const components: FilterNestedCollection = {
 					WaitObserver,
 
 					// Native
-					ActivityIndicator,
-					Button,
-					FlatList,
-					Image,
-					ImageBackground,
+					ActivityIndicator: { value: ActivityIndicator },
+					Button: { value: Button },
+					FlatList: { value: FlatList },
+					Image: { value: Image },
+					ImageBackground: { value: ImageBackground },
 					SafeAreaView: { applyStyles: false, value: SafeAreaView },
-					ScrollView,
-					Switch,
-					Text,
-					TextInput,
+					ScrollView: { value: ScrollView },
+					Switch: { value: Switch },
+					Text: { value: Text },
+					TextInput: { value: TextInput },
 					View: { applyStyles: false, value: View },
 
 					// Typography

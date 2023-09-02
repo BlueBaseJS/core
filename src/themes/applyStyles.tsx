@@ -51,7 +51,7 @@ export function applyStyles<T = any>(options: applyStylesOptions) {
 			// If we were able to extract any rules, pass them forward in the styles prop
 			const finalProps = Object.keys(styles).length > 0 ? { ...props, styles } : props;
 
-			return React.createElement(Component, finalProps);
+			return React.createElement(Component as any, finalProps as any);
 		};
 
 		ThemedComponent.displayName = 'ThemedComponent';

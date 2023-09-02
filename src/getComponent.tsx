@@ -29,7 +29,7 @@ export function getComponent<T = any>(
 			);
 		}
 
-		return React.createElement(BB.Components.resolveFromCache<T>(...(keys as any)), props);
+		return React.createElement(BB.Components.resolveFromCache<T>(...(keys as any)) as any, props as any);
 	};
 
 	BlueBaseComponent.displayName = displayName;

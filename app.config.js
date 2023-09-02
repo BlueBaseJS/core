@@ -4,7 +4,6 @@ export default {
 	version: '1.0.0',
 	orientation: 'portrait',
 	icon: './assets/icon.png',
-	entryPoint: './node_modules/expo/AppEntry.js',
 	splash: {
 		image: './assets/splash.png',
 		resizeMode: 'cover',
