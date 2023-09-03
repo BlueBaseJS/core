@@ -1,5 +1,4 @@
 import { BlueBase } from '../../BlueBase';
-import { isProduction } from '../../utils';
 
 // Number of errors to save
 const CACHE_SIZE = 5;
@@ -21,7 +20,7 @@ export function useExceptionHandlingOnProduction(BB: BlueBase) {
 	let development = BB.Configs.getValue('development');
 
 	if (development === undefined) {
-		development = !isProduction();
+		development = false;
 	}
 
 	/**
