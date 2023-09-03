@@ -41,4 +41,3 @@ Emoji reference of Commitizen scopes for this repo:
 *   🔌 PluginIcon
 *   👨‍🎨 StatefulComponent
 *   ⏰ WaitObserver
-

@@ -2,7 +2,6 @@ import { makeId, merge } from '../Misc';
 
 describe('Utils', () => {
 	describe('Misc', () => {
-
 		describe('.makeId method', () => {
 			it('should create a random string everytime', () => {
 				const n1 = makeId();
