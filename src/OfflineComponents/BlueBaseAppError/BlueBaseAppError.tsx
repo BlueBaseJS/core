@@ -9,7 +9,6 @@ import {
 
 import { BlueBase, BlueBaseProgress } from '../../BlueBase';
 import { WaitObserver } from '../../components';
-import { isProduction } from '../../utils';
 
 const MISSING_ERROR = 'An unknown error occurred.';
 
@@ -25,7 +24,7 @@ export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorP
 	let development = BB.Configs.getValue('development');
 
 	if (development === undefined) {
-		development = !isProduction();
+		development = false;
 	}
 
 	const message = development === true && error ? error.message : MISSING_ERROR;

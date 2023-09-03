@@ -1,5 +1,4 @@
 import { ThemeInput } from './themes';
-import { isProduction } from './utils';
 
 export interface Configs {
 	[key: string]: any;
@@ -61,8 +60,8 @@ export interface Configs {
 }
 
 export const BlueBaseDefaultConfigs: Configs = {
-	debug: !isProduction(),
-	development: !isProduction(),
+	debug: false,
+	development: false,
 	direction: 'auto',
 	locale: 'en',
 	'locale.options': {

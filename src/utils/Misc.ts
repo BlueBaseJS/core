@@ -1,25 +1,5 @@
-declare const process: any;
-
 import deepmerge from 'deepmerge';
 import isPlainPbject from 'is-plain-object';
-
-/**
- * Check if the project is running in production mode. Returns 'true' if it is.
- */
-export function isProduction(): boolean {
-	// Web
-	if (typeof process !== undefined && process?.env && process?.env.NODE_ENV) {
-		return process?.env.NODE_ENV === 'production';
-	}
-
-	// react-native
-	// eslint-disable-next-line no-undef
-	if (__DEV__) {
-		return false;
-	}
-
-	return true;
-}
 
 /**
  * Creates a unique ID.
