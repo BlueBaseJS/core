@@ -1,3 +1,9 @@
+# [8.2.0](https://github.com/BlueBaseJS/core/compare/v8.1.3...v8.2.0) (2023-09-03)
+
+### Features
+
+*   Removed env check for production. Rely on configs ([#605](https://github.com/BlueBaseJS/core/issues/605)) ([c33f209](https://github.com/BlueBaseJS/core/commit/c33f20947130d1ba8e2174e1451d9c162b0f4cb9))
+
 ## [8.1.3](https://github.com/BlueBaseJS/core/compare/v8.1.2...v8.1.3) (2023-09-02)
 
 ### Bug Fixes
