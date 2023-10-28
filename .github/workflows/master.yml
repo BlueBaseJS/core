@@ -45,8 +45,7 @@ jobs:
         run: yarn build
 
       - name: Semantic Release
+        run: npx semantic-release@16
         env:
-          GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
-          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release@beta
