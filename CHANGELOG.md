@@ -1,3 +1,9 @@
+# [8.3.0](https://github.com/BlueBaseJS/core/compare/v8.2.0...v8.3.0) (2023-10-28)
+
+### Features
+
+*   **ConfigRegistry:** Track if configs are mutated ([cc6de8b](https://github.com/BlueBaseJS/core/commit/cc6de8b47195a930cfc0f896a6de631d87157390))
+
 # [8.2.0](https://github.com/BlueBaseJS/core/compare/v8.1.3...v8.2.0) (2023-09-03)
 
 ### Features
