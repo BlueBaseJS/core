@@ -4,7 +4,7 @@ export { ItemCollection as ConfigCollection } from './Registry';
 
 export interface ConfigResisteryItem extends RegistryItem {
 	mutated: boolean;
-};
+}
 
 /**
  * 🎛 ConfigRegistry
@@ -30,14 +30,26 @@ export class ConfigRegistry extends Registry<ConfigResisteryItem> {
 	 * @param item
 	 */
 	public async registerIfNotExists(
-		item: ConfigResisteryItem | ConfigResisteryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+		item:
+			| ConfigResisteryItem
+			| ConfigResisteryItem['value']
+			| RegistryInputItem
+			| RegistryInputItem['value']
 	): Promise<void | string>;
 	public async registerIfNotExists(
 		key: string,
-		item: ConfigResisteryItem | ConfigResisteryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+		item:
+			| ConfigResisteryItem
+			| ConfigResisteryItem['value']
+			| RegistryInputItem
+			| RegistryInputItem['value']
 	): Promise<void | string>;
 	public async registerIfNotExists<
-		T = ConfigResisteryItem | ConfigResisteryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+		T =
+			| ConfigResisteryItem
+			| ConfigResisteryItem['value']
+			| RegistryInputItem
+			| RegistryInputItem['value']
 	>(key: string | T, item?: T): Promise<void | string> {
 		const args = this.getKeyAnyItem(key as any, item);
 
