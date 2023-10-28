@@ -155,7 +155,7 @@ export const Button = (props: ButtonProps) => {
 	const Touchable: React.ComponentType<any> =
 		Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
 	return (
-		<Touchable accessibilityRole="button" disabled={disabled} onPress={onPress}>
+		<Touchable role="button" disabled={disabled} onPress={onPress}>
 			<View style={rootStyles} testID={testID}>
 				{typeof children === 'string' ? <Text style={textStyles}>{children}</Text> : children}
 			</View>

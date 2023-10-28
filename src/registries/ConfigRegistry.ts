@@ -2,17 +2,21 @@ import { ItemCollection, Registry, RegistryInputItem, RegistryItem } from './Reg
 
 export { ItemCollection as ConfigCollection } from './Registry';
 
+export interface ConfigResisteryItem extends RegistryItem {
+	mutated: boolean;
+};
+
 /**
  * 🎛 ConfigRegistry
  */
-export class ConfigRegistry extends Registry<RegistryItem> {
+export class ConfigRegistry extends Registry<ConfigResisteryItem> {
 	/**
 	 * The set() method adds or updates an element with a specified
 	 * key and item to the registry.
 	 * @param key
 	 * @param value
 	 */
-	public set(key: string, item: RegistryItem | RegistryInputItem) {
+	public set(key: string, item: ConfigResisteryItem | RegistryInputItem) {
 		super.set(key, item);
 
 		const value = this.getValue(key);
@@ -26,14 +30,14 @@ export class ConfigRegistry extends Registry<RegistryItem> {
 	 * @param item
 	 */
 	public async registerIfNotExists(
-		item: RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+		item: ConfigResisteryItem | ConfigResisteryItem['value'] | RegistryInputItem | RegistryInputItem['value']
 	): Promise<void | string>;
 	public async registerIfNotExists(
 		key: string,
-		item: RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+		item: ConfigResisteryItem | ConfigResisteryItem['value'] | RegistryInputItem | RegistryInputItem['value']
 	): Promise<void | string>;
 	public async registerIfNotExists<
-		T = RegistryItem | RegistryItem['value'] | RegistryInputItem | RegistryInputItem['value']
+		T = ConfigResisteryItem | ConfigResisteryItem['value'] | RegistryInputItem | RegistryInputItem['value']
 	>(key: string | T, item?: T): Promise<void | string> {
 		const args = this.getKeyAnyItem(key as any, item);
 

@@ -11,7 +11,10 @@ export function useConfig<T = any>(
 	const BB = useBlueBase();
 	const [value, setConfig] = useState<T>(BB.Configs.getValue(key));
 
-	const setValue = (v: any) => BB.Configs.setValue(key, v);
+	const setValue = (v: any) => {
+		BB.Configs.setValue(key, v);
+		BB.Configs.setMeta(key, 'mutated', true);
+	};
 
 	useEffect(() => {
 		let cancelled = false;
