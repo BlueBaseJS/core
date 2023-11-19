@@ -21,7 +21,7 @@ export interface BlueBaseAppErrorProps {
 
 export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorProps) => {
 	const error = err || (progress && progress.error);
-	let development = BB.Configs.getValue('development');
+	let development = process.env.NODE_ENV !== 'production';
 
 	if (development === undefined) {
 		development = false;
