@@ -1,3 +1,9 @@
+## [8.3.2](https://github.com/BlueBaseJS/core/compare/v8.3.1...v8.3.2) (2023-12-28)
+
+### Bug Fixes
+
+*   **useColorScheme:** Fixed broken logic ([b63aa2d](https://github.com/BlueBaseJS/core/commit/b63aa2d34d41d7efecdabd174fd69b4cc1c1568a))
+
 ## [8.3.1](https://github.com/BlueBaseJS/core/compare/v8.3.0...v8.3.1) (2023-11-19)
 
 ### Bug Fixes
