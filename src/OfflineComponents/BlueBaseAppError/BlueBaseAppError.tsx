@@ -17,9 +17,10 @@ export interface BlueBaseAppErrorProps {
 	error?: Error;
 	progress?: BlueBaseProgress;
 	bootCount: number;
+	retry?: () => void;
 }
 
-export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorProps) => {
+export const BlueBaseAppError = ({ progress, error: err, retry }: BlueBaseAppErrorProps) => {
 	const error = err || (progress && progress.error);
 	let development = process.env.NODE_ENV !== 'production';
 
@@ -28,7 +29,6 @@ export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorP
 	}
 
 	const message = development === true && error ? error.message : MISSING_ERROR;
-	const reload = () => BB.reboot();
 
 	return (
 		<WaitObserver delay={100}>
@@ -64,7 +64,7 @@ export const BlueBaseAppError = ({ progress, error: err, BB }: BlueBaseAppErrorP
 							{message}
 						</Text>
 						<View style={{}}>
-							<TouchableOpacity onPress={reload} testID="error-button">
+							<TouchableOpacity onPress={retry} testID="error-button">
 								<Text
 									style={{
 										backgroundColor: 'rgba(76, 175, 80, .1)',

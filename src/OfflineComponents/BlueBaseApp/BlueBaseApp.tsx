@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { BlueBase, BlueBaseProgress, BootOptions } from '../../BlueBase';
 import { ErrorObserver } from '../../components';
@@ -61,7 +61,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 
 	const { onError } = useExceptionHandlingOnProduction(BB);
 
-	async function boot(reset?: boolean) {
+	const boot = useCallback(async (reset?: boolean) => {
 		if (!booting) {
 			setBooting(true);
 		}
@@ -79,7 +79,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 		});
 		setBootCount(bootCount + 1);
 		setBooting(false);
-	}
+	}, [booting, bootCount, setBooting, setProgress, setBootCount, BB, props]);
 
 	BB.reboot = async (reset: boolean = false) => {
 		boot(reset);
@@ -100,7 +100,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 	}
 
 	if (progress.error) {
-		return <ErrorComponent BB={BB} progress={progress} bootCount={bootCount} />;
+		return <ErrorComponent BB={BB} progress={progress} bootCount={bootCount} retry={boot} />;
 	}
 
 	return (
@@ -111,6 +111,7 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 				progress={progress}
 				bootCount={bootCount}
 				onError={onError}
+				retry={boot}
 			>
 				<ThemeProvider>
 					<IntlProvider>
