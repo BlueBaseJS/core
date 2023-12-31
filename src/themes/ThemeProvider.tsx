@@ -35,7 +35,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 	const BB = useBlueBase();
 	const colorScheme = useColorScheme();
 
-	const [, changeMode] = useConfig('theme.mode');
+	const [modeConfig, changeMode] = useConfig('theme.mode');
 	const [themeName, changeTheme] = useConfig('theme');
 	const [overridesConfig] = useConfig<ThemeInput>('theme.overrides');
 
@@ -58,6 +58,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 		changeMode,
 		changeTheme,
 		theme,
+		modeConfig,
 	};
 
 	return <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>;

@@ -14,6 +14,8 @@ export interface ThemeContextData {
 
 	/** Selected theme varaint */
 	theme: Theme;
+
+	modeConfig: Configs['theme.mode'];
 }
 
 /**
