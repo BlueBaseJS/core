@@ -40,5 +40,5 @@ export function useConfig<T = any>(
 		};
 	}, [value, ...deps]);
 
-	return [value, setValue];
+	return [value, setValue] as [T, React.Dispatch<React.SetStateAction<T>>];
 }

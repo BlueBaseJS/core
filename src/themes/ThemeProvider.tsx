@@ -39,8 +39,8 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 	const [themeName, changeTheme] = useConfig('theme');
 	const [overridesConfig] = useConfig<ThemeInput>('theme.overrides');
 
-	const key = props.theme || themeName;
-	const mode = props.mode || colorScheme;
+	const key = props.theme ?? themeName;
+	const mode = props.mode ?? colorScheme;
 
 	const registryTheme = BB.Themes.getValue(key);
 

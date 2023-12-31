@@ -5,14 +5,13 @@ import { useConfig } from './useConfig';
 export type ColorSchemeName = 'light' | 'dark';
 
 export function useColorScheme(): ColorSchemeName {
-	const [mode] = useConfig('theme.mode');
-
-	if (mode === 'light' || mode === 'dark') {
-		return mode;
-	}
-
 	try {
+		const [mode] = useConfig('theme.mode');
 		const colorScheme = useColorSchemeRN();
+
+		if (mode === 'light' || mode === 'dark') {
+			return mode;
+		}
 
 		if (!colorScheme) {
 			return 'light';
