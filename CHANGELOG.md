@@ -1,3 +1,9 @@
+# [8.4.0](https://github.com/BlueBaseJS/core/compare/v8.3.3...v8.4.0) (2023-12-31)
+
+### Features
+
+*   Added modeConfig option to Theme Context ([d8cabe1](https://github.com/BlueBaseJS/core/commit/d8cabe194407fed3be3fc4e6141745497953341d))
+
 ## [8.3.3](https://github.com/BlueBaseJS/core/compare/v8.3.2...v8.3.3) (2023-12-31)
 
 ### Bug Fixes
