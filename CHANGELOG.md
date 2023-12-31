@@ -1,3 +1,10 @@
+## [8.3.3](https://github.com/BlueBaseJS/core/compare/v8.3.2...v8.3.3) (2023-12-31)
+
+### Bug Fixes
+
+*   Fixed app crash due to dark mode setting change ([dda9afd](https://github.com/BlueBaseJS/core/commit/dda9afd19c1bf7fee56b877ebc34feacb2f3c504))
+*   Fixed reload button if then app crashes ([cef7a7b](https://github.com/BlueBaseJS/core/commit/cef7a7b47e8800d1e6fa9062be1efd7912e8bfb6))
+
 ## [8.3.2](https://github.com/BlueBaseJS/core/compare/v8.3.1...v8.3.2) (2023-12-28)
 
 ### Bug Fixes
