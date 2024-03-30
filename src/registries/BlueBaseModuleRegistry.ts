@@ -57,7 +57,7 @@ export type BlueBaseModuleRegistryInputItem<ValueType = any, Extras = {}> = {
  */
 export class BlueBaseModuleRegistry<
 	ItemType extends BlueBaseModuleRegistryItem,
-	ItemInputType extends BlueBaseModuleRegistryInputItem = BlueBaseModuleRegistryInputItem
+	ItemInputType extends BlueBaseModuleRegistryInputItem = BlueBaseModuleRegistryInputItem,
 > extends Registry<ItemType, ItemInputType> {
 	/**
 	 * The set() method adds or updates an element with a specified

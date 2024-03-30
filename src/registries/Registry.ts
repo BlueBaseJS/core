@@ -63,7 +63,7 @@ export type RegistrySubscriptionFn<ItemType extends RegistryItem> = (
  */
 export class Registry<
 	ItemType extends RegistryItem,
-	ItemInputType extends RegistryInputItem = RegistryInputItem
+	ItemInputType extends RegistryInputItem = RegistryInputItem,
 > {
 	/** Internal data */
 	protected data: Map<string, ItemType> = new Map();

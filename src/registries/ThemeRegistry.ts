@@ -18,7 +18,7 @@ export class ThemeRegistry extends Registry<ThemeItem, ThemeRegistryInput> {
 	 * @param item
 	 */
 	public async register<
-		T = ThemeItem | ThemeItem['value'] | ThemeRegistryInput | ThemeRegistryInput['value']
+		T = ThemeItem | ThemeItem['value'] | ThemeRegistryInput | ThemeRegistryInput['value'],
 	>(key: string | T, item?: T): Promise<string> {
 		return key instanceof Theme
 			? super.register(key.key, key)

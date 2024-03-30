@@ -49,7 +49,7 @@ export class ConfigRegistry extends Registry<ConfigResisteryItem> {
 			| ConfigResisteryItem
 			| ConfigResisteryItem['value']
 			| RegistryInputItem
-			| RegistryInputItem['value']
+			| RegistryInputItem['value'],
 	>(key: string | T, item?: T): Promise<void | string> {
 		const args = this.getKeyAnyItem(key as any, item);
 
