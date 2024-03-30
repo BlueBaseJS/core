@@ -1,3 +1,9 @@
+## [8.5.2](https://github.com/BlueBaseJS/core/compare/v8.5.1...v8.5.2) (2024-03-30)
+
+### Bug Fixes
+
+*   Fixed prepublish ([355954a](https://github.com/BlueBaseJS/core/commit/355954a22845113abbd713ed194d5f1da5cb7cb0))
+
 ## [8.5.1](https://github.com/BlueBaseJS/core/compare/v8.5.0...v8.5.1) (2024-03-30)
 
 ### Bug Fixes
