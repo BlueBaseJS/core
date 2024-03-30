@@ -36,7 +36,7 @@
     "eject": "expo eject",
     "clean": "rimraf coverage dist tmp",
     "build": "run-s clean && run-p build:* && cp -r ./dist/src/* ./dist && rm -r ./dist/src",
-    "build:main": "tsc -p tsconfig.json && babel ./src --out-dir dist --ignore \"**/__tests__\",\"**/__stories__\" --extensions \".ts,.tsx,.js,.jsx\"",
+    "build:main": "tsc -p tsconfig.json && babel ./src --out-dir dist --ignore \"**/__tests__/**\",\"**/__stories__/**\" --extensions \".ts,.tsx,.js,.jsx\"",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:md": "remark . -o",
