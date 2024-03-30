@@ -46,7 +46,6 @@
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
     "test:md": "remark . -f",
     "test:only": "jest --coverage --runInBand",
-    "prepublishOnly": "yarn remove expo react-native;",
     "storybook-native": "NODE_ENV=STORYBOOK_NATIVE expo start",
     "prestorybook-native": "rnstl",
     "storybook-native-server": "start-storybook -p 7007",
