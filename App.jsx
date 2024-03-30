@@ -1,8 +1,8 @@
-import { BlueBaseApp } from '@bluebase/core';
 import { registerRootComponent } from 'expo';
 import React from 'react';
 
 import boot from './boot';
+import { BlueBaseApp } from './src';
 
 let App;
 

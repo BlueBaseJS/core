@@ -25,9 +25,13 @@ export default {
 		}
 	},
 	web: {
+		bundler: 'metro',
 		favicon: './assets/favicon.png'
 	},
 	extra: {
 		storybookNative: process.env.NODE_ENV === 'STORYBOOK_NATIVE'
-	}
+	},
+	plugins: [
+		'expo-font'
+	]
 };
