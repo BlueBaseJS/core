@@ -15,3 +15,4 @@
 [![Build Status](https://travis-ci.org/BlueBaseJS/core.svg?branch=master)](https://travis-ci.org/BlueBaseJS/core)
 [![codecov](https://codecov.io/gh/BlueBaseJS/core/branch/master/graph/badge.svg)](https://codecov.io/gh/BlueBaseJS/core)
 [![Known Vulnerabilities](https://snyk.io/test/npm/@bluebase/core/badge.svg)](https://snyk.io/test/npm/@bluebase/core)
+
