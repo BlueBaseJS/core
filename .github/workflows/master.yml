@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node: ['v18.16.1']
+        node: ['v20.8.1']
 
     steps:
       - uses: actions/checkout@v2
