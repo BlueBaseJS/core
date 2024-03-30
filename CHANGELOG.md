@@ -1,3 +1,9 @@
+# [8.5.0](https://github.com/BlueBaseJS/core/compare/v8.4.0...v8.5.0) (2024-03-30)
+
+### Features
+
+*   Update expo to v50 ([e979f10](https://github.com/BlueBaseJS/core/commit/e979f10f6de282a60dce6207386594efefed72b0))
+
 # [8.4.0](https://github.com/BlueBaseJS/core/compare/v8.3.3...v8.4.0) (2023-12-31)
 
 ### Features
