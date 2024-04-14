@@ -1,3 +1,9 @@
+## [8.5.3](https://github.com/BlueBaseJS/core/compare/v8.5.2...v8.5.3) (2024-04-14)
+
+### Bug Fixes
+
+*   **HomeScreen:** Use dynamic title ([47ad44d](https://github.com/BlueBaseJS/core/commit/47ad44d412b1932f4ccb12ba913edd59b9bd4a7e))
+
 ## [8.5.2](https://github.com/BlueBaseJS/core/compare/v8.5.1...v8.5.2) (2024-03-30)
 
 ### Bug Fixes
