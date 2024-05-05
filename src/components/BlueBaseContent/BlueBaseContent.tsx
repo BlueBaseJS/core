@@ -35,7 +35,12 @@ export const BlueBaseContent = (props: BlueBaseContentProps) => {
 		renderChildrenWithProps(children, { BB })
 	) : (
 		<View key="bluebase-wrapper" style={styles!.backdrop}>
-			<StatusBar translucent barStyle={theme.mode === 'dark' ? 'light-content' : 'dark-content'} />
+			<StatusBar
+				barStyle={theme.mode === 'dark' ? 'light-content' : 'dark-content'}
+				animated
+				translucent
+				backgroundColor="transparent"
+			/>
 			<BlueBaseFilter filter="bluebase.navigator.root" value={{}} args={{ theme, BB, intl }}>
 				{(navigator: NavigatorProps) => <Navigation navigator={navigator} />}
 			</BlueBaseFilter>

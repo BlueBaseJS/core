@@ -131,7 +131,7 @@ export class BlueBase {
 	 */
 	public reboot: (reset?: boolean) => Promise<void> = async (reset?: boolean) => {
 		// This is just a stub funnction. It is replaced by BlueBaseApp
-		this.boot({ reset });
+		await this.boot({ reset });
 	};
 
 	/**
