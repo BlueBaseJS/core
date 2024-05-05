@@ -1,3 +1,9 @@
+## [8.5.4](https://github.com/BlueBaseJS/core/compare/v8.5.3...v8.5.4) (2024-05-05)
+
+### Bug Fixes
+
+*   Fixed status bar style ([406b8e2](https://github.com/BlueBaseJS/core/commit/406b8e2ca77e432901dff876dc3ff7f129058959))
+
 ## [8.5.3](https://github.com/BlueBaseJS/core/compare/v8.5.2...v8.5.3) (2024-04-14)
 
 ### Bug Fixes
