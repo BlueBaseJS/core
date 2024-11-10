@@ -1,5 +1,5 @@
 import { NavigationProps, RouteConfig } from '@bluebase/components';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext, NavigationContext, StubNavigationActionsObject } from '../../contexts';
@@ -10,40 +10,38 @@ import { resolveThunk } from '../../utils';
  *
  * This is a stub router. Intended to be replaced by an external router plugin.
  */
-export class Navigation extends React.PureComponent<NavigationProps> {
-	static contextType: React.Context<BlueBase> = BlueBaseContext;
+export const Navigation: React.FC<NavigationProps> = ({ navigator }) => {
+	const BB = useContext(BlueBaseContext) as BlueBase;
 
-	render() {
-		const BB: BlueBase = this.context as BlueBase;
+	const routes = resolveThunk<RouteConfig[]>(navigator.routes, BB) || [];
+	const route = routes[0];
 
-		const routes = resolveThunk<RouteConfig[]>(this.props.navigator.routes, BB) || [];
-
-		const route = routes[0];
-
-		if (!route) {
-			return null;
-		}
-
-		const Screen =
-			typeof route.screen === 'string' ? BB.Components.resolve(route.screen) : route.screen;
-
-		let navigator = null;
-
-		if (route.navigator) {
-			navigator = <Navigation navigator={route.navigator} />;
-		}
-
-		let node = navigator;
-
-		if (route.screen) {
-			const Component = Screen!;
-			node = <Component key={route.name}>{navigator}</Component>;
-		}
-
-		return (
-			<NavigationContext.Provider value={StubNavigationActionsObject}>
-				{node}
-			</NavigationContext.Provider>
-		);
+	if (!route) {
+		return null;
 	}
-}
+
+	const Screen =
+		typeof route.screen === 'string' ? BB.Components.resolve(route.screen) : route.screen;
+
+	let navigatorNode = null;
+
+	if (route.navigator) {
+		navigatorNode = <Navigation navigator={route.navigator} />;
+	}
+
+	let node = navigatorNode;
+
+	if (route.screen) {
+		const Component = Screen!;
+		node = <Component key={route.name}>{navigatorNode}</Component>;
+	}
+
+	return (
+		<NavigationContext.Provider value={StubNavigationActionsObject}>
+			{node}
+		</NavigationContext.Provider>
+	);
+};
+
+Navigation.displayName = 'Navigation';
+export default Navigation;

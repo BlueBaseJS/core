@@ -1,5 +1,5 @@
 import { DynamicIconProps } from '@bluebase/components';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../contexts';
@@ -18,43 +18,40 @@ import { BlueBaseContext } from '../../contexts';
  * ```
  */
 
-export class DynamicIcon extends React.PureComponent<DynamicIconProps> {
-	static contextType: React.Context<BlueBase> = BlueBaseContext;
+export const DynamicIcon: React.FC<DynamicIconProps> = ({
+	type,
+	component: Component,
+	name,
+	source,
+	size = 100,
+	...other
+}) => {
+	const BB = useContext(BlueBaseContext) as BlueBase;
+	const rest: any = { ...other, size: Number(size) };
 
-	public static defaultProps: Partial<DynamicIconProps> = {
-		size: 100,
-	};
+	let component: React.ComponentType<any>;
 
-	render() {
-		const BB: BlueBase = this.context as BlueBase;
-
-		const { type, component: Component, name, source, ...other } = this.props;
-		const rest = { ...other };
-
-		let component: React.ComponentType<any>;
-
-		if (!rest.style) {
-			rest.style = {};
-		}
-
-		if (type === 'component' && Component) {
-			component =
-				typeof Component === 'string' ? BB.Components.resolve(Component) : (component = Component);
-		} else if (type === 'icon' && name) {
-			component = BB.Components.resolve('Icon');
-			rest.name = name;
-		} else if (type === 'image' && source) {
-			component = BB.Components.resolve('Image');
-			rest.source = source;
-
-			rest.style.width = Number(rest.size);
-			rest.style.height = Number(rest.size);
-		} else {
-			return null;
-		}
-
-		rest.size = Number(rest.size);
-
-		return React.createElement(component, rest);
+	if (!rest.style) {
+		rest.style = {};
 	}
-}
+
+	if (type === 'component' && Component) {
+		component =
+			typeof Component === 'string' ? BB.Components.resolve(Component) : Component;
+	} else if (type === 'icon' && name) {
+		component = BB.Components.resolve('Icon');
+		rest.name = name;
+	} else if (type === 'image' && source) {
+		component = BB.Components.resolve('Image');
+		rest.source = source;
+		rest.style.width = Number(size);
+		rest.style.height = Number(size);
+	} else {
+		return null;
+	}
+
+	return React.createElement(component, rest);
+};
+
+DynamicIcon.displayName = 'DynamicIcon';
+export default DynamicIcon;

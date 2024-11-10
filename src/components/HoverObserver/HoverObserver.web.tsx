@@ -1,15 +1,11 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable max-len */
 import { HoverObserverProps } from '@bluebase/components';
-import React, { SyntheticEvent } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { renderChildrenWithProps } from '../../utils';
 
-export interface HoverObserverState {
-	readonly isHovering: boolean;
-}
-
-const Noop = () => {
-	return;
-};
+const Noop = () => {};
 
 /**
  * # 🛸 HoverObserver
@@ -27,121 +23,55 @@ const Noop = () => {
  * </HoverObserver>
  * ```
  */
-export class HoverObserver extends React.PureComponent<HoverObserverProps, HoverObserverState> {
-	public static defaultProps: Partial<HoverObserverProps> = {
-		hoverDelayInMs: 0,
-		hoverOffDelayInMs: 0,
-		onHoverChanged: Noop,
-		onMouseEnter: ({ setIsHovering }: any) => setIsHovering(),
-		onMouseLeave: ({ unsetIsHovering }: any) => unsetIsHovering(),
-		onMouseOut: Noop,
-		onMouseOver: Noop,
-	};
+export const HoverObserver: React.FC<HoverObserverProps> = ({
+	children,
+	hoverDelayInMs = 0,
+	hoverOffDelayInMs = 0,
+	onHoverChanged = Noop,
+	onMouseEnter = ({ setIsHovering }) => setIsHovering(),
+	onMouseLeave = ({ unsetIsHovering }) => unsetIsHovering(),
+	onMouseOut = Noop,
+	onMouseOver = Noop,
+}) => {
+	const [isHovering, setIsHovering] = useState(false);
+	const timerIds: any[] = [];
 
-	private timerIds: number[] = [];
+	const clearTimers = useCallback(() => {
+		timerIds.forEach((id) => clearTimeout(id));
+		timerIds.length = 0;
+	}, [timerIds]);
 
-	constructor(props: HoverObserverProps) {
-		super(props);
+	const handleSetHovering = useCallback(() => {
+		clearTimers();
+		const hoverTimerId = setTimeout(() => {
+			setIsHovering(true);
+			onHoverChanged({ isHovering: true });
+		}, hoverDelayInMs);
+		timerIds.push(hoverTimerId);
+	}, [clearTimers, hoverDelayInMs, onHoverChanged]);
 
-		this.state = {
-			isHovering: false,
-		};
+	const handleUnsetHovering = useCallback(() => {
+		clearTimers();
+		const hoverOffTimerId = setTimeout(() => {
+			setIsHovering(false);
+			onHoverChanged({ isHovering: false });
+		}, hoverOffDelayInMs);
+		timerIds.push(hoverOffTimerId);
+	}, [clearTimers, hoverOffDelayInMs, onHoverChanged]);
 
-		this.onMouseEnter = this.onMouseEnter.bind(this);
-		this.onMouseLeave = this.onMouseLeave.bind(this);
-		this.onMouseOver = this.onMouseOver.bind(this);
-		this.onMouseOut = this.onMouseOut.bind(this);
-		this.setIsHovering = this.setIsHovering.bind(this);
-		this.unsetIsHovering = this.unsetIsHovering.bind(this);
-		this.componentWillUnmount = this.componentWillUnmount.bind(this);
+	useEffect(() => clearTimers, [clearTimers]);
 
-		this.timerIds = [];
-	}
+	return (
+		<div
+			onMouseEnter={(e) => onMouseEnter({ e, setIsHovering: handleSetHovering, unsetIsHovering: handleUnsetHovering })}
+			onMouseLeave={(e) => onMouseLeave({ e, setIsHovering: handleSetHovering, unsetIsHovering: handleUnsetHovering })}
+			onMouseOut={(e) => onMouseOut({ e, setIsHovering: handleSetHovering, unsetIsHovering: handleUnsetHovering })}
+			onMouseOver={(e) => onMouseOver({ e, setIsHovering: handleSetHovering, unsetIsHovering: handleUnsetHovering })}
+		>
+			{renderChildrenWithProps(children, { isHovering })}
+		</div>
+	);
+};
 
-	onMouseEnter(e: SyntheticEvent) {
-		this.props.onMouseEnter!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering,
-		});
-	}
-
-	onMouseLeave(e: SyntheticEvent) {
-		this.props.onMouseLeave!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering,
-		});
-	}
-
-	onMouseOver(e: SyntheticEvent) {
-		this.props.onMouseOver!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering,
-		});
-	}
-
-	onMouseOut(e: SyntheticEvent) {
-		this.props.onMouseOut!({
-			e,
-			setIsHovering: this.setIsHovering,
-			unsetIsHovering: this.unsetIsHovering,
-		});
-	}
-
-	componentWillUnmount() {
-		this.clearTimers();
-	}
-
-	setIsHovering() {
-		this.clearTimers();
-
-		const hoverScheduleId = setTimeout(() => {
-			const newState = { isHovering: true };
-			this.setState(newState, () => {
-				this.props.onHoverChanged!(newState);
-			});
-		}, this.props.hoverDelayInMs) as any;
-
-		this.timerIds.push(hoverScheduleId);
-	}
-
-	unsetIsHovering() {
-		this.clearTimers();
-
-		const hoverOffScheduleId = setTimeout(() => {
-			const newState = { isHovering: false };
-			this.setState(newState, () => {
-				this.props.onHoverChanged!(newState);
-			});
-		}, this.props.hoverOffDelayInMs) as any;
-
-		this.timerIds.push(hoverOffScheduleId);
-	}
-
-	clearTimers() {
-		const ids = this.timerIds;
-		while (ids.length) {
-			const id = ids.pop() as number;
-			clearTimeout(id);
-		}
-	}
-
-	render() {
-		const { children } = this.props;
-
-		return (
-			<div
-				{...{
-					onMouseEnter: this.onMouseEnter,
-					onMouseLeave: this.onMouseLeave,
-					onMouseOut: this.onMouseOut,
-					onMouseOver: this.onMouseOver,
-				}}
-			>
-				{renderChildrenWithProps(children, this.state)}
-			</div>
-		);
-	}
-}
+HoverObserver.displayName = 'HoverObserver';
+export default HoverObserver;

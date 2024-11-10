@@ -1,5 +1,5 @@
 import { DynamicIconProps, PluginIconProps } from '@bluebase/components';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../contexts';
@@ -25,26 +25,23 @@ const DynamicIcon = getComponent<DynamicIconProps>('DynamicIcon');
  *
  * TODO: In future, add a default icon.
  */
-export class PluginIcon extends React.PureComponent<PluginIconProps> {
-	static contextType: React.Context<BlueBase> = BlueBaseContext;
+export const PluginIcon: React.FC<PluginIconProps> = ({ id, size }) => {
+	const BB = useContext(BlueBaseContext) as BlueBase;
 
-	render() {
-		const BB: BlueBase = this.context as BlueBase;
+	const plugin = BB.Plugins.get(id);
 
-		const { id, size } = this.props;
-
-		const plugin = BB.Plugins.get(id);
-
-		if (!plugin) {
-			throw new Error(`There's no pluign registered with "${id}" key in the registry.`);
-		}
-
-		if (!plugin.icon) {
-			return null;
-		}
-
-		const iconProps = resolveThunk(plugin.icon, { plugin, size }, BB);
-
-		return <DynamicIcon {...iconProps} size={size} />;
+	if (!plugin) {
+		throw new Error(`There's no plugin registered with "${id}" key in the registry.`);
 	}
-}
+
+	if (!plugin.icon) {
+		return null;
+	}
+
+	const iconProps = resolveThunk(plugin.icon, { plugin, size }, BB);
+
+	return <DynamicIcon {...iconProps} size={size} />;
+};
+
+PluginIcon.displayName = 'PluginIcon';
+export default PluginIcon;

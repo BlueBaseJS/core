@@ -18,6 +18,12 @@ const ErrorObserver = getComponent<ErrorObserverProps>('ErrorObserver');
 const LoadingState = getComponent<LoadingStateProps>('LoadingState');
 const WaitObserver = getComponent<WaitObserverProps>('WaitObserver');
 
+const defaultProps = {
+	emptyComponent: EmptyState,
+	loadingComponent: LoadingState,
+	timeout: 10000,
+};
+
 // tslint:disable: jsdoc-format
 /**
  * # 👨‍🎨 StatefulComponent
@@ -57,7 +63,7 @@ export const StatefulComponent = (props: StatefulComponentProps) => {
 		checkError,
 
 		...other
-	} = props;
+	} = { ...defaultProps, ...props };
 
 	const rest = { data, ...other };
 
@@ -104,9 +110,3 @@ export const StatefulComponent = (props: StatefulComponentProps) => {
 };
 
 StatefulComponent.displayName = 'StatefulComponent';
-
-StatefulComponent.defaultProps = {
-	emptyComponent: EmptyState,
-	loadingComponent: LoadingState,
-	timeout: 10000,
-};

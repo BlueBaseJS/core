@@ -18,10 +18,10 @@ export interface BlueBaseAppProps extends Partial<BootOptions> {
 	BB?: BlueBase;
 
 	/** Component rendered when an error occurs */
-	ErrorComponent: React.ComponentType<BlueBaseAppErrorProps>;
+	ErrorComponent?: React.ComponentType<BlueBaseAppErrorProps>;
 
-	/** Component rendered when an error occurs */
-	LoadingComponent: React.ComponentType<BlueBaseAppLoadingProps>;
+	/** Component rendered while loading */
+	LoadingComponent?: React.ComponentType<BlueBaseAppLoadingProps>;
 
 	/**
 	 * If this prop is provided, this tree will be rendered instead of BlueBase's own view.
@@ -38,22 +38,20 @@ export interface BlueBaseAppProps extends Partial<BootOptions> {
  * # 🚀 BlueBaseApp
  *
  * The main BlueBase app. This is the top level component in BlueBase. Takes care
- * of initialisation, and renders either children, or app with routing.
+ * of initialization, and renders either children or app with routing.
  *
  * ## Usage
  * ```jsx
  * <BlueBaseApp BB={BB} />
  * ```
  */
-export const BlueBaseApp = (props: BlueBaseAppProps) => {
-	const {
-		ErrorComponent = BlueBaseAppError,
-		LoadingComponent = BlueBaseAppLoading,
-		children,
-	} = props;
-
-	const [BB] = useState(props.BB || new BlueBase());
-
+export const BlueBaseApp: React.FC<BlueBaseAppProps> = ({
+	BB = new BlueBase(),
+	ErrorComponent = process.env.NODE_ENV === 'test' ? BlueBaseAppTestError : BlueBaseAppError,
+	LoadingComponent = BlueBaseAppLoading,
+	children,
+	...props
+}) => {
 	const [bootCount, setBootCount] = useState(0);
 	const [booting, setBooting] = useState(true);
 	const [bootTrigger, setBootTrigger] = useState(true); // Setting to true to start boot
@@ -61,39 +59,39 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 
 	const { onError } = useExceptionHandlingOnProduction(BB);
 
-	const boot = useCallback(async (reset?: boolean) => {
-		if (!booting) {
-			setBooting(true);
-		}
+	const boot = useCallback(
+		async (reset?: boolean) => {
+			if (!booting) {
+				setBooting(true);
+			}
 
-		await BB.boot({
-			...props,
-			reset,
+			await BB.boot({
+				...props,
+				reset,
 
-			onProgress: (p: BlueBaseProgress) => {
-				setProgress(p);
-				if (p.error) {
-					setBooting(false);
-				}
-			},
-		});
-		setBootCount(bootCount + 1);
-		setBooting(false);
-	}, [booting, bootCount, setBooting, setProgress, setBootCount, BB, props]);
+				onProgress: (p: BlueBaseProgress) => {
+					setProgress(p);
+					if (p.error) {
+						setBooting(false);
+					}
+				},
+			});
+			setBootCount((prev) => prev + 1);
+			setBooting(false);
+		},
+		[booting, BB, props]
+	);
 
 	BB.reboot = async (reset: boolean = false) => {
-		boot(reset);
+		await boot(reset);
 	};
 
 	useEffect(() => {
 		if (bootTrigger) {
 			setBootTrigger(false);
-		} else {
-			return;
+			boot();
 		}
-
-		boot();
-	}, [bootTrigger]);
+	}, [bootTrigger, boot]);
 
 	if (booting) {
 		return <LoadingComponent BB={BB} progress={progress} bootCount={bootCount} />;
@@ -123,10 +121,4 @@ export const BlueBaseApp = (props: BlueBaseAppProps) => {
 	);
 };
 
-const defaultProps: Partial<BlueBaseAppProps> = {
-	ErrorComponent: process.env.NODE_ENV === 'test' ? BlueBaseAppTestError : BlueBaseAppError,
-	LoadingComponent: BlueBaseAppLoading,
-};
-
-BlueBaseApp.defaultProps = defaultProps;
 BlueBaseApp.displayName = 'BlueBaseApp';

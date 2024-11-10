@@ -25,6 +25,7 @@ interface BlueBaseImageBackgroundProps extends Omit<ImageBackgroundProps, 'sourc
 	source: ImageSourcePropType | string | string[];
 	children?: ReactNode;
 }
+
 export const BlueBaseImageBackground = (props: BlueBaseImageBackgroundProps): any => {
 	const { source: _source, ...rest } = props;
 	const BB: BlueBase = useContext(BlueBaseContext);
@@ -37,3 +38,5 @@ export const BlueBaseImageBackground = (props: BlueBaseImageBackgroundProps): an
 
 	return React.createElement(RNImageBackground, { ...rest, source });
 };
+
+BlueBaseImageBackground.displayName = 'BlueBaseImageBackground';
