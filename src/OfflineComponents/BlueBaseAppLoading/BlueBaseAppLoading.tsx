@@ -10,7 +10,6 @@ import {
 import { BlueBase, BlueBaseProgress } from '../../BlueBase';
 import { WaitObserver } from '../../components';
 
-// tslint:disable-next-line: no-var-requires
 const Logo = require('../../../assets/logo.png');
 
 export interface BlueBaseAppLoadingProps {
@@ -20,10 +19,13 @@ export interface BlueBaseAppLoadingProps {
 	image?: ImageProps['source'];
 }
 
-export const BlueBaseAppLoading = ({ progress, image }: BlueBaseAppLoadingProps) => (
+export const BlueBaseAppLoading: React.FC<BlueBaseAppLoadingProps> = ({
+	progress,
+	image = Logo,
+}) => (
 	<WaitObserver>
 		<View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-			<Image source={image!} style={{ height: 100, width: 100, margin: 16 }} />
+			<Image source={image} style={{ height: 100, width: 100, margin: 16 }} />
 			<View
 				style={{
 					backgroundColor: 'rgba(0,0,0,.03)',
@@ -36,14 +38,11 @@ export const BlueBaseAppLoading = ({ progress, image }: BlueBaseAppLoadingProps)
 			>
 				<ActivityIndicator />
 				<Text style={{ paddingLeft: 8 }}>
-					Loading{progress.progress ? `: ${progress.progress}%` : null}
+					Loading{progress.progress ? `: ${progress.progress}%` : ''}
 				</Text>
 			</View>
 		</View>
 	</WaitObserver>
 );
 
-BlueBaseAppLoading.defaultProps = {
-	image: Logo,
-};
 BlueBaseAppLoading.displayName = 'BlueBaseAppLoading';

@@ -1,5 +1,5 @@
-import { WaitObserverProps } from '@bluebase/components';
-import { useEffect, useState } from 'react';
+import { WaitObserverChildrenProps, WaitObserverProps } from '@bluebase/components';
+import React, { useEffect, useState } from 'react';
 
 /**
  * # ⏰ WaitObserver
@@ -23,82 +23,52 @@ import { useEffect, useState } from 'react';
  * />
  * ```
  */
-export const WaitObserver = (props: WaitObserverProps) => {
+export const WaitObserver: React.FC<WaitObserverProps> = ({
+	delay = 200,
+	timeout,
+	onTimeout = () => {},
+	onRetry = () => {},
+	children,
+}) => {
 	const [pastDelay, setPastDelay] = useState(false);
 	const [timedOut, setTimedOut] = useState(false);
 
-	let _delay: any;
-	let _timeout: any;
-
-	function init() {
-		if (typeof props.delay === 'number') {
-			if (props.delay === 0) {
-				setPastDelay(true);
-			} else {
-				_delay = setTimeout(() => {
-					setPastDelay(true);
-				}, props.delay);
-			}
-		}
-
-		if (typeof props.timeout === 'number') {
-			_timeout = setTimeout(() => {
-				if (props.onTimeout) {
-					props.onTimeout();
-				}
-				setTimedOut(true);
-			}, props.timeout);
-		}
-	}
-
-	function clearTimeouts() {
-		if (_delay) {
-			clearTimeout(_delay);
-		}
-		if (_timeout) {
-			clearTimeout(_timeout);
-		}
-	}
-
-	function retry() {
-		if (props.onRetry) {
-			props.onRetry();
-		}
-		setTimedOut(false);
-		init();
-	}
-
 	useEffect(() => {
-		init();
+		let delayTimer: any = null;
+		let timeoutTimer: any = null;
 
-		return clearTimeouts;
-	});
+		if (delay === 0) {
+			setPastDelay(true);
+		} else {
+			delayTimer = setTimeout(() => setPastDelay(true), delay);
+		}
+
+		if (timeout) {
+			timeoutTimer = setTimeout(() => {
+				onTimeout();
+				setTimedOut(true);
+			}, timeout);
+		}
+
+		return () => {
+			if (delayTimer) clearTimeout(delayTimer);
+			if (timeoutTimer) clearTimeout(timeoutTimer);
+		};
+	}, [delay, timeout, onTimeout]);
+
+	const retry = () => {
+		onRetry();
+		setTimedOut(false);
+		setPastDelay(false);
+	};
 
 	if (pastDelay) {
-		const { children } = props;
-
-		if (typeof children === 'function') {
-			return children({
-				retry,
-				timedOut,
-			});
-		}
-
-		return children;
+		return typeof children === 'function'
+			? (children as (props: WaitObserverChildrenProps) => any)({ retry, timedOut })
+			: children;
 	}
 
 	return null;
 };
 
-const defaultProps: Partial<WaitObserverProps> = {
-	delay: 200,
-	onRetry: () => {
-		return;
-	},
-	onTimeout: () => {
-		return;
-	},
-};
-
-WaitObserver.defaultProps = defaultProps;
 WaitObserver.displayName = 'WaitObserver';

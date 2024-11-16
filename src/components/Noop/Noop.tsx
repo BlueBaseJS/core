@@ -13,3 +13,5 @@ export const Noop: React.FunctionComponent<NoopProps> = ({ children }: NoopProps
 
 	return null;
 };
+
+Noop.displayName = 'Noop';

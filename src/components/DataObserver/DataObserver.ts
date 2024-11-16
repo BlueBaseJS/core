@@ -8,9 +8,9 @@ import { renderChildrenWithProps } from '../../utils';
 /**
  * # ⚡️ DataObserver
  *
- * Observes data to check if it is data is loading, loaded or empty. The resulting flags
+ * Observes data to check if it is loading, loaded, or empty. The resulting flags
  * are passed on to the children function. These flags may be used to show different UIs,
- * i.e. loading state, empty state, etc.
+ * i.e., loading state, empty state, etc.
  *
  * ## Usage
  * ```jsx
@@ -19,34 +19,33 @@ import { renderChildrenWithProps } from '../../utils';
  * </DataObserver>
  * ```
  */
-export class DataObserver extends React.PureComponent<DataObserverProps> {
-	public static defaultProps: Partial<DataObserverProps> = {
-		loading: false,
+export const DataObserver: React.FC<DataObserverProps> = ({
+	data,
+	loading = false,
+	isEmpty = (props: DataObserverProps) => {
+		// If it's null or undefined
+		if (isnil(props.data)) {
+			return true;
+		}
+		// If it's an empty array
+		if (Array.isArray(props.data) && props.data.length === 0) {
+			return true;
+		}
+		return false;
+	},
+	isLoading = (props: DataObserverProps) =>
+		!isnil(props.loading) && isboolean(props.loading) ? props.loading : false,
+	children,
+}) => {
+	const empty = isEmpty ? isEmpty({ data, loading }) : false;
+	const loadingState = isLoading ? isLoading({ data, loading }) : false;
 
-		isEmpty: (props: DataObserverProps) => {
-			// If its null or undefined
-			if (isnil(props.data)) {
-				return true;
-			}
+	return renderChildrenWithProps(children, {
+		data,
+		empty,
+		loading: loadingState,
+	});
+};
 
-			// If its an empty array
-			if (Array.isArray(props.data) && props.data.length === 0) {
-				return true;
-			}
-
-			return false;
-		},
-		isLoading: (props: DataObserverProps) =>
-			!isnil(props.loading) && isboolean(props.loading) ? props.loading : false,
-	};
-
-	render() {
-		const { children } = this.props;
-
-		return renderChildrenWithProps(children, {
-			data: this.props.data,
-			empty: this.props.isEmpty ? this.props.isEmpty(this.props) : false,
-			loading: this.props.isLoading ? this.props.isLoading(this.props) : false,
-		});
-	}
-}
+DataObserver.displayName = 'DataObserver';
+export default DataObserver;

@@ -23,7 +23,7 @@ export interface ThemeProviderProps {
 	/**
 	 * Any custom overrides to the selected theme.
 	 */
-	overrides: ThemeInput;
+	overrides?: ThemeInput;
 
 	children: React.ReactNode;
 }
@@ -31,7 +31,12 @@ export interface ThemeProviderProps {
 /**
  * 🎨 ThemeProvider
  */
-export const ThemeProvider = (props: ThemeProviderProps) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+	children,
+	theme,
+	mode,
+	overrides = {},
+}) => {
 	const BB = useBlueBase();
 	const colorScheme = useColorScheme();
 
@@ -39,33 +44,29 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 	const [themeName, changeTheme] = useConfig('theme');
 	const [overridesConfig] = useConfig<ThemeInput>('theme.overrides');
 
-	const key = props.theme ?? themeName;
-	const mode = props.mode ?? colorScheme;
+	const themeKey = theme ?? themeName;
+	const themeMode = mode ?? colorScheme;
 
-	const registryTheme = BB.Themes.getValue(key);
+	const registryTheme = BB.Themes.getValue(themeKey);
 
 	if (!registryTheme) {
 		BB.Logger.warn(
-			`Could not load theme. Reason: Theme with the key "${key}" does not exist. Falling back to default theme.`
+			// eslint-disable-next-line max-len
+			`Could not load theme. Reason: Theme with the key "${themeKey}" does not exist. Falling back to default theme.`
 		);
 	}
 
-	const theme = new Theme(registryTheme, overridesConfig, props.overrides);
+	const mergedTheme = new Theme(registryTheme, overridesConfig, overrides);
+	mergedTheme.mode = themeMode;
 
-	theme.mode = mode;
-
-	const value: ThemeContextData = {
+	const contextValue: ThemeContextData = {
 		changeMode,
 		changeTheme,
-		theme,
+		theme: mergedTheme,
 		modeConfig,
 	};
 
-	return <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>;
+	return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 };
 
 ThemeProvider.displayName = 'ThemeProvider';
-
-ThemeProvider.defaultProps = {
-	overrides: {},
-};
