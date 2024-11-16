@@ -1,3 +1,9 @@
+# [8.6.0-alpha.1](https://github.com/BlueBaseJS/core/compare/v8.5.4...v8.6.0-alpha.1) (2024-11-16)
+
+### Features
+
+*   Refactored class components to functions ([#606](https://github.com/BlueBaseJS/core/issues/606)) ([7e8709b](https://github.com/BlueBaseJS/core/commit/7e8709b903825566776dfed4df678fc1bc911ba3))
+
 ## [8.5.4](https://github.com/BlueBaseJS/core/compare/v8.5.3...v8.5.4) (2024-05-05)
 
 ### Bug Fixes
