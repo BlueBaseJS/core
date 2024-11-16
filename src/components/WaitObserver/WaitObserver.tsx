@@ -34,8 +34,8 @@ export const WaitObserver: React.FC<WaitObserverProps> = ({
 	const [timedOut, setTimedOut] = useState(false);
 
 	useEffect(() => {
-		let delayTimer = null;
-		let timeoutTimer = null;
+		let delayTimer: any = null;
+		let timeoutTimer: any = null;
 
 		if (delay === 0) {
 			setPastDelay(true);
