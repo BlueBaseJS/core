@@ -1,3 +1,9 @@
+## [8.5.5](https://github.com/BlueBaseJS/core/compare/v8.5.4...v8.5.5) (2025-04-04)
+
+### Bug Fixes
+
+*   configs update ([432fab7](https://github.com/BlueBaseJS/core/commit/432fab7d2b16cc1ee75dd17ad211db4431ad9280))
+
 ## [8.5.4](https://github.com/BlueBaseJS/core/compare/v8.5.3...v8.5.4) (2024-05-05)
 
 ### Bug Fixes
