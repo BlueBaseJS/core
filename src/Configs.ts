@@ -61,7 +61,7 @@ export interface Configs {
 
 export const BlueBaseDefaultConfigs: Configs = {
 	debug: false,
-	development: false,
+	development: true,
 	direction: 'auto',
 	locale: 'en',
 	'locale.options': {
