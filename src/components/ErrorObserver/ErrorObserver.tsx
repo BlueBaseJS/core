@@ -4,6 +4,7 @@ import React from 'react';
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../contexts';
 import { getComponent } from '../../getComponent';
+import { ActivityIndicator, View } from 'react-native';
 
 const MISSING_ERROR = Error('An unknown error occurred.');
 const ErrorState = getComponent<ErrorStateProps>('ErrorState');
@@ -54,20 +55,24 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 		const BB: BlueBase = this.context as BlueBase;
 
 		const { error } = this.state;
-		const { children, retry, checkError, error: e, errorComponent, ...rest } = this.props;
-
+		const { children, retry, checkError, error: e, errorComponent, networkStatus, ...rest } = this.props;
 		if (error) {
 			BB.Logger.error(error);
 
 			const Error = this.props.errorComponent || ErrorState;
+			if( networkStatus && networkStatus === 4) {
+				return(
+					<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+						<ActivityIndicator/>
+					</View>
+				)
+			}
 			return React.createElement(Error, { error, retry, ...rest });
 		}
-
 		// 'children' as a function, 'render prop' pattern
 		if (typeof children === 'function') {
 			return (children as any)();
 		}
-
 		return children;
 	}
 }
