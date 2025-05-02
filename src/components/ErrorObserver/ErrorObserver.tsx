@@ -1,10 +1,10 @@
 import { ErrorObserverProps, ErrorObserverState, ErrorStateProps } from '@bluebase/components';
 import React from 'react';
+import { ActivityIndicator, View } from 'react-native';
 
 import { BlueBase } from '../../BlueBase';
 import { BlueBaseContext } from '../../contexts';
 import { getComponent } from '../../getComponent';
-import { ActivityIndicator, View } from 'react-native';
 
 const MISSING_ERROR = Error('An unknown error occurred.');
 const ErrorState = getComponent<ErrorStateProps>('ErrorState');
@@ -60,12 +60,12 @@ export class ErrorObserver extends React.Component<ErrorObserverProps, ErrorObse
 			BB.Logger.error(error);
 
 			const Error = this.props.errorComponent || ErrorState;
-			if( networkStatus && networkStatus === 4) {
-				return(
+			if (networkStatus && networkStatus === 4) {
+				return (
 					<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 						<ActivityIndicator/>
 					</View>
-				)
+				);
 			}
 			return React.createElement(Error, { error, retry, ...rest });
 		}
