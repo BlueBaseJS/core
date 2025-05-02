@@ -1,3 +1,10 @@
+## [8.5.6](https://github.com/BlueBaseJS/core/compare/v8.5.5...v8.5.6) (2025-05-02)
+
+### Bug Fixes
+
+*   lint ([88077d8](https://github.com/BlueBaseJS/core/commit/88077d8557eb502b3b0392d770ee5425a810aeb1))
+*   workflow update & error observer indicator add ([c3587fa](https://github.com/BlueBaseJS/core/commit/c3587faa35afe5aee1e5a85138532d789eaa3ed8))
+
 ## [8.5.5](https://github.com/BlueBaseJS/core/compare/v8.5.4...v8.5.5) (2025-04-04)
 
 ### Bug Fixes
